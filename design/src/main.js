@@ -2,37 +2,39 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './App.vue';
 
-Vue.use(VueRouter);
+// Vue.use(VueRouter);
 
-const routes = [{
-	path: '/', component: App
-}];
+// const routes = [{
+// 	path: '/', component: App
+// }];
 
-const router = new VueRouter({
-	routes: routes,
-	linkActiveClass: 'active'
-})
+// const router = new VueRouter({
+// 	routes: routes,
+// 	linkActiveClass: 'active'
+// })
 
-new Vue({
-	router,
-	render: h => h(App)
-}).$mount('#app');
-
-// const app = new Vue({
+// new Vue({
 // 	router,
-// 	template: `
-// 		<div id='app'>hello</div>
-// 	`
+// 	render: h => h(App)
 // }).$mount('#app');
 
-// let app = Vue.extend({});
 
-// const router = new VueRouter();
 
-// router.map({
-// 	'/': {
-// 		component: App
-// 	}
-// });
+const routes = {
+	'/': App
+}
 
-// router.start(app, '#app');
+new Vue({
+	el: '#app',
+	data: {
+		currentRoute: window.location.pathname
+	},
+	computed: {
+		ViewComponent() {
+			return routes[this.currentRoute] || NotFound
+		}
+	},
+	render(h) {
+		return h(this.ViewComponent);
+	}
+})
