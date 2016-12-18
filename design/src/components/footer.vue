@@ -45,7 +45,8 @@
 		bottom: 0;
 		left: 0;
 		width: 100%;
-		padding: 15px 50px 10px;
+		padding: 10px 50px;
+		font-size: 12px;
 		overflow: hidden;
 		background-color: #303048;
 		@include box-sizing(border-box);
@@ -53,7 +54,6 @@
 			li {
 				display: inline-block;
 				width: $li-width;
-				margin: 5px 0;
 			}
 			a {
 				display: block;

@@ -22,7 +22,7 @@ module.exports = {
 		}, {
 			test: /\.(png|jpg|gif)$/,
 			exclude: /node_modules/,
-			loader: 'file?name=[name].[ext]?[hash]'
+			loader: 'url?name=[name].[ext]?[hash]'
 		}]
 	},
 	babel: {

@@ -1,40 +1,30 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import Index from './components/index.vue';
+import Navbar from './components/nav.vue';
+import VFooter from './components/footer.vue';
+import NotFound from './components/404.vue';
 import App from './App.vue';
 
-// Vue.use(VueRouter);
+Vue.use(VueRouter);
 
-// const routes = [{
-// 	path: '/', component: App
-// }];
+const routes = [{
+	path: '/', component: Index
+}, {
+	path: '/404', component: NotFound
+}];
 
-// const router = new VueRouter({
-// 	routes: routes,
-// 	linkActiveClass: 'active'
-// })
-
-// new Vue({
-// 	router,
-// 	render: h => h(App)
-// }).$mount('#app');
-
-
-
-const routes = {
-	'/': App
-}
+const router = new VueRouter({
+	routes: routes,
+	linkActiveClass: 'active'
+})
 
 new Vue({
-	el: '#app',
-	data: {
-		currentRoute: window.location.pathname
+	router,
+	components: {
+		Navbar,
+		VFooter
 	},
-	computed: {
-		ViewComponent() {
-			return routes[this.currentRoute] || NotFound
-		}
-	},
-	render(h) {
-		return h(this.ViewComponent);
-	}
-})
+	render: h => h(App)
+}).$mount('#app');
+

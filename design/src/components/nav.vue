@@ -2,8 +2,10 @@
 	<div id='nav'>
 		<div id='logo'></div>
 		<ul class='navbar'>
-			<li v-for='item in items'>
-				<a href=''>{{item}}</a>
+			<li  v-for='item in items'>
+				<router-link :to='item.url'>
+					{{item.text}}
+				</router-link>
 			</li>
 		</ul>
 	</div>
@@ -13,7 +15,16 @@
 	export default {
 		data() {
 			return {
-				items: ['登录', '发布', '搜索']
+				items: [{
+					text: '登录',
+					url: 'a'
+				}, {
+					text: '发布',
+					url: 'b'
+				}, {
+					text: '搜索',
+					url: 'c'
+				}]
 			}
 		}
 	}
