@@ -12,27 +12,23 @@
 	export default {
 		data() {
 			return {
-				links: [{
-					url: 'www.baidu.com',
-					text: '百度'
-				}, {
-					url: 'www.baidu.com',
-					text: '百度'
-				}, {
-					url: 'www.baidu.com',
-					text: '百度'
-				}, {
-					url: 'www.baidu.com',
-					text: '百度'
-				}, {
-					url: 'www.baidu.com',
-					text: '百度'
-				}, {
-					url: 'www.baidu.com',
-					text: '百度'
-				}]
+				links: []
 			}
-		}
+		},
+		created: function() {
+			this.fetchData();
+		},
+		methods: {
+			fetchData: function(){
+				let xhr = new XMLHttpRequest();
+				let self = this;
+				xhr.open('GET', '../../../json/footer-link.json');
+				xhr.onload = () => {
+					self.links = JSON.parse(xhr.responseText);
+				};
+				xhr.send();
+			}
+		} 
 	}
 </script>
 
@@ -41,9 +37,6 @@
 
 	$li-width: 33%;
 	#footer {
-		position: fixed;
-		bottom: 0;
-		left: 0;
 		width: 100%;
 		padding: 10px 50px;
 		font-size: 12px;
