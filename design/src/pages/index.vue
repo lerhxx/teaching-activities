@@ -1,5 +1,5 @@
 <template>
-	<div id='index'>
+	<div id='index''>
 		<img class='in-cover' :src='img' />
 		<div class='in-search'>
 			<label>系：</label>
@@ -24,7 +24,7 @@
 		<ul class='in-list'>
 			<li class='in-list-item' v-for='item in lists'>
 				<img :src='item.url' />
-				<h3>{{item.title}}</h3>
+				<h3><router-link :to='{name: "article"}'>{{item.title}}</router-link></h3>
 				<p class='abs'>{{item.abs}}</p>
 			</li>
 		</ul>
@@ -36,9 +36,9 @@
 		data() {
 			 return {
 			 	img: './src/imgs/cover-b.jpg',
-			 	faculties: ['a','b','c'],
-			 	types: ['d','e','f'],
-			 	timeliness: ['g','h','i'],
+			 	faculties: ['请选择'],
+			 	types: ['请选择'],
+			 	timeliness: ['请选择'],
 			 	lists: [],
 		    }
 		},
@@ -53,9 +53,9 @@
 				.then(function(res) {
 					return res.json()
 				}).then(function(json) {
-					self.faculties = json.faculties;
-					self.types = json.types;
-					self.timeliness = json.timeliness;
+					self.faculties.push(...json.faculties);
+					self.types.push(...json.types);
+					self.timeliness.push(...json.timeliness);
 					console.log(json)
 				})
 			},
@@ -73,40 +73,33 @@
 	}
 </script>
 
-<style lang='sass'>
-	@import '../css/mixins.scss';
+<style lang='stylus'>
+	@import '../css/funs'
+	@import '../css/variable';
 
-	$search-mar: 10px;
-	.in-cover {
-		width: 100%;
-		height: 300px;
-	}
-	.in-search {
-		padding: 10px;
-		text-align: center;
-		border-bottom: 1px solid #bbb;
-		label {
-			margin-right: $search-mar;
-		}
-		select {
-			min-width: 80px;
-			margin: 0 $search-mar;
-		}
-	}
-	.in-list-item {
-		display: inline-block;
-		width: 33.33%;
-		padding: 0 10px;
-		margin: 10px 0;
-		@include box-sizing(border-box);
-		img {
-			width: 100%;
-			height: 100px;
-		}
-		.abs {
-			text-overflow: ellipsis;
-			white-space: nowrap;
-			overflow: hidden;
-		}
-	}
+	.in-cover 
+		width 100%
+		height 300px
+	.in-search 
+		padding 10px
+		text-align center
+		border-bottom 1px solid #bbb
+		label 
+			margin-right $search-mar
+		select 
+			min-width 80px
+			margin 0 search-mar
+	.in-list-item 
+		display inline-block
+		width: 33.33%
+		padding 0 10px
+		margi: 10px 0
+		box-sizing border-box
+		img 
+			width 100%
+			height 100px
+		.abs 
+			text-overflow ellipsis
+			white-space nowrap
+			overflow hidden
 </style>

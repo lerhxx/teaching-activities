@@ -32,27 +32,23 @@
 	}
 </script>
 
-<style lang='sass'>
-	@import '../css/mixins.scss';
+<style lang='stylus'>
+	@import '../css/funs'
+	@import '../css/variable'
 
-	$li-width: 33%;
-	#footer {
-		width: 100%;
-		padding: 10px 50px;
-		font-size: 12px;
-		overflow: hidden;
-		background-color: #303048;
-		@include box-sizing(border-box);
-		.links {
-			li {
-				display: inline-block;
-				width: $li-width;
-			}
-			a {
-				display: block;
-				color: #fff;
-				text-align: center;
-			}
-		}
-	}
+	#footer
+		absolute(bottom 0 left 0)
+		width 100%
+		padding 10px 50px
+		font-size 12px
+		overflow hidden
+		background-color #303048
+		.links 
+			li 
+				display inline-block
+				width li-width
+			a 
+				display block
+				color #fff
+				text-align center
 </style>

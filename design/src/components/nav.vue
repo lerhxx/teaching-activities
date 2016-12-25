@@ -17,41 +17,38 @@
 			return {
 				items: [{
 					text: '登录',
-					url: 'a'
+					url: 'signin'
 				}, {
 					text: '发布',
-					url: 'b'
+					url: 'edit'
 				}, {
 					text: '搜索',
-					url: 'c'
+					url: 'search'
 				}]
 			}
 		}
 	}
 </script>
 
-<style lang='sass'>
-	$height: 45px;
-	#nav {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: $height;
-		overflow: hidden;
-		background-color: #303048;
-		.navbar {
-			float: right;
-			li {
-				display: inline-block;
-			}
-			a {
-				display: block;
-				height: $height;
-				margin: 0 25px;
-				color: #fff;
-				line-height: $height;
-			}
-		}
-	}
+<style lang='stylus'>
+	@import '../css/variable'
+
+	#nav 
+		position fixed
+		top 0
+		left 0
+		width 100%
+		height: nav-height;
+		overflow hidden
+		background-color #303048
+		.navbar 
+			float right
+			li 
+				display inline-block
+			a 
+				display block
+				height nav-height
+				margin 0 25px
+				color #fff
+				line-height: nav-height
 </style>
