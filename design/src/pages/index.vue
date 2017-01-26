@@ -77,6 +77,8 @@
 	@import '../css/funs'
 	@import '../css/variable';
 
+	#app
+		position relative
 	.in-cover 
 		width 100%
 		height 300px

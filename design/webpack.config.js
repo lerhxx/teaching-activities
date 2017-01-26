@@ -1,9 +1,11 @@
 var webpack = require('webpack');
 
 module.exports = {
-	entry: './src/main.js',
+	entry: {
+		app: ['./src/main.js']
+	},
 	output: {
-		path: './dist',
+		path: '/dist',
 		publicPath: './dist/',
 		filename: 'build.js'
 	},
@@ -33,5 +35,8 @@ module.exports = {
 		alias: {
 			vue: 'vue/dist/vue.js'
 		}
+	},
+	devServer: {
+		inline: true
 	}
 }

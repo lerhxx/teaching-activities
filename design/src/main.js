@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import store from './store/store.js';
 import VueRouter from 'vue-router';
 import Index from './pages/index.vue';
 import Navbar from './components/nav.vue';
@@ -27,6 +28,7 @@ const router = new VueRouter({
 
 new Vue({
 	router,
+	store,
 	components: {
 		Navbar,
 		VFooter
