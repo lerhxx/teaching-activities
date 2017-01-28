@@ -7,6 +7,7 @@ import VFooter from './components/footer.vue';
 import NotFound from './pages/404.vue';
 import App from './App.vue';
 import SignIn from './pages/signin.vue';
+import Edit from './pages/edit.vue';
 import './css/common.styl';
 
 Vue.use(VueRouter);
@@ -19,6 +20,8 @@ const routes = [{
 	path: '/signin', component: SignIn, name: 'signin'
 },{
 	path: '/article', component: SignIn, name: 'article'
+},{
+	path: '/edit', component: Edit, name: 'edit'
 }];
 
 const router = new VueRouter({

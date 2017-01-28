@@ -1,5 +1,5 @@
 <template>
-	<div id='index''>
+	<div class='index''>
 		<img class='in-cover' :src='img' />
 		<div class='in-search'>
 			<label>系：</label>
@@ -75,31 +75,38 @@
 
 <style lang='stylus'>
 	@import '../css/funs'
-	@import '../css/variable';
-
+	@import '../css/form'
+	@import '../css/variable'
 	#app
-		position relative
+		relative()
+		overflow hidden
+	.index
+		margin-bottom 60px
+	.in-list
+		max-width 1000px
+		padding-top 15px
+		margin auto
 	.in-cover 
 		width 100%
 		height 300px
 	.in-search 
-		padding 10px
+		padding 15px
 		text-align center
 		border-bottom 1px solid #bbb
 		label 
-			margin-right $search-mar
+			margin-right search-mar
 		select 
 			min-width 80px
 			margin 0 search-mar
 	.in-list-item 
 		display inline-block
 		width: 33.33%
-		padding 0 10px
-		margi: 10px 0
+		padding 0 15px
+		margin: 10px 0
 		box-sizing border-box
 		img 
 			width 100%
-			height 100px
+			height 150px
 		.abs 
 			text-overflow ellipsis
 			white-space nowrap

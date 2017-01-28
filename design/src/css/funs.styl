@@ -10,6 +10,25 @@ box-sizing()
 	-o-box-sizing: arguments
 	box-sizing: arguments
 
+box-shadow()
+	-webkit-box-shadow: arguments
+	-moz-box-shadow: arguments
+	-ms-box-shadow: arguments
+	-o-box-shadow: arguments
+	box-shadow: arguments
+
+transform()
+	-webkit-transfor: arguments
+	-moz-transfor: arguments
+	-ms-transfor: arguments
+	-o-transfor: arguments
+	transfor: arguments
+
+opacity(n)
+    opacity n
+    if support-for-ie
+        filter unquote('progid:DXImageTransform.Microsoft.Alpha(Opacity=' + round(n * 100) + ')')
+
 -pos(type, args)
 	i = 0
 	position: unquote(type)
@@ -21,3 +40,6 @@ absolute()
 
 relative()
 	-pos('relative', arguments)
+
+fixed()
+	-pos('fixed', arguments)

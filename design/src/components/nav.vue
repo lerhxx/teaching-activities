@@ -40,7 +40,8 @@
 		width 100%
 		height: nav-height;
 		overflow hidden
-		background-color #303048
+		//background-color rgba(48, 48, 72, .8)
+		background-color rgba(0, 0, 0, .7)
 		.navbar 
 			float right
 			li 
