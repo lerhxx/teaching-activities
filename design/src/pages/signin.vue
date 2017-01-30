@@ -3,10 +3,10 @@
 		<form class='sign-form'>
 			<caption><h1>登录</h1></caption>
 			<div class='group-con'>
-				<input type='text' placeholder='请输入账号'/>
+				<input type='text' placeholder='请输入账号' v-model='account'/>
 			</div>
 			<div class='group-con'>
-				<input type='password' placeholder='请输入密码'/>
+				<input type='password' placeholder='请输入密码' v-model='password'/>
 			</div>
 			<div class='group-con group-btn'>
 				<button class='btn btn-certain' v-on:click='login'>确定</button>
@@ -20,6 +20,12 @@
 
 <script>
 	export default {
+		data() {
+			return {
+				account: '',
+				password: ''
+			}
+		},
 		methods: {
 			login() {
 				console.log('ok');
