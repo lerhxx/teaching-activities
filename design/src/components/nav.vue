@@ -2,6 +2,16 @@
 	<div id='nav'>
 		<div id='logo'></div>
 		<ul class='navbar'>
+			<li  v-if='SignIn'>
+				<router-link to='/signin'>
+					登出
+				</router-link>
+			</li>
+			<li  v-else>
+				<router-link to='/signin'>
+					登录
+				</router-link>
+			</li>
 			<li  v-for='item in items'>
 				<router-link :to='item.url'>
 					{{item.text}}
@@ -15,10 +25,8 @@
 	export default {
 		data() {
 			return {
+				SignIn: true,
 				items: [{
-					text: '登录',
-					url: 'signin'
-				}, {
 					text: '发布',
 					url: 'edit'
 				}, {
