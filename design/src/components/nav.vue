@@ -3,12 +3,12 @@
 		<div id='logo'></div>
 		<ul class='navbar'>
 			<li  v-if='SignIn'>
-				<router-link to='/signin'>
+				<router-link to='/signout'>
 					登出
 				</router-link>
 			</li>
 			<li  v-else>
-				<router-link to='/signout'>
+				<router-link to='/signin'>
 					登录
 				</router-link>
 			</li>
@@ -50,6 +50,7 @@
 		overflow hidden
 		//background-color rgba(48, 48, 72, .8)
 		background-color rgba(0, 0, 0, .7)
+		z-index 99
 		.navbar 
 			float right
 			li 

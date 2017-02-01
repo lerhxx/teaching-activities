@@ -36,7 +36,7 @@
 				<div class='group-con group-content'>
 					<span class='must'>*</span>
 					<div class='textarea-box'>
-						<textarea placeholder='请输入举办内容'  v-model='content'></textarea>
+						<textarea id='editor' placeholder='请输入举办内容' v-model='content'></textarea>
 					</div>
 				</div>
 				<div class='group-con group-edit'>
@@ -55,6 +55,7 @@
 </template>
 
 <script>
+	let editor;
 	export default {
 		data() {
 			return {
@@ -69,6 +70,37 @@
 				content: '',
 				files: '',
 			}
+		},
+		mounted() {
+			console.dir($('#editor'));
+			editor = new Simditor({
+				textarea: $('#editor'),
+				toolbar: [
+					'title',
+					'bold',
+					'italic',
+					'underline',
+					'strikethrough',
+					'fontScale',
+					'color',
+					'ol',
+					'ul',
+					'blockquote',
+					'code',
+					'table',
+					'link',
+					'image',
+					'hr',
+					'indent',
+					'outdent',
+					'alignment'
+				],
+				imageButton: [
+					'upload',
+					'external'
+				]
+			})
+			
 		},
 		methods: {
 			onToggleOption() {
@@ -107,6 +139,7 @@
 				if(!this.title || !this.time || !this.place || !this.selectOption || !this.content || !this.cover) {
 					console.log('err')
 				}
+				this.content = editor.sync();
 				console.log(this.title);
 				console.log(this.aim);
 				console.log(this.time);
@@ -127,6 +160,7 @@
 <style lang='stylus'>
 	@import '../css/funs'
 	@import '../css/variable'
+	@import '../css/simditor.css'
 	.form-contain
 		padding-top nav-height + 50px
 		padding-bottom 50px
@@ -145,23 +179,26 @@
 			width 90px
 			text-align left
 			vertical-align top
-		input,
-		.select,
-		.textarea-box
-			width left-form-width
-			height 36px
-			padding 10px 10px
-			border none
-			outline none
-			background transparent
-			box-shadow inset 1px 1px 5px 2px rgba(0, 0, 0, .5)
-			font-size 14px
-			border-radius 15px
-			box-sizing border-box
-			&::-webkit-input-placeholder
-				color rgba(0, 0, 0, .6)
 		.btn-post
 			width 55%
+		.simditor
+			border-radius 10px
+			overflow hidden
+	.group-left input,
+	.select,
+	.textarea-box
+		width left-form-width
+		height 36px
+		padding 10px 10px
+		border none
+		outline none
+		background #fff
+		box-shadow inset 1px 1px 5px 2px rgba(0, 0, 0, .5)
+		font-size 14px
+		border-radius 15px
+		box-sizing border-box
+		&::-webkit-input-placeholder
+			color rgba(0, 0, 0, .6)
 	.select
 		relative()
 		display inline-block
@@ -212,7 +249,6 @@
 			height 120px
 			vertical-align top
 	.group-content
-		width 575px
 		textarea
 			width 100%
 			height 100%
@@ -234,8 +270,8 @@
 				color rgba(0, 0, 0, .6)
 		.textarea-box
 			display inline-block
-			width 550px
-			height 370px
+			width 95%
+			height 445px
 			padding 0
 			text-align left
 			vertical-align top
@@ -262,14 +298,13 @@
 		display inline-block
 		width 300px
 		padding 0 30px
-		margin-right 50px
 		margin-bottom 60px
 		//border 1px solid red
 		vertical-align top
 		text-align right
 		box-sizing border-box
 	.group-right
-		width 550px
+		width 700px
 		padding 0
 		text-align left
 </style>
