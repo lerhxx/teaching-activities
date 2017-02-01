@@ -8,7 +8,7 @@
 				</router-link>
 			</li>
 			<li  v-else>
-				<router-link to='/signin'>
+				<router-link to='/signout'>
 					登录
 				</router-link>
 			</li>
@@ -25,7 +25,7 @@
 	export default {
 		data() {
 			return {
-				SignIn: true,
+				SignIn: false,
 				items: [{
 					text: '发布',
 					url: 'edit'
