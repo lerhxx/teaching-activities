@@ -3,11 +3,11 @@ var path = require('path');
 
 module.exports = {
 	entry: {
-		app: ['./client/src/main.js']
+		app: ['./src/main.js']
 	},
 	output: {
-		path: path.resolve(__dirname, '/client/dist'),
-		publicPath: 'localhost:8080/client/dist',
+		path: '/dist',
+		publicPath: '/dist',
 		filename: 'build.js'
 	},
 	module: {
