@@ -6,8 +6,8 @@ module.exports = {
 		app: ['./src/main.js']
 	},
 	output: {
-		path: '/dist',
-		publicPath: '/dist',
+		path: path.resolve(__dirname, './dist/js'),
+		publicPath: '/dist/',
 		filename: 'build.js'
 	},
 	module: {

@@ -6,7 +6,7 @@ app.configure(function() {
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
 	app.use(app.router);
-	app.use(express.static(__dirname + '/client/src'))
+	app.use(express.static(__dirname + '/dist'))
 })
 
 app.get('/', routes.index);

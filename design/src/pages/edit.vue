@@ -66,7 +66,7 @@
 				selectOption: '请选择举办单位',
 				optionShow: false,
 				explain: '',
-				cover: './src/imgs/cover-b.jpg',
+				cover: '../dist/imgs/cover-b.jpg',
 				content: '',
 				files: '',
 			}
@@ -165,7 +165,7 @@
 		padding-top nav-height + 50px
 		padding-bottom 50px
 		box-sizing border-box
-		background url(../imgs/16.jpg) 0 0 no-repeat
+		background url(../../dist/imgs/16.jpg) 0 0 no-repeat
 		background-size cover
 		text-align center
 	.edit-form

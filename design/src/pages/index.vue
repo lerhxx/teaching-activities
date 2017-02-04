@@ -35,7 +35,7 @@
 	export default {
 		data() {
 			 return {
-			 	img: './src/imgs/cover-b.jpg',
+			 	img: '../../dist/imgs/cover-b.jpg',
 			 	faculties: ['请选择'],
 			 	types: ['请选择'],
 			 	timeliness: ['请选择'],

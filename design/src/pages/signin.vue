@@ -41,7 +41,7 @@
 		width 100vw
 		height 100vh
 		padding-top nav-height
-		background url(../imgs/bg.png);
+		background url(../../dist/imgs/bg.png);
 		overflow hidden
 	.sign-form
 		width 300px
