@@ -22,7 +22,7 @@
 			fetchData: function(){
 				let xhr = new XMLHttpRequest();
 				let self = this;
-				xhr.open('GET', '../../../json/footer-link.json');
+				xhr.open('GET', './client/json/footer-link.json');
 				xhr.onload = () => {
 					self.links = JSON.parse(xhr.responseText);
 				};

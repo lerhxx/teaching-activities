@@ -35,7 +35,7 @@
 	export default {
 		data() {
 			 return {
-			 	img: './src/imgs/cover-b.jpg',
+			 	img: './client/src/imgs/cover-b.jpg',
 			 	faculties: ['请选择'],
 			 	types: ['请选择'],
 			 	timeliness: ['请选择'],
@@ -49,7 +49,7 @@
 		methods: {
 			fetchTypeData: function() {
 				let self = this;
-				fetch('../../../json/search.json')
+				fetch('./client/json/search.json')
 				.then(function(res) {
 					return res.json()
 				}).then(function(json) {
@@ -61,7 +61,7 @@
 			},
 			fetchListsData: function() {
 				let self = this;
-				fetch('../../../json/list.json')
+				fetch('./client/json/list.json')
 				.then(function(res) {
 					return res.json()
 				}).then(function(json) {

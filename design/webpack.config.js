@@ -1,12 +1,13 @@
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
 	entry: {
-		app: ['./src/main.js']
+		app: ['./client/src/main.js']
 	},
 	output: {
-		path: '/dist',
-		publicPath: './dist/',
+		path: path.resolve(__dirname, '/client/dist'),
+		publicPath: 'localhost:8080/client/dist',
 		filename: 'build.js'
 	},
 	module: {
@@ -37,6 +38,11 @@ module.exports = {
 		}
 	},
 	devServer: {
-		inline: true
+		inline: true,
+		hot: true,
+		'/get': {
+			target: 'localhost:3000',
+			secure: false
+		}
 	}
 }

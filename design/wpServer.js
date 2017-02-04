@@ -7,7 +7,7 @@ config.entry.app.unshift('webpack-dev-server/client?http://localhost:8080/');
 var compiler = webpack(config);
 var server = new webpackDevServer(compiler, {
 	contentBase: './',
-	publicPath: '/dist'
+	publicPath: '/client/dist'
 });
 
 server.listen(8080);

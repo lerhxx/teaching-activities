@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "express": "^4.14.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.4.0",
     "url-loader": "^0.5.7",
