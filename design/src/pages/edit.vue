@@ -160,7 +160,7 @@
 <style lang='stylus'>
 	@import '../css/funs'
 	@import '../css/variable'
-	@import '../css/simditor.css'
+	@import '../../dist/css/simditor.css'
 	.form-contain
 		padding-top nav-height + 50px
 		padding-bottom 50px

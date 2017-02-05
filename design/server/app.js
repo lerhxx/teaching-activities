@@ -1,6 +1,8 @@
-let express = require('express'),
-	routes = require('./server/routes');
-let app = module.exports = express.createServer();
+const express = require('express');
+const routes = require('./server/routes');
+const bodyParser = require('body-parser');
+const db = require('./db');
+const app = module.exports = express.createServer();
 
 app.configure(function() {
 	app.use(express.bodyParser());
