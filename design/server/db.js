@@ -51,7 +51,7 @@ const Models = {
 }
 
 const initialize = () => {
-	Models.List.find(null, (err, doc) => {
+	Models.FootLink.find(null, (err, doc) => {
 		if(err) {
 			console.error(err);
 		}else if(!doc.length) {
@@ -60,7 +60,7 @@ const initialize = () => {
 			list.lists.map(item => new Models['List'](item).save());
 			footerLink.map(item => new Models['FootLink'](item).save());
 			new Models['Search'](search).save();
-			Models.List.find(null, (err, doc) => {
+			Models.Search.find(null, (err, doc) => {
 				if(err) {
 					return console.error(err)
 				}
@@ -71,21 +71,6 @@ const initialize = () => {
 		}
 	})
 }
-
-const listP = new Promise((resolve, rej) => {
-	list.lists.map(item => new Models['List'](item).save());
-	console.log('list initialized')
-})
-
-const footLinkP = new Promise((resolve, rej) => {
-	footerLink.map(item => new Models['FootLink'](item).save());
-	console.log('footerLink initialized')
-})
-
-const searchP = new Promise((resolve, rej) => {
-	new Models['Search'](search).save();
-	console.log('searchP initialized')
-})
 
 db.on('error', () => {
 	console.error('Database connection error.');

@@ -1,28 +1,28 @@
 <template>
-	<div class='index''>
+	<div class='index'>
 		<img class='in-cover' :src='img' />
 		<div class='in-search'>
 			<label>系：</label>
 			<select class='faculty'>
-				<option v-for='faculty in faculties'>
+				<option v-for='faculty in searchLists.faculties'>
 					{{faculty}}
 				</option>
 			</select>
 			<label>类型：</label>
 			<select class='type'>
-				<option v-for='type in types'>
+				<option v-for='type in searchLists.types'>
 					{{type}}
 				</option>
 			</select>
 			<label>时效：</label>
 			<select class='time'>
-				<option v-for='time in timeliness'>
+				<option v-for='time in searchLists.timeliness'>
 					{{time}}
 				</option>
 			</select>
 		</div>
 		<ul class='in-list'>
-			<li class='in-list-item' v-for='item in lists'>
+			<li class='in-list-item' v-for='item in articles'>
 				<img :src='item.url' />
 				<h3><router-link :to='{name: "article"}'>{{item.title}}</router-link></h3>
 				<p class='abs'>{{item.abs}}</p>
@@ -32,51 +32,27 @@
 </template>
 
 <script>
+	import {mapState} from 'vuex';
+
 	export default {
 		data() {
 			 return {
 			 	img: '../../dist/imgs/cover-b.jpg',
-			 	faculties: ['请选择'],
-			 	types: ['请选择'],
-			 	timeliness: ['请选择'],
-			 	lists: [],
 		    }
 		},
 		created: function() {
-			this.fetchTypeData();
-			this.fetchListsData();
+			this.$store.dispatch('GET_SEARCH_LISTS');
+			this.$store.dispatch('GET_ARTICALS');
 		},
-		methods: {
-			fetchTypeData: function() {
-				let self = this;
-				fetch('./json/search.json')
-				.then(function(res) {
-					return res.json()
-				}).then(function(json) {
-					self.faculties.push(...json.faculties);
-					self.types.push(...json.types);
-					self.timeliness.push(...json.timeliness);
-					console.log(json)
-				})
-			},
-			fetchListsData: function() {
-				let self = this;
-				fetch('./json/list.json')
-				.then(function(res) {
-					return res.json()
-				}).then(function(json) {
-					self.lists = json;
-					console.log(self.lists)
-				})
-			}
-		}
+		computed: mapState(['searchLists', 'articles'])
 	}
 </script>
 
 <style lang='stylus'>
-	@import '../css/funs'
-	@import '../css/form'
-	@import '../css/variable'
+	@import '../css/funs';
+	@import '../css/form';
+	@import '../css/variable';
+
 	#app
 		relative()
 		overflow hidden

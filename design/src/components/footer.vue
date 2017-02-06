@@ -1,7 +1,7 @@
 <template>
 	<div id='footer'>
 		<ul class='links'>
-			<li v-for='link in links'>
+			<li v-for='link in footerLinks'>
 				<a v-bind:href='link.url'>{{link.text}}</a>
 			</li>
 		</ul>
@@ -9,26 +9,18 @@
 </template>
 
 <script>
+	import {mapState} from 'vuex';
+
 	export default {
 		data() {
 			return {
 				links: []
 			}
 		},
-		created: function() {
-			this.fetchData();
+		created() {
+			this.$store.dispatch('GET_FOOTER_LINKS');
 		},
-		methods: {
-			fetchData: function(){
-				let xhr = new XMLHttpRequest();
-				let self = this;
-				xhr.open('GET', './json/footer-link.json');
-				xhr.onload = () => {
-					self.links = JSON.parse(xhr.responseText);
-				};
-				xhr.send();
-			}
-		} 
+		computed: mapState(['footerLinks'])
 	}
 </script>
 

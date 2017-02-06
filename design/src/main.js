@@ -1,6 +1,6 @@
 
 import Vue from 'vue';
-import store from './store/store.js';
+import store from './store/index.js';
 import VueRouter from 'vue-router';
 import Index from './pages/index.vue';
 import Navbar from './components/nav.vue';
