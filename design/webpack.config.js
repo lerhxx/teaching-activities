@@ -1,10 +1,13 @@
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
-	entry: './src/main.js',
+	entry: {
+		app: ['./src/main.js']
+	},
 	output: {
-		path: './dist',
-		publicPath: './dist/',
+		path: path.resolve(__dirname, './dist/js'),
+		publicPath: '/dist/',
 		filename: 'build.js'
 	},
 	module: {
@@ -12,9 +15,9 @@ module.exports = {
 			test: /\.vue$/,
 			loader: 'vue'
 		}, {
-			test: /\.scss$/,
+			test: /\.styl$/,
 			exclude: /node_modules/,
-			loaders: ["style", "css", "sass"]
+			loaders: ["style", "css", "stylus"]
 		}, {
 			test: /\.js$/,
 			loader: 'babel?presets=es2015',
@@ -32,6 +35,14 @@ module.exports = {
 		extensions: ['', '.js', '.vue'],
 		alias: {
 			vue: 'vue/dist/vue.js'
+		}
+	},
+	devServer: {
+		inline: true,
+		hot: true,
+		'/get': {
+			target: 'localhost:3000',
+			secure: false
 		}
 	}
 }
