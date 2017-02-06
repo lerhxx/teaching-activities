@@ -1,0 +1,5 @@
+{
+   "faculties": ["a", "b", "c"],
+   "types": ["a", "b", "c"],
+   "timeliness": ["a", "b", "c"]
+}
