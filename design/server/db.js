@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const db = mongoose.connection;
 
-mongoose.connect('mongodb://localhost/data');
+mongoose.connect('mongodb://localhost/design');
+
 
 const UserSchema = new Schema({
 	name: String,

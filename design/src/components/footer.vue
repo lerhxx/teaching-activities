@@ -33,8 +33,8 @@
 </script>
 
 <style lang='stylus'>
-	@import '../css/funs'
-	@import '../css/variable'
+	@import '../css/funs';
+	@import '../css/variable';
 
 	#footer
 		width 100%

@@ -1,16 +1,23 @@
 const express = require('express');
-const routes = require('./server/routes');
+const api = require('./api');
 const bodyParser = require('body-parser');
 const db = require('./db');
-const app = module.exports = express.createServer();
+const fs = require('fs');
+const path = require('path');
+const app = module.exports = express();
 
-app.configure(function() {
-	app.use(express.bodyParser());
-	app.use(express.methodOverride());
-	app.use(app.router);
-	app.use(express.static(__dirname + '/dist'))
-})
+app.set('port', (process.env.port || 3000));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+app.use('/dist', express.static(path.join(__dirname, '../dist')));
+app.use(api);
 
-app.get('/', routes.index);
-app.listen(3000);
-console.log("Express server listening on port %d in %s mode", app.address().port, app.setting.env);
+app.get('/', (req, res) => {
+	const fileName = 'index.html';
+	const html = fs.readFileSync(resolve('../' + fileName), 'utf-8');
+	res.send(html);
+});
+
+app.listen(app.get('port'), () => {
+	console.log("Express server listening at localhost:%s", app.get('port'));
+});
