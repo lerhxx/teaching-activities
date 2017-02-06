@@ -13497,6 +13497,10 @@
 
 	var _actions2 = _interopRequireDefault(_actions);
 
+	var _mutations = __webpack_require__(73);
+
+	var _mutations2 = _interopRequireDefault(_mutations);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	_vue2.default.use(_vuex2.default);
@@ -13507,18 +13511,8 @@
 			searchLists: [],
 			articles: []
 		},
-		mutations: {
-			SET_FOOTER_LINKS: function SET_FOOTER_LINKS(state, links) {
-				state.footerLinks = links;
-			},
-			SET_SEARCH_LISTS: function SET_SEARCH_LISTS(state, lists) {
-				state.searchLists = lists;
-			},
-			SET_ARTICAL: function SET_ARTICAL(state, lists) {
-				state.articles = lists;
-			}
-		},
 		getters: {},
+		mutations: _mutations2.default,
 		actions: _actions2.default
 	});
 
@@ -15050,6 +15044,27 @@
 	        return _axios2.default.get('/getArticals').then(function (res) {
 	            commit('SET_ARTICAL', res.data);
 	        });
+	    }
+	};
+
+/***/ },
+/* 73 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = {
+	    SET_FOOTER_LINKS: function SET_FOOTER_LINKS(state, links) {
+	        state.footerLinks = links;
+	    },
+	    SET_SEARCH_LISTS: function SET_SEARCH_LISTS(state, lists) {
+	        state.searchLists = lists;
+	    },
+	    SET_ARTICAL: function SET_ARTICAL(state, lists) {
+	        state.articles = lists;
 	    }
 	};
 

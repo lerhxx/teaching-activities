@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
 import actions from './actions';
+import mutations from './mutations';
 
 Vue.use(Vuex);
 
@@ -11,18 +12,8 @@ const store = new Vuex.Store({
 		searchLists: [],
 		articles: []
 	},
-	mutations: {
-		SET_FOOTER_LINKS(state, links) {
-			state.footerLinks = links;
-		},
-		SET_SEARCH_LISTS(state, lists) {
-			state.searchLists = lists;
-		},
-		SET_ARTICAL(state, lists) {
-			state.articles = lists;
-		}
-	},
 	getters: {},
+	mutations,
 	actions
 });
 
