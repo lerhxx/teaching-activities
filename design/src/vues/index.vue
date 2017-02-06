@@ -28,18 +28,24 @@
 				<p class='abs'>{{item.abs}}</p>
 			</li>
 		</ul>
+		<page :curPage='page' :maxPage='maxPage' v-on:changePage='changePage'></page>
 	</div>
 </template>
 
 <script>
+	import Page from '../components/page.vue';
+
 	export default {
 		data() {
 			 return {
 			 	img: './src/imgs/cover-b.jpg',
-			 	faculties: ['a','b','c'],
-			 	types: ['d','e','f'],
-			 	timeliness: ['g','h','i'],
+			 	faculties: [],
+			 	types: [],
+			 	timeliness: [],
 			 	lists: [],
+			 	page: 1,
+			 	maxPage: 1,
+			 	listNum: 10
 		    }
 		},
 		created: function() {
@@ -60,15 +66,24 @@
 				})
 			},
 			fetchListsData: function() {
-				let self = this;
-				fetch('../../../json/list.json')
+				let self = this,
+					url = `../../../json/list.json?page=${this.page}`;
+
+				fetch(url)
 				.then(function(res) {
 					return res.json()
 				}).then(function(json) {
-					self.lists = json;
+					self.lists = json.lists;
+					self.maxPage = json.maxPage;
 					console.log(self.lists)
 				})
+			},
+			changePage: function() {
+				console.log('ok');
 			}
+		},
+		components: {
+			Page
 		}
 	}
 </script>
@@ -93,15 +108,20 @@
 			margin: 0 $search-mar;
 		}
 	}
+	.in-list {
+		padding: 10px;
+		text-align: center;
+	}
 	.in-list-item {
 		display: inline-block;
 		width: 33.33%;
+		max-width: 300px;
 		padding: 0 10px;
-		margin: 10px 0;
+		margin: 20px 0;
 		@include box-sizing(border-box);
 		img {
 			width: 100%;
-			height: 100px;
+			height: 150px;
 		}
 		.abs {
 			text-overflow: ellipsis;
