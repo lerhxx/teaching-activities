@@ -65,17 +65,17 @@
 
 	var _nav2 = _interopRequireDefault(_nav);
 
-	var _footer = __webpack_require__(40);
+	var _footer = __webpack_require__(41);
 
 	var _footer2 = _interopRequireDefault(_footer);
 
-	var _App = __webpack_require__(45);
+	var _App = __webpack_require__(46);
 
 	var _App2 = _interopRequireDefault(_App);
 
-	__webpack_require__(50);
+	__webpack_require__(51);
 
-	var _router = __webpack_require__(53);
+	var _router = __webpack_require__(54);
 
 	var _router2 = _interopRequireDefault(_router);
 
@@ -11004,7 +11004,7 @@
 	__vue_exports__ = __webpack_require__(38)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(39)
+	var __vue_template__ = __webpack_require__(40)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -11367,7 +11367,7 @@
 
 	var _vuex = __webpack_require__(4);
 
-	var _cookieUtil = __webpack_require__(59);
+	var _cookieUtil = __webpack_require__(39);
 
 	//
 	//
@@ -11420,6 +11420,46 @@
 
 /***/ },
 /* 39 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	function get(name) {
+	    var cookieName = encodeURIComponent(name) + '=',
+	        cookieStart = document.cookie.indexOf(cookieName),
+	        cookieValue = null,
+	        cookieEnd = null;
+
+	    if (cookieStart > -1) {
+	        cookieEnd = document.cookie.indexOf(';', cookieStart);
+	        if (cookieEnd == -1) cookieEnd = document.cookie.length;
+	    }
+	    cookieValue = decodeURIComponent(document.cookie.substr(cookieStart + cookieName.length, cookieEnd));
+	    return cookieValue;
+	}
+	function set(name, value, expires, path, domain, secure) {
+	    var cookieText = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+	    if (expires instanceof Date) cookieText += "; expires=" + expires.toGMTString();
+	    if (path) cookieText += "; path=" + path;
+	    if (domain) cookieText += "; domain=" + domain;
+	    if (secure) cookieText += "; secure";
+	    document.cookie = cookieText;
+	}
+
+	function unset(name, path, domain, secure) {
+	    set(name, '', new Date(0), path, domain, secure);
+	}
+
+	exports.get = get;
+	exports.set = set;
+	exports.unset = unset;
+
+/***/ },
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
@@ -11457,20 +11497,20 @@
 	}
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = {}
 
 	/* styles */
-	__webpack_require__(41)
+	__webpack_require__(42)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(43)
+	__vue_exports__ = __webpack_require__(44)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(44)
+	var __vue_template__ = __webpack_require__(45)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -11504,13 +11544,13 @@
 
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(42);
+	var content = __webpack_require__(43);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(37)(content, {});
@@ -11530,7 +11570,7 @@
 	}
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(36)();
@@ -11544,7 +11584,7 @@
 
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11578,7 +11618,7 @@
 	//
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
@@ -11604,20 +11644,20 @@
 	}
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = {}
 
 	/* styles */
-	__webpack_require__(46)
+	__webpack_require__(47)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(48)
+	__vue_exports__ = __webpack_require__(49)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(49)
+	var __vue_template__ = __webpack_require__(50)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -11651,13 +11691,13 @@
 
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(47);
+	var content = __webpack_require__(48);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(37)(content, {});
@@ -11677,7 +11717,7 @@
 	}
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(36)();
@@ -11691,7 +11731,7 @@
 
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11704,7 +11744,7 @@
 
 	var _nav2 = _interopRequireDefault(_nav);
 
-	var _footer = __webpack_require__(40);
+	var _footer = __webpack_require__(41);
 
 	var _footer2 = _interopRequireDefault(_footer);
 
@@ -11727,7 +11767,7 @@
 	};
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
@@ -11745,16 +11785,16 @@
 	}
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(51);
+	var content = __webpack_require__(52);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(52)(content, {});
+	var update = __webpack_require__(53)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -11771,7 +11811,7 @@
 	}
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(36)();
@@ -11785,7 +11825,7 @@
 
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -12037,7 +12077,7 @@
 
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12050,11 +12090,11 @@
 
 	var _vue2 = _interopRequireDefault(_vue);
 
-	var _vueRouter = __webpack_require__(54);
+	var _vueRouter = __webpack_require__(55);
 
 	var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-	var _index = __webpack_require__(55);
+	var _index = __webpack_require__(56);
 
 	var _index2 = _interopRequireDefault(_index);
 
@@ -12097,7 +12137,7 @@
 	});
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -14164,17 +14204,17 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = {}
 
 	/* styles */
-	__webpack_require__(56)
+	__webpack_require__(57)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(58)
+	__vue_exports__ = __webpack_require__(59)
 
 	/* template */
 	var __vue_template__ = __webpack_require__(60)
@@ -14211,13 +14251,13 @@
 
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(57);
+	var content = __webpack_require__(58);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(37)(content, {});
@@ -14237,7 +14277,7 @@
 	}
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(36)();
@@ -14251,7 +14291,7 @@
 
 
 /***/ },
-/* 58 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14262,7 +14302,7 @@
 
 	var _vuex = __webpack_require__(4);
 
-	var _cookieUtil = __webpack_require__(59);
+	var _cookieUtil = __webpack_require__(39);
 
 	//
 	//
@@ -14319,46 +14359,6 @@
 		computed: (0, _vuex.mapState)(['searchLists', 'articles', 'userId']),
 		methods: (0, _vuex.mapMutations)(['SET_USER'])
 	};
-
-/***/ },
-/* 59 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	function get(name) {
-	    var cookieName = encodeURIComponent(name) + '=',
-	        cookieStart = document.cookie.indexOf(cookieName),
-	        cookieValue = null,
-	        cookieEnd = null;
-
-	    if (cookieStart > -1) {
-	        cookieEnd = document.cookie.indexOf(';', cookieStart);
-	        if (cookieEnd == -1) cookieEnd = document.cookie.length;
-	    }
-	    cookieValue = decodeURIComponent(document.cookie.substr(cookieStart + cookieName.length, cookieEnd));
-	    return cookieValue;
-	}
-	function set(name, value, expires, path, domain, secure) {
-	    var cookieText = encodeURIComponent(name) + "=" + encodeURIComponent(value);
-	    if (expires instanceof Date) cookieText += "; expires=" + expires.toGMTString();
-	    if (path) cookieText += "; path=" + path;
-	    if (domain) cookieText += "; domain=" + domain;
-	    if (secure) cookieText += "; secure";
-	    document.cookie = cookieText;
-	}
-
-	function unset(name, path, domain, secure) {
-	    set(name, '', new Date(0), path, domain, secure);
-	}
-
-	exports.get = get;
-	exports.set = set;
-	exports.unset = unset;
 
 /***/ },
 /* 60 */
@@ -14577,7 +14577,7 @@
 
 	var _vuex = __webpack_require__(4);
 
-	var _cookieUtil = __webpack_require__(59);
+	var _cookieUtil = __webpack_require__(39);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -14808,7 +14808,7 @@
 	exports.i(__webpack_require__(72), "");
 
 	// module
-	exports.push([module.id, "\n.form-contain {\n  min-height: 100vh;\n  padding-top: 95px;\n  padding-bottom: 50px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  background: url(" + __webpack_require__(73) + ") 0 0 no-repeat;\n  background-size: cover;\n  text-align: center;\n}\n.edit-form {\n  display: inline-block;\n  padding: 0;\n  margin: auto;\n  text-align: left;\n}\n.edit-form label {\n  display: inline-block;\n  width: 90px;\n  text-align: left;\n  vertical-align: top;\n}\n.edit-form .btn-post {\n  width: 55%;\n}\n.edit-form .btn-edit {\n  margin-left: 25px;\n}\n.edit-form .simditor {\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n  overflow: hidden;\n}\n.edit-form .group-btn {\n  text-align: left;\n}\n.group-left input,\n.select,\n.textarea-box {\n  width: 90%;\n  height: 36px;\n  padding: 10px 10px;\n  border: none;\n  outline: none;\n  background: #fff;\n  -webkit-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -moz-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -ms-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -o-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  font-size: 14px;\n  -webkit-border-radius: 15px;\n  -moz-border-radius: 15px;\n  border-radius: 15px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.group-left input::-webkit-input-placeholder,\n.select::-webkit-input-placeholder,\n.textarea-box::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.select {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  display: inline-block;\n  color: rgba(0,0,0,0.6);\n  text-align: left;\n  cursor: pointer;\n}\n.select .arrow {\n  position: absolute;\n  top: 15px;\n  right: 8px;\n  border: 8px solid transparent;\n  border-top-color: rgba(0,0,0,0.6);\n}\n.select span {\n  display: block;\n}\n.option-box {\n  position: absolute;\n  top: 36px;\n  left: 0;\n  width: 100%;\n  padding: 8px 0px;\n  padding-right: 6px;\n  -webkit-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -moz-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -ms-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -o-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -webkit-border-radius: 12px;\n  -moz-border-radius: 12px;\n  border-radius: 12px;\n  background: #f7ae9d;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  z-index: 2;\n}\n.option {\n  max-height: 110px;\n  overflow-y: auto;\n}\n.option::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.option::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.option p {\n  padding: 3px 15px;\n  cursor: pointer;\n}\n.option p:hover {\n  color: #fff;\n}\n.group-cover {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-cover input[type='file'] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 90%;\n  height: 120px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-cover img {\n  width: 90%;\n  height: 120px;\n  vertical-align: top;\n}\n.group-content textarea {\n  width: 100%;\n  height: 100%;\n  padding: 10px;\n  border: none;\n  outline: none;\n  font-size: 14px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  background: transparent;\n  resize: none;\n}\n.group-content textarea::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.group-content textarea::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.group-content textarea::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.group-content .textarea-box {\n  display: inline-block;\n  width: 95%;\n  height: 445px;\n  padding: 0;\n  text-align: left;\n  vertical-align: top;\n}\n.group-edit {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-edit input[type='file'] {\n  position: absolute;\n  top: 0;\n  left: 25px;\n  width: 74px;\n  height: 36px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-edit .btn-edit {\n  display: inline-block;\n  margin: 0;\n}\n.file-list {\n  display: inline-block;\n  width: 400px;\n  margin: 0 15px 5px;\n  font-size: 20px;\n  line-height: 36px;\n  vertical-align: top;\n}\n.group-left,\n.group-right {\n  display: inline-block;\n  width: 300px;\n  padding: 0 30px;\n  vertical-align: top;\n  text-align: right;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.group-right {\n  width: 700px;\n  padding: 0 15px;\n  text-align: left;\n}\n", ""]);
+	exports.push([module.id, "\n.form-contain {\n  min-height: 100vh;\n  padding-top: 95px;\n  padding-bottom: 50px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  background: url(" + __webpack_require__(73) + ") 0 0 no-repeat;\n  background-size: cover;\n  text-align: center;\n}\n.edit-form {\n  display: inline-block;\n  padding: 0;\n  margin: auto;\n  text-align: left;\n}\n.edit-form label {\n  display: inline-block;\n  width: 90px;\n  text-align: left;\n  vertical-align: top;\n}\n.edit-form .btn-post {\n  width: 55%;\n}\n.edit-form .btn-edit {\n  margin-left: 25px;\n}\n.edit-form .simditor {\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n  overflow: hidden;\n}\n.edit-form .group-btn {\n  text-align: left;\n}\n.group-left input,\n.select,\n.textarea-box {\n  width: 90%;\n  height: 36px;\n  padding: 10px 10px;\n  border: none;\n  outline: none;\n  background: #fff;\n  -webkit-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -moz-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -ms-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -o-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  font-size: 14px;\n  -webkit-border-radius: 15px;\n  -moz-border-radius: 15px;\n  border-radius: 15px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.group-left input::-webkit-input-placeholder,\n.select::-webkit-input-placeholder,\n.textarea-box::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.select {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  display: inline-block;\n  color: rgba(0,0,0,0.6);\n  text-align: left;\n  cursor: pointer;\n}\n.select .arrow {\n  position: absolute;\n  top: 15px;\n  right: 8px;\n  border: 8px solid transparent;\n  border-top-color: rgba(0,0,0,0.6);\n}\n.select span {\n  display: block;\n}\n.option-box {\n  position: absolute;\n  top: 36px;\n  left: 0;\n  width: 100%;\n  padding: 8px 0px;\n  padding-right: 6px;\n  -webkit-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -moz-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -ms-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -o-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -webkit-border-radius: 12px;\n  -moz-border-radius: 12px;\n  border-radius: 12px;\n  background: #fff;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  z-index: 2;\n}\n.option {\n  max-height: 110px;\n  overflow-y: auto;\n}\n.option::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.option::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.option p {\n  padding: 3px 15px;\n  cursor: pointer;\n}\n.option p:hover {\n  color: #7ab5d8;\n}\n.group-cover {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-cover input[type='file'] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 90%;\n  height: 120px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-cover img {\n  width: 90%;\n  height: 120px;\n  vertical-align: top;\n}\n.group-content textarea {\n  width: 100%;\n  height: 100%;\n  padding: 10px;\n  border: none;\n  outline: none;\n  font-size: 14px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  background: transparent;\n  resize: none;\n}\n.group-content textarea::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.group-content textarea::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.group-content textarea::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.group-content .textarea-box {\n  display: inline-block;\n  width: 95%;\n  height: 445px;\n  padding: 0;\n  text-align: left;\n  vertical-align: top;\n}\n.group-edit {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-edit input[type='file'] {\n  position: absolute;\n  top: 0;\n  left: 25px;\n  width: 74px;\n  height: 36px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-edit .btn-edit {\n  display: inline-block;\n  margin: 0;\n}\n.file-list {\n  display: inline-block;\n  width: 400px;\n  margin: 0 15px 5px;\n  font-size: 20px;\n  line-height: 36px;\n  vertical-align: top;\n}\n.group-left,\n.group-right {\n  display: inline-block;\n  width: 300px;\n  padding: 0 30px;\n  vertical-align: top;\n  text-align: right;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.group-right {\n  width: 700px;\n  padding: 0 15px;\n  text-align: left;\n}\n", ""]);
 
 	// exports
 
@@ -14849,7 +14849,10 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	// import calendar from '../components/calendar.vue';
+
 	var editor = void 0; //
+	//
 	//
 	//
 	//
@@ -14909,16 +14912,21 @@
 	exports.default = {
 		data: function data() {
 			return {
-				title: '',
-				aim: '',
-				time: '',
-				place: '',
-				selectOption: '请选择举办单位',
+				form: {
+					title: '',
+					aim: '',
+					time: '',
+					place: '',
+					selectOption: '请选择举办单位',
+					explain: '',
+					cover: '../dist/imgs/default.png',
+					content: '',
+					files: ''
+				},
 				optionShow: false,
-				explain: '',
-				cover: '../dist/imgs/default.png',
-				content: '',
-				files: ''
+				calendar: {
+					show: false
+				}
 			};
 		},
 		mounted: function mounted() {
@@ -14928,6 +14936,7 @@
 				toolbar: ['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', 'ol', 'ul', 'blockquote', 'code', 'table', 'link', 'image', 'hr', 'indent', 'outdent', 'alignment'],
 				imageButton: ['upload', 'external']
 			});
+			console.log(this.form);
 		},
 
 		methods: {
@@ -14935,14 +14944,13 @@
 				this.optionShow = !this.optionShow;
 			},
 			onChangeFile: function onChangeFile(e) {
-				this.files = this.getFile(e);
-				if (!this.files.length) {
+				this.form.files = this.getFile(e);
+				if (!this.form.files.length) {
 					return;
 				}
-				console.log(this.files[0]);
 			},
 			onChangeOption: function onChangeOption(e) {
-				this.selectOption = e.target.innerHTML;
+				this.form.selectOption = e.target.innerHTML;
 				this.optionShow = !this.optionShow;
 			},
 			onChangeCover: function onChangeCover(e) {
@@ -14955,7 +14963,7 @@
 
 				reader = new FileReader();
 				reader.onload = function () {
-					self.cover = this.result;
+					self.form.cover = this.result;
 				};
 				reader.readAsDataURL(file[0]);
 			},
@@ -14963,23 +14971,24 @@
 				return e.target.files || e.dataTransfer.files;
 			},
 			onPost: function onPost() {
-				this.content = editor.sync();
-				if (!this.title || !this.time || !this.place || !this.selectOption || !this.content || !this.cover) {
+				var form = this.form;
+				form.content = editor.sync();
+				if (!form.title || !form.time || !form.place || !form.selectOption || !form.content || !form.cover) {
 					alert('请填写所有必须项！');
 				}
 				// axios.post('/')
-				// console.log(this.title);
-				// console.log(this.aim);
-				// console.log(this.time);
-				// console.log(this.place);
-				// console.log(this.selectOption);
-				// console.log(this.explain);
-				// console.log(this.cover);
-				// console.log(this.content);
-				// console.log(this.files);
+				// console.log(form.title);
+				// console.log(form.aim);
+				// console.log(form.time);
+				// console.log(form.place);
+				// console.log(form.selectOption);
+				// console.log(form.explain);
+				// console.log(form.cover);
+				// console.log(form.content);
+				// console.log(form.files);
 			},
 			test: function test() {
-				console.log(this.content);
+				console.log(this.form.content);
 			}
 		}
 	};
@@ -15003,20 +15012,20 @@
 	    directives: [{
 	      name: "model",
 	      rawName: "v-model",
-	      value: (_vm.title),
-	      expression: "title"
+	      value: (_vm.form.title),
+	      expression: "form.title"
 	    }],
 	    attrs: {
 	      "type": "text",
 	      "placeholder": "标题"
 	    },
 	    domProps: {
-	      "value": _vm._s(_vm.title)
+	      "value": _vm._s(_vm.form.title)
 	    },
 	    on: {
 	      "input": function($event) {
 	        if ($event.target.composing) { return; }
-	        _vm.title = $event.target.value
+	        _vm.form.title = $event.target.value
 	      }
 	    }
 	  })]), _vm._v(" "), _c('div', {
@@ -15025,44 +15034,44 @@
 	    directives: [{
 	      name: "model",
 	      rawName: "v-model",
-	      value: (_vm.aim),
-	      expression: "aim"
+	      value: (_vm.form.aim),
+	      expression: "form.aim"
 	    }],
 	    attrs: {
 	      "type": "text",
 	      "placeholder": "举办目的"
 	    },
 	    domProps: {
-	      "value": _vm._s(_vm.aim)
+	      "value": _vm._s(_vm.form.aim)
 	    },
 	    on: {
 	      "input": function($event) {
 	        if ($event.target.composing) { return; }
-	        _vm.aim = $event.target.value
+	        _vm.form.aim = $event.target.value
 	      }
 	    }
 	  })]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
 	  }, [_c('span', {
 	    staticClass: "must"
-	  }, [_vm._v("*")]), _c('input', {
+	  }, [_vm._v("*")]), _vm._v(" "), _c('input', {
 	    directives: [{
 	      name: "model",
 	      rawName: "v-model",
-	      value: (_vm.time),
-	      expression: "time"
+	      value: (_vm.form.time),
+	      expression: "form.time"
 	    }],
 	    attrs: {
 	      "type": "text",
 	      "placeholder": "举办时间"
 	    },
 	    domProps: {
-	      "value": _vm._s(_vm.time)
+	      "value": _vm._s(_vm.form.time)
 	    },
 	    on: {
 	      "input": function($event) {
 	        if ($event.target.composing) { return; }
-	        _vm.time = $event.target.value
+	        _vm.form.time = $event.target.value
 	      }
 	    }
 	  })]), _vm._v(" "), _c('div', {
@@ -15073,20 +15082,20 @@
 	    directives: [{
 	      name: "model",
 	      rawName: "v-model",
-	      value: (_vm.place),
-	      expression: "place"
+	      value: (_vm.form.place),
+	      expression: "form.place"
 	    }],
 	    attrs: {
 	      "type": "text",
 	      "placeholder": "举办地点"
 	    },
 	    domProps: {
-	      "value": _vm._s(_vm.place)
+	      "value": _vm._s(_vm.form.place)
 	    },
 	    on: {
 	      "input": function($event) {
 	        if ($event.target.composing) { return; }
-	        _vm.place = $event.target.value
+	        _vm.form.place = $event.target.value
 	      }
 	    }
 	  })]), _vm._v(" "), _c('div', {
@@ -15099,7 +15108,7 @@
 	    on: {
 	      "click": _vm.onToggleOption
 	    }
-	  }, [_vm._v(_vm._s(_vm.selectOption))]), _vm._v(" "), _c('span', {
+	  }, [_vm._v(_vm._s(_vm.form.selectOption))]), _vm._v(" "), _c('span', {
 	    staticClass: "arrow",
 	    on: {
 	      "click": _vm.onToggleOption
@@ -15124,20 +15133,20 @@
 	    directives: [{
 	      name: "model",
 	      rawName: "v-model",
-	      value: (_vm.explain),
-	      expression: "explain"
+	      value: (_vm.form.explain),
+	      expression: "form.explain"
 	    }],
 	    attrs: {
 	      "type": "text",
 	      "placeholder": "附加说明"
 	    },
 	    domProps: {
-	      "value": _vm._s(_vm.explain)
+	      "value": _vm._s(_vm.form.explain)
 	    },
 	    on: {
 	      "input": function($event) {
 	        if ($event.target.composing) { return; }
-	        _vm.explain = $event.target.value
+	        _vm.form.explain = $event.target.value
 	      }
 	    }
 	  })]), _vm._v(" "), _c('div', {
@@ -15146,7 +15155,7 @@
 	    staticClass: "must"
 	  }, [_vm._v("*")]), _c('img', {
 	    attrs: {
-	      "src": _vm.cover
+	      "src": _vm.form.cover
 	    }
 	  }), _vm._v(" "), _c('input', {
 	    attrs: {
@@ -15167,20 +15176,20 @@
 	    directives: [{
 	      name: "model",
 	      rawName: "v-model",
-	      value: (_vm.content),
-	      expression: "content"
+	      value: (_vm.form.content),
+	      expression: "form.content"
 	    }],
 	    attrs: {
 	      "id": "editor",
 	      "placeholder": "请输入举办内容"
 	    },
 	    domProps: {
-	      "value": _vm._s(_vm.content)
+	      "value": _vm._s(_vm.form.content)
 	    },
 	    on: {
 	      "input": function($event) {
 	        if ($event.target.composing) { return; }
-	        _vm.content = $event.target.value
+	        _vm.form.content = $event.target.value
 	      }
 	    }
 	  })])]), _vm._v(" "), _c('div', {
@@ -15204,7 +15213,7 @@
 	    }
 	  }, [_vm._v("附件")]), _vm._v(" "), _c('div', {
 	    staticClass: "file-list"
-	  }, _vm._l((_vm.files), function(file) {
+	  }, _vm._l((_vm.form.files), function(file) {
 	    return _c('p', {
 	      staticClass: "file-content"
 	    }, [_vm._v(_vm._s(file.name))])

@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
 app.use(api);
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
 	const fileName = 'index.html';
 	const html = fs.readFileSync(resolve('../' + fileName), 'utf-8');
 	res.send(html);

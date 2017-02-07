@@ -3,20 +3,21 @@
 		<form class='edit-form'>
 			<div class='group-left'>
 				<div class='group-con'>
-					<span class='must'>*</span><input type='text' v-model='title' placeholder='标题'/>
+					<span class='must'>*</span><input type='text' v-model='form.title' placeholder='标题'/>
 				</div>
 				<div class='group-con'>
-					<input type='text' v-model='aim' placeholder='举办目的' />
+					<input type='text' v-model='form.aim' placeholder='举办目的' />
 				</div>
 				<div class='group-con'>
-					<span class='must'>*</span><input type='text' v-model='time' placeholder='举办时间' />
+					<span class='must'>*</span>
+					<input type='text' v-model='form.time' placeholder='举办时间' />
 				</div>
 				<div class='group-con'>
-					<span class='must'>*</span><input type='text' v-model='place' placeholder='举办地点' />
+					<span class='must'>*</span><input type='text' v-model='form.place' placeholder='举办地点' />
 				</div>
 				<div class='group-con'>
 					<span class='must'>*</span><div class='select'>
-						<span @click='onToggleOption'>{{selectOption}}</span>
+						<span @click='onToggleOption'>{{form.selectOption}}</span>
 						<span class='arrow' @click='onToggleOption'></span>
 						<div class='option-box' v-show='optionShow'>
 							<div class='option'>
@@ -26,24 +27,24 @@
 					</div>
 				</div>
 				<div class='group-con'>
-					<input type='text' v-model='explain' placeholder='附加说明' />
+					<input type='text' v-model='form.explain' placeholder='附加说明' />
 				</div>
 				<div class='group-con group-cover'>
-					<span class='must'>*</span><img :src='cover'/>
+					<span class='must'>*</span><img :src='form.cover'/>
 					<input type='file' @change='onChangeCover'/>
 				</div>
 			</div><div class='group-right'>
 				<div class='group-con group-content'>
 					<span class='must'>*</span>
 					<div class='textarea-box'>
-						<textarea id='editor' placeholder='请输入举办内容' v-model='content'></textarea>
+						<textarea id='editor' placeholder='请输入举办内容' v-model='form.content'></textarea>
 					</div>
 				</div>
 				<div class='group-con group-edit'>
 					<input type='file' multiple @change='onChangeFile'/>
 					<span class='btn btn-edit' :value='enclosure' id='file' style='margin-left: 25px;'>附件</span>
 					<div class='file-list'>
-						<p class='file-content' v-for='file in files'>{{file.name}}</p>
+						<p class='file-content' v-for='file in form.files'>{{file.name}}</p>
 					</div>
 				</div>
 				<div class='group-con group-btn'>
@@ -56,21 +57,27 @@
 
 <script>
 	import axios from 'axios';
+	// import calendar from '../components/calendar.vue';
 
 	let editor;
 	export default {
 		data() {
 			return {
-				title: '',
-				aim: '',
-				time: '',
-				place: '',
-				selectOption: '请选择举办单位',
+				form: {
+					title: '',
+					aim: '',
+					time: '',
+					place: '',
+					selectOption: '请选择举办单位',
+					explain: '',
+					cover: '../dist/imgs/default.png',
+					content: '',
+					files: ''
+				},
 				optionShow: false,
-				explain: '',
-				cover: '../dist/imgs/default.png',
-				content: '',
-				files: '',
+				calendar: {
+					show: false,
+				}
 			}
 		},
 		mounted() {
@@ -102,6 +109,7 @@
 					'external'
 				]
 			})
+			console.log(this.form)
 			
 		},
 		methods: {
@@ -109,14 +117,13 @@
 				this.optionShow = !this.optionShow;
 			},
 			onChangeFile(e) {
-				this.files = this.getFile(e);
-				if(!this.files.length) {
+				this.form.files = this.getFile(e);
+				if(!this.form.files.length) {
 					return;
 				}
-				console.log(this.files[0])
 			},
 			onChangeOption(e) {
-				this.selectOption = e.target.innerHTML;
+				this.form.selectOption = e.target.innerHTML;
 				this.optionShow = !this.optionShow;
 			},
 			onChangeCover(e) {
@@ -129,7 +136,7 @@
 
 				reader = new FileReader();
 				reader.onload = function() {
-					self.cover = this.result;
+					self.form.cover = this.result;
 				}
 				reader.readAsDataURL(file[0]);
 			},
@@ -137,32 +144,33 @@
 				return e.target.files || e.dataTransfer.files;
 			},
 			onPost() {
-				this.content = editor.sync();
-				if(!this.title || !this.time || !this.place || !this.selectOption || !this.content || !this.cover) {
+				let form = this.form;
+				form.content = editor.sync();
+				if(!form.title || !form.time || !form.place || !form.selectOption || !form.content || !form.cover) {
 					alert('请填写所有必须项！');
 				}
 				// axios.post('/')
-				// console.log(this.title);
-				// console.log(this.aim);
-				// console.log(this.time);
-				// console.log(this.place);
-				// console.log(this.selectOption);
-				// console.log(this.explain);
-				// console.log(this.cover);
-				// console.log(this.content);
-				// console.log(this.files);
+				// console.log(form.title);
+				// console.log(form.aim);
+				// console.log(form.time);
+				// console.log(form.place);
+				// console.log(form.selectOption);
+				// console.log(form.explain);
+				// console.log(form.cover);
+				// console.log(form.content);
+				// console.log(form.files);
 			},
 			test() {
-				console.log(this.content)
+				console.log(this.form.content)
 			}
 		}
 	}
 </script>
 
 <style lang='stylus'>
-	@import '../css/funs'
-	@import '../css/variable'
-	@import '../../dist/css/simditor.css'
+	@import '../css/funs';
+	@import '../css/variable';
+	@import '../../dist/css/simditor.css';
 	.form-contain
 		min-height 100vh
 		padding-top nav-height + 50px
@@ -225,7 +233,7 @@
 		padding-right 6px
 		box-shadow inset 1px 1px 5px 2px rgba(0, 0, 0, .5)
 		border-radius 12px
-		background #f7ae9d
+		background #fff
 		box-sizing border-box
 		z-index 2
 	.option
@@ -242,7 +250,7 @@
 			padding 3px 15px
 			cursor pointer
 			&:hover
-				color #fff
+				color #7ab5d8
 	.group-cover
 		relative()
 		input[type='file']
