@@ -3,7 +3,7 @@
 		<form class='edit-form'>
 			<div class='group-left'>
 				<div class='group-con'>
-					<span class='must'>*</span><input type='text' v-model='title' placeholder='标题' @focus='test'/>
+					<span class='must'>*</span><input type='text' v-model='title' placeholder='标题'/>
 				</div>
 				<div class='group-con'>
 					<input type='text' v-model='aim' placeholder='举办目的' />
@@ -46,9 +46,9 @@
 						<p class='file-content' v-for='file in files'>{{file.name}}</p>
 					</div>
 				</div>
-			</div>
-			<div class='group-con group-btn'>
-				<button class='btn btn-l btn-edit btn-post' @click='onPost'>发布</button>
+				<div class='group-con group-btn'>
+					<input class='btn btn-l btn-edit btn-post' type='button' @click='onPost' value='发布' />
+				</div>
 			</div>
 		</form>
 	</div>
@@ -72,7 +72,7 @@
 			}
 		},
 		mounted() {
-			console.dir($('#editor'));
+			// 富文本编辑器
 			editor = new Simditor({
 				textarea: $('#editor'),
 				toolbar: [
@@ -134,10 +134,9 @@
 			getFile(e) {
 				return e.target.files || e.dataTransfer.files;
 			},
-			onPost(e) {
-				e.stopPropagation();
+			onPost() {
 				if(!this.title || !this.time || !this.place || !this.selectOption || !this.content || !this.cover) {
-					console.log('err')
+					alert('请填写所有必须项！');
 				}
 				this.content = editor.sync();
 				console.log(this.title);
@@ -162,6 +161,7 @@
 	@import '../css/variable'
 	@import '../../dist/css/simditor.css'
 	.form-contain
+		min-height 100vh
 		padding-top nav-height + 50px
 		padding-bottom 50px
 		box-sizing border-box
@@ -181,6 +181,8 @@
 			vertical-align top
 		.btn-post
 			width 55%
+		.btn-edit
+			margin-left 25px
 		.simditor
 			border-radius 10px
 			overflow hidden
@@ -305,6 +307,6 @@
 		box-sizing border-box
 	.group-right
 		width 700px
-		padding 0
+		padding 0 15px
 		text-align left
 </style>
