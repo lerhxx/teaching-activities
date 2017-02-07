@@ -18,5 +18,15 @@ export default {
             .then(res => {
                 commit('SET_ARTICAL', res.data);
             })
-    }
+    },
+    SIGNIN({commit}, userInfo) {
+        return axios.post('/signin', userInfo)
+            .then(res => {
+                if(res.data.state === 0) {
+                    commit('SET_USER', res.data);
+                }else {
+                    return Promise.reject(res.data.msg);
+                }
+            })
+    },
 }

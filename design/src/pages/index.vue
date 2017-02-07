@@ -32,7 +32,8 @@
 </template>
 
 <script>
-	import {mapState} from 'vuex';
+	import {mapState, mapMutations} from 'vuex';
+	import {get} from '../assets/cookieUtil';
 
 	export default {
 		data() {
@@ -40,11 +41,19 @@
 			 	img: '../../dist/imgs/cover-b.jpg',
 		    }
 		},
-		created: function() {
+		created() {
+			let user;
+
 			this.$store.dispatch('GET_SEARCH_LISTS');
 			this.$store.dispatch('GET_ARTICALS');
+			
+			user = get('user');
+			if(user && !this.userId) {
+				this.SET_USER({id: user});
+			}
 		},
-		computed: mapState(['searchLists', 'articles'])
+		computed: mapState(['searchLists', 'articles', 'userId']),
+		methods: mapMutations(['SET_USER'])
 	}
 </script>
 

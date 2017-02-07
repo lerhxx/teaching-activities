@@ -7,5 +7,8 @@ export default {
     },
     SET_ARTICAL(state, lists) {
         state.articles = lists;
+    },
+    SET_USER(state, info) {
+        state.userId = info.id;
     }
 }

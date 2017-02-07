@@ -8,8 +8,11 @@
 			<div class='group-con'>
 				<input type='password' placeholder='请输入密码' v-model='password'/>
 			</div>
+			<div class='group-con' v-show='tip'>
+				<p class='color-r'>{{tip}}</p>
+			</div>
 			<div class='group-con group-btn'>
-				<button class='btn btn-certain' v-on:click='login'>确定</button>
+				<button class='btn btn-certain' type='button' v-on:click='login'>确定</button>
 				<router-link to='/' class='btn btn-cancle'>
 					取消
 				</router-link>
@@ -19,29 +22,49 @@
 </template>
 
 <script>
+	import axios from 'axios';
+	import {mapState} from 'vuex';
+	import {set} from '../assets/cookieUtil';
+
 	export default {
 		data() {
 			return {
 				account: '',
-				password: ''
+				password: '',
+				tip: ''
 			}
 		},
 		methods: {
 			login() {
-				console.log('ok');
+				if(!this.account) {
+					alert('请输入账号！');
+				}else if(!this.password) {
+					alert('请输入密码！');
+				}
+
+				this.$store.dispatch('SIGNIN', {
+					id: this.account,
+					pwd: this.password
+				}).then(() => {
+					let date = new Date(Date.now() + 60000 * 30);
+					set('user', this.account, date, '/', window.location.hostname);
+					this.$router.push({path: '/'});
+				}).catch(msg => this.tip = msg);
 			}
-		}
+		},
+		computed: mapState(['signInfo'])
 	}
 </script>
 
 <style scope lang='stylus'>
-	@import '../css/funs'
-	@import '../css/variable'
+	@import '../css/funs';
+	@import '../css/variable';
+
 	.sign-container
 		width 100vw
 		height 100vh
 		padding-top nav-height
-		background url(../../dist/imgs/bg.png);
+		background url(../../dist/imgs/bg.png)
 		overflow hidden
 	.sign-form
 		width 300px

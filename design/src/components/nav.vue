@@ -2,10 +2,10 @@
 	<div id='nav'>
 		<div id='logo'></div>
 		<ul class='navbar'>
-			<li  v-if='SignIn'>
-				<router-link to='/signout'>
+			<li  v-if='userId'>
+				<a @click='signout'>
 					登出
-				</router-link>
+				</a>
 			</li>
 			<li  v-else>
 				<router-link to='/signin'>
@@ -22,6 +22,9 @@
 </template>
 
 <script>
+	import {mapState, mapMutations} from 'vuex';
+	import {unset} from '../assets/cookieUtil';
+
 	export default {
 		data() {
 			return {
@@ -34,12 +37,21 @@
 					url: 'search'
 				}]
 			}
+		},
+		computed: mapState(['userId']),
+		methods: {
+			signout() {
+				unset('user', '/', window.location.hostname);
+				this.$store.commit('SET_USER', {id: ''});
+				this.$router.push('/');
+				alert('登出成功！');
+			},
 		}
 	}
 </script>
 
 <style lang='stylus'>
-	@import '../css/variable'
+	@import '../css/variable';
 
 	#nav 
 		position fixed
@@ -61,4 +73,5 @@
 				margin 0 25px
 				color #fff
 				line-height: nav-height
+				cursor pointer
 </style>

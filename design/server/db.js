@@ -9,7 +9,7 @@ mongoose.connect('mongodb://localhost/design');
 
 
 const UserSchema = new Schema({
-	name: String,
+	id: String,
 	pwd: String
 })
 

@@ -55,6 +55,8 @@
 </template>
 
 <script>
+	import axios from 'axios';
+
 	let editor;
 	export default {
 		data() {
@@ -66,7 +68,7 @@
 				selectOption: '请选择举办单位',
 				optionShow: false,
 				explain: '',
-				cover: '../dist/imgs/cover-b.jpg',
+				cover: '../dist/imgs/default.png',
 				content: '',
 				files: '',
 			}
@@ -135,19 +137,20 @@
 				return e.target.files || e.dataTransfer.files;
 			},
 			onPost() {
+				this.content = editor.sync();
 				if(!this.title || !this.time || !this.place || !this.selectOption || !this.content || !this.cover) {
 					alert('请填写所有必须项！');
 				}
-				this.content = editor.sync();
-				console.log(this.title);
-				console.log(this.aim);
-				console.log(this.time);
-				console.log(this.place);
-				console.log(this.selectOption);
-				console.log(this.explain);
-				console.log(this.cover);
-				console.log(this.content);
-				console.log(this.files);
+				// axios.post('/')
+				// console.log(this.title);
+				// console.log(this.aim);
+				// console.log(this.time);
+				// console.log(this.place);
+				// console.log(this.selectOption);
+				// console.log(this.explain);
+				// console.log(this.cover);
+				// console.log(this.content);
+				// console.log(this.files);
 			},
 			test() {
 				console.log(this.content)
@@ -186,6 +189,8 @@
 		.simditor
 			border-radius 10px
 			overflow hidden
+		.group-btn
+			text-align left
 	.group-left input,
 	.select,
 	.textarea-box
@@ -300,7 +305,6 @@
 		display inline-block
 		width 300px
 		padding 0 30px
-		margin-bottom 60px
 		//border 1px solid red
 		vertical-align top
 		text-align right
