@@ -23,9 +23,9 @@ module.exports = {
 			loader: 'babel?presets=es2015',
 			exclude: /node_modules/
 		}, {
-			test: /\.(png|jpg|gif)$/,
+			test: /\.(png|jpg|gif|svg)$/,
 			exclude: /node_modules/,
-			loader: 'url?name=[name].[ext]?[hash]'
+			loader: 'url?limit=8192'
 		}]
 	},
 	babel: {

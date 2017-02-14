@@ -1,588 +1,632 @@
-<style scoped>
-.calendar {
-    width: 300px;
-    padding: 10px;
-    background: #fff;
-    position: absolute;
-    border: 1px solid #DEDEDE;
-    border-radius: 2px;
-    opacity:.95;
-    transition: all .5s ease;
-}
-.calendar-enter, .calendar-leave {
-    opacity: 0;
-    transform: translate3d(0,-10px, 0);
-}
-.calendar:before {
-    position: absolute;
-    left:30px;
-    top: -10px;
-    content: "";
-    border:5px solid rgba(0, 0, 0, 0);
-    border-bottom-color: #DEDEDE;
-}
-.calendar:after {
-    position: absolute;
-    left:30px;
-    top: -9px;
-    content: "";
-    border:5px solid rgba(0, 0, 0, 0);
-    border-bottom-color: #fff;
-}
-.calendar-tools{
-    height:32px;
-    font-size: 20px;
-    line-height: 32px;
-    color:#5e7a88;
-}
-.calendar-tools .float.left{
-    float:left;
-}
-.calendar-tools .float.right{
-    float:right;
-}
-.calendar-tools input{
-    font-size: 20px;
-    line-height: 32px;
-    color: #5e7a88;
-    width: 70px;
-    text-align: center;
-    border:none;
-    background-color: transparent;
-}
-.calendar-tools span{
-    cursor: pointer;
-}
-.calendar-prev{
-    float:left;
-}
-.calendar-next{
-    float:right;
-}
- 
-.calendar table {
-    clear: both;
-    width: 100%;
-    margin-bottom:10px;
-    border-collapse: collapse;
-    color: #444444;
-}
-.calendar td {
-    margin:2px !important;
-    padding:0px 0;
-    width: 14.28571429%;
-    height:34px;
-    text-align: center;
-    vertical-align: middle;
-    font-size:14px;
-    line-height: 125%;
-    cursor: pointer;
-}
-.calendar td.week{
-    pointer-events:none !important;
-    cursor: default !important;    
-}
-.calendar td.disabled {
-    color: #c0c0c0;
-    pointer-events:none !important;
-    cursor: default !important;
-}
-.calendar td span{
-    display:block;
-    height:30px;
-    line-height:30px;
-    margin:2px;
-    border-radius:2px;
-}
-.calendar td span:hover{
-    background:#f3f8fa;
-}
-.calendar td.selected span{
-    background-color: #5e7a88;
-    color: #fff;
-}
-.calendar td.selected span:hover{
-    background-color: #5e7a88;
-    color: #fff;
-}
-.calendar thead td {
-  text-transform: uppercase;
-}
-.calendar .timer{
-    margin:10px 0;
-    text-align: center;
-}
-.calendar .timer input{
-    border-radius: 2px;
-    padding:5px;
-    font-size: 14px;
-    line-height: 18px;
-    color: #5e7a88;
-    width: 50px;
-    text-align: center;
-    border:1px solid #efefef;
-}
-.calendar .timer input:focus{
-    border:1px solid #5e7a88;
-}
-.calendar-button{
-    text-align: center;
-}
-.calendar-button span{
-    cursor: pointer;
-    display: inline-block;
-    min-height: 1em;
-    min-width: 5em;
-    vertical-align: baseline;
-    background:#5e7a88;
-    color:#fff;
-    margin: 0 .25em 0 0;
-    padding: .6em 2em;
-    font-size: 1em;
-    line-height: 1em;
-    text-align: center;
-    border-radius: .3em;
-}
-.calendar-button span.cancel{
-    background:#efefef;
-    color:#666;
-}
-.calendar .lunar{
-     font-size:11px;
-     line-height: 150%;
-     color:#aaa;   
-}
-.calendar td.selected .lunar{
-     color:#fff;   
-}
-</style>
-
 <template>
-    <div @click.stop=""  class="calendar" v-show="show" :style="{'left':x+'px','top':y+'px'}" transition="calendar" transition-mode="out-in">
-        <div  v-if="type!='time'">
-            <div class="calendar-tools">
-                <span class="calendar-prev" @click="prev">
-                    <svg width="16" height="16" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g class="transform-group"><g transform="scale(0.015625, 0.015625)"><path d="M671.968 912c-12.288 0-24.576-4.672-33.952-14.048L286.048 545.984c-18.752-18.72-18.752-49.12 0-67.872l351.968-352c18.752-18.752 49.12-18.752 67.872 0 18.752 18.72 18.752 49.12 0 67.872l-318.016 318.048 318.016 318.016c18.752 18.752 18.752 49.12 0 67.872C696.544 907.328 684.256 912 671.968 912z" fill="#5e7a88"></path></g></g></svg>
-                </span>
-                <span class="calendar-next"  @click="next">
-                    <svg width="16" height="16" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g class="transform-group"><g transform="scale(0.015625, 0.015625)"><path d="M761.056 532.128c0.512-0.992 1.344-1.824 1.792-2.848 8.8-18.304 5.92-40.704-9.664-55.424L399.936 139.744c-19.264-18.208-49.632-17.344-67.872 1.888-18.208 19.264-17.376 49.632 1.888 67.872l316.96 299.84-315.712 304.288c-19.072 18.4-19.648 48.768-1.248 67.872 9.408 9.792 21.984 14.688 34.56 14.688 12 0 24-4.48 33.312-13.44l350.048-337.376c0.672-0.672 0.928-1.6 1.6-2.304 0.512-0.48 1.056-0.832 1.568-1.344C757.76 538.88 759.2 535.392 761.056 532.128z" fill="#5e7a88"></path></g></g></svg>
-                </span>
-                <div class="text center">
-                    <input type="text" v-model="year" value="{{year}}" @change="render(year,month)" min="1970" max="2100" maxlength="4">
-                     / 
-                    {{monthString}}
+    <div class='calendar'>
+        <div class='input-wrapper' v-show='showInput'>
+            <i class='date-icon' :style='setIconUrl'></i>
+            <div class='input' v-text='value' @click='togglePanel = !togglePanel'></div>
+            <span class='input-clear' @click='clearValue'></span>
+        </div>
+        <transition name='toggle'>
+            <div class='pannel-wrapper' :style='themePannelBg' v-show='togglePanel'>
+                <div class='pannel-header' :style='themeHeaderBg'>
+                    <span class='year' :style='themeHeaderYear' v-text='tmpYear' @click='showYearPannel'></span><span :style='themeHeaderSep'>/</span><span class='month' :style='themeHeaderMonth' v-text='tmpMonth + 1' @click='showMonthPannel'></span>
+                    <span class='prev' @click='prevMonth' :style='themeLeftArrow' v-show='pannelType !== "month"'>&lt;</span>
+                    <span class='next' @click='nextMonth' :style='themeRightArrow' v-show='pannelType !== "month"'>&gt;</span>
+                </div>
+                <div class='year-list' v-show='pannelType === "year"'>
+                    <ul class='month-wrapper'>
+                        <li v-for='item in yearList' :class="{selected: isSelected(item, 'year')}" @click='selectYear(item)'>{{item}}</li>
+                    </ul>
+                </div>
+                <div class='month-list' v-show='pannelType === "month"'>
+                    <ul class='month-wrapper'>
+                        <li v-for='item in monthList' :class="{selected: isSelected(item, 'month')}" @click='selectMonth(item)'>{{month(item, lang)}}</li>
+                    </ul>
+                </div>
+                <div class='date-list' v-show='pannelType === "date"'>
+                    <ul class='week'>
+                        <li v-for='item in weekList' :style='themeWeekColor'>{{week(item, lang)}}</li>
+                    </ul>
+                    <ul class='date'>
+                        <li v-for='item in dateList' :class="{selected: isSelected(item, 'date'), 'notCurMonth': !item.isCurMonth, unvalid: !validDate(item)}" @click='selectDate(item)' :style='setSeltheme(item, "date")'>{{item.value}}</li>
+                    </ul>
+                    <div class='time' v-show='type === "time"'>
+                        <input type='text' v-model='startHour' @focus='checkTime("startHour")' @blur='clearCheck'/> : <input type='text' v-model='startMin'  @focus='checkTime("startMin")' @blur='clearCheck'/> - <input type='text' v-model='endHour'  @focus='checkTime("endHour")' @blur='clearCheck'/> : <input type='text' v-model='endMin'  @focus='checkTime("endMin")' @blur='clearCheck'/>
+                    </div>
+                </div>
+                <div class='group-btn'>
+                    <button type='button' class='btn btn-confirm' @click='confirmSelect' :style='themeBtnCon'>确认</button>
+                    <button type='button' class='btn btn-cancle' @click='cancleSelect' :style='themeBtnCan'>取消</button>
                 </div>
             </div>
-            <table cellpadding="5">
-            <thead>
-                <tr>
-                    <td v-for="week in weeks" class="week">{{week}}</td>
-                </tr>
-             </thead>
-            <tr v-for="(k1,day) in days">
-                <td 
-                v-for="(k2,child) in day" 
-                :class="{'selected':child.selected,'disabled':child.disabled}"
-                @click="select(k1,k2,$event)" @touchstart="select(k1,k2,$event)">
-                <span>{{child.day}}</span>
-                <div class="lunar" v-if="showLunar">{{child.lunar}}</div>
-                </td>
-            </tr>
-            </table>
-        </div>
-        <div class="calendar-time" v-show="type=='datetime'||type=='time'">
- 
-            <div class="timer">
-                <input type="text" v-model="hour" value="{{hour}}" min="0" max="23" maxlength="2">
-                时
-                <input type="text" v-model="minute" value="{{minute}}" min="0" max="59" maxlength="2">
-                分
-                <input type="text" v-model="second" value="{{second}}" min="0" max="59" maxlength="2">
-                秒
-            </div>
-        </div>
-        <div class="calendar-button" v-show="type=='datetime'||type=='time'||range">
-            <span @click="ok">确定</span>
-            <span @click="cancel" class="cancel">取消</span>
-        </div>
+        </transition>
     </div>
 </template>
 
 <script>
-export default {
-    props: {
-        show: {
-            type: Boolean,
-            twoWay: true,
-            default: false
-        },
-        type: {
-            type: String,
-            default: "date"
-        },
-        value: {
-            type: String,
-            twoWay: true,
-            default: ""
-        },
-        x: {
-            type: Number,
-            default: 0
-        },
-        y: {
-            type: Number,
-            default: 0
-        },
-        begin: {
-            type: String,
-            twoWay: true,
-            default: ""
-        },
-        end: {
-            type: String,
-            default: ""
-        },
-        range: {
-            type: Boolean,
-            default: false
-        },
-        rangeBegin: {
-            type: Array,
-            default: Array
-        },
-        rangeEnd: {
-            type: Array,
-            default: Array
-        },
-        sep:{
-            type: String,
-            twoWay: true,
-            default: ""
-        },
-        weeks: {
-            type: Array,
-            default:function(){
-                return ['日', '一', '二', '三', '四', '五', '六']
+    export default {
+        data() {
+            let curDate = new Date();
+            return {
+                value: '',
+                togglePanel: false,
+                pannelType: 'date',
+                curYear: curDate.getFullYear(),
+                curMonth: curDate.getMonth(),
+                curDate: curDate.getDate(),
+                tmpYear: curDate.getFullYear(),
+                tmpMonth: curDate.getMonth(),
+                tmpDate: curDate.getDate(),
+                startYear: curDate.getFullYear(),
+                startMonth: curDate.getMonth(),
+                startDate: curDate.getDate(),
+                endYear: curDate.getFullYear(),
+                endMonth: curDate.getMonth(),
+                endDate: curDate.getDate(),
+                startHour: '0',
+                startMin: '0',
+                endHour: '23',
+                endMin: '59',
+                page: 0,
+                lang: 'zh',
+                format: '-',
+                weekList: [0, 1, 2, 3, 4, 5, 6],
+                monthList: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+                flag: true,
+                check: '',
             }
         },
-        months:{
-            type: Array,
-            default:function(){
-                return ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
+        props: {
+            type: {
+                type: String,
+                default: 'single'            //range/time
+            },
+            isAbandon: {
+                type: Boolean,
+                default: true
+            },
+            showInput: {
+                type: Boolean,
+                default: true
+            },
+            iconUrl: {
+                type: String,
+                default: ''
+            },
+            theme: {
+                type: String,
+                default: '#e57373'
+            },
+            themepannelbg: {
+                type: String,
+                default: '#fff'
+            },
+            themeheadercolor: {
+                type: String,
+                default: '#fff'
+            },
+            themeheaderyear: {
+                type: String,
+                default: ''
+            },
+            themeheadermonth: {
+                type: String,
+                default: ''
+            },
+            themeheadersep: {
+                type: String,
+                default: ''
+            },
+            themeleftarrow: {
+                type: String,
+                default: ''
+            },
+            themerightarrow: {
+                type: String,
+                default: ''
+            },
+            themeheaderbg: {
+                type: String,
+                default: ''
+            },
+            themeweekcolor: {
+                type: String,
+                default: ''
+            },
+            themeborder: {
+                type: String,
+                default: ''
+            },
+            themeselbg: {
+                type: String,
+                default: ''
+            },
+            themeselcolor: {
+                type:String,
+                default: '#fff',
+            },
+            themebtnborder: {
+                type: String,
+                default: ''
+            },
+            themebtnconbg: {
+                type: String,
+                default: ''
+            },
+            themebtncanbg: {
+                type: String,
+                default: '#fff'
+            },
+            themebtnconfirmcolor: {
+                type: String,
+                default: '#fff'
+            },
+            themebtncanclecolor: {
+                type: String,
+                default: '#000'
+            },
+            themecurmonthcolor: {
+                type: String,
+                default: '#000'
+            },
+            themeprevmonthcolor: {
+                type: String,
+                default: '#aaa'
+            },
+            themenextmonthcolor: {
+                type: String,
+                default: '#aaa'
+            },
+            themenotallowcolor: {
+                type: String,
+                default: '#aaa'
             }
-        }
-    },
-    data() {
-        return {
-            year: 0,
-            month: 0,
-            day: 0,
-            hour: 0,
-            minute: 0,
-            second: 0,
-            days: [],
-            today: [],
-            currentMonth: Number,
-            monthString:"",
-        }
-    },
-    created() {
-        this.init()
-        // 延迟绑定事件，防止关闭
-        window.setTimeout(() => {
-            document.addEventListener('click', (e) => {
-                e.stopPropagation()
-                this.cancel()
-            }, false)
-        }, 500)
-    },
-    // 测试用
-    watch: {
-        // year(val, old) {
-        //     console.log("new %s old %s time:%s", val, old, +new Date)
-        // },
-        show(){
-            this.init()
         },
-        value(){
-            this.init()
-        }
-    },
-    methods: {
-        // 日期补零
-        zero(n) {
-            return n < 10 ? '0' + n : n
+        created() {
+            this.changeValue();
         },
-        // 初始化一些东西
-        init(){
-            var now = new Date();
-            if (this.value != "") {
-                if (this.value.indexOf("-") != -1) this.sep = "-"
-                if (this.value.indexOf(".") != -1) this.sep = "."
-                if (this.value.indexOf("/") != -1) this.sep = "/"
-                if (this.type == "date") {
-                    var split = this.value.split(this.sep)
-                    this.year = parseInt(split[0])
-                    this.month = parseInt(split[1]) - 1
-                    this.day = parseInt(split[2])
-                } else if (this.type == "datetime") {
-                    var split = this.value.split(" ")
-                    var splitDate = split[0].split(this.sep)
-                    this.year = parseInt(splitDate[0])
-                    this.month = parseInt(splitDate[1]) - 1
-                    this.day = parseInt(splitDate[2])
-                    if (split.length > 1) {
-                        var splitTime = split[1].split(":")
-                        this.hour = splitTime[0]
-                        this.minute = splitTime[1]
-                        this.second = splitTime[2]
-                    }
+        methods: {
+            clearValue() {
+                this.date = '';
+            },
+            showYearPannel() {
+                this.pannelType = 'year';
+            },
+            showMonthPannel() {
+                this.pannelType = 'month';
+            },
+            isSelected(item, type) {
+                switch(type) {
+                    case 'year':
+                        return item === this.tmpYear;
+                    case 'month':
+                        return item === this.tmpMonth;
+                    case 'date':
+                        let mon = this.tmpMonth;
+                        let time;
+                        item.isPrevMonth && mon--;
+                        item.isNextMonth && mon++;
+
+                        time = new Date(this.tmpYear, mon, item.value).getTime()
+
+                        return time >= new Date(this.startYear, this.startMonth, this.startDate).getTime() && time <= new Date(this.endYear, this.endMonth, this.endDate).getTime();
                 }
-                if (this.range) {
-                    var split = this.value.split(" ~ ")
-                    if (split.length > 1) {
-                        var beginSplit = split[0].split(this.sep)
-                        var endSplit = split[1].split(this.sep)
-                        this.rangeBegin = [parseInt(beginSplit[0]), parseInt(beginSplit[1] - 1), parseInt(beginSplit[2])]
-                        this.rangeEnd = [parseInt(endSplit[0]), parseInt(endSplit[1] - 1), parseInt(endSplit[2])]
-                    }
+            },
+            month(item, lang) {
+                switch (lang) {
+                    case 'en':
+                        return {0: 'Jan', 1: 'Feb', 2: 'Mar', 3: 'Apr', 4: 'May', 5: 'Jun', 6: 'Jul', 7: 'Aug', 8: 'Sep', 9: 'Oct', 10: 'Nov', 11: 'Dec'}[item]
+                    case 'zh':
+                        return {0: '一', 1: '二', 2: '三', 3: '四', 4: '五', 5: '六', 6: '七', 7: '八', 8: '九', 9: '十', 10: '十一', 11: '十二'}[item]
+                    default:
+                        return item
                 }
-            } else {
-                if(this.sep=="")this.sep = "/"
-                this.year = now.getFullYear()
-                this.month = now.getMonth()
-                this.day = now.getDate()
-                this.hour = this.zero(now.getHours())
-                this.minute = this.zero(now.getMinutes())
-                this.second = this.zero(now.getSeconds())
-                if (this.range) {
-                    this.rangeBegin = Array
-                    this.rangeEnd = Array
+            },
+            week(item, lang) {
+                switch (lang) {
+                    case 'en':
+                        return {0: 'Su', 1: 'Mo', 2: 'Tu', 3: 'We', 4: 'Th', 5: 'Fr', 6: 'Sa'}[item]
+                    case 'zh':
+                        return {0: '日', 1: '一', 2: '二', 3: '三', 4: '四', 5: '五', 6: '六'}[item]
+                    default:
+                        return item
                 }
-            }
-            this.monthString=this.months[this.month]
-            this.render(this.year, this.month)
-        },
-        // 渲染日期
-        render(y, m) {
-            if (!this.range) {
-                this.rangeBegin = []
-                this.rangeEnd = []
-            }
-            var firstDayOfMonth = new Date(y, m, 1).getDay()         //当月第一天
-            var lastDateOfMonth = new Date(y, m + 1, 0).getDate()    //当月最后一天
-            var lastDayOfLastMonth = new Date(y, m, 0).getDate()     //最后一月的最后一天
-            this.year = y
-            this.currentMonth = this.months[m]
-            var seletSplit = this.value.split(" ")[0].split(this.sep)
-            var i, line = 0,temp = []
-            for (i = 1; i <= lastDateOfMonth; i++) {
-                var dow = new Date(y, m, i).getDay()
-                // 第一行
-                if (dow == 0) {
-                    temp[line] = []
-                } else if (i == 1) {
-                    temp[line] = []
-                    var k = lastDayOfLastMonth - firstDayOfMonth + 1
-                    for (var j = 0; j < firstDayOfMonth; j++) {
-                        temp[line].push({
-                            day: k,
-                            disabled: true
-                        })
-                        k++;
-                    }
+            },
+            validDate(item) {
+                if(this.isAbandon) {
+                    let mon = item.isCurMonth ? this.tmpMonth : (item.isPrevMonth ? this.tmpMonth - 1 : this.tmpMonth + 1);
+                    return new Date(this.tmpYear, mon, item.value).getTime() >= new Date(this.curYear, this.curMonth, this.curDate).getTime()
                 }
-       
-                // 如果是日期范围
-                if (this.range) {
-                    var options = {
-                        day: i
-                    }
-                    if (this.rangeBegin.length > 0) {
-                        var beginTime = Number(new Date(this.rangeBegin[0], this.rangeBegin[1], this.rangeBegin[2]))
-                        var endTime = Number(new Date(this.rangeEnd[0], this.rangeEnd[1], this.rangeEnd[2]))
-                        var thisTime = Number(new Date(this.year, this.month, i))
-                        if (beginTime <= thisTime && endTime >= thisTime) {
-                            options.selected = true
+                return true;
+            },
+            selectYear(item) {
+                this.tmpYear = item;
+            },
+            selectMonth(item) {
+                this.tmpMonth = item;
+            },
+            selectDate(item){
+                if(!this.validDate(item)) return;
+                //是否修改月份
+                item.isPrevMonth ? (this.tmpMonth === 0 ? (--this.tmpYear,this.tmpMonth = 11) : --this.tmpMonth) : (item.isNextMonth ? (this.tmpMonth === 11 ? (++this.tmpYear, this.tmpMonth = 0) : ++this.tmpMonth) : (this.tmpYear, this.tmpMonth));
+
+                switch(this.type) {
+                    case 'single':
+                    case 'time':
+                        this.startDate = this.endDate = item.value;
+                        this.startMonth = this.endMonth = this.tmpMonth;
+                        this.startYear = this.endYear = this.tmpYear;
+                        break;
+                    case 'range':
+                        if(this.startYear && this.startMonth && this.startDate && this.endYear && this.endMonth && this.endDate) {
+                            let selTime = new Date(this.tmpYear, this.tmpMonth, item.value).getTime(),
+                                startTime = new Date(this.startYear, this.startMonth, this.startDate).getTime(),
+                                endTime = new Date(this.endYear, this.endMonth, this.endDate).getTime();
+                            
+                            if(selTime < startTime) {
+                                this.startYear = this.tmpYear;
+                                this.startMonth = this.tmpMonth;
+                                this.startDate = item.value;
+                                this.flag = true;
+                            }else if(selTime > endTime) {
+                                this.endYear = this.tmpYear;
+                                this.endMonth = this.tmpMonth;
+                                this.endDate = item.value;
+                                this.flag = false;
+                            }else if (selTime > startTime && selTime < endTime) {
+                                this.flag ? (this.startYear = this.tmpYear, this.startMonth = this.tmpMonth, this.startDate = item.value) : (this.endYear = this.tmpYear, this.endMonth = this.tmpMonth, this.endDate = item.value);
+                            }
+                        }else {
+                            this.startDate = this.endDate = item.value;
+                            this.startMonth = this.endMonth = this.tmpMonth;
+                            this.startYear = this.endYear = this.tmpYear;
                         }
-                    }
-                    temp[line].push(options)
-                } else {
-                    // 单选模式
-                    var chk = new Date()
-                    var chkY = chk.getFullYear()
-                    var chkM = chk.getMonth()
-                    // 匹配上次选中的日期
-                    if (
-                        parseInt(seletSplit[0]) == this.year &&
-                        parseInt(seletSplit[1]) - 1 == this.month &&
-                        parseInt(seletSplit[2]) == i) {
-                        temp[line].push({
-                            day: i,
-                            selected: true
-                        })
-                        this.today = [line, temp[line].length - 1]
-                    }
-                     // 没有默认值的时候显示选中今天日期
-                    else if (chkY == this.year && chkM == this.month && i == this.day && this.value == "") {
-                        temp[line].push({
-                            day: i,
-                            selected: true
-                        })
-                        this.today = [line, temp[line].length - 1]
-                    }else{
-                        // 设置可选范围
-                        // console.log(this.begin,this.end);
-                         var options = {
-                            day: i,
-                            selected: false,
-                        }
-                        if (this.begin != "") {
-                            var beginSplit = this.begin.split(this.sep)
-                            var beginTime = Number(new Date(
-                                parseInt(beginSplit[0]),
-                                parseInt(beginSplit[1]) - 1,
-                                parseInt(beginSplit[2])
-                            ))
-                            if (beginTime > Number(new Date(this.year, this.month, i))) options.disabled = true
-                        }
-                        if (this.end != ""){
-                            var endSplit = this.end.split(this.sep)
-                            var endTime = Number(new Date(
-                                parseInt(endSplit[0]),
-                                parseInt(endSplit[1]) - 1,
-                                parseInt(endSplit[2])
-                            ))
-                            if (endTime <  Number(new Date(this.year, this.month, i))) options.disabled = true
-                        }
-                        temp[line].push(options)
-                    }
+                        break;
+                    default:
+                        this.value = '';
                 }
-                // 最后一行
-                if (dow == 6) {
-                    line++
-                } else if (i == lastDateOfMonth) {
-                    var k = 1
-                    for (dow; dow < 6; dow++) {
-                        temp[line].push({
-                            day: k,
-                            disabled: true
-                        })
-                        k++
-                    }
+            },
+            prevMonth() {
+                if(this.pannelType === 'date') {
+                    this.tmpMonth === 0 ? (--this.tmpYear,this.tmpMonth = 11) : --this.tmpMonth;
+                }else if(this.pannelType === 'year') {
+                    --this.page;
                 }
-            } //end for
-            this.days = temp
-        },
-        // 上月
-        prev(e) {
-            e.stopPropagation()
-            if (this.month == 0) {
-                this.month = 11
-                this.year = parseInt(this.year) - 1
-            } else {
-                this.month = parseInt(this.month) - 1
-            }
-            this.monthString=this.months[this.month]
-            this.render(this.year, this.month)
-        },
-        //  下月
-        next(e) {
-            e.stopPropagation()
-            if (this.month == 11) {
-                this.month = 0
-                this.year = parseInt(this.year) + 1
-            } else {
-                this.month = parseInt(this.month) + 1
-            }
-            this.monthString=this.months[this.month]
-            this.render(this.year, this.month)
-        },
-        // 选中日期
-        select(k1, k2, e) {
-            if (e != undefined) e.stopPropagation()
-                // 日期范围
-            if (this.range) {
-                if (this.rangeBegin.length == 0 || this.rangeEndTemp != 0) {
-                    this.rangeBegin = [this.year, this.month, this.days[k1][k2].day, this.hour, this.minute, this.second]
-                    this.rangeBeginTemp = this.rangeBegin
-                    this.rangeEnd = [this.year, this.month, this.days[k1][k2].day, this.hour, this.minute, this.second]
-                    this.rangeEndTemp = 0
-                } else {
-                    this.rangeEnd = [this.year, this.month, this.days[k1][k2].day, this.hour, this.minute, this.second]
-                    this.rangeEndTemp = 1
-                        // 判断结束日期小于开始日期则自动颠倒过来
-                    if (+new Date(this.rangeEnd[0], this.rangeEnd[1], this.rangeEnd[2]) < +new Date(this.rangeBegin[0], this.rangeBegin[1], this.rangeBegin[2])) {
-                        this.rangeBegin = this.rangeEnd
-                        this.rangeEnd = this.rangeBeginTemp
+            },
+            nextMonth() {
+                if(this.pannelType === 'date') {
+                    this.tmpMonth === 11 ? (++this.tmpYear, this.tmpMonth = 0) : ++this.tmpMonth;
+                }else if(this.pannelType === 'year') {
+                    ++this.page;
+                }
+            },
+            changeValue() {
+                switch(this.type) {
+                    case 'single':
+                        this.value = `${this.startYear}${this.format}${this.startMonth + 1}${this.format}${this.startDate}`;
+                        break;
+                    case 'range':
+                        this.value = `${this.startYear}${this.format}${this.startMonth + 1}${this.format}${this.startDate} -- ${this.endYear}${this.format}${this.endMonth + 1}${this.format}${this.endDate}`;
+                        break;
+                    case 'time':
+                        let date = `${this.startYear}${this.format}${this.startMonth + 1}${this.format}${this.startDate}`;
+                        this.startHour = this.startHour > 9 ? this.startHour : '0' + this.startHour * 1;
+                        this.startMin = this.startMin > 9 ? this.startMin : '0' + this.startMin * 1;
+                        this.endHour = this.endHour > 9 ? this.endHour : '0' + this.endHour * 1;
+                        this.endMin = this.endMin > 9 ? this.endMin : '0' + this.endMin * 1;
+                        this.value = `${date} ${this.startHour}:${this.startMin} - ${this.endHour}:${this.endMin}`;
+                        break;
+                    default:
+                        this.value = '';
+                }
+                this.getValue();
+            },
+            clearValue() {
+                this.value = '';
+                this.startYear = this.startMonth = this.startDate = this.endYear = this.endMonth = this.endDate = '';
+            },
+            confirmSelect() {
+                if(this.pannelType === 'year') {
+                    this.pannelType = 'month';
+                }else if(this.pannelType === 'month'){
+                    this.pannelType = 'date';
+                    this.startYear = this.startMonth = this.startDate = this.endYear = this.endMonth = this.endDate = '';
+                }else {
+                    if(this.endHour < this.startHour) {
+                        this.endHour = this.startHour;
+                    }else if(this.endHour == this.startHour && this.endMin < this.startMin) {
+                        this.endMin = this.startMin;
+                    }
+                    this.changeValue();
+                    this.togglePanel = !this.togglePanel;
+                }
+            },
+            cancleSelect() {
+                this.togglePanel = !this.togglePanel;
+                this.pannelType = 'date';
+                this.tmpYear = this.startYear = this.endYear = this.curYear;
+                this.tmpMonth = this.startMonth = this.endMonth = this.curMonth;
+                this.tmpDate = this.startDate = this.endDate = this.curDate;
+                this.startHour = '0';
+                this.startMin = '0';
+                this.endHour = '23';
+                this.endMin = '59';
+            },
+            setSeltheme(item, type) {
+                if(!this.validDate(item)) {
+                    return `color:${this.themenotallowcolor}`;
+                }else if(this.isSelected(item, type)) {
+                    let bg = this.themeselbg ? this.themeselbg : this.theme;
+                    return `backgroundColor:${bg};color:${this.themeselcolor}`;
+                }else {
+                    if(item.isCurMonth) {
+                        return `color:${this.themecurmonthcolor}`;
+                    }else if(item.isPrevMonth) {
+                        return `color:${this.themeprevmonthcolor}`;
+                    }else {
+                        return `color:${this.themenextmonthcolor}`;
                     }
                 }
-                this.render(this.year, this.month)
-            } else {
-                // 取消上次选中
-                if (this.today.length > 0) {
-                    this.days.forEach(v=>{
-                        v.forEach(vv=>{
-                            vv.selected= false
-                        })
-                    })
-                    // this.days[this.today[0]][this.today[1]].selected = false
-                }
-                // 设置当前选中天
-                this.days[k1][k2].selected = true
-                this.day = this.days[k1][k2].day
-                this.today = [k1, k2]
-                if (this.type == 'date') {
-                    this.value = this.year + this.sep + this.zero(this.month + 1) + this.sep + this.zero(this.days[k1][k2].day)
-                    this.show = false
-                }
+            },
+            checkTime(type){
+                let self = this;
+                this.check = setInterval(function() {
+                    switch(type) {
+                        case 'startHour':
+                        case 'endHour':
+                            self[type] = self[type] > 23 ? 23 : (self[type] > 0 ? self[type] * 1 : 0); 
+                            break;
+                        case 'startMin':
+                        case 'endMin':
+                            self[type] = self[type] > 59 ? 59 : (self[type] > 0 ? self[type] * 1 : 0); 
+                            break;
+                    }
+                }, 500)
+            },
+            clearCheck() {
+                let self = this;
+                clearInterval(self.check);
+            },
+            getValue() {
+                this.$emit('getValue', this.value);
             }
         },
-        // 多选的时候提交
-        ok() {
-            // 只有有日期的时候才执行
-            if(this.type!="time"){
-                let isSelected=false
-                this.days.forEach(v=>{
-                    v.forEach(vv=>{
-                        if(vv.selected){
-                            isSelected=true
-                        }
-                    })
+        computed: {
+            yearList() {
+                return Array.from({length: 12}, (val, index) => {
+                    return this.curYear + index + 12 * this.page;
                 })
-                if(!isSelected)return false
-            }
-           
-            if (this.range) {
-                this.value = this.output(this.rangeBegin) + " ~ " + this.output(this.rangeEnd)
-            } else {
-                this.value = this.output([
-                    this.year,
-                    this.month, 
-                    this.day,
-                    parseInt(this.hour),
-                    parseInt(this.minute),
-                    parseInt(this.second)
-                ])
-            }
-            this.show = false
-        },
-        // 隐藏控件
-        cancel() {
-            this.show = false
-        },
-        // 格式化输出
-        output(args) {
-            if (this.type == 'time') {
-                return this.zero(args[3]) + ":" + this.zero(args[4]) + ":" + this.zero(args[5])
-            }
-            if (this.type == 'datetime') {
-                return args[0] + this.sep + this.zero(args[1] + 1) + this.sep + this.zero(args[2]) + " " + this.zero(args[3]) + ":" + this.zero(args[4]) + ":" + this.zero(args[5])
-            }
-            if (this.type == 'date') {
-                return args[0] + this.sep + this.zero(args[1] + 1) + this.sep + this.zero(args[2])
+            },
+            dateList() {
+                let tmpMonthLength = new Date(this.tmpYear, this.tmpMonth + 1, 0).getDate();
+                let dateList = Array.from({length: tmpMonthLength}, (val, index) => {
+                        return {
+                            isCurMonth: true,
+                            value: index + 1
+                        }
+                    });
+                let firstDay = new Date(this.tmpYear, this.tmpMonth, 1).getDay();
+                let lastMonthLength = new Date(this.tmpYear, this.tmpMonth, 0).getDate();
+                let len,
+                    i;
+
+                for(i = lastMonthLength; i > lastMonthLength - firstDay; --i) {
+                    dateList.unshift({
+                        isPrevMonth: true,
+                        value: i
+                    })
+                }
+                for(i = 0, len = dateList.length; i + len < 42; ++i) {
+                    dateList.push({
+                        isNextMonth: true,
+                        value: i + 1
+                    })
+                }
+                return dateList;
+            },
+            setIconUrl() {
+                if(/.(?:jpeg|jpg|png|svg)/i.test(this.iconUrl)){
+                    return `background-image: url(${this.iconUrl})`;
+                }else {
+                    return '';
+                }
+            },
+            themePannelBg() {
+                return {
+                    borderBottom: this.themeborder ? this.themeborder : `1px solid ${this.theme}`,
+                    backgroundColor: this.themepannelbg
+                }
+            },
+            themeHeaderBg() {
+                return {
+                    backgroundColor: this.themeheaderbg ? this.themeheaderbg : this.theme
+                }
+            },
+            themeHeaderYear() {
+                return {
+                    color: this.themeheaderyear ? this.themeheaderyear : this.themeheadercolor
+                }
+            },
+            themeHeaderMonth() {
+                return {
+                    color: this.themeheadermonth ? this.themeheadermonth : this.themeheadercolor
+                }
+            },
+            themeHeaderSep() {
+                return {
+                    color: this.themeheadersep ? this.themeheadersep : this.themeheadercolor
+                }
+            },
+            themeLeftArrow() {
+                return {
+                    color: this.themeleftarrow ? this.themeleftarrow : this.themeheadercolor
+                }
+            },
+            themeRightArrow() {
+                return {
+                    color: this.themerightarrow ? this.themerightarrow : this.themeheadercolor
+                }
+            },
+            themeWeekColor() {
+                return {
+                    color: this.themeweekcolor ? this.themeweekcolor : this.theme
+                }
+            },
+            themeBtnCon() {
+                return {
+                    border: this.themebtnborder ? this.themebtnborder : `1px solid ${this.theme}`,
+                    color: this.themebtnconfirmcolor,
+                    backgroundColor: this.themebtnconbg ? this.themebtnconbg : this.theme
+                }
+            },
+            themeBtnCan() {
+                return {
+                    border: this.themebtnborder ? this.themebtnborder : `1px solid ${this.theme}`,
+                    color: this.themebtncanclecolor,
+                    backgroundColor: this.themebtncanbg ? this.themebtncanbg : this.theme
+                }
             }
         }
     }
-}
 </script>
+
+<style lang='stylus'>
+    @import '../css/funs';
+
+    li-width = 35px
+    li-margin = 1px
+    width = ((li-width + li-margin * 2) * 7)
+    header-color = #e57373
+
+    .calendar
+        ul
+            padding 0
+            margin 0
+        li
+            display inline-block
+            list-style none
+        .input-wrapper
+            relative()
+            display inline-block
+        .date-icon
+            absolute(top 5px left 5px)
+            width 20px
+            height 20px
+            background url(./imgs/calendar.png)
+            background-size contain
+        .input
+            width width
+            height 30px
+            padding 5px
+            padding-left 30px
+            border 1px solid #ddd
+            text-align left
+            box-sizing border-box
+        .input-clear
+            absolute(top 6px right 6px)
+            width 16px
+            height 16px
+            &:before,
+            &:after
+                absolute(top 50% left 0)
+                width 100%
+                height 2px
+                content ''
+                background #aaa
+            &:before
+                transform rotate(45deg)
+            &:after
+                transform rotate(-45deg)
+        .pannel-wrapper
+            width width
+            margin-top 5px
+            background #fff
+        .pannel-header
+            relative()
+            padding 3px
+            margin-bottom 10px
+            color #fff
+            text-align center
+            font-size 1.5em
+            background-color header-color
+            border-radius(30px)
+        .year,
+        .month
+            display inline-block
+            margin 0 5px
+            cursor pointer
+        .prev,
+        .next
+            absolute(top 5px)
+            cursor pointer
+        .prev
+            left 10px
+        .next
+            right 10px
+        .month-wrapper
+            width (li-width * 9 / 2)
+            margin 0 auto
+            li
+                width (li-width * 3 / 2)
+                padding 5px 0
+                text-align center
+                cursor pointer
+        .date-list
+            li
+                width li-width
+                margin li-margin
+                text-align center
+                font-size 1em
+                cursor default
+        .week
+            margin-bottom 5px
+            li
+                color header-color
+                font-weight bold
+
+        .date
+            li
+                height li-width
+                color #000
+                line-height li-width
+                cursor pointer
+            .notCurMonth,
+            .unvalid
+                color #aaa
+            .unvalid
+                cursor not-allowed
+        .time
+            margin 10px 0 15px
+            text-align center
+            input
+                width 30px
+                outline none
+                text-align center
+        li.selected
+            color #fff
+            background-color header-color
+            border-radius(20px)
+        .group-btn
+            margin 10px 0
+            text-align center
+        .btn
+            padding 8px 15px
+            margin 0 15px
+            border 1px solid header-color
+            outline none
+            font-size 16px
+            background #fff
+            border-radius(10px)
+            box-sizing border-box
+        .btn-confirm
+            color #fff
+            background header-color
+        .btn-cancle
+            color #000
+            background #fff
+        .toggle-enter-active,
+        .toggle-leave-active
+            transition opacity .5s, translateY .5s
+        .toggle-enter,
+        .toggle-leave-active
+            opacity 0
+</style>

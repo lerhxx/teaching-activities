@@ -1,11 +1,15 @@
 {
   "name": "lerhxx",
   "version": "1.0.0",
-  "description": "",
+  "description": "graduation project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node wpServer"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:lerhxx/teaching-activities.git"
   },
   "author": "",
   "license": "ISC",
@@ -24,10 +28,8 @@
     "vue-loader": "^9.5.1",
     "vue-style-loader": "^1.0.0",
     "vuex": "^2.0.0",
-    "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.16.2"
-  },
-  "dependencies": {
+    "webpack-dev-server": "^1.16.2",
+    "auto-calendar": "^1.0.14",
     "axios": "^0.15.3",
     "body-parser": "^1.16.0",
     "express": "^4.14.1",
@@ -37,6 +39,9 @@
     "url-loader": "^0.5.7",
     "vue": "^2.0.1",
     "vue-router": "^2.0.0",
-    "vuex": "^2.1.1"
+    "vuex": "^2.1.1",
+    "webpack": "^1.14.0"
+  },
+  "dependencies": {
   }
 }

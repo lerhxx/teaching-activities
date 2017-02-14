@@ -9,8 +9,8 @@
 					<input type='text' v-model='form.aim' placeholder='举办目的' />
 				</div>
 				<div class='group-con'>
-					<span class='must'>*</span>
-					<input type='text' v-model='form.time' placeholder='举办时间' />
+					<span class='must'>*</span><calendar inputwidth='190px'></calendar>
+					<!--<input type='text' v-model='form.time' placeholder='举办时间' />-->
 				</div>
 				<div class='group-con'>
 					<span class='must'>*</span><input type='text' v-model='form.place' placeholder='举办地点' />
@@ -57,7 +57,7 @@
 
 <script>
 	import axios from 'axios';
-	// import calendar from '../components/calendar.vue';
+	import calendar from 'auto-calendar';
 
 	let editor;
 	export default {
@@ -79,6 +79,9 @@
 					show: false,
 				}
 			}
+		},
+		components: {
+			calendar
 		},
 		mounted() {
 			// 富文本编辑器
@@ -201,7 +204,7 @@
 			text-align left
 	.group-left input,
 	.select,
-	.textarea-box
+	.textarea-box,
 		width left-form-width
 		height 36px
 		padding 10px 10px
@@ -214,6 +217,8 @@
 		box-sizing border-box
 		&::-webkit-input-placeholder
 			color rgba(0, 0, 0, .6)
+	.calendar
+		display inline-block
 	.select
 		relative()
 		display inline-block
