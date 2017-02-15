@@ -11392,18 +11392,17 @@
 	//
 	//
 	//
+	//
+	//
+	//
+	//
+	//
 
 	exports.default = {
 		data: function data() {
 			return {
 				SignIn: false,
-				items: [{
-					text: '发布',
-					url: 'edit'
-				}, {
-					text: '搜索',
-					url: 'search'
-				}]
+				items: []
 			};
 		},
 
@@ -11481,7 +11480,16 @@
 	    attrs: {
 	      "to": "signin"
 	    }
-	  }, [_vm._v("\n\t\t\t\t登录\n\t\t\t")])]), _vm._v(" "), _vm._v(" "), _vm._l((_vm.items), function(item) {
+	  }, [_vm._v("\n\t\t\t\t登录\n\t\t\t")])]), _vm._v(" "), _vm._v(" "), _c('li', [_c('router-link', {
+	    attrs: {
+	      "to": {
+	        name: 'edit',
+	        params: {
+	          id: _vm.userId
+	        }
+	      }
+	    }
+	  }, [_vm._v("\n\t\t\t\t发布\n\t\t\t")])]), _vm._v(" "), _vm._l((_vm.items), function(item) {
 	    return _c('li', [_c('router-link', {
 	      attrs: {
 	        "to": item.url
@@ -12123,9 +12131,23 @@
 	}, {
 		path: '/article', component: _signin2.default, name: 'article'
 	}, {
-		path: '/edit', component: _edit2.default, name: 'edit'
+		path: '/edit/:id', name: 'edit',
+		redirect: function redirect(to) {
+			var hash = to.hash,
+			    params = to.params,
+			    query = to.query;
+
+			if (params.id) {
+				return '/user/edit/' + params.id;
+				// return {name: params.id}
+			} else {
+				return { name: 'signin' };
+			}
+		}
 	}, {
-		path: '*', component: _2.default, name: 'notFound'
+		path: '/user/edit/:id', component: _edit2.default
+	}, {
+		path: '*', component: _index2.default, name: 'notFound'
 	}];
 
 	_vue2.default.use(_vueRouter2.default);
@@ -14571,15 +14593,33 @@
 		value: true
 	});
 
-	var _axios = __webpack_require__(5);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
 	var _vuex = __webpack_require__(4);
 
 	var _cookieUtil = __webpack_require__(39);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 	exports.default = {
 		data: function data() {
@@ -14611,31 +14651,8 @@
 					return _this.tip = msg;
 				});
 			}
-		},
-		computed: (0, _vuex.mapState)(['signInfo'])
-	}; //
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
+		}
+	};
 
 /***/ },
 /* 68 */
@@ -14808,7 +14825,7 @@
 	exports.i(__webpack_require__(72), "");
 
 	// module
-	exports.push([module.id, "\n.form-contain {\n  min-height: 100vh;\n  padding-top: 95px;\n  padding-bottom: 50px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  background: url(" + __webpack_require__(73) + ") 0 0 no-repeat;\n  background-size: cover;\n  text-align: center;\n}\n.edit-form {\n  display: inline-block;\n  padding: 0;\n  margin: auto;\n  text-align: left;\n}\n.edit-form label {\n  display: inline-block;\n  width: 90px;\n  text-align: left;\n  vertical-align: top;\n}\n.edit-form .btn-post {\n  width: 55%;\n}\n.edit-form .btn-edit {\n  margin-left: 25px;\n}\n.edit-form .simditor {\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n  overflow: hidden;\n}\n.edit-form .group-btn {\n  text-align: left;\n}\n.group-left input,\n.select,\n.textarea-box,\nwidth left-form-width {\n  height: 36px;\n  padding: 10px 10px;\n  border: none;\n  outline: none;\n  background: #fff;\n  -webkit-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -moz-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -ms-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -o-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  font-size: 14px;\n  -webkit-border-radius: 15px;\n  -moz-border-radius: 15px;\n  border-radius: 15px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.group-left input::-webkit-input-placeholder,\n.select::-webkit-input-placeholder,\n.textarea-box::-webkit-input-placeholder,\nwidth left-form-width::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.calendar {\n  display: inline-block;\n}\n.select {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  display: inline-block;\n  color: rgba(0,0,0,0.6);\n  text-align: left;\n  cursor: pointer;\n}\n.select .arrow {\n  position: absolute;\n  top: 15px;\n  right: 8px;\n  border: 8px solid transparent;\n  border-top-color: rgba(0,0,0,0.6);\n}\n.select span {\n  display: block;\n}\n.option-box {\n  position: absolute;\n  top: 36px;\n  left: 0;\n  width: 100%;\n  padding: 8px 0px;\n  padding-right: 6px;\n  -webkit-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -moz-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -ms-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -o-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -webkit-border-radius: 12px;\n  -moz-border-radius: 12px;\n  border-radius: 12px;\n  background: #fff;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  z-index: 2;\n}\n.option {\n  max-height: 110px;\n  overflow-y: auto;\n}\n.option::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.option::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.option p {\n  padding: 3px 15px;\n  cursor: pointer;\n}\n.option p:hover {\n  color: #7ab5d8;\n}\n.group-cover {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-cover input[type='file'] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 90%;\n  height: 120px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-cover img {\n  width: 90%;\n  height: 120px;\n  vertical-align: top;\n}\n.group-content textarea {\n  width: 100%;\n  height: 100%;\n  padding: 10px;\n  border: none;\n  outline: none;\n  font-size: 14px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  background: transparent;\n  resize: none;\n}\n.group-content textarea::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.group-content textarea::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.group-content textarea::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.group-content .textarea-box {\n  display: inline-block;\n  width: 95%;\n  height: 445px;\n  padding: 0;\n  text-align: left;\n  vertical-align: top;\n}\n.group-edit {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-edit input[type='file'] {\n  position: absolute;\n  top: 0;\n  left: 25px;\n  width: 74px;\n  height: 36px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-edit .btn-edit {\n  display: inline-block;\n  margin: 0;\n}\n.file-list {\n  display: inline-block;\n  width: 400px;\n  margin: 0 15px 5px;\n  font-size: 20px;\n  line-height: 36px;\n  vertical-align: top;\n}\n.group-left,\n.group-right {\n  display: inline-block;\n  width: 300px;\n  padding: 0 30px;\n  vertical-align: top;\n  text-align: right;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.group-right {\n  width: 700px;\n  padding: 0 15px;\n  text-align: left;\n}\n", ""]);
+	exports.push([module.id, "\n.form-contain {\n  min-height: 100vh;\n  padding-top: 95px;\n  padding-bottom: 50px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  background: url(" + __webpack_require__(73) + ") 0 0 no-repeat;\n  background-size: cover;\n  text-align: center;\n}\n.edit-form {\n  display: inline-block;\n  padding: 0;\n  margin: auto;\n  text-align: left;\n}\n.edit-form label {\n  display: inline-block;\n  width: 90px;\n  text-align: left;\n  vertical-align: top;\n}\n.edit-form .btn-post {\n  width: 55%;\n}\n.edit-form .btn-edit {\n  margin-left: 25px;\n}\n.edit-form .simditor {\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n  overflow: hidden;\n}\n.edit-form .group-btn {\n  text-align: left;\n}\n.group-left input,\n.select,\n.textarea-box,\n.calendar div.input {\n  width: 90%;\n  height: 36px;\n  padding: 10px 10px;\n  border: none;\n  outline: none;\n  background: #fff;\n  -webkit-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -moz-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -ms-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -o-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  font-size: 14px;\n  -webkit-border-radius: 15px;\n  -moz-border-radius: 15px;\n  border-radius: 15px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.group-left input::-webkit-input-placeholder,\n.select::-webkit-input-placeholder,\n.textarea-box::-webkit-input-placeholder,\n.calendar div.input::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.calendar {\n  display: inline-block;\n}\n.calendar span.input-clear {\n  top: 9px;\n  right: 8px;\n}\n.select {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  display: inline-block;\n  color: rgba(0,0,0,0.6);\n  text-align: left;\n  cursor: pointer;\n}\n.select .arrow {\n  position: absolute;\n  top: 15px;\n  right: 8px;\n  border: 8px solid transparent;\n  border-top-color: rgba(0,0,0,0.6);\n}\n.select span {\n  display: block;\n}\n.option-box {\n  position: absolute;\n  top: 36px;\n  left: 0;\n  width: 100%;\n  padding: 8px 0px;\n  padding-right: 6px;\n  -webkit-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -moz-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -ms-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -o-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -webkit-border-radius: 12px;\n  -moz-border-radius: 12px;\n  border-radius: 12px;\n  background: #fff;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  z-index: 2;\n}\n.option {\n  max-height: 110px;\n  overflow-y: auto;\n}\n.option::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.option::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.option p {\n  padding: 3px 15px;\n  cursor: pointer;\n}\n.option p:hover {\n  color: #7ab5d8;\n}\n.group-cover {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-cover input[type='file'] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 90%;\n  height: 120px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-cover img {\n  width: 90%;\n  height: 120px;\n  vertical-align: top;\n}\n.group-content textarea {\n  width: 100%;\n  height: 100%;\n  padding: 10px;\n  border: none;\n  outline: none;\n  font-size: 14px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  background: transparent;\n  resize: none;\n}\n.group-content textarea::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.group-content textarea::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.group-content textarea::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.group-content .textarea-box {\n  display: inline-block;\n  width: 95%;\n  height: 445px;\n  padding: 0;\n  text-align: left;\n  vertical-align: top;\n}\n.group-edit {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-edit input[type='file'] {\n  position: absolute;\n  top: 0;\n  left: 25px;\n  width: 74px;\n  height: 36px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-edit .btn-edit {\n  display: inline-block;\n  margin: 0;\n}\n.file-list {\n  display: inline-block;\n  width: 400px;\n  margin: 0 15px 5px;\n  font-size: 20px;\n  line-height: 36px;\n  vertical-align: top;\n}\n.group-left,\n.group-right {\n  display: inline-block;\n  width: 300px;\n  padding: 0 30px;\n  vertical-align: top;\n  text-align: right;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.group-right {\n  width: 700px;\n  padding: 0 15px;\n  text-align: left;\n}\n", ""]);
 
 	// exports
 
@@ -14943,7 +14960,6 @@
 				toolbar: ['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', 'ol', 'ul', 'blockquote', 'code', 'table', 'link', 'image', 'hr', 'indent', 'outdent', 'alignment'],
 				imageButton: ['upload', 'external']
 			});
-			console.log(this.form);
 		},
 
 		methods: {
@@ -14977,22 +14993,19 @@
 			getFile: function getFile(e) {
 				return e.target.files || e.dataTransfer.files;
 			},
+			getTime: function getTime(value) {
+				this.form.time = value;
+			},
 			onPost: function onPost() {
 				var form = this.form;
 				form.content = editor.sync();
+				_axios2.default.get('/edit').then(function (res) {
+					console.log(res);
+				});
 				if (!form.title || !form.time || !form.place || !form.selectOption || !form.content || !form.cover) {
 					alert('请填写所有必须项！');
 				}
-				// axios.post('/')
-				// console.log(form.title);
-				// console.log(form.aim);
-				// console.log(form.time);
-				// console.log(form.place);
-				// console.log(form.selectOption);
-				// console.log(form.explain);
-				// console.log(form.cover);
-				// console.log(form.content);
-				// console.log(form.files);
+				// axios.post('/edit')
 			},
 			test: function test() {
 				console.log(this.form.content);
@@ -15948,7 +15961,10 @@
 	    staticClass: "must"
 	  }, [_vm._v("*")]), _c('calendar', {
 	    attrs: {
-	      "inputwidth": "190px"
+	      "inputwidth": "216px"
+	    },
+	    on: {
+	      "getValue": _vm.getTime
 	    }
 	  }), _vm._v(" ")]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"

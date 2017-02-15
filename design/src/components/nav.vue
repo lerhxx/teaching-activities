@@ -12,6 +12,11 @@
 					登录
 				</router-link>
 			</li>
+			<li>
+				<router-link :to="{name: 'edit', params: {id: userId}}">
+					发布
+				</router-link>
+			</li>
 			<li  v-for='item in items'>
 				<router-link :to='item.url'>
 					{{item.text}}
@@ -29,13 +34,7 @@
 		data() {
 			return {
 				SignIn: false,
-				items: [{
-					text: '发布',
-					url: 'edit'
-				}, {
-					text: '搜索',
-					url: 'search'
-				}]
+				items: []
 			}
 		},
 		computed: mapState(['userId']),

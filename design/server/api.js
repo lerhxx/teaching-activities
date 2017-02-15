@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const db = require('./db');
 const fs = require('fs');
+const path = require('path');
+const resolve = file => path.resolve(__dirname, file);
 
 const fn = () => {};
 router.get('/getFooterLink', (req, res) => {

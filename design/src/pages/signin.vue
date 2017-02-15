@@ -22,7 +22,6 @@
 </template>
 
 <script>
-	import axios from 'axios';
 	import {mapState} from 'vuex';
 	import {set} from '../assets/cookieUtil';
 
@@ -51,8 +50,7 @@
 					this.$router.push({path: '/'});
 				}).catch(msg => this.tip = msg);
 			}
-		},
-		computed: mapState(['signInfo'])
+		}
 	}
 </script>
 

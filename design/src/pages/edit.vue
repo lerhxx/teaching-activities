@@ -9,7 +9,7 @@
 					<input type='text' v-model='form.aim' placeholder='举办目的' />
 				</div>
 				<div class='group-con'>
-					<span class='must'>*</span><calendar inputwidth='190px'></calendar>
+					<span class='must'>*</span><calendar inputwidth='216px' v-on:getValue='getTime'></calendar>
 					<!--<input type='text' v-model='form.time' placeholder='举办时间' />-->
 				</div>
 				<div class='group-con'>
@@ -112,7 +112,6 @@
 					'external'
 				]
 			})
-			console.log(this.form)
 			
 		},
 		methods: {
@@ -146,22 +145,20 @@
 			getFile(e) {
 				return e.target.files || e.dataTransfer.files;
 			},
+			getTime(value) {
+				this.form.time = value;
+			},
 			onPost() {
 				let form = this.form;
 				form.content = editor.sync();
+				axios.get('/edit')
+					.then(res => {
+						console.log(res)
+					})
 				if(!form.title || !form.time || !form.place || !form.selectOption || !form.content || !form.cover) {
 					alert('请填写所有必须项！');
 				}
-				// axios.post('/')
-				// console.log(form.title);
-				// console.log(form.aim);
-				// console.log(form.time);
-				// console.log(form.place);
-				// console.log(form.selectOption);
-				// console.log(form.explain);
-				// console.log(form.cover);
-				// console.log(form.content);
-				// console.log(form.files);
+				// axios.post('/edit')
 			},
 			test() {
 				console.log(this.form.content)
@@ -205,6 +202,7 @@
 	.group-left input,
 	.select,
 	.textarea-box,
+	.calendar div.input
 		width left-form-width
 		height 36px
 		padding 10px 10px
@@ -219,6 +217,9 @@
 			color rgba(0, 0, 0, .6)
 	.calendar
 		display inline-block
+		span.input-clear
+			top 9px
+			right 8px
 	.select
 		relative()
 		display inline-block

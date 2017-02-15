@@ -16,9 +16,20 @@ const routes = [{
 },{
 	path: '/article', component: SignIn, name: 'article'
 },{
-	path: '/edit', component: Edit, name: 'edit'
+	path: '/edit/:id', name: 'edit',
+	redirect: to => {
+		const {hash, params, query} = to;
+		if(params.id) {
+			return '/user/edit/' + params.id;
+			// return {name: params.id}
+		}else {
+			return {name: 'signin'}
+		}
+	}
 }, {
-	path: '*', component: NotFound, name: 'notFound'
+	path: '/user/edit/:id', component: Edit
+}, {
+	path: '*', component: Index, name: 'notFound'
 }];
 
 Vue.use(VueRouter);
