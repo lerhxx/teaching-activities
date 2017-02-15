@@ -23,9 +23,11 @@
 		</div>
 		<ul class='in-list'>
 			<li class='in-list-item' v-for='item in articles'>
-				<img :src='item.url' />
-				<h3><router-link :to='{name: "article"}'>{{item.title}}</router-link></h3>
-				<p class='abs'>{{item.abs}}</p>
+				<router-link :to="{name: 'article', params:{id: item.author, title: item.title}}">
+					<img :src='item.url' />
+					<h3><router-link :to='{name: "article"}'>{{item.title}}</router-link></h3>
+					<p class='abs'>{{item.abs}}</p>
+				</router-link>
 			</li>
 		</ul>
 	</div>

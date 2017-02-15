@@ -2,7 +2,7 @@
 	"articles": [{
 		"url": "/dist/imgs/1.jpg",
 		"author": "123",
-		"title": "xxx",
+		"title": "x",
 		"abs": "多年来，XMLHttpRequest一直是web开发者的亲密助手。无论是直接的，还是间接的， 当我们谈及Ajax技术的时候，通常意思就是基于XMLHttpRequest的Ajax，它是一种能够有效改进页面通信的技术。 Ajax的兴起是由于Google的Gmail所带动的，随后被广泛的应用到众多的Web产品（应用）中，可以认为， 开发者已经默认将XMLHttpRequest作为了当前Web应用与远程资源进行通信的基础。 而本文将要介绍的内容则是XMLHttpRequest的最新替代技术——Fetch API， 它是W3C的正式标准，本文将会介绍Fetch API的相关知识，以及探讨它所能使用的场景和能解决的问题。",
 		"time": "2017-02-15",
 		"address": "sdfwe",
@@ -13,7 +13,7 @@
 	}, {
 		"url": "/dist/imgs/2.jpg",
 		"author": "123",
-		"title": "xxx",
+		"title": "xx",
 		"abs": "Fetch API提供了一个fetch()方法，它被定义在BOM的window对象中，你可以用它来发起对远程资源的请求。 该方法返回的是一个Promise对象，让你能够对请求的返回结果进行检索。",
 		"time": "2017-02-15",
 		"address": "sdfwe",
@@ -35,7 +35,7 @@
 	}, {
 		"url": "/dist/imgs/4.jpg",
 		"author": "123",
-		"title": "xxx",
+		"title": "xxxx",
 		"abs": "来看看第一个任务：我们使用API来从Flicker中检索一些有关”企鹅“的照片，并将它们展示在也没中，代码如下。",
 		"time": "2017-02-15",
 		"address": "sdfwe",
@@ -46,7 +46,7 @@
 	}, {
 		"url": "/dist/imgs/5.jpg",
 		"author": "123",
-		"title": "xxx",
+		"title": "xxxxx",
 		"abs": "来看看第一个任务：我们使用API来从Flicker中检索一些有关”企鹅“的照片，并将它们展示在也没中，代码如下。",
 		"time": "2017-02-15",
 		"address": "sdfwe",

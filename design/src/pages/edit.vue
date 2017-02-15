@@ -166,13 +166,9 @@
 				}
 				axios.post(location.pathname, {
 					form: form
+				}).then(res => {
+					alert(res.data.msg)
 				})
-					.then(res => {
-						console.log(res.data)
-					})
-			},
-			test() {
-				console.log(this.form.content)
 			}
 		},
 		computed: mapState(['userId'])

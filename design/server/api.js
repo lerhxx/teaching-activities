@@ -59,15 +59,30 @@ router.post('/signin', (req, res) => {
 })
 
 router.post('/user/edit/:id', (req, res) => {
-	db.Article.create(req.body.form, (err) => {
-		db.Article.find(null, (err, doc) => {
-			if(err) {
-				console.log(err);
-			}
-			console.log(doc);
-		})
+	db.Article.find({title: req.body.form.title, author: req.body.form.author}, (err, doc) => {
+		if(doc.length) {
+			res.send({state: 1, msg: '标题已存在！'});
+		}else {
+			db.Article.create(req.body.form, (err) => {
+				if(err) {
+					res.send({state: 2, msg: '发布失败，请重试！'});
+				}
+				// db.Article.find(null, (err, doc) => {
+				// 	if(err) {
+				// 		console.log(err);
+				// 	}
+				// 	console.log(doc);
+				// })
+			})
+			res.send({state: 0, msg: '发布成功！'});
+		}
 	})
-	res.send(req.body.form)
+})
+
+router.get('article/:id/:title', (req, res) => {
+	console.log(req.params);
+	res.end()
+	// db.Article.find({author: req.params})
 })
 
 module.exports = router;

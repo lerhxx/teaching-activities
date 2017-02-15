@@ -11397,6 +11397,11 @@
 	//
 	//
 	//
+	//
+	//
+	//
+	//
+	//
 
 	exports.default = {
 		data: function data() {
@@ -11472,7 +11477,13 @@
 	    }
 	  }), _vm._v(" "), _c('ul', {
 	    staticClass: "navbar"
-	  }, [(_vm.userId) ? _c('li', [_c('a', {
+	  }, [_c('li', [_c('router-link', {
+	    attrs: {
+	      "to": {
+	        name: 'index'
+	      }
+	    }
+	  }, [_vm._v("\n\t\t\t\t首页\n\t\t\t")])]), _vm._v(" "), (_vm.userId) ? _c('li', [_c('a', {
 	    on: {
 	      "click": _vm.signout
 	    }
@@ -12120,6 +12131,10 @@
 
 	var _edit2 = _interopRequireDefault(_edit);
 
+	var _article = __webpack_require__(81);
+
+	var _article2 = _interopRequireDefault(_article);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var routes = [{
@@ -12129,7 +12144,20 @@
 	}, {
 		path: '/signin', component: _signin2.default, name: 'signin'
 	}, {
-		path: '/article', component: _signin2.default, name: 'article'
+		path: '/article',
+		redirect: function redirect(to) {
+			var hash = to.hash,
+			    params = to.params,
+			    query = to.query;
+
+			if (params.id && params.title) {
+				return '/article/' + params.id + '/' + params.title;
+			} else {
+				return '/noArticle';
+			}
+		}
+	}, {
+		path: '/article/:id/:title', component: _article2.default, name: 'article'
 	}, {
 		path: '/edit/:id', name: 'edit',
 		redirect: function redirect(to) {
@@ -14358,6 +14386,8 @@
 	//
 	//
 	//
+	//
+	//
 
 	exports.default = {
 		data: function data() {
@@ -14412,6 +14442,16 @@
 	  }, _vm._l((_vm.articles), function(item) {
 	    return _c('li', {
 	      staticClass: "in-list-item"
+	    }, [_c('router-link', {
+	      attrs: {
+	        "to": {
+	          name: 'article',
+	          params: {
+	            id: item.author,
+	            title: item.title
+	          }
+	        }
+	      }
 	    }, [_c('img', {
 	      attrs: {
 	        "src": item.url
@@ -14424,7 +14464,7 @@
 	      }
 	    }, [_vm._v(_vm._s(item.title))])]), _vm._v(" "), _c('p', {
 	      staticClass: "abs"
-	    }, [_vm._v(_vm._s(item.abs))])])
+	    }, [_vm._v(_vm._s(item.abs))])])])
 	  }))])
 	},staticRenderFns: []}
 	if (false) {
@@ -15016,11 +15056,8 @@
 				_axios2.default.post(location.pathname, {
 					form: form
 				}).then(function (res) {
-					console.log(res.data);
+					alert(res.data.msg);
 				});
-			},
-			test: function test() {
-				console.log(this.form.content);
 			}
 		},
 		computed: (0, _vuex.mapState)(['userId'])
@@ -16139,6 +16176,132 @@
 	  module.hot.accept()
 	  if (module.hot.data) {
 	     require("vue-hot-reload-api").rerender("data-v-352e9b22", module.exports)
+	  }
+	}
+
+/***/ },
+/* 81 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+	var __vue_styles__ = {}
+
+	/* script */
+	__vue_exports__ = __webpack_require__(82)
+
+	/* template */
+	var __vue_template__ = __webpack_require__(83)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.__file = "D:\\code\\teaching-activities\\design\\src\\pages\\article.vue"
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+
+	/* hot reload */
+	if (false) {(function () {
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  module.hot.accept()
+	  if (!module.hot.data) {
+	    hotAPI.createRecord("data-v-a62555e4", __vue_options__)
+	  } else {
+	    hotAPI.reload("data-v-a62555e4", __vue_options__)
+	  }
+	})()}
+	if (__vue_options__.functional) {console.error("[vue-loader] article.vue: functional components are not supported and should be defined in plain js files using render functions.")}
+
+	module.exports = __vue_exports__
+
+
+/***/ },
+/* 82 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
+	exports.default = {
+		created: function created() {
+			console.log(location.pathname);
+		}
+	};
+
+/***/ },
+/* 83 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _vm._m(0)
+	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _c('div', [_c('div', {
+	    staticClass: "group-con"
+	  }, [_vm._v("封面")]), _vm._v(" "), _c('h1', [_vm._v("活动标题")]), _vm._v(" "), _c('div', {
+	    staticClass: "group-con"
+	  }, [_c('label', [_vm._v("举办时间：")]), _vm._v(" "), _c('span', [_vm._v("2016-01-01")])]), _vm._v(" "), _c('div', {
+	    staticClass: "group-con"
+	  }, [_c('label', [_vm._v("举办地点：")]), _vm._v(" "), _c('span', [_vm._v("xxx")])]), _vm._v(" "), _c('div', {
+	    staticClass: "group-con"
+	  }, [_c('label', [_vm._v("举办单位：")]), _vm._v(" "), _c('span')]), _vm._v(" "), _c('div', {
+	    staticClass: "group-con"
+	  }, [_c('label', [_vm._v("举办目的：")]), _vm._v(" "), _c('span')]), _vm._v(" "), _c('div', {
+	    staticClass: "group-con"
+	  }, [_c('label', [_vm._v("举办内容：")]), _vm._v(" "), _c('p')]), _vm._v(" "), _c('div', {
+	    staticClass: "group-con"
+	  }, [_c('label', [_vm._v("附加说明：")]), _vm._v(" "), _c('p')]), _vm._v(" "), _c('div', {
+	    staticClass: "group-con"
+	  })])
+	}]}
+	if (false) {
+	  module.hot.accept()
+	  if (module.hot.data) {
+	     require("vue-hot-reload-api").rerender("data-v-a62555e4", module.exports)
 	  }
 	}
 

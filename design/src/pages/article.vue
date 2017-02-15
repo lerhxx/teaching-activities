@@ -27,17 +27,16 @@
 			<p></p>
 		</div>
 		<div class='group-con'>
-			<a v-link:>附件</a>
+			<!--<a v-link:>附件</a>-->
 		</div>
-		<comment><comment>
 	</div>
 </template>
 
 <script>
-	import Comment form '../components/comment.vue';
 	export default {
-		components: {
-			Comment
+		created() {
+			console.log(location.pathname);
+			
 		}
 	}
 </script>

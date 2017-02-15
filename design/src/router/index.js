@@ -4,6 +4,7 @@ import Index from '../pages/index.vue';
 import NotFound from '../pages/404.vue';
 import SignIn from '../pages/signin.vue';
 import Edit from '../pages/edit.vue';
+import Article from '../pages/article.vue';
 
 const routes = [{
 	path: '/', component: Index, name: 'index'
@@ -12,8 +13,18 @@ const routes = [{
 }, {
 	path: '/signin', component: SignIn, name: 'signin'
 }, {
-	path: '/article', component: SignIn, name: 'article'
-},{
+	path: '/article',
+	redirect: to => {
+		const {hash, params, query} = to;
+		if(params.id && params.title) {
+			return '/article/' + params.id + '/' + params.title;
+		}else {
+			return '/noArticle';
+		}
+	}
+}, {
+	path: '/article/:id/:title', component: Article, name: 'article'
+}, {
 	path: '/edit/:id', name: 'edit',
 	redirect: to => {
 		const {hash, params, query} = to;

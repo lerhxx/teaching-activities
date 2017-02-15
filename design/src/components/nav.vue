@@ -2,6 +2,11 @@
 	<div id='nav'>
 		<div id='logo'></div>
 		<ul class='navbar'>
+			<li>
+				<router-link :to="{name: 'index'}">
+					首页
+				</router-link>
+			</li>
 			<li  v-if='userId'>
 				<a @click='signout'>
 					登出
