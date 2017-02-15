@@ -11478,7 +11478,9 @@
 	    }
 	  }, [_vm._v("\n\t\t\t\t登出\n\t\t\t")])]) : _c('li', [_c('router-link', {
 	    attrs: {
-	      "to": "signin"
+	      "to": {
+	        name: 'signin'
+	      }
 	    }
 	  }, [_vm._v("\n\t\t\t\t登录\n\t\t\t")])]), _vm._v(" "), _vm._v(" "), _c('li', [_c('router-link', {
 	    attrs: {
@@ -12125,8 +12127,6 @@
 	}, {
 		path: '/index', component: _index2.default, name: 'index1'
 	}, {
-		path: '/404', component: _2.default, name: '404'
-	}, {
 		path: '/signin', component: _signin2.default, name: 'signin'
 	}, {
 		path: '/article', component: _signin2.default, name: 'article'
@@ -12139,7 +12139,6 @@
 
 			if (params.id) {
 				return '/user/edit/' + params.id;
-				// return {name: params.id}
 			} else {
 				return { name: 'signin' };
 			}
@@ -12147,7 +12146,7 @@
 	}, {
 		path: '/user/edit/:id', component: _edit2.default
 	}, {
-		path: '*', component: _index2.default, name: 'notFound'
+		path: '*', redirect: '/'
 	}];
 
 	_vue2.default.use(_vueRouter2.default);
@@ -14868,6 +14867,10 @@
 
 	var _autoCalendar2 = _interopRequireDefault(_autoCalendar);
 
+	var _vuex = __webpack_require__(4);
+
+	var _cookieUtil = __webpack_require__(39);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	//
@@ -14933,15 +14936,16 @@
 		data: function data() {
 			return {
 				form: {
+					url: '/dist/imgs/default.png',
 					title: '',
-					aim: '',
+					abs: '',
 					time: '',
-					place: '',
-					selectOption: '请选择举办单位',
+					address: '',
+					unit: '请选择举办单位',
 					explain: '',
-					cover: '../dist/imgs/default.png',
 					content: '',
-					files: ''
+					enclosure: '',
+					author: ''
 				},
 				optionShow: false,
 				calendar: {
@@ -14952,6 +14956,13 @@
 
 		components: {
 			calendar: _autoCalendar2.default
+		},
+		created: function created() {
+			var author = (0, _cookieUtil.get)('user');
+			if (!author) {
+				this.$router.push({ name: 'signin' });
+			}
+			this.form.author = author;
 		},
 		mounted: function mounted() {
 			// 富文本编辑器
@@ -14967,13 +14978,13 @@
 				this.optionShow = !this.optionShow;
 			},
 			onChangeFile: function onChangeFile(e) {
-				this.form.files = this.getFile(e);
-				if (!this.form.files.length) {
+				this.form.enclosure = this.getFile(e);
+				if (!this.form.enclosure.length) {
 					return;
 				}
 			},
 			onChangeOption: function onChangeOption(e) {
-				this.form.selectOption = e.target.innerHTML;
+				this.form.unit = e.target.innerHTML;
 				this.optionShow = !this.optionShow;
 			},
 			onChangeCover: function onChangeCover(e) {
@@ -14986,7 +14997,7 @@
 
 				reader = new FileReader();
 				reader.onload = function () {
-					self.form.cover = this.result;
+					self.form.url = this.result;
 				};
 				reader.readAsDataURL(file[0]);
 			},
@@ -14999,18 +15010,20 @@
 			onPost: function onPost() {
 				var form = this.form;
 				form.content = editor.sync();
-				_axios2.default.get('/edit').then(function (res) {
-					console.log(res);
-				});
-				if (!form.title || !form.time || !form.place || !form.selectOption || !form.content || !form.cover) {
-					alert('请填写所有必须项！');
+				if (!form.title || !form.time || !form.address || !form.unit || !form.content || !form.url) {
+					return alert('请填写所有必须项！');
 				}
-				// axios.post('/edit')
+				_axios2.default.post(location.pathname, {
+					form: form
+				}).then(function (res) {
+					console.log(res.data);
+				});
 			},
 			test: function test() {
 				console.log(this.form.content);
 			}
-		}
+		},
+		computed: (0, _vuex.mapState)(['userId'])
 	};
 
 /***/ },
@@ -15939,20 +15952,20 @@
 	    directives: [{
 	      name: "model",
 	      rawName: "v-model",
-	      value: (_vm.form.aim),
-	      expression: "form.aim"
+	      value: (_vm.form.abs),
+	      expression: "form.abs"
 	    }],
 	    attrs: {
 	      "type": "text",
 	      "placeholder": "举办目的"
 	    },
 	    domProps: {
-	      "value": _vm._s(_vm.form.aim)
+	      "value": _vm._s(_vm.form.abs)
 	    },
 	    on: {
 	      "input": function($event) {
 	        if ($event.target.composing) { return; }
-	        _vm.form.aim = $event.target.value
+	        _vm.form.abs = $event.target.value
 	      }
 	    }
 	  })]), _vm._v(" "), _c('div', {
@@ -15974,20 +15987,20 @@
 	    directives: [{
 	      name: "model",
 	      rawName: "v-model",
-	      value: (_vm.form.place),
-	      expression: "form.place"
+	      value: (_vm.form.address),
+	      expression: "form.address"
 	    }],
 	    attrs: {
 	      "type": "text",
 	      "placeholder": "举办地点"
 	    },
 	    domProps: {
-	      "value": _vm._s(_vm.form.place)
+	      "value": _vm._s(_vm.form.address)
 	    },
 	    on: {
 	      "input": function($event) {
 	        if ($event.target.composing) { return; }
-	        _vm.form.place = $event.target.value
+	        _vm.form.address = $event.target.value
 	      }
 	    }
 	  })]), _vm._v(" "), _c('div', {
@@ -16000,7 +16013,7 @@
 	    on: {
 	      "click": _vm.onToggleOption
 	    }
-	  }, [_vm._v(_vm._s(_vm.form.selectOption))]), _vm._v(" "), _c('span', {
+	  }, [_vm._v(_vm._s(_vm.form.unit))]), _vm._v(" "), _c('span', {
 	    staticClass: "arrow",
 	    on: {
 	      "click": _vm.onToggleOption
@@ -16047,7 +16060,7 @@
 	    staticClass: "must"
 	  }, [_vm._v("*")]), _c('img', {
 	    attrs: {
-	      "src": _vm.form.cover
+	      "src": _vm.form.url
 	    }
 	  }), _vm._v(" "), _c('input', {
 	    attrs: {
@@ -16105,7 +16118,7 @@
 	    }
 	  }, [_vm._v("附件")]), _vm._v(" "), _c('div', {
 	    staticClass: "file-list"
-	  }, _vm._l((_vm.form.files), function(file) {
+	  }, _vm._l((_vm.form.enclosure), function(file) {
 	    return _c('p', {
 	      staticClass: "file-content"
 	    }, [_vm._v(_vm._s(file.name))])

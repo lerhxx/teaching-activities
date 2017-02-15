@@ -7,15 +7,11 @@ const path = require('path');
 const resolve = file => path.resolve(__dirname, file);
 const app = module.exports = express();
 
-app.set('port', (process.env.port || 3000));
+app.set('port', (process.env.port || 3001));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
 app.use(api);
-
-app.get('/user/edit/:id', (req, res) => {
-
-})
 
 app.get('*', (req, res) => {
 	const fileName = 'index.html';

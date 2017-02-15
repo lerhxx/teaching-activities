@@ -6,18 +6,18 @@
 					<span class='must'>*</span><input type='text' v-model='form.title' placeholder='标题'/>
 				</div>
 				<div class='group-con'>
-					<input type='text' v-model='form.aim' placeholder='举办目的' />
+					<input type='text' v-model='form.abs' placeholder='举办目的' />
 				</div>
 				<div class='group-con'>
 					<span class='must'>*</span><calendar inputwidth='216px' v-on:getValue='getTime'></calendar>
 					<!--<input type='text' v-model='form.time' placeholder='举办时间' />-->
 				</div>
 				<div class='group-con'>
-					<span class='must'>*</span><input type='text' v-model='form.place' placeholder='举办地点' />
+					<span class='must'>*</span><input type='text' v-model='form.address' placeholder='举办地点' />
 				</div>
 				<div class='group-con'>
 					<span class='must'>*</span><div class='select'>
-						<span @click='onToggleOption'>{{form.selectOption}}</span>
+						<span @click='onToggleOption'>{{form.unit}}</span>
 						<span class='arrow' @click='onToggleOption'></span>
 						<div class='option-box' v-show='optionShow'>
 							<div class='option'>
@@ -30,7 +30,7 @@
 					<input type='text' v-model='form.explain' placeholder='附加说明' />
 				</div>
 				<div class='group-con group-cover'>
-					<span class='must'>*</span><img :src='form.cover'/>
+					<span class='must'>*</span><img :src='form.url'/>
 					<input type='file' @change='onChangeCover'/>
 				</div>
 			</div><div class='group-right'>
@@ -44,7 +44,7 @@
 					<input type='file' multiple @change='onChangeFile'/>
 					<span class='btn btn-edit' :value='enclosure' id='file' style='margin-left: 25px;'>附件</span>
 					<div class='file-list'>
-						<p class='file-content' v-for='file in form.files'>{{file.name}}</p>
+						<p class='file-content' v-for='file in form.enclosure'>{{file.name}}</p>
 					</div>
 				</div>
 				<div class='group-con group-btn'>
@@ -58,21 +58,24 @@
 <script>
 	import axios from 'axios';
 	import calendar from 'auto-calendar';
+	import {mapState} from 'vuex';
+	import {get} from '../assets/cookieUtil';
 
 	let editor;
 	export default {
 		data() {
 			return {
 				form: {
+					url: '/dist/imgs/default.png',
 					title: '',
-					aim: '',
+					abs: '',
 					time: '',
-					place: '',
-					selectOption: '请选择举办单位',
+					address: '',
+					unit: '请选择举办单位',
 					explain: '',
-					cover: '../dist/imgs/default.png',
 					content: '',
-					files: ''
+					enclosure: '',
+					author: ''
 				},
 				optionShow: false,
 				calendar: {
@@ -82,6 +85,13 @@
 		},
 		components: {
 			calendar
+		},
+		created() {
+			let author = get('user');
+			if(!author) {
+				this.$router.push({name: 'signin'})
+			}
+			this.form.author = author;
 		},
 		mounted() {
 			// 富文本编辑器
@@ -119,13 +129,13 @@
 				this.optionShow = !this.optionShow;
 			},
 			onChangeFile(e) {
-				this.form.files = this.getFile(e);
-				if(!this.form.files.length) {
+				this.form.enclosure = this.getFile(e);
+				if(!this.form.enclosure.length) {
 					return;
 				}
 			},
 			onChangeOption(e) {
-				this.form.selectOption = e.target.innerHTML;
+				this.form.unit = e.target.innerHTML;
 				this.optionShow = !this.optionShow;
 			},
 			onChangeCover(e) {
@@ -138,7 +148,7 @@
 
 				reader = new FileReader();
 				reader.onload = function() {
-					self.form.cover = this.result;
+					self.form.url = this.result;
 				}
 				reader.readAsDataURL(file[0]);
 			},
@@ -151,19 +161,21 @@
 			onPost() {
 				let form = this.form;
 				form.content = editor.sync();
-				axios.get('/edit')
-					.then(res => {
-						console.log(res)
-					})
-				if(!form.title || !form.time || !form.place || !form.selectOption || !form.content || !form.cover) {
-					alert('请填写所有必须项！');
+				if(!form.title || !form.time || !form.address || !form.unit || !form.content || !form.url) {
+					return alert('请填写所有必须项！');
 				}
-				// axios.post('/edit')
+				axios.post(location.pathname, {
+					form: form
+				})
+					.then(res => {
+						console.log(res.data)
+					})
 			},
 			test() {
 				console.log(this.form.content)
 			}
-		}
+		},
+		computed: mapState(['userId'])
 	}
 </script>
 

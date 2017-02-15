@@ -27,7 +27,7 @@ router.get('/getSearchLists', (req, res) => {
 })
 
 router.get('/getArticals', (req, res) => {
-	db.List.find(null, (err, lists) => {
+	db.Article.find(null, (err, lists) => {
 		if(err) {
 			console.log(err);
 		}else {
@@ -56,6 +56,18 @@ router.post('/signin', (req, res) => {
 				res.send({state: 3, msg: '未知错误!'});
 		}
 	})
+})
+
+router.post('/user/edit/:id', (req, res) => {
+	db.Article.create(req.body.form, (err) => {
+		db.Article.find(null, (err, doc) => {
+			if(err) {
+				console.log(err);
+			}
+			console.log(doc);
+		})
+	})
+	res.send(req.body.form)
 })
 
 module.exports = router;

@@ -10,10 +10,8 @@ const routes = [{
 }, {
 	path: '/index', component: Index, name: 'index1'
 }, {
-	path: '/404', component: NotFound, name: '404'
-},{
 	path: '/signin', component: SignIn, name: 'signin'
-},{
+}, {
 	path: '/article', component: SignIn, name: 'article'
 },{
 	path: '/edit/:id', name: 'edit',
@@ -21,7 +19,6 @@ const routes = [{
 		const {hash, params, query} = to;
 		if(params.id) {
 			return '/user/edit/' + params.id;
-			// return {name: params.id}
 		}else {
 			return {name: 'signin'}
 		}
@@ -29,7 +26,7 @@ const routes = [{
 }, {
 	path: '/user/edit/:id', component: Edit
 }, {
-	path: '*', component: Index, name: 'notFound'
+	path: '*', redirect: '/'
 }];
 
 Vue.use(VueRouter);

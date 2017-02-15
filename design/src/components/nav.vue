@@ -8,7 +8,7 @@
 				</a>
 			</li>
 			<li  v-else>
-				<router-link to='signin'>
+				<router-link :to="{name: 'signin'}">
 					登录
 				</router-link>
 			</li>
