@@ -73,9 +73,10 @@ const initialize = () => {
 			// 	console.log(doc)
 			// })
 		}else {
-			Models.User.find(null, (err, doc) => {
-				// doc.map(item => item.remove())
-				console.log(doc)
+			Models.Article.find(null, (err, doc) => {
+				if(doc._id === '58a5764cdb655b2a60424073')
+					doc.map(item => item.remove())
+				console.log(doc._id)
 			})
 			Models.initialized = true;
 		}

@@ -1,5 +1,5 @@
 <template>
-	<div class='article'>
+	<div class='article padding-top'>
 		<div v-if='article.content'>
 			<!--<div class='group-con'>封面</div>-->
 			<h1>{{article.title}}</h1>
@@ -47,10 +47,12 @@
 		},
 		created() {
 			let self = this;
+			console.log(this.$route.params)
 			this.$store.dispatch('GET_ARTICLE', this.$route.params)
 				.catch(err => {
 					alert(err);
-					self.$router.push('/');
+					// console.log(err)
+					self.$router.push({name: 'index1'});
 				});
 		},
 		computed: {
@@ -62,12 +64,11 @@
 </script>
 
 <style scoped lang='stylus'>
-	@import '../css/variable';
+	@import '../css/common';
 
 	.article
 		width 50% 
 		min-width 500px
-		padding-top nav-height
 		margin auto
 	h1
 		text-align center

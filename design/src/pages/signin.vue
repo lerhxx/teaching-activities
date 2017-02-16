@@ -23,7 +23,7 @@
 
 <script>
 	import {mapState} from 'vuex';
-	import {set} from '../assets/cookieUtil';
+	import {set, get} from '../assets/cookieUtil';
 
 	export default {
 		data() {
@@ -47,6 +47,7 @@
 				}).then(() => {
 					let date = new Date(Date.now() + 60000 * 30);
 					set('user', this.account, date, '/', window.location.hostname);
+					console.log(get('user'))
 					this.$router.push({path: '/'});
 				}).catch(msg => this.tip = msg);
 			}

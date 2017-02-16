@@ -5,6 +5,7 @@ import NotFound from '../pages/404.vue';
 import SignIn from '../pages/signin.vue';
 import Edit from '../pages/edit.vue';
 import Article from '../pages/article.vue';
+import Personal from '../pages/personal.vue';
 
 const routes = [{
 	path: '/', component: Index, name: 'index'
@@ -16,10 +17,12 @@ const routes = [{
 	path: '/article',
 	redirect: to => {
 		const {hash, params, query} = to;
+		console.log(params.id)
 		if(params.id) {
 			return '/article/' + params.id;
 		}else {
-			return '/noArticle';
+			alert('文章不存在！')
+			return '/';
 		}
 	}
 }, {
@@ -35,7 +38,9 @@ const routes = [{
 		}
 	}
 }, {
-	path: '/user/edit/:id', component: Edit
+	path: '/user/edit/:id', component: Edit, name: 'userEdit'
+}, {
+	path: '/personal/:id', component: Personal, name: 'personal'
 }, {
 	path: '*', redirect: '/'
 }];

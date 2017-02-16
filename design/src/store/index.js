@@ -13,7 +13,8 @@ const store = new Vuex.Store({
 		footerLinks: [],
 		searchLists: [],
 		articles: [],
-		article: {}
+		article: {},
+		selfArticles: []
 	},
 	getters: {},
 	mutations,

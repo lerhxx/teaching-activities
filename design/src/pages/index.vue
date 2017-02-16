@@ -34,8 +34,7 @@
 </template>
 
 <script>
-	import {mapState, mapMutations} from 'vuex';
-	import {get} from '../assets/cookieUtil';
+	import {mapState} from 'vuex';
 
 	export default {
 		data() {
@@ -44,20 +43,12 @@
 		    }
 		},
 		created() {
-			let user;
-
 			this.$store.dispatch('GET_SEARCH_LISTS')
 				.catch(err => alert(err));
 			this.$store.dispatch('GET_ARTICLES')
 				.catch(err => alert(err));
-			
-			user = get('user');
-			if(user && !this.userId) {
-				this.SET_USER({id: user});
-			}
 		},
-		computed: mapState(['searchLists', 'articles', 'userId']),
-		methods: mapMutations(['SET_USER'])
+		computed: mapState(['searchLists', 'articles'])
 	}
 </script>
 

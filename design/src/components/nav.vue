@@ -22,9 +22,9 @@
 					发布
 				</router-link>
 			</li>
-			<li  v-for='item in items'>
-				<router-link :to='item.url'>
-					{{item.text}}
+			<li v-show='userRank > 0'>
+				<router-link :to="{name: 'personal', params: {id: userId}}">
+					个人中心
 				</router-link>
 			</li>
 		</ul>
@@ -32,15 +32,26 @@
 </template>
 
 <script>
-	import {mapState, mapMutations} from 'vuex';
-	import {unset} from '../assets/cookieUtil';
+	import {mapState} from 'vuex';
+	import {unset, get} from '../assets/cookieUtil';
 
 	export default {
 		data() {
 			return {
-				SignIn: false,
-				items: []
 			}
+		},
+		created() {
+			let user;
+			
+			user = get('user');
+			if(user && !this.userId) {
+				this.$store.dispatch('GET_USER_INFO', {id: user});
+			}else {
+				// this.$router.push({name: 'signin'})
+			}
+		},
+		mounted() {
+			console.log('mount')
 		},
 		computed: mapState(['userId', 'userRank']),
 		methods: {

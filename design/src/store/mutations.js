@@ -14,5 +14,8 @@ export default {
     SET_USER(state, info) {
         state.userId = info.id;
         state.userRank = info.rank;
+    },
+    SET_SELF_ARTICLES(state, articles) {
+        state.selfArticles = articles;
     }
 }

@@ -74,8 +74,7 @@
 					unit: '请选择举办单位',
 					explain: '',
 					content: '',
-					enclosure: '',
-					author: ''
+					enclosure: ''
 				},
 				optionShow: false,
 				calendar: {
@@ -87,11 +86,6 @@
 			calendar
 		},
 		created() {
-			let author = get('user');
-			if(!author) {
-				this.$router.push({name: 'signin'})
-			}
-			this.form.author = author;
 		},
 		mounted() {
 			// 富文本编辑器
@@ -161,14 +155,22 @@
 			onPost() {
 				let form = this.form;
 				form.content = editor.sync();
+				form.author = this.userId;
 				if(!form.title || !form.time || !form.address || !form.unit || !form.content || !form.url) {
 					return alert('请填写所有必须项！');
 				}
-				axios.post(location.pathname, {
-					form: form
-				}).then(res => {
-					alert(res.data.msg)
-				})
+				this.$store.dispatch('POST_ARTICLE', {form: form})
+					.then(data => {
+						alert('发布成功');
+						if(data.id) {
+							this.$router.push({name: 'article', params: {id: data.id}});
+						}
+					}).catch(err => alert(err));
+				// axios.post(location.pathname, {
+				// 	form: form
+				// }).then(res => {
+				// 	alert(res.data.msg)
+				// })
 			}
 		},
 		computed: mapState(['userId'])
