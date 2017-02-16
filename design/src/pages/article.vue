@@ -2,8 +2,8 @@
 	<div class='article'>
 		<div v-if='article.content'>
 			<!--<div class='group-con'>封面</div>-->
-			<img :src='article.url' />
 			<h1>{{article.title}}</h1>
+			<img :src='article.url' alt='cover' class='cover'/>
 			<div class='group-con'>
 				<label>举办时间：</label>
 				<span>{{article.time}}</span>
@@ -18,15 +18,15 @@
 			</div>
 			<div class='group-con'>
 				<label>举办目的：</label>
-				<span>{{article.abs}}</span>
+				<p class='content'>{{article.abs}}</p>
 			</div>
 			<div class='group-con'>
 				<label>举办内容：</label>
-				<div>{{article.content}}</div>
+				<div class='content'>{{article.content}}</div>
 			</div>
 			<div class='group-con'>
 				<label>附加说明：</label>
-				<p>{{article.explain}}</p>
+				<p class='content'>{{article.explain}}</p>
 			</div>
 			<div class='group-con'>
 				<a>附件</a>
@@ -38,8 +38,13 @@
 
 <script>
 	import {mapState} from 'vuex';
+	// import toMarkDown from 'to-markdown';
 
 	export default {
+		data() {
+			return {
+			}
+		},
 		created() {
 			let self = this;
 			this.$store.dispatch('GET_ARTICLE', this.$route.params)
@@ -48,13 +53,27 @@
 					self.$router.push('/');
 				});
 		},
-		computed: mapState(['article'])
+		computed: {
+			article() {
+				return this.$store.state.article
+			},
+		}
 	}
 </script>
 
-<style lang='stylus'>
+<style scoped lang='stylus'>
 	@import '../css/variable';
-	
-	.article 
+
+	.article
+		width 50% 
+		min-width 500px
 		padding-top nav-height
+		margin auto
+	h1
+		text-align center
+		margin 30px 0 25px
+	.cover
+		width 100%
+	.content
+		margin-left 80px
 </style>

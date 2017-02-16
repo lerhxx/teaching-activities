@@ -8463,6 +8463,7 @@
 	var store = new _vuex2.default.Store({
 		state: {
 			userId: '',
+			userRank: 0,
 			footerLinks: [],
 			searchLists: [],
 			articles: [],
@@ -10973,6 +10974,7 @@
 	            if (res.data.state === 2 || res.data.state === 1) {
 	                return Promise.reject(res.data.msg);
 	            } else if (res.data.state === 0) {
+	                console.log(res.data.data[0].content);
 	                commit('SET_ARTICLE', res.data.data[0]);
 	            }
 	        });
@@ -10982,7 +10984,7 @@
 
 	        return _axios2.default.post('/signin', userInfo).then(function (res) {
 	            if (res.data.state === 0) {
-	                commit('SET_USER', res.data);
+	                commit('SET_USER', res.data.data);
 	            } else {
 	                return Promise.reject(res.data.msg);
 	            }
@@ -11014,6 +11016,7 @@
 	    },
 	    SET_USER: function SET_USER(state, info) {
 	        state.userId = info.id;
+	        state.userRank = info.rank;
 	    }
 	};
 
@@ -11438,7 +11441,7 @@
 			};
 		},
 
-		computed: (0, _vuex.mapState)(['userId']),
+		computed: (0, _vuex.mapState)(['userId', 'userRank']),
 		methods: {
 			signout: function signout() {
 				(0, _cookieUtil.unset)('user', '/', window.location.hostname);
@@ -11520,7 +11523,14 @@
 	        name: 'signin'
 	      }
 	    }
-	  }, [_vm._v("\n\t\t\t\t登录\n\t\t\t")])]), _vm._v(" "), _vm._v(" "), _c('li', [_c('router-link', {
+	  }, [_vm._v("\n\t\t\t\t登录\n\t\t\t")])]), _vm._v(" "), _vm._v(" "), _c('li', {
+	    directives: [{
+	      name: "show",
+	      rawName: "v-show",
+	      value: (_vm.userRank > 0),
+	      expression: "userRank > 0"
+	    }]
+	  }, [_c('router-link', {
 	    attrs: {
 	      "to": {
 	        name: 'edit',
@@ -16219,13 +16229,13 @@
 	var __vue_styles__ = {}
 
 	/* styles */
-	__webpack_require__(84)
+	__webpack_require__(82)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(82)
+	__vue_exports__ = __webpack_require__(84)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(83)
+	var __vue_template__ = __webpack_require__(85)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -16240,6 +16250,7 @@
 	__vue_options__.__file = "D:\\code\\teaching-activities\\design\\src\\pages\\article.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+	__vue_options__._scopeId = "data-v-a62555e4"
 
 	/* hot reload */
 	if (false) {(function () {
@@ -16262,6 +16273,46 @@
 /* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(83);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(37)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-a62555e4&scoped=true!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./article.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-a62555e4&scoped=true!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./article.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 83 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(36)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n.article[data-v-a62555e4] {\n  width: 50%;\n  min-width: 500px;\n  padding-top: 45px;\n  margin: auto;\n}\nh1[data-v-a62555e4] {\n  text-align: center;\n  margin: 30px 0 25px;\n}\n.cover[data-v-a62555e4] {\n  width: 100%;\n}\n.content[data-v-a62555e4] {\n  margin-left: 80px;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 84 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -16270,7 +16321,12 @@
 
 	var _vuex = __webpack_require__(4);
 
+	// import toMarkDown from 'to-markdown';
+
 	exports.default = {
+		data: function data() {
+			return {};
+		},
 		created: function created() {
 			var self = this;
 			this.$store.dispatch('GET_ARTICLE', this.$route.params).catch(function (err) {
@@ -16279,7 +16335,11 @@
 			});
 		},
 
-		computed: (0, _vuex.mapState)(['article'])
+		computed: {
+			article: function article() {
+				return this.$store.state.article;
+			}
+		}
 	}; //
 	//
 	//
@@ -16320,17 +16380,19 @@
 	//
 
 /***/ },
-/* 83 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
 	  return _c('div', {
 	    staticClass: "article"
-	  }, [(_vm.article.content) ? _c('div', [_c('img', {
+	  }, [(_vm.article.content) ? _c('div', [_c('h1', [_vm._v(_vm._s(_vm.article.title))]), _vm._v(" "), _c('img', {
+	    staticClass: "cover",
 	    attrs: {
-	      "src": _vm.article.url
+	      "src": _vm.article.url,
+	      "alt": "cover"
 	    }
-	  }), _vm._v(" "), _c('h1', [_vm._v(_vm._s(_vm.article.title))]), _vm._v(" "), _c('div', {
+	  }), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
 	  }, [_c('label', [_vm._v("举办时间：")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.article.time))])]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
@@ -16338,11 +16400,17 @@
 	    staticClass: "group-con"
 	  }, [_c('label', [_vm._v("举办单位：")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.article.unit))])]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
-	  }, [_c('label', [_vm._v("举办目的：")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.article.abs))])]), _vm._v(" "), _c('div', {
+	  }, [_c('label', [_vm._v("举办目的：")]), _vm._v(" "), _c('p', {
+	    staticClass: "content"
+	  }, [_vm._v(_vm._s(_vm.article.abs))])]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
-	  }, [_c('label', [_vm._v("举办内容：")]), _vm._v(" "), _c('div', [_vm._v(_vm._s(_vm.article.content))])]), _vm._v(" "), _c('div', {
+	  }, [_c('label', [_vm._v("举办内容：")]), _vm._v(" "), _c('div', {
+	    staticClass: "content"
+	  }, [_vm._v(_vm._s(_vm.article.content))])]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
-	  }, [_c('label', [_vm._v("附加说明：")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.article.explain))])]), _vm._v(" "), _c('div', {
+	  }, [_c('label', [_vm._v("附加说明：")]), _vm._v(" "), _c('p', {
+	    staticClass: "content"
+	  }, [_vm._v(_vm._s(_vm.article.explain))])]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
 	  }, [_c('a', [_vm._v("附件")]), _vm._v("\n\t\t\t" + _vm._s(_vm.article.enclosure) + "\n\t\t")])]) : _vm._e()])
 	},staticRenderFns: []}
@@ -16352,46 +16420,6 @@
 	     require("vue-hot-reload-api").rerender("data-v-a62555e4", module.exports)
 	  }
 	}
-
-/***/ },
-/* 84 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(85);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(37)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-a62555e4!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./article.vue", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-a62555e4!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./article.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 85 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(36)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "\n.article {\n  padding-top: 45px;\n}\n", ""]);
-
-	// exports
-
 
 /***/ }
 /******/ ]);

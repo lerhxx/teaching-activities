@@ -13,5 +13,6 @@ export default {
     },
     SET_USER(state, info) {
         state.userId = info.id;
+        state.userRank = info.rank;
     }
 }

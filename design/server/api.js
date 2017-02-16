@@ -47,7 +47,7 @@ router.post('/signin', (req, res) => {
 				res.send({state: 2, msg: '账号不存在!'});
 				break;
 			case user.pwd === pwd:
-				res.send({state: 0, msg: '登录成功!', id: id});
+				res.send({state: 0, data: {id: id, rank: user.rank}});
 				break;
 			case user.pwd !== pwd:
 				res.send({state: 3, msg: '密码错误!'});
@@ -67,12 +67,12 @@ router.post('/user/edit/:id', (req, res) => {
 				if(err) {
 					res.send({state: 2, msg: '发布失败，请重试！'});
 				}
-				// db.Article.find(null, (err, doc) => {
-				// 	if(err) {
-				// 		console.log(err);
-				// 	}
-				// 	console.log(doc);
-				// })
+				db.Article.find({title: req.body.form.title}, (err, doc) => {
+					if(err) {
+						console.log(err);
+					}
+					console.log(doc);
+				})
 			})
 			res.send({state: 0, msg: '发布成功！'});
 		}
@@ -81,14 +81,14 @@ router.post('/user/edit/:id', (req, res) => {
 
 router.get('/article/:id', (req, res) => {
 	db.Article.find({_id: req.params.id}, (err, doc) => {
-		// if(err) {
-		// 	res.send({state: 2, msg: '查询失败！'})
-		// }
-		// if(doc.length) {
-		// 	res.send({state: 0, data: doc});
-		// }else {
+		if(err) {
+			res.send({state: 2, msg: '查询失败！'})
+		}
+		if(doc.length) {
+			res.send({state: 0, data: doc});
+		}else {
 			res.send({state: 1, msg: '文章不存在！'});
-		// }
+		}
 	})
 })
 

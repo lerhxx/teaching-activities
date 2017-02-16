@@ -17,7 +17,7 @@
 					登录
 				</router-link>
 			</li>
-			<li>
+			<li v-show='userRank > 0'>
 				<router-link :to="{name: 'edit', params: {id: userId}}">
 					发布
 				</router-link>
@@ -42,7 +42,7 @@
 				items: []
 			}
 		},
-		computed: mapState(['userId']),
+		computed: mapState(['userId', 'userRank']),
 		methods: {
 			signout() {
 				unset('user', '/', window.location.hostname);

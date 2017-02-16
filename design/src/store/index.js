@@ -9,6 +9,7 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
 	state: {
 		userId: '',
+		userRank: 0,
 		footerLinks: [],
 		searchLists: [],
 		articles: [],

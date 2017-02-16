@@ -37,6 +37,7 @@ export default {
 					if(res.data.state === 2 || res.data.state === 1) {
 						return Promise.reject(res.data.msg);
 					}else if(res.data.state === 0) {
+                        console.log(res.data.data[0].content)
                         commit('SET_ARTICLE', res.data.data[0]);
                     }
 				})
@@ -45,7 +46,7 @@ export default {
         return axios.post('/signin', userInfo)
             .then(res => {
                 if(res.data.state === 0) {
-                    commit('SET_USER', res.data);
+                    commit('SET_USER', res.data.data);
                 }else {
                     return Promise.reject(res.data.msg);
                 }
