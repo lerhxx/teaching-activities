@@ -16,14 +16,14 @@ const routes = [{
 	path: '/article',
 	redirect: to => {
 		const {hash, params, query} = to;
-		if(params.id && params.title) {
-			return '/article/' + params.id + '/' + params.title;
+		if(params.id) {
+			return '/article/' + params.id;
 		}else {
 			return '/noArticle';
 		}
 	}
 }, {
-	path: '/article/:id/:title', component: Article, name: 'article'
+	path: '/article/:id', component: Article, name: 'article'
 }, {
 	path: '/edit/:id', name: 'edit',
 	redirect: to => {

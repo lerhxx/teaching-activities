@@ -8465,7 +8465,8 @@
 			userId: '',
 			footerLinks: [],
 			searchLists: [],
-			articles: []
+			articles: [],
+			article: {}
 		},
 		getters: {},
 		mutations: _mutations2.default,
@@ -10936,25 +10937,48 @@
 	        var commit = _ref.commit;
 
 	        return _axios2.default.get('/getFooterLink').then(function (res) {
-	            commit('SET_FOOTER_LINKS', res.data);
+	            if (res.data.state === 0) {
+	                commit('SET_FOOTER_LINKS', res.data.data);
+	            } else {
+	                return Promise.reject(res.data.msg);
+	            }
 	        });
 	    },
 	    GET_SEARCH_LISTS: function GET_SEARCH_LISTS(_ref2) {
 	        var commit = _ref2.commit;
 
 	        return _axios2.default.get('/getSearchLists').then(function (res) {
-	            commit('SET_SEARCH_LISTS', res.data);
+	            if (res.data.state === 0) {
+	                commit('SET_SEARCH_LISTS', res.data.data);
+	            } else {
+	                return Promise.reject(res.data.msg);
+	            }
 	        });
 	    },
-	    GET_ARTICALS: function GET_ARTICALS(_ref3) {
+	    GET_ARTICLES: function GET_ARTICLES(_ref3) {
 	        var commit = _ref3.commit;
 
 	        return _axios2.default.get('/getArticals').then(function (res) {
-	            commit('SET_ARTICAL', res.data);
+	            if (res.data.state === 0) {
+	                commit('SET_ARTICLES', res.data.data);
+	            } else {
+	                return Promise.reject(res.data.msg);
+	            }
 	        });
 	    },
-	    SIGNIN: function SIGNIN(_ref4, userInfo) {
+	    GET_ARTICLE: function GET_ARTICLE(_ref4, params) {
 	        var commit = _ref4.commit;
+
+	        return _axios2.default.get('/article/' + params.id).then(function (res) {
+	            if (res.data.state === 2 || res.data.state === 1) {
+	                return Promise.reject(res.data.msg);
+	            } else if (res.data.state === 0) {
+	                commit('SET_ARTICLE', res.data.data[0]);
+	            }
+	        });
+	    },
+	    SIGNIN: function SIGNIN(_ref5, userInfo) {
+	        var commit = _ref5.commit;
 
 	        return _axios2.default.post('/signin', userInfo).then(function (res) {
 	            if (res.data.state === 0) {
@@ -10982,8 +11006,11 @@
 	    SET_SEARCH_LISTS: function SET_SEARCH_LISTS(state, lists) {
 	        state.searchLists = lists;
 	    },
-	    SET_ARTICAL: function SET_ARTICAL(state, lists) {
+	    SET_ARTICLES: function SET_ARTICLES(state, lists) {
 	        state.articles = lists;
+	    },
+	    SET_ARTICLE: function SET_ARTICLE(state, article) {
+	        state.article = article;
 	    },
 	    SET_USER: function SET_USER(state, info) {
 	        state.userId = info.id;
@@ -11623,7 +11650,9 @@
 			};
 		},
 		created: function created() {
-			this.$store.dispatch('GET_FOOTER_LINKS');
+			this.$store.dispatch('GET_FOOTER_LINKS').catch(function (err) {
+				return alert(err);
+			});
 		},
 
 		computed: (0, _vuex.mapState)(['footerLinks'])
@@ -12150,14 +12179,14 @@
 			    params = to.params,
 			    query = to.query;
 
-			if (params.id && params.title) {
-				return '/article/' + params.id + '/' + params.title;
+			if (params.id) {
+				return '/article/' + params.id;
 			} else {
 				return '/noArticle';
 			}
 		}
 	}, {
-		path: '/article/:id/:title', component: _article2.default, name: 'article'
+		path: '/article/:id', component: _article2.default, name: 'article'
 	}, {
 		path: '/edit/:id', name: 'edit',
 		redirect: function redirect(to) {
@@ -14398,8 +14427,12 @@
 		created: function created() {
 			var user = void 0;
 
-			this.$store.dispatch('GET_SEARCH_LISTS');
-			this.$store.dispatch('GET_ARTICALS');
+			this.$store.dispatch('GET_SEARCH_LISTS').catch(function (err) {
+				return alert(err);
+			});
+			this.$store.dispatch('GET_ARTICLES').catch(function (err) {
+				return alert(err);
+			});
 
 			user = (0, _cookieUtil.get)('user');
 			if (user && !this.userId) {
@@ -14447,8 +14480,7 @@
 	        "to": {
 	          name: 'article',
 	          params: {
-	            id: item.author,
-	            title: item.title
+	            id: item._id
 	          }
 	        }
 	      }
@@ -16186,6 +16218,9 @@
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = {}
 
+	/* styles */
+	__webpack_require__(84)
+
 	/* script */
 	__vue_exports__ = __webpack_require__(82)
 
@@ -16225,85 +16260,138 @@
 
 /***/ },
 /* 82 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
+
+	var _vuex = __webpack_require__(4);
 
 	exports.default = {
 		created: function created() {
-			console.log(location.pathname);
-		}
-	};
+			var self = this;
+			this.$store.dispatch('GET_ARTICLE', this.$route.params).catch(function (err) {
+				alert(err);
+				self.$router.push('/');
+			});
+		},
+
+		computed: (0, _vuex.mapState)(['article'])
+	}; //
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 /***/ },
 /* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _vm._m(0)
-	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _c('div', [_c('div', {
+	  return _c('div', {
+	    staticClass: "article"
+	  }, [(_vm.article.content) ? _c('div', [_c('img', {
+	    attrs: {
+	      "src": _vm.article.url
+	    }
+	  }), _vm._v(" "), _c('h1', [_vm._v(_vm._s(_vm.article.title))]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
-	  }, [_vm._v("封面")]), _vm._v(" "), _c('h1', [_vm._v("活动标题")]), _vm._v(" "), _c('div', {
+	  }, [_c('label', [_vm._v("举办时间：")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.article.time))])]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
-	  }, [_c('label', [_vm._v("举办时间：")]), _vm._v(" "), _c('span', [_vm._v("2016-01-01")])]), _vm._v(" "), _c('div', {
+	  }, [_c('label', [_vm._v("举办地点：")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.article.address))])]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
-	  }, [_c('label', [_vm._v("举办地点：")]), _vm._v(" "), _c('span', [_vm._v("xxx")])]), _vm._v(" "), _c('div', {
+	  }, [_c('label', [_vm._v("举办单位：")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.article.unit))])]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
-	  }, [_c('label', [_vm._v("举办单位：")]), _vm._v(" "), _c('span')]), _vm._v(" "), _c('div', {
+	  }, [_c('label', [_vm._v("举办目的：")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.article.abs))])]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
-	  }, [_c('label', [_vm._v("举办目的：")]), _vm._v(" "), _c('span')]), _vm._v(" "), _c('div', {
+	  }, [_c('label', [_vm._v("举办内容：")]), _vm._v(" "), _c('div', [_vm._v(_vm._s(_vm.article.content))])]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
-	  }, [_c('label', [_vm._v("举办内容：")]), _vm._v(" "), _c('p')]), _vm._v(" "), _c('div', {
+	  }, [_c('label', [_vm._v("附加说明：")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.article.explain))])]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
-	  }, [_c('label', [_vm._v("附加说明：")]), _vm._v(" "), _c('p')]), _vm._v(" "), _c('div', {
-	    staticClass: "group-con"
-	  })])
-	}]}
+	  }, [_c('a', [_vm._v("附件")]), _vm._v("\n\t\t\t" + _vm._s(_vm.article.enclosure) + "\n\t\t")])]) : _vm._e()])
+	},staticRenderFns: []}
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
 	     require("vue-hot-reload-api").rerender("data-v-a62555e4", module.exports)
 	  }
 	}
+
+/***/ },
+/* 84 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(85);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(37)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-a62555e4!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./article.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-a62555e4!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./article.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 85 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(36)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n.article {\n  padding-top: 45px;\n}\n", ""]);
+
+	// exports
+
 
 /***/ }
 /******/ ]);

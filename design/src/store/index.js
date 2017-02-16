@@ -11,7 +11,8 @@ const store = new Vuex.Store({
 		userId: '',
 		footerLinks: [],
 		searchLists: [],
-		articles: []
+		articles: [],
+		article: {}
 	},
 	getters: {},
 	mutations,

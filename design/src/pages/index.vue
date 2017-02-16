@@ -23,7 +23,7 @@
 		</div>
 		<ul class='in-list'>
 			<li class='in-list-item' v-for='item in articles'>
-				<router-link :to="{name: 'article', params:{id: item.author, title: item.title}}">
+				<router-link :to="{name: 'article', params:{id: item._id}}">
 					<img :src='item.url' />
 					<h3><router-link :to='{name: "article"}'>{{item.title}}</router-link></h3>
 					<p class='abs'>{{item.abs}}</p>
@@ -46,8 +46,10 @@
 		created() {
 			let user;
 
-			this.$store.dispatch('GET_SEARCH_LISTS');
-			this.$store.dispatch('GET_ARTICALS');
+			this.$store.dispatch('GET_SEARCH_LISTS')
+				.catch(err => alert(err));
+			this.$store.dispatch('GET_ARTICLES')
+				.catch(err => alert(err));
 			
 			user = get('user');
 			if(user && !this.userId) {

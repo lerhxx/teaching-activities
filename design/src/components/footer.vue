@@ -18,7 +18,8 @@
 			}
 		},
 		created() {
-			this.$store.dispatch('GET_FOOTER_LINKS');
+			this.$store.dispatch('GET_FOOTER_LINKS')
+				.catch(err => alert(err));
 		},
 		computed: mapState(['footerLinks'])
 	}

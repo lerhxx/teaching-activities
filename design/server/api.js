@@ -9,9 +9,9 @@ const fn = () => {};
 router.get('/getFooterLink', (req, res) => {
 	db.FootLink.find(null, (err, links) => {
 		if(err) {
-			console.error(err);
+			res.send({state: 1, msg: '查询失败！'});
 		}else {
-			res.send(links);
+			res.send({state: 0, data: links});
 		}
 	})
 })
@@ -19,9 +19,9 @@ router.get('/getFooterLink', (req, res) => {
 router.get('/getSearchLists', (req, res) => {
 	db.Search.find(null, (err, lists) => {
 		if(err) {
-			console.log(err);
+			res.send({state: 1, msg: '查询失败！'});
 		}else {
-			res.send(lists[0]);
+			res.send({state: 0, data: lists[0]});
 		}
 	})
 })
@@ -29,9 +29,9 @@ router.get('/getSearchLists', (req, res) => {
 router.get('/getArticals', (req, res) => {
 	db.Article.find(null, (err, lists) => {
 		if(err) {
-			console.log(err);
+			res.send({state: 1, msg: '查询失败！'});
 		}else {
-			res.send(lists);
+			res.send({state: 0, data: lists});
 		}
 	})
 })
@@ -41,19 +41,19 @@ router.post('/signin', (req, res) => {
 	db.User.findOne({id}, (err, user) => {
 		switch(true) {
 			case !!err:
-				console.log(err);
+				res.send({state: 1, msg: '查询失败！'});
 				break;
 			case !user:
-				res.send({state: 1, msg: '账号不存在!'});
+				res.send({state: 2, msg: '账号不存在!'});
 				break;
 			case user.pwd === pwd:
 				res.send({state: 0, msg: '登录成功!', id: id});
 				break;
 			case user.pwd !== pwd:
-				res.send({state: 2, msg: '密码错误!'});
+				res.send({state: 3, msg: '密码错误!'});
 				break;
 			default:
-				res.send({state: 3, msg: '未知错误!'});
+				res.send({state: 4, msg: '未知错误!'});
 		}
 	})
 })
@@ -79,10 +79,17 @@ router.post('/user/edit/:id', (req, res) => {
 	})
 })
 
-router.get('article/:id/:title', (req, res) => {
-	console.log(req.params);
-	res.end()
-	// db.Article.find({author: req.params})
+router.get('/article/:id', (req, res) => {
+	db.Article.find({_id: req.params.id}, (err, doc) => {
+		// if(err) {
+		// 	res.send({state: 2, msg: '查询失败！'})
+		// }
+		// if(doc.length) {
+		// 	res.send({state: 0, data: doc});
+		// }else {
+			res.send({state: 1, msg: '文章不存在！'});
+		// }
+	})
 })
 
 module.exports = router;
