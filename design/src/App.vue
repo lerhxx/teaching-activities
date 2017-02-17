@@ -1,8 +1,10 @@
 <template>
 	<div id='app'>
 		<navbar></navbar>
+		<div class='wrapper'>
 		<router-view></router-view>
 		<v-footer></v-footer>
+		</div>
 	</div>
 </template>
 

@@ -46,12 +46,10 @@
 			user = get('user');
 			if(user && !this.userId) {
 				this.$store.dispatch('GET_USER_INFO', {id: user});
+				// this.$store.getters.getUserInfor();
 			}else {
 				// this.$router.push({name: 'signin'})
 			}
-		},
-		mounted() {
-			console.log('mount')
 		},
 		computed: mapState(['userId', 'userRank']),
 		methods: {

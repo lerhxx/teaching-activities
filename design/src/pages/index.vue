@@ -21,14 +21,17 @@
 				</option>
 			</select>
 		</div>
-		<ul class='in-list'>
-			<li class='in-list-item' v-for='item in articles'>
-				<router-link :to="{name: 'article', params:{id: item._id}}">
-					<img :src='item.url' />
-					<h3><router-link :to='{name: "article"}'>{{item.title}}</router-link></h3>
-					<p class='abs'>{{item.abs}}</p>
-				</router-link>
-			</li>
+		<ul class='list'>
+			<li class='list-item' v-for='item in articles'>
+                <img class='item-cover' :src='item.url' />
+                <h3>
+                    <router-link class='text-ellipsis' :to="{name: 'article', params: {id: item._id}}">
+                        {{item.title}}
+                    </router-link>
+                </h3>
+                <p class='time color-g'>{{item.time | timeFormat}}</p>
+                <p class='abstract'>{{item.content | filterContent}}</p>
+            </li>
 		</ul>
 	</div>
 </template>
@@ -39,7 +42,7 @@
 	export default {
 		data() {
 			 return {
-			 	img: '../../dist/imgs/cover-b.jpg',
+			 	img: '/dist/imgs/cover-b.jpg',
 		    }
 		},
 		created() {
@@ -48,24 +51,25 @@
 			this.$store.dispatch('GET_ARTICLES')
 				.catch(err => alert(err));
 		},
-		computed: mapState(['searchLists', 'articles'])
+		computed: mapState(['searchLists', 'articles']),
+		filters: {
+            timeFormat(value) {
+                let date = new Date(value);
+                return `${date.getFullYear()}年${date.getMonth() > 9 ? date.getgetMonthHours() : '0' + date.getMonth()}月${date.getDate() > 9 ? date.getDate() : '0' + date.getDate()}日 
+                        ${date.getHours() > 9 ? date.getHours() : '0' + date.getHours()}:
+                        ${date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes()}`;
+            },
+			filterContent(value) {
+				return value.length > 51 ? value.substr(0, 51) + '...' : value;
+			}
+        }
 	}
 </script>
 
-<style lang='stylus'>
+<style scoped lang='stylus'>
 	@import '../css/funs';
-	@import '../css/form';
-	@import '../css/variable';
-
-	#app
-		relative()
-		overflow hidden
 	.index
-		margin-bottom 60px
-	.in-list
-		max-width 1000px
-		padding-top 15px
-		margin auto
+		padding-bottom 60px
 	.in-cover 
 		width 100%
 		height 300px
@@ -78,17 +82,42 @@
 		select 
 			min-width 80px
 			margin 0 search-mar
-	.in-list-item 
+	.list
+		width 50%
+		min-width 600px
+		margin auto
+		.list-item 
+			padding 15px 10px
+			border-bottom 1px solid #ddd
+	h3
 		display inline-block
-		width: 33.33%
-		padding 0 15px
-		margin: 10px 0
-		box-sizing border-box
-		img 
-			width 100%
-			height 150px
-		.abs 
-			text-overflow ellipsis
-			white-space nowrap
-			overflow hidden
+		margin-bottom 10px
+		font-size 20px
+		a
+			display block
+			max-width 420px
+			&:after
+				display block
+				width 100%
+				margin auto
+				border-bottom 1px solid #000
+				content ''
+				transform scale3d(0, 1, 1)
+				transition transform .15s ease-in-out
+			&:hover:after
+				transform scale3d(1, 1, 1)
+	.item-cover
+		float right
+		width 120px
+		height 80px
+		margin 15px
+		margin-right 0
+	.time
+		margin-bottom 10px
+		font-size 14px
+	.abstract
+		height 3em
+		padding-right 25px
+		line-height 1.5em
+		overflow hidden
 </style>

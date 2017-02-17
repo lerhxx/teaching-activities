@@ -93,15 +93,16 @@ router.get('/article/:id', (req, res) => {
 })
 
 router.get('/user/:id/articles', (req, res) => {
+	console.log(req.params.id)
 	db.Article.find({author: req.params.id}, (err, doc) => {
 		if(err) {
 			res.send({state: 2, msg: '查询失败！'})
 		}
-		// if(doc.length) {
+		if(doc.length) {
 			res.send({state: 0, data: doc});
-		// }else {
-		// 	res.send({state: 1, msg: '文章不存在！'});
-		// }
+		}else {
+			res.send({state: 1, msg: '文章不存在！'});
+		}
 	})
 })
 

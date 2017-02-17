@@ -30,6 +30,7 @@
 	@import '../css/variable';
 
 	#footer
+		absolute(left 0 bottom 0)
 		width 100%
 		padding 10px 50px
 		font-size 12px

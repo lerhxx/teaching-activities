@@ -1,5 +1,5 @@
 <template>
-	<div class='sign-container'>
+	<div class='sign-container' style='background-image: url(/dist/imgs/bg.png)'>
 		<form class='sign-form'>
 			<caption><h1>登录</h1></caption>
 			<div class='group-con'>
@@ -55,7 +55,7 @@
 	}
 </script>
 
-<style scope lang='stylus'>
+<style scoped lang='stylus'>
 	@import '../css/funs';
 	@import '../css/variable';
 
@@ -63,7 +63,6 @@
 		width 100vw
 		height 100vh
 		padding-top nav-height
-		background url(../../dist/imgs/bg.png)
 		overflow hidden
 	.sign-form
 		width 300px

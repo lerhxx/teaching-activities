@@ -162,9 +162,7 @@
 				this.$store.dispatch('POST_ARTICLE', {form: form})
 					.then(data => {
 						alert('发布成功');
-						if(data.id) {
-							this.$router.push({name: 'article', params: {id: data.id}});
-						}
+						this.$router.push({name: 'article', params: {id: data.id}});
 					}).catch(err => alert(err));
 				// axios.post(location.pathname, {
 				// 	form: form
@@ -177,14 +175,14 @@
 	}
 </script>
 
-<style lang='stylus'>
+<style scoped lang='stylus'>
 	@import '../css/funs';
 	@import '../css/variable';
 	@import '../../dist/css/simditor.css';
 	.form-contain
 		min-height 100vh
 		padding-top nav-height + 50px
-		padding-bottom 50px
+		padding-bottom 20px
 		box-sizing border-box
 		background url(../../dist/imgs/16.jpg) 0 0 no-repeat
 		background-size cover
@@ -206,12 +204,13 @@
 			margin-left 25px
 		.simditor
 			border-radius 10px
-			overflow hidden
+			overflow-y auto
+			.simditor-body
+				height 362px
 		.group-btn
 			text-align left
 	.group-left input,
 	.select,
-	.textarea-box,
 	.calendar div.input
 		width left-form-width
 		height 36px
@@ -337,4 +336,6 @@
 		width 700px
 		padding 0 15px
 		text-align left
+	.simditor .simditor-body
+			height 362px
 </style>

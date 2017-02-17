@@ -64,8 +64,6 @@
 </script>
 
 <style scoped lang='stylus'>
-	@import '../css/common';
-
 	.article
 		width 50% 
 		min-width 500px

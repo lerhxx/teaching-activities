@@ -53,18 +53,19 @@ export default {
         }
       })
   },
-  GET_USER_INFO({commit}, userId) {
-    return axios.get('/user', {params: {id: userId.id}})
+  GET_USER_INFO({commit}, userInfo) {
+
+    return axios.get('/user', {params: {id: userInfo.id}})
       .then(res => {
         if(res.data.state === 0) {
           commit('SET_USER', res.data.data)
         }
       })
   },
-  GET_SELF_ARTICLES({commit, state}) {
-    console.log(state.userId)
-    return axios.get(`user/${state.userId}/articles`)
+  GET_SELF_ARTICLES({commit}, userInfo) {
+    return axios.get(`/user/${userInfo.id}/articles`)
       .then(res => {
+
         commit('SET_SELF_ARTICLES', res.data.data);
       })
   },

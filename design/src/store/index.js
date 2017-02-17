@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import axios from 'axios';
 import actions from './actions';
 import mutations from './mutations';
+import getters from './getter';
 
 Vue.use(Vuex);
 
@@ -16,7 +17,7 @@ const store = new Vuex.Store({
 		article: {},
 		selfArticles: []
 	},
-	getters: {},
+	getters,
 	mutations,
 	actions
 });

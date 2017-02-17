@@ -55,17 +55,17 @@ const Models = {
 }
 
 const initialize = () => {
-	Models.User.find(null, (err, doc) => {
+	Models.Article.find(null, (err, doc) => {
 		if(err) {
 			console.error(err);
 		}else if(!doc.length) {
 			console.log('Database opens for the first time...')
 			//TODO
 			// list.lists.map(item => new Models.List(item).save());
-			// article.articles.map(item => new Models.Article(item).save());
+			article.articles.map(item => new Models.Article(item).save());
 			// footerLink.map(item => new Models.FootLink(item).save());
 			// new Models.Search(search).save();
-			user.map(item => new Models.User(item).save());
+			// user.map(item => new Models.User(item).save());
 			// Models.User.find(null, (err, doc) => {
 			// 	if(err) {
 			// 		return console.error(err)
@@ -73,11 +73,10 @@ const initialize = () => {
 			// 	console.log(doc)
 			// })
 		}else {
-			Models.Article.find(null, (err, doc) => {
-				if(doc._id === '58a5764cdb655b2a60424073')
-					doc.map(item => item.remove())
-				console.log(doc._id)
-			})
+			// Models.Article.find({author: '2'}, (err, doc) => {
+			// 	doc.map(item => item.remove())
+			// 	console.log(doc)
+			// })
 			Models.initialized = true;
 		}
 	})
