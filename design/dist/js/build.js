@@ -8474,7 +8474,8 @@
 			searchLists: [],
 			articles: [],
 			article: {},
-			selfArticles: []
+			selfArticles: [],
+			idEdit: false
 		},
 		getters: _getter2.default,
 		mutations: _mutations2.default,
@@ -10940,6 +10941,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+
 	exports.default = {
 	  GET_FOOTER_LINKS: function GET_FOOTER_LINKS(_ref) {
 	    var commit = _ref.commit;
@@ -11012,12 +11015,22 @@
 	    var commit = _ref7.commit;
 
 	    return _axios2.default.get('/user/' + userInfo.id + '/articles').then(function (res) {
-
 	      commit('SET_SELF_ARTICLES', res.data.data);
 	    });
 	  },
-	  POST_ARTICLE: function POST_ARTICLE(_ref8, form) {
-	    var state = _ref8.state;
+	  GET_EDIT_ARTICLE: function GET_EDIT_ARTICLE(_ref8, articleInfo) {
+	    _objectDestructuringEmpty(_ref8);
+
+	    return _axios2.default.get('/article/' + articleInfo.id + '/edit').then(function (res) {
+	      if (res.data.state === 0) {
+	        return Promise.resolve(res.data.data);
+	      } else {
+	        return Promise.reject(res.data.msg);
+	      }
+	    });
+	  },
+	  POST_ARTICLE: function POST_ARTICLE(_ref9, form) {
+	    var state = _ref9.state;
 
 	    return _axios2.default.post('/user/edit/' + state.userId, form).then(function (res) {
 	      if (res.data.state === 0) {
@@ -11026,6 +11039,11 @@
 	        return Promise.reject(res.data.msg);
 	      }
 	    });
+	  },
+	  EDIT_ARTICLE: function EDIT_ARTICLE(_ref10, articleInfo) {
+	    var commit = _ref10.commit;
+
+	    return _axios2.default.get();
 	  }
 	};
 
@@ -11057,6 +11075,9 @@
 	    },
 	    SET_SELF_ARTICLES: function SET_SELF_ARTICLES(state, articles) {
 	        state.selfArticles = articles;
+	    },
+	    SET_EDITINT_MODE: function SET_EDITINT_MODE(state, mode) {
+	        state.isEdit = mode;
 	    }
 	};
 
@@ -12282,6 +12303,9 @@
 		}
 	}, {
 		path: '/article/:id', component: _article2.default, name: 'article'
+	}, {
+		path: '/article/:id/edit', component: _edit2.default, name: 'articleEdit'
+
 	}, {
 		path: '/edit/:id', name: 'edit',
 		redirect: function redirect(to) {
@@ -15049,7 +15073,24 @@
 		components: {
 			calendar: _autoCalendar2.default
 		},
-		created: function created() {},
+		created: function created() {
+			var _this = this;
+
+			if (this.isEdit) {
+				this.$store.dispatch('GET_EDIT_ARTICLE', { id: this.$route.params.id }).then(function (data) {
+					_this.form.url = data.url;
+					_this.form.title = data.title;
+					_this.form.abs = data.abs;
+					_this.form.time = data.time;
+					_this.form.address = data.address;
+					_this.form.unit = data.unit;
+					_this.form.explain = data.explain;
+					_this.form.content = data.content;
+					_this.form.enclosure = data.enclosure;
+					console.log(_this.form.content);
+				});
+			}
+		},
 		mounted: function mounted() {
 			// 富文本编辑器
 			editor = new Simditor({
@@ -15094,7 +15135,7 @@
 				this.form.time = value;
 			},
 			onPost: function onPost() {
-				var _this = this;
+				var _this2 = this;
 
 				var form = this.form;
 				form.content = editor.sync();
@@ -15104,7 +15145,7 @@
 				}
 				this.$store.dispatch('POST_ARTICLE', { form: form }).then(function (data) {
 					alert('发布成功');
-					_this.$router.push({ name: 'article', params: { id: data.id } });
+					_this2.$router.push({ name: 'article', params: { id: data.id } });
 				}).catch(function (err) {
 					return alert(err);
 				});
@@ -15115,7 +15156,7 @@
 				// })
 			}
 		},
-		computed: (0, _vuex.mapState)(['userId'])
+		computed: (0, _vuex.mapState)(['userId', 'isEdit'])
 	};
 
 /***/ },
@@ -16539,7 +16580,14 @@
 	        }
 	    },
 
-	    methods: (0, _vuex.mapActions)(['GET_SELF_ARTICLES']),
+	    methods: {
+	        edit: function edit(item) {
+	            this.$store.commit('SET_EDITINT_MODE', true);
+	            this.$router.push({ name: 'articleEdit', params: { id: item._id } });
+	            // this.$store.dispatch('EDIT_ARTICLE', {id: item._id})
+	            //     .catch(err => alert(err));
+	        }
+	    },
 	    computed: (0, _vuex.mapState)(['userId', 'selfArticles']),
 	    filters: {
 	        timeFormat: function timeFormat(value, len) {
@@ -16591,17 +16639,20 @@
 	      staticClass: "time color-g"
 	    }, [_vm._v(_vm._s(_vm._f("timeFormat")(item.time)))]), _vm._v(" "), _c('p', {
 	      staticClass: "abstract"
-	    }, [_vm._v(_vm._s(_vm._f("filterContent")(item.content)))]), _vm._v(" "), _vm._m(0, true)])
+	    }, [_vm._v(_vm._s(_vm._f("filterContent")(item.content)))]), _vm._v(" "), _c('div', {
+	      staticClass: "group-btn"
+	    }, [_c('span', {
+	      staticClass: "color-b",
+	      on: {
+	        "click": function($event) {
+	          _vm.edit(item)
+	        }
+	      }
+	    }, [_vm._v("编辑")]), _vm._v(" "), _c('span', {
+	      staticClass: "color-g"
+	    }, [_vm._v("删除")])])])
 	  }))])
-	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _c('div', {
-	    staticClass: "group-btn"
-	  }, [_c('span', {
-	    staticClass: "color-b"
-	  }, [_vm._v("编辑")]), _vm._v(" "), _c('span', {
-	    staticClass: "color-g"
-	  }, [_vm._v("删除")])])
-	}]}
+	},staticRenderFns: []}
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {

@@ -16,7 +16,7 @@
                 <p class='time color-g'>{{item.time | timeFormat}}</p>
                 <p class='abstract'>{{item.content | filterContent}}</p>
                 <div class='group-btn'>
-                    <span class='color-b'>编辑</span>
+                    <span class='color-b' @click='edit(item)'>编辑</span>
                     <span class='color-g'>删除</span>
                 </div>
 			</li>
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-    import {mapState, mapActions} from 'vuex';
+    import {mapState} from 'vuex';
     import {get} from '../assets/cookieUtil';
     export default {
         created() {
@@ -37,7 +37,14 @@
                 this.$router.push({name: 'index'});
             }
         },
-        methods: mapActions(['GET_SELF_ARTICLES']),
+        methods: {
+            edit(item) {
+                this.$store.commit('SET_EDITINT_MODE', true);
+                this.$router.push({name: 'articleEdit', params: {id: item._id}});
+                // this.$store.dispatch('EDIT_ARTICLE', {id: item._id})
+                //     .catch(err => alert(err));
+            }
+        },
         computed: mapState(['userId', 'selfArticles']),
         filters: {
             timeFormat(value, len) {

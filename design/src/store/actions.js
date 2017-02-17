@@ -65,8 +65,17 @@ export default {
   GET_SELF_ARTICLES({commit}, userInfo) {
     return axios.get(`/user/${userInfo.id}/articles`)
       .then(res => {
-
         commit('SET_SELF_ARTICLES', res.data.data);
+      })
+  },
+  GET_EDIT_ARTICLE({}, articleInfo) {
+    return axios.get(`/article/${articleInfo.id}/edit`)
+      .then(res => {
+        if(res.data.state === 0) {
+          return Promise.resolve(res.data.data);
+        }else {
+          return Promise.reject(res.data.msg);
+        }
       })
   },
   POST_ARTICLE({state}, form) {
@@ -77,5 +86,8 @@ export default {
           return Promise.reject(res.data.msg);
         }
       })
+  },
+  EDIT_ARTICLE({commit}, articleInfo) {
+    return axios.get()
   }
 }

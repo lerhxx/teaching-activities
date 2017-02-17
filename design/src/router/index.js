@@ -26,7 +26,10 @@ const routes = [{
 		}
 	}
 }, {
-	path: '/article/:id', component: Article, name: 'article'
+	path: '/article/:id', component: Article, name: 'article',
+}, {
+	path: '/article/:id/edit', component: Edit, name: 'articleEdit',
+	
 }, {
 	path: '/edit/:id', name: 'edit',
 	redirect: to => {

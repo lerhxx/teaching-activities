@@ -86,6 +86,21 @@
 			calendar
 		},
 		created() {
+			if(this.isEdit) {
+				this.$store.dispatch('GET_EDIT_ARTICLE', {id: this.$route.params.id})
+					.then(data => {
+						this.form.url = data.url;
+						this.form.title = data.title;
+						this.form.abs = data.abs;
+						this.form.time = data.time;
+						this.form.address = data.address;
+						this.form.unit = data.unit;
+						this.form.explain = data.explain;
+						this.form.content = data.content;
+						this.form.enclosure = data.enclosure;
+						console.log(this.form.content)
+					})
+			}
 		},
 		mounted() {
 			// 富文本编辑器
@@ -171,7 +186,7 @@
 				// })
 			}
 		},
-		computed: mapState(['userId'])
+		computed: mapState(['userId', 'isEdit'])
 	}
 </script>
 

@@ -15,7 +15,8 @@ const store = new Vuex.Store({
 		searchLists: [],
 		articles: [],
 		article: {},
-		selfArticles: []
+		selfArticles: [],
+		idEdit: false
 	},
 	getters,
 	mutations,

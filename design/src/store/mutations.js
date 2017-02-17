@@ -17,5 +17,8 @@ export default {
     },
     SET_SELF_ARTICLES(state, articles) {
         state.selfArticles = articles;
+    },
+    SET_EDITINT_MODE(state, mode) {
+        state.isEdit = mode;
     }
 }
