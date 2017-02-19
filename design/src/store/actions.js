@@ -12,7 +12,6 @@ export default {
       })
   },
   GET_SEARCH_LISTS({commit}) {
-    console.log('ok')
     return axios.get('/getSearchLists')
       .then(res => {
         if (res.data.state === 0) {

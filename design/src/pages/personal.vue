@@ -61,6 +61,8 @@
 </script>
 
 <style scoped lang='stylus'>
+    @import '../css/funs';
+
     .personal
         width 90%
         min-width 800px
@@ -75,6 +77,7 @@
         padding 15px 10px
         vertical-align top
         box-sizing border-box
+        box-shadow 1px 1px 3px 0px #ddd
         img
             display block
             width 100%
