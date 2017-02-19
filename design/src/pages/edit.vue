@@ -96,9 +96,9 @@
 						this.form.address = data.address;
 						this.form.unit = data.unit;
 						this.form.explain = data.explain;
-						this.form.content = data.content;
 						this.form.enclosure = data.enclosure;
-						console.log(this.form.content)
+						editor.setValue(data.content)
+						console.log(editor)
 					})
 			}
 		},

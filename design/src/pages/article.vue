@@ -47,12 +47,11 @@
 		},
 		created() {
 			let self = this;
-			console.log(this.$route.params)
 			this.$store.dispatch('GET_ARTICLE', this.$route.params)
 				.catch(err => {
 					alert(err);
 					// console.log(err)
-					self.$router.push({name: 'index1'});
+					self.$router.push({name: 'index'});
 				});
 		},
 		computed: {
