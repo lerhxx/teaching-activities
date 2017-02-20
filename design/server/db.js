@@ -6,6 +6,8 @@ const footerLink = require('../json/footer-link.json');
 const search = require('../json/search.json');
 const user = require('../json/user.json');
 
+mongoose.Promise = Promise;
+
 mongoose.connect('mongodb://localhost/design');
 
 
@@ -25,24 +27,25 @@ const articleSchema = new Schema({
 	unit: String,
 	explain: String,
 	content: String,
-	enclosure: String
+	enclosure: String,
+	faculty: String,
+	type: String,
 })
-
-// const listSchema = new Schema({
-// 	url: String,
-// 	title: String,
-// 	abs: String
-// })
 
 const footLinkSchema = new Schema({
 	url: String,
 	text: String
 })
 
+const selectTypeSchema = new Schema({
+	type: String,
+	index: Number
+})
+
 const searchSchema = new Schema({
-	faculties: [String],
-	types: [String],
-	timeliness: [String]
+	faculties: [selectTypeSchema],
+	types: [selectTypeSchema],
+	timeliness: [selectTypeSchema]
 })
 
 const Models = {
@@ -55,28 +58,28 @@ const Models = {
 }
 
 const initialize = () => {
-	Models.Search.find(null, (err, doc) => {
+	Models.Article.find(null, (err, doc) => {
 		if(err) {
 			console.error(err);
 		}else if(!doc.length) {
 			console.log('Database opens for the first time...')
 			//TODO
 			// list.lists.map(item => new Models.List(item).save());
-			// article.articles.map(item => new Models.Article(item).save());
+			article.articles.map(item => new Models.Article(item).save());
 			// footerLink.map(item => new Models.FootLink(item).save());
-			new Models.Search(search).save();
+			// new Models.Search(search).save();
 			// user.map(item => new Models.User(item).save());
-			// Models.User.find(null, (err, doc) => {
+			// Models.Search.find(null, (err, doc) => {
 			// 	if(err) {
 			// 		return console.error(err)
 			// 	}
 			// 	console.log(doc)
 			// })
 		}else {
-			Models.Search.find(null, (err, doc) => {
-				doc.map(item => item.remove())
-				console.log(doc)
-			})
+			// Models.Article.find(null, (err, doc) => {
+			// 	// doc.map(item => item.remove())
+			// 	console.log(doc)
+			// })
 			Models.initialized = true;
 		}
 	})

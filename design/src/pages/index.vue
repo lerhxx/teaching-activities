@@ -3,21 +3,21 @@
 		<img class='in-cover' :src='img' />
 		<div class='in-search'>
 			<label>系：</label>
-			<select class='faculty'>
-				<option v-for='faculty in searchLists.faculties'>
-					{{faculty}}
+			<select class='faculty' v-model='faculty' @change='onSelect'>
+				<option v-for='faculty in searchLists.faculties' v-bind:value='faculty.index'>
+					{{faculty.type}}
 				</option>
 			</select>
 			<label>类型：</label>
-			<select class='type'>
-				<option v-for='type in searchLists.types'>
-					{{type}}
+			<select class='type' v-model='type' @change='onSelect'>
+				<option v-for='type in searchLists.types' v-bind:value='type.index'>
+					{{type.type}}
 				</option>
 			</select>
 			<label>时效：</label>
-			<select class='time'>
-				<option v-for='time in searchLists.timeliness'>
-					{{time}}
+			<select class='time' v-model='time' @change='onChangeTime'>
+				<option v-for='time in searchLists.timeliness' v-bind:value='time.index'>
+					{{time.type}}
 				</option>
 			</select>
 		</div>
@@ -43,13 +43,24 @@
 		data() {
 			 return {
 			 	img: '/dist/imgs/cover-b.jpg',
+				 faculty: 0,
+				 type: 0,
+				 time: 0,
 		    }
 		},
 		created() {
 			this.$store.dispatch('GET_SEARCH_LISTS')
 				.catch(err => alert(err));
-			this.$store.dispatch('GET_ARTICLES')
-				.catch(err => alert(err));
+			this.onSelect();
+		},
+		methods: {
+			onChangeTime() {
+				//TODO
+				// this.$store.dispatch('GET_ARTICLES', {type: 'time', value: this.time});
+			},
+			onSelect() {
+				this.$store.dispatch('GET_ARTICLES', {faculty: this.faculty, type: this.type});
+			}
 		},
 		computed: mapState(['searchLists', 'articles']),
 		filters: {
@@ -82,6 +93,7 @@
 		select 
 			min-width 80px
 			margin 0 search-mar
+			outline none
 	.list
 		width 50%
 		min-width 600px

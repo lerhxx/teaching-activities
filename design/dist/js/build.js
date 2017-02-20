@@ -40,16 +40,14 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 0:
+/******/ ([
+/* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(1);
 
 
 /***/ },
-<<<<<<< HEAD:design/dist/js/build.js
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -64,37 +62,13 @@
 	var _store2 = _interopRequireDefault(_store);
 
 	var _nav = __webpack_require__(34);
-=======
-
-/***/ 1:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _vue = __webpack_require__(2);
-
-	var _vue2 = _interopRequireDefault(_vue);
-
-	var _store = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./store\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
-
-	var _store2 = _interopRequireDefault(_store);
-
-<<<<<<< HEAD:design/dist/js/build.js
-	var _footer = __webpack_require__(42);
-=======
-	var _nav = __webpack_require__(34);
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 
 	var _nav2 = _interopRequireDefault(_nav);
 
-<<<<<<< HEAD:design/dist/js/build.js
-=======
 	var _footer = __webpack_require__(42);
 
 	var _footer2 = _interopRequireDefault(_footer);
 
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 	var _App = __webpack_require__(47);
 
 	var _App2 = _interopRequireDefault(_App);
@@ -103,11 +77,7 @@
 
 	__webpack_require__(55);
 
-<<<<<<< HEAD:design/dist/js/build.js
 	var _router = __webpack_require__(57);
-=======
-	var _router = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./router\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 
 	var _router2 = _interopRequireDefault(_router);
 
@@ -126,12 +96,7 @@
 	}).$mount('#app');
 
 /***/ },
-<<<<<<< HEAD:design/dist/js/build.js
 /* 2 */
-=======
-
-/***/ 2:
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/*!
@@ -8464,7 +8429,6 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-<<<<<<< HEAD:design/dist/js/build.js
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -11002,10 +10966,10 @@
 	      }
 	    });
 	  },
-	  GET_ARTICLES: function GET_ARTICLES(_ref3) {
+	  GET_ARTICLES: function GET_ARTICLES(_ref3, obj) {
 	    var commit = _ref3.commit;
 
-	    return _axios2.default.get('/getArticals').then(function (res) {
+	    return _axios2.default.get('/getArticals', { params: obj }).then(function (res) {
 	      if (res.data.state === 0) {
 	        commit('SET_ARTICLES', res.data.data);
 	      } else {
@@ -11076,9 +11040,9 @@
 	    });
 	  },
 	  EDIT_ARTICLE: function EDIT_ARTICLE(_ref10, articleInfo) {
-	    var commit = _ref10.commit;
+	    // return axios.get()
 
-	    return _axios2.default.get();
+	    var commit = _ref10.commit;
 	  }
 	};
 
@@ -14560,7 +14524,7 @@
 
 
 	// module
-	exports.push([module.id, "\n.index[data-v-9b46fa2c] {\n  padding-bottom: 60px;\n}\n.in-cover[data-v-9b46fa2c] {\n  width: 100%;\n  height: 300px;\n}\n.in-search[data-v-9b46fa2c] {\n  padding: 15px;\n  text-align: center;\n  border-bottom: 1px solid #bbb;\n}\n.in-search label[data-v-9b46fa2c] {\n  margin-right: search-mar;\n}\n.in-search select[data-v-9b46fa2c] {\n  min-width: 80px;\n  margin: 0 search-mar;\n}\n.list[data-v-9b46fa2c] {\n  width: 50%;\n  min-width: 600px;\n  margin: auto;\n}\n.list .list-item[data-v-9b46fa2c] {\n  padding: 15px 10px;\n  border-bottom: 1px solid #ddd;\n}\nh3[data-v-9b46fa2c] {\n  display: inline-block;\n  margin-bottom: 10px;\n  font-size: 20px;\n}\nh3 a[data-v-9b46fa2c] {\n  display: block;\n  max-width: 420px;\n}\nh3 a[data-v-9b46fa2c]:after {\n  display: block;\n  width: 100%;\n  margin: auto;\n  border-bottom: 1px solid #000;\n  content: '';\n  -webkit-transform: scale3d(0, 1, 1);\n  -moz-transform: scale3d(0, 1, 1);\n  -ms-transform: scale3d(0, 1, 1);\n  -o-transform: scale3d(0, 1, 1);\n  transform: scale3d(0, 1, 1);\n  transition: transform 0.15s ease-in-out;\n}\nh3 a[data-v-9b46fa2c]:hover:after {\n  -webkit-transform: scale3d(1, 1, 1);\n  -moz-transform: scale3d(1, 1, 1);\n  -ms-transform: scale3d(1, 1, 1);\n  -o-transform: scale3d(1, 1, 1);\n  transform: scale3d(1, 1, 1);\n}\n.item-cover[data-v-9b46fa2c] {\n  float: right;\n  width: 120px;\n  height: 80px;\n  margin: 15px;\n  margin-right: 0;\n}\n.time[data-v-9b46fa2c] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.abstract[data-v-9b46fa2c] {\n  height: 3em;\n  padding-right: 25px;\n  line-height: 1.5em;\n  overflow: hidden;\n}\n", ""]);
+	exports.push([module.id, "\n.index[data-v-9b46fa2c] {\n  padding-bottom: 60px;\n}\n.in-cover[data-v-9b46fa2c] {\n  width: 100%;\n  height: 300px;\n}\n.in-search[data-v-9b46fa2c] {\n  padding: 15px;\n  text-align: center;\n  border-bottom: 1px solid #bbb;\n}\n.in-search label[data-v-9b46fa2c] {\n  margin-right: search-mar;\n}\n.in-search select[data-v-9b46fa2c] {\n  min-width: 80px;\n  margin: 0 search-mar;\n  outline: none;\n}\n.list[data-v-9b46fa2c] {\n  width: 50%;\n  min-width: 600px;\n  margin: auto;\n}\n.list .list-item[data-v-9b46fa2c] {\n  padding: 15px 10px;\n  border-bottom: 1px solid #ddd;\n}\nh3[data-v-9b46fa2c] {\n  display: inline-block;\n  margin-bottom: 10px;\n  font-size: 20px;\n}\nh3 a[data-v-9b46fa2c] {\n  display: block;\n  max-width: 420px;\n}\nh3 a[data-v-9b46fa2c]:after {\n  display: block;\n  width: 100%;\n  margin: auto;\n  border-bottom: 1px solid #000;\n  content: '';\n  -webkit-transform: scale3d(0, 1, 1);\n  -moz-transform: scale3d(0, 1, 1);\n  -ms-transform: scale3d(0, 1, 1);\n  -o-transform: scale3d(0, 1, 1);\n  transform: scale3d(0, 1, 1);\n  transition: transform 0.15s ease-in-out;\n}\nh3 a[data-v-9b46fa2c]:hover:after {\n  -webkit-transform: scale3d(1, 1, 1);\n  -moz-transform: scale3d(1, 1, 1);\n  -ms-transform: scale3d(1, 1, 1);\n  -o-transform: scale3d(1, 1, 1);\n  transform: scale3d(1, 1, 1);\n}\n.item-cover[data-v-9b46fa2c] {\n  float: right;\n  width: 120px;\n  height: 80px;\n  margin: 15px;\n  margin-right: 0;\n}\n.time[data-v-9b46fa2c] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.abstract[data-v-9b46fa2c] {\n  height: 3em;\n  padding-right: 25px;\n  line-height: 1.5em;\n  overflow: hidden;\n}\n", ""]);
 
 	// exports
 
@@ -14580,18 +14544,28 @@
 	exports.default = {
 		data: function data() {
 			return {
-				img: '/dist/imgs/cover-b.jpg'
+				img: '/dist/imgs/cover-b.jpg',
+				faculty: 0,
+				type: 0,
+				time: 0
 			};
 		},
 		created: function created() {
 			this.$store.dispatch('GET_SEARCH_LISTS').catch(function (err) {
 				return alert(err);
 			});
-			this.$store.dispatch('GET_ARTICLES').catch(function (err) {
-				return alert(err);
-			});
+			this.onSelect();
 		},
 
+		methods: {
+			onChangeTime: function onChangeTime() {
+				//TODO
+				// this.$store.dispatch('GET_ARTICLES', {type: 'time', value: this.time});
+			},
+			onSelect: function onSelect() {
+				this.$store.dispatch('GET_ARTICLES', { faculty: this.faculty, type: this.type });
+			}
+		},
 		computed: (0, _vuex.mapState)(['searchLists', 'articles']),
 		filters: {
 			timeFormat: function timeFormat(value) {
@@ -14656,17 +14630,77 @@
 	  }), _vm._v(" "), _c('div', {
 	    staticClass: "in-search"
 	  }, [_c('label', [_vm._v("系：")]), _vm._v(" "), _c('select', {
-	    staticClass: "faculty"
+	    directives: [{
+	      name: "model",
+	      rawName: "v-model",
+	      value: (_vm.faculty),
+	      expression: "faculty"
+	    }],
+	    staticClass: "faculty",
+	    on: {
+	      "change": [function($event) {
+	        _vm.faculty = Array.prototype.filter.call($event.target.options, function(o) {
+	          return o.selected
+	        }).map(function(o) {
+	          var val = "_value" in o ? o._value : o.value;
+	          return val
+	        })[0]
+	      }, _vm.onSelect]
+	    }
 	  }, _vm._l((_vm.searchLists.faculties), function(faculty) {
-	    return _c('option', [_vm._v("\n\t\t\t\t\t" + _vm._s(faculty) + "\n\t\t\t\t")])
+	    return _c('option', {
+	      domProps: {
+	        "value": faculty.index
+	      }
+	    }, [_vm._v("\n\t\t\t\t\t" + _vm._s(faculty.type) + "\n\t\t\t\t")])
 	  })), _vm._v(" "), _c('label', [_vm._v("类型：")]), _vm._v(" "), _c('select', {
-	    staticClass: "type"
+	    directives: [{
+	      name: "model",
+	      rawName: "v-model",
+	      value: (_vm.type),
+	      expression: "type"
+	    }],
+	    staticClass: "type",
+	    on: {
+	      "change": [function($event) {
+	        _vm.type = Array.prototype.filter.call($event.target.options, function(o) {
+	          return o.selected
+	        }).map(function(o) {
+	          var val = "_value" in o ? o._value : o.value;
+	          return val
+	        })[0]
+	      }, _vm.onSelect]
+	    }
 	  }, _vm._l((_vm.searchLists.types), function(type) {
-	    return _c('option', [_vm._v("\n\t\t\t\t\t" + _vm._s(type) + "\n\t\t\t\t")])
+	    return _c('option', {
+	      domProps: {
+	        "value": type.index
+	      }
+	    }, [_vm._v("\n\t\t\t\t\t" + _vm._s(type.type) + "\n\t\t\t\t")])
 	  })), _vm._v(" "), _c('label', [_vm._v("时效：")]), _vm._v(" "), _c('select', {
-	    staticClass: "time"
+	    directives: [{
+	      name: "model",
+	      rawName: "v-model",
+	      value: (_vm.time),
+	      expression: "time"
+	    }],
+	    staticClass: "time",
+	    on: {
+	      "change": [function($event) {
+	        _vm.time = Array.prototype.filter.call($event.target.options, function(o) {
+	          return o.selected
+	        }).map(function(o) {
+	          var val = "_value" in o ? o._value : o.value;
+	          return val
+	        })[0]
+	      }, _vm.onChangeTime]
+	    }
 	  }, _vm._l((_vm.searchLists.timeliness), function(time) {
-	    return _c('option', [_vm._v("\n\t\t\t\t\t" + _vm._s(time) + "\n\t\t\t\t")])
+	    return _c('option', {
+	      domProps: {
+	        "value": time.index
+	      }
+	    }, [_vm._v("\n\t\t\t\t\t" + _vm._s(time.type) + "\n\t\t\t\t")])
 	  }))]), _vm._v(" "), _c('ul', {
 	    staticClass: "list"
 	  }, _vm._l((_vm.articles), function(item) {
@@ -14840,212 +14874,6 @@
 
 	// module
 	exports.push([module.id, "\n.sign-container[data-v-3c4430ba] {\n  width: 100vw;\n  height: 100vh;\n  padding-top: 45px;\n  overflow: hidden;\n}\n.sign-form[data-v-3c4430ba] {\n  width: 300px;\n  margin-top: 60px;\n  border: 1px solid rgba(161,161,161,0.5);\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n  background: rgba(255,255,255,0.5);\n}\n.sign-form input[type='text'][data-v-3c4430ba],\n.sign-form input[type='password'][data-v-3c4430ba] {\n  width: 95%;\n  padding: 5px;\n  margin: auto;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  font-size: 16px;\n  line-height: 20px;\n  text-align: center;\n  background: #fff;\n}\n.sign-form input[type='text'][data-v-3c4430ba]:focus,\n.sign-form input[type='password'][data-v-3c4430ba]:focus {\n  border-color: rgba(71,182,224,0.5);\n}\ncaption[data-v-3c4430ba] {\n  display: block;\n  margin-top: 10px;\n  margin-bottom: 30px;\n  color: #555;\n  font-size: 20px;\n}\n@media screen and (-webkt-min-device-pixel-ratio: 1.5) {\n.group-conafter[data-v-3c4430ba] {\n    width: 150%;\n    height: 150%;\n    -webkit-transform: scale3d(0.3, 0.3, 0.3);\n    -moz-transform: scale3d(0.3, 0.3, 0.3);\n    -ms-transform: scale3d(0.3, 0.3, 0.3);\n    -o-transform: scale3d(0.3, 0.3, 0.3);\n    transform: scale3d(0.3, 0.3, 0.3);\n}\n}\n", ""]);
-=======
-
-/***/ 34:
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_exports__, __vue_options__
-	var __vue_styles__ = {}
-
-	/* styles */
-	__webpack_require__(93)
-
-	/* script */
-	__vue_exports__ = __webpack_require__(39)
-
-	/* template */
-	var __vue_template__ = __webpack_require__(41)
-	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-	if (
-	  typeof __vue_exports__.default === "object" ||
-	  typeof __vue_exports__.default === "function"
-	) {
-	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-	__vue_options__ = __vue_exports__ = __vue_exports__.default
-	}
-	if (typeof __vue_options__ === "function") {
-	  __vue_options__ = __vue_options__.options
-	}
-	__vue_options__.__file = "D:\\code\\teaching-activities\\design\\src\\components\\nav.vue"
-	__vue_options__.render = __vue_template__.render
-	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-
-	/* hot reload */
-	if (false) {(function () {
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  module.hot.accept()
-	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-30842c46", __vue_options__)
-	  } else {
-	    hotAPI.reload("data-v-30842c46", __vue_options__)
-	  }
-	})()}
-	if (__vue_options__.functional) {console.error("[vue-loader] nav.vue: functional components are not supported and should be defined in plain js files using render functions.")}
-
-	module.exports = __vue_exports__
-
-
-/***/ },
-
-/***/ 38:
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	var stylesInDom = {},
-		memoize = function(fn) {
-			var memo;
-			return function () {
-				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-				return memo;
-			};
-		},
-		isOldIE = memoize(function() {
-			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
-		}),
-		getHeadElement = memoize(function () {
-			return document.head || document.getElementsByTagName("head")[0];
-		}),
-		singletonElement = null,
-		singletonCounter = 0,
-		styleElementsInsertedAtTop = [];
-
-	module.exports = function(list, options) {
-		if(false) {
-			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-		}
-
-		options = options || {};
-		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-		// tags it will allow on a page
-		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
-
-		// By default, add <style> tags to the bottom of <head>.
-		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
-
-		var styles = listToStyles(list);
-		addStylesToDom(styles, options);
-
-		return function update(newList) {
-			var mayRemove = [];
-			for(var i = 0; i < styles.length; i++) {
-				var item = styles[i];
-				var domStyle = stylesInDom[item.id];
-				domStyle.refs--;
-				mayRemove.push(domStyle);
-			}
-			if(newList) {
-				var newStyles = listToStyles(newList);
-				addStylesToDom(newStyles, options);
-			}
-			for(var i = 0; i < mayRemove.length; i++) {
-				var domStyle = mayRemove[i];
-				if(domStyle.refs === 0) {
-					for(var j = 0; j < domStyle.parts.length; j++)
-						domStyle.parts[j]();
-					delete stylesInDom[domStyle.id];
-				}
-			}
-		};
-	}
-
-	function addStylesToDom(styles, options) {
-		for(var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-			if(domStyle) {
-				domStyle.refs++;
-				for(var j = 0; j < domStyle.parts.length; j++) {
-					domStyle.parts[j](item.parts[j]);
-				}
-				for(; j < item.parts.length; j++) {
-					domStyle.parts.push(addStyle(item.parts[j], options));
-				}
-			} else {
-				var parts = [];
-				for(var j = 0; j < item.parts.length; j++) {
-					parts.push(addStyle(item.parts[j], options));
-				}
-				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-			}
-		}
-	}
-
-	function listToStyles(list) {
-		var styles = [];
-		var newStyles = {};
-		for(var i = 0; i < list.length; i++) {
-			var item = list[i];
-			var id = item[0];
-			var css = item[1];
-			var media = item[2];
-			var sourceMap = item[3];
-			var part = {css: css, media: media, sourceMap: sourceMap};
-			if(!newStyles[id])
-				styles.push(newStyles[id] = {id: id, parts: [part]});
-			else
-				newStyles[id].parts.push(part);
-		}
-		return styles;
-	}
-
-	function insertStyleElement(options, styleElement) {
-		var head = getHeadElement();
-		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
-		if (options.insertAt === "top") {
-			if(!lastStyleElementInsertedAtTop) {
-				head.insertBefore(styleElement, head.firstChild);
-			} else if(lastStyleElementInsertedAtTop.nextSibling) {
-				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
-			} else {
-				head.appendChild(styleElement);
-			}
-			styleElementsInsertedAtTop.push(styleElement);
-		} else if (options.insertAt === "bottom") {
-			head.appendChild(styleElement);
-		} else {
-			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
-		}
-	}
-
-	function removeStyleElement(styleElement) {
-		styleElement.parentNode.removeChild(styleElement);
-		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
-		if(idx >= 0) {
-			styleElementsInsertedAtTop.splice(idx, 1);
-		}
-	}
-
-	function createStyleElement(options) {
-		var styleElement = document.createElement("style");
-		styleElement.type = "text/css";
-		insertStyleElement(options, styleElement);
-		return styleElement;
-	}
-
-	function addStyle(obj, options) {
-		var styleElement, update, remove;
-
-		if (options.singleton) {
-			var styleIndex = singletonCounter++;
-			styleElement = singletonElement || (singletonElement = createStyleElement(options));
-			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
-			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
-		} else {
-			styleElement = createStyleElement(options);
-			update = applyToTag.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-			};
-		}
-
-		update(obj);
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 
 	// exports
 
@@ -15064,7 +14892,6 @@
 
 	var _cookieUtil = __webpack_require__(40);
 
-<<<<<<< HEAD:design/dist/js/build.js
 	//
 	//
 	//
@@ -15313,34 +15140,12 @@
 
 	// module
 	exports.push([module.id, "@font-face {\r\n  font-family: 'Simditor';\r\n  src: url(data:application/font-woff;charset=utf-8;base64,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) format(\"woff\");\r\n  font-weight: normal;\r\n  font-style: normal;\r\n}\r\n.simditor-icon {\r\n  display: inline-block;\r\n  font: normal normal normal 14px/1 'Simditor';\r\n  font-size: inherit;\r\n  text-rendering: auto;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  transform: translate(0, 0);\r\n}\r\n\r\n.simditor-icon-code:before {\r\n  content: '\\F000';\r\n}\r\n\r\n.simditor-icon-bold:before {\r\n  content: '\\F001';\r\n}\r\n\r\n.simditor-icon-italic:before {\r\n  content: '\\F002';\r\n}\r\n\r\n.simditor-icon-underline:before {\r\n  content: '\\F003';\r\n}\r\n\r\n.simditor-icon-times:before {\r\n  content: '\\F004';\r\n}\r\n\r\n.simditor-icon-strikethrough:before {\r\n  content: '\\F005';\r\n}\r\n\r\n.simditor-icon-list-ol:before {\r\n  content: '\\F006';\r\n}\r\n\r\n.simditor-icon-list-ul:before {\r\n  content: '\\F007';\r\n}\r\n\r\n.simditor-icon-quote-left:before {\r\n  content: '\\F008';\r\n}\r\n\r\n.simditor-icon-table:before {\r\n  content: '\\F009';\r\n}\r\n\r\n.simditor-icon-link:before {\r\n  content: '\\F00A';\r\n}\r\n\r\n.simditor-icon-picture-o:before {\r\n  content: '\\F00B';\r\n}\r\n\r\n.simditor-icon-minus:before {\r\n  content: '\\F00C';\r\n}\r\n\r\n.simditor-icon-indent:before {\r\n  content: '\\F00D';\r\n}\r\n\r\n.simditor-icon-outdent:before {\r\n  content: '\\F00E';\r\n}\r\n\r\n.simditor-icon-unlink:before {\r\n  content: '\\F00F';\r\n}\r\n\r\n.simditor-icon-caret-down:before {\r\n  content: '\\F010';\r\n}\r\n\r\n.simditor-icon-caret-right:before {\r\n  content: '\\F011';\r\n}\r\n\r\n.simditor-icon-upload:before {\r\n  content: '\\F012';\r\n}\r\n\r\n.simditor-icon-undo:before {\r\n  content: '\\F013';\r\n}\r\n\r\n.simditor-icon-smile-o:before {\r\n  content: '\\F014';\r\n}\r\n\r\n.simditor-icon-tint:before {\r\n  content: '\\F015';\r\n}\r\n\r\n.simditor-icon-font:before {\r\n  content: '\\F016';\r\n}\r\n\r\n.simditor-icon-html5:before {\r\n  content: '\\F017';\r\n}\r\n\r\n.simditor-icon-mark:before {\r\n  content: '\\F018';\r\n}\r\n\r\n.simditor-icon-align-center:before {\r\n  content: '\\F019';\r\n}\r\n\r\n.simditor-icon-align-left:before {\r\n  content: '\\F01A';\r\n}\r\n\r\n.simditor-icon-align-right:before {\r\n  content: '\\F01B';\r\n}\r\n\r\n.simditor-icon-font-minus:before {\r\n  content: '\\F01C';\r\n}\r\n\r\n.simditor-icon-markdown:before {\r\n  content: '\\F01D';\r\n}\r\n\r\n.simditor-icon-checklist:before {\r\n  content: '\\F01E';\r\n}\r\n\r\n.simditor {\r\n  position: relative;\r\n  border: 1px solid #c9d8db;\r\n}\r\n.simditor .simditor-wrapper {\r\n  position: relative;\r\n  background: #ffffff;\r\n}\r\n.simditor .simditor-wrapper > textarea {\r\n  display: none !important;\r\n  width: 100%;\r\n  box-sizing: border-box;\r\n  font-family: monaco;\r\n  font-size: 16px;\r\n  line-height: 1.6;\r\n  border: none;\r\n  padding: 22px 15px 40px;\r\n  min-height: 300px;\r\n  outline: none;\r\n  background: transparent;\r\n  resize: none;\r\n}\r\n.simditor .simditor-wrapper .simditor-placeholder {\r\n  display: none;\r\n  position: absolute;\r\n  left: 0;\r\n  z-index: 0;\r\n  padding: 22px 15px;\r\n  font-size: 16px;\r\n  font-family: arial, sans-serif;\r\n  line-height: 1.5;\r\n  color: #999999;\r\n  background: transparent;\r\n}\r\n.simditor .simditor-wrapper.toolbar-floating .simditor-toolbar {\r\n  position: fixed;\r\n  top: 0;\r\n  z-index: 10;\r\n  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);\r\n}\r\n.simditor .simditor-wrapper .simditor-image-loading {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: 2;\r\n}\r\n.simditor .simditor-wrapper .simditor-image-loading .progress {\r\n  width: 100%;\r\n  height: 100%;\r\n  background: rgba(0, 0, 0, 0.4);\r\n  position: absolute;\r\n  bottom: 0;\r\n  left: 0;\r\n}\r\n.simditor .simditor-body {\r\n  padding: 22px 15px 40px;\r\n  min-height: 300px;\r\n  outline: none;\r\n  cursor: text;\r\n  position: relative;\r\n  z-index: 1;\r\n  background: transparent;\r\n}\r\n.simditor .simditor-body a.selected {\r\n  background: #b3d4fd;\r\n}\r\n.simditor .simditor-body a.simditor-mention {\r\n  cursor: pointer;\r\n}\r\n.simditor .simditor-body .simditor-table {\r\n  position: relative;\r\n}\r\n.simditor .simditor-body .simditor-table.resizing {\r\n  cursor: col-resize;\r\n}\r\n.simditor .simditor-body .simditor-table .simditor-resize-handle {\r\n  position: absolute;\r\n  left: 0;\r\n  top: 0;\r\n  width: 10px;\r\n  height: 100%;\r\n  cursor: col-resize;\r\n}\r\n.simditor .simditor-body pre {\r\n  /*min-height: 28px;*/\r\n  box-sizing: border-box;\r\n  -moz-box-sizing: border-box;\r\n  word-wrap: break-word !important;\r\n  white-space: pre-wrap !important;\r\n}\r\n.simditor .simditor-body img {\r\n  cursor: pointer;\r\n}\r\n.simditor .simditor-body img.selected {\r\n  box-shadow: 0 0 0 4px #cccccc;\r\n}\r\n.simditor .simditor-paste-bin {\r\n  position: fixed;\r\n  bottom: 10px;\r\n  right: 10px;\r\n  width: 1px;\r\n  height: 20px;\r\n  font-size: 1px;\r\n  line-height: 1px;\r\n  overflow: hidden;\r\n  padding: 0;\r\n  margin: 0;\r\n  opacity: 0;\r\n  -webkit-user-select: text;\r\n}\r\n.simditor .simditor-toolbar {\r\n  border-bottom: 1px solid #eeeeee;\r\n  background: #ffffff;\r\n  width: 100%;\r\n}\r\n.simditor .simditor-toolbar > ul {\r\n  margin: 0;\r\n  padding: 0 0 0 6px;\r\n  list-style: none;\r\n}\r\n.simditor .simditor-toolbar > ul > li {\r\n  position: relative;\r\n  display: inline-block;\r\n  font-size: 0;\r\n}\r\n.simditor .simditor-toolbar > ul > li > span.separator {\r\n  display: inline-block;\r\n  background: #cfcfcf;\r\n  width: 1px;\r\n  height: 18px;\r\n  margin: 11px 15px;\r\n  vertical-align: middle;\r\n}\r\n.simditor .simditor-toolbar > ul > li > .toolbar-item {\r\n  display: inline-block;\r\n  width: 46px;\r\n  height: 40px;\r\n  outline: none;\r\n  color: #333333;\r\n  font-size: 15px;\r\n  line-height: 40px;\r\n  vertical-align: middle;\r\n  text-align: center;\r\n  text-decoration: none;\r\n}\r\n.simditor .simditor-toolbar > ul > li > .toolbar-item span {\r\n  opacity: 0.6;\r\n}\r\n.simditor .simditor-toolbar > ul > li > .toolbar-item span.simditor-icon {\r\n  display: inline;\r\n  line-height: normal;\r\n}\r\n.simditor .simditor-toolbar > ul > li > .toolbar-item:hover span {\r\n  opacity: 1;\r\n}\r\n.simditor .simditor-toolbar > ul > li > .toolbar-item.active {\r\n  background: #eeeeee;\r\n}\r\n.simditor .simditor-toolbar > ul > li > .toolbar-item.active span {\r\n  opacity: 1;\r\n}\r\n.simditor .simditor-toolbar > ul > li > .toolbar-item.disabled {\r\n  cursor: default;\r\n}\r\n.simditor .simditor-toolbar > ul > li > .toolbar-item.disabled span {\r\n  opacity: 0.3;\r\n}\r\n.simditor .simditor-toolbar > ul > li > .toolbar-item.toolbar-item-title span:before {\r\n  content: \"H\";\r\n  font-size: 19px;\r\n  font-weight: bold;\r\n  font-family: 'Times New Roman';\r\n}\r\n.simditor .simditor-toolbar > ul > li > .toolbar-item.toolbar-item-title.active-h1 span:before {\r\n  content: 'H1';\r\n  font-size: 18px;\r\n}\r\n.simditor .simditor-toolbar > ul > li > .toolbar-item.toolbar-item-title.active-h2 span:before {\r\n  content: 'H2';\r\n  font-size: 18px;\r\n}\r\n.simditor .simditor-toolbar > ul > li > .toolbar-item.toolbar-item-title.active-h3 span:before {\r\n  content: 'H3';\r\n  font-size: 18px;\r\n}\r\n.simditor .simditor-toolbar > ul > li > .toolbar-item.toolbar-item-image {\r\n  position: relative;\r\n  overflow: hidden;\r\n}\r\n.simditor .simditor-toolbar > ul > li > .toolbar-item.toolbar-item-image > input[type=file] {\r\n  position: absolute;\r\n  right: 0px;\r\n  top: 0px;\r\n  opacity: 0;\r\n  font-size: 100px;\r\n  cursor: pointer;\r\n}\r\n.simditor .simditor-toolbar > ul > li.menu-on .toolbar-item {\r\n  position: relative;\r\n  z-index: 20;\r\n  background: #ffffff;\r\n  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);\r\n}\r\n.simditor .simditor-toolbar > ul > li.menu-on .toolbar-item span {\r\n  opacity: 1;\r\n}\r\n.simditor .simditor-toolbar > ul > li.menu-on .toolbar-menu {\r\n  display: block;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu {\r\n  display: none;\r\n  position: absolute;\r\n  top: 40px;\r\n  left: 0;\r\n  z-index: 21;\r\n  background: #ffffff;\r\n  text-align: left;\r\n  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu:before {\r\n  content: '';\r\n  display: block;\r\n  width: 46px;\r\n  height: 4px;\r\n  background: #ffffff;\r\n  position: absolute;\r\n  top: -3px;\r\n  left: 0;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu ul {\r\n  min-width: 160px;\r\n  list-style: none;\r\n  margin: 0;\r\n  padding: 10px 1px;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu ul > li .menu-item {\r\n  display: block;\r\n  font-size: 16px;\r\n  line-height: 2em;\r\n  padding: 0 10px;\r\n  text-decoration: none;\r\n  color: #666666;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu ul > li .menu-item:hover {\r\n  background: #f6f6f6;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu ul > li .menu-item.menu-item-h1 {\r\n  font-size: 24px;\r\n  color: #333333;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu ul > li .menu-item.menu-item-h2 {\r\n  font-size: 22px;\r\n  color: #333333;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu ul > li .menu-item.menu-item-h3 {\r\n  font-size: 20px;\r\n  color: #333333;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu ul > li .menu-item.menu-item-h4 {\r\n  font-size: 18px;\r\n  color: #333333;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu ul > li .menu-item.menu-item-h5 {\r\n  font-size: 16px;\r\n  color: #333333;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu ul > li .separator {\r\n  display: block;\r\n  border-top: 1px solid #cccccc;\r\n  height: 0;\r\n  line-height: 0;\r\n  font-size: 0;\r\n  margin: 6px 0;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-color {\r\n  width: 96px;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-color .color-list {\r\n  height: 40px;\r\n  margin: 10px 6px 6px 10px;\r\n  padding: 0;\r\n  min-width: 0;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-color .color-list li {\r\n  float: left;\r\n  margin: 0 4px 4px 0;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-color .color-list li .font-color {\r\n  display: block;\r\n  width: 16px;\r\n  height: 16px;\r\n  background: #dfdfdf;\r\n  border-radius: 2px;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-color .color-list li .font-color:hover {\r\n  opacity: 0.8;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-color .color-list li .font-color.font-color-default {\r\n  background: #333333;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-color .color-list li .font-color-1 {\r\n  background: #E33737;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-color .color-list li .font-color-2 {\r\n  background: #e28b41;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-color .color-list li .font-color-3 {\r\n  background: #c8a732;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-color .color-list li .font-color-4 {\r\n  background: #209361;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-color .color-list li .font-color-5 {\r\n  background: #418caf;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-color .color-list li .font-color-6 {\r\n  background: #aa8773;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-color .color-list li .font-color-7 {\r\n  background: #999999;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-table .menu-create-table {\r\n  background: #ffffff;\r\n  padding: 1px;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-table .menu-create-table table {\r\n  border: none;\r\n  border-collapse: collapse;\r\n  border-spacing: 0;\r\n  table-layout: fixed;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-table .menu-create-table table td {\r\n  padding: 0;\r\n  cursor: pointer;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-table .menu-create-table table td:before {\r\n  width: 16px;\r\n  height: 16px;\r\n  border: 1px solid #ffffff;\r\n  background: #f3f3f3;\r\n  display: block;\r\n  content: \"\";\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-table .menu-create-table table td.selected:before {\r\n  background: #cfcfcf;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-table .menu-edit-table {\r\n  display: none;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-table .menu-edit-table ul li {\r\n  white-space: nowrap;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-image .menu-item-upload-image {\r\n  position: relative;\r\n  overflow: hidden;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-image .menu-item-upload-image input[type=file] {\r\n  position: absolute;\r\n  right: 0px;\r\n  top: 0px;\r\n  opacity: 0;\r\n  font-size: 100px;\r\n  cursor: pointer;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-alignment {\r\n  width: 100%;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-alignment ul {\r\n  min-width: 100%;\r\n}\r\n.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-alignment .menu-item {\r\n  text-align: center;\r\n}\r\n.simditor .simditor-popover {\r\n  display: none;\r\n  padding: 5px 8px 0;\r\n  background: #ffffff;\r\n  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);\r\n  border-radius: 2px;\r\n  position: absolute;\r\n  z-index: 2;\r\n}\r\n.simditor .simditor-popover .settings-field {\r\n  margin: 0 0 5px 0;\r\n  font-size: 12px;\r\n  height: 25px;\r\n  line-height: 25px;\r\n}\r\n.simditor .simditor-popover .settings-field label {\r\n  display: inline-block;\r\n  margin: 0 5px 0 0;\r\n}\r\n.simditor .simditor-popover .settings-field input[type=text] {\r\n  display: inline-block;\r\n  width: 200px;\r\n  box-sizing: border-box;\r\n  font-size: 12px;\r\n}\r\n.simditor .simditor-popover .settings-field input[type=text].image-size {\r\n  width: 83px;\r\n}\r\n.simditor .simditor-popover .settings-field .times {\r\n  display: inline-block;\r\n  width: 26px;\r\n  font-size: 12px;\r\n  text-align: center;\r\n}\r\n.simditor .simditor-popover.link-popover .btn-unlink, .simditor .simditor-popover.image-popover .btn-upload, .simditor .simditor-popover.image-popover .btn-restore {\r\n  display: inline-block;\r\n  margin: 0 0 0 5px;\r\n  color: #333333;\r\n  font-size: 14px;\r\n  outline: 0;\r\n}\r\n.simditor .simditor-popover.link-popover .btn-unlink span, .simditor .simditor-popover.image-popover .btn-upload span, .simditor .simditor-popover.image-popover .btn-restore span {\r\n  opacity: 0.6;\r\n}\r\n.simditor .simditor-popover.link-popover .btn-unlink:hover span, .simditor .simditor-popover.image-popover .btn-upload:hover span, .simditor .simditor-popover.image-popover .btn-restore:hover span {\r\n  opacity: 1;\r\n}\r\n.simditor .simditor-popover.image-popover .btn-upload {\r\n  position: relative;\r\n  display: inline-block;\r\n  overflow: hidden;\r\n  vertical-align: middle;\r\n}\r\n.simditor .simditor-popover.image-popover .btn-upload input[type=file] {\r\n  position: absolute;\r\n  right: 0px;\r\n  top: 0px;\r\n  opacity: 0;\r\n  height: 100%;\r\n  width: 28px;\r\n}\r\n.simditor.simditor-mobile .simditor-wrapper.toolbar-floating .simditor-toolbar {\r\n  position: absolute;\r\n  top: 0;\r\n  z-index: 10;\r\n  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.simditor .simditor-body, .editor-style {\r\n  font-size: 16px;\r\n  font-family: arial, sans-serif;\r\n  line-height: 1.6;\r\n  color: #333;\r\n  outline: none;\r\n  word-wrap: break-word;\r\n}\r\n.simditor .simditor-body > :first-child, .editor-style > :first-child {\r\n  margin-top: 0 !important;\r\n}\r\n.simditor .simditor-body a, .editor-style a {\r\n  color: #4298BA;\r\n  text-decoration: none;\r\n  word-break: break-all;\r\n}\r\n.simditor .simditor-body a:visited, .editor-style a:visited {\r\n  color: #4298BA;\r\n}\r\n.simditor .simditor-body a:hover, .editor-style a:hover {\r\n  color: #0F769F;\r\n}\r\n.simditor .simditor-body a:active, .editor-style a:active {\r\n  color: #9E792E;\r\n}\r\n.simditor .simditor-body a:hover, .simditor .simditor-body a:active, .editor-style a:hover, .editor-style a:active {\r\n  outline: 0;\r\n}\r\n.simditor .simditor-body h1, .simditor .simditor-body h2, .simditor .simditor-body h3, .simditor .simditor-body h4, .simditor .simditor-body h5, .simditor .simditor-body h6, .editor-style h1, .editor-style h2, .editor-style h3, .editor-style h4, .editor-style h5, .editor-style h6 {\r\n  font-weight: normal;\r\n  margin: 40px 0 20px;\r\n  color: #000000;\r\n}\r\n.simditor .simditor-body h1, .editor-style h1 {\r\n  font-size: 24px;\r\n}\r\n.simditor .simditor-body h2, .editor-style h2 {\r\n  font-size: 22px;\r\n}\r\n.simditor .simditor-body h3, .editor-style h3 {\r\n  font-size: 20px;\r\n}\r\n.simditor .simditor-body h4, .editor-style h4 {\r\n  font-size: 18px;\r\n}\r\n.simditor .simditor-body h5, .editor-style h5 {\r\n  font-size: 16px;\r\n}\r\n.simditor .simditor-body h6, .editor-style h6 {\r\n  font-size: 16px;\r\n}\r\n.simditor .simditor-body p, .simditor .simditor-body div, .editor-style p, .editor-style div {\r\n  word-wrap: break-word;\r\n  margin: 0 0 15px 0;\r\n  color: #333;\r\n  word-wrap: break-word;\r\n}\r\n.simditor .simditor-body b, .simditor .simditor-body strong, .editor-style b, .editor-style strong {\r\n  font-weight: bold;\r\n}\r\n.simditor .simditor-body i, .simditor .simditor-body em, .editor-style i, .editor-style em {\r\n  font-style: italic;\r\n}\r\n.simditor .simditor-body u, .editor-style u {\r\n  text-decoration: underline;\r\n}\r\n.simditor .simditor-body strike, .simditor .simditor-body del, .editor-style strike, .editor-style del {\r\n  text-decoration: line-through;\r\n}\r\n.simditor .simditor-body ul, .simditor .simditor-body ol, .editor-style ul, .editor-style ol {\r\n  list-style: disc outside none;\r\n  margin: 15px 0;\r\n  padding: 0 0 0 40px;\r\n  line-height: 1.6;\r\n}\r\n.simditor .simditor-body ul ul, .simditor .simditor-body ul ol, .simditor .simditor-body ol ul, .simditor .simditor-body ol ol, .editor-style ul ul, .editor-style ul ol, .editor-style ol ul, .editor-style ol ol {\r\n  padding-left: 30px;\r\n}\r\n.simditor .simditor-body ul ul, .simditor .simditor-body ol ul, .editor-style ul ul, .editor-style ol ul {\r\n  list-style: circle outside none;\r\n}\r\n.simditor .simditor-body ul ul ul, .simditor .simditor-body ol ul ul, .editor-style ul ul ul, .editor-style ol ul ul {\r\n  list-style: square outside none;\r\n}\r\n.simditor .simditor-body ol, .editor-style ol {\r\n  list-style: decimal;\r\n}\r\n.simditor .simditor-body blockquote, .editor-style blockquote {\r\n  border-left: 6px solid #ddd;\r\n  padding: 5px 0 5px 10px;\r\n  margin: 15px 0 15px 15px;\r\n}\r\n.simditor .simditor-body blockquote > :first-child, .editor-style blockquote > :first-child {\r\n  margin-top: 0;\r\n}\r\n.simditor .simditor-body code, .editor-style code {\r\n  display: inline-block;\r\n  padding: 0 4px;\r\n  margin: 0 5px;\r\n  background: #eeeeee;\r\n  border-radius: 3px;\r\n  font-size: 13px;\r\n  font-family: 'monaco', 'Consolas', \"Liberation Mono\", Courier, monospace;\r\n}\r\n.simditor .simditor-body pre, .editor-style pre {\r\n  padding: 10px 5px 10px 10px;\r\n  margin: 15px 0;\r\n  display: block;\r\n  line-height: 18px;\r\n  background: #F0F0F0;\r\n  border-radius: 3px;\r\n  font-size: 13px;\r\n  font-family: 'monaco', 'Consolas', \"Liberation Mono\", Courier, monospace;\r\n  white-space: pre;\r\n  word-wrap: normal;\r\n  overflow-x: auto;\r\n}\r\n.simditor .simditor-body pre code, .editor-style pre code {\r\n  display: block;\r\n  padding: 0;\r\n  margin: 0;\r\n  background: none;\r\n  border-radius: 0;\r\n}\r\n.simditor .simditor-body hr, .editor-style hr {\r\n  display: block;\r\n  height: 0px;\r\n  border: 0;\r\n  border-top: 1px solid #ccc;\r\n  margin: 15px 0;\r\n  padding: 0;\r\n}\r\n.simditor .simditor-body table, .editor-style table {\r\n  width: 100%;\r\n  table-layout: fixed;\r\n  border-collapse: collapse;\r\n  border-spacing: 0;\r\n  margin: 15px 0;\r\n}\r\n.simditor .simditor-body table thead, .editor-style table thead {\r\n  background-color: #f9f9f9;\r\n}\r\n.simditor .simditor-body table td, .simditor .simditor-body table th, .editor-style table td, .editor-style table th {\r\n  min-width: 40px;\r\n  height: 30px;\r\n  border: 1px solid #ccc;\r\n  vertical-align: top;\r\n  padding: 2px 4px;\r\n  text-align: left;\r\n  box-sizing: border-box;\r\n}\r\n.simditor .simditor-body table td.active, .simditor .simditor-body table th.active, .editor-style table td.active, .editor-style table th.active {\r\n  background-color: #ffffee;\r\n}\r\n.simditor .simditor-body img, .editor-style img {\r\n  margin: 0 5px;\r\n  vertical-align: middle;\r\n}\r\n", ""]);
-=======
-		if (sourceMap) {
-			// https://developer.chrome.com/devtools/docs/javascript-debugging
-			// this makes source maps inside style tags work properly in Chrome
-			css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */';
-			// http://stackoverflow.com/a/26603875
-			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-		}
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 
-		if (styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = css;
-		} else {
-			while(styleElement.firstChild) {
-				styleElement.removeChild(styleElement.firstChild);
-			}
-			styleElement.appendChild(document.createTextNode(css));
-		}
-	}
+	// exports
 
 
 /***/ },
-<<<<<<< HEAD:design/dist/js/build.js
 /* 75 */
-=======
-
-/***/ 39:
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 /***/ function(module, exports) {
 
 	module.exports = "data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAAeAAD/4QMraHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjMtYzAxMSA2Ni4xNDU2NjEsIDIwMTIvMDIvMDYtMTQ6NTY6MjcgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkM3RUJGREYxRTUwODExRTY5QTcyQ0E1NEZCMzc1REE2IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkM3RUJGREYyRTUwODExRTY5QTcyQ0E1NEZCMzc1REE2Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QzdFQkZERUZFNTA4MTFFNjlBNzJDQTU0RkIzNzVEQTYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QzdFQkZERjBFNTA4MTFFNjlBNzJDQTU0RkIzNzVEQTYiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7/7gAOQWRvYmUAZMAAAAAB/9sAhAAQCwsLDAsQDAwQFw8NDxcbFBAQFBsfFxcXFxcfHhcaGhoaFx4eIyUnJSMeLy8zMy8vQEBAQEBAQEBAQEBAQEBAAREPDxETERUSEhUUERQRFBoUFhYUGiYaGhwaGiYwIx4eHh4jMCsuJycnLis1NTAwNTVAQD9AQEBAQEBAQEBAQED/wAARCAMMApIDASIAAhEBAxEB/8QAVgABAQEBAQAAAAAAAAAAAAAAAAECAwUBAQEBAQEAAAAAAAAAAAAAAAABAgMFEAEBAQEAAAAAAAAAAAAAAAAAESEBEQEBAAAAAAAAAAAAAAAAAAAAEf/aAAwDAQACEQMRAD8A9YUcXsEACmEFBJwigiQigBAAnBQEigAEBAAAUBJxQAnABAAAUCgAEFQAAQMUBIoAAAAIBFASEUBBUAAAAAAARQEFAQVFAABFAQVAABRFAQUBAAQUBABQACAAgKKigAAAAAKAAAAAAogAAAAAICpAFAAAAAFQBAUQIAoAIAoACAoAAACKAgoAigIKAgoCCoAAAAAACCgICqIACCoAAKIoCCoAKgCKAgoCADQBADVAAAABAUBFAAAAAQFAAAAEAFUAAQURAAAABQAAAAAAAAEAAAAAAAAAAAAAARQARQEBQQAUAARQEFARFFBFAQWIAAKgoCCgIAjQAqAKCCgAAAAAKIigAAgAAAoIoAAAACAAAAAoCLAAAAAAAECAAKAgoCCgIKAigCCgIKAgqAAAAAgoAigIAKAAAAIoCAAIoogqAACgCKAAAAAAAqoiggAAAAAACgAAAAgAAAAKAigAAAAAAICgIKAAAAAAAAQAAAAAAAAAAAgAAAgoCCxAAAQUBBUAAFEUBBQEAAABABoBQQUAIAgAAAAAACgAAACAAAAAoCKAAAAAAAgoAAAAAAAAAoAACCKCgAAAAAAACKCIgoogqCgAAAAAIKAgsQBFAQUBAAABSBgDKgKBAAFBFABFAAAEUAAAAEAAAUEigAAAAACiIKAAAAAAACgACAAAAAAAAAAAAIAAAAAAAAAAigAACCiqgqAAAQgAgqAAAIoCCgMgDQCggoAAAAACggoAAIAAIoARQEFAQUERQAAAAABQRQQAAAAAAAURAUEABUAAAAFBBUAFAQVAAAAAAABUAAAABBQEFFVIKgCKAgoCAAgA0AAAAAAqKgKAIAAAoIKAAIACgAIAIAoCAACgAAAAAAAACgIAAgogigAAAAABVAFBBUAAAAAAgCKAgoCCoAABAAAAEUAAFQAAAGQFaBUAUAABAAAIoIKAAIACoAQAFQQVAURQRQAAAAABUEBVRBRAAAAAAAAAAAAAAABQQUBBQEFAQUBBUBUAAAAAAABFAQUUQAAAAACACsgK0ACAAAKCQUQAABFVAAAFQRQAAARQAAAAABABQRUUQAAAAAAAAFAQUBIsAAAAAAAAAQAFABAAAAANBQABFAQUBIaqAAAAAJFAQUUQUBgBWgABUVAAAAUAIIAqCKACKAigAAAAAAgCggAAAAAAAAKAAAAAACAAAAAKgkFAQUAAAABBQBFAQUBBQEFRQAAAFAAAAQUBAgAAAEAYBVaRQAAAAABQRRBFQAUAAAACIAAAoIAAAAAAAACgIKAAIgAAAAKAiiAqCggoCKAAAAQgAAAAAAAAAAAAAAAAIKAgoCAKAQAAAAFYAVoAAAAFQAAQFAAABRAEAAUAAAAQAAAAFAAEAAQAAAAABUFBBQAAABAAAAECgCggKIAogCiAKIAqKAIKCQUUQVBQAAAAABAAFASAAwA02QVAVAEBQAAAgICgCAoAAAAAAhBUBUFBFAABAAAAAFBEUARQQAAAAAAIAAKCAAAAAAAAAAAAAAAAAAIoAgoAACAoIAKAAAKIKA5gNNgAgoAAIAAAACgAAAAIAoAIAoIAAAAAAAAiiCCgAAAAAAAqKAIogACAAACgAAAAQECEAAAAFBAFAAACAAAAAAAIoCCoAAAADCCttgCAAAAAqKAAAAAEBAVABRAAAAAAAVBABREUAAAAUEFARQQABAAAAAFBBQEUAAAEUAAAAAAAABFAAAAAEFASCgIAAAAAAACCgOYDbYBAAAAAFAAAQAQAAFAAAAIAAAAIgKAAACoACgAIAAgAACggoAAAAAAAAAAAAgAAAAAAAAAAAKAAAAAACACgAIqACoAADmA22KIAKAigAAIAIAKAAAAAAAAgKAgAAKgKAgiwAABAAAFAAAAQAAAAAAAAABAAAAAAUAEAAAAAAAAAAAAABQAAAAAAEBRAGAHRsAQAAABAABQAAAAAAQAUAAQBQRUVBBQQAAAABQBFAAQAAAAABAAAAAAAAAAAUBBYQEFAQUgIEUEFQAAUAAAAAAAAAAAAAAABzgDbYAACgigIigAAgAAAAKAgAAAgKAEAEAAAAAVBFAAAAAAAQAAAAAAFARQAAAAQAAAAAAAAAAAAAAIkUBIKAgoCAKAAAAAAoADmA22AoAAgAgAAAAAAKAgAAAgKAgAAAAAAKIAAAAAAAAgAAKAigAAAAAAAAgACAAAAAAAAAAoBBAIAAAACgAAgCiAKgAAAQUByVB0dFEVEAAAAFQAUBAAABABQABAAAVAVBUAAAAAAQFARQBFAABAAUAEAAQAFABAUBBQEFAQUBBQEUEAAAAAEAAAAAAUABUhFATRQEFAQAHMFbbAAAAAAUAQAAAAAQFAQAAFQFRRAAAAABREUQFAAAAAAARAVAAUEFABFQAAAAAAAAAAAAAAAAQUBBQEFQAFBBUAAAAAAFAAAAcwHRsAAAAVFQAFQAQAAFAQABUBBQAAAAURFAAAABAAUAEAAQBQAEAAAAAAAAAAAAAAAAAAAAAAAAAAANABFBBUAAAAAAAAAAFcwHRsAABQAEQAAFAABAAFQVBFAAAAFEAARQAAAAQABAAAFBFBAAAAAAAAAAABQQAAAAAAAAAAAAAAAABAABBQEFRQAAAQANUAAcwHR0AUABEAABQRFAAAAUQRQAAAFBARQAAAAAEQAAVFAAAAQAAAAAAAAAABQEFAAAAAAEBFAQUBAAAAAAAAAAEUBAABQEFAQAAAHMFdHQAVABAVABQEAEUBREBQABBQAQUAAABEBUAABUUAAAAQAABUBUAQFQFQAUQBUABQAAQAQFRQEUAAQFEBVEAVAABQQAAAAAAAABAAAABzAdWwAAABQEAEUBREBRAABQAEUAAABEFAARQAAAAAEAAFQBAAAFBFABFQAFBBQEFEEFAAARQAAABAVABUACAoIABoCKAAAAAACKAACCgOYDq2AAKAACIAoAgCgCCgAgAAoACIKACKAAAAAAIgAAKgAoAAAAAABAAAAAEAAAAAAAAABAAUEBAAAAAAAAAAFAAAAAAAABAGAHVsVFAARAAFRQAAQABQQAFAARBQAAAAAAAUEQBAAUAAARQAAAAAAABABAAAAAAAAFAECAAAAgqAAACoABAAAAAAEAAUAAABBQHNUiuzYAiAKCKgCgCAACoAAoAAgAgAoAAAAACIAAAAKigAAAAACAAAAAAACAAAAAAAAAAigAAAAACKAgAAAAAACAAAAACAogCiAMgOzYAgKAIoCAAAKCAAKCIAAKigBQAAQAAAQAAAAFAQAARQAAAFBBRAABAAAAAAAAAAAEBFARRAUQBUAAAUAAVFQEVAAAAAAAQAAAGQHVtUAFAEAAAAAAFAQAQAAAFQUEAAAFBAEAAQUAAQFAARQCAAogAAgAAAAAAAABAABAAAAAABBUAAAAAAFAEAAAAAAAAAEFAAZAdmgURAAARQAAAUQAAABUVBBUVAAAAAAAAEAVAEUAAAAAAAAAAAURAAAAURUABQQBAAAAAAAAABAAAAVARUFAAAAAAEAAAAAAAGRR1aRQAAAAAAEUAAAAABUVEAAAAABBUUEVFBBRAAAAAAEAAAUBFQFAQEVAAAAEABVAEAAAAAAARQQBABQAAEAAAUAAQAAAAAAAAAZUHVoAAAEAAFAAAAAQBUAEBQAABAAAAAUQABAAUAEAAFQBRAFEAUQQVAAAAAQAAAAAAAAABQBBAFFAQAAQAAAUABBUAAAAAAAABAHZoARAUBFAAAAAQABQEAAAAQAUAEBUAFRUQAAAAAAAAAAAAAAAQAAFRQQVEAAAAAAAAAAUAQQAAAFQAABQAAEAAAAAAAAAAFQB2BUVAAAAAAEAAAAABBQAAAAQAAFEEUBAEUAAAAAAAAAAAVEAAAABUAVAQAAAAAAEUFAEBFToAAAAAAAAAAogAAAAAAAAAACoA7AoIAICgCAAAAAAAAioKAAgAAKiiCKAgqAKioAAAAAAAAAAioqIoAAAAAgAAAAAAAgKAAgIoAAAAAAAACCqgAAAAAAAACggAAAA7AKggCoAigAAAAACCooAAAAgAgKgAqKAioAoICKgKAAAIAAAAAAAIAAoAAAgAAgKCAoAIgACgAAgCgAAgoAACAAAogKogAAAAAAAqDsAoIIoCKCAAIAAAACoAoAACACCoqAcVFARQARUBFAAAABAEBRFAAAAQEAUBQAEBFAAQBUAVAFAEBAAVFAEAABQAEBQQAAAUAABAUQAABRUdkFEBQAABABAAAVABUUAAQAAAQAAUAQAAAQAAAAABRFQQUAAAARAAFUBAAABAAAAAAQFRURQFBAAABQABAAAAAFOgACAKgAAAAA0IrsggoAAgAAAgUAAAQAABQAAAEAAFQBCgAoAAAIqCCiAKgAoAAAACCCoKoigAIIAAAAACKCKgCgUAARAFBRAAAAAFEABUAAAAQFEUVBQGkB2YFAAAAABUAABABAAAVFAAAAEAEAAAAFEAUBBAAAAAAAAUBAEAABRUAVAQAAABQAAEAAASgAAiqioAAACCgAAAAAAgKAAAACANqDswAAAAAAACCooAIgAoAAgICqAIAAAIAAAAKiogAAAAAAAAAIAAoAAAAAAiogKgKoIAAAgAACgCAAACCgAAAAgAqAoCAogAAKomgOiUHdzFRUAAQAAABRAFEAURURFAAAAAABAAAAAABUVEAAAAAAAAABAAFAAAAEVEAAUAAAAQAABQBABAABQBQBEFQAABQEAAUCgKAiCiAOioru5gAgAAAgAAAAACAAKgIAAKACCgACAAAAAAgAAAAAAAAAIAiigAACAgCgAAACAAAKAIAIAAKAKAIAAgACggoACgAIAAAKAA6gjs4qAAAAAAAgACCoAAAAIAAKIoIAAqCCiAKAAAAAgACiAIoAAIigKCKgCoAACKAaAhpoAGigAAIAGmigACAgqB2gACiAoACgIAAAAKBoAIA//9k="
@@ -15539,50 +15344,13 @@
 	};
 
 /***/ },
-<<<<<<< HEAD:design/dist/js/build.js
 /* 77 */
-=======
-
-/***/ 41:
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _c('div', {
-	    attrs: {
-	      "id": "nav"
-	    }
-	  }, [_c('div', {
-	    attrs: {
-	      "id": "logo"
-	    }
-	  }), _vm._v(" "), _c('ul', {
-	    staticClass: "navbar"
-	  }, _vm._l((_vm.items), function(item) {
-	    return _c('li', [_c('router-link', {
-	      attrs: {
-	        "to": item.url
-	      }
-	    }, [_vm._v("\n\t\t\t\t" + _vm._s(item.text) + "\n\t\t\t")])])
-	  }))])
-	},staticRenderFns: []}
-	if (false) {
-	  module.hot.accept()
-	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-30842c46", module.exports)
-	  }
-	}
-
-/***/ },
-
-/***/ 42:
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = {}
 
 	/* styles */
-<<<<<<< HEAD:design/dist/js/build.js
 	__webpack_require__(78)
 
 	/* script */
@@ -15590,15 +15358,6 @@
 
 	/* template */
 	var __vue_template__ = __webpack_require__(81)
-=======
-	__webpack_require__(95)
-
-	/* script */
-	__vue_exports__ = __webpack_require__(45)
-
-	/* template */
-	var __vue_template__ = __webpack_require__(46)
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -15632,7 +15391,6 @@
 
 
 /***/ },
-<<<<<<< HEAD:design/dist/js/build.js
 /* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -15674,10 +15432,6 @@
 
 /***/ },
 /* 80 */
-=======
-
-/***/ 45:
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 /***/ function(module, exports) {
 
 	'use strict';
@@ -16183,12 +15937,7 @@
 	};
 
 /***/ },
-<<<<<<< HEAD:design/dist/js/build.js
 /* 81 */
-=======
-
-/***/ 46:
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
@@ -16300,7 +16049,6 @@
 	          _vm.selectYear(item)
 	        }
 	      }
-<<<<<<< HEAD:design/dist/js/build.js
 	    }, [_vm._v(_vm._s(item))])
 	  }))]), _vm._v(" "), _c('div', {
 	    directives: [{
@@ -16472,112 +16220,16 @@
 	      "click": _vm.cancleSelect
 	    }
 	  }, [_vm._v("取消")])])])])])
-=======
-	    }, [_vm._v(_vm._s(link.text))])])
-	  }))])
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 	},staticRenderFns: []}
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-<<<<<<< HEAD:design/dist/js/build.js
 	     require("vue-hot-reload-api").rerender("data-v-d9972f20", module.exports)
 	  }
 	}
 
 /***/ },
 /* 82 */
-=======
-	     require("vue-hot-reload-api").rerender("data-v-096c8fd1", module.exports)
-	  }
-	}
-
-/***/ },
-
-/***/ 47:
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_exports__, __vue_options__
-	var __vue_styles__ = {}
-
-	/* script */
-	__vue_exports__ = __webpack_require__(50)
-
-	/* template */
-	var __vue_template__ = __webpack_require__(51)
-	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-	if (
-	  typeof __vue_exports__.default === "object" ||
-	  typeof __vue_exports__.default === "function"
-	) {
-	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-	__vue_options__ = __vue_exports__ = __vue_exports__.default
-	}
-	if (typeof __vue_options__ === "function") {
-	  __vue_options__ = __vue_options__.options
-	}
-	__vue_options__.__file = "D:\\code\\teaching-activities\\design\\src\\App.vue"
-	__vue_options__.render = __vue_template__.render
-	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-
-	/* hot reload */
-	if (false) {(function () {
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  module.hot.accept()
-	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-69f192b1", __vue_options__)
-	  } else {
-	    hotAPI.reload("data-v-69f192b1", __vue_options__)
-	  }
-	})()}
-	if (__vue_options__.functional) {console.error("[vue-loader] App.vue: functional components are not supported and should be defined in plain js files using render functions.")}
-
-	module.exports = __vue_exports__
-
-
-/***/ },
-
-/***/ 50:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _nav = __webpack_require__(34);
-
-	var _nav2 = _interopRequireDefault(_nav);
-
-	var _footer = __webpack_require__(42);
-
-	var _footer2 = _interopRequireDefault(_footer);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-
-	exports.default = {
-		components: {
-			Navbar: _nav2.default,
-			VFooter: _footer2.default
-		}
-	};
-
-/***/ },
-
-/***/ 51:
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
@@ -16808,7 +16460,6 @@
 	}
 
 /***/ },
-<<<<<<< HEAD:design/dist/js/build.js
 /* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -16858,38 +16509,22 @@
 
 /***/ },
 /* 84 */
-=======
-
-/***/ 52:
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-<<<<<<< HEAD:design/dist/js/build.js
 	var content = __webpack_require__(85);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(38)(content, {});
-=======
-	var content = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"!!./../../node_modules/css-loader/index.js!./../../node_modules/stylus-loader/index.js!./common.styl\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(54)(content, {});
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-<<<<<<< HEAD:design/dist/js/build.js
 			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-a62555e4&scoped=true!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./article.vue", function() {
 				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-a62555e4&scoped=true!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./article.vue");
-=======
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/stylus-loader/index.js!./common.styl", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/stylus-loader/index.js!./common.styl");
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -16899,7 +16534,6 @@
 	}
 
 /***/ },
-<<<<<<< HEAD:design/dist/js/build.js
 /* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -16911,54 +16545,18 @@
 	exports.push([module.id, "\n.article[data-v-a62555e4] {\n  width: 50%;\n  min-width: 500px;\n  margin: auto;\n}\nh1[data-v-a62555e4] {\n  text-align: center;\n  margin: 30px 0 25px;\n}\n.cover[data-v-a62555e4] {\n  width: 100%;\n}\n.content[data-v-a62555e4] {\n  margin-left: 80px;\n}\n", ""]);
 
 	// exports
-=======
 
-/***/ 54:
-/***/ function(module, exports, __webpack_require__) {
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	var stylesInDom = {},
-		memoize = function(fn) {
-			var memo;
-			return function () {
-				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-				return memo;
-			};
-		},
-		isOldIE = memoize(function() {
-			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
-		}),
-		getHeadElement = memoize(function () {
-			return document.head || document.getElementsByTagName("head")[0];
-		}),
-		singletonElement = null,
-		singletonCounter = 0,
-		styleElementsInsertedAtTop = [];
-
-<<<<<<< HEAD:design/dist/js/build.js
 /***/ },
 /* 86 */
 /***/ function(module, exports, __webpack_require__) {
-=======
-	module.exports = function(list, options) {
-		if(false) {
-			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-		}
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 
-		options = options || {};
-		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-		// tags it will allow on a page
-		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+	'use strict';
 
-		// By default, add <style> tags to the bottom of <head>.
-		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 
-<<<<<<< HEAD:design/dist/js/build.js
 	var _vuex = __webpack_require__(4);
 
 	// import toMarkDown from 'to-markdown';
@@ -17065,192 +16663,10 @@
 /***/ },
 /* 88 */
 /***/ function(module, exports, __webpack_require__) {
-=======
-		var styles = listToStyles(list);
-		addStylesToDom(styles, options);
 
-		return function update(newList) {
-			var mayRemove = [];
-			for(var i = 0; i < styles.length; i++) {
-				var item = styles[i];
-				var domStyle = stylesInDom[item.id];
-				domStyle.refs--;
-				mayRemove.push(domStyle);
-			}
-			if(newList) {
-				var newStyles = listToStyles(newList);
-				addStylesToDom(newStyles, options);
-			}
-			for(var i = 0; i < mayRemove.length; i++) {
-				var domStyle = mayRemove[i];
-				if(domStyle.refs === 0) {
-					for(var j = 0; j < domStyle.parts.length; j++)
-						domStyle.parts[j]();
-					delete stylesInDom[domStyle.id];
-				}
-			}
-		};
-	}
+	var __vue_exports__, __vue_options__
+	var __vue_styles__ = {}
 
-	function addStylesToDom(styles, options) {
-		for(var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-			if(domStyle) {
-				domStyle.refs++;
-				for(var j = 0; j < domStyle.parts.length; j++) {
-					domStyle.parts[j](item.parts[j]);
-				}
-				for(; j < item.parts.length; j++) {
-					domStyle.parts.push(addStyle(item.parts[j], options));
-				}
-			} else {
-				var parts = [];
-				for(var j = 0; j < item.parts.length; j++) {
-					parts.push(addStyle(item.parts[j], options));
-				}
-				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-			}
-		}
-	}
-
-	function listToStyles(list) {
-		var styles = [];
-		var newStyles = {};
-		for(var i = 0; i < list.length; i++) {
-			var item = list[i];
-			var id = item[0];
-			var css = item[1];
-			var media = item[2];
-			var sourceMap = item[3];
-			var part = {css: css, media: media, sourceMap: sourceMap};
-			if(!newStyles[id])
-				styles.push(newStyles[id] = {id: id, parts: [part]});
-			else
-				newStyles[id].parts.push(part);
-		}
-		return styles;
-	}
-
-	function insertStyleElement(options, styleElement) {
-		var head = getHeadElement();
-		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
-		if (options.insertAt === "top") {
-			if(!lastStyleElementInsertedAtTop) {
-				head.insertBefore(styleElement, head.firstChild);
-			} else if(lastStyleElementInsertedAtTop.nextSibling) {
-				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
-			} else {
-				head.appendChild(styleElement);
-			}
-			styleElementsInsertedAtTop.push(styleElement);
-		} else if (options.insertAt === "bottom") {
-			head.appendChild(styleElement);
-		} else {
-			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
-		}
-	}
-
-	function removeStyleElement(styleElement) {
-		styleElement.parentNode.removeChild(styleElement);
-		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
-		if(idx >= 0) {
-			styleElementsInsertedAtTop.splice(idx, 1);
-		}
-	}
-
-	function createStyleElement(options) {
-		var styleElement = document.createElement("style");
-		styleElement.type = "text/css";
-		insertStyleElement(options, styleElement);
-		return styleElement;
-	}
-
-	function createLinkElement(options) {
-		var linkElement = document.createElement("link");
-		linkElement.rel = "stylesheet";
-		insertStyleElement(options, linkElement);
-		return linkElement;
-	}
-
-	function addStyle(obj, options) {
-		var styleElement, update, remove;
-
-		if (options.singleton) {
-			var styleIndex = singletonCounter++;
-			styleElement = singletonElement || (singletonElement = createStyleElement(options));
-			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
-			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
-		} else if(obj.sourceMap &&
-			typeof URL === "function" &&
-			typeof URL.createObjectURL === "function" &&
-			typeof URL.revokeObjectURL === "function" &&
-			typeof Blob === "function" &&
-			typeof btoa === "function") {
-			styleElement = createLinkElement(options);
-			update = updateLink.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-				if(styleElement.href)
-					URL.revokeObjectURL(styleElement.href);
-			};
-		} else {
-			styleElement = createStyleElement(options);
-			update = applyToTag.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-			};
-		}
-
-		update(obj);
-
-		return function updateStyle(newObj) {
-			if(newObj) {
-				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
-					return;
-				update(obj = newObj);
-			} else {
-				remove();
-			}
-		};
-	}
-
-	var replaceText = (function () {
-		var textStore = [];
-
-		return function (index, replacement) {
-			textStore[index] = replacement;
-			return textStore.filter(Boolean).join('\n');
-		};
-	})();
-
-	function applyToSingletonTag(styleElement, index, remove, obj) {
-		var css = remove ? "" : obj.css;
-
-		if (styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = replaceText(index, css);
-		} else {
-			var cssNode = document.createTextNode(css);
-			var childNodes = styleElement.childNodes;
-			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
-			if (childNodes.length) {
-				styleElement.insertBefore(cssNode, childNodes[index]);
-			} else {
-				styleElement.appendChild(cssNode);
-			}
-		}
-	}
-
-	function applyToTag(styleElement, obj) {
-		var css = obj.css;
-		var media = obj.media;
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
-
-		if(media) {
-			styleElement.setAttribute("media", media)
-		}
-
-<<<<<<< HEAD:design/dist/js/build.js
 	/* styles */
 	__webpack_require__(89)
 
@@ -17288,73 +16704,28 @@
 	  }
 	})()}
 	if (__vue_options__.functional) {console.error("[vue-loader] personal.vue: functional components are not supported and should be defined in plain js files using render functions.")}
-=======
-		if(styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = css;
-		} else {
-			while(styleElement.firstChild) {
-				styleElement.removeChild(styleElement.firstChild);
-			}
-			styleElement.appendChild(document.createTextNode(css));
-		}
-	}
 
-	function updateLink(linkElement, obj) {
-		var css = obj.css;
-		var sourceMap = obj.sourceMap;
-
-		if(sourceMap) {
-			// http://stackoverflow.com/a/26603875
-			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-		}
-
-		var blob = new Blob([css], { type: "text/css" });
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
-
-		var oldSrc = linkElement.href;
-
-		linkElement.href = URL.createObjectURL(blob);
-
-		if(oldSrc)
-			URL.revokeObjectURL(oldSrc);
-	}
+	module.exports = __vue_exports__
 
 
 /***/ },
-<<<<<<< HEAD:design/dist/js/build.js
 /* 89 */
-=======
-
-/***/ 55:
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-<<<<<<< HEAD:design/dist/js/build.js
 	var content = __webpack_require__(90);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(38)(content, {});
-=======
-	var content = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"!!./../../node_modules/css-loader/index.js!./../../node_modules/stylus-loader/index.js!./form.styl\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(54)(content, {});
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-<<<<<<< HEAD:design/dist/js/build.js
 			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-091aef50&scoped=true!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./personal.vue", function() {
 				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-091aef50&scoped=true!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./personal.vue");
-=======
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/stylus-loader/index.js!./form.styl", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/stylus-loader/index.js!./form.styl");
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -17364,7 +16735,6 @@
 	}
 
 /***/ },
-<<<<<<< HEAD:design/dist/js/build.js
 /* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -17374,45 +16744,16 @@
 
 	// module
 	exports.push([module.id, "\n.personal[data-v-091aef50] {\n  width: 90%;\n  min-width: 800px;\n  margin: 0 auto;\n}\n.user[data-v-091aef50] {\n  margin: 20px 0;\n  text-align: center;\n  font-size: 25px;\n}\n.list-item[data-v-091aef50] {\n  display: inline-block;\n  width: 33.33%;\n  padding: 15px 10px;\n  vertical-align: top;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-box-shadow: 1px 1px 3px 0px #ddd;\n  -moz-box-shadow: 1px 1px 3px 0px #ddd;\n  -ms-box-shadow: 1px 1px 3px 0px #ddd;\n  -o-box-shadow: 1px 1px 3px 0px #ddd;\n  box-shadow: 1px 1px 3px 0px #ddd;\n}\n.list-item img[data-v-091aef50] {\n  display: block;\n  width: 100%;\n  height: 120px;\n  margin: auto;\n}\nh3[data-v-091aef50] {\n  display: inline-block;\n  max-width: 100%;\n  margin-top: 15px;\n  font-size: 20px;\n}\nh3 a[data-v-091aef50]:after {\n  display: block;\n  width: 100%;\n  margin: auto;\n  border-bottom: 1px solid #000;\n  content: '';\n  -webkit-transform: scale3d(0, 1, 1);\n  -moz-transform: scale3d(0, 1, 1);\n  -ms-transform: scale3d(0, 1, 1);\n  -o-transform: scale3d(0, 1, 1);\n  transform: scale3d(0, 1, 1);\n  transition: transform 0.15s ease-in-out;\n}\nh3 a[data-v-091aef50]:hover:after {\n  -webkit-transform: scale3d(1, 1, 1);\n  -moz-transform: scale3d(1, 1, 1);\n  -ms-transform: scale3d(1, 1, 1);\n  -o-transform: scale3d(1, 1, 1);\n  transform: scale3d(1, 1, 1);\n}\n.time[data-v-091aef50] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.group-btn[data-v-091aef50] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-091aef50] {\n  margin-right: 10px;\n}\n", ""]);
-=======
 
-/***/ 93:
-/***/ function(module, exports, __webpack_require__) {
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
+	// exports
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-30842c46!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./nav.vue\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(38)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-30842c46!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./nav.vue", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-30842c46!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./nav.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
 
 /***/ },
-<<<<<<< HEAD:design/dist/js/build.js
 /* 91 */
 /***/ function(module, exports, __webpack_require__) {
-=======
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 
-/***/ 95:
-/***/ function(module, exports, __webpack_require__) {
+	'use strict';
 
-<<<<<<< HEAD:design/dist/js/build.js
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
@@ -17538,30 +16879,7 @@
 	  if (module.hot.data) {
 	     require("vue-hot-reload-api").rerender("data-v-091aef50", module.exports)
 	  }
-=======
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-096c8fd1!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./footer.vue\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(38)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-096c8fd1!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./footer.vue", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-096c8fd1!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./footer.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
->>>>>>> 0bd8aecf8450bc81093361d0c555fe9a476eb541:design/dist/js/build.js
 	}
 
 /***/ }
-
-/******/ });
+/******/ ]);

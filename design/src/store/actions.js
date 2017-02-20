@@ -21,8 +21,8 @@ export default {
         }
       })
   },
-  GET_ARTICLES({commit}) {
-    return axios.get('/getArticals')
+  GET_ARTICLES({commit}, obj) {
+    return axios.get('/getArticals', {params: obj})
       .then(res => {
         if (res.data.state === 0) {
           commit('SET_ARTICLES', res.data.data)
@@ -87,6 +87,6 @@ export default {
       })
   },
   EDIT_ARTICLE({commit}, articleInfo) {
-    return axios.get()
-  }
+    // return axios.get()
+  },
 }

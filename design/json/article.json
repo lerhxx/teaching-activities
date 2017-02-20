@@ -9,7 +9,9 @@
 		"unit": "sadf",
 		"explain": "asdf",
 		"content": "sadf",
-		"enclosure": "dsfe"
+		"enclosure": "dsfe",
+		"faculty": "1",
+		"type": "1"
 	}, {
 		"url": "/dist/imgs/2.jpg",
 		"author": "123",
@@ -20,7 +22,9 @@
 		"unit": "sadf",
 		"explain": "asdf",
 		"content": "sadf",
-		"enclosure": "dsfe"
+		"enclosure": "dsfe",
+		"faculty": "1",
+		"type": "2"
 	}, {
 		"url": "/dist/imgs/3.jpg",
 		"author": "123",
@@ -31,7 +35,9 @@
 		"unit": "sadf",
 		"explain": "asdf",
 		"content": "sadf",
-		"enclosure": "dsfe"
+		"enclosure": "dsfe",
+		"faculty": "4",
+		"type": "3"
 	}, {
 		"url": "/dist/imgs/4.jpg",
 		"author": "123",
@@ -42,7 +48,9 @@
 		"unit": "sadf",
 		"explain": "asdf",
 		"content": "sadf",
-		"enclosure": "dsfe"
+		"enclosure": "dsfe",
+		"faculty": "3",
+		"type": "2"
 	}, {
 		"url": "/dist/imgs/5.jpg",
 		"author": "123",
@@ -53,7 +61,9 @@
 		"unit": "sadf",
 		"explain": "asdf",
 		"content": "sadf",
-		"enclosure": "dsfe"
+		"enclosure": "dsfe",
+		"faculty": "2",
+		"type": "3"
 	}],
 	"maxPage": 10
 }

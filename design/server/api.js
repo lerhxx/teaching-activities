@@ -26,16 +26,6 @@ router.get('/getSearchLists', (req, res) => {
 	})
 })
 
-router.get('/getArticals', (req, res) => {
-	db.Article.find(null, (err, lists) => {
-		if(err) {
-			res.send({state: 1, msg: '查询失败！'});
-		}else {
-			res.send({state: 0, data: lists});
-		}
-	})
-})
-
 router.put('/signin', (req, res) => {
 	let {id, pwd} = req.body;
 	db.User.findOne({id}, (err, user) => {
@@ -130,6 +120,34 @@ router.get('/user', (req, res) => {
 			res.send({state: 0, data: {id: doc[0].id, rank: doc[0].rank}});
 		}
 	})
+})
+router.get('/getArticals', (req, res) => {
+	if(req.query.faculty != 0 || req.query.type != 0) {
+		if(req.query.faculty == 0) {
+			db.Article.find({type: req.query.type}, (err, doc) => {
+				cb(err, doc)
+			})
+		}else if(req.query.type == 0) {
+			db.Article.find({faculty: req.query.faculty}, (err, doc) => {
+				cb(err, doc)
+			})
+		}else {
+			db.Article.find({faculty: req.query.faculty, type: req.query.type}, (err, doc) => {
+				cb(err, doc)
+			})
+		}
+	}else if(req.query.faculty == 0 && req.query.type == 0)  {
+		db.Article.find((err, doc) => {
+			cb(err, doc)
+		})
+	}
+	function cb(err, doc) {
+		if(err) {
+			res.send({state: 1, msg: '查询失败！'});
+		}else {
+			res.send({state: 0, data: doc});
+		}
+	}
 })
 
 module.exports = router;

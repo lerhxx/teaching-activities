@@ -1,5 +1,41 @@
 {
-   "faculties": ["数信", "外国语", "经管"],
-   "types": ["教学讨论会","科学研讨会","学术沙龙"],
-   "timeliness": ["未发布", "已发布"]
+   "faculties": [{
+       "type": "全部",
+       "index": 0
+   }, {
+       "type": "校",
+       "index": 1
+   }, {
+       "type": "数信",
+       "index": 2
+   }, {
+       "type": "外国语数信",
+       "index": 3
+   }, {
+       "type": "经管",
+       "index": 4
+   }],
+   "types": [{
+       "type": "全部",
+       "index": 0
+   }, {
+       "type": "教学讨论会校",
+       "index": 1
+   }, {
+       "type": "科学研讨会",
+       "index": 2
+   }, {
+       "type": "学术沙龙",
+       "index": 3
+   }],
+   "timeliness": [{
+       "type": "全部",
+       "index": 0
+   }, {
+       "type": "未举行",
+       "index": 1
+   }, {
+       "type": "未举行",
+       "index": 2
+   }]
 }
