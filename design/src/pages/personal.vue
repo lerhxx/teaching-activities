@@ -3,6 +3,18 @@
         <div>
             <h2 class='user'>{{this.userId}}</h2>
         </div>
+        <ul class=''>
+            <li class='count-list-item'>
+                <router-link to='/'>
+                    文章
+                </router-link>
+            </li>
+            <li class='count-list-item'>
+                <router-link to='/'>
+                    统计
+                </router-link>
+            </li>
+        </ul>
         <ul class='list'>
             <li class='list-item' v-for='item in selfArticles'>
 				<router-link :to="{name: 'article', params:{id: item._id}}">
@@ -81,6 +93,7 @@
 </script>
 
 <style scoped lang='stylus'>
+    @import '../css/common';
     @import '../css/funs';
 
     .personal
@@ -91,14 +104,21 @@
         margin 20px 0
         text-align center
         font-size 25px
+    .count-list-item
+        display inline-block
+        padding 5px
+        border 1px solid #ddd
+        border-radius(8px)
     .list-item
         display inline-block
-        width 33.33%
-        padding 15px 10px
+        width 32.5%
+        padding 15px 8px 15px 0
         margin 5px 0
         vertical-align top
         box-sizing border-box
         box-shadow 2px 0px 0px 0px #ddd
+        &:nth-child(2n)
+            margin 5px 1.25%
         img
             display block
             width 100%

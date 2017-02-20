@@ -16765,7 +16765,7 @@
 
 
 	// module
-	exports.push([module.id, "\n.personal[data-v-091aef50] {\n  width: 90%;\n  min-width: 800px;\n  margin: 0 auto;\n}\n.user[data-v-091aef50] {\n  margin: 20px 0;\n  text-align: center;\n  font-size: 25px;\n}\n.list-item[data-v-091aef50] {\n  display: inline-block;\n  width: 33.33%;\n  padding: 15px 10px;\n  margin: 5px 0;\n  vertical-align: top;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-box-shadow: 2px 0px 0px 0px #ddd;\n  -moz-box-shadow: 2px 0px 0px 0px #ddd;\n  -ms-box-shadow: 2px 0px 0px 0px #ddd;\n  -o-box-shadow: 2px 0px 0px 0px #ddd;\n  box-shadow: 2px 0px 0px 0px #ddd;\n}\n.list-item img[data-v-091aef50] {\n  display: block;\n  width: 100%;\n  height: 120px;\n  margin: auto;\n}\nh3[data-v-091aef50] {\n  display: inline-block;\n  max-width: 100%;\n  margin-top: 15px;\n  font-size: 20px;\n}\nh3 a[data-v-091aef50]:after {\n  display: block;\n  width: 100%;\n  margin: auto;\n  border-bottom: 1px solid #000;\n  content: '';\n  -webkit-transform: scale3d(0, 1, 1);\n  -moz-transform: scale3d(0, 1, 1);\n  -ms-transform: scale3d(0, 1, 1);\n  -o-transform: scale3d(0, 1, 1);\n  transform: scale3d(0, 1, 1);\n  transition: transform 0.15s ease-in-out;\n}\nh3 a[data-v-091aef50]:hover:after {\n  -webkit-transform: scale3d(1, 1, 1);\n  -moz-transform: scale3d(1, 1, 1);\n  -ms-transform: scale3d(1, 1, 1);\n  -o-transform: scale3d(1, 1, 1);\n  transform: scale3d(1, 1, 1);\n}\n.time[data-v-091aef50] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.group-btn[data-v-091aef50] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-091aef50] {\n  margin-right: 10px;\n}\n", ""]);
+	exports.push([module.id, "\nbody[data-v-091aef50],\nul[data-v-091aef50],\nli[data-v-091aef50],\np[data-v-091aef50],\nh1[data-v-091aef50],\nh2[data-v-091aef50],\nh3[data-v-091aef50] {\n  padding: 0;\n  margin: 0;\n}\nbody[data-v-091aef50] {\n  height: 100vh;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nul li[data-v-091aef50] {\n  list-style: none;\n}\na[data-v-091aef50] {\n  text-decoration: none;\n  color: #000;\n}\n.color-r[data-v-091aef50] {\n  color: #f00;\n}\n.color-b[data-v-091aef50] {\n  color: #40bfce;\n}\n.color-g[data-v-091aef50] {\n  color: #bbb6b6;\n}\n.padding-top[data-v-091aef50] {\n  padding-top: 45px;\n}\n.text-ellipsis[data-v-091aef50] {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n#app[data-v-091aef50] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  overflow: hidden;\n}\n.wrapper[data-v-091aef50] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  min-height: 100vh;\n  padding-bottom: 48px;\n}\n.personal[data-v-091aef50] {\n  width: 90%;\n  min-width: 800px;\n  margin: 0 auto;\n}\n.user[data-v-091aef50] {\n  margin: 20px 0;\n  text-align: center;\n  font-size: 25px;\n}\n.count-list-item[data-v-091aef50] {\n  display: inline-block;\n  padding: 5px;\n  border: 1px solid #ddd;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.list-item[data-v-091aef50] {\n  display: inline-block;\n  width: 32.5%;\n  padding: 15px 8px 15px 0;\n  margin: 5px 0;\n  vertical-align: top;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-box-shadow: 2px 0px 0px 0px #ddd;\n  -moz-box-shadow: 2px 0px 0px 0px #ddd;\n  -ms-box-shadow: 2px 0px 0px 0px #ddd;\n  -o-box-shadow: 2px 0px 0px 0px #ddd;\n  box-shadow: 2px 0px 0px 0px #ddd;\n}\n.list-item[data-v-091aef50]:nth-child(2n) {\n  margin: 5px 1.25%;\n}\n.list-item img[data-v-091aef50] {\n  display: block;\n  width: 100%;\n  height: 120px;\n  margin: auto;\n}\nh3[data-v-091aef50] {\n  display: inline-block;\n  max-width: 100%;\n  margin-top: 15px;\n  font-size: 20px;\n}\nh3 a[data-v-091aef50]:after {\n  display: block;\n  width: 100%;\n  margin: auto;\n  border-bottom: 1px solid #000;\n  content: '';\n  -webkit-transform: scale3d(0, 1, 1);\n  -moz-transform: scale3d(0, 1, 1);\n  -ms-transform: scale3d(0, 1, 1);\n  -o-transform: scale3d(0, 1, 1);\n  transform: scale3d(0, 1, 1);\n  transition: transform 0.15s ease-in-out;\n}\nh3 a[data-v-091aef50]:hover:after {\n  -webkit-transform: scale3d(1, 1, 1);\n  -moz-transform: scale3d(1, 1, 1);\n  -ms-transform: scale3d(1, 1, 1);\n  -o-transform: scale3d(1, 1, 1);\n  transform: scale3d(1, 1, 1);\n}\n.time[data-v-091aef50] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.group-btn[data-v-091aef50] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-091aef50] {\n  margin-right: 10px;\n}\n", ""]);
 
 	// exports
 
@@ -16784,6 +16784,18 @@
 
 	var _cookieUtil = __webpack_require__(40);
 
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 	//
 	//
 	//
@@ -16874,7 +16886,19 @@
 	    staticClass: "padding-top personal"
 	  }, [_c('div', [_c('h2', {
 	    staticClass: "user"
-	  }, [_vm._v(_vm._s(this.userId))])]), _vm._v(" "), _c('ul', {
+	  }, [_vm._v(_vm._s(this.userId))])]), _vm._v(" "), _c('ul', {}, [_c('li', {
+	    staticClass: "count-list-item"
+	  }, [_c('router-link', {
+	    attrs: {
+	      "to": "/"
+	    }
+	  }, [_vm._v("\n                    文章\n                ")])]), _vm._v(" "), _c('li', {
+	    staticClass: "count-list-item"
+	  }, [_c('router-link', {
+	    attrs: {
+	      "to": "/"
+	    }
+	  }, [_vm._v("\n                    统计\n                ")])])]), _vm._v(" "), _c('ul', {
 	    staticClass: "list"
 	  }, _vm._l((_vm.selfArticles), function(item) {
 	    return _c('li', {
