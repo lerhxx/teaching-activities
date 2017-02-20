@@ -55,7 +55,7 @@ const Models = {
 }
 
 const initialize = () => {
-	Models.FootLink.find(null, (err, doc) => {
+	Models.Search.find(null, (err, doc) => {
 		if(err) {
 			console.error(err);
 		}else if(!doc.length) {
@@ -63,9 +63,9 @@ const initialize = () => {
 			//TODO
 			// list.lists.map(item => new Models.List(item).save());
 			// article.articles.map(item => new Models.Article(item).save());
-			footerLink.map(item => new Models.FootLink(item).save());
+			// footerLink.map(item => new Models.FootLink(item).save());
 			new Models.Search(search).save();
-			user.map(item => new Models.User(item).save());
+			// user.map(item => new Models.User(item).save());
 			// Models.User.find(null, (err, doc) => {
 			// 	if(err) {
 			// 		return console.error(err)
@@ -73,10 +73,10 @@ const initialize = () => {
 			// 	console.log(doc)
 			// })
 		}else {
-			// Models.Article.find({author: '2'}, (err, doc) => {
-			// 	doc.map(item => item.remove())
-			// 	console.log(doc)
-			// })
+			Models.Search.find(null, (err, doc) => {
+				doc.map(item => item.remove())
+				console.log(doc)
+			})
 			Models.initialized = true;
 		}
 	})

@@ -1,5 +1,5 @@
 {
-   "faculties": ["a", "b", "c"],
+   "faculties": ["数信", "外国语", "经管"],
    "types": ["教学讨论会","科学研讨会","学术沙龙"],
-   "timeliness": ["a", "b", "c"]
+   "timeliness": ["未发布", "已发布"]
 }
