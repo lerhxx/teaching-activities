@@ -9,7 +9,7 @@
 					<input type='text' v-model='form.abs' placeholder='举办目的' />
 				</div>
 				<div class='group-con'>
-					<span class='must'>*</span><calendar inputwidth='216px' v-on:getValue='getTime'></calendar>
+					<span class='must'>*</span><calendar type='range' inputwidth='216px' v-on:getValue='getTime' v-on:getEndTime='getEndTime'></calendar>
 					<!--<input type='text' v-model='form.time' placeholder='举办时间' />-->
 				</div>
 				<div class='group-con'>
@@ -98,7 +98,6 @@
 						this.form.explain = data.explain;
 						this.form.enclosure = data.enclosure;
 						editor.setValue(data.content)
-						console.log(editor)
 					})
 			}
 		},
@@ -165,12 +164,18 @@
 				return e.target.files || e.dataTransfer.files;
 			},
 			getTime(value) {
-				this.form.time = value;
+				this.form.heldTime = value;
+			},
+			getEndTime(value) {
+				this.form.endTime = value;
 			},
 			onPost() {
 				let form = this.form;
 				form.content = editor.sync();
 				form.author = this.userId;
+				form.time = new Date();
+				console.log(form.heldTime);
+				console.log(form.endTime)
 				if(!form.title || !form.time || !form.address || !form.unit || !form.content || !form.url) {
 					return alert('请填写所有必须项！');
 				}
@@ -179,11 +184,6 @@
 						alert('发布成功');
 						this.$router.push({name: 'article', params: {id: data.id}});
 					}).catch(err => alert(err));
-				// axios.post(location.pathname, {
-				// 	form: form
-				// }).then(res => {
-				// 	alert(res.data.msg)
-				// })
 			}
 		},
 		computed: mapState(['userId', 'isEdit'])

@@ -14558,19 +14558,19 @@
 		},
 
 		methods: {
-			onChangeTime: function onChangeTime() {
+			onChangeTime: function onChangeTime(item) {
 				//TODO
-				// this.$store.dispatch('GET_ARTICLES', {type: 'time', value: this.time});
+				console.log(this.time);
 			},
 			onSelect: function onSelect() {
-				this.$store.dispatch('GET_ARTICLES', { faculty: this.faculty, type: this.type });
+				this.$store.dispatch('GET_ARTICLES', { faculty: this.faculty, type: this.type, time: this.time });
 			}
 		},
 		computed: (0, _vuex.mapState)(['searchLists', 'articles']),
 		filters: {
 			timeFormat: function timeFormat(value) {
 				var date = new Date(value);
-				return date.getFullYear() + '\u5E74' + (date.getMonth() > 9 ? date.getgetMonthHours() : '0' + date.getMonth()) + '\u6708' + (date.getDate() > 9 ? date.getDate() : '0' + date.getDate()) + '\u65E5 \n                        ' + (date.getHours() > 9 ? date.getHours() : '0' + date.getHours()) + ':\n                        ' + (date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes());
+				return date.getFullYear() + '\u5E74' + (date.getMonth() > 8 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1)) + '\u6708' + (date.getDate() > 9 ? date.getDate() : '0' + date.getDate()) + '\u65E5 \n                        ' + (date.getHours() > 9 ? date.getHours() : '0' + date.getHours()) + ':\n                        ' + (date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes());
 			},
 			filterContent: function filterContent(value) {
 				return value.length > 51 ? value.substr(0, 51) + '...' : value;
@@ -14693,7 +14693,7 @@
 	          var val = "_value" in o ? o._value : o.value;
 	          return val
 	        })[0]
-	      }, _vm.onChangeTime]
+	      }, _vm.onSelect]
 	    }
 	  }, _vm._l((_vm.searchLists.timeliness), function(time) {
 	    return _c('option', {
@@ -15271,7 +15271,6 @@
 					_this.form.explain = data.explain;
 					_this.form.enclosure = data.enclosure;
 					editor.setValue(data.content);
-					console.log(editor);
 				});
 			}
 		},
@@ -15316,7 +15315,10 @@
 				return e.target.files || e.dataTransfer.files;
 			},
 			getTime: function getTime(value) {
-				this.form.time = value;
+				this.form.heldTime = value;
+			},
+			getEndTime: function getEndTime(value) {
+				this.form.endTime = value;
 			},
 			onPost: function onPost() {
 				var _this2 = this;
@@ -15324,6 +15326,9 @@
 				var form = this.form;
 				form.content = editor.sync();
 				form.author = this.userId;
+				form.time = new Date();
+				console.log(form.heldTime);
+				console.log(form.endTime);
 				if (!form.title || !form.time || !form.address || !form.unit || !form.content || !form.url) {
 					return alert('请填写所有必须项！');
 				}
@@ -15333,11 +15338,6 @@
 				}).catch(function (err) {
 					return alert(err);
 				});
-				// axios.post(location.pathname, {
-				// 	form: form
-				// }).then(res => {
-				// 	alert(res.data.msg)
-				// })
 			}
 		},
 		computed: (0, _vuex.mapState)(['userId', 'isEdit'])
@@ -15767,6 +15767,8 @@
 	                    this.value = '';
 	            }
 	            this.getValue();
+	            this.getStartTime();
+	            this.getEndTime();
 	        }
 	    }, _defineProperty(_methods, 'clearValue', function clearValue() {
 	        this.value = '';
@@ -15830,6 +15832,10 @@
 	        clearInterval(self.check);
 	    }), _defineProperty(_methods, 'getValue', function getValue() {
 	        this.$emit('getValue', this.value);
+	    }), _defineProperty(_methods, 'getStartTime', function getStartTime() {
+	        this.$emit('getStartTime', this.startYear + '-' + this.startMonth + '-' + this.startDate + ' ' + this.startHour + ':' + this.startMin);
+	    }), _defineProperty(_methods, 'getEndTime', function getEndTime() {
+	        this.$emit('getEndTime', this.endYear + '-' + this.endMonth + '-' + this.endDate + ' ' + this.endHour + ':' + this.endMin);
 	    }), _methods),
 	    computed: {
 	        yearList: function yearList() {
@@ -16291,10 +16297,12 @@
 	    staticClass: "must"
 	  }, [_vm._v("*")]), _c('calendar', {
 	    attrs: {
+	      "type": "range",
 	      "inputwidth": "216px"
 	    },
 	    on: {
-	      "getValue": _vm.getTime
+	      "getValue": _vm.getTime,
+	      "getEndTime": _vm.getEndTime
 	    }
 	  }), _vm._v(" ")]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"

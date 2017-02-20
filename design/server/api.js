@@ -122,21 +122,66 @@ router.get('/user', (req, res) => {
 	})
 })
 router.get('/getArticals', (req, res) => {
-	if(req.query.faculty != 0 || req.query.type != 0) {
-		if(req.query.faculty == 0) {
-			db.Article.find({type: req.query.type}, (err, doc) => {
+	let faculty = req.query.faculty,
+		type = req.query.type,
+		time = req.query.time,
+		now = new Date();
+
+	if(faculty != 0 || type != 0 || time != 0) {
+		if(faculty == 0 && type != 0 && time != 0) {
+			if(time == 1) {
+				db.Article.find({type: type, endTime: {$gt: now}}, (err, doc) => {
+					cb(err, doc)
+				})
+			}else {
+				db.Article.find({type: type, endTime: {$lt: now}}, (err, doc) => {
+					cb(err, doc)
+				})
+			}
+		}else if(type == 0 && faculty != 0 && time != 0) {
+			if(time == 1) {
+				db.Article.find({faculty: faculty, endTime: {$gt: now}}, (err, doc) => {
+					cb(err, doc)
+				})
+			}else {
+				db.Article.find({faculty: faculty, endTime: {$lt: now}}, (err, doc) => {
+					cb(err, doc)
+				})
+			}
+		}else if(time == 0 && faculty != 0 && type != 0) {
+			db.Article.find({faculty: faculty, type: type}, (err, doc) => {
 				cb(err, doc)
 			})
-		}else if(req.query.type == 0) {
-			db.Article.find({faculty: req.query.faculty}, (err, doc) => {
+		}else if(faculty == 0 && type == 0 && time != 0) {
+			if(time == 1) {
+				db.Article.find({endTime: {$gt: now}}, (err, doc) => {
+					cb(err, doc)
+				})
+			}else {
+				db.Article.find({endTime: {$lt: now}}, (err, doc) => {
+					cb(err, doc)
+				})
+			}
+		}else if(faculty == 0 && type != 0 && time == 0) {
+			db.Article.find({type: type}, (err, doc) => {
+				cb(err, doc)
+			})
+		}else if(faculty != 0 && type == 0 && time == 0) {
+			db.Article.find({faculty: faculty}, (err, doc) => {
 				cb(err, doc)
 			})
 		}else {
-			db.Article.find({faculty: req.query.faculty, type: req.query.type}, (err, doc) => {
-				cb(err, doc)
-			})
+			if(time == 1) {
+				db.Article.find({faculty: faculty, type: type, endTime: {$gt: now}}, (err, doc) => {
+					cb(err, doc)
+				})
+			}else {
+				db.Article.find({faculty: faculty, type: type, endTime: {$lt: now}}, (err, doc) => {
+					cb(err, doc)
+				})
+			}
 		}
-	}else if(req.query.faculty == 0 && req.query.type == 0)  {
+	}else if(faculty == 0 && type == 0 && time == 0)  {
 		db.Article.find((err, doc) => {
 			cb(err, doc)
 		})

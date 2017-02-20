@@ -15,7 +15,7 @@
 				</option>
 			</select>
 			<label>时效：</label>
-			<select class='time' v-model='time' @change='onChangeTime'>
+			<select class='time' v-model='time' @change='onSelect'>
 				<option v-for='time in searchLists.timeliness' v-bind:value='time.index'>
 					{{time.type}}
 				</option>
@@ -54,19 +54,19 @@
 			this.onSelect();
 		},
 		methods: {
-			onChangeTime() {
+			onChangeTime(item) {
 				//TODO
-				// this.$store.dispatch('GET_ARTICLES', {type: 'time', value: this.time});
+				console.log(this.time)
 			},
 			onSelect() {
-				this.$store.dispatch('GET_ARTICLES', {faculty: this.faculty, type: this.type});
+				this.$store.dispatch('GET_ARTICLES', {faculty: this.faculty, type: this.type, time: this.time});
 			}
 		},
 		computed: mapState(['searchLists', 'articles']),
 		filters: {
             timeFormat(value) {
                 let date = new Date(value);
-                return `${date.getFullYear()}年${date.getMonth() > 9 ? date.getgetMonthHours() : '0' + date.getMonth()}月${date.getDate() > 9 ? date.getDate() : '0' + date.getDate()}日 
+                return `${date.getFullYear()}年${date.getMonth() > 8 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1)}月${date.getDate() > 9 ? date.getDate() : '0' + date.getDate()}日 
                         ${date.getHours() > 9 ? date.getHours() : '0' + date.getHours()}:
                         ${date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes()}`;
             },

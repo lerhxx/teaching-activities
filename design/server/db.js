@@ -23,6 +23,8 @@ const articleSchema = new Schema({
 	title: String,
 	abs: String,
 	time: Date,
+	heldTime: String,
+	endTime: Date,
 	address: String,
 	unit: String,
 	explain: String,
@@ -58,25 +60,25 @@ const Models = {
 }
 
 const initialize = () => {
-	Models.Article.find(null, (err, doc) => {
+	Models.Search.find(null, (err, doc) => {
 		if(err) {
 			console.error(err);
 		}else if(!doc.length) {
 			console.log('Database opens for the first time...')
 			//TODO
 			// list.lists.map(item => new Models.List(item).save());
-			article.articles.map(item => new Models.Article(item).save());
+			// article.articles.map(item => new Models.Article(item).save());
 			// footerLink.map(item => new Models.FootLink(item).save());
-			// new Models.Search(search).save();
+			new Models.Search(search).save();
 			// user.map(item => new Models.User(item).save());
-			// Models.Search.find(null, (err, doc) => {
+			// Models.Article.find(null, (err, doc) => {
 			// 	if(err) {
 			// 		return console.error(err)
 			// 	}
 			// 	console.log(doc)
 			// })
 		}else {
-			// Models.Article.find(null, (err, doc) => {
+			// Models.Search.find(null, (err, doc) => {
 			// 	// doc.map(item => item.remove())
 			// 	console.log(doc)
 			// })
