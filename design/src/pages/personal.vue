@@ -8,16 +8,14 @@
 				<router-link :to="{name: 'article', params:{id: item._id}}">
 					<img :src='item.url' />
 					<h3 class='text-ellipsis'>
-                        <router-link :to='{name: "article"}'>
-                            {{item.title}}
-                        </router-link>
+                        {{item.title}}
                     </h3>
 				</router-link>
                 <p class='time color-g'>{{item.time | timeFormat}}</p>
                 <p class='abstract'>{{item.content | filterContent}}</p>
                 <div class='group-btn'>
                     <span class='color-b' @click='edit(item)'>编辑</span>
-                    <span class='color-g'>删除</span>
+                    <span class='color-g' @click='deleteArt(item)'>删除</span>
                 </div>
 			</li>
         </ul>
@@ -40,21 +38,43 @@
         methods: {
             edit(item) {
                 this.$store.commit('SET_EDITINT_MODE', true);
-                this.$router.push({name: 'articleEdit', params: {id: item._id}});
+                this.$router.push({name: 'articleEdit', params: {artId: item._id}});
                 // this.$store.dispatch('EDIT_ARTICLE', {id: item._id})
                 //     .catch(err => alert(err));
+            },
+            deleteArt(item) {
+                this.$store.dispatch('DELETE_ARTICLE', {id: item._id})
+                    .then(res => alert(res.data.msg))
+                    .catch(err => alert(res.data.msg))
             }
         },
         computed: mapState(['userId', 'selfArticles']),
         filters: {
-            timeFormat(value, len) {
+            timeFormat(value) {
                 let date = new Date(value);
                 return `${date.getFullYear()}年${date.getMonth() > 9 ? date.getgetMonthHours() : '0' + date.getMonth()}月${date.getDate() > 9 ? date.getDate() : '0' + date.getDate()}日 
                         ${date.getHours() > 9 ? date.getHours() : '0' + date.getHours()}:
                         ${date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes()}`;
             },
 			filterContent(value) {
-				return value.length > 51 ? value.substr(0, 51) + '...' : value;
+                let len = value.substr(0, 102).replace(/[^\x00-\xff]/g,"01").length,
+                    newValue = value;
+				if(len > 102) {
+					let index = 0;
+					for(let i = 0; i < value.length || i < 102; ++i) {
+						if(/^[\x00-\xff]$/.test(value[i])) {
+							index ++;
+						}else {
+							index += 2;
+						}
+						if(index > 102) {
+							newValue = value.substr(0, 102) + '...';
+							break;
+						}
+					}
+				}
+                // console.log(value)
+				return newValue;
 			}
         }
     }
@@ -75,9 +95,10 @@
         display inline-block
         width 33.33%
         padding 15px 10px
+        margin 5px 0
         vertical-align top
         box-sizing border-box
-        box-shadow 1px 1px 3px 0px #ddd
+        box-shadow 2px 0px 0px 0px #ddd
         img
             display block
             width 100%

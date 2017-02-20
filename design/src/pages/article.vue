@@ -6,7 +6,7 @@
 			<img :src='article.url' alt='cover' class='cover'/>
 			<div class='group-con'>
 				<label>举办时间：</label>
-				<span>{{article.time}}</span>
+				<span>{{article.time | timeFormat}}</span>
 			</div>
 			<div class='group-con'>
 				<label>举办地点：</label>
@@ -58,6 +58,14 @@
 			article() {
 				return this.$store.state.article
 			},
+		},
+		filters: {
+			timeFormat(value) {
+                let date = new Date(value);
+                return `${date.getFullYear()}年${date.getMonth() > 9 ? date.getgetMonthHours() : '0' + date.getMonth()}月${date.getDate() > 9 ? date.getDate() : '0' + date.getDate()}日 
+                        ${date.getHours() > 9 ? date.getHours() : '0' + date.getHours()}:
+                        ${date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes()}`;
+            }
 		}
 	}
 </script>

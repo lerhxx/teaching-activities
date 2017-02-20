@@ -14,21 +14,9 @@ const routes = [{
 }, {
 	path: '/signin', component: SignIn, name: 'signin'
 }, {
-	path: '/article',
-	redirect: to => {
-		const {hash, params, query} = to;
-		console.log(params.id)
-		if(params.id) {
-			return '/article/' + params.id;
-		}else {
-			alert('文章不存在！')
-			return '/';
-		}
-	}
-}, {
 	path: '/article/:id', component: Article, name: 'article',
 }, {
-	path: '/article/:id/edit', component: Edit, name: 'articleEdit',
+	path: '/article/:artId/edit', component: Edit, name: 'articleEdit',
 	
 }, {
 	path: '/edit/:id', name: 'edit',
@@ -42,6 +30,16 @@ const routes = [{
 	}
 }, {
 	path: '/user/edit/:id', component: Edit, name: 'userEdit'
+}, {
+	path: '/pervalidate/:id', name: 'perValidate',
+	redirect: to => {
+		const {hash, params, query} = to;
+		if(params.id) {
+			return '/personal/' + params.id;
+		}else {
+			return '/signin';
+		}
+	}
 }, {
 	path: '/personal/:id', component: Personal, name: 'personal'
 }, {

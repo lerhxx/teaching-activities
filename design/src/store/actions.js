@@ -37,8 +37,7 @@ export default {
         if (res.data.state === 2 || res.data.state === 1) {
           return Promise.reject(res.data.msg)
         }else if (res.data.state === 0) {
-          console.log(res.data.data[0].content)
-          commit('SET_ARTICLE', res.data.data[0])
+          commit('SET_ARTICLE', res.data.data)
         }
       })
   },
@@ -89,4 +88,14 @@ export default {
   EDIT_ARTICLE({commit}, articleInfo) {
     // return axios.get()
   },
+  DELETE_ARTICLE({commit}, articleInfo) {
+    return axios.delete(`/article/${articleInfo.id}`)
+      .then(res => {
+        if(res.data.state === 0) {
+          commit('UPDATE_SELF_ARTICLES');
+        }else {
+          return Promise.reject(res.data.msg);
+        }
+      })
+  }
 }

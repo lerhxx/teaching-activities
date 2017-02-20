@@ -10984,8 +10984,7 @@
 	      if (res.data.state === 2 || res.data.state === 1) {
 	        return Promise.reject(res.data.msg);
 	      } else if (res.data.state === 0) {
-	        console.log(res.data.data[0].content);
-	        commit('SET_ARTICLE', res.data.data[0]);
+	        commit('SET_ARTICLE', res.data.data);
 	      }
 	    });
 	  },
@@ -11043,6 +11042,17 @@
 	    // return axios.get()
 
 	    var commit = _ref10.commit;
+	  },
+	  DELETE_ARTICLE: function DELETE_ARTICLE(_ref11, articleInfo) {
+	    var commit = _ref11.commit;
+
+	    return _axios2.default.delete('/article/' + articleInfo.id).then(function (res) {
+	      if (res.data.state === 0) {
+	        commit('UPDATE_SELF_ARTICLES');
+	      } else {
+	        return Promise.reject(res.data.msg);
+	      }
+	    });
 	  }
 	};
 
@@ -11074,6 +11084,9 @@
 	    },
 	    SET_SELF_ARTICLES: function SET_SELF_ARTICLES(state, articles) {
 	        state.selfArticles = articles;
+	    },
+	    UPDATE_SELF_ARTICLES: function UPDATE_SELF_ARTICLES(state) {
+	        state.selfArticles.shift();
 	    },
 	    SET_EDITINT_MODE: function SET_EDITINT_MODE(state, mode) {
 	        state.isEdit = mode;
@@ -11509,6 +11522,8 @@
 	//
 	//
 	//
+	//
+	//
 
 	exports.default = {
 		data: function data() {
@@ -11624,17 +11639,10 @@
 	        }
 	      }
 	    }
-	  }, [_vm._v("\n\t\t\t\t发布\n\t\t\t")])]), _vm._v(" "), _c('li', {
-	    directives: [{
-	      name: "show",
-	      rawName: "v-show",
-	      value: (_vm.userRank > 0),
-	      expression: "userRank > 0"
-	    }]
-	  }, [_c('router-link', {
+	  }, [_vm._v("\n\t\t\t\t发布\n\t\t\t")])]), _vm._v(" "), _c('li', [_c('router-link', {
 	    attrs: {
 	      "to": {
-	        name: 'personal',
+	        name: 'perValidate',
 	        params: {
 	          id: _vm.userId
 	        }
@@ -12326,24 +12334,9 @@
 	}, {
 		path: '/signin', component: _signin2.default, name: 'signin'
 	}, {
-		path: '/article',
-		redirect: function redirect(to) {
-			var hash = to.hash,
-			    params = to.params,
-			    query = to.query;
-
-			console.log(params.id);
-			if (params.id) {
-				return '/article/' + params.id;
-			} else {
-				alert('文章不存在！');
-				return '/';
-			}
-		}
-	}, {
 		path: '/article/:id', component: _article2.default, name: 'article'
 	}, {
-		path: '/article/:id/edit', component: _edit2.default, name: 'articleEdit'
+		path: '/article/:artId/edit', component: _edit2.default, name: 'articleEdit'
 
 	}, {
 		path: '/edit/:id', name: 'edit',
@@ -12360,6 +12353,19 @@
 		}
 	}, {
 		path: '/user/edit/:id', component: _edit2.default, name: 'userEdit'
+	}, {
+		path: '/pervalidate/:id', name: 'perValidate',
+		redirect: function redirect(to) {
+			var hash = to.hash,
+			    params = to.params,
+			    query = to.query;
+
+			if (params.id) {
+				return '/personal/' + params.id;
+			} else {
+				return '/signin';
+			}
+		}
 	}, {
 		path: '/personal/:id', component: _personal2.default, name: 'personal'
 	}, {
@@ -15260,8 +15266,10 @@
 		created: function created() {
 			var _this = this;
 
-			if (this.isEdit) {
-				this.$store.dispatch('GET_EDIT_ARTICLE', { id: this.$route.params.id }).then(function (data) {
+			console.log(this.isEdit);
+			console.log(this.$route.params);
+			if (this.isEdit && this.$route.params.artId) {
+				this.$store.dispatch('GET_EDIT_ARTICLE', { id: this.$route.params.artId }).then(function (data) {
 					_this.form.url = data.url;
 					_this.form.title = data.title;
 					_this.form.abs = data.abs;
@@ -15323,12 +15331,12 @@
 			onPost: function onPost() {
 				var _this2 = this;
 
+				//TODO
+				//编辑
 				var form = this.form;
 				form.content = editor.sync();
 				form.author = this.userId;
 				form.time = new Date();
-				console.log(form.heldTime);
-				console.log(form.endTime);
 				if (!form.title || !form.time || !form.address || !form.unit || !form.content || !form.url) {
 					return alert('请填写所有必须项！');
 				}
@@ -16586,6 +16594,12 @@
 			article: function article() {
 				return this.$store.state.article;
 			}
+		},
+		filters: {
+			timeFormat: function timeFormat(value) {
+				var date = new Date(value);
+				return date.getFullYear() + '\u5E74' + (date.getMonth() > 9 ? date.getgetMonthHours() : '0' + date.getMonth()) + '\u6708' + (date.getDate() > 9 ? date.getDate() : '0' + date.getDate()) + '\u65E5 \n                        ' + (date.getHours() > 9 ? date.getHours() : '0' + date.getHours()) + ':\n                        ' + (date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes());
+			}
 		}
 	}; //
 	//
@@ -16641,7 +16655,7 @@
 	    }
 	  }), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
-	  }, [_c('label', [_vm._v("举办时间：")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.article.time))])]), _vm._v(" "), _c('div', {
+	  }, [_c('label', [_vm._v("举办时间：")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm._f("timeFormat")(_vm.article.time)))])]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
 	  }, [_c('label', [_vm._v("举办地点：")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.article.address))])]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
@@ -16751,7 +16765,7 @@
 
 
 	// module
-	exports.push([module.id, "\n.personal[data-v-091aef50] {\n  width: 90%;\n  min-width: 800px;\n  margin: 0 auto;\n}\n.user[data-v-091aef50] {\n  margin: 20px 0;\n  text-align: center;\n  font-size: 25px;\n}\n.list-item[data-v-091aef50] {\n  display: inline-block;\n  width: 33.33%;\n  padding: 15px 10px;\n  vertical-align: top;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-box-shadow: 1px 1px 3px 0px #ddd;\n  -moz-box-shadow: 1px 1px 3px 0px #ddd;\n  -ms-box-shadow: 1px 1px 3px 0px #ddd;\n  -o-box-shadow: 1px 1px 3px 0px #ddd;\n  box-shadow: 1px 1px 3px 0px #ddd;\n}\n.list-item img[data-v-091aef50] {\n  display: block;\n  width: 100%;\n  height: 120px;\n  margin: auto;\n}\nh3[data-v-091aef50] {\n  display: inline-block;\n  max-width: 100%;\n  margin-top: 15px;\n  font-size: 20px;\n}\nh3 a[data-v-091aef50]:after {\n  display: block;\n  width: 100%;\n  margin: auto;\n  border-bottom: 1px solid #000;\n  content: '';\n  -webkit-transform: scale3d(0, 1, 1);\n  -moz-transform: scale3d(0, 1, 1);\n  -ms-transform: scale3d(0, 1, 1);\n  -o-transform: scale3d(0, 1, 1);\n  transform: scale3d(0, 1, 1);\n  transition: transform 0.15s ease-in-out;\n}\nh3 a[data-v-091aef50]:hover:after {\n  -webkit-transform: scale3d(1, 1, 1);\n  -moz-transform: scale3d(1, 1, 1);\n  -ms-transform: scale3d(1, 1, 1);\n  -o-transform: scale3d(1, 1, 1);\n  transform: scale3d(1, 1, 1);\n}\n.time[data-v-091aef50] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.group-btn[data-v-091aef50] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-091aef50] {\n  margin-right: 10px;\n}\n", ""]);
+	exports.push([module.id, "\n.personal[data-v-091aef50] {\n  width: 90%;\n  min-width: 800px;\n  margin: 0 auto;\n}\n.user[data-v-091aef50] {\n  margin: 20px 0;\n  text-align: center;\n  font-size: 25px;\n}\n.list-item[data-v-091aef50] {\n  display: inline-block;\n  width: 33.33%;\n  padding: 15px 10px;\n  margin: 5px 0;\n  vertical-align: top;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-box-shadow: 2px 0px 0px 0px #ddd;\n  -moz-box-shadow: 2px 0px 0px 0px #ddd;\n  -ms-box-shadow: 2px 0px 0px 0px #ddd;\n  -o-box-shadow: 2px 0px 0px 0px #ddd;\n  box-shadow: 2px 0px 0px 0px #ddd;\n}\n.list-item img[data-v-091aef50] {\n  display: block;\n  width: 100%;\n  height: 120px;\n  margin: auto;\n}\nh3[data-v-091aef50] {\n  display: inline-block;\n  max-width: 100%;\n  margin-top: 15px;\n  font-size: 20px;\n}\nh3 a[data-v-091aef50]:after {\n  display: block;\n  width: 100%;\n  margin: auto;\n  border-bottom: 1px solid #000;\n  content: '';\n  -webkit-transform: scale3d(0, 1, 1);\n  -moz-transform: scale3d(0, 1, 1);\n  -ms-transform: scale3d(0, 1, 1);\n  -o-transform: scale3d(0, 1, 1);\n  transform: scale3d(0, 1, 1);\n  transition: transform 0.15s ease-in-out;\n}\nh3 a[data-v-091aef50]:hover:after {\n  -webkit-transform: scale3d(1, 1, 1);\n  -moz-transform: scale3d(1, 1, 1);\n  -ms-transform: scale3d(1, 1, 1);\n  -o-transform: scale3d(1, 1, 1);\n  transform: scale3d(1, 1, 1);\n}\n.time[data-v-091aef50] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.group-btn[data-v-091aef50] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-091aef50] {\n  margin-right: 10px;\n}\n", ""]);
 
 	// exports
 
@@ -16794,8 +16808,6 @@
 	//
 	//
 	//
-	//
-	//
 
 	exports.default = {
 	    created: function created() {
@@ -16812,19 +16824,43 @@
 	    methods: {
 	        edit: function edit(item) {
 	            this.$store.commit('SET_EDITINT_MODE', true);
-	            this.$router.push({ name: 'articleEdit', params: { id: item._id } });
+	            this.$router.push({ name: 'articleEdit', params: { artId: item._id } });
 	            // this.$store.dispatch('EDIT_ARTICLE', {id: item._id})
 	            //     .catch(err => alert(err));
+	        },
+	        deleteArt: function deleteArt(item) {
+	            this.$store.dispatch('DELETE_ARTICLE', { id: item._id }).then(function (res) {
+	                return alert(res.data.msg);
+	            }).catch(function (err) {
+	                return alert(res.data.msg);
+	            });
 	        }
 	    },
 	    computed: (0, _vuex.mapState)(['userId', 'selfArticles']),
 	    filters: {
-	        timeFormat: function timeFormat(value, len) {
+	        timeFormat: function timeFormat(value) {
 	            var date = new Date(value);
 	            return date.getFullYear() + '\u5E74' + (date.getMonth() > 9 ? date.getgetMonthHours() : '0' + date.getMonth()) + '\u6708' + (date.getDate() > 9 ? date.getDate() : '0' + date.getDate()) + '\u65E5 \n                        ' + (date.getHours() > 9 ? date.getHours() : '0' + date.getHours()) + ':\n                        ' + (date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes());
 	        },
 	        filterContent: function filterContent(value) {
-	            return value.length > 51 ? value.substr(0, 51) + '...' : value;
+	            var len = value.substr(0, 102).replace(/[^\x00-\xff]/g, "01").length,
+	                newValue = value;
+	            if (len > 102) {
+	                var index = 0;
+	                for (var i = 0; i < value.length || i < 102; ++i) {
+	                    if (/^[\x00-\xff]$/.test(value[i])) {
+	                        index++;
+	                    } else {
+	                        index += 2;
+	                    }
+	                    if (index > 102) {
+	                        newValue = value.substr(0, 102) + '...';
+	                        break;
+	                    }
+	                }
+	            }
+	            // console.log(value)
+	            return newValue;
 	        }
 	    }
 	};
@@ -16858,13 +16894,7 @@
 	      }
 	    }), _vm._v(" "), _c('h3', {
 	      staticClass: "text-ellipsis"
-	    }, [_c('router-link', {
-	      attrs: {
-	        "to": {
-	          name: "article"
-	        }
-	      }
-	    }, [_vm._v("\n                            " + _vm._s(item.title) + "\n                        ")])])]), _vm._v(" "), _c('p', {
+	    }, [_vm._v("\n                        " + _vm._s(item.title) + "\n                    ")])]), _vm._v(" "), _c('p', {
 	      staticClass: "time color-g"
 	    }, [_vm._v(_vm._s(_vm._f("timeFormat")(item.time)))]), _vm._v(" "), _c('p', {
 	      staticClass: "abstract"
@@ -16878,7 +16908,12 @@
 	        }
 	      }
 	    }, [_vm._v("编辑")]), _vm._v(" "), _c('span', {
-	      staticClass: "color-g"
+	      staticClass: "color-g",
+	      on: {
+	        "click": function($event) {
+	          _vm.deleteArt(item)
+	        }
+	      }
 	    }, [_vm._v("删除")])])])
 	  }))])
 	},staticRenderFns: []}

@@ -50,7 +50,9 @@ router.put('/signin', (req, res) => {
 
 router.post('/user/edit/:id', (req, res) => {
 	db.Article.find({title: req.body.form.title, author: req.body.form.author}, (err, doc) => {
-		if(doc.length) {
+		if(err) {
+			res.send({state: 3, msg: '操作失败'});
+		}else if(doc.length) {
 			res.send({state: 1, msg: '标题已存在！'});
 		}else {
 			db.Article.create(req.body.form, (err, article) => {
@@ -70,14 +72,26 @@ router.post('/user/edit/:id', (req, res) => {
 })
 
 router.get('/article/:id', (req, res) => {
-	db.Article.find({_id: req.params.id}, (err, doc) => {
+	db.Article.findById({_id: req.params.id}, (err, doc) => {
 		if(err) {
 			res.send({state: 2, msg: '查询失败！'})
 		}
-		if(doc.length) {
+		// console.log(doc)
+		if(doc) {
 			res.send({state: 0, data: doc});
 		}else {
 			res.send({state: 1, msg: '文章不存在！'});
+		}
+	})
+})
+
+router.delete('/article/:id', (req, res) => {
+	db.Article.remove({_id: req.params.id}, (err, doc) => {
+		if(err) {
+			// console.log(err)
+			res.send({state: 1, msg: '操作失败！'})
+		}else {
+			res.send({state: 0, msg: '删除成功！'});
 		}
 	})
 })
@@ -96,7 +110,6 @@ router.get('/article/:id/edit', (req, res) => {
 })
 
 router.get('/user/:id/articles', (req, res) => {
-	console.log(req.params.id)
 	db.Article.find({author: req.params.id}, (err, doc) => {
 		if(err) {
 			res.send({state: 2, msg: '查询失败！'})
@@ -127,6 +140,7 @@ router.get('/getArticals', (req, res) => {
 		time = req.query.time,
 		now = new Date();
 
+	//条件筛选
 	if(faculty != 0 || type != 0 || time != 0) {
 		if(faculty == 0 && type != 0 && time != 0) {
 			if(time == 1) {

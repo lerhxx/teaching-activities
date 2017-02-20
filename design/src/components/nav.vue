@@ -18,12 +18,14 @@
 				</router-link>
 			</li>
 			<li v-show='userRank > 0'>
+				<!--TODO
+				编辑状态点击发布-->
 				<router-link :to="{name: 'edit', params: {id: userId}}">
 					发布
 				</router-link>
 			</li>
-			<li v-show='userRank > 0'>
-				<router-link :to="{name: 'personal', params: {id: userId}}">
+			<li>
+				<router-link :to="{name: 'perValidate', params: {id: userId}}">
 					个人中心
 				</router-link>
 			</li>

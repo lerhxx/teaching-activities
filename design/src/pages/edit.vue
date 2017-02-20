@@ -86,8 +86,10 @@
 			calendar
 		},
 		created() {
-			if(this.isEdit) {
-				this.$store.dispatch('GET_EDIT_ARTICLE', {id: this.$route.params.id})
+			console.log(this.isEdit)
+			console.log(this.$route.params)
+			if(this.isEdit && this.$route.params.artId) {
+				this.$store.dispatch('GET_EDIT_ARTICLE', {id: this.$route.params.artId})
 					.then(data => {
 						this.form.url = data.url;
 						this.form.title = data.title;
@@ -170,12 +172,12 @@
 				this.form.endTime = value;
 			},
 			onPost() {
+				//TODO
+				//编辑
 				let form = this.form;
 				form.content = editor.sync();
 				form.author = this.userId;
 				form.time = new Date();
-				console.log(form.heldTime);
-				console.log(form.endTime)
 				if(!form.title || !form.time || !form.address || !form.unit || !form.content || !form.url) {
 					return alert('请填写所有必须项！');
 				}

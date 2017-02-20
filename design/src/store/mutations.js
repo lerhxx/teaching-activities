@@ -18,6 +18,9 @@ export default {
     SET_SELF_ARTICLES(state, articles) {
         state.selfArticles = articles;
     },
+    UPDATE_SELF_ARTICLES(state) {
+        state.selfArticles.shift();
+    },
     SET_EDITINT_MODE(state, mode) {
         state.isEdit = mode;
     }
