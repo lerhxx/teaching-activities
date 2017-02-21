@@ -11986,7 +11986,7 @@
 
 
 	// module
-	exports.push([module.id, "body,\nul,\nli,\np,\nh1,\nh2,\nh3 {\n  padding: 0;\n  margin: 0;\n}\nbody {\n  height: 100vh;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nul li {\n  list-style: none;\n}\na {\n  text-decoration: none;\n  color: #000;\n}\n.color-r {\n  color: #f00;\n}\n.color-b {\n  color: #40bfce;\n}\n.color-g {\n  color: #bbb6b6;\n}\n.padding-top {\n  padding-top: 45px;\n}\n.text-ellipsis {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n#app {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  overflow: hidden;\n}\n.wrapper {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  min-height: 100vh;\n  padding-bottom: 48px;\n}\n.time {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n", ""]);
+	exports.push([module.id, "body,\nul,\nli,\np,\nh1,\nh2,\nh3,\nhr {\n  padding: 0;\n  margin: 0;\n}\nbody {\n  height: 100vh;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nul li {\n  display: inline-block;\n  list-style: none;\n}\na {\n  text-decoration: none;\n  color: #000;\n}\n.color-r {\n  color: #f00;\n}\n.color-b {\n  color: #40bfce;\n}\n.color-g {\n  color: #bbb6b6;\n}\n.padding-top {\n  padding-top: 45px;\n}\n.text-ellipsis {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n#app {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  overflow: hidden;\n}\n.wrapper {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  min-height: 100vh;\n  padding-bottom: 48px;\n}\n.time {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n", ""]);
 
 	// exports
 
@@ -14545,7 +14545,7 @@
 
 
 	// module
-	exports.push([module.id, "\n.index[data-v-9b46fa2c] {\n  padding-bottom: 60px;\n}\n.in-cover[data-v-9b46fa2c] {\n  width: 100%;\n  height: 300px;\n}\n.in-search[data-v-9b46fa2c] {\n  padding: 15px;\n  text-align: center;\n  border-bottom: 1px solid #bbb;\n}\n.in-search label[data-v-9b46fa2c] {\n  margin-right: search-mar;\n}\n.in-search select[data-v-9b46fa2c] {\n  min-width: 80px;\n  margin: 0 search-mar;\n  outline: none;\n}\n.list[data-v-9b46fa2c] {\n  width: 50%;\n  min-width: 600px;\n  margin: auto;\n}\n.list .list-item[data-v-9b46fa2c] {\n  padding: 15px 10px;\n  border-bottom: 1px solid #ddd;\n}\nh3[data-v-9b46fa2c] {\n  display: inline-block;\n  margin-bottom: 10px;\n  font-size: 20px;\n}\nh3 a[data-v-9b46fa2c] {\n  display: block;\n  max-width: 420px;\n}\nh3 a[data-v-9b46fa2c]:after {\n  display: block;\n  width: 100%;\n  margin: auto;\n  border-bottom: 1px solid #000;\n  content: '';\n  -webkit-transform: scale3d(0, 1, 1);\n  -moz-transform: scale3d(0, 1, 1);\n  -ms-transform: scale3d(0, 1, 1);\n  -o-transform: scale3d(0, 1, 1);\n  transform: scale3d(0, 1, 1);\n  transition: transform 0.15s ease-in-out;\n}\nh3 a[data-v-9b46fa2c]:hover:after {\n  -webkit-transform: scale3d(1, 1, 1);\n  -moz-transform: scale3d(1, 1, 1);\n  -ms-transform: scale3d(1, 1, 1);\n  -o-transform: scale3d(1, 1, 1);\n  transform: scale3d(1, 1, 1);\n}\n.item-cover[data-v-9b46fa2c] {\n  float: right;\n  width: 120px;\n  height: 80px;\n  margin: 15px;\n  margin-right: 0;\n}\n.time[data-v-9b46fa2c] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.abstract[data-v-9b46fa2c] {\n  height: 3em;\n  padding-right: 25px;\n  line-height: 1.5em;\n  overflow: hidden;\n}\n", ""]);
+	exports.push([module.id, "\n.index[data-v-9b46fa2c] {\n  padding-bottom: 60px;\n}\n.in-cover[data-v-9b46fa2c] {\n  width: 100%;\n  height: 300px;\n}\n.in-search[data-v-9b46fa2c] {\n  padding: 15px;\n  text-align: center;\n  border-bottom: 1px solid #bbb;\n}\n.in-search label[data-v-9b46fa2c] {\n  margin-right: search-mar;\n}\n.in-search select[data-v-9b46fa2c] {\n  min-width: 80px;\n  margin: 0 search-mar;\n  outline: none;\n}\n.list[data-v-9b46fa2c] {\n  width: 50%;\n  min-width: 600px;\n  margin: auto;\n}\n.list .list-item[data-v-9b46fa2c] {\n  display: block;\n  padding: 15px 10px;\n  border-bottom: 1px solid #ddd;\n}\nh3[data-v-9b46fa2c] {\n  display: inline-block;\n  margin-bottom: 10px;\n  font-size: 20px;\n}\nh3 a[data-v-9b46fa2c] {\n  display: block;\n  max-width: 420px;\n}\nh3 a[data-v-9b46fa2c]:after {\n  display: block;\n  width: 100%;\n  margin: auto;\n  border-bottom: 1px solid #000;\n  content: '';\n  -webkit-transform: scale3d(0, 1, 1);\n  -moz-transform: scale3d(0, 1, 1);\n  -ms-transform: scale3d(0, 1, 1);\n  -o-transform: scale3d(0, 1, 1);\n  transform: scale3d(0, 1, 1);\n  transition: transform 0.15s ease-in-out;\n}\nh3 a[data-v-9b46fa2c]:hover:after {\n  -webkit-transform: scale3d(1, 1, 1);\n  -moz-transform: scale3d(1, 1, 1);\n  -ms-transform: scale3d(1, 1, 1);\n  -o-transform: scale3d(1, 1, 1);\n  transform: scale3d(1, 1, 1);\n}\n.item-cover[data-v-9b46fa2c] {\n  float: right;\n  width: 120px;\n  height: 80px;\n  margin: 15px;\n  margin-right: 0;\n}\n.time[data-v-9b46fa2c] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.abstract[data-v-9b46fa2c] {\n  height: 3em;\n  padding-right: 25px;\n  line-height: 1.5em;\n  overflow: hidden;\n}\n", ""]);
 
 	// exports
 
@@ -14598,6 +14598,8 @@
 			}
 		}
 	}; //
+	//
+	//
 	//
 	//
 	//
@@ -14747,7 +14749,7 @@
 	    }, [_vm._v(_vm._s(_vm._f("timeFormat")(item.time)))]), _vm._v(" "), _c('p', {
 	      staticClass: "abstract"
 	    }, [_vm._v(_vm._s(_vm._f("filterContent")(item.content)))])])
-	  }))])
+	  })), _vm._v("\n\t\t//TODO\n\t\t//分页\n\t")])
 	},staticRenderFns: []}
 	if (false) {
 	  module.hot.accept()
@@ -16574,7 +16576,7 @@
 
 
 	// module
-	exports.push([module.id, "\nbody[data-v-a62555e4],\nul[data-v-a62555e4],\nli[data-v-a62555e4],\np[data-v-a62555e4],\nh1[data-v-a62555e4],\nh2[data-v-a62555e4],\nh3[data-v-a62555e4] {\n  padding: 0;\n  margin: 0;\n}\nbody[data-v-a62555e4] {\n  height: 100vh;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nul li[data-v-a62555e4] {\n  list-style: none;\n}\na[data-v-a62555e4] {\n  text-decoration: none;\n  color: #000;\n}\n.color-r[data-v-a62555e4] {\n  color: #f00;\n}\n.color-b[data-v-a62555e4] {\n  color: #40bfce;\n}\n.color-g[data-v-a62555e4] {\n  color: #bbb6b6;\n}\n.padding-top[data-v-a62555e4] {\n  padding-top: 45px;\n}\n.text-ellipsis[data-v-a62555e4] {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n#app[data-v-a62555e4] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  overflow: hidden;\n}\n.wrapper[data-v-a62555e4] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  min-height: 100vh;\n  padding-bottom: 48px;\n}\n.time[data-v-a62555e4] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\nform[data-v-a62555e4] {\n  padding: 45px;\n  margin: auto;\n}\nlabel[data-v-a62555e4] {\n  text-align: right;\n}\n.group-con[data-v-a62555e4] {\n  margin: 15px 0;\n}\n.group-btn[data-v-a62555e4] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-a62555e4] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-a62555e4] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-certain[data-v-a62555e4] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-a62555e4] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-a62555e4] {\n  background: #2d0a08;\n}\n.must[data-v-a62555e4] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-a62555e4] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-a62555e4] {\n  margin-right: 10px;\n}\n.article[data-v-a62555e4] {\n  width: 50%;\n  min-width: 500px;\n  margin: auto;\n}\nh1[data-v-a62555e4] {\n  text-align: center;\n  margin: 30px 0 25px;\n}\n.cover[data-v-a62555e4] {\n  width: 100%;\n}\n.content[data-v-a62555e4] {\n  margin-left: 90px;\n}\n", ""]);
+	exports.push([module.id, "\nbody[data-v-a62555e4],\nul[data-v-a62555e4],\nli[data-v-a62555e4],\np[data-v-a62555e4],\nh1[data-v-a62555e4],\nh2[data-v-a62555e4],\nh3[data-v-a62555e4],\nhr[data-v-a62555e4] {\n  padding: 0;\n  margin: 0;\n}\nbody[data-v-a62555e4] {\n  height: 100vh;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nul li[data-v-a62555e4] {\n  display: inline-block;\n  list-style: none;\n}\na[data-v-a62555e4] {\n  text-decoration: none;\n  color: #000;\n}\n.color-r[data-v-a62555e4] {\n  color: #f00;\n}\n.color-b[data-v-a62555e4] {\n  color: #40bfce;\n}\n.color-g[data-v-a62555e4] {\n  color: #bbb6b6;\n}\n.padding-top[data-v-a62555e4] {\n  padding-top: 45px;\n}\n.text-ellipsis[data-v-a62555e4] {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n#app[data-v-a62555e4] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  overflow: hidden;\n}\n.wrapper[data-v-a62555e4] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  min-height: 100vh;\n  padding-bottom: 48px;\n}\n.time[data-v-a62555e4] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\nform[data-v-a62555e4] {\n  padding: 45px;\n  margin: auto;\n}\nlabel[data-v-a62555e4] {\n  text-align: right;\n}\n.group-con[data-v-a62555e4] {\n  margin: 15px 0;\n}\n.group-btn[data-v-a62555e4] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-a62555e4] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-a62555e4] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-certain[data-v-a62555e4] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-a62555e4] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-a62555e4] {\n  background: #2d0a08;\n}\n.must[data-v-a62555e4] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-a62555e4] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-a62555e4] {\n  margin-right: 10px;\n}\n.article[data-v-a62555e4] {\n  width: 50%;\n  min-width: 500px;\n  margin: auto;\n}\nh1[data-v-a62555e4] {\n  text-align: center;\n  margin: 30px 0 25px;\n}\n.cover[data-v-a62555e4] {\n  width: 100%;\n}\n.content[data-v-a62555e4] {\n  margin-left: 90px;\n}\n", ""]);
 
 	// exports
 
@@ -16919,7 +16921,7 @@
 
 
 	// module
-	exports.push([module.id, "\nbody[data-v-091aef50],\nul[data-v-091aef50],\nli[data-v-091aef50],\np[data-v-091aef50],\nh1[data-v-091aef50],\nh2[data-v-091aef50],\nh3[data-v-091aef50] {\n  padding: 0;\n  margin: 0;\n}\nbody[data-v-091aef50] {\n  height: 100vh;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nul li[data-v-091aef50] {\n  list-style: none;\n}\na[data-v-091aef50] {\n  text-decoration: none;\n  color: #000;\n}\n.color-r[data-v-091aef50] {\n  color: #f00;\n}\n.color-b[data-v-091aef50] {\n  color: #40bfce;\n}\n.color-g[data-v-091aef50] {\n  color: #bbb6b6;\n}\n.padding-top[data-v-091aef50] {\n  padding-top: 45px;\n}\n.text-ellipsis[data-v-091aef50] {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n#app[data-v-091aef50] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  overflow: hidden;\n}\n.wrapper[data-v-091aef50] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  min-height: 100vh;\n  padding-bottom: 48px;\n}\n.time[data-v-091aef50] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.personal[data-v-091aef50] {\n  width: 90%;\n  min-width: 800px;\n  margin: 0 auto;\n}\n.user[data-v-091aef50] {\n  margin: 20px 0;\n  text-align: center;\n  font-size: 25px;\n}\n.count-list-item[data-v-091aef50] {\n  display: inline-block;\n  padding: 8px 15px;\n  border: 1px solid #ddd;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.count-list-item.active[data-v-091aef50] {\n  background: #000;\n}\n.count-list-item.active a[data-v-091aef50] {\n  color: #fff;\n}\n", ""]);
+	exports.push([module.id, "\nbody[data-v-091aef50],\nul[data-v-091aef50],\nli[data-v-091aef50],\np[data-v-091aef50],\nh1[data-v-091aef50],\nh2[data-v-091aef50],\nh3[data-v-091aef50],\nhr[data-v-091aef50] {\n  padding: 0;\n  margin: 0;\n}\nbody[data-v-091aef50] {\n  height: 100vh;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nul li[data-v-091aef50] {\n  display: inline-block;\n  list-style: none;\n}\na[data-v-091aef50] {\n  text-decoration: none;\n  color: #000;\n}\n.color-r[data-v-091aef50] {\n  color: #f00;\n}\n.color-b[data-v-091aef50] {\n  color: #40bfce;\n}\n.color-g[data-v-091aef50] {\n  color: #bbb6b6;\n}\n.padding-top[data-v-091aef50] {\n  padding-top: 45px;\n}\n.text-ellipsis[data-v-091aef50] {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n#app[data-v-091aef50] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  overflow: hidden;\n}\n.wrapper[data-v-091aef50] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  min-height: 100vh;\n  padding-bottom: 48px;\n}\n.time[data-v-091aef50] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.personal[data-v-091aef50] {\n  width: 90%;\n  min-width: 800px;\n  margin: 0 auto;\n}\n.user[data-v-091aef50] {\n  margin: 20px 0;\n  text-align: center;\n  font-size: 25px;\n}\n.per-list[data-v-091aef50] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin-bottom: 10px;\n  text-align: center;\n}\n.per-list[data-v-091aef50]:before {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 50%;\n  height: 0px;\n  margin: auto;\n  border: 1px solid #000;\n  content: '';\n  z-index: -1;\n}\n.per-list-item a[data-v-091aef50] {\n  display: block;\n  padding: 10px 35px;\n  border: 1px solid #000;\n  background: #fff;\n}\n.active a[data-v-091aef50] {\n  color: #fff;\n  background: #000;\n}\n", ""]);
 
 	// exports
 
@@ -16953,7 +16955,6 @@
 	//
 	//
 	//
-	//
 
 	exports.default = {
 	    data: function data() {
@@ -16963,11 +16964,17 @@
 	    },
 
 	    methods: {
-	        articleActive: function articleActive() {
-	            this.isActive = true;
-	        },
-	        countActive: function countActive() {
-	            this.isActive = false;
+	        toggleAct: function toggleAct(type) {
+	            switch (type) {
+	                case 1:
+	                    this.isActive = true;
+	                    break;
+	                case 2:
+	                    this.isActive = false;
+	                    break;
+	                default:
+	                    this.isActive = true;
+	            }
 	        }
 	    }
 	};
@@ -16981,25 +16988,31 @@
 	    staticClass: "padding-top personal"
 	  }, [_c('div', [_c('h2', {
 	    staticClass: "user"
-	  }, [_vm._v(_vm._s(this.userId))])]), _vm._v(" "), _c('ul', {}, [_c('li', {
-	    staticClass: "count-list-item",
+	  }, [_vm._v(_vm._s(this.userId))])]), _vm._v(" "), _c('ul', {
+	    staticClass: "per-list"
+	  }, [_c('li', {
+	    staticClass: "per-list-item",
 	    class: {
 	      active: _vm.isActive
 	    },
 	    on: {
-	      "click": _vm.articleActive
+	      "click": function($event) {
+	        _vm.toggleAct(1)
+	      }
 	    }
 	  }, [_c('router-link', {
 	    attrs: {
 	      "to": "article"
 	    }
-	  }, [_vm._v("\n                文章\n            ")])]), _vm._v(" "), _c('li', {
-	    staticClass: "count-list-item",
+	  }, [_vm._v("\n                文章\n            ")])]), _c('li', {
+	    staticClass: "per-list-item",
 	    class: {
 	      active: !_vm.isActive
 	    },
 	    on: {
-	      "click": _vm.countActive
+	      "click": function($event) {
+	        _vm.toggleAct(2)
+	      }
 	    }
 	  }, [_c('router-link', {
 	    attrs: {
@@ -17097,7 +17110,7 @@
 
 
 	// module
-	exports.push([module.id, "\nbody[data-v-07022980],\nul[data-v-07022980],\nli[data-v-07022980],\np[data-v-07022980],\nh1[data-v-07022980],\nh2[data-v-07022980],\nh3[data-v-07022980] {\n  padding: 0;\n  margin: 0;\n}\nbody[data-v-07022980] {\n  height: 100vh;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nul li[data-v-07022980] {\n  list-style: none;\n}\na[data-v-07022980] {\n  text-decoration: none;\n  color: #000;\n}\n.color-r[data-v-07022980] {\n  color: #f00;\n}\n.color-b[data-v-07022980] {\n  color: #40bfce;\n}\n.color-g[data-v-07022980] {\n  color: #bbb6b6;\n}\n.padding-top[data-v-07022980] {\n  padding-top: 45px;\n}\n.text-ellipsis[data-v-07022980] {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n#app[data-v-07022980] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  overflow: hidden;\n}\n.wrapper[data-v-07022980] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  min-height: 100vh;\n  padding-bottom: 48px;\n}\n.time[data-v-07022980] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\nform[data-v-07022980] {\n  padding: 45px;\n  margin: auto;\n}\nlabel[data-v-07022980] {\n  text-align: right;\n}\n.group-con[data-v-07022980] {\n  margin: 15px 0;\n}\n.group-btn[data-v-07022980] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-07022980] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-07022980] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-certain[data-v-07022980] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-07022980] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-07022980] {\n  background: #2d0a08;\n}\n.must[data-v-07022980] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-07022980] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-07022980] {\n  margin-right: 10px;\n}\n.list-item[data-v-07022980] {\n  display: inline-block;\n  width: 32.5%;\n  padding: 15px 8px 15px 0;\n  margin: 5px 0;\n  vertical-align: top;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-box-shadow: 2px 0px 0px 0px #ddd;\n  -moz-box-shadow: 2px 0px 0px 0px #ddd;\n  -ms-box-shadow: 2px 0px 0px 0px #ddd;\n  -o-box-shadow: 2px 0px 0px 0px #ddd;\n  box-shadow: 2px 0px 0px 0px #ddd;\n}\n.list-item[data-v-07022980]:nth-child(3n-1) {\n  margin: 5px 1.25%;\n}\n.list-item img[data-v-07022980] {\n  display: block;\n  width: 100%;\n  height: 120px;\n  margin: auto;\n}\nh3[data-v-07022980] {\n  display: inline-block;\n  max-width: 100%;\n  margin-top: 15px;\n  font-size: 20px;\n}\nh3 a[data-v-07022980]:after {\n  display: block;\n  width: 100%;\n  margin: auto;\n  border-bottom: 1px solid #000;\n  content: '';\n  -webkit-transform: scale3d(0, 1, 1);\n  -moz-transform: scale3d(0, 1, 1);\n  -ms-transform: scale3d(0, 1, 1);\n  -o-transform: scale3d(0, 1, 1);\n  transform: scale3d(0, 1, 1);\n  transition: transform 0.15s ease-in-out;\n}\nh3 a[data-v-07022980]:hover:after {\n  -webkit-transform: scale3d(1, 1, 1);\n  -moz-transform: scale3d(1, 1, 1);\n  -ms-transform: scale3d(1, 1, 1);\n  -o-transform: scale3d(1, 1, 1);\n  transform: scale3d(1, 1, 1);\n}\n", ""]);
+	exports.push([module.id, "\nbody[data-v-07022980],\nul[data-v-07022980],\nli[data-v-07022980],\np[data-v-07022980],\nh1[data-v-07022980],\nh2[data-v-07022980],\nh3[data-v-07022980],\nhr[data-v-07022980] {\n  padding: 0;\n  margin: 0;\n}\nbody[data-v-07022980] {\n  height: 100vh;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nul li[data-v-07022980] {\n  display: inline-block;\n  list-style: none;\n}\na[data-v-07022980] {\n  text-decoration: none;\n  color: #000;\n}\n.color-r[data-v-07022980] {\n  color: #f00;\n}\n.color-b[data-v-07022980] {\n  color: #40bfce;\n}\n.color-g[data-v-07022980] {\n  color: #bbb6b6;\n}\n.padding-top[data-v-07022980] {\n  padding-top: 45px;\n}\n.text-ellipsis[data-v-07022980] {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n#app[data-v-07022980] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  overflow: hidden;\n}\n.wrapper[data-v-07022980] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  min-height: 100vh;\n  padding-bottom: 48px;\n}\n.time[data-v-07022980] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\nform[data-v-07022980] {\n  padding: 45px;\n  margin: auto;\n}\nlabel[data-v-07022980] {\n  text-align: right;\n}\n.group-con[data-v-07022980] {\n  margin: 15px 0;\n}\n.group-btn[data-v-07022980] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-07022980] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-07022980] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-certain[data-v-07022980] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-07022980] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-07022980] {\n  background: #2d0a08;\n}\n.must[data-v-07022980] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-07022980] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-07022980] {\n  margin-right: 10px;\n}\n.per[data-v-07022980] {\n  padding: 0 20px;\n}\n.art-list-item a[data-v-07022980] {\n  display: block;\n  padding: 8px 20px;\n  border: 1px solid transparent;\n  border-bottom-color: #ccc;\n  cursor: pointer;\n}\n.art-list-item.active a[data-v-07022980] {\n  border-color: #ccc;\n  border-bottom-color: transparent;\n}\n.list-item[data-v-07022980] {\n  width: 32.5%;\n  padding: 15px 8px 15px 0;\n  margin: 5px 0;\n  vertical-align: top;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-box-shadow: 2px 0px 0px 0px #ddd;\n  -moz-box-shadow: 2px 0px 0px 0px #ddd;\n  -ms-box-shadow: 2px 0px 0px 0px #ddd;\n  -o-box-shadow: 2px 0px 0px 0px #ddd;\n  box-shadow: 2px 0px 0px 0px #ddd;\n}\n.list-item[data-v-07022980]:nth-child(3n-1) {\n  margin: 5px 1.25%;\n}\n.list-item img[data-v-07022980] {\n  display: block;\n  width: 100%;\n  height: 120px;\n  margin: auto;\n}\nh3[data-v-07022980] {\n  display: inline-block;\n  max-width: 100%;\n  margin-top: 15px;\n  font-size: 20px;\n}\nh3 a[data-v-07022980]:after {\n  display: block;\n  width: 100%;\n  margin: auto;\n  border-bottom: 1px solid #000;\n  content: '';\n  -webkit-transform: scale3d(0, 1, 1);\n  -moz-transform: scale3d(0, 1, 1);\n  -ms-transform: scale3d(0, 1, 1);\n  -o-transform: scale3d(0, 1, 1);\n  transform: scale3d(0, 1, 1);\n  transition: transform 0.15s ease-in-out;\n}\nh3 a[data-v-07022980]:hover:after {\n  -webkit-transform: scale3d(1, 1, 1);\n  -moz-transform: scale3d(1, 1, 1);\n  -ms-transform: scale3d(1, 1, 1);\n  -o-transform: scale3d(1, 1, 1);\n  transform: scale3d(1, 1, 1);\n}\n", ""]);
 
 	// exports
 
@@ -17123,6 +17136,11 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = {
+	    data: function data() {
+	        return {
+	            isPerArt: true
+	        };
+	    },
 	    created: function created() {
 	        var user = this.userId ? this.userId : (0, _cookieUtil.get)('user');
 	        if (user) {
@@ -17134,7 +17152,20 @@
 	        }
 	    },
 
-
+	    methods: {
+	        toggleArt: function toggleArt(type) {
+	            switch (type) {
+	                case 1:
+	                    this.isPerArt = true;
+	                    break;
+	                case 2:
+	                    this.isPerArt = false;
+	                    break;
+	                default:
+	                    this.isPerArt = true;
+	            }
+	        }
+	    },
 	    computed: (0, _vuex.mapState)(['userId', 'selfArticles']),
 	    filters: {
 	        timeFormat: function timeFormat(value) {
@@ -17181,13 +17212,46 @@
 	//
 	//
 	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 /***/ },
 /* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _c('ul', {
+	  return _c('div', {
+	    staticClass: "per"
+	  }, [_c('ul', {
+	    staticClass: "art-list"
+	  }, [_c('li', {
+	    staticClass: "art-list-item",
+	    class: {
+	      active: _vm.isPerArt
+	    },
+	    on: {
+	      "click": function($event) {
+	        _vm.toggleArt(1)
+	      }
+	    }
+	  }, [_c('a', [_vm._v("个人")])]), _c('li', {
+	    staticClass: "art-list-item",
+	    class: {
+	      active: !_vm.isPerArt
+	    },
+	    on: {
+	      "click": function($event) {
+	        _vm.toggleArt(2)
+	      }
+	    }
+	  }, [_c('a', [_vm._v("全部")])])]), _vm._v(" "), _c('ul', {
 	    staticClass: "list"
 	  }, _vm._l((_vm.selfArticles), function(item) {
 	    return _c('li', {
@@ -17207,7 +17271,7 @@
 	      }
 	    }), _vm._v(" "), _c('h3', {
 	      staticClass: "text-ellipsis"
-	    }, [_vm._v("\n                " + _vm._s(item.title) + "\n            ")])]), _vm._v(" "), _c('p', {
+	    }, [_vm._v("\n                    " + _vm._s(item.title) + "\n                ")])]), _vm._v(" "), _c('p', {
 	      staticClass: "time color-g"
 	    }, [_vm._v(_vm._s(_vm._f("timeFormat")(item.time)))]), _vm._v(" "), _c('p', {
 	      staticClass: "abstract"
@@ -17216,7 +17280,7 @@
 	        "item": item
 	      }
 	    })])
-	  }))
+	  }))])
 	},staticRenderFns: []}
 	if (false) {
 	  module.hot.accept()

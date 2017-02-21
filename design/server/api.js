@@ -88,7 +88,6 @@ router.get('/article/:id', (req, res) => {
 router.delete('/article/:id', (req, res) => {
 	db.Article.remove({_id: req.params.id}, (err, doc) => {
 		if(err) {
-			// console.log(err)
 			res.send({state: 1, msg: '操作失败！'})
 		}else {
 			res.send({state: 0, msg: '删除成功！'});

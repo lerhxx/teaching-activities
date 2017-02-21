@@ -1,17 +1,26 @@
 <template>
-    <ul class='list'>
-        <li class='list-item' v-for='item in selfArticles'>
-            <router-link :to="{name: 'article', params:{id: item._id}}">
-                <img :src='item.url' />
-                <h3 class='text-ellipsis'>
-                    {{item.title}}
-                </h3>
-            </router-link>
-            <p class='time color-g'>{{item.time | timeFormat}}</p>
-            <p class='abstract'>{{item.content | filterContent}}</p>
-            <modify :item='item'></modify>
-        </li>
-    </ul>
+    <div class='per'>
+        <ul class='art-list'>
+            <li class='art-list-item' :class="{active: isPerArt}" @click='toggleArt(1)'>
+                <a>个人</a>
+            </li><li class='art-list-item' :class="{active: !isPerArt}" @click='toggleArt(2)'>
+                <a>全部</a>
+            </li>
+        </ul>
+        <ul class='list'>
+            <li class='list-item' v-for='item in selfArticles'>
+                <router-link :to="{name: 'article', params:{id: item._id}}">
+                    <img :src='item.url' />
+                    <h3 class='text-ellipsis'>
+                        {{item.title}}
+                    </h3>
+                </router-link>
+                <p class='time color-g'>{{item.time | timeFormat}}</p>
+                <p class='abstract'>{{item.content | filterContent}}</p>
+                <modify :item='item'></modify>
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script>
@@ -19,6 +28,11 @@
     import {get} from '../assets/cookieUtil';
     import modify from '../components/modify.vue';
     export default {
+        data() {
+            return {
+                isPerArt: true
+            }
+        },
         created() {
             let user = this.userId ? this.userId : get('user');
             if(user) {
@@ -28,7 +42,20 @@
                 this.$router.push({name: 'index'});
             }
         },
-        
+        methods: {
+            toggleArt(type) {
+                switch(type) {
+                    case 1:
+                        this.isPerArt = true;
+                        break;
+                    case 2:
+                        this.isPerArt = false;
+                        break;
+                    default:
+                        this.isPerArt = true;
+                }
+            }
+        },
         computed: mapState(['userId', 'selfArticles']),
         filters: {
             timeFormat(value) {
@@ -68,8 +95,20 @@
     @import '../css/common';
     @import '../css/form';
 
+    .per
+        padding 0 20px
+    .art-list-item
+        a
+            display block
+            padding 8px 20px
+            border 1px solid transparent
+            border-bottom-color #ccc
+            cursor pointer
+        &.active
+            a
+                border-color #ccc
+                border-bottom-color transparent
     .list-item
-        display inline-block
         width 32.5%
         padding 15px 8px 15px 0
         margin 5px 0

@@ -3,13 +3,12 @@
         <div>
             <h2 class='user'>{{this.userId}}</h2>
         </div>
-        <ul class=''>
-            <li class='count-list-item' :class="{active: isActive}" @click='articleActive'>
+        <ul class='per-list'>
+            <li class='per-list-item' :class="{active: isActive}" @click='toggleAct(1)'>
                 <router-link to='article'>
                     文章
                 </router-link>
-            </li>
-            <li class='count-list-item' :class="{active: !isActive}" @click='countActive'>
+            </li><li class='per-list-item' :class="{active: !isActive}" @click='toggleAct(2)'>
                 <router-link to='count'>
                     统计
                 </router-link>
@@ -27,11 +26,17 @@
             }
         },
         methods: {
-            articleActive() {
-                this.isActive = true;
-            },
-            countActive() {
-                this.isActive = false;
+            toggleAct(type) {
+                switch(type) {
+                    case 1:
+                        this.isActive = true;
+                        break;
+                    case 2:
+                        this.isActive = false;
+                        break;
+                    default:
+                        this.isActive = true;
+                }
             }
         }
     }
@@ -49,15 +54,28 @@
         margin 20px 0
         text-align center
         font-size 25px
-    .count-list-item
-        display inline-block
-        padding 8px 15px
-        border 1px solid #ddd
-        border-radius(8px)
-        &.active
+    .per-list
+        relative()
+        margin-bottom 10px
+        text-align center
+        &:before
+            absolute(top 0 bottom 0 left 0 right 0)
+            width 50%
+            height 0px
+            margin auto
+            border 1px solid #000
+            content ''
+            z-index -1
+    .per-list-item
+        a
+            display block
+            padding 10px 35px
+            border 1px solid #000
+            background #fff
+    &.active
+        a
+            color #fff
             background #000
-            a
-                color #fff
     
 
 </style>

@@ -33,6 +33,8 @@
                 <p class='abstract'>{{item.content | filterContent}}</p>
             </li>
 		</ul>
+		//TODO
+		//分页
 	</div>
 </template>
 
@@ -99,6 +101,7 @@
 		min-width 600px
 		margin auto
 		.list-item 
+			display block
 			padding 15px 10px
 			border-bottom 1px solid #ddd
 	h3
