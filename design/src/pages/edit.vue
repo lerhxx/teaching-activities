@@ -74,7 +74,8 @@
 					unit: '请选择举办单位',
 					explain: '',
 					content: '',
-					enclosure: ''       
+					enclosure: '',
+					faculty: ''     
 				},
 				optionShow: false,
 				calendar: {

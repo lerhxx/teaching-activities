@@ -1,7 +1,7 @@
 <template>
     <div class='padding-top personal'>
         <div>
-            <h2 class='user'>{{this.userId}}</h2>
+            <h2 class='user'>{{this.userInfo.userId}}</h2>
         </div>
         <ul class='per-list'>
             <li class='per-list-item' :class="{active: isActive}" @click='toggleAct(1)'>

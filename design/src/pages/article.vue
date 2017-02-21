@@ -8,8 +8,8 @@
 				<modify :item='article'></modify>
 			</div>
 			<div class='group-con'>
-				<label>发布单位:</label>
-				<span>{{article.faculty}}</span>
+				<label>发布人:</label>
+				<span>{{article.author}}</span>
 			</div>
 			<img :src='article.url' alt='cover' class='cover'/>
 			<div class='group-con'>
@@ -30,7 +30,7 @@
 			</div>
 			<div class='group-con'>
 				<label>举办内容：</label>
-				<div class='content'>{{article.content}}</div>
+				<div class='content' v-html='article.content'></div>
 			</div>
 			<div class='group-con'>
 				<label>附加说明：</label>
