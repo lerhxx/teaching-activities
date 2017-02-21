@@ -6,6 +6,11 @@
 
 /*edit.vue*/
 样式
+图片、附件上传
+markdown
+
+/*article*/
+附件
 
 /*json*/
 文章类型（公告、新闻）

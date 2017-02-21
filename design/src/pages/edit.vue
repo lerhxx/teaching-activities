@@ -86,8 +86,6 @@
 			calendar
 		},
 		created() {
-			console.log(this.isEdit)
-			console.log(this.$route.params)
 			if(this.isEdit && this.$route.params.artId) {
 				this.$store.dispatch('GET_EDIT_ARTICLE', {id: this.$route.params.artId})
 					.then(data => {
@@ -181,11 +179,15 @@
 				if(!form.title || !form.time || !form.address || !form.unit || !form.content || !form.url) {
 					return alert('请填写所有必须项！');
 				}
-				this.$store.dispatch('POST_ARTICLE', {form: form})
-					.then(data => {
-						alert('发布成功');
-						this.$router.push({name: 'article', params: {id: data.id}});
-					}).catch(err => alert(err));
+				if(!this.$route.params.artId) {
+					this.$store.dispatch('POST_ARTICLE', {form: form})
+						.then(data => {
+							alert('发布成功');
+							this.$router.push({name: 'article', params: {id: data.id}});
+						}).catch(err => alert(err));
+				}else {
+					console.log('modify')
+				}
 			}
 		},
 		computed: mapState(['userId', 'isEdit'])

@@ -3,10 +3,14 @@
 		<div v-if='article.content'>
 			<!--<div class='group-con'>封面</div>-->
 			<h1>{{article.title}}</h1>
+			<div class='group-con' v-show='self'>
+				<span class='time'>{{article.time | timeFormat}}</span>
+				<modify :item='article'></modify>
+			</div>
 			<img :src='article.url' alt='cover' class='cover'/>
 			<div class='group-con'>
 				<label>举办时间：</label>
-				<span>{{article.time | timeFormat}}</span>
+				<span>{{article.heldTime}}</span>
 			</div>
 			<div class='group-con'>
 				<label>举办地点：</label>
@@ -37,7 +41,7 @@
 </template>
 
 <script>
-	import {mapState} from 'vuex';
+	import modify from '../components/modify.vue';
 	// import toMarkDown from 'to-markdown';
 
 	export default {
@@ -58,6 +62,10 @@
 			article() {
 				return this.$store.state.article
 			},
+			self() {
+				return this.article.author === this.$store.state.userId
+			}
+
 		},
 		filters: {
 			timeFormat(value) {
@@ -66,11 +74,17 @@
                         ${date.getHours() > 9 ? date.getHours() : '0' + date.getHours()}:
                         ${date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes()}`;
             }
-		}
+		},
+        components: {
+            modify
+        }
 	}
 </script>
 
 <style scoped lang='stylus'>
+	@import '../css/common';
+	@import '../css/form';
+
 	.article
 		width 50% 
 		min-width 500px
@@ -81,5 +95,5 @@
 	.cover
 		width 100%
 	.content
-		margin-left 80px
+		margin-left 90px
 </style>

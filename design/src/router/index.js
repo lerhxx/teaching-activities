@@ -6,6 +6,8 @@ import SignIn from '../pages/signin.vue';
 import Edit from '../pages/edit.vue';
 import Article from '../pages/article.vue';
 import Personal from '../pages/personal.vue';
+import PerArticle from '../components/per-article.vue';
+import Count from '../components/count.vue';
 
 const routes = [{
 	path: '/', component: Index, name: 'index'
@@ -35,13 +37,20 @@ const routes = [{
 	redirect: to => {
 		const {hash, params, query} = to;
 		if(params.id) {
-			return '/personal/' + params.id;
+			return '/personal/' + params.id + '/article';
 		}else {
 			return '/signin';
 		}
 	}
 }, {
-	path: '/personal/:id', component: Personal, name: 'personal'
+	path: '/personal/:id', component: Personal, name: 'personal',
+	children: [{
+		path: 'article',
+		component: PerArticle
+	}, {
+		path: 'count',
+		component: Count
+	}]
 }, {
 	path: '*', redirect: '/'
 }];
