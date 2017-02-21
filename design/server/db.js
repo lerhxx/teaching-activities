@@ -14,7 +14,8 @@ mongoose.connect('mongodb://localhost/design');
 const UserSchema = new Schema({
 	id: String,
 	pwd: String,
-	rank: Number
+	rank: Number,
+	faculty: Number
 })
 
 const articleSchema = new Schema({
@@ -60,7 +61,7 @@ const Models = {
 }
 
 const initialize = () => {
-	Models.Search.find(null, (err, doc) => {
+	Models.User.find(null, (err, doc) => {
 		if(err) {
 			console.error(err);
 		}else if(!doc.length) {
@@ -69,8 +70,8 @@ const initialize = () => {
 			// list.lists.map(item => new Models.List(item).save());
 			// article.articles.map(item => new Models.Article(item).save());
 			// footerLink.map(item => new Models.FootLink(item).save());
-			new Models.Search(search).save();
-			// user.map(item => new Models.User(item).save());
+			// new Models.Search(search).save();
+			user.map(item => new Models.User(item).save());
 			// Models.Article.find(null, (err, doc) => {
 			// 	if(err) {
 			// 		return console.error(err)
@@ -78,7 +79,7 @@ const initialize = () => {
 			// 	console.log(doc)
 			// })
 		}else {
-			// Models.Search.find(null, (err, doc) => {
+			// Models.User.find(null, (err, doc) => {
 			// 	// doc.map(item => item.remove())
 			// 	console.log(doc)
 			// })

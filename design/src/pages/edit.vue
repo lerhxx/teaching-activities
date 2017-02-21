@@ -74,7 +74,7 @@
 					unit: '请选择举办单位',
 					explain: '',
 					content: '',
-					enclosure: ''
+					enclosure: ''       
 				},
 				optionShow: false,
 				calendar: {
@@ -203,8 +203,6 @@
 		padding-top nav-height + 50px
 		padding-bottom 20px
 		box-sizing border-box
-		background url(../../dist/imgs/16.jpg) 0 0 no-repeat
-		background-size cover
 		text-align center
 	.edit-form
 		display inline-block
@@ -355,6 +353,4 @@
 		width 700px
 		padding 0 15px
 		text-align left
-	.simditor .simditor-body
-			height 362px
 </style>

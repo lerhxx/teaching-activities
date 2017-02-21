@@ -133,79 +133,222 @@ router.get('/user', (req, res) => {
 		}
 	})
 })
-router.get('/getArticals', (req, res) => {
+router.get('/getArticals', (req, res, next) => {
+		let faculty = req.query.faculty,
+		type = req.query.type,
+		time = req.query.time;
+	if(time == 0) {
+		if(faculty == 0) {
+			if(type == 0) {
+				next('route');
+			}else {
+				db.Article.find({type: type}, (err, doc) => {
+					if(err) {
+						res.send({state: 1, msg: '查询失败！'});
+					}else {
+						res.send({state: 0, data: doc});
+					}
+				})
+
+			}
+		}else {
+			if(type == 0) {
+				db.Article.find({faculty: faculty}, (err, doc) => {
+					if(err) {
+						res.send({state: 1, msg: '查询失败！'});
+					}else {
+						res.send({state: 0, data: doc});
+					}
+				})
+			}else {
+				db.Article.find({faculty: faculty, type: type}, (err, doc) => {
+					if(err) {
+						res.send({state: 1, msg: '查询失败！'});
+					}else {
+						res.send({state: 0, data: doc});
+					}
+				})
+
+			}
+		}
+	}else {
+		next();
+	}
+}, (req, res, next) => {
 	let faculty = req.query.faculty,
 		type = req.query.type,
 		time = req.query.time,
 		now = new Date();
-
-	//条件筛选
-	if(faculty != 0 || type != 0 || time != 0) {
-		if(faculty == 0 && type != 0 && time != 0) {
-			if(time == 1) {
-				db.Article.find({type: type, endTime: {$gt: now}}, (err, doc) => {
-					cb(err, doc)
-				})
-			}else {
-				db.Article.find({type: type, endTime: {$lt: now}}, (err, doc) => {
-					cb(err, doc)
-				})
-			}
-		}else if(type == 0 && faculty != 0 && time != 0) {
-			if(time == 1) {
-				db.Article.find({faculty: faculty, endTime: {$gt: now}}, (err, doc) => {
-					cb(err, doc)
-				})
-			}else {
-				db.Article.find({faculty: faculty, endTime: {$lt: now}}, (err, doc) => {
-					cb(err, doc)
-				})
-			}
-		}else if(time == 0 && faculty != 0 && type != 0) {
-			db.Article.find({faculty: faculty, type: type}, (err, doc) => {
-				cb(err, doc)
-			})
-		}else if(faculty == 0 && type == 0 && time != 0) {
-			if(time == 1) {
+	if(time == 1) {
+		if(faculty == 0) {
+			if(type == 0) {
 				db.Article.find({endTime: {$gt: now}}, (err, doc) => {
-					cb(err, doc)
+					if(err) {
+						res.send({state: 1, msg: '查询失败！'});
+					}else {
+						res.send({state: 0, data: doc});
+					}
 				})
 			}else {
-				db.Article.find({endTime: {$lt: now}}, (err, doc) => {
-					cb(err, doc)
+				db.Article.find({type: type, endTime: {$gt: now}}, (err, doc) => {
+					if(err) {
+						res.send({state: 1, msg: '查询失败！'});
+					}else {
+						res.send({state: 0, data: doc});
+					}
 				})
 			}
-		}else if(faculty == 0 && type != 0 && time == 0) {
-			db.Article.find({type: type}, (err, doc) => {
-				cb(err, doc)
-			})
-		}else if(faculty != 0 && type == 0 && time == 0) {
-			db.Article.find({faculty: faculty}, (err, doc) => {
-				cb(err, doc)
-			})
 		}else {
-			if(time == 1) {
-				db.Article.find({faculty: faculty, type: type, endTime: {$gt: now}}, (err, doc) => {
-					cb(err, doc)
+			if(type == 0) {
+				db.Article.find({faculty: faculty, endTime: {$gt: now}}, (err, doc) => {
+					if(err) {
+						res.send({state: 1, msg: '查询失败！'});
+					}else {
+						res.send({state: 0, data: doc});
+					}
 				})
 			}else {
-				db.Article.find({faculty: faculty, type: type, endTime: {$lt: now}}, (err, doc) => {
-					cb(err, doc)
+				db.Article.find({faculty: faculty, type: type, endTime: {$gt: now}}, (err, doc) => {
+					if(err) {
+						res.send({state: 1, msg: '查询失败！'});
+					}else {
+						res.send({state: 0, data: doc});
+					}
 				})
 			}
 		}
-	}else if(faculty == 0 && type == 0 && time == 0)  {
-		db.Article.find((err, doc) => {
-			cb(err, doc)
-		})
+	}else {
+		next();
 	}
-	function cb(err, doc) {
+}, (req, res, next) => {
+	let faculty = req.query.faculty,
+		type = req.query.type,
+		time = req.query.time,
+		now = new Date();
+	if(time == 2) {
+		if(faculty == 0) {
+			if(type == 0) {
+				db.Article.find({endTime: {$lt: now}}, (err, doc) => {
+					if(err) {
+						res.send({state: 1, msg: '查询失败！'});
+					}else {
+						res.send({state: 0, data: doc});
+					}
+				})
+			}else {
+				db.Article.find({type: type, endTime: {$lt: now}}, (err, doc) => {
+					if(err) {
+						res.send({state: 1, msg: '查询失败！'});
+					}else {
+						res.send({state: 0, data: doc});
+					}
+				})
+			}
+		}else {
+			if(type == 0) {
+				db.Article.find({faculty: faculty, endTime: {$lt: now}}, (err, doc) => {
+					if(err) {
+						res.send({state: 1, msg: '查询失败！'});
+					}else {
+						res.send({state: 0, data: doc});
+					}
+				})
+			}else {
+				db.Article.find({faculty: faculty, type: type, endTime: {$lt: now}}, (err, doc) => {
+					if(err) {
+						res.send({state: 1, msg: '查询失败！'});
+					}else {
+						res.send({state: 0, data: doc});
+					}
+				})
+			}
+		}
+	}else {
+		next();
+	}
+})
+router.get('/getArticals', (req, res) => {
+	db.Article.find((err, doc) => {
 		if(err) {
 			res.send({state: 1, msg: '查询失败！'});
 		}else {
 			res.send({state: 0, data: doc});
 		}
-	}
+	})
 })
+// router.get('/getArticals', (req, res) => {
+// 	let faculty = req.query.faculty,
+// 		type = req.query.type,
+// 		time = req.query.time,
+// 		now = new Date();
+
+// 	//条件筛选
+// 	if(faculty != 0 || type != 0 || time != 0) {
+// 		if(faculty == 0 && type != 0 && time != 0) {
+// 			if(time == 1) {
+// 				db.Article.find({type: type, endTime: {$gt: now}}, (err, doc) => {
+// 					cb(err, doc)
+// 				})
+// 			}else {
+// 				db.Article.find({type: type, endTime: {$lt: now}}, (err, doc) => {
+// 					cb(err, doc)
+// 				})
+// 			}
+// 		}else if(type == 0 && faculty != 0 && time != 0) {
+// 			if(time == 1) {
+// 				db.Article.find({faculty: faculty, endTime: {$gt: now}}, (err, doc) => {
+// 					cb(err, doc)
+// 				})
+// 			}else {
+// 				db.Article.find({faculty: faculty, endTime: {$lt: now}}, (err, doc) => {
+// 					cb(err, doc)
+// 				})
+// 			}
+// 		}else if(time == 0 && faculty != 0 && type != 0) {
+// 			db.Article.find({faculty: faculty, type: type}, (err, doc) => {
+// 				cb(err, doc)
+// 			})
+// 		}else if(faculty == 0 && type == 0 && time != 0) {
+// 			if(time == 1) {
+// 				db.Article.find({endTime: {$gt: now}}, (err, doc) => {
+// 					cb(err, doc)
+// 				})
+// 			}else {
+// 				db.Article.find({endTime: {$lt: now}}, (err, doc) => {
+// 					cb(err, doc)
+// 				})
+// 			}
+// 		}else if(faculty == 0 && type != 0 && time == 0) {
+// 			db.Article.find({type: type}, (err, doc) => {
+// 				cb(err, doc)
+// 			})
+// 		}else if(faculty != 0 && type == 0 && time == 0) {
+// 			db.Article.find({faculty: faculty}, (err, doc) => {
+// 				cb(err, doc)
+// 			})
+// 		}else {
+// 			if(time == 1) {
+// 				db.Article.find({faculty: faculty, type: type, endTime: {$gt: now}}, (err, doc) => {
+// 					cb(err, doc)
+// 				})
+// 			}else {
+// 				db.Article.find({faculty: faculty, type: type, endTime: {$lt: now}}, (err, doc) => {
+// 					cb(err, doc)
+// 				})
+// 			}
+// 		}
+// 	}else if(faculty == 0 && type == 0 && time == 0)  {
+// 		db.Article.find((err, doc) => {
+// 			cb(err, doc)
+// 		})
+// 	}
+// 	function cb(err, doc) {
+// 		if(err) {
+// 			res.send({state: 1, msg: '查询失败！'});
+// 		}else {
+// 			res.send({state: 0, data: doc});
+// 		}
+// 	}
+// })
 
 module.exports = router;

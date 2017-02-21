@@ -7,6 +7,10 @@
 				<span class='time'>{{article.time | timeFormat}}</span>
 				<modify :item='article'></modify>
 			</div>
+			<div class='group-con'>
+				<label>发布单位:</label>
+				<span>{{article.faculty}}</span>
+			</div>
 			<img :src='article.url' alt='cover' class='cover'/>
 			<div class='group-con'>
 				<label>举办时间：</label>
