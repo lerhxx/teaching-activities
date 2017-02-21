@@ -9,7 +9,7 @@
 					<input type='text' v-model='form.abs' placeholder='举办目的' />
 				</div>
 				<div class='group-con'>
-					<span class='must'>*</span><calendar type='range' inputwidth='216px' v-on:getValue='getTime' v-on:getEndTime='getEndTime'></calendar>
+					<span class='must'>*</span><calendar type='range' v-on:getValue='getTime' v-on:getEndTime='getEndTime'></calendar>
 					<!--<input type='text' v-model='form.time' placeholder='举办时间' />-->
 				</div>
 				<div class='group-con'>
@@ -176,6 +176,7 @@
 				form.content = editor.sync();
 				form.author = this.userId;
 				form.time = new Date();
+				console.log()
 				if(!form.title || !form.time || !form.address || !form.unit || !form.content || !form.url) {
 					return alert('请填写所有必须项！');
 				}
@@ -353,4 +354,7 @@
 		width 700px
 		padding 0 15px
 		text-align left
+	@media screen and (max-width 1016px)
+		.group-left
+			width 90%
 </style>
