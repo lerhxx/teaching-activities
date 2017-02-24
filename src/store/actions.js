@@ -52,7 +52,6 @@ export default {
       })
   },
   GET_USER_INFO({commit}, userInfo) {
-
     return axios.get('/user', {params: {id: userInfo.id}})
       .then(res => {
         if(res.data.state === 0) {
@@ -77,7 +76,6 @@ export default {
       })
   },
   POST_ARTICLE({state}, form) {
-    console.log(form);
     return axios.post(`/user/edit/${state.userId}`, form)
       .then(res => {
         if(res.data.state === 0) {

@@ -52,19 +52,13 @@ router.post('/user/edit/:id', (req, res) => {
 	db.Article.findOne({title: req.body.form.title, author: req.body.form.author}, (err, doc) => {
 		if(err) {
 			res.send({state: 3, msg: '操作失败'});
-		}else if(doc.length) {
+		}else if(doc) {
 			res.send({state: 1, msg: '标题已存在！'});
 		}else {
 			db.Article.create(req.body.form, (err, article) => {
 				if(err) {
 					res.send({state: 2, msg: '发布失败，请重试！'});
 				}
-				// db.Article.find({title: req.body.form.title}, (err, doc) => {
-				// 	if(err) {
-				// 		console.log(err);
-				// 	}
-				// 	console.log(doc);
-				// })
 				res.send({state: 0, data: {id: article._id}});
 			})
 		}

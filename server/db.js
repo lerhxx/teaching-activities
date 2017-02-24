@@ -62,17 +62,16 @@ const Models = {
 
 const initialize = () => {
 	Models.FootLink.find(null, (err, doc) => {
-		if(err){
+		if(err) {
 			console.error(err);
 		}else if(!doc.length) {
 			console.log('Database opens for the first time...')
 			//TODO
-			// list.lists.map(item => new Models.List(item).save());
 			// article.articles.map(item => new Models.Article(item).save());
 			footerLink.map(item => new Models.FootLink(item).save());
 			// new Models.Search(search).save();
 			// user.map(item => new Models.User(item).save());
-			// Models.Search.find(null, (err, doc) => {
+			// Models.Article.find(null, (err, doc) => {
 			// 	if(err) {
 			// 		return console.error(err)
 			// 	}
