@@ -57,28 +57,5 @@
         margin 20px 0
         text-align center
         font-size 25px
-    .per-list
-        relative()
-        margin-bottom 10px
-        text-align center
-        &:before
-            absolute(top 0 bottom 0 left 0 right 0)
-            width 50%
-            height 0px
-            margin auto
-            border 1px solid #000
-            content ''
-            z-index -1
-    .per-list-item
-        a
-            display block
-            padding 10px 35px
-            border 1px solid #000
-            background #fff
-        &.active
-            a
-                color #fff
-                background #000
-    
 
 </style>

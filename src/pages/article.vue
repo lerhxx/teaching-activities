@@ -73,10 +73,14 @@
 		},
 		filters: {
 			timeFormat(value) {
-                let date = new Date(value);
-                return `${date.getFullYear()}年${date.getMonth() > 9 ? date.getgetMonthHours() : '0' + date.getMonth()}月${date.getDate() > 9 ? date.getDate() : '0' + date.getDate()}日 
-                        ${date.getHours() > 9 ? date.getHours() : '0' + date.getHours()}:
-                        ${date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes()}`;
+                let date = new Date(value),
+					month = date.getMonth(),
+					day = date.getDate(),
+					hour = date.getHours(),
+					min = date.getMinutes();
+                return `${date.getFullYear()}年${month > 9 ? month : '0' + month}月${day > 9 ? day : '0' + day}日 
+                        ${hour > 9 ? hour : '0' + hour}:
+                        ${min > 9 ? min : '0' + min}`;
             }
 		},
         components: {

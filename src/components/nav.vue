@@ -25,7 +25,7 @@
 				</router-link>
 			</li>
 			<li>
-				<router-link :to="{name: 'perValidate', params: {id: userId}}">
+				<router-link :to="{name: 'perValidate', params: {id: userId}}" v-show='user'>
 					个人中心
 				</router-link>
 			</li>
@@ -39,7 +39,6 @@
 </template>
 
 <script>
-	import {mapState} from 'vuex';
 	import {unset, get} from '../assets/cookieUtil';
 
 	export default {
@@ -48,16 +47,21 @@
 			}
 		},
 		created() {
-			let user;
-			
-			user = get('user');
-			if(user && !this.userId) {
-				this.$store.dispatch('GET_USER_INFO', {id: user});
-			}else {
-				this.$router.push({name: 'signin'})
+			if(get('user') && !this.userId) {
+				this.$store.dispatch('GET_USER_INFO', {id: this.user});
 			}
 		},
-		computed: mapState(['userId', 'userRank']),
+		computed: {
+			user() {
+				return this.userId || get('user');
+			},
+			userId() {
+				return this.$store.state.userId;
+			},
+			userRank() {
+				return this.$store.state.userRank;
+			}
+		},
 		methods: {
 			signout() {
 				unset('user', '/', window.location.hostname);
@@ -65,7 +69,7 @@
 				this.$router.push('/');
 				alert('登出成功！');
 			},
-		}
+		},
 	}
 </script>
 

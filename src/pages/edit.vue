@@ -9,7 +9,7 @@
 					<input type='text' v-model='form.abs' placeholder='举办目的' />
 				</div>
 				<div class='group-con'>
-					<span class='must'>*</span><calendar type='range' v-on:getValue='getTime' v-on:getEndTime='getEndTime'></calendar>
+					<span class='must'>*</span><calendar type='time' v-on:getValue='getTime' v-on:getEndTime='getEndTime'></calendar>
 					<!--<input type='text' v-model='form.time' placeholder='举办时间' />-->
 				</div>
 				<div class='group-con'>
@@ -21,10 +21,8 @@
 						<span class='arrow' @click='onToggleOption'></span>
 						<div class='option-box' v-show='optionShow'>
 							<div class='option'>
-								<p @click='onChangeOption'>华南农业大学</p>
-								<p @click='onChangeOption'>数信</p>
-								<p @click='onChangeOption'>经管</p>
-								<p @click='onChangeOption'>外国语</p>
+								<p @click='onChangeOption'>信息管理教研室</p>
+								<p @click='onChangeOption'>工业工程教研室</p>
 							</div>
 						</div>
 					</div>
@@ -178,6 +176,7 @@
 				this.form.heldTime = value;
 			},
 			getEndTime(value) {
+				console.log(value)
 				this.form.endTime = value;
 			},
 			onPost() {

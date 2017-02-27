@@ -47,8 +47,7 @@ const selectTypeSchema = new Schema({
 
 const searchSchema = new Schema({
 	faculties: [selectTypeSchema],
-	types: [selectTypeSchema],
-	timeliness: [selectTypeSchema]
+	types: [selectTypeSchema]
 })
 
 const Models = {
@@ -61,14 +60,14 @@ const Models = {
 }
 
 const initialize = () => {
-	Models.FootLink.find(null, (err, doc) => {
+	Models.Article.find(null, (err, doc) => {
 		if(err) {
 			console.error(err);
 		}else if(!doc.length) {
 			console.log('Database opens for the first time...')
 			//TODO
-			// article.articles.map(item => new Models.Article(item).save());
-			footerLink.map(item => new Models.FootLink(item).save());
+			article.articles.map(item => new Models.Article(item).save());
+			// footerLink.map(item => new Models.FootLink(item).save());
 			// new Models.Search(search).save();
 			// user.map(item => new Models.User(item).save());
 			// Models.Article.find(null, (err, doc) => {
@@ -78,7 +77,7 @@ const initialize = () => {
 			// 	console.log(doc)
 			// })
 		}else {
-			// Models.FootLink.find(null, (err, doc) => {
+			// Models.Article.find(null, (err, doc) => {
 			// 	// doc.map(item => item.remove())
 			// 	console.log(doc)
 			// })
