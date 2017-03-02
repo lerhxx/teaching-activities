@@ -111,6 +111,7 @@
 
 <style scoped lang='stylus'>
 	@import '../css/funs';
+	@import '../css/variable';
 	.index
 		padding-bottom 60px
 		text-align center
@@ -118,14 +119,13 @@
 		width 100%
 		height 300px
 	.in-search 
-		padding-top 15px
+		padding 15px 0
 		text-align center
 		border-bottom 1px solid #bbb
-		label 
-			margin-right search-mar
 		select 
 			min-width 80px
-			margin 0 search-mar
+			height 21px
+			margin-right search-mar
 			outline none
 	.not-hold-wrapper,
 	.hold-wrapper

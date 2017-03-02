@@ -1,0 +1,835 @@
+body {
+  overflow: hidden;
+  position: relative;
+  font-family: 'Microsoft YaHei';
+  letter-spacing: 0.15em;
+}
+
+::-webkit-scrollbar {
+  background: #8a8c99;
+  height: 8px;
+  width: 9px;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8a8c99;
+  border-radius: 4px;
+}
+
+.hidden {
+  display: none;
+}
+
+.relative {
+  position: relative;
+}
+
+.dot-ellipsis {
+  word-break: break-all;
+}
+
+.page-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 25px 0;
+}
+.page-top .logo {
+  margin-left: 35px;
+  margin-right: 10px;
+}
+.page-top .right {
+  padding: 0 35px;
+  float: right;
+  position: relative;
+  font-size: 14px;
+}
+.page-top .right .share, .page-top .right .music, .page-top .right .to-login {
+  margin-left: 10px;
+  line-height: 30px;
+  vertical-align: top;
+  color: #fff3a4;
+  position: relative;
+  top: 10px;
+  font-size: 18px;
+}
+.page-top .right .share:hover, .page-top .right .music:hover, .page-top .right .to-login:hover {
+  color: #fff3a4;
+}
+.page-top .right .share:active, .page-top .right .music:active, .page-top .right .to-login:active {
+  color: #fff3a4;
+}
+.page-top .right .my-info-block {
+  display: inline-block;
+  *zoom: 1;
+  *display: inline;
+  color: #fff3a4;
+  vertical-align: top;
+  line-height: 46px;
+}
+.page-top .right .my-info-block a {
+  color: #fff3a4;
+  text-decoration: underline;
+  vertical-align: top;
+}
+.page-top .right .my-info-block a:hover {
+  color: #fff3a4;
+}
+.page-top .right .my-info-block a:active {
+  color: #fff3a4;
+}
+.page-top .right .my-photo {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(254, 200, 43, 0.5);
+  border-radius: 23px;
+  display: none;
+}
+.page-top .right .my-name {
+  display: inline-block;
+  *zoom: 1;
+  *display: inline;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 46px;
+  vertical-align: top;
+}
+.page-top .right .login-out-wrap {
+  vertical-align: top;
+  block: inline-block;
+  width: 60px;
+  overflow: hidden;
+}
+.page-top .right .share-cloud {
+  left: auto;
+  bottom: auto;
+  right: 100px;
+  top: 45px;
+}
+
+#win_cover {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  opacity: .5;
+  filter: alpha(opacity=50);
+  z-index: 1000;
+}
+
+.win_box {
+  display: none;
+  position: fixed;
+  top: 100px;
+  left: 100px;
+  background: #fff;
+  box-shadow: 0 1px 5px #444;
+  z-index: 10001;
+}
+.win_box .win_shut {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  height: 14px;
+  width: 14px;
+  background: url("http://res.cc.netease.com/webcc/v2/static/images/common/common-new.981cd9d9e7f0.png") no-repeat;
+}
+.win_box .win_shut:hover {
+  background-position: -20px 0;
+}
+.win_box .win_title {
+  height: 32px;
+  line-height: 32px;
+  color: #666;
+  font-size: 14px;
+  padding-left: 12px;
+  margin-top: 2px;
+  font-weight: normal;
+}
+.win_box .win_content {
+  line-height: 25px;
+  font-size: 14px;
+  color: #484848;
+  padding: 10px 20px;
+  text-align: center;
+}
+.win_box .win_content .content_txt {
+  line-height: 16px;
+  display: inline-block;
+  *zoom: 1;
+  *display: inline;
+  vertical-align: top;
+}
+.win_box .win_content.single-line .content_txt {
+  line-height: 32px;
+}
+.win_box .win_bottom {
+  text-align: center;
+  margin: 15px 0 20px 0;
+}
+.win_box .win_bottom a {
+  display: inline-block;
+  *zoom: 1;
+  *display: inline;
+  height: 26px;
+  min-width: 50px;
+  padding: 0 15px;
+  line-height: 26px;
+  color: #27ace5;
+  border: 1px solid #27ace5;
+  border-radius: 3px;
+  background: #e8f8ff;
+  margin: 0 2px;
+}
+.win_box .win_bottom a:hover {
+  background: #e8f8ff;
+}
+.win_box .win_bottom a.cancel {
+  background: #fff;
+  border-color: #999;
+  color: #999;
+}
+.win_box .win_bottom a.cancel:hover {
+  background: #fff;
+}
+
+.memory-win .win_title {
+  display: none;
+}
+.memory-win .win_shut {
+  z-index: 1;
+  width: 46px;
+  height: 46px;
+  background: url(../images/icons/memory-win-close.png) no-repeat center center;
+}
+.memory-win .win_shut:hover {
+  background: url(../images/icons/memory-win-close-hover.png) no-repeat center center;
+}
+.memory-win .win_shut:active {
+  background: url(../images/icons/memory-win-close-active.png) no-repeat center center;
+}
+.memory-win .win_content {
+  padding: 10px;
+  line-height: 0;
+}
+.memory-win .content_txt {
+  position: relative;
+}
+.memory-win .memory-desc {
+  position: absolute;
+  bottom: 0;
+  font-size: 12px;
+  line-height: 24px;
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  left: 0;
+  width: 100%;
+}
+.memory-win .memory-desc .desc-wrap {
+  padding: 5px 10px;
+}
+.memory-win .win_bottom {
+  display: none;
+}
+.memory-win.win_box .win_content.single-line .content_txt {
+  line-height: 0;
+}
+.memory-win .memory-img {
+  max-width: 800px;
+}
+
+.active .win-tip {
+  display: block;
+}
+
+.footer {
+  clear: both;
+  background: #1d1d1d;
+  padding: 25px 0px 40px;
+  margin: 0 auto;
+}
+
+.footer a {
+  color: #999;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.NIE-copyRight {
+  text-align: center;
+}
+
+.NIE-copyRight, .NIE-copyRight a {
+  color: #a3a3a3;
+  text-decoration: none;
+}
+
+.NIE-copyRight a:hover {
+  text-decoration: underline;
+}
+
+.NIE-copyRight .l1 {
+  padding-bottom: 10px;
+}
+
+.logo_netease {
+  background: url(http://res.nie.netease.com/comm/NIE_copyRight/images/netease.2.png) 0 0 no-repeat;
+  _background: url(http://cc.163.com/activity/2014/loversday/image/netease.png) 0 0 no-repeat;
+}
+
+.logo_nie {
+  background: url(http://res.nie.netease.com/comm/NIE_copyRight/images/nie.2.png) 0 0 no-repeat;
+  _background: url(http://cc.163.com/activity/2014/loversday/image/nie.png) 0 0 no-repeat;
+}
+
+.pc {
+  background: #030c33 url(../images/bg.jpg) no-repeat top center;
+  background-size: contain;
+  max-width: 1920px;
+  max-height: 1080px;
+}
+
+.stage-info {
+  height: 1080px;
+  position: relative;
+}
+.stage-info .shineClz {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1675px;
+  height: 454px;
+  margin: -274px 0 0 -838px;
+  background-image: url(../images/shine.png);
+}
+.stage-info .logo-con {
+  position: fixed;
+  width: 1022px;
+  height: 743px;
+  background-image: url(../images/logo.png);
+  overflow: hidden;
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.stage-info .logo-con .active-step {
+  margin-left: 410px;
+  margin-top: 222px;
+  width: 273px;
+  height: 47px;
+  display: block;
+}
+.stage-info .logo-con .active-step-one {
+  background-image: url(../images/icons/item-step-1.png);
+}
+.stage-info .logo-con .active-step-two {
+  background-image: url(../images/icons/item-step-2.png);
+}
+
+.intro-con {
+  position: absolute;
+  background-image: url(../images/rule-bg.png);
+  width: 764px;
+  height: 342px;
+  overflow: hidden;
+  display: block;
+  left: 45px;
+  right: 0px;
+  bottom: 45px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.intro-con .task-intro-con {
+  width: 610px;
+  height: 180px;
+  display: block;
+  color: #ffd659;
+  font-size: 14px;
+  line-height: 20px;
+  position: relative;
+  margin-top: 70px;
+  margin-left: 87px;
+}
+.intro-con .task-intro-con .task-intro {
+  width: 270px;
+  height: 180px;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  float: left;
+  word-break: break-all;
+}
+.intro-con .task-intro-con .task-intro-right {
+  float: right;
+  width: 315px;
+}
+.intro-con .task-intro-con .intro-title {
+  font-weight: bold;
+}
+
+.containt {
+  display: none;
+  position: relative;
+  width: 1160px;
+  height: 750px;
+  overflow: hidden;
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.containt .main {
+  width: 1100px;
+  height: 100%;
+  background: #ffffff;
+  position: relative;
+  float: left;
+  overflow-x: hidden;
+}
+.containt .main .task-info-con {
+  width: 1000px;
+  margin-top: 30px;
+  margin-left: 50px;
+}
+.containt .main .task-info-con .btn-big {
+  line-height: 37px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+.containt .main .task-info-con .submit-btn {
+  line-height: 48px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+.containt .main .task-info-con .submit-btn.enable {
+  cursor: default;
+}
+.containt .main .task-info-con .text {
+  font-size: 22px;
+  color: #fff;
+  margin-top: 20px;
+  line-height: 22px;
+  word-spacing: 5px;
+  letter-spacing: 3px;
+}
+.containt .main .task-info-con .main-task-title {
+  color: #333333;
+  font-size: 18px;
+  font-weight: bold;
+  display: inline-block;
+}
+.containt .main .task-info-con .warn-clz {
+  color: #ff345f !important;
+}
+.containt .main .task-info-con .main_task .subtask_title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #ffffff;
+  margin-left: 30px;
+  margin-right: 30px;
+  display: block;
+}
+.containt .main .task-info-con .main_task .step_con .task_info {
+  margin-left: 15px;
+  margin-top: 10px;
+  margin-bottom: 115px;
+}
+.containt .main .task-info-con .main_task .step_con .task_info .switch-btn {
+  background-image: url("../images/icons/btn_down.jpg");
+  width: 28px;
+  height: 28px;
+  display: block;
+  float: left;
+  cursor: default;
+}
+.containt .main .task-info-con .main_task .step_con .task_info .task_title {
+  color: #6069a2;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: bold;
+}
+.containt .main .task-info-con .main_task .step_con .task_info .task_time_limit {
+  color: #ff345f;
+  font-size: 14px;
+  line-height: 28px;
+  float: right;
+  margin-right: 15px;
+}
+.containt .main .task-info-con .main_task .step_con .task_info .sub_task .step_item {
+  color: #4b4b4b;
+  font-size: 20px;
+  line-height: 64px;
+  text-align: center;
+  width: 262px;
+  height: 64px;
+  float: left;
+  display: inline-block;
+  background-image: url("../images/icons/status_undone_2.png");
+  margin-left: -26px;
+  overflow: hidden;
+}
+.containt .main .task-info-con .main_task .step_con .task_info .sub_task .step_item:first-child {
+  background-image: url("../images/icons/status_undone_1.png");
+  width: 263px;
+  margin-left: 0;
+}
+.containt .main .task-info-con .main_task .step_con .task_info .sub_task .step_item:last-child {
+  background-image: url("../images/icons/status_undone_3.png");
+  width: 264px;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info {
+  display: none;
+  clear: both;
+  margin-left: 18px;
+  height: 455px;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload_sub_task {
+  display: block;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .sub-task-title {
+  width: 100%;
+  text-align: center;
+  color: #333333;
+  font-size: 14px;
+  display: inline-block;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .submit-con {
+  width: 100%;
+  font-size: 14px;
+  color: #4b4b4b;
+  text-align: center;
+  height: 100px;
+  display: block;
+  line-height: 30px;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .submit-con .auditing-title-normal {
+  color: #009933;
+  font-size: 24px;
+  display: inline-block;
+  margin-top: 36px;
+  font-weight: bold;
+  height: 40px;
+  line-height: 40px;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .submit-con .auditing-title-error {
+  color: #ff345f;
+  font-size: 24px;
+  display: inline-block;
+  margin-top: 36px;
+  font-weight: bold;
+  height: 40px;
+  line-height: 40px;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .submit-con .normal-txt {
+  color: #404040;
+  font-size: 14px;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .submit-con .submit-btn-again {
+  color: #6069a2;
+  font-size: 14px;
+  display: block;
+  text-decoration: underline;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .submit-con .icon-status-error {
+  background-image: url("../images/icons/status_error.png");
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: sub;
+  line-height: 40px;
+  *display: inline;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .submit-con .icon-status-done {
+  background-image: url("../images/icons/status_done.png");
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: sub;
+  line-height: 40px;
+  *display: inline;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item {
+  width: 235px;
+  height: 300px;
+  margin-right: 8px;
+  float: left;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto {
+  position: relative;
+  width: 235px;
+  height: 260px;
+  border: 1px solid #dedfe9;
+  background-color: #f5f5f8;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .bg-img {
+  width: 70px;
+  height: 70px;
+  display: block;
+  background-image: url("../images/icons/pic_bg.png");
+  position: absolute;
+  top: 82px;
+  left: 88px;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .upload-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 72px;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .upload-txt {
+  display: block;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .re-upload-txt {
+  display: none;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .re_upload {
+  position: absolute;
+  display: none;
+  width: 235px;
+  height: 260px;
+  background: rgba(0, 0, 0, 0.5);
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .re_upload .re-upload-btn {
+  margin-top: 215px;
+  margin-left: 72px;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .fileList {
+  width: 235px;
+  height: 260px;
+  display: block;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .info {
+  text-align: center;
+  width: 100%;
+  line-height: 30px;
+  height: 30px;
+  color: #999999;
+  font-size: 12px;
+  letter-spacing: -1px;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .upload-status-done .info {
+  color: #009933 !important;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .upload-status-error .info {
+  color: #ff345f !important;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .upload-state-done .bg-img {
+  display: none;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .upload-state-done .upload-btn {
+  display: none;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .upload-state-done:hover .upload-btn {
+  display: block;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .upload-state-done .info {
+  color: #009933;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .upload-state-done .upload-txt {
+  display: none;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .upload-state-done .re-upload-txt {
+  display: block;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .upload-state-loading .bg-img {
+  display: none;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .upload-state-error .bg-img {
+  display: none;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .upload-state-error .upload-btn {
+  display: none;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .upload-state-error:hover .upload-btn {
+  display: block;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .upload-state-error .info {
+  color: #ff345f;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .upload-state-error .upload-txt {
+  display: none;
+}
+.containt .main .task-info-con .main_task .step_con .upload_info .upload-step-item .addphoto .upload-state-error .re-upload-txt {
+  display: block;
+}
+.containt .main .task-info-con .main_task .step_con.allow-select:hover {
+  border: 2px solid #6069a2;
+  cursor: pointer;
+}
+.containt .main .task-info-con .main_task .step_con.active {
+  cursor: default !important;
+}
+.containt .main .task-info-con .main_task .step_con.active .task_info {
+  margin-bottom: 50px;
+}
+.containt .main .task-info-con .main_task .step_con.active .upload_info {
+  display: block;
+}
+.containt .main .task-info-con .main_task .step_con.active .switch-btn {
+  background-image: url("../images/icons/btn_up.jpg");
+}
+.containt .main .task-info-con .main_task .step_con.upload-finish .step_item {
+  color: #a1a7c0;
+  background-image: url("../images/icons/status_done_3.png") !important;
+}
+.containt .main .task-info-con .main_task .step_con.upload-finish .step_item:first-child {
+  background-image: url("../images/icons/status_done_1.png") !important;
+}
+.containt .main .task-info-con .main_task .step_con.upload-finish .step_item:last-child {
+  background-image: url("../images/icons/status_done_2.png") !important;
+}
+.containt .main .task-info-con .main_task .step_con.task-status-auditing .upload-btn {
+  display: none !important;
+}
+.containt .main .task-info-con .main_task .step_con.task-status-auditing .upload-txt {
+  display: none !important;
+}
+.containt .main .task-info-con .main_task .step_con.task-status-auditing .re-upload-txt {
+  display: none !important;
+}
+.containt .main .task-info-con .main_task .step_con .step_item.finish-upload {
+  color: #a1a7c0;
+  background-image: url("../images/icons/status_done_3.png") !important;
+}
+.containt .main .task-info-con .main_task .step_con .step_item.finish-upload:first-child {
+  background-image: url("../images/icons/status_done_1.png") !important;
+}
+.containt .main .task-info-con .main_task .step_con .step_item.finish-upload:last-child {
+  background-image: url("../images/icons/status_done_2.png") !important;
+}
+.containt .main .task-info-con .main_task .step_con .img-thumbnail {
+  cursor: pointer;
+}
+.containt .main .unselected .switch-btn {
+  cursor: default;
+}
+.containt .main .allow-select .switch-btn {
+  cursor: pointer !important;
+}
+
+.page-nav-wrap-container {
+  position: relative;
+  width: 100%;
+}
+
+.page-nav-wrap {
+  position: absolute;
+  width: 100%;
+  top: 30px;
+  left: 0;
+  display: none;
+  left: 50%;
+  max-width: 1960px;
+  margin-left: -830px;
+  display: none;
+}
+.page-nav-wrap .page-nav {
+  position: relative;
+}
+.page-nav-wrap .page-nav .btn-main-1 {
+  position: absolute;
+  top: 463px;
+  left: 23px;
+}
+.page-nav-wrap .page-nav .btn-main-2 {
+  position: absolute;
+  top: 293px;
+  left: 220px;
+}
+.page-nav-wrap .page-nav .btn-main-3 {
+  position: absolute;
+  right: 190px;
+  top: 287px;
+}
+.page-nav-wrap .page-nav .btn-main-4 {
+  position: absolute;
+  right: 12px;
+  top: 453px;
+}
+
+.mobile {
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.mobile .scale-main {
+  width: 1000px;
+  -webkit-transform-origin: 0 50%;
+      -ms-transform-origin: 0 50%;
+          transform-origin: 0 50%;
+}
+.mobile .scale-main.page-top {
+  -webkit-transform-origin: 0 0;
+      -ms-transform-origin: 0 0;
+          transform-origin: 0 0;
+}
+
+.picker-con {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: block;
+}
+.picker-con .span {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  text-align: center;
+  top: 0px;
+  left: 0px;
+}
+.picker-con .my-img-picker {
+  width: 100%;
+  height: 100%;
+  position: absolute !important;
+  display: block;
+  top: 0px !important;
+  left: 0px !important;
+}
+.picker-con.upload-status-limitpick .my-img-picker {
+  display: none;
+}
+
+.tip {
+  display: inline-block;
+  padding: 0 30px;
+  margin-top: 17.5%;
+  margin-bottom: 1.7%;
+  font-size: .8rem;
+  line-height: 2rem;
+  border: 1px solid rgba(179, 202, 55, 0.5);
+  border-radius: 30px;
+  background-color: rgba(16, 41, 6, 0.5);
+}
+
+.color-g {
+  color: #3d7315;
+}
+
+.color-y {
+  color: #f4ff82;
+}

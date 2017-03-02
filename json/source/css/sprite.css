@@ -1,0 +1,110 @@
+.btn-sprite, .btn-main-1, .btn-main-2, .btn-main-3, .btn-main-4, .btn-up, .btn-down, .btn-big, .btn-mid, .btn-close {
+  display: inline-block;
+  vertical-align: sub;
+  overflow: hidden;
+  *display: inline;
+  *zoom: 1;
+  cursor: pointer;
+}
+
+.btn-main-1 {
+  background-image: url("../images/icons/btn_03.png");
+  width: 251px;
+  height: 217px;
+}
+.btn-main-1:hover {
+  background-image: url("../images/icons/btn_over_03.png");
+}
+.btn-main-1:active {
+  background-image: url("../images/icons/btn_over_03.png");
+}
+
+.btn-main-2 {
+  background-image: url("../images/icons/btn_02.png");
+  width: 193px;
+  height: 190px;
+}
+.btn-main-2:hover {
+  background-image: url("../images/icons/btn_over_02.png");
+}
+.btn-main-2:active {
+  background-image: url("../images/icons/btn_over_02.png");
+}
+
+.btn-main-3 {
+  background-image: url("../images/icons/btn_01.png");
+  width: 227px;
+  height: 190px;
+}
+.btn-main-3:hover {
+  background-image: url("../images/icons/btn_over_01.png");
+}
+.btn-main-3:active {
+  background-image: url("../images/icons/btn_over_01.png");
+}
+
+.btn-main-4 {
+  background-image: url("../images/icons/btn_04.png");
+  width: 253px;
+  height: 245px;
+}
+.btn-main-4:hover {
+  background-image: url("../images/icons/btn_over_04.png");
+}
+.btn-main-4:active {
+  background-image: url("../images/icons/btn_over_04.png");
+}
+
+.btn-up {
+  background-image: url("../images/icons/btn_up.jpg");
+  width: 28px;
+  height: 28px;
+}
+
+.btn-down {
+  background-image: url("../images/icons/btn_up.jpg");
+  width: 28px;
+  height: 28px;
+}
+
+.btn-big {
+  background-image: url("../images/icons/btn1_normal.png");
+  width: 91px;
+  height: 37px;
+}
+.btn-big:hover {
+  background-image: url("../images/icons/btn1_over.png");
+}
+.btn-big:active {
+  background-image: url("../images/icons/btn1_down.png");
+}
+.btn-big.enable {
+  background-image: url("../images/icons/btn1_enable.png");
+}
+
+.btn-mid {
+  background-image: url("../images/icons/btn2_normal.png");
+  width: 144px;
+  height: 48px;
+}
+.btn-mid:hover {
+  background-image: url("../images/icons/btn2_over.png");
+}
+.btn-mid:active {
+  background-image: url("../images/icons/btn2_down.png");
+}
+.btn-mid.enable {
+  background-image: url("../images/icons/btn2_enable.png");
+}
+
+.btn-close {
+  background-image: url("../images/icons/clz_normal.png");
+  width: 60px;
+  height: 60px;
+}
+.btn-close:hover {
+  background-image: url("../images/icons/clz_over.png");
+}
+.btn-close:active {
+  background-image: url("../images/icons/clz_down.png");
+}

@@ -1,0 +1,33 @@
+<div class='task-child-item'>
+	<div>
+		已选<span class='color-r'>“{{projectInfo.name}}”</span>任务，可在下方选择任务完成：
+	</div>
+	<ul class='task-list'>
+		<li v-for='task in projectInfo.tasks'>
+			<div class='task-child-title color-g'>
+				<span class='arrow'></span><span>任务1：{{task.name}}</span>
+			</div>
+			<div class='task-child-child color-g'>
+				<span v-for='item in task.items'>{{item.name}}</span>
+			</div>
+			<form v-on:click='taskid(task.taskid)' v-show='showItem === item.itemid'>
+					<p>请上传任务材料给：</p>
+					<div class='task-img-wrapper' v-for='taskItem in task.items' v-on:click='itemid(taskItem.itemid)'>
+						<span class='button'>上传</span>
+						<input type='file' v-on:change='uploadPic'/>
+						<!-- <img  :src='userProjects[projectid - 1][task.taskid].items[item.itemid]' /> -->
+						<span class='color-gr img-tip hide'>请上传不超过1M，格式为png/jpg/jpeg的图片</span>
+						<span class='color-g finish'>已完成</span>
+					</div>
+				<!--
+					TODO
+					task.items.length === 4
+				-->
+				<button type='button' :disabled='projects.task.items.length === 0' v-on:click='commitTask()'>提交任务</button>
+				<p>
+					注：本阶段任务截止到<span class='color-r'>3月27日</span>，请在此之前完成以下4个任务。需上传成功图片才算完成
+				</p>
+			</form>
+		</li>
+	</ul>
+</div>
