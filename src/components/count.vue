@@ -7,11 +7,13 @@
                 <a>全部</a>
             </li>
         </ul>
+        <canvas id='individual' width='300' height='300'></canvas>
     </div>
 </template>
 
 <script>
 	import {mapState} from 'vuex';
+    import initChart from '../js/setChart';
 
 	export default {
 		data() {
@@ -19,8 +21,8 @@
 				isPerArt: true
 			}
 		},
-		created() {
-			console.log(this.userRank)
+		mounted() {
+			initChart(document.body);
 		},
 		methods: {
 			toggleArt(type) {

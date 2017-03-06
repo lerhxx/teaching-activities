@@ -61,9 +61,14 @@
         filters: {
             timeFormat(value) {
                 let date = new Date(value);
-                return `${date.getFullYear()}年${date.getMonth() > 9 ? date.getgetMonthHours() : '0' + date.getMonth()}月${date.getDate() > 9 ? date.getDate() : '0' + date.getDate()}日 
-                        ${date.getHours() > 9 ? date.getHours() : '0' + date.getHours()}:
-                        ${date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes()}`;
+                let year = date.getFullYear();
+                let mon = date.getMonth();
+                let day = date.getDate();
+                let hours = date.getMonth();
+                let mins = date.getDate();
+                return `${year}年${mon > 9 ? mon : '0' + mon}月${day > 9 ? day : '0' + day}日 
+                        ${hours > 9 ? hours : '0' + hours}:
+                        ${mins > 9 ? mins : '0' + mins}`;
             },
         },
         components: {
