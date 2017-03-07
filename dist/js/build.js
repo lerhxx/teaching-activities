@@ -11073,6 +11073,17 @@
 	        return Promise.reject(res.data.msg);
 	      }
 	    });
+	  },
+	  INIT_CHART: function INIT_CHART(_ref13, info) {
+	    var commit = _ref13.commit;
+
+	    return _axios2.default.get('/user/count/' + info.id).then(function (res) {
+	      if (res.data.state == 0) {
+	        return Promise.resolve(res.data);
+	      } else {
+	        return Promise.reject(res.data.msg);
+	      }
+	    });
 	  }
 	};
 
@@ -11119,7 +11130,7 @@
 	    },
 	    SET_USERS: function SET_USERS(state, info) {
 	        state.users = info;
-	        console.log(info);
+	        // console.log(info)
 	    }
 	};
 
@@ -17773,7 +17784,7 @@
 	__vue_exports__ = __webpack_require__(108)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(109)
+	var __vue_template__ = __webpack_require__(504)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -17854,12 +17865,12 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	    value: true
 	});
 
 	var _vuex = __webpack_require__(4);
 
-	var _setChart = __webpack_require__(504);
+	var _setChart = __webpack_require__(109);
 
 	var _setChart2 = _interopRequireDefault(_setChart);
 
@@ -17880,78 +17891,150 @@
 	//
 
 	exports.default = {
-		data: function data() {
-			return {
-				isPerArt: true
-			};
-		},
-		mounted: function mounted() {
-			(0, _setChart2.default)(document.body);
-		},
+	    data: function data() {
+	        return {
+	            isPerArt: true
+	        };
+	    },
+	    mounted: function mounted() {
+	        // console.log(this.$route.params)
+	        this.init();
+	    },
 
-		methods: {
-			toggleArt: function toggleArt(type) {
-				switch (type) {
-					case 1:
-						this.isPerArt = true;
-						break;
-					case 2:
-						this.isPerArt = false;
-						break;
-					default:
-						this.isPerArt = true;
-				}
-			}
-		},
-		computed: (0, _vuex.mapState)(['userRank'])
+	    methods: {
+	        init: function init() {
+	            var opt = {};
+	            this.$store.dispatch('INIT_CHART', { id: this.$route.params.id }).then(function (res) {
+	                opt = res.data;
+	            }).catch(function (err) {
+	                return alert(err);
+	            });
+	            opt.id = this.$route.params.id;
+	            (0, _setChart2.default)(document.body, opt || {});
+	        },
+	        toggleArt: function toggleArt(type) {
+	            switch (type) {
+	                case 1:
+	                    this.isPerArt = true;
+	                    break;
+	                case 2:
+	                    this.isPerArt = false;
+	                    break;
+	                default:
+	                    this.isPerArt = true;
+	            }
+	        }
+	    },
+	    computed: (0, _vuex.mapState)(['userRank'])
 	};
 
 /***/ },
 /* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _c('div', [_c('ul', {
-	    directives: [{
-	      name: "show",
-	      rawName: "v-show",
-	      value: (_vm.userRank > 0),
-	      expression: "userRank > 0"
-	    }],
-	    staticClass: "art-list"
-	  }, [_c('li', {
-	    staticClass: "art-list-item",
-	    class: {
-	      active: _vm.isPerArt
-	    },
-	    on: {
-	      "click": function($event) {
-	        _vm.toggleArt(1)
-	      }
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = init;
+
+	var _echarts = __webpack_require__(110);
+
+	var _echarts2 = _interopRequireDefault(_echarts);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function init(ref, options) {
+	    // 初始化 canvas 宽度
+	    var canvas = document.getElementById('individual');
+	    canvas.width = ref.clientWidth * 0.9;
+
+	    // 创建 echarts 实例
+	    var myChart = _echarts2.default.init(canvas);
+
+	    // 计时器
+	    var timer = void 0;
+	    console.log(options);
+	    var text = options.id;
+
+	    // 配置 options
+	    myChart.setOption({
+	        title: {
+	            text: text + ' \u53C2\u4E0E\u4F1A\u8BAE\u7EDF\u8BA1',
+	            subtext: ''
+	        },
+	        tooltip: {
+	            trigger: 'axis'
+	        },
+	        legend: {
+	            data: ['教学讨论会', '科研研讨会', '学术沙龙']
+	        },
+	        toolbox: {
+	            show: true,
+	            feature: {
+	                mark: { show: true },
+	                dataView: { show: true, readOnly: true },
+	                magicType: { show: true, type: ['line', 'bar'] },
+	                restore: { show: true },
+	                saveAsImage: { show: true }
+	            }
+	        },
+	        calculable: true,
+	        xAxis: [{
+	            type: 'category',
+	            boundaryGap: false,
+	            data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+	        }],
+	        yAxis: [{
+	            type: 'value',
+	            axisLabel: {
+	                formatter: '{value}'
+	            }
+	        }],
+	        series: [{
+	            name: '教学讨论会',
+	            type: 'line',
+	            data: [11, 11, 15, 13, 12, 13, 10, 11, 11, 15, 13, 12],
+	            markPoint: {
+	                data: [{ type: 'max', name: '最大值' }]
+	            },
+	            markLine: {
+	                data: [{ type: 'average', name: '平均值' }]
+	            }
+	        }, {
+	            name: '科研研讨会',
+	            type: 'line',
+	            data: [1, 2, 2, 5, 3, 2, 0, 1, 2, 2, 5, 3],
+	            markPoint: {
+	                data: [{ type: 'max', name: '最大值' }]
+	            },
+	            markLine: {
+	                data: [{ type: 'average', name: '平均值' }]
+	            }
+	        }, {
+	            name: '学术沙龙',
+	            type: 'line',
+	            data: [5, 4, 3, 5, 6, 9, 6, 5, 4, 3, 5, 6],
+	            markPoint: {
+	                data: [{ type: 'max', name: '最大值' }]
+	            },
+	            markLine: {
+	                data: [{ type: 'average', name: '平均值' }]
+	            }
+	        }]
+	    });
+
+	    window.addEventListener('resize', function () {
+	        // resize();
+	        myChart.resize();
+	    });
+	    function resize() {
+	        clearTimeout(timer);
+	        timer = setTimeout(function () {
+	            canvas.width = ref.clientWidth * 0.9;
+	        }, 500);
 	    }
-	  }, [_c('a', [_vm._v("个人")])]), _c('li', {
-	    staticClass: "art-list-item",
-	    class: {
-	      active: !_vm.isPerArt
-	    },
-	    on: {
-	      "click": function($event) {
-	        _vm.toggleArt(2)
-	      }
-	    }
-	  }, [_c('a', [_vm._v("全部")])])]), _vm._v(" "), _c('canvas', {
-	    attrs: {
-	      "id": "individual",
-	      "width": "300",
-	      "height": "300"
-	    }
-	  })])
-	},staticRenderFns: []}
-	if (false) {
-	  module.hot.accept()
-	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-775e5b49", module.exports)
-	  }
 	}
 
 /***/ },
@@ -85853,55 +85936,48 @@
 /* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.default = init;
-
-	var _echarts = __webpack_require__(110);
-
-	var _echarts2 = _interopRequireDefault(_echarts);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function init(ref) {
-	    // 初始化 canvas 宽度
-	    var canvas = document.getElementById('individual');
-	    canvas.width = ref.clientWidth * 0.9;
-
-	    // 创建 echarts 实例
-	    var myChart = _echarts2.default.init(canvas);
-
-	    // 计时器
-	    var timer = void 0;
-
-	    // 配置 options
-	    myChart.setOption({
-	        title: { text: 'ECharts 入门示例' },
-	        tooltip: {},
-	        xAxis: {
-	            data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
-	        },
-	        yAxis: {},
-	        series: [{
-	            name: '销量',
-	            type: 'bar',
-	            data: [5, 20, 36, 10, 10, 20]
-	        }]
-	    });
-
-	    window.addEventListener('resize', function () {
-	        // resize();
-	        myChart.resize();
-	    });
-	    function resize() {
-	        clearTimeout(timer);
-	        timer = setTimeout(function () {
-	            canvas.width = ref.clientWidth * 0.9;
-	        }, 500);
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _c('div', [_c('ul', {
+	    directives: [{
+	      name: "show",
+	      rawName: "v-show",
+	      value: (_vm.userRank > 0),
+	      expression: "userRank > 0"
+	    }],
+	    staticClass: "art-list"
+	  }, [_c('li', {
+	    staticClass: "art-list-item",
+	    class: {
+	      active: _vm.isPerArt
+	    },
+	    on: {
+	      "click": function($event) {
+	        _vm.toggleArt(1)
+	      }
 	    }
+	  }, [_c('a', [_vm._v("个人")])]), _c('li', {
+	    staticClass: "art-list-item",
+	    class: {
+	      active: !_vm.isPerArt
+	    },
+	    on: {
+	      "click": function($event) {
+	        _vm.toggleArt(2)
+	      }
+	    }
+	  }, [_c('a', [_vm._v("全部")])])]), _vm._v(" "), _c('canvas', {
+	    attrs: {
+	      "id": "individual",
+	      "width": "300",
+	      "height": "300"
+	    }
+	  })])
+	},staticRenderFns: []}
+	if (false) {
+	  module.hot.accept()
+	  if (module.hot.data) {
+	     require("vue-hot-reload-api").rerender("data-v-775e5b49", module.exports)
+	  }
 	}
 
 /***/ }

@@ -306,4 +306,10 @@ router.get('/user/info', (req, res) => {
 	})
 })
 
+router.get('/user/count/:id', (req, res) => {
+	console.log(req.params.id)
+	// db.User.find((err, doc) => {})
+	res.send({state: 0, data: []});
+})
+
 module.exports = router;

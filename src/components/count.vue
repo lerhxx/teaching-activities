@@ -22,9 +22,20 @@
 			}
 		},
 		mounted() {
-			initChart(document.body);
+            // console.log(this.$route.params)
+            this.init();
 		},
 		methods: {
+            init() {
+                let opt = {};
+                this.$store.dispatch('INIT_CHART', {id: this.$route.params.id})
+                    .then(res => {
+                        opt = res.data;
+                    })
+                    .catch(err => alert(err));
+                opt.id = this.$route.params.id;
+                initChart(document.body, opt || {});
+            },
 			toggleArt(type) {
                 switch(type) {
                     case 1:

@@ -115,5 +115,15 @@ export default {
           return Promise.reject(res.data.msg);
         }
       })
+  },
+  INIT_CHART({commit}, info) { 
+    return axios.get(`/user/count/${info.id}`)
+      .then(res => {
+        if(res.data.state == 0) {
+          return Promise.resolve(res.data);
+        }else {
+          return Promise.reject(res.data.msg);
+        }
+      })
   }
 }

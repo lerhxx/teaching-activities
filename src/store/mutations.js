@@ -32,6 +32,6 @@ export default {
     },
     SET_USERS(state, info) {
         state.users = info;
-        console.log(info)
+        // console.log(info)
     }
 }
