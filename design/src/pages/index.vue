@@ -21,12 +21,7 @@
 				</option>
 			</select>-->
 		</div>
-		<div class='not-hold-wrapper'>
-			<ul class='per-list'>
-				<li class='per-list-item active'>
-					<a>未举办</a>
-				</li>
-			</ul>
+		<!-- <div class='not-hold-wrapper'>
 			<ul class='list'>
 				<li class='list-item' v-for='item in notHoldArticles'>
 					<h3>
@@ -39,22 +34,18 @@
 					<modify :item='item' v-show='userRank == 2 || (userRank == 1 && userFaculty == item.faculty)'></modify>
 				</li>
 			</ul>
-		</div><div class='hold-wrapper'>
-			<ul class='hold-list'>
-				<li class='hold-list-item'>
-					<a>已举办</a>
-				</li>
-			</ul>
+		</div> -->
+		<div class='list-wrapper'>
 			<ul class='list'>
 				<li class='list-item' v-for='item in heldArticles'>
-					<!--<img class='item-cover' :src='item.url' />-->
+					<!-- <img class='item-cover' :src='item.url' /> -->
 					<h3>
 						<router-link class='text-ellipsis' :to="{name: 'article', params: {id: item._id}}">
 							{{item.title}}
 						</router-link>
 					</h3>
 					<p class='time color-g'>{{item.time | timeFormat}}</p>
-					<p class='abstract' v-html='item.content'></p>
+					<!-- <p class='abstract' v-html='item.content'></p> -->
 					<modify :item='item' v-show='userRank == 2 || (userRank == 1 && userFaculty == item.faculty)'></modify>
 				</li>
 			</ul>
@@ -71,7 +62,7 @@
 	export default {
 		data() {
 			 return {
-			 	img: '/dist/imgs/cover-b.jpg',
+			 	img: '/dist/imgs/cover-1.jpg',
 				 faculty: 0,
 				 type: 0,
 				 time: 0,
@@ -114,7 +105,6 @@
 	@import '../css/variable';
 	.index
 		padding-bottom 60px
-		text-align center
 	.in-cover 
 		width 100%
 		height 300px
@@ -127,24 +117,9 @@
 			height 21px
 			margin-right search-mar
 			outline none
-	.not-hold-wrapper,
-	.hold-wrapper
-		display inline-block
-		vertical-align top
-		text-align left
-
-	.not-hold-wrapper
-		width 45%
-		min-width 600px
-		margin-right 50px
-		margin-bottom 30px
-	.per-list
-		margin 30px 0 10px
-	.hold-wrapper
-		width 25%
-		font-size 12px
-		.abstract
-			height 1.5em
+	.list-wrapper
+		width 90%
+		margin auto
 	.hold-list
 		margin 32px 0 12px
 	.hold-list-item
@@ -192,9 +167,4 @@
 		padding-right 25px
 		line-height 1.5em
 		overflow hidden
-	@media screen and (max-width 883px)
-		.not-hold-wrapper
-			margin-right 0
-		.hold-wrapper
-			width 600px
 </style>
