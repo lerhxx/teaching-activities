@@ -11,9 +11,12 @@ const store = new Vuex.Store({
 	state: {
 		userId: '',
 		userRank: 0,
+		userFaculty: '',
+		users: [],
 		footerLinks: [],
 		searchLists: [],
-		articles: [],
+		heldArticles: [],
+		notHoldArticles: [],
 		article: {},
 		selfArticles: [],
 		idEdit: false

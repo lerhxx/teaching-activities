@@ -2,7 +2,7 @@
 	<div class='index'>
 		<img class='in-cover' :src='img' />
 		<div class='in-search'>
-			<label>系：</label>
+			<label>教研室：</label>
 			<select class='faculty' v-model='faculty' @change='onSelect'>
 				<option v-for='faculty in searchLists.faculties' v-bind:value='faculty.index'>
 					{{faculty.type}}
@@ -14,25 +14,51 @@
 					{{type.type}}
 				</option>
 			</select>
-			<label>时效：</label>
+			<!--<label>时效：</label>
 			<select class='time' v-model='time' @change='onSelect'>
 				<option v-for='time in searchLists.timeliness' v-bind:value='time.index'>
 					{{time.type}}
 				</option>
-			</select>
+			</select>-->
 		</div>
-		<ul class='list'>
-			<li class='list-item' v-for='item in articles'>
-                <img class='item-cover' :src='item.url' />
-                <h3>
-                    <router-link class='text-ellipsis' :to="{name: 'article', params: {id: item._id}}">
-                        {{item.title}}
-                    </router-link>
-                </h3>
-                <p class='time color-g'>{{item.time | timeFormat}}</p>
-                <p class='abstract'>{{item.content | filterContent}}</p>
-            </li>
-		</ul>
+		<div class='not-hold-wrapper'>
+			<ul class='per-list'>
+				<li class='per-list-item active'>
+					<a>未举办</a>
+				</li>
+			</ul>
+			<ul class='list'>
+				<li class='list-item' v-for='item in notHoldArticles'>
+					<h3>
+						<router-link class='text-ellipsis' :to="{name: 'article', params: {id: item._id}}">
+							{{item.title}}
+						</router-link>
+					</h3>
+					<p class='time color-g'>{{item.time | timeFormat}}</p>
+					<p class='abstract' v-html='filterContent(item.content, 51)'></p>
+					<modify :item='item' v-show='userRank == 2 || (userRank == 1 && userFaculty == item.faculty)'></modify>
+				</li>
+			</ul>
+		</div><div class='hold-wrapper'>
+			<ul class='hold-list'>
+				<li class='hold-list-item'>
+					<a>已举办</a>
+				</li>
+			</ul>
+			<ul class='list'>
+				<li class='list-item' v-for='item in heldArticles'>
+					<!--<img class='item-cover' :src='item.url' />-->
+					<h3>
+						<router-link class='text-ellipsis' :to="{name: 'article', params: {id: item._id}}">
+							{{item.title}}
+						</router-link>
+					</h3>
+					<p class='time color-g'>{{item.time | timeFormat}}</p>
+					<p class='abstract' v-html='item.content'></p>
+					<modify :item='item' v-show='userRank == 2 || (userRank == 1 && userFaculty == item.faculty)'></modify>
+				</li>
+			</ul>
+		</div>
 		<!--TODO
 		分页-->
 	</div>
@@ -40,6 +66,7 @@
 
 <script>
 	import {mapState} from 'vuex';
+	import modify from '../components/modify.vue';
 
 	export default {
 		data() {
@@ -62,9 +89,12 @@
 			},
 			onSelect() {
 				this.$store.dispatch('GET_ARTICLES', {faculty: this.faculty, type: this.type, time: this.time});
+			},
+			filterContent(value, len) {
+				return value.length > len ? value.substr(0, len) + '...' : value;
 			}
 		},
-		computed: mapState(['searchLists', 'articles']),
+		computed: mapState(['searchLists', 'heldArticles', 'notHoldArticles', 'userRank', 'userFaculty']),
 		filters: {
             timeFormat(value) {
                 let date = new Date(value);
@@ -72,33 +102,59 @@
                         ${date.getHours() > 9 ? date.getHours() : '0' + date.getHours()}:
                         ${date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes()}`;
             },
-			filterContent(value) {
-				return value.length > 51 ? value.substr(0, 51) + '...' : value;
-			}
+        },
+        components: {
+        	modify
         }
 	}
 </script>
 
 <style scoped lang='stylus'>
 	@import '../css/funs';
+	@import '../css/variable';
 	.index
 		padding-bottom 60px
+		text-align center
 	.in-cover 
 		width 100%
 		height 300px
 	.in-search 
-		padding 15px
+		padding 15px 0
 		text-align center
 		border-bottom 1px solid #bbb
-		label 
-			margin-right search-mar
 		select 
 			min-width 80px
-			margin 0 search-mar
+			height 21px
+			margin-right search-mar
 			outline none
-	.list
-		width 50%
+	.not-hold-wrapper,
+	.hold-wrapper
+		display inline-block
+		vertical-align top
+		text-align left
+
+	.not-hold-wrapper
+		width 45%
 		min-width 600px
+		margin-right 50px
+		margin-bottom 30px
+	.per-list
+		margin 30px 0 10px
+	.hold-wrapper
+		width 25%
+		font-size 12px
+		.abstract
+			height 1.5em
+	.hold-list
+		margin 32px 0 12px
+	.hold-list-item
+		margin 0 10px
+		a
+			display block
+			padding 8px 15px
+			border 1px solid #ccc
+			font-size 16px
+	.list
 		margin auto
 		.list-item 
 			display block
@@ -106,11 +162,12 @@
 			border-bottom 1px solid #ddd
 	h3
 		display inline-block
+		max-width 100%
 		margin-bottom 10px
-		font-size 20px
+		font-size 1.3em
 		a
 			display block
-			max-width 420px
+			max-width 100%
 			&:after
 				display block
 				width 100%
@@ -135,4 +192,9 @@
 		padding-right 25px
 		line-height 1.5em
 		overflow hidden
+	@media screen and (max-width 883px)
+		.not-hold-wrapper
+			margin-right 0
+		.hold-wrapper
+			width 600px
 </style>

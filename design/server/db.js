@@ -15,7 +15,8 @@ const UserSchema = new Schema({
 	id: String,
 	pwd: String,
 	rank: Number,
-	faculty: Number
+	faculty: Number,
+	title: String
 })
 
 const articleSchema = new Schema({
@@ -47,8 +48,7 @@ const selectTypeSchema = new Schema({
 
 const searchSchema = new Schema({
 	faculties: [selectTypeSchema],
-	types: [selectTypeSchema],
-	timeliness: [selectTypeSchema]
+	types: [selectTypeSchema]
 })
 
 const Models = {
@@ -67,7 +67,6 @@ const initialize = () => {
 		}else if(!doc.length) {
 			console.log('Database opens for the first time...')
 			//TODO
-			// list.lists.map(item => new Models.List(item).save());
 			// article.articles.map(item => new Models.Article(item).save());
 			// footerLink.map(item => new Models.FootLink(item).save());
 			// new Models.Search(search).save();

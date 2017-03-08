@@ -9,7 +9,7 @@
 					<input type='text' v-model='form.abs' placeholder='举办目的' />
 				</div>
 				<div class='group-con'>
-					<span class='must'>*</span><calendar type='range' v-on:getValue='getTime' v-on:getEndTime='getEndTime'></calendar>
+					<span class='must'>*</span><calendar type='time' v-on:getValue='getTime' v-on:getEndTime='getEndTime'></calendar>
 					<!--<input type='text' v-model='form.time' placeholder='举办时间' />-->
 				</div>
 				<div class='group-con'>
@@ -21,7 +21,8 @@
 						<span class='arrow' @click='onToggleOption'></span>
 						<div class='option-box' v-show='optionShow'>
 							<div class='option'>
-								<p @click='onChangeOption'>hello</p>
+								<p @click='onChangeOption'>信息管理教研室</p>
+								<p @click='onChangeOption'>工业工程教研室</p>
 							</div>
 						</div>
 					</div>
@@ -74,7 +75,8 @@
 					unit: '请选择举办单位',
 					explain: '',
 					content: '',
-					enclosure: ''       
+					enclosure: '',
+					faculty: ''     
 				},
 				optionShow: false,
 				calendar: {
@@ -125,6 +127,13 @@
 					'outdent',
 					'alignment'
 				],
+				upload: {
+					url: `/user/edit/${this.userId}`,
+					params: null,
+					fileKey: 'fileDataFileName',
+					connectionCount: 3,
+					leaveConfirm: '正在上传文件'
+				},
 				imageButton: [
 					'upload',
 					'external'
@@ -167,6 +176,7 @@
 				this.form.heldTime = value;
 			},
 			getEndTime(value) {
+				console.log(value)
 				this.form.endTime = value;
 			},
 			onPost() {
@@ -176,7 +186,8 @@
 				form.content = editor.sync();
 				form.author = this.userId;
 				form.time = new Date();
-				console.log()
+				form.faculty = this.userFaculty;
+				console.log('ok')
 				if(!form.title || !form.time || !form.address || !form.unit || !form.content || !form.url) {
 					return alert('请填写所有必须项！');
 				}
@@ -187,15 +198,20 @@
 							this.$router.push({name: 'article', params: {id: data.id}});
 						}).catch(err => alert(err));
 				}else {
-					console.log('modify')
+					console.log('update')
+					this.$store.dispatch('UPDATE_ARTICLE', {form: form, id: this.$route.params.artId})
+						.then(data => {
+							alert('修改成功');
+							this.$router.push({name: 'article', params: {id: data.id}});
+						}).catch(err => alert(err));
 				}
 			}
 		},
-		computed: mapState(['userId', 'isEdit'])
+		computed: mapState(['userId', 'isEdit', 'userFaculty'])
 	}
 </script>
 
-<style scoped lang='stylus'>
+<style lang='stylus'>
 	@import '../css/funs';
 	@import '../css/variable';
 	@import '../../dist/css/simditor.css';
@@ -224,7 +240,8 @@
 			border-radius 10px
 			overflow-y auto
 			.simditor-body
-				height 362px
+				height 300px
+				overflow-y auto
 		.group-btn
 			text-align left
 	.group-left input,
@@ -244,9 +261,13 @@
 			color rgba(0, 0, 0, .6)
 	.calendar
 		display inline-block
+		width left-form-width
 		span.input-clear
 			top 9px
 			right 8px
+		div.input-wrapper
+		div.input
+			width 100%
 	.select
 		relative()
 		display inline-block
@@ -356,5 +377,5 @@
 		text-align left
 	@media screen and (max-width 1016px)
 		.group-left
-			width 90%
+			width 80%
 </style>

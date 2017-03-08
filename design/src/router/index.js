@@ -6,6 +6,7 @@ import SignIn from '../pages/signin.vue';
 import Edit from '../pages/edit.vue';
 import Article from '../pages/article.vue';
 import Personal from '../pages/personal.vue';
+import User from '../pages/user.vue';
 import PerArticle from '../components/per-article.vue';
 import Count from '../components/count.vue';
 
@@ -51,6 +52,8 @@ const routes = [{
 		path: 'count',
 		component: Count
 	}]
+}, {
+	path: '/manage/user', component: User, name: 'user'
 }, {
 	path: '*', redirect: '/'
 }];

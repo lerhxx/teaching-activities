@@ -1,12 +1,5 @@
 <template>
     <div class='per'>
-        <ul class='art-list'>
-            <li class='art-list-item' :class="{active: isPerArt}" @click='toggleArt(1)'>
-                <a>个人</a>
-            </li><li class='art-list-item' :class="{active: !isPerArt}" @click='toggleArt(2)'>
-                <a>全部</a>
-            </li>
-        </ul>
         <ul class='list'>
             <li class='list-item' v-for='item in selfArticles'>
                 <router-link :to="{name: 'article', params:{id: item._id}}">
@@ -16,7 +9,7 @@
                     </h3>
                 </router-link>
                 <p class='time color-g'>{{item.time | timeFormat}}</p>
-                <p class='abstract'>{{item.content | filterContent}}</p>
+                <p class='abstract' v-html='filterContent(item.content)'></p>
                 <modify :item='item'></modify>
             </li>
         </ul>
@@ -43,27 +36,6 @@
             }
         },
         methods: {
-            toggleArt(type) {
-                switch(type) {
-                    case 1:
-                        this.isPerArt = true;
-                        break;
-                    case 2:
-                        this.isPerArt = false;
-                        break;
-                    default:
-                        this.isPerArt = true;
-                }
-            }
-        },
-        computed: mapState(['userId', 'selfArticles']),
-        filters: {
-            timeFormat(value) {
-                let date = new Date(value);
-                return `${date.getFullYear()}年${date.getMonth() > 9 ? date.getgetMonthHours() : '0' + date.getMonth()}月${date.getDate() > 9 ? date.getDate() : '0' + date.getDate()}日 
-                        ${date.getHours() > 9 ? date.getHours() : '0' + date.getHours()}:
-                        ${date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes()}`;
-            },
 			filterContent(value) {
                 let len = value.substr(0, 102).replace(/[^\x00-\xff]/g,"01").length,
                     newValue = value;
@@ -85,6 +57,20 @@
 				return newValue;
 			}
         },
+        computed: mapState(['userId', 'selfArticles']),
+        filters: {
+            timeFormat(value) {
+                let date = new Date(value);
+                let year = date.getFullYear();
+                let mon = date.getMonth();
+                let day = date.getDate();
+                let hours = date.getMonth();
+                let mins = date.getDate();
+                return `${year}年${mon > 9 ? mon : '0' + mon}月${day > 9 ? day : '0' + day}日 
+                        ${hours > 9 ? hours : '0' + hours}:
+                        ${mins > 9 ? mins : '0' + mins}`;
+            },
+        },
         components: {
             modify
         }
@@ -97,17 +83,6 @@
 
     .per
         padding 0 20px
-    .art-list-item
-        a
-            display block
-            padding 8px 20px
-            border 1px solid transparent
-            border-bottom-color #ccc
-            cursor pointer
-        &.active
-            a
-                border-color #ccc
-                border-bottom-color transparent
     .list-item
         width 32.5%
         padding 15px 8px 15px 0

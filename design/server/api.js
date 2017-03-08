@@ -37,7 +37,7 @@ router.put('/signin', (req, res) => {
 				res.send({state: 2, msg: '账号不存在!'});
 				break;
 			case user.pwd === pwd:
-				res.send({state: 0, data: {id: id, rank: user.rank}});
+				res.send({state: 0, data: {id: id, rank: user.rank, faculty: user.faculty}});
 				break;
 			case user.pwd !== pwd:
 				res.send({state: 3, msg: '密码错误!'});
@@ -49,24 +49,44 @@ router.put('/signin', (req, res) => {
 })
 
 router.post('/user/edit/:id', (req, res) => {
-	db.Article.find({title: req.body.form.title, author: req.body.form.author}, (err, doc) => {
+	db.Article.findOne({title: req.body.form.title, author: req.body.form.author}, (err, doc) => {
 		if(err) {
 			res.send({state: 3, msg: '操作失败'});
-		}else if(doc.length) {
+		}else if(doc) {
 			res.send({state: 1, msg: '标题已存在！'});
 		}else {
 			db.Article.create(req.body.form, (err, article) => {
 				if(err) {
 					res.send({state: 2, msg: '发布失败，请重试！'});
 				}
-				// db.Article.find({title: req.body.form.title}, (err, doc) => {
-				// 	if(err) {
-				// 		console.log(err);
-				// 	}
-				// 	console.log(doc);
-				// })
 				res.send({state: 0, data: {id: article._id}});
 			})
+		}
+	})
+})
+
+router.put('/user/edit/:id', (req, res) => {
+	let form = req.body.form;
+	db.Article.findByIdAndUpdate(req.body.id, {$set: {
+		url: form.url,
+		author: form.author,
+		title: form.title,
+		abs: form.abs,
+		time: form.time,
+		heldTime: form.heldTime,
+		endTime: form.endTime,
+		address: form.address,
+		unit: form.unit,
+		explain: form.explain,
+		content: form.content,
+		enclosure: form.enclosure,
+		faculty: form.faculty,
+		type: form.type
+	}}, (err, doc) => {
+		if(err) {
+			res.send({state: 1, msg: '操作失败'});
+		}else {
+			res.send({state: 0, data: {id: doc._id}});
 		}
 	})
 })
@@ -129,7 +149,7 @@ router.get('/user', (req, res) => {
 		if(!doc.length) {
 			res.send({state: 2, msg: '账号不存在'});
 		}else {
-			res.send({state: 0, data: {id: doc[0].id, rank: doc[0].rank}});
+			res.send({state: 0, data: {id: doc[0].id, rank: doc[0].rank, faculty: doc[0].faculty}});
 		}
 	})
 })
@@ -276,79 +296,20 @@ router.get('/getArticals', (req, res) => {
 		}
 	})
 })
-// router.get('/getArticals', (req, res) => {
-// 	let faculty = req.query.faculty,
-// 		type = req.query.type,
-// 		time = req.query.time,
-// 		now = new Date();
+router.get('/user/info', (req, res) => {
+	db.User.find((err, doc) => {
+		if(err) {
+			res.send({state: 1, msg: '查询失败！'});
+		}else {
+			res.send({state: 0, data: doc});
+		}
+	})
+})
 
-// 	//条件筛选
-// 	if(faculty != 0 || type != 0 || time != 0) {
-// 		if(faculty == 0 && type != 0 && time != 0) {
-// 			if(time == 1) {
-// 				db.Article.find({type: type, endTime: {$gt: now}}, (err, doc) => {
-// 					cb(err, doc)
-// 				})
-// 			}else {
-// 				db.Article.find({type: type, endTime: {$lt: now}}, (err, doc) => {
-// 					cb(err, doc)
-// 				})
-// 			}
-// 		}else if(type == 0 && faculty != 0 && time != 0) {
-// 			if(time == 1) {
-// 				db.Article.find({faculty: faculty, endTime: {$gt: now}}, (err, doc) => {
-// 					cb(err, doc)
-// 				})
-// 			}else {
-// 				db.Article.find({faculty: faculty, endTime: {$lt: now}}, (err, doc) => {
-// 					cb(err, doc)
-// 				})
-// 			}
-// 		}else if(time == 0 && faculty != 0 && type != 0) {
-// 			db.Article.find({faculty: faculty, type: type}, (err, doc) => {
-// 				cb(err, doc)
-// 			})
-// 		}else if(faculty == 0 && type == 0 && time != 0) {
-// 			if(time == 1) {
-// 				db.Article.find({endTime: {$gt: now}}, (err, doc) => {
-// 					cb(err, doc)
-// 				})
-// 			}else {
-// 				db.Article.find({endTime: {$lt: now}}, (err, doc) => {
-// 					cb(err, doc)
-// 				})
-// 			}
-// 		}else if(faculty == 0 && type != 0 && time == 0) {
-// 			db.Article.find({type: type}, (err, doc) => {
-// 				cb(err, doc)
-// 			})
-// 		}else if(faculty != 0 && type == 0 && time == 0) {
-// 			db.Article.find({faculty: faculty}, (err, doc) => {
-// 				cb(err, doc)
-// 			})
-// 		}else {
-// 			if(time == 1) {
-// 				db.Article.find({faculty: faculty, type: type, endTime: {$gt: now}}, (err, doc) => {
-// 					cb(err, doc)
-// 				})
-// 			}else {
-// 				db.Article.find({faculty: faculty, type: type, endTime: {$lt: now}}, (err, doc) => {
-// 					cb(err, doc)
-// 				})
-// 			}
-// 		}
-// 	}else if(faculty == 0 && type == 0 && time == 0)  {
-// 		db.Article.find((err, doc) => {
-// 			cb(err, doc)
-// 		})
-// 	}
-// 	function cb(err, doc) {
-// 		if(err) {
-// 			res.send({state: 1, msg: '查询失败！'});
-// 		}else {
-// 			res.send({state: 0, data: doc});
-// 		}
-// 	}
-// })
+router.get('/user/count/:id', (req, res) => {
+	console.log(req.params.id)
+	// db.User.find((err, doc) => {})
+	res.send({state: 0, data: []});
+})
 
 module.exports = router;

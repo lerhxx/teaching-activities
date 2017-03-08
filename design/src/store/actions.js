@@ -52,7 +52,6 @@ export default {
       })
   },
   GET_USER_INFO({commit}, userInfo) {
-
     return axios.get('/user', {params: {id: userInfo.id}})
       .then(res => {
         if(res.data.state === 0) {
@@ -77,7 +76,8 @@ export default {
       })
   },
   POST_ARTICLE({state}, form) {
-    return axios.post(`/user/edit/${state.userId}`, form).then(res => {
+    return axios.post(`/user/edit/${state.userId}`, form)
+      .then(res => {
         if(res.data.state === 0) {
           return Promise.resolve(res.data.data);
         }else {
@@ -85,14 +85,42 @@ export default {
         }
       })
   },
-  EDIT_ARTICLE({commit}, articleInfo) {
-    // return axios.get()
+  UPDATE_ARTICLE({commit}, form) {
+    return axios.put('/user/edit/${state.userId}', {form: form.form, id: form.id})
+      .then(res => {
+        if(res.data.state === 0) {
+    console.log(res.data.data);
+          return Promise.resolve(res.data.data);
+        }else {
+          return Promise.reject(res.data.msg);
+        }
+      })
   },
   DELETE_ARTICLE({commit}, articleInfo) {
     return axios.delete(`/article/${articleInfo.id}`)
       .then(res => {
         if(res.data.state === 0) {
           commit('UPDATE_SELF_ARTICLES');
+        }else {
+          return Promise.reject(res.data.msg);
+        }
+      })
+  },
+  GET_USERS({commit}) {
+    return axios.get('/user/info')
+      .then(res => {
+        if(res.data.state === 0) {
+          commit('SET_USERS', res.data.data)
+        }else {
+          return Promise.reject(res.data.msg);
+        }
+      })
+  },
+  INIT_CHART({commit}, info) { 
+    return axios.get(`/user/count/${info.id}`)
+      .then(res => {
+        if(res.data.state == 0) {
+          return Promise.resolve(res.data);
         }else {
           return Promise.reject(res.data.msg);
         }
