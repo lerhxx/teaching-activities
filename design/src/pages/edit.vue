@@ -30,9 +30,13 @@
 				<div class='group-con'>
 					<input type='text' v-model='form.explain' placeholder='附加说明' />
 				</div>
-				<div class='group-con group-cover'>
+				<!--<div class='group-con group-cover'>
 					<span class='must'>*</span><img :src='form.url'/>
 					<input type='file' @change='onChangeCover'/>
+				</div>-->
+				<div class='group-con'>
+					<input type='text' v-model='party' placeholder='参与者名单' >
+					<span class='tip' v-show='isEdit && $route.params.artId'>参与者请以","分隔</span>
 				</div>
 			</div><div class='group-right'>
 				<div class='group-con group-content'>
@@ -76,7 +80,8 @@
 					explain: '',
 					content: '',
 					enclosure: '',
-					faculty: ''     
+					faculty: '' ,
+					party: '',    
 				},
 				optionShow: false,
 				calendar: {
@@ -187,7 +192,6 @@
 				form.author = this.userId;
 				form.time = new Date();
 				form.faculty = this.userFaculty;
-				console.log('ok')
 				if(!form.title || !form.time || !form.address || !form.unit || !form.content || !form.url) {
 					return alert('请填写所有必须项！');
 				}
@@ -198,7 +202,8 @@
 							this.$router.push({name: 'article', params: {id: data.id}});
 						}).catch(err => alert(err));
 				}else {
-					console.log('update')
+					this.party = this.party.replace(/，/g, ',');
+					form.participator = this.party.split(',');
 					this.$store.dispatch('UPDATE_ARTICLE', {form: form, id: this.$route.params.artId})
 						.then(data => {
 							alert('修改成功');
@@ -375,6 +380,15 @@
 		width 700px
 		padding 0 15px
 		text-align left
+	.tip
+		display block
+		width left-form-width
+		padding 0 20px
+		margin auto
+		text-align left
+		font-size 12px
+		color red
+		box-sizing border-box
 	@media screen and (max-width 1016px)
 		.group-left
 			width 80%
