@@ -9,6 +9,7 @@ import Personal from '../pages/personal.vue';
 import User from '../pages/user.vue';
 import PerArticle from '../components/per-article.vue';
 import Count from '../components/count.vue';
+import {get} from '../assets/cookieUtil';
 
 const routes = [{
 	path: '/', component: Index, name: 'index'
@@ -16,11 +17,21 @@ const routes = [{
 	path: '/index', component: Index, name: 'index1'
 }, {
 	path: '/signin', component: SignIn, name: 'signin'
-}, {
+},  {
 	path: '/article/:id', component: Article, name: 'article',
 }, {
 	path: '/article/:artId/edit', component: Edit, name: 'articleEdit',
-	
+}, {
+	path: '/main', name: 'main',
+	redirect: to => {
+		const {hash, params, query} = to;
+		let user = get('user');
+		if(user) {
+			return '/personal/' + user + '/article';
+		}else {
+			return {name: 'signin'}
+		}
+	}
 }, {
 	path: '/edit/:id', name: 'edit',
 	redirect: to => {
@@ -38,7 +49,7 @@ const routes = [{
 	redirect: to => {
 		const {hash, params, query} = to;
 		if(params.id) {
-			return '/personal/' + params.id + '/article';
+			return '/personal/' + params.id + '/count';
 		}else {
 			return '/signin';
 		}

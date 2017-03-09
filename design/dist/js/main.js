@@ -11032,6 +11032,18 @@
 
 	    return _axios2.default.get('/user/count/' + info.id).then(function (res) {
 	      if (res.data.state == 0) {
+	        return Promise.resolve(res.data.data);
+	      } else {
+	        return Promise.reject(res.data.msg);
+	      }
+	    });
+	  },
+	  ADD_USER: function ADD_USER(_ref14, form) {
+	    var commit = _ref14.commit;
+
+	    console.log(form);
+	    return _axios2.default.post('/user/addUser', form).then(function (res) {
+	      if (res.data.state == 0) {
 	        return Promise.resolve(res.data);
 	      } else {
 	        return Promise.reject(res.data.msg);
@@ -11825,151 +11837,11 @@
 	}
 
 /***/ },
-/* 47 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_exports__, __vue_options__
-	var __vue_styles__ = {}
-
-	/* styles */
-	__webpack_require__(48)
-
-	/* script */
-	__vue_exports__ = __webpack_require__(50)
-
-	/* template */
-	var __vue_template__ = __webpack_require__(51)
-	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-	if (
-	  typeof __vue_exports__.default === "object" ||
-	  typeof __vue_exports__.default === "function"
-	) {
-	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-	__vue_options__ = __vue_exports__ = __vue_exports__.default
-	}
-	if (typeof __vue_options__ === "function") {
-	  __vue_options__ = __vue_options__.options
-	}
-	__vue_options__.__file = "D:\\code\\teaching-activities\\design\\src\\App.vue"
-	__vue_options__.render = __vue_template__.render
-	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-
-	/* hot reload */
-	if (false) {(function () {
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  module.hot.accept()
-	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-69f192b1", __vue_options__)
-	  } else {
-	    hotAPI.reload("data-v-69f192b1", __vue_options__)
-	  }
-	})()}
-	if (__vue_options__.functional) {console.error("[vue-loader] App.vue: functional components are not supported and should be defined in plain js files using render functions.")}
-
-	module.exports = __vue_exports__
-
-
-/***/ },
-/* 48 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(49);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(38)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-69f192b1!./../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./App.vue", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-69f192b1!./../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./App.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 49 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(37)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 50 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _nav = __webpack_require__(34);
-
-	var _nav2 = _interopRequireDefault(_nav);
-
-	var _footer = __webpack_require__(42);
-
-	var _footer2 = _interopRequireDefault(_footer);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-
-	exports.default = {
-		components: {
-			Navbar: _nav2.default,
-			VFooter: _footer2.default
-		}
-	};
-
-/***/ },
-/* 51 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _c('div', {
-	    attrs: {
-	      "id": "app"
-	    }
-	  }, [_c('navbar'), _vm._v(" "), _c('div', {
-	    staticClass: "wrapper"
-	  }, [_c('router-view'), _vm._v(" "), _c('v-footer')])])
-	},staticRenderFns: []}
-	if (false) {
-	  module.hot.accept()
-	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-69f192b1", module.exports)
-	  }
-	}
-
-/***/ },
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
 /* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -12262,46 +12134,8 @@
 
 
 /***/ },
-/* 55 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(56);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(54)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/stylus-loader/index.js!./form.styl", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/stylus-loader/index.js!./form.styl");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 56 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(37)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "form {\n  padding: 45px;\n  margin: auto;\n}\nlabel {\n  text-align: right;\n}\n.group-con {\n  margin: 15px 0;\n}\n.group-btn {\n  margin: 0;\n  text-align: center;\n}\n.btn {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-certain {\n  background: #ed5e0f;\n}\n.btn-cancle {\n  background: #4e4e4e;\n}\n.btn-edit {\n  background: #2d0a08;\n}\n.must {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span {\n  margin-right: 10px;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
+/* 55 */,
+/* 56 */,
 /* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -12355,6 +12189,8 @@
 
 	var _count2 = _interopRequireDefault(_count);
 
+	var _cookieUtil = __webpack_require__(40);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var routes = [{
@@ -12367,7 +12203,20 @@
 		path: '/article/:id', component: _article2.default, name: 'article'
 	}, {
 		path: '/article/:artId/edit', component: _edit2.default, name: 'articleEdit'
+	}, {
+		path: '/main', name: 'main',
+		redirect: function redirect(to) {
+			var hash = to.hash,
+			    params = to.params,
+			    query = to.query;
 
+			var user = (0, _cookieUtil.get)('user');
+			if (user) {
+				return '/personal/' + user + '/article';
+			} else {
+				return { name: 'signin' };
+			}
+		}
 	}, {
 		path: '/edit/:id', name: 'edit',
 		redirect: function redirect(to) {
@@ -12391,7 +12240,7 @@
 			    query = to.query;
 
 			if (params.id) {
-				return '/personal/' + params.id + '/article';
+				return '/personal/' + params.id + '/count';
 			} else {
 				return '/signin';
 			}
@@ -14569,7 +14418,7 @@
 
 
 	// module
-	exports.push([module.id, "\n.index[data-v-9b46fa2c] {\n  padding-bottom: 60px;\n  text-align: center;\n}\n.in-cover[data-v-9b46fa2c] {\n  width: 100%;\n  height: 300px;\n}\n.in-search[data-v-9b46fa2c] {\n  padding: 15px 0;\n  text-align: center;\n  border-bottom: 1px solid #bbb;\n}\n.in-search select[data-v-9b46fa2c] {\n  min-width: 80px;\n  height: 21px;\n  margin-right: 50px;\n  outline: none;\n}\n.not-hold-wrapper[data-v-9b46fa2c],\n.hold-wrapper[data-v-9b46fa2c] {\n  display: inline-block;\n  vertical-align: top;\n  text-align: left;\n}\n.not-hold-wrapper[data-v-9b46fa2c] {\n  width: 45%;\n  min-width: 600px;\n  margin-right: 50px;\n  margin-bottom: 30px;\n}\n.per-list[data-v-9b46fa2c] {\n  margin: 30px 0 10px;\n}\n.hold-wrapper[data-v-9b46fa2c] {\n  width: 25%;\n  font-size: 12px;\n}\n.hold-wrapper .abstract[data-v-9b46fa2c] {\n  height: 1.5em;\n}\n.hold-list[data-v-9b46fa2c] {\n  margin: 32px 0 12px;\n}\n.hold-list-item[data-v-9b46fa2c] {\n  margin: 0 10px;\n}\n.hold-list-item a[data-v-9b46fa2c] {\n  display: block;\n  padding: 8px 15px;\n  border: 1px solid #ccc;\n  font-size: 16px;\n}\n.list[data-v-9b46fa2c] {\n  margin: auto;\n}\n.list .list-item[data-v-9b46fa2c] {\n  display: block;\n  padding: 15px 10px;\n  border-bottom: 1px solid #ddd;\n}\nh3[data-v-9b46fa2c] {\n  display: inline-block;\n  max-width: 100%;\n  margin-bottom: 10px;\n  font-size: 1.3em;\n}\nh3 a[data-v-9b46fa2c] {\n  display: block;\n  max-width: 100%;\n}\nh3 a[data-v-9b46fa2c]:after {\n  display: block;\n  width: 100%;\n  margin: auto;\n  border-bottom: 1px solid #000;\n  content: '';\n  -webkit-transform: scale3d(0, 1, 1);\n  -moz-transform: scale3d(0, 1, 1);\n  -ms-transform: scale3d(0, 1, 1);\n  -o-transform: scale3d(0, 1, 1);\n  transform: scale3d(0, 1, 1);\n  transition: transform 0.15s ease-in-out;\n}\nh3 a[data-v-9b46fa2c]:hover:after {\n  -webkit-transform: scale3d(1, 1, 1);\n  -moz-transform: scale3d(1, 1, 1);\n  -ms-transform: scale3d(1, 1, 1);\n  -o-transform: scale3d(1, 1, 1);\n  transform: scale3d(1, 1, 1);\n}\n.item-cover[data-v-9b46fa2c] {\n  float: right;\n  width: 120px;\n  height: 80px;\n  margin: 15px;\n  margin-right: 0;\n}\n.time[data-v-9b46fa2c] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.abstract[data-v-9b46fa2c] {\n  height: 3em;\n  padding-right: 25px;\n  line-height: 1.5em;\n  overflow: hidden;\n}\n@media screen and (max-width: 883px) {\n.not-hold-wrapper[data-v-9b46fa2c] {\n    margin-right: 0;\n}\n.hold-wrapper[data-v-9b46fa2c] {\n    width: 600px;\n}\n}\n", ""]);
+	exports.push([module.id, "\n.index[data-v-9b46fa2c] {\n  padding-bottom: 60px;\n}\n.in-cover[data-v-9b46fa2c] {\n  width: 100%;\n  height: 300px;\n}\n.in-search[data-v-9b46fa2c] {\n  padding: 15px 0;\n  text-align: center;\n  border-bottom: 1px solid #bbb;\n}\n.in-search select[data-v-9b46fa2c] {\n  min-width: 80px;\n  height: 21px;\n  margin-right: 50px;\n  outline: none;\n}\n.list-wrapper[data-v-9b46fa2c] {\n  width: 60%;\n  margin: auto;\n}\n.hold-list[data-v-9b46fa2c] {\n  margin: 32px 0 12px;\n}\n.hold-list-item[data-v-9b46fa2c] {\n  margin: 0 10px;\n}\n.hold-list-item a[data-v-9b46fa2c] {\n  display: block;\n  padding: 8px 15px;\n  border: 1px solid #ccc;\n  font-size: 16px;\n}\n.list[data-v-9b46fa2c] {\n  margin: auto;\n}\n.list .list-item[data-v-9b46fa2c] {\n  display: block;\n  padding: 15px 10px;\n  border-bottom: 1px solid #ddd;\n}\nh3[data-v-9b46fa2c] {\n  display: inline-block;\n  max-width: 100%;\n  margin-bottom: 10px;\n  font-size: 1.3em;\n}\nh3 a[data-v-9b46fa2c] {\n  display: block;\n  max-width: 100%;\n}\nh3 a[data-v-9b46fa2c]:after {\n  display: block;\n  width: 100%;\n  margin: auto;\n  border-bottom: 1px solid #000;\n  content: '';\n  -webkit-transform: scale3d(0, 1, 1);\n  -moz-transform: scale3d(0, 1, 1);\n  -ms-transform: scale3d(0, 1, 1);\n  -o-transform: scale3d(0, 1, 1);\n  transform: scale3d(0, 1, 1);\n  transition: transform 0.15s ease-in-out;\n}\nh3 a[data-v-9b46fa2c]:hover:after {\n  -webkit-transform: scale3d(1, 1, 1);\n  -moz-transform: scale3d(1, 1, 1);\n  -ms-transform: scale3d(1, 1, 1);\n  -o-transform: scale3d(1, 1, 1);\n  transform: scale3d(1, 1, 1);\n}\n.item-cover[data-v-9b46fa2c] {\n  float: right;\n  width: 120px;\n  height: 80px;\n  margin: 15px;\n  margin-right: 0;\n}\n.time[data-v-9b46fa2c] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.abstract[data-v-9b46fa2c] {\n  height: 3em;\n  padding-right: 25px;\n  line-height: 1.5em;\n  overflow: hidden;\n}\n@media screen and (max-width: 768px) {\n.list-wrapper[data-v-9b46fa2c] {\n    width: 90%;\n}\n}\n", ""]);
 
 	// exports
 
@@ -14650,19 +14499,11 @@
 	//
 	//
 	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
 
 	exports.default = {
 		data: function data() {
 			return {
-				img: '/dist/imgs/cover-b.jpg',
+				img: '/dist/imgs/cover-1.jpg',
 				faculty: 0,
 				type: 0,
 				time: 0
@@ -14871,44 +14712,9 @@
 	        "value": type.index
 	      }
 	    }, [_vm._v("\n\t\t\t\t" + _vm._s(type.type) + "\n\t\t\t")])
-	  })), _vm._v(" ")]), _vm._v(" "), _c('div', {
-	    staticClass: "not-hold-wrapper"
-	  }, [_vm._m(0), _vm._v(" "), _c('ul', {
-	    staticClass: "list"
-	  }, _vm._l((_vm.notHoldArticles), function(item) {
-	    return _c('li', {
-	      staticClass: "list-item"
-	    }, [_c('h3', [_c('router-link', {
-	      staticClass: "text-ellipsis",
-	      attrs: {
-	        "to": {
-	          name: 'article',
-	          params: {
-	            id: item._id
-	          }
-	        }
-	      }
-	    }, [_vm._v("\n\t\t\t\t\t\t" + _vm._s(item.title) + "\n\t\t\t\t\t")])]), _vm._v(" "), _c('p', {
-	      staticClass: "time color-g"
-	    }, [_vm._v(_vm._s(_vm._f("timeFormat")(item.time)))]), _vm._v(" "), _c('p', {
-	      staticClass: "abstract",
-	      domProps: {
-	        "innerHTML": _vm._s(_vm.filterContent(item.content, 51))
-	      }
-	    }), _vm._v(" "), _c('modify', {
-	      directives: [{
-	        name: "show",
-	        rawName: "v-show",
-	        value: (_vm.userRank == 2 || (_vm.userRank == 1 && _vm.userFaculty == item.faculty)),
-	        expression: "userRank == 2 || (userRank == 1 && userFaculty == item.faculty)"
-	      }],
-	      attrs: {
-	        "item": item
-	      }
-	    })])
-	  }))]), _c('div', {
-	    staticClass: "hold-wrapper"
-	  }, [_vm._m(1), _vm._v(" "), _c('ul', {
+	  })), _vm._v(" ")]), _vm._v(" "), _vm._v(" "), _c('div', {
+	    staticClass: "list-wrapper"
+	  }, [_c('ul', {
 	    staticClass: "list"
 	  }, _vm._l((_vm.heldArticles), function(item) {
 	    return _c('li', {
@@ -14925,12 +14731,7 @@
 	      }
 	    }, [_vm._v("\n\t\t\t\t\t\t" + _vm._s(item.title) + "\n\t\t\t\t\t")])]), _vm._v(" "), _c('p', {
 	      staticClass: "time color-g"
-	    }, [_vm._v(_vm._s(_vm._f("timeFormat")(item.time)))]), _vm._v(" "), _c('p', {
-	      staticClass: "abstract",
-	      domProps: {
-	        "innerHTML": _vm._s(item.content)
-	      }
-	    }), _vm._v(" "), _c('modify', {
+	    }, [_vm._v(_vm._s(_vm._f("timeFormat")(item.time)))]), _vm._v(" "), _c('p', [_vm._v("地点：" + _vm._s(item.address))]), _vm._v(" "), _vm._v(" "), _c('modify', {
 	      directives: [{
 	        name: "show",
 	        rawName: "v-show",
@@ -14942,19 +14743,7 @@
 	      }
 	    })])
 	  }))]), _vm._v(" ")])
-	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _c('ul', {
-	    staticClass: "per-list"
-	  }, [_c('li', {
-	    staticClass: "per-list-item active"
-	  }, [_c('a', [_vm._v("未举办")])])])
-	},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _c('ul', {
-	    staticClass: "hold-list"
-	  }, [_c('li', {
-	    staticClass: "hold-list-item"
-	  }, [_c('a', [_vm._v("已举办")])])])
-	}]}
+	},staticRenderFns: []}
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
@@ -15100,7 +14889,7 @@
 
 
 	// module
-	exports.push([module.id, "\n.sign-container[data-v-3c4430ba] {\n  width: 100vw;\n  height: 100vh;\n  padding-top: 45px;\n  overflow: hidden;\n}\n.sign-form[data-v-3c4430ba] {\n  width: 300px;\n  margin-top: 60px;\n  border: 1px solid rgba(161,161,161,0.5);\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n  background: rgba(255,255,255,0.5);\n}\n.sign-form input[type='text'][data-v-3c4430ba],\n.sign-form input[type='password'][data-v-3c4430ba] {\n  width: 95%;\n  padding: 5px;\n  margin: auto;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  font-size: 16px;\n  line-height: 20px;\n  text-align: center;\n  background: #fff;\n}\n.sign-form input[type='text'][data-v-3c4430ba]:focus,\n.sign-form input[type='password'][data-v-3c4430ba]:focus {\n  border-color: rgba(71,182,224,0.5);\n}\ncaption[data-v-3c4430ba] {\n  display: block;\n  margin-top: 10px;\n  margin-bottom: 30px;\n  color: #555;\n  font-size: 20px;\n}\n@media screen and (-webkt-min-device-pixel-ratio: 1.5) {\n.group-conafter[data-v-3c4430ba] {\n    width: 150%;\n    height: 150%;\n    -webkit-transform: scale3d(0.3, 0.3, 0.3);\n    -moz-transform: scale3d(0.3, 0.3, 0.3);\n    -ms-transform: scale3d(0.3, 0.3, 0.3);\n    -o-transform: scale3d(0.3, 0.3, 0.3);\n    transform: scale3d(0.3, 0.3, 0.3);\n}\n}\n", ""]);
+	exports.push([module.id, "\nform[data-v-3c4430ba] {\n  padding: 45px;\n  margin: auto;\n}\nlabel[data-v-3c4430ba] {\n  text-align: right;\n}\n.group-con[data-v-3c4430ba] {\n  margin: 15px 0;\n}\n.group-btn[data-v-3c4430ba] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-3c4430ba] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-3c4430ba] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-certain[data-v-3c4430ba] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-3c4430ba] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-3c4430ba] {\n  background: #2d0a08;\n}\n.must[data-v-3c4430ba] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-3c4430ba] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-3c4430ba] {\n  margin-right: 10px;\n}\n.sign-container[data-v-3c4430ba] {\n  width: 100vw;\n  height: 100vh;\n  padding-top: 45px;\n  overflow: hidden;\n}\n.sign-form[data-v-3c4430ba] {\n  width: 300px;\n  margin-top: 60px;\n  border: 1px solid rgba(161,161,161,0.5);\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n  background: rgba(255,255,255,0.5);\n}\n.sign-form input[type='text'][data-v-3c4430ba],\n.sign-form input[type='password'][data-v-3c4430ba] {\n  width: 95%;\n  padding: 5px;\n  margin: auto;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  font-size: 16px;\n  line-height: 20px;\n  text-align: center;\n  background: #fff;\n}\n.sign-form input[type='text'][data-v-3c4430ba]:focus,\n.sign-form input[type='password'][data-v-3c4430ba]:focus {\n  border-color: rgba(71,182,224,0.5);\n}\ncaption[data-v-3c4430ba] {\n  display: block;\n  margin-top: 10px;\n  margin-bottom: 30px;\n  color: #555;\n  font-size: 20px;\n}\n@media screen and (-webkt-min-device-pixel-ratio: 1.5) {\n.group-conafter[data-v-3c4430ba] {\n    width: 150%;\n    height: 150%;\n    -webkit-transform: scale3d(0.3, 0.3, 0.3);\n    -moz-transform: scale3d(0.3, 0.3, 0.3);\n    -ms-transform: scale3d(0.3, 0.3, 0.3);\n    -o-transform: scale3d(0.3, 0.3, 0.3);\n    transform: scale3d(0.3, 0.3, 0.3);\n}\n}\n", ""]);
 
 	// exports
 
@@ -15350,7 +15139,7 @@
 	exports.i(__webpack_require__(77), "");
 
 	// module
-	exports.push([module.id, "\n.form-contain {\n  min-height: 100vh;\n  padding-top: 95px;\n  padding-bottom: 20px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  text-align: center;\n}\n.edit-form {\n  display: inline-block;\n  padding: 0;\n  margin: auto;\n  text-align: left;\n}\n.edit-form label {\n  display: inline-block;\n  width: 90px;\n  text-align: left;\n  vertical-align: top;\n}\n.edit-form .btn-post {\n  width: 55%;\n}\n.edit-form .btn-edit {\n  margin-left: 25px;\n}\n.edit-form .simditor {\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n  overflow-y: auto;\n}\n.edit-form .simditor .simditor-body {\n  height: 300px;\n  overflow-y: auto;\n}\n.edit-form .group-btn {\n  text-align: left;\n}\n.group-left input,\n.select,\n.calendar div.input {\n  width: 90%;\n  height: 36px;\n  padding: 10px 10px;\n  border: none;\n  outline: none;\n  background: #fff;\n  -webkit-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -moz-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -ms-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -o-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  font-size: 14px;\n  -webkit-border-radius: 15px;\n  -moz-border-radius: 15px;\n  border-radius: 15px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.group-left input::-webkit-input-placeholder,\n.select::-webkit-input-placeholder,\n.calendar div.input::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.calendar {\n  display: inline-block;\n  width: 90%;\n}\n.calendar span.input-clear {\n  top: 9px;\n  right: 8px;\n}\n.calendar div.input-wrapper,\n.calendar div.input {\n  width: 100%;\n}\n.select {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  display: inline-block;\n  color: rgba(0,0,0,0.6);\n  text-align: left;\n  cursor: pointer;\n}\n.select .arrow {\n  position: absolute;\n  top: 15px;\n  right: 8px;\n  ((null)): 0;\n  ((null)): 0;\n  border: 8px solid transparent;\n  border-top-color: rgba(0,0,0,0.6);\n}\n.select span {\n  display: block;\n}\n.option-box {\n  position: absolute;\n  top: 36px;\n  left: 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 100%;\n  padding: 8px 0px;\n  padding-right: 6px;\n  -webkit-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -moz-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -ms-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -o-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -webkit-border-radius: 12px;\n  -moz-border-radius: 12px;\n  border-radius: 12px;\n  background: #fff;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  z-index: 2;\n}\n.option {\n  max-height: 110px;\n  overflow-y: auto;\n}\n.option::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.option::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.option p {\n  padding: 3px 15px;\n  cursor: pointer;\n}\n.option p:hover {\n  color: #7ab5d8;\n}\n.group-cover {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-cover input[type='file'] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 90%;\n  height: 120px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-cover img {\n  width: 90%;\n  height: 120px;\n  vertical-align: top;\n}\n.group-content textarea {\n  width: 100%;\n  height: 100%;\n  padding: 10px;\n  border: none;\n  outline: none;\n  font-size: 14px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  background: transparent;\n  resize: none;\n}\n.group-content textarea::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.group-content textarea::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.group-content textarea::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.group-content .textarea-box {\n  display: inline-block;\n  width: 95%;\n  height: 445px;\n  padding: 0;\n  text-align: left;\n  vertical-align: top;\n}\n.group-edit {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-edit input[type='file'] {\n  position: absolute;\n  top: 0;\n  left: 25px;\n  ((null)): 0;\n  ((null)): 0;\n  width: 74px;\n  height: 36px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-edit .btn-edit {\n  display: inline-block;\n  margin: 0;\n}\n.file-list {\n  display: inline-block;\n  width: 400px;\n  margin: 0 15px 5px;\n  font-size: 20px;\n  line-height: 36px;\n  vertical-align: top;\n}\n.group-left,\n.group-right {\n  display: inline-block;\n  width: 300px;\n  padding: 0 30px;\n  vertical-align: top;\n  text-align: right;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.group-right {\n  width: 700px;\n  padding: 0 15px;\n  text-align: left;\n}\n@media screen and (max-width: 1016px) {\n.group-left {\n    width: 80%;\n}\n}\n", ""]);
+	exports.push([module.id, "\n.form-contain {\n  min-height: 100vh;\n  padding-top: 95px;\n  padding-bottom: 20px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  text-align: center;\n}\n.edit-form {\n  display: inline-block;\n  padding: 0;\n  margin: auto;\n  text-align: left;\n}\n.edit-form label {\n  display: inline-block;\n  width: 90px;\n  text-align: left;\n  vertical-align: top;\n}\n.edit-form .btn-post {\n  width: 55%;\n}\n.edit-form .btn-edit {\n  margin-left: 25px;\n}\n.edit-form .simditor {\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n  overflow-y: auto;\n}\n.edit-form .simditor .simditor-body {\n  height: 300px;\n  overflow-y: auto;\n}\n.edit-form .group-btn {\n  text-align: left;\n}\n.group-left input,\n.select,\n.calendar div.input {\n  width: 90%;\n  height: 36px;\n  padding: 10px 10px;\n  border: none;\n  outline: none;\n  background: #fff;\n  -webkit-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -moz-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -ms-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -o-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  font-size: 14px;\n  -webkit-border-radius: 15px;\n  -moz-border-radius: 15px;\n  border-radius: 15px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.group-left input::-webkit-input-placeholder,\n.select::-webkit-input-placeholder,\n.calendar div.input::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.calendar {\n  display: inline-block;\n  width: 90%;\n}\n.calendar span.input-clear {\n  top: 9px;\n  right: 8px;\n}\n.calendar div.input-wrapper,\n.calendar div.input {\n  width: 100%;\n}\n.select {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  display: inline-block;\n  color: rgba(0,0,0,0.6);\n  text-align: left;\n  cursor: pointer;\n}\n.select .arrow {\n  position: absolute;\n  top: 15px;\n  right: 8px;\n  ((null)): 0;\n  ((null)): 0;\n  border: 8px solid transparent;\n  border-top-color: rgba(0,0,0,0.6);\n}\n.select span {\n  display: block;\n}\n.option-box {\n  position: absolute;\n  top: 36px;\n  left: 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 100%;\n  padding: 8px 0px;\n  padding-right: 6px;\n  -webkit-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -moz-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -ms-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -o-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -webkit-border-radius: 12px;\n  -moz-border-radius: 12px;\n  border-radius: 12px;\n  background: #fff;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  z-index: 2;\n}\n.option {\n  max-height: 110px;\n  overflow-y: auto;\n}\n.option::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.option::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.option p {\n  padding: 3px 15px;\n  cursor: pointer;\n}\n.option p:hover {\n  color: #7ab5d8;\n}\n.group-cover {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-cover input[type='file'] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 90%;\n  height: 120px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-cover img {\n  width: 90%;\n  height: 120px;\n  vertical-align: top;\n}\n.group-content textarea {\n  width: 100%;\n  height: 100%;\n  padding: 10px;\n  border: none;\n  outline: none;\n  font-size: 14px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  background: transparent;\n  resize: none;\n}\n.group-content textarea::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.group-content textarea::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.group-content textarea::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.group-content .textarea-box {\n  display: inline-block;\n  width: 95%;\n  height: 445px;\n  padding: 0;\n  text-align: left;\n  vertical-align: top;\n}\n.group-edit {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-edit input[type='file'] {\n  position: absolute;\n  top: 0;\n  left: 25px;\n  ((null)): 0;\n  ((null)): 0;\n  width: 74px;\n  height: 36px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-edit .btn-edit {\n  display: inline-block;\n  margin: 0;\n}\n.file-list {\n  display: inline-block;\n  width: 400px;\n  margin: 0 15px 5px;\n  font-size: 20px;\n  line-height: 36px;\n  vertical-align: top;\n}\n.group-left,\n.group-right {\n  display: inline-block;\n  width: 300px;\n  padding: 0 30px;\n  vertical-align: top;\n  text-align: right;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.group-right {\n  width: 700px;\n  padding: 0 15px;\n  text-align: left;\n}\n.tip {\n  display: block;\n  width: 90%;\n  padding: 0 20px;\n  margin: auto;\n  text-align: left;\n  font-size: 12px;\n  color: #f00;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n@media screen and (max-width: 1016px) {\n.group-left {\n    width: 80%;\n}\n}\n", ""]);
 
 	// exports
 
@@ -15451,6 +15240,10 @@
 	//
 	//
 	//
+	//
+	//
+	//
+	//
 
 	var editor = void 0;
 	exports.default = {
@@ -15466,7 +15259,8 @@
 					explain: '',
 					content: '',
 					enclosure: '',
-					faculty: ''
+					faculty: '',
+					party: ''
 				},
 				optionShow: false,
 				calendar: {
@@ -15559,7 +15353,6 @@
 				form.author = this.userId;
 				form.time = new Date();
 				form.faculty = this.userFaculty;
-				console.log('ok');
 				if (!form.title || !form.time || !form.address || !form.unit || !form.content || !form.url) {
 					return alert('请填写所有必须项！');
 				}
@@ -15571,7 +15364,8 @@
 						return alert(err);
 					});
 				} else {
-					console.log('update');
+					this.party = this.party.replace(/，/g, ',');
+					form.participator = this.party.split(',');
 					this.$store.dispatch('UPDATE_ARTICLE', { form: form, id: this.$route.params.artId }).then(function (data) {
 						alert('修改成功');
 						_this2.$router.push({ name: 'article', params: { id: data.id } });
@@ -16624,22 +16418,37 @@
 	        _vm.form.explain = $event.target.value
 	      }
 	    }
-	  })]), _vm._v(" "), _c('div', {
-	    staticClass: "group-con group-cover"
-	  }, [_c('span', {
-	    staticClass: "must"
-	  }, [_vm._v("*")]), _c('img', {
+	  })]), _vm._v(" "), _vm._v(" "), _c('div', {
+	    staticClass: "group-con"
+	  }, [_c('input', {
+	    directives: [{
+	      name: "model",
+	      rawName: "v-model",
+	      value: (_vm.party),
+	      expression: "party"
+	    }],
 	    attrs: {
-	      "src": _vm.form.url
-	    }
-	  }), _vm._v(" "), _c('input', {
-	    attrs: {
-	      "type": "file"
+	      "type": "text",
+	      "placeholder": "参与者名单"
+	    },
+	    domProps: {
+	      "value": _vm._s(_vm.party)
 	    },
 	    on: {
-	      "change": _vm.onChangeCover
+	      "input": function($event) {
+	        if ($event.target.composing) { return; }
+	        _vm.party = $event.target.value
+	      }
 	    }
-	  })])]), _c('div', {
+	  }), _vm._v(" "), _c('span', {
+	    directives: [{
+	      name: "show",
+	      rawName: "v-show",
+	      value: (_vm.isEdit && _vm.$route.params.artId),
+	      expression: "isEdit && $route.params.artId"
+	    }],
+	    staticClass: "tip"
+	  }, [_vm._v("参与者请以\",\"分隔")])])]), _c('div', {
 	    staticClass: "group-right"
 	  }, [_c('div', {
 	    staticClass: "group-con group-content"
@@ -17063,7 +16872,7 @@
 	exports.default = {
 	    data: function data() {
 	        return {
-	            isActive: true
+	            isActive: false
 	        };
 	    },
 
@@ -17257,14 +17066,30 @@
 	            isAdd: true,
 	            name: '',
 	            pwd: '',
-	            rank: '',
-	            faculty: ''
+	            rank: 0,
+	            faculty: 0,
+	            title: '',
+	            rankOption: [{
+	                type: '普通用户',
+	                index: 0
+	            }, {
+	                type: '普通管理员',
+	                index: 1
+	            }, {
+	                type: '系统管理员',
+	                index: 2
+	            }],
+	            facultyOption: [{
+	                type: '信息管理教研室',
+	                index: 1
+	            }, {
+	                type: '工业工程教研室',
+	                index: 2
+	            }]
 	        };
 	    },
 	    created: function created() {
-	        this.$store.dispatch('GET_USERS').catch(function (err) {
-	            return alert(err);
-	        });
+	        this.getUser();
 	    },
 
 	    methods: {
@@ -17281,14 +17106,33 @@
 	            }
 	        },
 	        addUser: function addUser() {
-	            console.log(this.name);
-	            console.log(this.rank);
-	            console.log(this.rank);
-	            console.log(this.faculty);
+	            var _this = this;
+
+	            var form = {};
+	            form.id = this.name;
+	            form.pwd = this.pwd;
+	            form.title = this.title;
+	            form.rank = this.rank;
+	            for (var i = 1, len = this.facultyOption.length; i < len; ++i) {
+	                if (i === this.faculty) {
+	                    form.faculty = this.facultyOption[i];
+	                    break;
+	                }
+	            }
+	            this.$store.dispatch('ADD_USER', form).then(function (res) {
+	                _this.getUser();
+	                _this.isAdd = false;
+	            });
+	        },
+	        getUser: function getUser() {
+	            this.$store.dispatch('GET_USERS').catch(function (err) {
+	                return alert(err);
+	            });
 	        }
 	    },
 	    computed: (0, _vuex.mapState)(['users'])
 	}; //
+	//
 	//
 	//
 	//
@@ -17378,7 +17222,7 @@
 	      expression: "!isAdd"
 	    }]
 	  }, [_vm._m(0), _vm._v(" "), _vm._l((_vm.users), function(item) {
-	    return _c('tr', [_c('td', [_vm._v(_vm._s(item.id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.faculty))])])
+	    return _c('tr', [_c('td', [_vm._v(_vm._s(item.id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.faculty.type))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.title))])])
 	  })], true), _vm._v(" "), _c('form', {
 	    directives: [{
 	      name: "show",
@@ -17419,7 +17263,7 @@
 	      expression: "pwd"
 	    }],
 	    attrs: {
-	      "type": "passowrd",
+	      "type": "password",
 	      "name": "pwd"
 	    },
 	    domProps: {
@@ -17450,9 +17294,15 @@
 	        })[0]
 	      }
 	    }
-	  }, [_c('option', [_vm._v("普通用户")]), _vm._v(" "), _c('option', [_vm._v("普通管理员")]), _vm._v(" "), _c('option', [_vm._v("系统管理员")])])]), _vm._v(" "), _c('div', {
+	  }, _vm._l((_vm.rankOption), function(item) {
+	    return _c('option', {
+	      domProps: {
+	        "value": item.index
+	      }
+	    }, [_vm._v(_vm._s(item.type))])
+	  }))]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
-	  }, [_c('label', [_vm._v("所属系：")]), _vm._v(" "), _c('select', {
+	  }, [_c('label', [_vm._v("所属教研室：")]), _vm._v(" "), _c('select', {
 	    directives: [{
 	      name: "model",
 	      rawName: "v-model",
@@ -17469,7 +17319,35 @@
 	        })[0]
 	      }
 	    }
-	  }, [_c('option', [_vm._v("校")]), _vm._v(" "), _c('option', [_vm._v("数信")]), _vm._v(" "), _c('option', [_vm._v("经管")]), _vm._v(" "), _c('option', [_vm._v("外国语")])])]), _vm._v(" "), _c('div', {
+	  }, _vm._l((_vm.facultyOption), function(item) {
+	    return _c('option', {
+	      domProps: {
+	        "value": item.index
+	      }
+	    }, [_vm._v(_vm._s(item.type))])
+	  }))]), _vm._v(" "), _c('div', {
+	    staticClass: "group-con"
+	  }, [_c('label', [_vm._v("职称")]), _vm._v(" "), _c('input', {
+	    directives: [{
+	      name: "model",
+	      rawName: "v-model",
+	      value: (_vm.title),
+	      expression: "title"
+	    }],
+	    attrs: {
+	      "type": "text",
+	      "name": "title"
+	    },
+	    domProps: {
+	      "value": _vm._s(_vm.title)
+	    },
+	    on: {
+	      "input": function($event) {
+	        if ($event.target.composing) { return; }
+	        _vm.title = $event.target.value
+	      }
+	    }
+	  })]), _vm._v(" "), _c('div', {
 	    attrs: {
 	      "clas": "group-btn"
 	    }
@@ -17485,7 +17363,7 @@
 	    }
 	  })])])])
 	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _c('tr', [_c('th', [_vm._v("用户名")]), _vm._v(" "), _c('th', [_vm._v("所属系")])])
+	  return _c('tr', [_c('th', [_vm._v("用户名")]), _vm._v(" "), _c('th', [_vm._v("所属系")]), _vm._v(" "), _c('th', [_vm._v("职称")])])
 	}]}
 	if (false) {
 	  module.hot.accept()
@@ -17842,11 +17720,26 @@
 	//
 	//
 	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 	exports.default = {
 	    data: function data() {
 	        return {
-	            isPerArt: true
+	            isPerArt: true,
+	            opt: {}
 	        };
 	    },
 	    mounted: function mounted() {
@@ -17856,14 +17749,12 @@
 
 	    methods: {
 	        init: function init() {
-	            var opt = {};
+	            var _this = this;
+
 	            this.$store.dispatch('INIT_CHART', { id: this.$route.params.id }).then(function (res) {
-	                opt = res.data;
-	            }).catch(function (err) {
-	                return alert(err);
+	                _this.opt = res;
 	            });
-	            opt.id = this.$route.params.id;
-	            (0, _setChart2.default)(document.body, opt || {});
+	            (0, _setChart2.default)(document.body, this.opt || {});
 	        },
 	        toggleArt: function toggleArt(type) {
 	            switch (type) {
@@ -17914,7 +17805,7 @@
 	    // 配置 options
 	    myChart.setOption({
 	        title: {
-	            text: text + ' \u53C2\u4E0E\u4F1A\u8BAE\u7EDF\u8BA1',
+	            text: '我参与会议统计',
 	            subtext: ''
 	        },
 	        tooltip: {
@@ -85918,13 +85809,13 @@
 	        _vm.toggleArt(2)
 	      }
 	    }
-	  }, [_c('a', [_vm._v("全部")])])]), _vm._v(" "), _c('canvas', {
+	  }, [_c('a', [_vm._v("单位")])])]), _vm._v(" "), _c('canvas', {
 	    attrs: {
 	      "id": "individual",
 	      "width": "300",
 	      "height": "300"
 	    }
-	  })])
+	  }), _vm._v(" "), _c('div', [_c('div', [_c('label', [_vm._v("发表: ")]), _vm._v(_vm._s(_vm.opt.postNum) + " 次\n        ")]), _vm._v(" "), _c('div', [_c('label', [_vm._v("教学讨论会: ")]), _vm._v(_vm._s(_vm.opt.teachNum) + " 次\n        ")]), _vm._v(" "), _c('div', [_c('label', [_vm._v("科研研讨会: ")]), _vm._v(_vm._s(_vm.opt.scientNum) + " 次\n        ")]), _vm._v(" "), _c('div', [_c('label', [_vm._v("学术沙龙: ")]), _vm._v(_vm._s(_vm.opt.salonNum) + " 次\n        ")])])])
 	},staticRenderFns: []}
 	if (false) {
 	  module.hot.accept()
@@ -85955,13 +85846,11 @@
 
 	var _footer2 = _interopRequireDefault(_footer);
 
-	var _App = __webpack_require__(47);
+	var _Main = __webpack_require__(506);
 
-	var _App2 = _interopRequireDefault(_App);
+	var _Main2 = _interopRequireDefault(_Main);
 
 	__webpack_require__(52);
-
-	__webpack_require__(55);
 
 	var _router = __webpack_require__(57);
 
@@ -85973,13 +85862,157 @@
 		router: _router2.default,
 		store: _store2.default,
 		components: {
-			Navbar: _nav2.default,
 			VFooter: _footer2.default
 		},
 		render: function render(h) {
-			return h(_App2.default);
+			return h(_Main2.default);
 		}
 	}).$mount('#app');
+
+/***/ },
+/* 506 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+	var __vue_styles__ = {}
+
+	/* styles */
+	__webpack_require__(507)
+
+	/* script */
+	__vue_exports__ = __webpack_require__(509)
+
+	/* template */
+	var __vue_template__ = __webpack_require__(510)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.__file = "D:\\code\\teaching-activities\\design\\src\\Main.vue"
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+
+	/* hot reload */
+	if (false) {(function () {
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  module.hot.accept()
+	  if (!module.hot.data) {
+	    hotAPI.createRecord("data-v-de76b74e", __vue_options__)
+	  } else {
+	    hotAPI.reload("data-v-de76b74e", __vue_options__)
+	  }
+	})()}
+	if (__vue_options__.functional) {console.error("[vue-loader] Main.vue: functional components are not supported and should be defined in plain js files using render functions.")}
+
+	module.exports = __vue_exports__
+
+
+/***/ },
+/* 507 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(508);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(38)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-de76b74e!./../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Main.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-de76b74e!./../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Main.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 508 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(37)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 509 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _nav = __webpack_require__(34);
+
+	var _nav2 = _interopRequireDefault(_nav);
+
+	var _footer = __webpack_require__(42);
+
+	var _footer2 = _interopRequireDefault(_footer);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
+	exports.default = {
+		components: {
+			Navbar: _nav2.default,
+			VFooter: _footer2.default
+		}
+	};
+
+/***/ },
+/* 510 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _c('div', {
+	    attrs: {
+	      "id": "app"
+	    }
+	  }, [_c('navbar'), _vm._v(" "), _c('div', {
+	    staticClass: "wrapper"
+	  }, [_c('router-view'), _vm._v(" "), _c('v-footer')])])
+	},staticRenderFns: []}
+	if (false) {
+	  module.hot.accept()
+	  if (module.hot.data) {
+	     require("vue-hot-reload-api").rerender("data-v-de76b74e", module.exports)
+	  }
+	}
 
 /***/ }
 /******/ ]);

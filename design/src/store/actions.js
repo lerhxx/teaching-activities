@@ -120,6 +120,17 @@ export default {
     return axios.get(`/user/count/${info.id}`)
       .then(res => {
         if(res.data.state == 0) {
+          return Promise.resolve(res.data.data);
+        }else {
+          return Promise.reject(res.data.msg);
+        }
+      })
+  },
+  ADD_USER({commit}, form) {
+    console.log(form);
+    return axios.post('/user/addUser', form)
+      .then(res => {
+        if(res.data.state == 0) {
           return Promise.resolve(res.data);
         }else {
           return Promise.reject(res.data.msg);

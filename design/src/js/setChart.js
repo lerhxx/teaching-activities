@@ -16,7 +16,7 @@ console.log(options)
     // 配置 options
     myChart.setOption({
         title : {
-            text: `${text} 参与会议统计`,
+            text: '我参与会议统计',
             subtext: ''
         },
         tooltip : {

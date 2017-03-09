@@ -11,10 +11,12 @@
         	<tr>
         		<th>用户名</th>
         		<th>所属系</th>
+                <th>职称</th>
         	</tr>
         	<tr v-for='item in users'>
         		<td>{{item.id}}</td>
-        		<td>{{item.faculty}}</td>
+        		<td>{{item.faculty.type}}</td>
+                <td>{{item.title}}</td>
         	</tr>
         </table>
         <form v-show='isAdd' class='add-user'>
@@ -24,24 +26,23 @@
         	</div>
         	<div class='group-con'>
         		<label>初始密码：</label>
-        		<input type="passowrd" name="pwd" v-model='pwd'>
+        		<input type="password" name="pwd" v-model='pwd'>
         	</div>
         	<div class='group-con'>
         		<label>权限：</label>
         		<select v-model='rank'>
-        			<option>普通用户</option>
-        			<option>普通管理员</option>
-        			<option>系统管理员</option>
+        			<option v-for='item in rankOption' v-bind:value='item.index'>{{item.type}}</option>
         		</select>
         	</div>
         	<div class='group-con'>
-        		<label>所属系：</label>
+        		<label>所属教研室：</label>
         		<select v-model='faculty'>
-        			<option>校</option>
-        			<option>数信</option>
-        			<option>经管</option>
-        			<option>外国语</option>
+        			<option v-for='item in facultyOption' v-bind:value='item.index'>{{item.type}}</option>
         		</select>
+        	</div>
+            <div class='group-con'>
+        		<label>职称</label>
+        		<input type="text" name="title" v-model='title'>
         	</div>
         	<div clas='group-btn'>
         		<input class='btn btn-cancle' type="button" name="add" @click='addUser' value='添加'>
@@ -59,13 +60,30 @@
                 isAdd: true,
                 name: '',
                 pwd: '',
-                rank: '',
-                faculty: ''
+                rank: 0,
+                faculty: 0,
+                title: '',
+                rankOption: [{
+                    type: '普通用户',
+                    index: 0
+                },{
+                    type: '普通管理员',
+                    index: 1
+                },{
+                    type: '系统管理员',
+                    index: 2
+                }],
+                facultyOption: [{
+                    type: '信息管理教研室',
+                    index: 1
+                },{
+                    type: '工业工程教研室',
+                    index: 2
+                }]
             }
         },
         created() {
-        	this.$store.dispatch('GET_USERS')
-        		.catch(err => alert(err));
+        	this.getUser();
         },
         methods: {
             toggleAdd(type) {
@@ -81,10 +99,26 @@
                 }
             },
             addUser() {
-            	console.log(this.name);
-            	console.log(this.rank);
-            	console.log(this.rank);
-            	console.log(this.faculty);
+                let form = {};
+                form.id = this.name;
+                form.pwd = this.pwd;
+                form.title = this.title;
+                form.rank = this.rank;
+                for(let i = 1, len = this.facultyOption.length; i < len; ++i) {
+                    if(i === this.faculty) {
+                        form.faculty = this.facultyOption[i];
+                        break;
+                    }
+                }
+                this.$store.dispatch('ADD_USER', form)
+                    .then(res => {
+                        this.getUser();
+                        this.isAdd = false;
+                    })
+            },
+            getUser() {
+                this.$store.dispatch('GET_USERS')
+                    .catch(err => alert(err));
             }
         },
         computed: mapState(['users'])
@@ -134,5 +168,4 @@
     	input,
     	select
     		width 300px
-
 </style>

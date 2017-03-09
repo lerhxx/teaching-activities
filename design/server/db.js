@@ -10,13 +10,21 @@ mongoose.Promise = Promise;
 
 mongoose.connect('mongodb://localhost/design');
 
+const selectTypeSchema = new Schema({
+	type: String,
+	index: Number
+})
 
 const UserSchema = new Schema({
 	id: String,
 	pwd: String,
 	rank: Number,
-	faculty: Number,
-	title: String
+	faculty: selectTypeSchema,
+	title: String,
+	postNum: Number,
+	teachNum: Number,
+	scientNum: Number,
+	salonNum: Number
 })
 
 const articleSchema = new Schema({
@@ -34,6 +42,7 @@ const articleSchema = new Schema({
 	enclosure: String,
 	faculty: String,
 	type: String,
+	participator: [String]
 })
 
 const footLinkSchema = new Schema({
@@ -41,10 +50,6 @@ const footLinkSchema = new Schema({
 	text: String
 })
 
-const selectTypeSchema = new Schema({
-	type: String,
-	index: Number
-})
 
 const searchSchema = new Schema({
 	faculties: [selectTypeSchema],
@@ -78,10 +83,12 @@ const initialize = () => {
 			// 	console.log(doc)
 			// })
 		}else {
-			// Models.User.find(null, (err, doc) => {
-			// 	// doc.map(item => item.remove())
-			// 	console.log(doc)
-			// })
+			Models.User.find(null, (err, doc) => {
+				// doc.map(item => item.remove()) 
+				// Models.User.find(null, (err, doc) => {
+				// 	console.log(doc)
+				// })
+			})
 			Models.initialized = true;
 		}
 	})
