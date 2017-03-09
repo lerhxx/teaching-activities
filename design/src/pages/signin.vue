@@ -55,6 +55,7 @@
 </script>
 
 <style scoped lang='stylus'>
+	@import '../css/form';
 	@import '../css/funs';
 	@import '../css/variable';
 

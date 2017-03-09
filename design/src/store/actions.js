@@ -120,7 +120,7 @@ export default {
     return axios.get(`/user/count/${info.id}`)
       .then(res => {
         if(res.data.state == 0) {
-          return Promise.resolve(res.data);
+          return Promise.resolve(res.data.data);
         }else {
           return Promise.reject(res.data.msg);
         }

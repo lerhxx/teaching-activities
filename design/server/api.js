@@ -309,8 +309,19 @@ router.get('/user/info', (req, res) => {
 
 router.get('/user/count/:id', (req, res) => {
 	console.log(req.params.id)
+	db.User.findOne({id: req.params.id}, (err, user) => {
+		if(err) {
+			res.send({state: 1, msg: '查询失败！'})
+		}else {
+			res.send({state: 0, data: {
+				postNum: user.postNum,
+				teachNum: user.teachNum,
+				scientNum: user.scientNum,
+				salonNum: user.salonNum
+			}})
+		}
+	})
 	// db.User.find((err, doc) => {})
-	res.send({state: 0, data: []});
 })
 
 router.post('/user/addUser', (req, res) => {

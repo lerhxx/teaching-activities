@@ -20,7 +20,11 @@ const UserSchema = new Schema({
 	pwd: String,
 	rank: Number,
 	faculty: selectTypeSchema,
-	title: String
+	title: String,
+	postNum: Number,
+	teachNum: Number,
+	scientNum: Number,
+	salonNum: Number
 })
 
 const articleSchema = new Schema({
@@ -62,16 +66,16 @@ const Models = {
 }
 
 const initialize = () => {
-	Models.Article.find(null, (err, doc) => {
+	Models.User.find(null, (err, doc) => {
 		if(err) {
 			console.error(err);
 		}else if(!doc.length) {
 			console.log('Database opens for the first time...')
 			//TODO
-			article.articles.map(item => new Models.Article(item).save());
+			// article.articles.map(item => new Models.Article(item).save());
 			// footerLink.map(item => new Models.FootLink(item).save());
 			// new Models.Search(search).save();
-			// user.map(item => new Models.User(item).save());
+			user.map(item => new Models.User(item).save());
 			// Models.Article.find(null, (err, doc) => {
 			// 	if(err) {
 			// 		return console.error(err)
@@ -79,10 +83,12 @@ const initialize = () => {
 			// 	console.log(doc)
 			// })
 		}else {
-			// Models.Article.find(null, (err, doc) => {
-			// 	// doc.map(item => item.remove())
-			// 	console.log(doc)
-			// })
+			Models.User.find(null, (err, doc) => {
+				// doc.map(item => item.remove()) 
+				// Models.User.find(null, (err, doc) => {
+				// 	console.log(doc)
+				// })
+			})
 			Models.initialized = true;
 		}
 	})

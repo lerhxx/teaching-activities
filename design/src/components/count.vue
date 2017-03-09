@@ -4,10 +4,24 @@
             <li class='art-list-item' :class="{active: isPerArt}" @click='toggleArt(1)'>
                 <a>个人</a>
             </li><li class='art-list-item' :class="{active: !isPerArt}" @click='toggleArt(2)'>
-                <a>全部</a>
+                <a>单位</a>
             </li>
         </ul>
         <canvas id='individual' width='300' height='300'></canvas>
+        <div>
+            <div>
+                <label>发表: </label>{{opt.postNum}} 次
+            </div>
+            <div>
+                <label>教学讨论会: </label>{{opt.teachNum}} 次
+            </div>
+            <div>
+                <label>科研研讨会: </label>{{opt.scientNum}} 次
+            </div>
+            <div>
+                <label>学术沙龙: </label>{{opt.salonNum}} 次
+            </div>
+        </div>
     </div>
 </template>
 
@@ -18,7 +32,8 @@
 	export default {
 		data() {
 			return {
-				isPerArt: true
+				isPerArt: true,
+                opt: {}
 			}
 		},
 		mounted() {
@@ -27,14 +42,11 @@
 		},
 		methods: {
             init() {
-                let opt = {};
                 this.$store.dispatch('INIT_CHART', {id: this.$route.params.id})
                     .then(res => {
-                        opt = res.data;
+                        this.opt = res;
                     })
-                    .catch(err => alert(err));
-                opt.id = this.$route.params.id;
-                initChart(document.body, opt || {});
+                initChart(document.body, this.opt || {});
             },
 			toggleArt(type) {
                 switch(type) {

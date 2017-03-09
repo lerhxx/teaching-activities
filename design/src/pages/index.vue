@@ -45,6 +45,7 @@
 						</router-link>
 					</h3>
 					<p class='time color-g'>{{item.time | timeFormat}}</p>
+					<p>地点：{{item.address}}</p>
 					<!-- <p class='abstract' v-html='item.content'></p> -->
 					<modify :item='item' v-show='userRank == 2 || (userRank == 1 && userFaculty == item.faculty)'></modify>
 				</li>
@@ -118,7 +119,7 @@
 			margin-right search-mar
 			outline none
 	.list-wrapper
-		width 90%
+		width 60%
 		margin auto
 	.hold-list
 		margin 32px 0 12px
@@ -167,4 +168,7 @@
 		padding-right 25px
 		line-height 1.5em
 		overflow hidden
+	@media screen and (max-width: 768px)
+		.list-wrapper
+			width 90%
 </style>
