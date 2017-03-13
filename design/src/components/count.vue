@@ -9,10 +9,10 @@
             <li v-show='userRank > 0'>
                 <div>
                     <label>范围</label>
-                    <a :class="{'active': rangeTab === 0}">
+                    <a :class="{'active': rangeTab == 0}" @click='changeRangeTab' data-type='0'>
                         个人
                     </a>
-                    <a :class="{'active': rangeTab === 1}">
+                    <a :class="{'active': rangeTab == 1}" @click='changeRangeTab' data-type='1'>
                         单位
                     </a>
                </div>
@@ -20,24 +20,24 @@
             <li>
                 <div>
                     <label>时间</label>
-                    <a :class="{'active': timeTab === 0}">
+                    <!--<a :class="{'active': timeTab == 0}">
                         全部
+                    </a>-->
+                    <a @click='selectYears'>
+                        {{selectYear}}
                     </a>
-                    <a :class="{'active': timeTab === 1}">
-                        {{year}}
-                    </a>
-                    <a :class="{'active': timeTab === 2}">
+                    <a :class="{'active': timeTab == 2}" @click='changeTimeTab' data-type='2'>
                         整学年
                     </a>
-                    <a :class="{'active': timeTab === 3}">
+                    <a :class="{'active': timeTab == 3}" @click='changeTimeTab' data-type='3'>
                         上半学期
                     </a>
-                    <a :class="{'active': timeTab === 4}">
+                    <a :class="{'active': timeTab == 4}" @click='changeTimeTab' data-type='4'>
                         下半学期
                     </a>
                 </div>
             </li>
-            <li>
+            <!--<li>
                 <div>
                     <label>类型</label>
                     <a :class="{'active': typeTab === 0}">
@@ -53,7 +53,7 @@
                         学术沙龙
                     </a>
                 </div>
-            </li>
+            </li>-->
         </ul>
         <canvas id='individual' width='300' height='300'></canvas>
         <div>
@@ -70,6 +70,13 @@
                 <label>学术沙龙: </label>{{opt.salonNum && opt.salonNum.sum}} 次
             </div>
         </div>
+        <div class='dialog-wrapper' @click='hideDialog' v-show='showDialog'>
+            <ul class='dialog'>
+                <li v-for='year in years' :class="{'active': year == selectYear}" @click='changeYear'>
+                    {{year}}
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -79,13 +86,15 @@
 
 	export default {
 		data() {
+            let year = new Date().getFullYear();
 			return {
 				isPerArt: false,
                 opt: {},
-                year: new Date().getFullYear(),
+                curYear: year,
+                selectYear: year,
                 rangeTab: 1,
-                timeTab: 0,
-                typeTab: 0
+                timeTab: 1,
+                showDialog: false
 			}
 		},
 		mounted() {
@@ -114,13 +123,28 @@
                         this.isPerArt = true;
                 }
             },
+            selectYears() {
+                this.showDialog = true;
+            },
+            hideDialog() {
+                this.showDialog = false;
+            },
+            changeYear(e) {
+                this.selectYear = e.target.innerHTML;
+            },
+            changeRangeTab(e) {
+                this.rangeTab = e.target.getAttribute('data-type') || 0;
+            },
+            changeTimeTab(e) {
+                this.timeTab = e.target.getAttribute('data-type') || 0;
+            }
 		},
 		computed: {
             userRank() {
                 return this.$store.state.userRank;
             },
             years() {
-                let year = new Date().getFullYear(),
+                let year = this.curYear,
                     arr = [],
                     i = year - 5;
                 for(; year > i; --year) {
@@ -133,6 +157,8 @@
 </script>
 
 <style scoped lang='stylus'>
+    @import '../css/funs';
+
     .select-list
         margin-bottom 50px
         li
@@ -162,4 +188,24 @@
                 height 35px
                 border 1px solid transparent
                 outline none
+    .dialog-wrapper
+        absolute(left 0 top 0 right 0 bottom 0)
+        background-color rgba(0, 0, 0, .6)
+        z-index 99
+    .dialog
+        absolute(left 0 top 0 right 0 bottom 0)
+        width 300px
+        height 300px
+        margin auto
+        text-align center
+        line-height 60px
+        border-radius 6px
+        background-color #fff
+        li
+            width 100%
+            cursor pointer
+            &.active,
+            &:hover
+                color #fff
+                background-color rgba(97, 171, 241, .6)
 </style>

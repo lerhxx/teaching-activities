@@ -17870,7 +17870,7 @@
 
 
 	// module
-	exports.push([module.id, "\n.select-list[data-v-775e5b49] {\n  margin-bottom: 50px;\n}\n.select-list li[data-v-775e5b49] {\n  width: 100%;\n  margin: 5px 0;\n}\n.select-list li label[data-v-775e5b49],\n.select-list li a[data-v-775e5b49],\n.select-list li select[data-v-775e5b49] {\n  display: inline-block;\n}\n.select-list li label[data-v-775e5b49] {\n  padding: 6px 25px;\n  margin-right: 10px;\n  border: 1px solid #ccc;\n  color: #fff;\n  background: #000;\n  border-radius: 6px;\n}\n.select-list li a[data-v-775e5b49] {\n  padding: 6px 15px;\n  border: 1px solid transparent;\n  border-radius: 6px;\n  cursor: pointer;\n}\n.select-list li a.active[data-v-775e5b49],\n.select-list li a[data-v-775e5b49]:hover {\n  color: #44a5f2;\n}\n.select-list li select[data-v-775e5b49] {\n  width: 80px;\n  height: 35px;\n  border: 1px solid transparent;\n  outline: none;\n}\n", ""]);
+	exports.push([module.id, "\n.select-list[data-v-775e5b49] {\n  margin-bottom: 50px;\n}\n.select-list li[data-v-775e5b49] {\n  width: 100%;\n  margin: 5px 0;\n}\n.select-list li label[data-v-775e5b49],\n.select-list li a[data-v-775e5b49],\n.select-list li select[data-v-775e5b49] {\n  display: inline-block;\n}\n.select-list li label[data-v-775e5b49] {\n  padding: 6px 25px;\n  margin-right: 10px;\n  border: 1px solid #ccc;\n  color: #fff;\n  background: #000;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n}\n.select-list li a[data-v-775e5b49] {\n  padding: 6px 15px;\n  border: 1px solid transparent;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n  cursor: pointer;\n}\n.select-list li a.active[data-v-775e5b49],\n.select-list li a[data-v-775e5b49]:hover {\n  color: #44a5f2;\n}\n.select-list li select[data-v-775e5b49] {\n  width: 80px;\n  height: 35px;\n  border: 1px solid transparent;\n  outline: none;\n}\n.dialog-wrapper[data-v-775e5b49] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgba(0,0,0,0.6);\n  z-index: 99;\n}\n.dialog[data-v-775e5b49] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  width: 300px;\n  height: 300px;\n  margin: auto;\n  text-align: center;\n  line-height: 60px;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n  background-color: #fff;\n}\n.dialog li[data-v-775e5b49] {\n  width: 100%;\n  cursor: pointer;\n}\n.dialog li.active[data-v-775e5b49],\n.dialog li[data-v-775e5b49]:hover {\n  color: #fff;\n  background-color: rgba(97,171,241,0.6);\n}\n", ""]);
 
 	// exports
 
@@ -17968,16 +17968,25 @@
 	//
 	//
 	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 	exports.default = {
 	    data: function data() {
+	        var year = new Date().getFullYear();
 	        return {
 	            isPerArt: false,
 	            opt: {},
-	            year: new Date().getFullYear(),
+	            curYear: year,
+	            selectYear: year,
 	            rangeTab: 1,
-	            timeTab: 0,
-	            typeTab: 0
+	            timeTab: 1,
+	            showDialog: false
 	        };
 	    },
 	    mounted: function mounted() {
@@ -18007,6 +18016,21 @@
 	                default:
 	                    this.isPerArt = true;
 	            }
+	        },
+	        selectYears: function selectYears() {
+	            this.showDialog = true;
+	        },
+	        hideDialog: function hideDialog() {
+	            this.showDialog = false;
+	        },
+	        changeYear: function changeYear(e) {
+	            this.selectYear = e.target.innerHTML;
+	        },
+	        changeRangeTab: function changeRangeTab(e) {
+	            this.rangeTab = e.target.getAttribute('data-type') || 0;
+	        },
+	        changeTimeTab: function changeTimeTab(e) {
+	            this.timeTab = e.target.getAttribute('data-type') || 0;
 	        }
 	    },
 	    computed: {
@@ -18014,7 +18038,7 @@
 	            return this.$store.state.userRank;
 	        },
 	        years: function years() {
-	            var year = new Date().getFullYear(),
+	            var year = this.curYear,
 	                arr = [],
 	                i = year - 5;
 	            for (; year > i; --year) {
@@ -86044,55 +86068,87 @@
 	    }]
 	  }, [_c('div', [_c('label', [_vm._v("范围")]), _vm._v(" "), _c('a', {
 	    class: {
-	      'active': _vm.rangeTab === 0
+	      'active': _vm.rangeTab == 0
+	    },
+	    attrs: {
+	      "data-type": "0"
+	    },
+	    on: {
+	      "click": _vm.changeRangeTab
 	    }
 	  }, [_vm._v("\n                    个人\n                ")]), _vm._v(" "), _c('a', {
 	    class: {
-	      'active': _vm.rangeTab === 1
+	      'active': _vm.rangeTab == 1
+	    },
+	    attrs: {
+	      "data-type": "1"
+	    },
+	    on: {
+	      "click": _vm.changeRangeTab
 	    }
-	  }, [_vm._v("\n                    单位\n                ")])])]), _vm._v(" "), _c('li', [_c('div', [_c('label', [_vm._v("时间")]), _vm._v(" "), _c('a', {
-	    class: {
-	      'active': _vm.timeTab === 0
+	  }, [_vm._v("\n                    单位\n                ")])])]), _vm._v(" "), _c('li', [_c('div', [_c('label', [_vm._v("时间")]), _vm._v(" "), _vm._v(" "), _c('a', {
+	    on: {
+	      "click": _vm.selectYears
 	    }
-	  }, [_vm._v("\n                    全部\n                ")]), _vm._v(" "), _c('a', {
+	  }, [_vm._v("\n                    " + _vm._s(_vm.selectYear) + "\n                ")]), _vm._v(" "), _c('a', {
 	    class: {
-	      'active': _vm.timeTab === 1
-	    }
-	  }, [_vm._v("\n                    " + _vm._s(_vm.year) + "\n                ")]), _vm._v(" "), _c('a', {
-	    class: {
-	      'active': _vm.timeTab === 2
+	      'active': _vm.timeTab == 2
+	    },
+	    attrs: {
+	      "data-type": "2"
+	    },
+	    on: {
+	      "click": _vm.changeTimeTab
 	    }
 	  }, [_vm._v("\n                    整学年\n                ")]), _vm._v(" "), _c('a', {
 	    class: {
-	      'active': _vm.timeTab === 3
+	      'active': _vm.timeTab == 3
+	    },
+	    attrs: {
+	      "data-type": "3"
+	    },
+	    on: {
+	      "click": _vm.changeTimeTab
 	    }
 	  }, [_vm._v("\n                    上半学期\n                ")]), _vm._v(" "), _c('a', {
 	    class: {
-	      'active': _vm.timeTab === 4
+	      'active': _vm.timeTab == 4
+	    },
+	    attrs: {
+	      "data-type": "4"
+	    },
+	    on: {
+	      "click": _vm.changeTimeTab
 	    }
-	  }, [_vm._v("\n                    下半学期\n                ")])])]), _vm._v(" "), _c('li', [_c('div', [_c('label', [_vm._v("类型")]), _vm._v(" "), _c('a', {
-	    class: {
-	      'active': _vm.typeTab === 0
-	    }
-	  }, [_vm._v("\n                    全部\n                ")]), _vm._v(" "), _c('a', {
-	    class: {
-	      'active': _vm.typeTab === 1
-	    }
-	  }, [_vm._v("\n                    教学讨论会\n                ")]), _vm._v(" "), _c('a', {
-	    class: {
-	      'active': _vm.typeTab === 2
-	    }
-	  }, [_vm._v("\n                    科研研讨会\n                ")]), _vm._v(" "), _c('a', {
-	    class: {
-	      'active': _vm.typeTab === 3
-	    }
-	  }, [_vm._v("\n                    学术沙龙\n                ")])])])]), _vm._v(" "), _c('canvas', {
+	  }, [_vm._v("\n                    下半学期\n                ")])])]), _vm._v(" ")]), _vm._v(" "), _c('canvas', {
 	    attrs: {
 	      "id": "individual",
 	      "width": "300",
 	      "height": "300"
 	    }
-	  }), _vm._v(" "), _c('div', [_c('div', [_c('label', [_vm._v("发表: ")]), _vm._v(_vm._s(_vm.opt.postNum) + " 次\n        ")]), _vm._v(" "), _c('div', [_c('label', [_vm._v("教学讨论会: ")]), _vm._v(_vm._s(_vm.opt.teachNum && _vm.opt.teachNum.sum) + " 次\n        ")]), _vm._v(" "), _c('div', [_c('label', [_vm._v("科研研讨会: ")]), _vm._v(_vm._s(_vm.opt.scientNum && _vm.opt.scientNum.sum) + " 次\n        ")]), _vm._v(" "), _c('div', [_c('label', [_vm._v("学术沙龙: ")]), _vm._v(_vm._s(_vm.opt.salonNum && _vm.opt.salonNum.sum) + " 次\n        ")])])])
+	  }), _vm._v(" "), _c('div', [_c('div', [_c('label', [_vm._v("发表: ")]), _vm._v(_vm._s(_vm.opt.postNum) + " 次\n        ")]), _vm._v(" "), _c('div', [_c('label', [_vm._v("教学讨论会: ")]), _vm._v(_vm._s(_vm.opt.teachNum && _vm.opt.teachNum.sum) + " 次\n        ")]), _vm._v(" "), _c('div', [_c('label', [_vm._v("科研研讨会: ")]), _vm._v(_vm._s(_vm.opt.scientNum && _vm.opt.scientNum.sum) + " 次\n        ")]), _vm._v(" "), _c('div', [_c('label', [_vm._v("学术沙龙: ")]), _vm._v(_vm._s(_vm.opt.salonNum && _vm.opt.salonNum.sum) + " 次\n        ")])]), _vm._v(" "), _c('div', {
+	    directives: [{
+	      name: "show",
+	      rawName: "v-show",
+	      value: (_vm.showDialog),
+	      expression: "showDialog"
+	    }],
+	    staticClass: "dialog-wrapper",
+	    on: {
+	      "click": _vm.hideDialog
+	    }
+	  }, [_c('ul', {
+	    staticClass: "dialog"
+	  }, _vm._l((_vm.years), function(year) {
+	    return _c('li', {
+	      class: {
+	        'active': year == _vm.selectYear
+	      },
+	      on: {
+	        "click": _vm.changeYear
+	      }
+	    }, [_vm._v("\n                " + _vm._s(year) + "\n            ")])
+	  }))])])
 	},staticRenderFns: []}
 	if (false) {
 	  module.hot.accept()
