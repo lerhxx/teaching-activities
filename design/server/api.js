@@ -308,18 +308,44 @@ router.get('/user/info', (req, res) => {
 })
 
 router.get('/user/count/:id', (req, res) => {
-	console.log(req.params.id)
-	db.User.findOne({id: req.params.id}, (err, user) => {
-		if(err) {
-			res.send({state: 1, msg: '查询失败！'})
-		}else {
-			res.send({state: 0, data: {
-				postNum: user.postNum,
-				teachNum: user.teachNum,
-				scientNum: user.scientNum,
-				salonNum: user.salonNum
-			}})
-		}
+	db.Article.find({participator: {$in: [req.params.id]}}, (err, doc) => {
+			if(err) {
+				res.send({state: 1, msg: '查询失败！'})
+			}else {
+				let count = {
+					teachNum: {
+						sum: 0
+					},
+					scientNum: {
+						sum: 0
+					},
+					salonNum: {
+						sum: 0
+					}
+				},
+				year = '',
+				mon = '',
+				type = '';
+				doc.forEach(value => {
+					year = value.startTime.slice(0, 4);
+					mon = value.startTime.slice(5,7);
+					switch(value.type) {
+						case '1': 
+							type = 'teachNum';
+							break;
+						case '2':
+							type = 'scientNum';
+							break;
+						case '3':
+							type = 'salonNum';
+							break;
+					}
+					count[type][year] = count[type][year] ? count[type][year] : {};
+					count[type][year][mon] = count[type][year][mon] ? count[type][year][mon] + 1 : 1;
+					count[type].sum += 1;
+				})
+				res.send({state: 0, data: count})
+			}
 	})
 	// db.User.find((err, doc) => {})
 })

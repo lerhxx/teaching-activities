@@ -14,7 +14,7 @@
 			<img :src='article.url' alt='cover' class='cover'/>
 			<div class='group-con'>
 				<label>举办时间：</label>
-				<span>{{article.heldTime}}</span>
+				<span>{{article.startTime}}</span>
 			</div>
 			<div class='group-con'>
 				<label>举办地点：</label>

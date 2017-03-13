@@ -7,7 +7,7 @@ import './css/common.styl';
 // import './css/form.styl';
 import router from './router'
 
-new Vue({
+var vm = new Vue({
 	router,
 	store,
 	components: {
@@ -16,3 +16,4 @@ new Vue({
 	},
 	render: h => h(App)
 }).$mount('#app');
+console.log(vm.$options)

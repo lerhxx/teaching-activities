@@ -1,8 +1,8 @@
 import echarts from 'echarts';
 
-export default function init(ref, options) {
+export default function init(ref, id, options) {
     // 初始化 canvas 宽度
-    const canvas = document.getElementById('individual');
+    const canvas = document.getElementById(id);
     canvas.width = ref.clientWidth * 0.9;
 
     // 创建 echarts 实例
@@ -11,7 +11,6 @@ export default function init(ref, options) {
     // 计时器
     let timer;
 console.log(options)
-    let text = options.id;
 
     // 配置 options
     myChart.setOption({

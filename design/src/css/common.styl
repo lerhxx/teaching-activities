@@ -16,8 +16,10 @@ body
 	height 100vh
 	box-sizing border-box
 
-ul li 
-	display inline-block
+ul
+	display flex
+	flex-wrap wrap
+	justify-content center
 	list-style none
 
 a 
@@ -42,7 +44,7 @@ a
 	overflow hidden
 .wrapper
 	relative()
-	min-height 100vh
+	min-height calc(100vh - 48px)
 	padding-bottom 48px
 .time
 	margin-bottom 10px

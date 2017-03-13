@@ -1,10 +1,58 @@
 <template>
     <div>
-        <ul class='art-list' v-show='userRank > 0'>
-            <li class='art-list-item' :class="{active: isPerArt}" @click='toggleArt(1)'>
+        <ul class='select-list'>
+            <!--<li class='art-list-item' :class="{active: isPerArt}" @click='toggleArt(1)'>
                 <a>个人</a>
             </li><li class='art-list-item' :class="{active: !isPerArt}" @click='toggleArt(2)'>
                 <a>单位</a>
+            </li>-->
+            <li v-show='userRank > 0'>
+                <div>
+                    <label>范围</label>
+                    <a :class="{'active': rangeTab === 0}">
+                        个人
+                    </a>
+                    <a :class="{'active': rangeTab === 1}">
+                        单位
+                    </a>
+               </div>
+            </li>
+            <li>
+                <div>
+                    <label>时间</label>
+                    <a :class="{'active': timeTab === 0}">
+                        全部
+                    </a>
+                    <a :class="{'active': timeTab === 1}">
+                        {{year}}
+                    </a>
+                    <a :class="{'active': timeTab === 2}">
+                        整学年
+                    </a>
+                    <a :class="{'active': timeTab === 3}">
+                        上半学期
+                    </a>
+                    <a :class="{'active': timeTab === 4}">
+                        下半学期
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <label>类型</label>
+                    <a :class="{'active': typeTab === 0}">
+                        全部
+                    </a>
+                    <a :class="{'active': typeTab === 1}">
+                        教学讨论会
+                    </a>
+                    <a :class="{'active': typeTab === 2}">
+                        科研研讨会
+                    </a>
+                    <a :class="{'active': typeTab === 3}">
+                        学术沙龙
+                    </a>
+                </div>
             </li>
         </ul>
         <canvas id='individual' width='300' height='300'></canvas>
@@ -13,13 +61,13 @@
                 <label>发表: </label>{{opt.postNum}} 次
             </div>
             <div>
-                <label>教学讨论会: </label>{{opt.teachNum}} 次
+                <label>教学讨论会: </label>{{opt.teachNum && opt.teachNum.sum}} 次
             </div>
             <div>
-                <label>科研研讨会: </label>{{opt.scientNum}} 次
+                <label>科研研讨会: </label>{{opt.scientNum && opt.scientNum.sum}} 次
             </div>
             <div>
-                <label>学术沙龙: </label>{{opt.salonNum}} 次
+                <label>学术沙龙: </label>{{opt.salonNum && opt.salonNum.sum}} 次
             </div>
         </div>
     </div>
@@ -32,21 +80,27 @@
 	export default {
 		data() {
 			return {
-				isPerArt: true,
-                opt: {}
+				isPerArt: false,
+                opt: {},
+                year: new Date().getFullYear(),
+                rangeTab: 1,
+                timeTab: 0,
+                typeTab: 0
 			}
 		},
 		mounted() {
             // console.log(this.$route.params)
             this.init();
+            console.log(this.$options)
 		},
 		methods: {
             init() {
+                let id = 'individual';
                 this.$store.dispatch('INIT_CHART', {id: this.$route.params.id})
                     .then(res => {
                         this.opt = res;
+                        initChart(document.body, id, this.opt || {});
                     })
-                initChart(document.body, this.opt || {});
             },
 			toggleArt(type) {
                 switch(type) {
@@ -61,20 +115,51 @@
                 }
             },
 		},
-		computed: mapState(['userRank'])
+		computed: {
+            userRank() {
+                return this.$store.state.userRank;
+            },
+            years() {
+                let year = new Date().getFullYear(),
+                    arr = [],
+                    i = year - 5;
+                for(; year > i; --year) {
+                    arr.push(year)
+                }
+                return arr;
+            }
+        }
 	}
 </script>
 
 <style scoped lang='stylus'>
-.art-list-item
-    a
-        display block
-        padding 8px 20px
-        border 1px solid transparent
-        border-bottom-color #ccc
-        cursor pointer
-    &.active
-        a
-            border-color #ccc
-            border-bottom-color transparent
+    .select-list
+        margin-bottom 50px
+        li
+            width 100%
+            margin 5px 0
+            label,
+            a,
+            select
+                display inline-block
+            label
+                padding 6px 25px
+                margin-right 10px
+                border 1px solid #ccc
+                color #fff
+                background #000
+                border-radius 6px
+            a
+                padding 6px 15px
+                border 1px solid transparent
+                border-radius 6px
+                cursor pointer
+                &.active,
+                &:hover
+                    color #44a5f2
+            select
+                width 80px
+                height 35px
+                border 1px solid transparent
+                outline none
 </style>
