@@ -17,12 +17,30 @@
    },
 	"title": "一级教师"
 }, {
+    "id": "何军",
+	"pwd": "1",
+	"rank":1,
+	"faculty": {
+       "type": "信息管理教研室",
+       "index": 1
+   },
+	"title": "教授"
+}, {
     "id": "王五",
 	"pwd": "2",
 	"rank": 2,
 	"faculty": {
        "type": "工业工程教研室",
        "index": 2
+   },
+	"title": "教授"
+}, {
+    "id": "王维",
+	"pwd": "2",
+	"rank": 2,
+	"faculty": {
+       "type": "信息管理教研室",
+       "index": 1
    },
 	"title": "教授"
 }]

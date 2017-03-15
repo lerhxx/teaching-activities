@@ -5,12 +5,67 @@ export default function init(ref, id, options) {
     const canvas = document.getElementById(id);
     canvas.width = ref.clientWidth * 0.9;
 
-    // 创建 echarts 实例
+    // 创建 echarts 实例    
     let myChart = echarts.init(canvas);
 
     // 计时器
     let timer;
-console.log(options)
+
+    // 横轴
+    let axis = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
+    function xAxis(range) {
+        if(range == 1) {
+            return axis.slice(0, 6);
+        }else if(range == 2) {
+            return axis.slice(6);
+        }else {
+            return axis;
+        }
+    }
+
+    // 处理数据
+    function getDate(opt) {
+        let count = {
+            teachNum: {
+                sum: 0,
+                data: []
+            },
+            scientNum: {
+                sum: 0,
+                data: []
+            },
+            salonNum: {
+                sum: 0,
+                data: []
+            }
+        },
+        mon = '',
+        time,
+        type;
+        opt.forEach(value => {
+            time = new Date(value.startTime),
+            mon = time.getMonth();
+
+            switch(value.type) {
+                case '1': 
+                    type = 'teachNum';
+                    break;
+                case '2':
+                    type = 'scientNum';
+                    break;
+                case '3':
+                    type = 'salonNum';
+                    break;
+            }
+            count[type].data[mon] = count[type].data[mon] ? count[type].data[mon] + 1 : 1;
+            count[type].sum += 1;
+        })
+        console.log(count)
+        return count;
+    }
+    let data = getDate(options);
+    console.log(data.salonNum.data[5])
+
 
     // 配置 options
     myChart.setOption({
@@ -39,7 +94,7 @@ console.log(options)
             {
                 type : 'category',
                 boundaryGap : false,
-                data : ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+                data : xAxis(options.type)
             }
         ],
         yAxis : [
@@ -54,7 +109,7 @@ console.log(options)
             {
                 name:'教学讨论会',
                 type:'line',
-                data:[11, 11, 15, 13, 12, 13, 10, 11, 11, 15, 13, 12],
+                data: data.teachNum.data,
                 markPoint : {
                     data : [
                         {type : 'max', name: '最大值'}
@@ -69,7 +124,7 @@ console.log(options)
             {
                 name:'科研研讨会',
                 type:'line',
-                data:[1, 2, 2, 5, 3, 2, 0,1, 2, 2, 5, 3],
+                data: data.scientNum.data,
                 markPoint : {
                     data : [
                         {type : 'max', name: '最大值'}
@@ -84,7 +139,7 @@ console.log(options)
             {
                 name:'学术沙龙',
                 type:'line',
-                data:[5, 4, 3, 5, 6, 9, 6, 5, 4, 3, 5, 6],
+                data: data.salonNum.data,
                 markPoint : {
                     data : [
                         {type : 'max', name: '最大值'}
@@ -103,10 +158,10 @@ console.log(options)
         // resize();
         myChart.resize()
     })
-    function resize() {
-        clearTimeout(timer);
-        timer = setTimeout(() => {
-            canvas.width = ref.clientWidth * 0.9;
-        }, 500)
-    }
+    // function resize() {
+    //     clearTimeout(timer);
+    //     timer = setTimeout(() => {
+    //         canvas.width = ref.clientWidth * 0.9;
+    //     }, 500)
+    // }
 } 

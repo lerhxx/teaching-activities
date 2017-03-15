@@ -26,14 +26,14 @@
                     <a @click='selectYears'>
                         {{selectYear}}
                     </a>
+                    <a :class="{'active': timeTab == 0}" @click='changeTimeTab' data-type='0'>
+                        整年
+                    </a>
+                    <a :class="{'active': timeTab == 1}" @click='changeTimeTab' data-type='1'>
+                        上半年
+                    </a>
                     <a :class="{'active': timeTab == 2}" @click='changeTimeTab' data-type='2'>
-                        整学年
-                    </a>
-                    <a :class="{'active': timeTab == 3}" @click='changeTimeTab' data-type='3'>
-                        上半学期
-                    </a>
-                    <a :class="{'active': timeTab == 4}" @click='changeTimeTab' data-type='4'>
-                        下半学期
+                        下半年
                     </a>
                 </div>
             </li>
@@ -72,9 +72,7 @@
         </div>
         <div class='dialog-wrapper' @click='hideDialog' v-show='showDialog'>
             <ul class='dialog'>
-                <li v-for='year in years' :class="{'active': year == selectYear}" @click='changeYear'>
-                    {{year}}
-                </li>
+                <li v-for='year in years' :class="{'active': year == selectYear}" @click='changeYear'>{{year}}</li>
             </ul>
         </div>
     </div>
@@ -86,30 +84,28 @@
 
 	export default {
 		data() {
-            let year = new Date().getFullYear();
+            let year = new Date().getFullYear() - 1;
 			return {
 				isPerArt: false,
                 opt: {},
                 curYear: year,
                 selectYear: year,
                 rangeTab: 1,
-                timeTab: 1,
+                timeTab: 0,
                 showDialog: false
 			}
 		},
 		mounted() {
-            // console.log(this.$route.params)
-            this.init();
-            console.log(this.$options)
+            let a = setInterval(() => {
+				if(this.$store.state.userId) {
+					clearInterval(a);
+                    this.init();
+				}
+			}, 100)
 		},
 		methods: {
             init() {
-                let id = 'individual';
-                this.$store.dispatch('INIT_CHART', {id: this.$route.params.id})
-                    .then(res => {
-                        this.opt = res;
-                        initChart(document.body, id, this.opt || {});
-                    })
+                this.changeChart();
             },
 			toggleArt(type) {
                 switch(type) {
@@ -131,12 +127,30 @@
             },
             changeYear(e) {
                 this.selectYear = e.target.innerHTML;
+                this.timeTab = 0;
+                this.changeChart();
             },
             changeRangeTab(e) {
                 this.rangeTab = e.target.getAttribute('data-type') || 0;
+                this.changeChart();
             },
             changeTimeTab(e) {
                 this.timeTab = e.target.getAttribute('data-type') || 0;
+                this.changeChart();
+            },
+            changeChart() {
+                let id = 'individual',
+                    queryId = this.rangeTab === 0 ? this.$route.params.id : this.$store.state.userFaculty.index,
+                    time = this.timeTab;
+
+                this.$store.dispatch('INIT_CHART', {id: queryId, tab: this.rangeTab, time: time, year: this.selectYear})
+                    .then(res => {
+                        console.log(res)
+                        this.opt = res;
+                        this.opt.type = this.timeTab;
+                        console.log(this.opt)
+                        initChart(document.body, id, this.opt || {});
+                    })
             }
 		},
 		computed: {
@@ -155,6 +169,7 @@
         }
 	}
 </script>
+<p></p>
 
 <style scoped lang='stylus'>
     @import '../css/funs';

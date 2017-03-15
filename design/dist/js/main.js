@@ -11030,8 +11030,9 @@
 	  INIT_CHART: function INIT_CHART(_ref13, info) {
 	    var commit = _ref13.commit;
 
-	    return _axios2.default.get('/user/count/' + info.id).then(function (res) {
+	    return _axios2.default.get('/user/count/' + info.id + '/' + info.tab + '/' + info.year + '/' + info.time).then(function (res) {
 	      if (res.data.state == 0) {
+	        // console.log(res.data.data)
 	        return Promise.resolve(res.data.data);
 	      } else {
 	        return Promise.reject(res.data.msg);
@@ -17785,37 +17786,34 @@
 	//
 	//
 	//
-	//
-	//
 
 	exports.default = {
 	    data: function data() {
-	        var year = new Date().getFullYear();
+	        var year = new Date().getFullYear() - 1;
 	        return {
 	            isPerArt: false,
 	            opt: {},
 	            curYear: year,
 	            selectYear: year,
 	            rangeTab: 1,
-	            timeTab: 1,
+	            timeTab: 0,
 	            showDialog: false
 	        };
 	    },
 	    mounted: function mounted() {
-	        // console.log(this.$route.params)
-	        this.init();
-	        console.log(this.$options);
+	        var _this = this;
+
+	        var a = setInterval(function () {
+	            if (_this.$store.state.userId) {
+	                clearInterval(a);
+	                _this.init();
+	            }
+	        }, 100);
 	    },
 
 	    methods: {
 	        init: function init() {
-	            var _this = this;
-
-	            var id = 'individual';
-	            this.$store.dispatch('INIT_CHART', { id: this.$route.params.id }).then(function (res) {
-	                _this.opt = res;
-	                (0, _setChart2.default)(document.body, id, _this.opt || {});
-	            });
+	            this.changeChart();
 	        },
 	        toggleArt: function toggleArt(type) {
 	            switch (type) {
@@ -17837,12 +17835,31 @@
 	        },
 	        changeYear: function changeYear(e) {
 	            this.selectYear = e.target.innerHTML;
+	            this.timeTab = 0;
+	            this.changeChart();
 	        },
 	        changeRangeTab: function changeRangeTab(e) {
 	            this.rangeTab = e.target.getAttribute('data-type') || 0;
+	            this.changeChart();
 	        },
 	        changeTimeTab: function changeTimeTab(e) {
 	            this.timeTab = e.target.getAttribute('data-type') || 0;
+	            this.changeChart();
+	        },
+	        changeChart: function changeChart() {
+	            var _this2 = this;
+
+	            var id = 'individual',
+	                queryId = this.rangeTab === 0 ? this.$route.params.id : this.$store.state.userFaculty.index,
+	                time = this.timeTab;
+
+	            this.$store.dispatch('INIT_CHART', { id: queryId, tab: this.rangeTab, time: time, year: this.selectYear }).then(function (res) {
+	                console.log(res);
+	                _this2.opt = res;
+	                _this2.opt.type = _this2.timeTab;
+	                console.log(_this2.opt);
+	                (0, _setChart2.default)(document.body, id, _this2.opt || {});
+	            });
 	        }
 	    },
 	    computed: {
@@ -17883,12 +17900,65 @@
 	    var canvas = document.getElementById(id);
 	    canvas.width = ref.clientWidth * 0.9;
 
-	    // 创建 echarts 实例
+	    // 创建 echarts 实例    
 	    var myChart = _echarts2.default.init(canvas);
 
 	    // 计时器
 	    var timer = void 0;
-	    console.log(options);
+
+	    // 横轴
+	    var axis = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
+	    function xAxis(range) {
+	        if (range == 1) {
+	            return axis.slice(0, 6);
+	        } else if (range == 2) {
+	            return axis.slice(6);
+	        } else {
+	            return axis;
+	        }
+	    }
+
+	    // 处理数据
+	    function getDate(opt) {
+	        var count = {
+	            teachNum: {
+	                sum: 0,
+	                data: []
+	            },
+	            scientNum: {
+	                sum: 0,
+	                data: []
+	            },
+	            salonNum: {
+	                sum: 0,
+	                data: []
+	            }
+	        },
+	            mon = '',
+	            time = void 0,
+	            type = void 0;
+	        opt.forEach(function (value) {
+	            time = new Date(value.startTime), mon = time.getMonth();
+
+	            switch (value.type) {
+	                case '1':
+	                    type = 'teachNum';
+	                    break;
+	                case '2':
+	                    type = 'scientNum';
+	                    break;
+	                case '3':
+	                    type = 'salonNum';
+	                    break;
+	            }
+	            count[type].data[mon] = count[type].data[mon] ? count[type].data[mon] + 1 : 1;
+	            count[type].sum += 1;
+	        });
+	        console.log(count);
+	        return count;
+	    }
+	    var data = getDate(options);
+	    console.log(data.salonNum.data[5]);
 
 	    // 配置 options
 	    myChart.setOption({
@@ -17916,7 +17986,7 @@
 	        xAxis: [{
 	            type: 'category',
 	            boundaryGap: false,
-	            data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+	            data: xAxis(options.type)
 	        }],
 	        yAxis: [{
 	            type: 'value',
@@ -17927,7 +17997,7 @@
 	        series: [{
 	            name: '教学讨论会',
 	            type: 'line',
-	            data: [11, 11, 15, 13, 12, 13, 10, 11, 11, 15, 13, 12],
+	            data: data.teachNum.data,
 	            markPoint: {
 	                data: [{ type: 'max', name: '最大值' }]
 	            },
@@ -17937,7 +18007,7 @@
 	        }, {
 	            name: '科研研讨会',
 	            type: 'line',
-	            data: [1, 2, 2, 5, 3, 2, 0, 1, 2, 2, 5, 3],
+	            data: data.scientNum.data,
 	            markPoint: {
 	                data: [{ type: 'max', name: '最大值' }]
 	            },
@@ -17947,7 +18017,7 @@
 	        }, {
 	            name: '学术沙龙',
 	            type: 'line',
-	            data: [5, 4, 3, 5, 6, 9, 6, 5, 4, 3, 5, 6],
+	            data: data.salonNum.data,
 	            markPoint: {
 	                data: [{ type: 'max', name: '最大值' }]
 	            },
@@ -17961,12 +18031,12 @@
 	        // resize();
 	        myChart.resize();
 	    });
-	    function resize() {
-	        clearTimeout(timer);
-	        timer = setTimeout(function () {
-	            canvas.width = ref.clientWidth * 0.9;
-	        }, 500);
-	    }
+	    // function resize() {
+	    //     clearTimeout(timer);
+	    //     timer = setTimeout(() => {
+	    //         canvas.width = ref.clientWidth * 0.9;
+	    //     }, 500)
+	    // }
 	}
 
 /***/ },
@@ -85904,6 +85974,26 @@
 	    }
 	  }, [_vm._v("\n                    " + _vm._s(_vm.selectYear) + "\n                ")]), _vm._v(" "), _c('a', {
 	    class: {
+	      'active': _vm.timeTab == 0
+	    },
+	    attrs: {
+	      "data-type": "0"
+	    },
+	    on: {
+	      "click": _vm.changeTimeTab
+	    }
+	  }, [_vm._v("\n                    整年\n                ")]), _vm._v(" "), _c('a', {
+	    class: {
+	      'active': _vm.timeTab == 1
+	    },
+	    attrs: {
+	      "data-type": "1"
+	    },
+	    on: {
+	      "click": _vm.changeTimeTab
+	    }
+	  }, [_vm._v("\n                    上半年\n                ")]), _vm._v(" "), _c('a', {
+	    class: {
 	      'active': _vm.timeTab == 2
 	    },
 	    attrs: {
@@ -85912,27 +86002,7 @@
 	    on: {
 	      "click": _vm.changeTimeTab
 	    }
-	  }, [_vm._v("\n                    整学年\n                ")]), _vm._v(" "), _c('a', {
-	    class: {
-	      'active': _vm.timeTab == 3
-	    },
-	    attrs: {
-	      "data-type": "3"
-	    },
-	    on: {
-	      "click": _vm.changeTimeTab
-	    }
-	  }, [_vm._v("\n                    上半学期\n                ")]), _vm._v(" "), _c('a', {
-	    class: {
-	      'active': _vm.timeTab == 4
-	    },
-	    attrs: {
-	      "data-type": "4"
-	    },
-	    on: {
-	      "click": _vm.changeTimeTab
-	    }
-	  }, [_vm._v("\n                    下半学期\n                ")])])]), _vm._v(" ")]), _vm._v(" "), _c('canvas', {
+	  }, [_vm._v("\n                    下半年\n                ")])])]), _vm._v(" ")]), _vm._v(" "), _c('canvas', {
 	    attrs: {
 	      "id": "individual",
 	      "width": "300",
@@ -85959,7 +86029,7 @@
 	      on: {
 	        "click": _vm.changeYear
 	      }
-	    }, [_vm._v("\n                " + _vm._s(year) + "\n            ")])
+	    }, [_vm._v(_vm._s(year))])
 	  }))])])
 	},staticRenderFns: []}
 	if (false) {

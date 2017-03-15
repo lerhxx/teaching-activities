@@ -29,7 +29,7 @@ const articleSchema = new Schema({
 	title: String,
 	abs: String,
 	time: Date,
-	startTime: String,
+	startTime: Date,
 	endTime: Date,
 	address: String,
 	unit: String,
@@ -80,7 +80,7 @@ const initialize = () => {
 			// })
 		}else {
 			// Models.Article.find(null, (err, doc) => {
-			// 	// doc.map(item => item.remove()) 
+			// 	doc.map(item => item.remove()) 
 			// 	Models.Article.find(null, (err, doc) => {
 			// 		console.log(doc)
 			// 	})

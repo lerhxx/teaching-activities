@@ -307,48 +307,97 @@ router.get('/user/info', (req, res) => {
 	})
 })
 
-router.get('/user/count/:id', (req, res) => {
-	db.Article.find({participator: {$in: [req.params.id]}}, (err, doc) => {
-			if(err) {
-				res.send({state: 1, msg: '查询失败！'})
-			}else {
-				let count = {
-					teachNum: {
-						sum: 0
-					},
-					scientNum: {
-						sum: 0
-					},
-					salonNum: {
-						sum: 0
-					}
-				},
-				year = '',
-				mon = '',
-				type = '';
-				doc.forEach(value => {
-					year = value.startTime.slice(0, 4);
-					mon = value.startTime.slice(5,7);
-					switch(value.type) {
-						case '1': 
-							type = 'teachNum';
-							break;
-						case '2':
-							type = 'scientNum';
-							break;
-						case '3':
-							type = 'salonNum';
-							break;
-					}
-					count[type][year] = count[type][year] ? count[type][year] : {};
-					count[type][year][mon] = count[type][year][mon] ? count[type][year][mon] + 1 : 1;
-					count[type].sum += 1;
-				})
-				res.send({state: 0, data: count})
-			}
-	})
+router.get('/user/count/:id/:tab/:year/:time', (req, res) => {
+	console.log(req.params);
+	let params = req.params,
+		sTime = new Date(),
+		eTime = new Date();
+
+	if(params.time == 0) {
+		sTime = new Date(`${params.year}-01-01`);
+		eTime = new Date(`${params.year}-12-31`);
+	}else if(params.time == 1) {
+		sTime = new Date(`${params.year}-01-01`);
+		eTime = new Date(`${params.year}-06-30`);
+	}else {
+		sTime = new Date(`${params.year}-07-01`);
+		eTime = new Date(`${params.year}-12-31`);
+	}
+
+	if(params.tab === 0) {
+		db.Article.find({participator: {$in: [params.id]}, $and: [{startTime: {$gt: sTime}}, {startTime: {$lt: eTime}}]}, (err, doc) => {
+				if(err) {
+					res.send({state: 1, msg: '查询失败！'})
+				}else {
+					let count = calc(doc);
+					res.send({state: 0, data: count})
+				}
+		})
+	}else {
+		db.Article.find({faculty: {$in: [params.id]} ,$and: [{startTime: {$gt: sTime}}, {startTime: {$lt: eTime}}]}, (err, doc) => {
+			// console.log(doc)
+				if(err) {
+					res.send({state: 1, msg: '查询失败！'})
+				}else {
+					let count = filter(doc);
+					res.send({state: 0, data: count})
+				}
+		})
+	}
+	// res.send({state: 0, data: {startTime}})
 	// db.User.find((err, doc) => {})
 })
+
+function filter(doc) {
+	let result = [];
+
+	doc.forEach(value => {
+		let tmp = {};
+		tmp.startTime = value.startTime;
+		tmp.type = value.type;
+		result.push(tmp);
+	})
+	return result;
+}
+
+function calc(doc) {
+	let count = {
+		teachNum: {
+			sum: 0
+		},
+		scientNum: {
+			sum: 0
+		},
+		salonNum: {
+			sum: 0
+		}
+	},
+	year = '',
+	mon = '',
+	type = '';
+	doc.forEach(value => {
+		let time = new Date(value.startTime);
+		year = time.getFullYear();
+		mon = time.getMonth() + 1;
+		console.log(value.type)
+		switch(value.type) {
+			case '1': 
+				type = 'teachNum';
+				break;
+			case '2':
+				type = 'scientNum';
+				break;
+			case '3':
+				type = 'salonNum';
+				break;
+		}
+		count[type][year] = count[type][year] ? count[type][year] : {};
+		count[type][year][mon] = count[type][year][mon] ? count[type][year][mon] + 1 : 1;
+		count[type].sum += 1;
+	})
+
+	return count;
+}
 
 router.post('/user/addUser', (req, res) => {
 	dbUser.create(req.body, (err, doc) => {

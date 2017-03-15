@@ -116,10 +116,10 @@ export default {
         }
       })
   },
-  INIT_CHART({commit}, info) { 
-    return axios.get(`/user/count/${info.id}`)
-      .then(res => {
+  INIT_CHART({commit}, info) {
+    return axios.get(`/user/count/${info.id}/${info.tab}/${info.year}/${info.time}`).then(res => {
         if(res.data.state == 0) {
+      // console.log(res.data.data)
           return Promise.resolve(res.data.data);
         }else {
           return Promise.reject(res.data.msg);

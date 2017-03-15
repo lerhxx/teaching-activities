@@ -5,7 +5,7 @@ import VFooter from './components/footer.vue';
 import App from './App.vue';
 import './css/common.styl';
 // import './css/form.styl';
-import router from './router'
+import router from './router';
 
 var vm = new Vue({
 	router,
@@ -16,4 +16,3 @@ var vm = new Vue({
 	},
 	render: h => h(App)
 }).$mount('#app');
-console.log(vm.$options)
