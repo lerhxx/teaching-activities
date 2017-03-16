@@ -55,7 +55,9 @@
                 </div>
             </li>-->
         </ul>
-        <canvas id='individual' width='300' height='300'></canvas>
+        <div id='canvas-wrapper'>
+            <canvas v-for='item in charts' :id='item' width='300' height='300'></canvas>
+        </div>
         <div>
             <div>
                 <label>发表: </label>{{opt.postNum}} 次
@@ -80,11 +82,12 @@
 
 <script>
 	import {mapState} from 'vuex';
-    import initChart from '../js/setChart';
+    import {init, refresh} from '../js/setChart';
 
 	export default {
 		data() {
             let year = new Date().getFullYear() - 1;
+
 			return {
 				isPerArt: false,
                 opt: {},
@@ -92,7 +95,14 @@
                 selectYear: year,
                 rangeTab: 1,
                 timeTab: 0,
-                showDialog: false
+                showDialog: false,
+                charts: [
+                    'sumPie',
+                    'sumNum',
+                    'teachNum',
+                    'scientNum',
+                    'salonNum'
+                ]
 			}
 		},
 		mounted() {
@@ -101,11 +111,12 @@
 					clearInterval(a);
                     this.init();
 				}
-			}, 100)
+			}, 100);
+            
 		},
 		methods: {
             init() {
-                this.changeChart();
+                this.initCharts();
             },
 			toggleArt(type) {
                 switch(type) {
@@ -128,28 +139,43 @@
             changeYear(e) {
                 this.selectYear = e.target.innerHTML;
                 this.timeTab = 0;
-                this.changeChart();
+                this.refreshCharts();
             },
             changeRangeTab(e) {
                 this.rangeTab = e.target.getAttribute('data-type') || 0;
-                this.changeChart();
+                this.refreshCharts();
             },
             changeTimeTab(e) {
                 this.timeTab = e.target.getAttribute('data-type') || 0;
-                this.changeChart();
+                this.refreshCharts();
             },
-            changeChart() {
-                let id = 'individual',
+            initCharts() {
+                let id = this.charts,
+                    queryId = this.rangeTab === 0 ? this.$route.params.id : this.$store.state.userFaculty.index,
+                    time = this.timeTab;
+                let ref = document.getElementById('canvas-wrapper');
+
+                if(ref) {
+                this.$store.dispatch('GET_CHARTS_DATA', {id: queryId, tab: this.rangeTab, time: time, year: this.selectYear})
+                    .then(res => {
+                        this.opt = res;
+                        this.opt.type = this.timeTab;
+                        init(ref, id, this.opt || {});
+                    })
+                }
+
+            },
+            refreshCharts() {
+                let id = this.charts,
                     queryId = this.rangeTab === 0 ? this.$route.params.id : this.$store.state.userFaculty.index,
                     time = this.timeTab;
 
-                this.$store.dispatch('INIT_CHART', {id: queryId, tab: this.rangeTab, time: time, year: this.selectYear})
+                this.$store.dispatch('GET_CHARTS_DATA', {id: queryId, tab: this.rangeTab, time: time, year: this.selectYear})
                     .then(res => {
-                        console.log(res)
+                    // console.log(refresh)
                         this.opt = res;
                         this.opt.type = this.timeTab;
-                        console.log(this.opt)
-                        initChart(document.body, id, this.opt || {});
+                        refresh(this.opt || {});
                     })
             }
 		},

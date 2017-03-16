@@ -11073,7 +11073,7 @@
 	      }
 	    });
 	  },
-	  INIT_CHART: function INIT_CHART(_ref13, info) {
+	  GET_CHARTS_DATA: function GET_CHARTS_DATA(_ref13, info) {
 	    var commit = _ref13.commit;
 
 	    return _axios2.default.get('/user/count/' + info.id + '/' + info.tab + '/' + info.year + '/' + info.time).then(function (res) {
@@ -17888,10 +17888,8 @@
 
 	var _setChart = __webpack_require__(107);
 
-	var _setChart2 = _interopRequireDefault(_setChart);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	//
+	//
 	//
 	//
 	//
@@ -17976,6 +17974,7 @@
 	exports.default = {
 	    data: function data() {
 	        var year = new Date().getFullYear() - 1;
+
 	        return {
 	            isPerArt: false,
 	            opt: {},
@@ -17983,7 +17982,8 @@
 	            selectYear: year,
 	            rangeTab: 1,
 	            timeTab: 0,
-	            showDialog: false
+	            showDialog: false,
+	            charts: ['sumPie', 'sumNum', 'teachNum', 'scientNum', 'salonNum']
 	        };
 	    },
 	    mounted: function mounted() {
@@ -17999,7 +17999,7 @@
 
 	    methods: {
 	        init: function init() {
-	            this.changeChart();
+	            this.initCharts();
 	        },
 	        toggleArt: function toggleArt(type) {
 	            switch (type) {
@@ -18022,29 +18022,44 @@
 	        changeYear: function changeYear(e) {
 	            this.selectYear = e.target.innerHTML;
 	            this.timeTab = 0;
-	            this.changeChart();
+	            this.refreshCharts();
 	        },
 	        changeRangeTab: function changeRangeTab(e) {
 	            this.rangeTab = e.target.getAttribute('data-type') || 0;
-	            this.changeChart();
+	            this.refreshCharts();
 	        },
 	        changeTimeTab: function changeTimeTab(e) {
 	            this.timeTab = e.target.getAttribute('data-type') || 0;
-	            this.changeChart();
+	            this.refreshCharts();
 	        },
-	        changeChart: function changeChart() {
+	        initCharts: function initCharts() {
 	            var _this2 = this;
 
-	            var id = 'individual',
+	            var id = this.charts,
+	                queryId = this.rangeTab === 0 ? this.$route.params.id : this.$store.state.userFaculty.index,
+	                time = this.timeTab;
+	            var ref = document.getElementById('canvas-wrapper');
+
+	            if (ref) {
+	                this.$store.dispatch('GET_CHARTS_DATA', { id: queryId, tab: this.rangeTab, time: time, year: this.selectYear }).then(function (res) {
+	                    _this2.opt = res;
+	                    _this2.opt.type = _this2.timeTab;
+	                    (0, _setChart.init)(ref, id, _this2.opt || {});
+	                });
+	            }
+	        },
+	        refreshCharts: function refreshCharts() {
+	            var _this3 = this;
+
+	            var id = this.charts,
 	                queryId = this.rangeTab === 0 ? this.$route.params.id : this.$store.state.userFaculty.index,
 	                time = this.timeTab;
 
-	            this.$store.dispatch('INIT_CHART', { id: queryId, tab: this.rangeTab, time: time, year: this.selectYear }).then(function (res) {
-	                console.log(res);
-	                _this2.opt = res;
-	                _this2.opt.type = _this2.timeTab;
-	                console.log(_this2.opt);
-	                (0, _setChart2.default)(document.body, id, _this2.opt || {});
+	            this.$store.dispatch('GET_CHARTS_DATA', { id: queryId, tab: this.rangeTab, time: time, year: this.selectYear }).then(function (res) {
+	                // console.log(refresh)
+	                _this3.opt = res;
+	                _this3.opt.type = _this3.timeTab;
+	                (0, _setChart.refresh)(_this3.opt || {});
 	            });
 	        }
 	    },
@@ -18073,7 +18088,8 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.default = init;
+	exports.init = init;
+	exports.refresh = refresh;
 
 	var _echarts = __webpack_require__(108);
 
@@ -18081,148 +18097,350 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function init(ref, id, options) {
-	    // 初始化 canvas 宽度
-	    var canvas = document.getElementById(id);
-	    canvas.width = ref.clientWidth * 0.9;
+	var count = {
+	    teachNum: {
+	        sum: 0,
+	        data: [],
+	        name: 'teachNum',
+	        text: '教学讨论会',
+	        color: '#c23531'
+	    },
+	    scientNum: {
+	        sum: 0,
+	        data: [],
+	        name: 'scientNum',
+	        text: '科研研讨会',
+	        color: '#03a9f4'
+	    },
+	    salonNum: {
+	        sum: 0,
+	        data: [],
+	        name: 'salonNum',
+	        text: '学术沙龙',
+	        color: '#8bc34a'
+	    },
+	    sumNum: {
+	        sum: 0,
+	        data: [],
+	        name: 'sumNum',
+	        text: '统计',
+	        color: '#8bc34a'
+	    }
+	};
+	var canvas = [],
+	    myCharts = {};
 
-	    // 创建 echarts 实例    
-	    var myChart = _echarts2.default.init(canvas);
+	// 横轴
+	var axis = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
+	function xAxis(range) {
+	    if (range == 1) {
+	        return axis.slice(0, 6);
+	    } else if (range == 2) {
+	        return axis.slice(6);
+	    } else {
+	        return axis;
+	    }
+	}
+
+	// 处理数据
+	function getData(opt) {
+	    var mon = '',
+	        time = void 0,
+	        type = void 0;
+
+	    //清空数据
+	    for (var k in count) {
+	        count[k].data = [];
+	    }
+
+	    opt.forEach(function (value) {
+	        time = new Date(value.startTime), mon = time.getMonth();
+
+	        switch (value.type) {
+	            case '1':
+	                type = 'teachNum';
+	                break;
+	            case '2':
+	                type = 'scientNum';
+	                break;
+	            case '3':
+	                type = 'salonNum';
+	                break;
+	        }
+	        if (opt.type == 2) {
+	            mon -= 6;
+	        }
+	        count[type].data[mon] = count[type].data[mon] ? count[type].data[mon] + 1 : 1;
+	        count.sumNum.data[mon] = count.sumNum.data[mon] ? count.sumNum.data[mon] + 1 : 1;
+	        count[type].sum += 1;
+	    });
+	    count.maxCount = Math.max(count.teachNum.sum, count.scientNum.sum, count.salonNum.sum);
+	    return count;
+	}
+
+	// 判断数组或对象是否为空
+	function isEmpty(obj) {
+	    if (!obj) {
+	        return true;
+	    }
+
+	    if (Array.prototype.isPrototypeOf(obj) && obj.length === 0) {
+	        return true;
+	    }
+
+	    if (Object.prototype.isPrototypeOf(obj)) {
+	        if (Object.keys(obj).length === 0) {
+	            return true;
+	        } else {
+	            for (var k in obj) {
+	                return false;
+	            }
+	        }
+	        return true;
+	    }
+
+	    return false;
+	}
+
+	function init(ref, ids, options) {
+
+	    var width = ref.clientWidth * 0.45;
+	    ids.forEach(function (value, i) {
+	        // 初始化 canvas 宽度
+	        canvas.push(document.getElementById(value));
+	        canvas[i].width = width;
+
+	        // 创建 echarts 实例    
+	        myCharts[value] = _echarts2.default.init(canvas[i]);
+	    });
 
 	    // 计时器
 	    var timer = void 0;
 
-	    // 横轴
-	    var axis = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
-	    function xAxis(range) {
-	        if (range == 1) {
-	            return axis.slice(0, 6);
-	        } else if (range == 2) {
-	            return axis.slice(6);
-	        } else {
-	            return axis;
-	        }
-	    }
-
-	    // 处理数据
-	    function getDate(opt) {
-	        var count = {
-	            teachNum: {
-	                sum: 0,
-	                data: []
-	            },
-	            scientNum: {
-	                sum: 0,
-	                data: []
-	            },
-	            salonNum: {
-	                sum: 0,
-	                data: []
-	            }
-	        },
-	            mon = '',
-	            time = void 0,
-	            type = void 0;
-	        opt.forEach(function (value) {
-	            time = new Date(value.startTime), mon = time.getMonth();
-
-	            switch (value.type) {
-	                case '1':
-	                    type = 'teachNum';
-	                    break;
-	                case '2':
-	                    type = 'scientNum';
-	                    break;
-	                case '3':
-	                    type = 'salonNum';
-	                    break;
-	            }
-	            count[type].data[mon] = count[type].data[mon] ? count[type].data[mon] + 1 : 1;
-	            count[type].sum += 1;
-	        });
-	        console.log(count);
-	        return count;
-	    }
-	    var data = getDate(options);
-	    console.log(data.salonNum.data[5]);
+	    var data = getData(options);
 
 	    // 配置 options
-	    myChart.setOption({
-	        title: {
-	            text: '我参与会议统计',
-	            subtext: ''
-	        },
-	        tooltip: {
-	            trigger: 'axis'
-	        },
+	    var series = [];
+	    for (var value in myCharts) {
+	        // let option = {};
+	        // if(value === 'sumPie') {
+	        //     let dataPie = [];
+	        //     for(let k in count) {
+	        //         if(k !== 'sumNum') {
+	        //             dataPie.push({value: count[k].sum, name: count[k].text});
+	        //         }
+	        //     }
+
+	        //     option = {
+	        //         title: {
+	        //             text: data.sumNum.text
+	        //         },
+	        //         tooltip: {
+	        //             trigger: 'item',
+	        //             formatter: "{a}<br/>{b}：{c} ({d}%)}"
+	        //         },
+	        //         visualMap: {
+	        //             show: false,
+	        //             min: 1,
+	        //             max: count.maxCount + 5,
+	        //             inRange: {
+	        //                 colorLightness: [0, 1],
+	        //                 color: 'red'
+	        //             }
+	        //         },
+	        //         series: [{
+	        //             naem: data.sumNum.data,
+	        //             type: 'pie',
+	        //             radius: '55%',
+	        //             center: ['50%', '50%'],
+	        //             data: dataPie.sort((a, b) => (a.value - b.value)),
+	        //             roseType: 'angle',
+	        //             label: {
+	        //                 normal: {
+	        //                     textStyle: {
+	        //                         color: 'rgba(0, 0, 0, .5)',
+	        //                         smooth: 0.2,
+	        //                         length: 10,
+	        //                         length2: 20
+	        //                     },
+	        //                     itemStyle: {
+	        //                         normal: {
+	        //                             color: '#c23531',
+	        //                             shadowBlur: 200,
+	        //                             shadowColor: 'rgba(0, 0, 0, .5)'
+	        //                         }
+	        //                     },
+	        //                     animationType: 'scale',
+	        //                     animationEasing: 'elasticOut',
+	        //                     animationDelay: idx => Math.random() * 200
+	        //                 }
+	        //             }
+	        //         }]
+	        //     };
+	        // }else {
+	        //     option = {
+	        //         title : {
+	        //             text: data[value].text,
+	        //             subtext: '',
+	        //             padding: [0]
+	        //         },
+	        //         tooltip : {
+	        //             trigger: 'axis'
+	        //         },
+	        //         toolbox: {
+	        //             show : true,
+	        //             feature : {
+	        //                 mark : {show: true},
+	        //                 dataView : {show: true, readOnly: true},
+	        //                 magicType : {show: true, type: ['line', 'bar']},
+	        //                 restore : {show: true},
+	        //                 saveAsImage : {show: true}
+	        //             }
+	        //         },
+	        //         // calculable : true,
+	        //         xAxis : [
+	        //             {
+	        //                 type : 'category',
+	        //                 boundaryGap : false,
+	        //                 data : xAxis(options.type)
+	        //             }
+	        //         ],
+	        //         yAxis : [
+	        //             {
+	        //                 type : 'value',
+	        //                 axisLabel : {
+	        //                     formatter: '{value}'
+	        //                 },
+	        //                 min: 0,
+	        //                 interval: 1
+	        //             }
+	        //         ],
+	        //         series : [
+	        //             {
+	        //                 name: data[value].text,
+	        //                 type:'line',
+	        //                 data: data[value].data,
+	        //                 lineStyle: {
+	        //                     normal: {
+	        //                         color: data[value].color
+	        //                     }
+	        //                 },
+	        //                 itemStyle: {
+	        //                     normal: {
+	        //                         color: data[value].color
+	        //                     }
+	        //                 },
+	        //                 markPoint : {
+	        //                     data : [
+	        //                         {type : 'max', name: '最大值'}
+	        //                     ]
+	        //                 },
+	        //                 markLine : {
+	        //                     data : [
+	        //                         {type : 'average', name: '平均值'}
+	        //                     ]
+	        //                 }
+	        //             }
+	        //         ]
+	        //     }
+	        // }
+	        if (value != 'sumPie' && value != 'sumNum') {
+	            series.push({
+	                name: data[value].text,
+	                type: 'bar',
+	                itemStyle: {
+	                    emphasis: {
+	                        barBorderWidth: 1,
+	                        shadowBlur: 10,
+	                        shadowOffsetX: 0,
+	                        shadowOffsetY: 0,
+	                        shadowColor: data[value].color
+	                    }
+	                },
+	                data: data[value].data
+	            });
+	        }
+	    }
+	    var option = {
 	        legend: {
-	            data: ['教学讨论会', '科研研讨会', '学术沙龙']
+	            data: ['teachNum', 'scientNum', 'salonNum'],
+	            align: 'center'
+	        },
+	        brush: {
+	            toolbox: ['rect', 'polygon', 'lineX', 'lineY', 'keep', 'clear'],
+	            xAxisIndex: 0
 	        },
 	        toolbox: {
-	            show: true,
 	            feature: {
-	                mark: { show: true },
+	                magicType: {
+	                    type: ['stack', 'tiled']
+	                },
 	                dataView: { show: true, readOnly: true },
-	                magicType: { show: true, type: ['line', 'bar'] },
-	                restore: { show: true },
+	                resotre: { show: true },
 	                saveAsImage: { show: true }
 	            }
 	        },
 	        calculable: true,
-	        xAxis: [{
-	            type: 'category',
+	        visualMap: {
+	            show: false,
+	            min: 0,
+	            max: 10,
+	            inRange: {
+	                colorLightness: [0.5, .8]
+	            },
+	            calculable: true
+	        },
+	        xAxis: {
+	            data: xAxis(options.type),
 	            boundaryGap: false,
-	            data: xAxis(options.type)
-	        }],
-	        yAxis: [{
-	            type: 'value',
+	            splitLine: {
+	                show: false
+	            }
+	        },
+	        yAxis: {
 	            axisLabel: {
 	                formatter: '{value}'
-	            }
-	        }],
-	        series: [{
-	            name: '教学讨论会',
-	            type: 'line',
-	            data: data.teachNum.data,
-	            markPoint: {
-	                data: [{ type: 'max', name: '最大值' }]
 	            },
-	            markLine: {
-	                data: [{ type: 'average', name: '平均值' }]
+	            interval: 1
+	        },
+	        series: series,
+	        tooltip: {
+	            trigger: 'axis',
+	            backgroundColor: '#333',
+	            formatter: "{a}<br/>{b}：{c} ({d}%)}",
+	            bottom: 0,
+	            right: 0,
+	            width: 100,
+	            textStyle: {
+	                fontSize: 12,
+	                color: '#fff'
 	            }
-	        }, {
-	            name: '科研研讨会',
-	            type: 'line',
-	            data: data.scientNum.data,
-	            markPoint: {
-	                data: [{ type: 'max', name: '最大值' }]
-	            },
-	            markLine: {
-	                data: [{ type: 'average', name: '平均值' }]
-	            }
-	        }, {
-	            name: '学术沙龙',
-	            type: 'line',
-	            data: data.salonNum.data,
-	            markPoint: {
-	                data: [{ type: 'max', name: '最大值' }]
-	            },
-	            markLine: {
-	                data: [{ type: 'average', name: '平均值' }]
-	            }
-	        }]
-	    });
+	        }
+	    };
+	    console.log(series);
+	    myCharts.sumNum.setOption(option);
 
-	    window.addEventListener('resize', function () {
-	        // resize();
-	        myChart.resize();
-	    });
-	    // function resize() {
-	    //     clearTimeout(timer);
-	    //     timer = setTimeout(() => {
-	    //         canvas.width = ref.clientWidth * 0.9;
-	    //     }, 500)
-	    // }
+	    // window.addEventListener('resize', () => {
+	    //     for(let k in myCharts) {
+	    //         myCharts[k].resize()
+	    //     }
+	    // })
+	}
+
+	function refresh(options) {
+	    // console.log(myCharts)
+	    if (isEmpty(myCharts)) {
+	        return;
+	    }
+	    var data = getData(options);
+	    var axis = xAxis(options.type);
+
+	    for (var key in myCharts) {
+	        var _options = myCharts[key].getOption();
+	        _options.series[0].data = data[key].data;
+	        _options.xAxis[0].data = axis;
+	        myCharts[key].setOption(_options);
+	    }
 	}
 
 /***/ },
@@ -86188,13 +86406,19 @@
 	    on: {
 	      "click": _vm.changeTimeTab
 	    }
-	  }, [_vm._v("\n                    下半年\n                ")])])]), _vm._v(" ")]), _vm._v(" "), _c('canvas', {
+	  }, [_vm._v("\n                    下半年\n                ")])])]), _vm._v(" ")]), _vm._v(" "), _c('div', {
 	    attrs: {
-	      "id": "individual",
-	      "width": "300",
-	      "height": "300"
+	      "id": "canvas-wrapper"
 	    }
-	  }), _vm._v(" "), _c('div', [_c('div', [_c('label', [_vm._v("发表: ")]), _vm._v(_vm._s(_vm.opt.postNum) + " 次\n        ")]), _vm._v(" "), _c('div', [_c('label', [_vm._v("教学讨论会: ")]), _vm._v(_vm._s(_vm.opt.teachNum && _vm.opt.teachNum.sum) + " 次\n        ")]), _vm._v(" "), _c('div', [_c('label', [_vm._v("科研研讨会: ")]), _vm._v(_vm._s(_vm.opt.scientNum && _vm.opt.scientNum.sum) + " 次\n        ")]), _vm._v(" "), _c('div', [_c('label', [_vm._v("学术沙龙: ")]), _vm._v(_vm._s(_vm.opt.salonNum && _vm.opt.salonNum.sum) + " 次\n        ")])]), _vm._v(" "), _c('div', {
+	  }, _vm._l((_vm.charts), function(item) {
+	    return _c('canvas', {
+	      attrs: {
+	        "id": item,
+	        "width": "300",
+	        "height": "300"
+	      }
+	    })
+	  })), _vm._v(" "), _c('div', [_c('div', [_c('label', [_vm._v("发表: ")]), _vm._v(_vm._s(_vm.opt.postNum) + " 次\n        ")]), _vm._v(" "), _c('div', [_c('label', [_vm._v("教学讨论会: ")]), _vm._v(_vm._s(_vm.opt.teachNum && _vm.opt.teachNum.sum) + " 次\n        ")]), _vm._v(" "), _c('div', [_c('label', [_vm._v("科研研讨会: ")]), _vm._v(_vm._s(_vm.opt.scientNum && _vm.opt.scientNum.sum) + " 次\n        ")]), _vm._v(" "), _c('div', [_c('label', [_vm._v("学术沙龙: ")]), _vm._v(_vm._s(_vm.opt.salonNum && _vm.opt.salonNum.sum) + " 次\n        ")])]), _vm._v(" "), _c('div', {
 	    directives: [{
 	      name: "show",
 	      rawName: "v-show",

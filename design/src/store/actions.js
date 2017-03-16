@@ -116,7 +116,7 @@ export default {
         }
       })
   },
-  INIT_CHART({commit}, info) {
+  GET_CHARTS_DATA({commit}, info) {
     return axios.get(`/user/count/${info.id}/${info.tab}/${info.year}/${info.time}`).then(res => {
         if(res.data.state == 0) {
       // console.log(res.data.data)
