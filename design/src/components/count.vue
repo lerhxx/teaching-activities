@@ -56,7 +56,7 @@
             </li>-->
         </ul>
         <div id='canvas-wrapper'>
-            <canvas v-for='item in charts' :id='item' width='300' height='300'></canvas>
+            <div v-for='item in charts' :id='item' width='300' height='300' class='canvas'></div>
         </div>
         <div>
             <div>
@@ -97,7 +97,6 @@
                 timeTab: 0,
                 showDialog: false,
                 charts: [
-                    'sumPie',
                     'sumNum',
                     'teachNum',
                     'scientNum',
@@ -160,7 +159,7 @@
                     .then(res => {
                         this.opt = res;
                         this.opt.type = this.timeTab;
-                        init(ref, id, this.opt || {});
+                        init(id, this.opt || {});
                     })
                 }
 
@@ -199,7 +198,6 @@
 
 <style scoped lang='stylus'>
     @import '../css/funs';
-
     .select-list
         margin-bottom 50px
         li
@@ -249,4 +247,12 @@
             &:hover
                 color #fff
                 background-color rgba(97, 171, 241, .6)
+    .canvas
+        display inline-block
+        width 45%
+        height 300px
+        margin 15px 0
+    #sumNum
+        width 100%
+        height 450px
 </style>

@@ -17869,7 +17869,7 @@
 
 
 	// module
-	exports.push([module.id, "\n.select-list[data-v-775e5b49] {\n  margin-bottom: 50px;\n}\n.select-list li[data-v-775e5b49] {\n  width: 100%;\n  margin: 5px 0;\n}\n.select-list li label[data-v-775e5b49],\n.select-list li a[data-v-775e5b49],\n.select-list li select[data-v-775e5b49] {\n  display: inline-block;\n}\n.select-list li label[data-v-775e5b49] {\n  padding: 6px 25px;\n  margin-right: 10px;\n  border: 1px solid #ccc;\n  color: #fff;\n  background: #000;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n}\n.select-list li a[data-v-775e5b49] {\n  padding: 6px 15px;\n  border: 1px solid transparent;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n  cursor: pointer;\n}\n.select-list li a.active[data-v-775e5b49],\n.select-list li a[data-v-775e5b49]:hover {\n  color: #44a5f2;\n}\n.select-list li select[data-v-775e5b49] {\n  width: 80px;\n  height: 35px;\n  border: 1px solid transparent;\n  outline: none;\n}\n.dialog-wrapper[data-v-775e5b49] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgba(0,0,0,0.6);\n  z-index: 99;\n}\n.dialog[data-v-775e5b49] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  width: 300px;\n  height: 300px;\n  margin: auto;\n  text-align: center;\n  line-height: 60px;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n  background-color: #fff;\n}\n.dialog li[data-v-775e5b49] {\n  width: 100%;\n  cursor: pointer;\n}\n.dialog li.active[data-v-775e5b49],\n.dialog li[data-v-775e5b49]:hover {\n  color: #fff;\n  background-color: rgba(97,171,241,0.6);\n}\n", ""]);
+	exports.push([module.id, "\n.select-list[data-v-775e5b49] {\n  margin-bottom: 50px;\n}\n.select-list li[data-v-775e5b49] {\n  width: 100%;\n  margin: 5px 0;\n}\n.select-list li label[data-v-775e5b49],\n.select-list li a[data-v-775e5b49],\n.select-list li select[data-v-775e5b49] {\n  display: inline-block;\n}\n.select-list li label[data-v-775e5b49] {\n  padding: 6px 25px;\n  margin-right: 10px;\n  border: 1px solid #ccc;\n  color: #fff;\n  background: #000;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n}\n.select-list li a[data-v-775e5b49] {\n  padding: 6px 15px;\n  border: 1px solid transparent;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n  cursor: pointer;\n}\n.select-list li a.active[data-v-775e5b49],\n.select-list li a[data-v-775e5b49]:hover {\n  color: #44a5f2;\n}\n.select-list li select[data-v-775e5b49] {\n  width: 80px;\n  height: 35px;\n  border: 1px solid transparent;\n  outline: none;\n}\n.dialog-wrapper[data-v-775e5b49] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgba(0,0,0,0.6);\n  z-index: 99;\n}\n.dialog[data-v-775e5b49] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  width: 300px;\n  height: 300px;\n  margin: auto;\n  text-align: center;\n  line-height: 60px;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n  background-color: #fff;\n}\n.dialog li[data-v-775e5b49] {\n  width: 100%;\n  cursor: pointer;\n}\n.dialog li.active[data-v-775e5b49],\n.dialog li[data-v-775e5b49]:hover {\n  color: #fff;\n  background-color: rgba(97,171,241,0.6);\n}\n.canvas[data-v-775e5b49] {\n  display: inline-block;\n  width: 45%;\n  height: 300px;\n  margin: 15px 0;\n}\n#sumNum[data-v-775e5b49] {\n  width: 100%;\n  height: 450px;\n}\n", ""]);
 
 	// exports
 
@@ -17983,7 +17983,7 @@
 	            rangeTab: 1,
 	            timeTab: 0,
 	            showDialog: false,
-	            charts: ['sumPie', 'sumNum', 'teachNum', 'scientNum', 'salonNum']
+	            charts: ['sumNum', 'teachNum', 'scientNum', 'salonNum']
 	        };
 	    },
 	    mounted: function mounted() {
@@ -18044,7 +18044,7 @@
 	                this.$store.dispatch('GET_CHARTS_DATA', { id: queryId, tab: this.rangeTab, time: time, year: this.selectYear }).then(function (res) {
 	                    _this2.opt = res;
 	                    _this2.opt.type = _this2.timeTab;
-	                    (0, _setChart.init)(ref, id, _this2.opt || {});
+	                    (0, _setChart.init)(id, _this2.opt || {});
 	                });
 	            }
 	        },
@@ -18127,8 +18127,14 @@
 	        color: '#8bc34a'
 	    }
 	};
-	var canvas = [],
-	    myCharts = {};
+	var myCharts = {};
+
+	function instance(ids) {
+	    ids.forEach(function (value, i) {
+	        // 创建 echarts 实例    
+	        myCharts[value] = _echarts2.default.init(document.getElementById(value));
+	    });
+	}
 
 	// 横轴
 	var axis = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
@@ -18174,7 +18180,7 @@
 	        count.sumNum.data[mon] = count.sumNum.data[mon] ? count.sumNum.data[mon] + 1 : 1;
 	        count[type].sum += 1;
 	    });
-	    count.maxCount = Math.max(count.teachNum.sum, count.scientNum.sum, count.salonNum.sum);
+	    count.sumNum.minCount = Math.min(count.teachNum.sum, count.scientNum.sum, count.salonNum.sum);
 	    return count;
 	}
 
@@ -18202,224 +18208,183 @@
 	    return false;
 	}
 
-	function init(ref, ids, options) {
+	function pieSeries(sum) {
+	    return {
+	        name: '细分',
+	        type: 'pie',
+	        center: ['70%', '25%'],
+	        radius: [0, 50],
+	        itemStyle: {
+	            normal: {
+	                labelLine: {
+	                    length: 20
+	                }
+	            }
+	        },
+	        label: {
+	            normal: {
+	                textStyle: {
+	                    color: '#000'
+	                }
+	            }
+	        },
+	        data: sum
+	    };
+	}
 
-	    var width = ref.clientWidth * 0.45;
-	    ids.forEach(function (value, i) {
-	        // 初始化 canvas 宽度
-	        canvas.push(document.getElementById(value));
-	        canvas[i].width = width;
+	function barSeries(value) {
+	    console.log(value);
+	    return {
+	        name: value.text,
+	        type: 'bar',
+	        data: value.data,
+	        tooltip: { trigger: 'item' },
+	        stack: 'sum',
+	        barWidth: 25
+	    };
+	}
 
-	        // 创建 echarts 实例    
-	        myCharts[value] = _echarts2.default.init(canvas[i]);
-	    });
-
-	    // 计时器
-	    var timer = void 0;
-
-	    var data = getData(options);
-
-	    // 配置 options
-	    var series = [];
-	    for (var value in myCharts) {
-	        // let option = {};
-	        // if(value === 'sumPie') {
-	        //     let dataPie = [];
-	        //     for(let k in count) {
-	        //         if(k !== 'sumNum') {
-	        //             dataPie.push({value: count[k].sum, name: count[k].text});
-	        //         }
-	        //     }
-
-	        //     option = {
-	        //         title: {
-	        //             text: data.sumNum.text
-	        //         },
-	        //         tooltip: {
-	        //             trigger: 'item',
-	        //             formatter: "{a}<br/>{b}：{c} ({d}%)}"
-	        //         },
-	        //         visualMap: {
-	        //             show: false,
-	        //             min: 1,
-	        //             max: count.maxCount + 5,
-	        //             inRange: {
-	        //                 colorLightness: [0, 1],
-	        //                 color: 'red'
-	        //             }
-	        //         },
-	        //         series: [{
-	        //             naem: data.sumNum.data,
-	        //             type: 'pie',
-	        //             radius: '55%',
-	        //             center: ['50%', '50%'],
-	        //             data: dataPie.sort((a, b) => (a.value - b.value)),
-	        //             roseType: 'angle',
-	        //             label: {
-	        //                 normal: {
-	        //                     textStyle: {
-	        //                         color: 'rgba(0, 0, 0, .5)',
-	        //                         smooth: 0.2,
-	        //                         length: 10,
-	        //                         length2: 20
-	        //                     },
-	        //                     itemStyle: {
-	        //                         normal: {
-	        //                             color: '#c23531',
-	        //                             shadowBlur: 200,
-	        //                             shadowColor: 'rgba(0, 0, 0, .5)'
-	        //                         }
-	        //                     },
-	        //                     animationType: 'scale',
-	        //                     animationEasing: 'elasticOut',
-	        //                     animationDelay: idx => Math.random() * 200
-	        //                 }
-	        //             }
-	        //         }]
-	        //     };
-	        // }else {
-	        //     option = {
-	        //         title : {
-	        //             text: data[value].text,
-	        //             subtext: '',
-	        //             padding: [0]
-	        //         },
-	        //         tooltip : {
-	        //             trigger: 'axis'
-	        //         },
-	        //         toolbox: {
-	        //             show : true,
-	        //             feature : {
-	        //                 mark : {show: true},
-	        //                 dataView : {show: true, readOnly: true},
-	        //                 magicType : {show: true, type: ['line', 'bar']},
-	        //                 restore : {show: true},
-	        //                 saveAsImage : {show: true}
-	        //             }
-	        //         },
-	        //         // calculable : true,
-	        //         xAxis : [
-	        //             {
-	        //                 type : 'category',
-	        //                 boundaryGap : false,
-	        //                 data : xAxis(options.type)
-	        //             }
-	        //         ],
-	        //         yAxis : [
-	        //             {
-	        //                 type : 'value',
-	        //                 axisLabel : {
-	        //                     formatter: '{value}'
-	        //                 },
-	        //                 min: 0,
-	        //                 interval: 1
-	        //             }
-	        //         ],
-	        //         series : [
-	        //             {
-	        //                 name: data[value].text,
-	        //                 type:'line',
-	        //                 data: data[value].data,
-	        //                 lineStyle: {
-	        //                     normal: {
-	        //                         color: data[value].color
-	        //                     }
-	        //                 },
-	        //                 itemStyle: {
-	        //                     normal: {
-	        //                         color: data[value].color
-	        //                     }
-	        //                 },
-	        //                 markPoint : {
-	        //                     data : [
-	        //                         {type : 'max', name: '最大值'}
-	        //                     ]
-	        //                 },
-	        //                 markLine : {
-	        //                     data : [
-	        //                         {type : 'average', name: '平均值'}
-	        //                     ]
-	        //                 }
-	        //             }
-	        //         ]
-	        //     }
-	        // }
-	        if (value != 'sumPie' && value != 'sumNum') {
-	            series.push({
-	                name: data[value].text,
-	                type: 'bar',
-	                itemStyle: {
-	                    emphasis: {
-	                        barBorderWidth: 1,
-	                        shadowBlur: 10,
-	                        shadowOffsetX: 0,
-	                        shadowOffsetY: 0,
-	                        shadowColor: data[value].color
-	                    }
-	                },
-	                data: data[value].data
+	function getSum(data) {
+	    var sum = [];
+	    for (var value in data) {
+	        if (value !== 'sumNum') {
+	            sum.push({
+	                value: data[value].sum,
+	                name: data[value].text
 	            });
 	        }
 	    }
-	    var option = {
-	        legend: {
-	            data: ['teachNum', 'scientNum', 'salonNum'],
-	            align: 'center'
-	        },
-	        brush: {
-	            toolbox: ['rect', 'polygon', 'lineX', 'lineY', 'keep', 'clear'],
-	            xAxisIndex: 0
+	    return sum;
+	}
+
+	function getSeries(data) {
+	    var series = [];
+	    for (var value in data) {
+	        if (value == 'sumNum') {
+	            // 饼图
+	            series.push(pieSeries(getSum(data)));
+	        } else {
+	            series.push(barSeries(data[value]));
+	        }
+	    }
+	    return series;
+	}
+
+	function sumOption(data, type, xAxis) {
+	    return {
+	        title: {
+	            text: data[type].text,
+	            subtext: '',
+	            padding: [0]
 	        },
 	        toolbox: {
+	            show: true,
 	            feature: {
-	                magicType: {
-	                    type: ['stack', 'tiled']
-	                },
+	                mark: { show: true },
 	                dataView: { show: true, readOnly: true },
-	                resotre: { show: true },
+	                magicType: { show: true, type: ['line', 'bar'] },
+	                restore: { show: true },
 	                saveAsImage: { show: true }
 	            }
 	        },
-	        calculable: true,
-	        visualMap: {
-	            show: false,
-	            min: 0,
-	            max: 10,
-	            inRange: {
-	                colorLightness: [0.5, .8]
-	            },
-	            calculable: true
+	        calculable: false,
+	        tooltip: {
+	            formatter: '{a} <br/>{b}: {c}次'
 	        },
-	        xAxis: {
-	            data: xAxis(options.type),
-	            boundaryGap: false,
-	            splitLine: {
-	                show: false
+	        legend: {
+	            data: ['教学讨论会', '科研研讨会', '学术沙龙']
+	        },
+	        xAxis: [{
+	            type: 'category',
+	            boundaryGap: true,
+	            data: xAxis
+	        }],
+	        yAxis: [{
+	            type: 'value',
+	            max: count.sumNum.minCount
+	        }],
+	        series: getSeries(data)
+	    };
+	}
+
+	function lineOption(value, xAxis) {
+	    return {
+	        title: {
+	            text: value.text,
+	            subtext: '',
+	            padding: [0]
+	        },
+	        tooltip: {
+	            trigger: 'axis',
+	            formatter: '{a} <br/>{b}: {c} 次'
+	        },
+	        toolbox: {
+	            show: true,
+	            feature: {
+	                mark: { show: true },
+	                dataView: { show: true, readOnly: true },
+	                magicType: { show: true, type: ['line', 'bar'] },
+	                restore: { show: true },
+	                saveAsImage: { show: true }
 	            }
 	        },
-	        yAxis: {
+	        calculable: false,
+	        xAxis: [{
+	            type: 'category',
+	            boundaryGap: false,
+	            data: xAxis
+	        }],
+	        yAxis: [{
+	            type: 'value',
 	            axisLabel: {
 	                formatter: '{value}'
 	            },
+	            min: 0,
 	            interval: 1
-	        },
-	        series: series,
-	        tooltip: {
-	            trigger: 'axis',
-	            backgroundColor: '#333',
-	            formatter: "{a}<br/>{b}：{c} ({d}%)}",
-	            bottom: 0,
-	            right: 0,
-	            width: 100,
-	            textStyle: {
-	                fontSize: 12,
-	                color: '#fff'
+	        }],
+	        series: [{
+	            name: value.text,
+	            type: 'line',
+	            data: value.data,
+	            lineStyle: {
+	                normal: {
+	                    color: value.color
+	                }
+	            },
+	            itemStyle: {
+	                normal: {
+	                    color: value.color
+	                }
+	            },
+	            markPoint: {
+	                data: [{ type: 'max', name: '最大值' }]
+	            },
+	            markLine: {
+	                data: [{ type: 'average', name: '平均值' }]
 	            }
-	        }
+	        }]
 	    };
-	    console.log(series);
-	    myCharts.sumNum.setOption(option);
+	}
 
+	function init(ids, options) {
+	    instance(ids);
+
+	    var data = getData(options);
+
+	    var axis = xAxis(options.type);
+
+	    // 配置 options
+	    for (var value in myCharts) {
+	        var option = {};
+
+	        if (value === 'sumNum') {
+	            option = sumOption(data, 'sumNum', axis);
+	        } else {
+	            option = lineOption(data[value], axis);
+	        }
+	        myCharts[value].setOption(option);
+	        // console.log(option)
+	    }
 	    // window.addEventListener('resize', () => {
 	    //     for(let k in myCharts) {
 	    //         myCharts[k].resize()
@@ -18437,7 +18402,20 @@
 
 	    for (var key in myCharts) {
 	        var _options = myCharts[key].getOption();
-	        _options.series[0].data = data[key].data;
+	        var sumOptions = myCharts.sumNum.getOption();
+	        if (key !== 'sumNum') {
+	            _options.series[0].data = data[key].data;
+	            // sumOptions.series
+	        } else {
+	                // let len = options.series.length;
+	                // for(let i = 0; i < len; ++i) {
+	                //     if(options.series[i].type === 'pie') {
+	                //         options.series[i].data = getSum(data);
+	                //     }
+	                // }
+	                // options.series[0].data = data;
+	                // console.log(data)
+	            }
 	        _options.xAxis[0].data = axis;
 	        myCharts[key].setOption(_options);
 	    }
@@ -86411,7 +86389,8 @@
 	      "id": "canvas-wrapper"
 	    }
 	  }, _vm._l((_vm.charts), function(item) {
-	    return _c('canvas', {
+	    return _c('div', {
+	      staticClass: "canvas",
 	      attrs: {
 	        "id": item,
 	        "width": "300",
