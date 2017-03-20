@@ -1,11 +1,6 @@
 <template>
     <div>
         <ul class='select-list'>
-            <!--<li class='art-list-item' :class="{active: isPerArt}" @click='toggleArt(1)'>
-                <a>个人</a>
-            </li><li class='art-list-item' :class="{active: !isPerArt}" @click='toggleArt(2)'>
-                <a>单位</a>
-            </li>-->
             <li v-show='userRank > 0'>
                 <div>
                     <label>范围</label>
@@ -55,10 +50,13 @@
                 </div>
             </li>-->
         </ul>
-        <div id='canvas-wrapper'>
+        <div v-show='empty' class='empty'>
+            暂无记录
+        </div>
+        <div id='canvas-wrapper' v-show='!empty'>
             <div v-for='item in charts' :id='item' width='300' height='300' class='canvas'></div>
         </div>
-        <div>
+        <!--<div>
             <div>
                 <label>发表: </label>{{opt.postNum}} 次
             </div>
@@ -71,7 +69,7 @@
             <div>
                 <label>学术沙龙: </label>{{opt.salonNum && opt.salonNum.sum}} 次
             </div>
-        </div>
+        </div>-->
         <div class='dialog-wrapper' @click='hideDialog' v-show='showDialog'>
             <ul class='dialog'>
                 <li v-for='year in years' :class="{'active': year == selectYear}" @click='changeYear'>{{year}}</li>
@@ -83,6 +81,7 @@
 <script>
 	import {mapState} from 'vuex';
     import {init, refresh} from '../js/setChart';
+    import {isEmpty} from '../js/common.js';
 
 	export default {
 		data() {
@@ -102,7 +101,8 @@
                     // 'scientNum',
                     // 'salonNum'
                     'itemNum'
-                ]
+                ],
+                empty: false
 			}
 		},
 		mounted() {
@@ -158,9 +158,14 @@
                 if(ref) {
                 this.$store.dispatch('GET_CHARTS_DATA', {id: queryId, tab: this.rangeTab, time: time, year: this.selectYear})
                     .then(res => {
-                        this.opt = res;
-                        this.opt.type = this.timeTab;
-                        init(id, this.opt || {});
+                        if(!isEmpty(res)) {
+                            this.empty = false;
+                            this.opt = res;
+                            this.opt.type = this.timeTab;
+                            init(id, this.opt || {});
+                        }else {
+                            this.empty = true;
+                        }
                     })
                 }
 
@@ -172,10 +177,14 @@
 
                 this.$store.dispatch('GET_CHARTS_DATA', {id: queryId, tab: this.rangeTab, time: time, year: this.selectYear})
                     .then(res => {
-                    // console.log(this.selectYear)
-                        this.opt = res;
-                        this.opt.type = this.timeTab;
-                        refresh(this.opt || {});
+                         if(!isEmpty(res)) {
+                            this.empty = false;
+                            this.opt = res;
+                            this.opt.type = this.timeTab;
+                            refresh(this.opt || {});
+                        }else {
+                            this.empty = true;
+                        }
                     })
             }
 		},
@@ -258,4 +267,9 @@
         height 450px
     #itemNum
         width 100%
+    .empty
+        margin 30px 0
+        color #ddd
+        text-align center
+        font-size 2rem
 </style>

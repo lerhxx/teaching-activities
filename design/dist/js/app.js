@@ -17869,7 +17869,7 @@
 
 
 	// module
-	exports.push([module.id, "\n.select-list[data-v-775e5b49] {\n  margin-bottom: 50px;\n}\n.select-list li[data-v-775e5b49] {\n  width: 100%;\n  margin: 5px 0;\n}\n.select-list li label[data-v-775e5b49],\n.select-list li a[data-v-775e5b49],\n.select-list li select[data-v-775e5b49] {\n  display: inline-block;\n}\n.select-list li label[data-v-775e5b49] {\n  padding: 6px 25px;\n  margin-right: 10px;\n  border: 1px solid #ccc;\n  color: #fff;\n  background: #000;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n}\n.select-list li a[data-v-775e5b49] {\n  padding: 6px 15px;\n  border: 1px solid transparent;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n  cursor: pointer;\n}\n.select-list li a.active[data-v-775e5b49],\n.select-list li a[data-v-775e5b49]:hover {\n  color: #44a5f2;\n}\n.select-list li select[data-v-775e5b49] {\n  width: 80px;\n  height: 35px;\n  border: 1px solid transparent;\n  outline: none;\n}\n.dialog-wrapper[data-v-775e5b49] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgba(0,0,0,0.6);\n  z-index: 99;\n}\n.dialog[data-v-775e5b49] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  width: 300px;\n  height: 300px;\n  margin: auto;\n  text-align: center;\n  line-height: 60px;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n  background-color: #fff;\n}\n.dialog li[data-v-775e5b49] {\n  width: 100%;\n  cursor: pointer;\n}\n.dialog li.active[data-v-775e5b49],\n.dialog li[data-v-775e5b49]:hover {\n  color: #fff;\n  background-color: rgba(97,171,241,0.6);\n}\n.canvas[data-v-775e5b49] {\n  display: inline-block;\n  width: 45%;\n  height: 300px;\n  margin: 15px 0;\n}\n#sumNum[data-v-775e5b49] {\n  width: 100%;\n  height: 450px;\n}\n#itemNum[data-v-775e5b49] {\n  width: 100%;\n}\n", ""]);
+	exports.push([module.id, "\n.select-list[data-v-775e5b49] {\n  margin-bottom: 50px;\n}\n.select-list li[data-v-775e5b49] {\n  width: 100%;\n  margin: 5px 0;\n}\n.select-list li label[data-v-775e5b49],\n.select-list li a[data-v-775e5b49],\n.select-list li select[data-v-775e5b49] {\n  display: inline-block;\n}\n.select-list li label[data-v-775e5b49] {\n  padding: 6px 25px;\n  margin-right: 10px;\n  border: 1px solid #ccc;\n  color: #fff;\n  background: #000;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n}\n.select-list li a[data-v-775e5b49] {\n  padding: 6px 15px;\n  border: 1px solid transparent;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n  cursor: pointer;\n}\n.select-list li a.active[data-v-775e5b49],\n.select-list li a[data-v-775e5b49]:hover {\n  color: #44a5f2;\n}\n.select-list li select[data-v-775e5b49] {\n  width: 80px;\n  height: 35px;\n  border: 1px solid transparent;\n  outline: none;\n}\n.dialog-wrapper[data-v-775e5b49] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgba(0,0,0,0.6);\n  z-index: 99;\n}\n.dialog[data-v-775e5b49] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  width: 300px;\n  height: 300px;\n  margin: auto;\n  text-align: center;\n  line-height: 60px;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n  background-color: #fff;\n}\n.dialog li[data-v-775e5b49] {\n  width: 100%;\n  cursor: pointer;\n}\n.dialog li.active[data-v-775e5b49],\n.dialog li[data-v-775e5b49]:hover {\n  color: #fff;\n  background-color: rgba(97,171,241,0.6);\n}\n.canvas[data-v-775e5b49] {\n  display: inline-block;\n  width: 45%;\n  height: 300px;\n  margin: 15px 0;\n}\n#sumNum[data-v-775e5b49] {\n  width: 100%;\n  height: 450px;\n}\n#itemNum[data-v-775e5b49] {\n  width: 100%;\n}\n.empty[data-v-775e5b49] {\n  margin: 30px 0;\n  color: #ddd;\n  text-align: center;\n  font-size: 2rem;\n}\n", ""]);
 
 	// exports
 
@@ -17888,88 +17888,7 @@
 
 	var _setChart = __webpack_require__(107);
 
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
+	var _common = __webpack_require__(511);
 
 	exports.default = {
 	    data: function data() {
@@ -17987,7 +17906,8 @@
 	            // 'teachNum',
 	            // 'scientNum',
 	            // 'salonNum'
-	            'itemNum']
+	            'itemNum'],
+	            empty: false
 	        };
 	    },
 	    mounted: function mounted() {
@@ -18046,9 +17966,14 @@
 
 	            if (ref) {
 	                this.$store.dispatch('GET_CHARTS_DATA', { id: queryId, tab: this.rangeTab, time: time, year: this.selectYear }).then(function (res) {
-	                    _this2.opt = res;
-	                    _this2.opt.type = _this2.timeTab;
-	                    (0, _setChart.init)(id, _this2.opt || {});
+	                    if (!(0, _common.isEmpty)(res)) {
+	                        _this2.empty = false;
+	                        _this2.opt = res;
+	                        _this2.opt.type = _this2.timeTab;
+	                        (0, _setChart.init)(id, _this2.opt || {});
+	                    } else {
+	                        _this2.empty = true;
+	                    }
 	                });
 	            }
 	        },
@@ -18060,10 +17985,14 @@
 	                time = this.timeTab;
 
 	            this.$store.dispatch('GET_CHARTS_DATA', { id: queryId, tab: this.rangeTab, time: time, year: this.selectYear }).then(function (res) {
-	                // console.log(this.selectYear)
-	                _this3.opt = res;
-	                _this3.opt.type = _this3.timeTab;
-	                (0, _setChart.refresh)(_this3.opt || {});
+	                if (!(0, _common.isEmpty)(res)) {
+	                    _this3.empty = false;
+	                    _this3.opt = res;
+	                    _this3.opt.type = _this3.timeTab;
+	                    (0, _setChart.refresh)(_this3.opt || {});
+	                } else {
+	                    _this3.empty = true;
+	                }
 	            });
 	        }
 	    },
@@ -18081,7 +18010,86 @@
 	            return arr;
 	        }
 	    }
-	};
+	}; //
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 /***/ },
 /* 107 */
@@ -18102,6 +18110,8 @@
 	var _echartsLiquidfillMin = __webpack_require__(509);
 
 	var _echartsLiquidfillMin2 = _interopRequireDefault(_echartsLiquidfillMin);
+
+	var _common = __webpack_require__(511);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18194,30 +18204,6 @@
 	    });
 	    count.sumNum.minCount = Math.min(count.teachNum.sum, count.scientNum.sum, count.salonNum.sum);
 	    return count;
-	}
-
-	// 判断数组或对象是否为空
-	function isEmpty(obj) {
-	    if (!obj) {
-	        return true;
-	    }
-
-	    if (Array.prototype.isPrototypeOf(obj) && obj.length === 0) {
-	        return true;
-	    }
-
-	    if (Object.prototype.isPrototypeOf(obj)) {
-	        if (Object.keys(obj).length === 0) {
-	            return true;
-	        } else {
-	            for (var k in obj) {
-	                return false;
-	            }
-	        }
-	        return true;
-	    }
-
-	    return false;
 	}
 
 	// 'sumNum'图表
@@ -18333,6 +18319,7 @@
 
 	function init(ids, options) {
 	    instance(ids);
+	    console.log(options);
 
 	    var data = getData(options);
 
@@ -18354,9 +18341,11 @@
 	}
 
 	function refresh(options) {
-	    if (isEmpty(myCharts)) {
+	    console.log(myCharts);
+	    if ((0, _common.isEmpty)(myCharts)) {
 	        return;
 	    }
+	    console.log(options);
 	    var data = getData(options);
 	    var axis = xAxis(options.type);
 	    var percent = getPercent(data);
@@ -18448,6 +18437,20 @@
 	      "click": _vm.changeTimeTab
 	    }
 	  }, [_vm._v("\n                    下半年\n                ")])])]), _vm._v(" ")]), _vm._v(" "), _c('div', {
+	    directives: [{
+	      name: "show",
+	      rawName: "v-show",
+	      value: (_vm.empty),
+	      expression: "empty"
+	    }],
+	    staticClass: "empty"
+	  }, [_vm._v("\n        暂无记录\n    ")]), _vm._v(" "), _c('div', {
+	    directives: [{
+	      name: "show",
+	      rawName: "v-show",
+	      value: (!_vm.empty),
+	      expression: "!empty"
+	    }],
 	    attrs: {
 	      "id": "canvas-wrapper"
 	    }
@@ -18460,7 +18463,7 @@
 	        "height": "300"
 	      }
 	    })
-	  })), _vm._v(" "), _c('div', [_c('div', [_c('label', [_vm._v("发表: ")]), _vm._v(_vm._s(_vm.opt.postNum) + " 次\n        ")]), _vm._v(" "), _c('div', [_c('label', [_vm._v("教学讨论会: ")]), _vm._v(_vm._s(_vm.opt.teachNum && _vm.opt.teachNum.sum) + " 次\n        ")]), _vm._v(" "), _c('div', [_c('label', [_vm._v("科研研讨会: ")]), _vm._v(_vm._s(_vm.opt.scientNum && _vm.opt.scientNum.sum) + " 次\n        ")]), _vm._v(" "), _c('div', [_c('label', [_vm._v("学术沙龙: ")]), _vm._v(_vm._s(_vm.opt.salonNum && _vm.opt.salonNum.sum) + " 次\n        ")])]), _vm._v(" "), _c('div', {
+	  })), _vm._v(" "), _vm._v(" "), _c('div', {
 	    directives: [{
 	      name: "show",
 	      rawName: "v-show",
@@ -88757,6 +88760,40 @@
 		return module;
 	}
 
+
+/***/ },
+/* 511 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.isEmpty = isEmpty;
+	function isEmpty(obj) {
+	    // 判断数组或对象是否为空
+	    if (!obj) {
+	        return true;
+	    }
+
+	    if (Array.prototype.isPrototypeOf(obj) && obj.length === 0) {
+	        return true;
+	    }
+
+	    if (Object.prototype.isPrototypeOf(obj)) {
+	        if (Object.keys(obj).length === 0) {
+	            return true;
+	        } else {
+	            for (var k in obj) {
+	                return false;
+	            }
+	        }
+	        return true;
+	    }
+
+	    return false;
+	}
 
 /***/ }
 /******/ ]);

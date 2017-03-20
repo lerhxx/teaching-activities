@@ -1,5 +1,6 @@
 import echarts from 'echarts';
 import liquidfill from './echarts-liquidfill.min.js';
+import {isEmpty} from './common.js';
 
 let count = {
     teachNum: {
@@ -90,30 +91,6 @@ function getData(opt) {
     })
     count.sumNum.minCount = Math.min(count.teachNum.sum, count.scientNum.sum, count.salonNum.sum)
     return count;
-}
-
-// 判断数组或对象是否为空
-function isEmpty(obj) {
-    if(!obj) {
-        return true;
-    }
-
-    if(Array.prototype.isPrototypeOf(obj) && obj.length === 0) {
-        return true;
-    }
-
-    if(Object.prototype.isPrototypeOf(obj)) {
-        if(Object.keys(obj).length === 0) {
-            return true;
-        }else {
-            for(let k in obj) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    return false;
 }
 
 // 'sumNum'图表
@@ -231,6 +208,7 @@ function getPercent(data) {
 
 export function init(ids, options) {
     instance(ids);
+    console.log(options)
 
     let data = getData(options);
 
@@ -252,9 +230,11 @@ export function init(ids, options) {
 } 
 
 export function refresh(options) {
+    console.log(myCharts)
     if(isEmpty(myCharts)) {
         return;
     }
+    console.log(options)
     let data = getData(options);
     let axis = xAxis(options.type);
     let percent = getPercent(data);

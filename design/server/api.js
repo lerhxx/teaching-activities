@@ -323,18 +323,18 @@ router.get('/user/count/:id/:tab/:year/:time', (req, res) => {
 		eTime = new Date(`${params.year * 1 + 1}-01-01`);
 	}
 
-	if(params.tab === 0) {
+	if(params.tab == 0) {
 		db.Article.find({participator: {$in: [params.id]}, $and: [{startTime: {$gt: sTime}}, {startTime: {$lt: eTime}}]}, (err, doc) => {
+				console.log(doc)
 				if(err) {
 					res.send({state: 1, msg: '查询失败！'})
 				}else {
-					let count = calc(doc);
+					let count = filter(doc);
 					res.send({state: 0, data: count})
 				}
 		})
-	}else {
+	}else if(params.tab == 1) {
 		db.Article.find({faculty: {$in: [params.id]} ,$and: [{startTime: {$gt: sTime}}, {startTime: {$lt: eTime}}]}, (err, doc) => {
-			// console.log(doc)
 				if(err) {
 					res.send({state: 1, msg: '查询失败！'})
 				}else {
@@ -348,6 +348,9 @@ router.get('/user/count/:id/:tab/:year/:time', (req, res) => {
 })
 
 function filter(doc) {
+	if(doc.length === 0) {
+		return {};
+	}
 	let result = [];
 
 	doc.forEach(value => {
