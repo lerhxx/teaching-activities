@@ -17981,6 +17981,11 @@
 	        count[k].data = [];
 	    }
 
+	    // 重置sum
+	    for (var _k in count) {
+	        count[_k].sum = 0;
+	    }
+
 	    opt.forEach(function (value) {
 	        time = new Date(value.startTime), mon = time.getMonth();
 
@@ -18030,137 +18035,7 @@
 	    return false;
 	}
 
-	// function pieSeries(sum) {
-	//     return {
-	//         name: '细分',
-	//         type: 'pie',
-	//         center: ['70%', '25%'],
-	//         radius: [0, 50],
-	//         itemStyle: {
-	//             normal: {
-	//                 labelLine: {
-	//                     length: 20
-	//                 }
-	//             }
-	//         },
-	//         label: {
-	//             normal: {
-	//                 textStyle: {
-	//                     color: '#000',
-	//                 }
-	//             }
-	//         },
-	//         data: sum
-	//     }
-	// }
-
-	// function barSeries(value) {
-	//     console.log(value)
-	//     return {
-	//         name: value.text,
-	//         type: 'bar',
-	//         data: value.data,
-	//         tooltip: {trigger: 'item'},
-	//         stack: 'sum',
-	//         barWidth: 25,
-	//     }
-	// }
-
-	// function lineOption(value, xAxis) {
-	//     return {
-	//         title : {
-	//             text: value.text,
-	//             subtext: '',
-	//             padding: [0]
-	//         },
-	//         tooltip : {
-	//             trigger: 'axis',
-	//             formatter: '{a} <br/>{b}: {c} 次'
-	//         },
-	//         toolbox: {
-	//             show : true,
-	//             feature : {
-	//                 mark : {show: true},
-	//                 dataView : {show: true, readOnly: true},
-	//                 magicType : {show: true, type: ['line', 'bar']},
-	//                 restore : {show: true},
-	//                 saveAsImage : {show: true}
-	//             }
-	//         },
-	//         calculable : false,
-	//         xAxis : [
-	//             {
-	//                 type : 'category',
-	//                 boundaryGap : false,
-	//                 data : xAxis
-	//             }
-	//         ],
-	//         yAxis : [
-	//             {
-	//                 type : 'value',
-	//                 axisLabel : {
-	//                     formatter: '{value}'
-	//                 },
-	//                 min: 0,
-	//                 interval: 1
-	//             }
-	//         ],
-	//         series : [
-	//             {
-	//                 name: value.text,
-	//                 type:'line',
-	//                 data: value.data,
-	//                 lineStyle: {
-	//                     normal: {
-	//                         color: value.color
-	//                     }
-	//                 },
-	//                 itemStyle: {
-	//                     normal: {
-	//                         color: value.color
-	//                     }
-	//                 },
-	//                 markPoint : {
-	//                     data : [
-	//                         {type : 'max', name: '最大值'}
-	//                     ]
-	//                 },
-	//                 markLine : {
-	//                     data : [
-	//                         {type : 'average', name: '平均值'}
-	//                     ]
-	//                 }
-	//             }
-	//         ]
-	//     }
-	// }
-
-	// function getSum(data) {
-	//     let sum = [];
-	//     for(let value in data) {
-	//         if(value !== 'sumNum') {
-	//             sum.push({
-	//                 value: data[value].sum,
-	//                 name: data[value].text,
-	//             });
-	//         }
-	//     }
-	//     return sum;
-	// }
-
-	// function getSeries(data) {
-	//     let series = [];
-	//     for(let value in data) {
-	//         if(value == 'sumNum') {
-	//             // 饼图
-	//             series.push(pieSeries(getSum(data)))
-	//         }else{
-	//             series.push(barSeries(data[value]))
-	//         }
-	//     }
-	//     return series;
-	// }
-
+	// 'sumNum'图表
 	function sumOption(data, type, xAxis) {
 	    var series = [];
 	    for (var key in data) {
@@ -18170,6 +18045,7 @@
 	        var value = data[key];
 	        series.push({
 	            name: value.text,
+	            text: value.name,
 	            type: 'line',
 	            stack: 'sum',
 	            areaStyle: {
@@ -18212,16 +18088,16 @@
 	        series: series
 	    };
 	}
-
+	// 'itemNum'水球图
 	function liquid(opt, sum) {
-	    // console.log(opt);
 	    var series = [],
 	        i = 1;
 	    for (var key in opt) {
 	        var value = opt[key];
 
 	        series.push({
-	            name: value.text,
+	            name: value.name,
+	            text: value.text,
 	            type: 'liquidFill',
 	            data: [(value.data / sum).toFixed(2)],
 	            center: [i++ * 30 - 10 + '%', '50%'],
@@ -18245,7 +18121,7 @@
 	        series: series
 	    };
 	}
-
+	// 获取各项百分比
 	function getPercent(data) {
 	    var percent = {};
 	    var sum = 0;
@@ -18257,10 +18133,12 @@
 	            continue;
 	        }
 	        percent[key] = {
-	            text: data[key].text,
+	            text: data[key].name,
+	            name: data[key].text,
 	            data: data[key].sum
 	        };
 	        sum += data[key].sum;
+	        // console.log(percent[key].data)
 	    }
 
 	    return { sum: sum, max: max, percent: percent };
@@ -18268,7 +18146,7 @@
 
 	function init(ids, options) {
 	    instance(ids);
-	    console.log(options);
+
 	    var data = getData(options);
 
 	    var axis = xAxis(options.type);
@@ -18289,31 +18167,36 @@
 	            option = liquid(percent, sum);
 	        }
 	        myCharts[value].setOption(option);
-	        // console.log(option)
 	    }
 	}
 
 	function refresh(options) {
-	    // console.log(myCharts)
 	    if (isEmpty(myCharts)) {
 	        return;
 	    }
 	    var data = getData(options);
+
 	    var axis = xAxis(options.type);
-	    console.log(options);
+
+	    var _getPercent2 = getPercent(data),
+	        sum = _getPercent2.sum,
+	        percent = _getPercent2.percent,
+	        max = _getPercent2.max;
+
 	    for (var key in myCharts) {
-	        var _options = myCharts[key].getOption();
-	        var sumOptions = myCharts.sumNum.getOption();
-	        if (key !== 'sumNum') {
-	            console.log(_options.series);
-	            _options.series.forEach(function (value) {
-	                value.data = 0;
+	        var opt = myCharts[key].getOption();
+
+	        if (key === 'sumNum') {
+	            opt.series.forEach(function (value) {
+	                value.data = data[value.text].data;
 	            });
-	            _options.series[0].data = data[key].data;
-	            // sumOptions.series
-	        } else {}
-	        _options.xAxis[0].data = axis;
-	        myCharts[key].setOption(_options);
+	            opt.xAxis[0].data = axis;
+	        } else {
+	            opt.series.forEach(function (value) {
+	                value.data = [(percent[value.text].data / sum).toFixed(2)];
+	            });
+	        }
+	        myCharts[key].setOption(opt);
 	    }
 	}
 

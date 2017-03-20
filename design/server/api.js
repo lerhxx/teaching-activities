@@ -318,10 +318,10 @@ router.get('/user/count/:id/:tab/:year/:time', (req, res) => {
 		eTime = new Date(`${params.year}-12-31`);
 	}else if(params.time == 1) {
 		sTime = new Date(`${params.year}-01-01`);
-		eTime = new Date(`${params.year}-06-30`);
+		eTime = new Date(`${params.year}-07-01`);
 	}else {
 		sTime = new Date(`${params.year}-07-01`);
-		eTime = new Date(`${params.year}-12-31`);
+		eTime = new Date(`${params.year + 1}-01-01`);
 	}
 
 	if(params.tab === 0) {

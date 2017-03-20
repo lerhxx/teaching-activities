@@ -63,6 +63,11 @@ function getData(opt) {
         count[k].data = [];
     }
 
+    // 重置sum
+    for(let k in count) {
+        count[k].sum = 0;
+    }
+
     opt.forEach(value => {
         time = new Date(value.startTime),
         mon = time.getMonth();
@@ -113,137 +118,7 @@ function isEmpty(obj) {
     return false;
 }
 
-// function pieSeries(sum) {
-//     return {
-//         name: '细分',
-//         type: 'pie',
-//         center: ['70%', '25%'],
-//         radius: [0, 50],
-//         itemStyle: {
-//             normal: {
-//                 labelLine: {
-//                     length: 20
-//                 }
-//             }
-//         },
-//         label: {
-//             normal: {
-//                 textStyle: {
-//                     color: '#000',
-//                 }
-//             }
-//         },
-//         data: sum
-//     }
-// }
-
-// function barSeries(value) {
-//     console.log(value)
-//     return {
-//         name: value.text,
-//         type: 'bar',
-//         data: value.data,
-//         tooltip: {trigger: 'item'},
-//         stack: 'sum',
-//         barWidth: 25,
-//     }
-// }
-
-// function lineOption(value, xAxis) {
-//     return {
-//         title : {
-//             text: value.text,
-//             subtext: '',
-//             padding: [0]
-//         },
-//         tooltip : {
-//             trigger: 'axis',
-//             formatter: '{a} <br/>{b}: {c} 次'
-//         },
-//         toolbox: {
-//             show : true,
-//             feature : {
-//                 mark : {show: true},
-//                 dataView : {show: true, readOnly: true},
-//                 magicType : {show: true, type: ['line', 'bar']},
-//                 restore : {show: true},
-//                 saveAsImage : {show: true}
-//             }
-//         },
-//         calculable : false,
-//         xAxis : [
-//             {
-//                 type : 'category',
-//                 boundaryGap : false,
-//                 data : xAxis
-//             }
-//         ],
-//         yAxis : [
-//             {
-//                 type : 'value',
-//                 axisLabel : {
-//                     formatter: '{value}'
-//                 },
-//                 min: 0,
-//                 interval: 1
-//             }
-//         ],
-//         series : [
-//             {
-//                 name: value.text,
-//                 type:'line',
-//                 data: value.data,
-//                 lineStyle: {
-//                     normal: {
-//                         color: value.color
-//                     }
-//                 },
-//                 itemStyle: {
-//                     normal: {
-//                         color: value.color
-//                     }
-//                 },
-//                 markPoint : {
-//                     data : [
-//                         {type : 'max', name: '最大值'}
-//                     ]
-//                 },
-//                 markLine : {
-//                     data : [
-//                         {type : 'average', name: '平均值'}
-//                     ]
-//                 }
-//             }
-//         ]
-//     }
-// }
-
-// function getSum(data) {
-//     let sum = [];
-//     for(let value in data) {
-//         if(value !== 'sumNum') {
-//             sum.push({
-//                 value: data[value].sum,
-//                 name: data[value].text,
-//             });
-//         }
-//     }
-//     return sum;
-// }
-
-// function getSeries(data) {
-//     let series = [];
-//     for(let value in data) {
-//         if(value == 'sumNum') {
-//             // 饼图
-//             series.push(pieSeries(getSum(data)))
-//         }else{
-//             series.push(barSeries(data[value]))
-//         }
-//     }
-//     return series;
-// }
-
+// 'sumNum'图表
 function sumOption(data, type, xAxis) {
     let series = [];
     for(let key in data) {
@@ -253,6 +128,7 @@ function sumOption(data, type, xAxis) {
         let value = data[key];
         series.push({
             name: value.text,
+            text: value.name,
             type: 'line',
             stack: 'sum',
             areaStyle: {
@@ -299,16 +175,16 @@ function sumOption(data, type, xAxis) {
         series : series
     }
 }
-
+// 'itemNum'水球图
 function liquid(opt, sum) {
-    // console.log(opt);
     let series = [],
         i = 1;
     for(let key in opt) {
         let value = opt[key];
 
         series.push({
-            name: value.text,
+            name: value.name,
+            text: value.text,
             type: 'liquidFill',
             data: [(value.data / sum).toFixed(2)],
             center: [`${i++*30 - 10}%`, '50%'],
@@ -330,7 +206,7 @@ function liquid(opt, sum) {
         series: series
     }
 }
-
+// 获取各项百分比
 function getPercent(data) {
     let percent = {};
     let sum = 0;
@@ -342,10 +218,12 @@ function getPercent(data) {
             continue;
         }
         percent[key] = {
-            text: data[key].text,
+            text: data[key].name,
+            name: data[key].text,
             data: data[key].sum
         }
         sum += data[key].sum;
+        // console.log(percent[key].data)
     }
 
     return {sum, max, percent};
@@ -353,7 +231,7 @@ function getPercent(data) {
 
 export function init(ids, options) {
     instance(ids);
-console.log(options)
+
     let data = getData(options);
 
     let axis = xAxis(options.type);
@@ -370,32 +248,32 @@ console.log(options)
             option = liquid(percent, sum)
         }
         myCharts[value].setOption(option);
-        // console.log(option)
     }
 } 
 
 export function refresh(options) {
-    // console.log(myCharts)
     if(isEmpty(myCharts)) {
         return;
     }
     let data = getData(options);
+
     let axis = xAxis(options.type);
-console.log(options)
+    let {sum, percent, max} = getPercent(data);
+
     for(let key in myCharts) {
-        let options = myCharts[key].getOption();
-        let sumOptions =  myCharts.sumNum.getOption();
-        if(key !== 'sumNum') {
-            console.log(options.series)
-            options.series.forEach(value => {
-                value.data = 0;
+        let opt = myCharts[key].getOption();
+
+        if(key === 'sumNum') {
+            opt.series.forEach(value => {
+                value.data = data[value.text].data;
             })
-            options.series[0].data = data[key].data;
-            // sumOptions.series
+            opt.xAxis[0].data = axis;
         }else {
+            opt.series.forEach(value => {
+                value.data = [(percent[value.text].data / sum).toFixed(2)];
+            })
         }
-        options.xAxis[0].data = axis;
-        myCharts[key].setOption(options);
+        myCharts[key].setOption(opt);
     }
 }
 
