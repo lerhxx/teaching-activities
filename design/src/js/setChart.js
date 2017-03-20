@@ -127,7 +127,7 @@ function sumOption(data, type, xAxis) {
         series.push({
             name: value.text,
             text: value.name,
-            type: 'line',
+            type: 'bar',
             stack: 'sum',
             areaStyle: {
                 normal: {}
@@ -161,7 +161,7 @@ function sumOption(data, type, xAxis) {
         xAxis : [
             {
                 type : 'category',
-                boundaryGap : false,
+                boundaryGap : true,
                 data : xAxis
             }
         ],
@@ -213,10 +213,16 @@ function getPercent(data) {
         if(key === 'sumNum') {
             continue;
         }
+
+        let itemData = 0;
+        // 确保除数 > 0
+        if(data.sumNum.sum > 0) {
+            itemData = (data[key].sum / data.sumNum.sum).toFixed(2);
+        }
         percent[key] = {
             text: data[key].name,
             name: data[key].text,
-            data: (data[key].sum / data.sumNum.sum).toFixed(2)
+            data: itemData
         }
     }
 
@@ -250,7 +256,6 @@ export function refresh(options) {
         return;
     }
     let data = getData(options);
-
     let axis = xAxis(options.type);
     let percent = getPercent(data);
 

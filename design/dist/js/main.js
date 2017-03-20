@@ -18045,7 +18045,7 @@
 	        series.push({
 	            name: value.text,
 	            text: value.name,
-	            type: 'line',
+	            type: 'bar',
 	            stack: 'sum',
 	            areaStyle: {
 	                normal: {}
@@ -18078,7 +18078,7 @@
 	        },
 	        xAxis: [{
 	            type: 'category',
-	            boundaryGap: false,
+	            boundaryGap: true,
 	            data: xAxis
 	        }],
 	        yAxis: [{
@@ -18129,10 +18129,16 @@
 	        if (key === 'sumNum') {
 	            continue;
 	        }
+
+	        var itemData = 0;
+	        // 确保除数 > 0
+	        if (data.sumNum.sum > 0) {
+	            itemData = (data[key].sum / data.sumNum.sum).toFixed(2);
+	        }
 	        percent[key] = {
 	            text: data[key].name,
 	            name: data[key].text,
-	            data: (data[key].sum / data.sumNum.sum).toFixed(2)
+	            data: itemData
 	        };
 	    }
 
@@ -18166,7 +18172,6 @@
 	        return;
 	    }
 	    var data = getData(options);
-
 	    var axis = xAxis(options.type);
 	    var percent = getPercent(data);
 
