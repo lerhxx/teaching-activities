@@ -98,9 +98,10 @@
                 showDialog: false,
                 charts: [
                     'sumNum',
-                    'teachNum',
-                    'scientNum',
-                    'salonNum'
+                    // 'teachNum',
+                    // 'scientNum',
+                    // 'salonNum'
+                    'itemNum'
                 ]
 			}
 		},
@@ -255,4 +256,6 @@
     #sumNum
         width 100%
         height 450px
+    #itemNum
+        width 100%
 </style>

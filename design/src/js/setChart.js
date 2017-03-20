@@ -1,4 +1,5 @@
 import echarts from 'echarts';
+import liquidfill from './echarts-liquidfill.min.js';
 
 let count = {
     teachNum: {
@@ -284,6 +285,45 @@ function lineOption(value, xAxis) {
     }
 }
 
+function liquid(data) {
+    console.log(data);
+    let series = [],
+        i = 1;
+    for(let key in data) {
+        if(key === 'sumNum') {
+            continue;
+        }
+        let value = data[key];
+        let sum = value.data.reduce((prev, next) => prev + next);
+        let newData = value.data.map(item => (item / sum).toFixed(2));
+        series.push({
+            name: value.text,
+            type:'liquidFill',
+            data: newData,
+            center: [`${i++*25}%`, '50%'],
+            radius: '65%',
+            waveAnimation: false,
+            outline: {
+                show: false
+            },
+            label: {
+                normal: {
+                    formatter: '{a}\nValue: {c}',
+                    textStyle: {
+                        fontSize: 12
+                    }
+                }
+            },
+            tooltip: {
+                show: true
+            }
+        })
+    }
+    return {
+        series: series
+    }
+}
+
 export function init(ids, options) {
     instance(ids);
 
@@ -297,17 +337,12 @@ export function init(ids, options) {
        
         if(value === 'sumNum'){
             option = sumOption(data, 'sumNum', axis);
-        }else {
-            option = lineOption(data[value], axis)
+        }else if(value === 'itemNum'){
+            option = liquid(data)
         }
         myCharts[value].setOption(option);
         // console.log(option)
     }
-    // window.addEventListener('resize', () => {
-    //     for(let k in myCharts) {
-    //         myCharts[k].resize()
-    //     }
-    // })
 } 
 
 export function refresh(options) {
