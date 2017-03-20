@@ -7,11 +7,7 @@ export default {
     },
     SET_ARTICLES(state, lists) {
         let now = new Date().getTime();
-        state.notHoldArticles = [];
-        state.holdArticles = [];
-        lists.forEach(function(value) {
-            new Date(value.endTime).getTime() > now ? state.notHoldArticles.push(value) : state.heldArticles.push(value);
-        })
+        state.articles = lists;
     },
     SET_ARTICLE(state, article) {
         state.article = article;

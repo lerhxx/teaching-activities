@@ -54,7 +54,7 @@
             暂无记录
         </div>
         <div id='canvas-wrapper' v-show='!empty'>
-            <div v-for='item in charts' :id='item' width='300' height='300' class='canvas'></div>
+            <div v-for='item in charts' :id='item' width='300' height='250' class='canvas'></div>
         </div>
         <!--<div>
             <div>
@@ -267,6 +267,7 @@
         height 450px
     #itemNum
         width 100%
+        height 280px
     .empty
         margin 30px 0
         color #ddd

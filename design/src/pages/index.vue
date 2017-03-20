@@ -14,31 +14,10 @@
 					{{type.type}}
 				</option>
 			</select>
-			<!--<label>时效：</label>
-			<select class='time' v-model='time' @change='onSelect'>
-				<option v-for='time in searchLists.timeliness' v-bind:value='time.index'>
-					{{time.type}}
-				</option>
-			</select>-->
 		</div>
-		<!-- <div class='not-hold-wrapper'>
-			<ul class='list'>
-				<li class='list-item' v-for='item in notHoldArticles'>
-					<h3>
-						<router-link class='text-ellipsis' :to="{name: 'article', params: {id: item._id}}">
-							{{item.title}}
-						</router-link>
-					</h3>
-					<p class='time color-g'>{{item.time | timeFormat}}</p>
-					<p class='abstract' v-html='filterContent(item.content, 51)'></p>
-					<modify :item='item' v-show='userRank == 2 || (userRank == 1 && userFaculty == item.faculty)'></modify>
-				</li>
-			</ul>
-		</div> -->
 		<div class='list-wrapper'>
 			<ul class='list'>
-				<li class='list-item' v-for='item in heldArticles'>
-					<!-- <img class='item-cover' :src='item.url' /> -->
+				<li class='list-item' v-for='item in articles' :class="{'willHeld': new Date(item.endTime).getTime() > now}">
 					<h3>
 						<router-link class='text-ellipsis' :to="{name: 'article', params: {id: item._id}}">
 							{{item.title}}
@@ -46,13 +25,18 @@
 					</h3>
 					<p class='time color-g'>{{item.time | timeFormat}}</p>
 					<p>地点：{{item.address}}</p>
-					<!-- <p class='abstract' v-html='item.content'></p> -->
 					<modify :item='item' v-show='userRank == 2 || (userRank == 1 && userFaculty == item.faculty)'></modify>
 				</li>
 			</ul>
 		</div>
 		<!--TODO
 		分页-->
+		<div class='page-wrapper'>
+			<span>上一页</span>
+			<span>下一页</span>
+			<input type='text' v-model='curPage' />
+			<span>跳转</span>
+		</div>
 	</div>
 </template>
 
@@ -67,6 +51,8 @@
 				 faculty: 0,
 				 type: 0,
 				 time: 0,
+				 curPage: 1,
+				 now: new Date().getTime()
 		    }
 		},
 		created() {
@@ -80,13 +66,13 @@
 				console.log(this.time)
 			},
 			onSelect() {
-				this.$store.dispatch('GET_ARTICLES', {faculty: this.faculty, type: this.type, time: this.time});
+				this.$store.dispatch('GET_ARTICLES', {page: this.curPage, faculty: this.faculty, type: this.type, time: this.time});
 			},
 			filterContent(value, len) {
 				return value.length > len ? value.substr(0, len) + '...' : value;
 			}
 		},
-		computed: mapState(['searchLists', 'heldArticles', 'notHoldArticles', 'userRank', 'userFaculty']),
+		computed: mapState(['searchLists', 'articles', 'userRank', 'userFaculty']),
 		filters: {
             timeFormat(value) {
                 let date = new Date(value);
@@ -133,9 +119,10 @@
 	.list
 		margin auto
 		.list-item 
-			display block
+			width 100%
 			padding 15px 10px
 			border-bottom 1px solid #ddd
+			box-sizing border-box
 	h3
 		display inline-block
 		max-width 100%
@@ -168,6 +155,36 @@
 		padding-right 25px
 		line-height 1.5em
 		overflow hidden
+	.willHeld
+		relative()
+		&:after
+			absolute(top 50% right 10px)
+			padding 3px 8px
+			border 1px solid #8fe32e
+			content: '未举办'
+			color #8bc34a
+			border-radius 6px
+	.page-wrapper
+		margin 30px 0
+		text-align center
+		& > span
+			display inline-block
+			relative()
+			width 80px
+			height 35px
+			margin 0 10px
+			color #fff
+			line-height 35px
+			background #000
+			border-radius 6px
+		input
+			width 50px
+			height 35px
+			margin 0 10px
+			text-align center
+			font-size 20px
+			box-sizing border-box
+			border-radius 6px
 	@media screen and (max-width: 768px)
 		.list-wrapper
 			width 90%

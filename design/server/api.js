@@ -289,6 +289,7 @@ router.get('/getArticals', (req, res, next) => {
 	}
 })
 router.get('/getArticals', (req, res) => {
+	console.log(req.params.page)
 	db.Article.find((err, doc) => {
 		if(err) {
 			res.send({state: 1, msg: '查询失败！'});

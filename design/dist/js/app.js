@@ -8473,8 +8473,9 @@
 			users: [],
 			footerLinks: [],
 			searchLists: [],
-			heldArticles: [],
-			notHoldArticles: [],
+			// heldArticles: [],
+			// notHoldArticles: [],
+			articles: [],
 			article: {},
 			selfArticles: [],
 			idEdit: false
@@ -11117,11 +11118,7 @@
 	    },
 	    SET_ARTICLES: function SET_ARTICLES(state, lists) {
 	        var now = new Date().getTime();
-	        state.notHoldArticles = [];
-	        state.holdArticles = [];
-	        lists.forEach(function (value) {
-	            new Date(value.endTime).getTime() > now ? state.notHoldArticles.push(value) : state.heldArticles.push(value);
-	        });
+	        state.articles = lists;
 	    },
 	    SET_ARTICLE: function SET_ARTICLE(state, article) {
 	        state.article = article;
@@ -14603,7 +14600,7 @@
 
 
 	// module
-	exports.push([module.id, "\n.index[data-v-9b46fa2c] {\n  padding-bottom: 60px;\n}\n.in-cover[data-v-9b46fa2c] {\n  width: 100%;\n  height: 300px;\n}\n.in-search[data-v-9b46fa2c] {\n  padding: 15px 0;\n  text-align: center;\n  border-bottom: 1px solid #bbb;\n}\n.in-search select[data-v-9b46fa2c] {\n  min-width: 80px;\n  height: 21px;\n  margin-right: 50px;\n  outline: none;\n}\n.list-wrapper[data-v-9b46fa2c] {\n  width: 60%;\n  margin: auto;\n}\n.hold-list[data-v-9b46fa2c] {\n  margin: 32px 0 12px;\n}\n.hold-list-item[data-v-9b46fa2c] {\n  margin: 0 10px;\n}\n.hold-list-item a[data-v-9b46fa2c] {\n  display: block;\n  padding: 8px 15px;\n  border: 1px solid #ccc;\n  font-size: 16px;\n}\n.list[data-v-9b46fa2c] {\n  margin: auto;\n}\n.list .list-item[data-v-9b46fa2c] {\n  display: block;\n  padding: 15px 10px;\n  border-bottom: 1px solid #ddd;\n}\nh3[data-v-9b46fa2c] {\n  display: inline-block;\n  max-width: 100%;\n  margin-bottom: 10px;\n  font-size: 1.3em;\n}\nh3 a[data-v-9b46fa2c] {\n  display: block;\n  max-width: 100%;\n}\nh3 a[data-v-9b46fa2c]:after {\n  display: block;\n  width: 100%;\n  margin: auto;\n  border-bottom: 1px solid #000;\n  content: '';\n  -webkit-transform: scale3d(0, 1, 1);\n  -moz-transform: scale3d(0, 1, 1);\n  -ms-transform: scale3d(0, 1, 1);\n  -o-transform: scale3d(0, 1, 1);\n  transform: scale3d(0, 1, 1);\n  transition: transform 0.15s ease-in-out;\n}\nh3 a[data-v-9b46fa2c]:hover:after {\n  -webkit-transform: scale3d(1, 1, 1);\n  -moz-transform: scale3d(1, 1, 1);\n  -ms-transform: scale3d(1, 1, 1);\n  -o-transform: scale3d(1, 1, 1);\n  transform: scale3d(1, 1, 1);\n}\n.item-cover[data-v-9b46fa2c] {\n  float: right;\n  width: 120px;\n  height: 80px;\n  margin: 15px;\n  margin-right: 0;\n}\n.time[data-v-9b46fa2c] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.abstract[data-v-9b46fa2c] {\n  height: 3em;\n  padding-right: 25px;\n  line-height: 1.5em;\n  overflow: hidden;\n}\n@media screen and (max-width: 768px) {\n.list-wrapper[data-v-9b46fa2c] {\n    width: 90%;\n}\n}\n", ""]);
+	exports.push([module.id, "\n.index[data-v-9b46fa2c] {\n  padding-bottom: 60px;\n}\n.in-cover[data-v-9b46fa2c] {\n  width: 100%;\n  height: 300px;\n}\n.in-search[data-v-9b46fa2c] {\n  padding: 15px 0;\n  text-align: center;\n  border-bottom: 1px solid #bbb;\n}\n.in-search select[data-v-9b46fa2c] {\n  min-width: 80px;\n  height: 21px;\n  margin-right: 50px;\n  outline: none;\n}\n.list-wrapper[data-v-9b46fa2c] {\n  width: 60%;\n  margin: auto;\n}\n.hold-list[data-v-9b46fa2c] {\n  margin: 32px 0 12px;\n}\n.hold-list-item[data-v-9b46fa2c] {\n  margin: 0 10px;\n}\n.hold-list-item a[data-v-9b46fa2c] {\n  display: block;\n  padding: 8px 15px;\n  border: 1px solid #ccc;\n  font-size: 16px;\n}\n.list[data-v-9b46fa2c] {\n  margin: auto;\n}\n.list .list-item[data-v-9b46fa2c] {\n  width: 100%;\n  padding: 15px 10px;\n  border-bottom: 1px solid #ddd;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nh3[data-v-9b46fa2c] {\n  display: inline-block;\n  max-width: 100%;\n  margin-bottom: 10px;\n  font-size: 1.3em;\n}\nh3 a[data-v-9b46fa2c] {\n  display: block;\n  max-width: 100%;\n}\nh3 a[data-v-9b46fa2c]:after {\n  display: block;\n  width: 100%;\n  margin: auto;\n  border-bottom: 1px solid #000;\n  content: '';\n  -webkit-transform: scale3d(0, 1, 1);\n  -moz-transform: scale3d(0, 1, 1);\n  -ms-transform: scale3d(0, 1, 1);\n  -o-transform: scale3d(0, 1, 1);\n  transform: scale3d(0, 1, 1);\n  transition: transform 0.15s ease-in-out;\n}\nh3 a[data-v-9b46fa2c]:hover:after {\n  -webkit-transform: scale3d(1, 1, 1);\n  -moz-transform: scale3d(1, 1, 1);\n  -ms-transform: scale3d(1, 1, 1);\n  -o-transform: scale3d(1, 1, 1);\n  transform: scale3d(1, 1, 1);\n}\n.item-cover[data-v-9b46fa2c] {\n  float: right;\n  width: 120px;\n  height: 80px;\n  margin: 15px;\n  margin-right: 0;\n}\n.time[data-v-9b46fa2c] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.abstract[data-v-9b46fa2c] {\n  height: 3em;\n  padding-right: 25px;\n  line-height: 1.5em;\n  overflow: hidden;\n}\n.willHeld[data-v-9b46fa2c] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.willHeld[data-v-9b46fa2c]:after {\n  position: absolute;\n  top: 50%;\n  right: 10px;\n  ((null)): 0;\n  ((null)): 0;\n  padding: 3px 8px;\n  border: 1px solid #8fe32e;\n  content: '\\672A\\4E3E\\529E';\n  color: #8bc34a;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n}\n.page-wrapper[data-v-9b46fa2c] {\n  margin: 30px 0;\n  text-align: center;\n}\n.page-wrapper > span[data-v-9b46fa2c] {\n  display: inline-block;\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 80px;\n  height: 35px;\n  margin: 0 10px;\n  color: #fff;\n  line-height: 35px;\n  background: #000;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n}\n.page-wrapper input[data-v-9b46fa2c] {\n  width: 50px;\n  height: 35px;\n  margin: 0 10px;\n  text-align: center;\n  font-size: 20px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n}\n@media screen and (max-width: 768px) {\n.list-wrapper[data-v-9b46fa2c] {\n    width: 90%;\n}\n}\n", ""]);
 
 	// exports
 
@@ -14668,22 +14665,6 @@
 	//
 	//
 	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
 
 	exports.default = {
 		data: function data() {
@@ -14691,7 +14672,9 @@
 				img: '/dist/imgs/cover-1.jpg',
 				faculty: 0,
 				type: 0,
-				time: 0
+				time: 0,
+				curPage: 1,
+				now: new Date().getTime()
 			};
 		},
 		created: function created() {
@@ -14707,13 +14690,13 @@
 				console.log(this.time);
 			},
 			onSelect: function onSelect() {
-				this.$store.dispatch('GET_ARTICLES', { faculty: this.faculty, type: this.type, time: this.time });
+				this.$store.dispatch('GET_ARTICLES', { page: this.curPage, faculty: this.faculty, type: this.type, time: this.time });
 			},
 			filterContent: function filterContent(value, len) {
 				return value.length > len ? value.substr(0, len) + '...' : value;
 			}
 		},
-		computed: (0, _vuex.mapState)(['searchLists', 'heldArticles', 'notHoldArticles', 'userRank', 'userFaculty']),
+		computed: (0, _vuex.mapState)(['searchLists', 'articles', 'userRank', 'userFaculty']),
 		filters: {
 			timeFormat: function timeFormat(value) {
 				var date = new Date(value);
@@ -14897,13 +14880,16 @@
 	        "value": type.index
 	      }
 	    }, [_vm._v("\n\t\t\t\t" + _vm._s(type.type) + "\n\t\t\t")])
-	  })), _vm._v(" ")]), _vm._v(" "), _vm._v(" "), _c('div', {
+	  }))]), _vm._v(" "), _c('div', {
 	    staticClass: "list-wrapper"
 	  }, [_c('ul', {
 	    staticClass: "list"
-	  }, _vm._l((_vm.heldArticles), function(item) {
+	  }, _vm._l((_vm.articles), function(item) {
 	    return _c('li', {
-	      staticClass: "list-item"
+	      staticClass: "list-item",
+	      class: {
+	        'willHeld': new Date(item.endTime).getTime() > _vm.now
+	      }
 	    }, [_c('h3', [_c('router-link', {
 	      staticClass: "text-ellipsis",
 	      attrs: {
@@ -14916,7 +14902,7 @@
 	      }
 	    }, [_vm._v("\n\t\t\t\t\t\t" + _vm._s(item.title) + "\n\t\t\t\t\t")])]), _vm._v(" "), _c('p', {
 	      staticClass: "time color-g"
-	    }, [_vm._v(_vm._s(_vm._f("timeFormat")(item.time)))]), _vm._v(" "), _c('p', [_vm._v("地点：" + _vm._s(item.address))]), _vm._v(" "), _vm._v(" "), _c('modify', {
+	    }, [_vm._v(_vm._s(_vm._f("timeFormat")(item.time)))]), _vm._v(" "), _c('p', [_vm._v("地点：" + _vm._s(item.address))]), _vm._v(" "), _c('modify', {
 	      directives: [{
 	        name: "show",
 	        rawName: "v-show",
@@ -14927,7 +14913,28 @@
 	        "item": item
 	      }
 	    })])
-	  }))]), _vm._v(" ")])
+	  }))]), _vm._v(" "), _vm._v(" "), _c('div', {
+	    staticClass: "page-wrapper"
+	  }, [_c('span', [_vm._v("上一页")]), _vm._v(" "), _c('span', [_vm._v("下一页")]), _vm._v(" "), _c('input', {
+	    directives: [{
+	      name: "model",
+	      rawName: "v-model",
+	      value: (_vm.curPage),
+	      expression: "curPage"
+	    }],
+	    attrs: {
+	      "type": "text"
+	    },
+	    domProps: {
+	      "value": _vm._s(_vm.curPage)
+	    },
+	    on: {
+	      "input": function($event) {
+	        if ($event.target.composing) { return; }
+	        _vm.curPage = $event.target.value
+	      }
+	    }
+	  }), _vm._v(" "), _c('span', [_vm._v("跳转")])])])
 	},staticRenderFns: []}
 	if (false) {
 	  module.hot.accept()
@@ -17869,7 +17876,7 @@
 
 
 	// module
-	exports.push([module.id, "\n.select-list[data-v-775e5b49] {\n  margin-bottom: 50px;\n}\n.select-list li[data-v-775e5b49] {\n  width: 100%;\n  margin: 5px 0;\n}\n.select-list li label[data-v-775e5b49],\n.select-list li a[data-v-775e5b49],\n.select-list li select[data-v-775e5b49] {\n  display: inline-block;\n}\n.select-list li label[data-v-775e5b49] {\n  padding: 6px 25px;\n  margin-right: 10px;\n  border: 1px solid #ccc;\n  color: #fff;\n  background: #000;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n}\n.select-list li a[data-v-775e5b49] {\n  padding: 6px 15px;\n  border: 1px solid transparent;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n  cursor: pointer;\n}\n.select-list li a.active[data-v-775e5b49],\n.select-list li a[data-v-775e5b49]:hover {\n  color: #44a5f2;\n}\n.select-list li select[data-v-775e5b49] {\n  width: 80px;\n  height: 35px;\n  border: 1px solid transparent;\n  outline: none;\n}\n.dialog-wrapper[data-v-775e5b49] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgba(0,0,0,0.6);\n  z-index: 99;\n}\n.dialog[data-v-775e5b49] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  width: 300px;\n  height: 300px;\n  margin: auto;\n  text-align: center;\n  line-height: 60px;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n  background-color: #fff;\n}\n.dialog li[data-v-775e5b49] {\n  width: 100%;\n  cursor: pointer;\n}\n.dialog li.active[data-v-775e5b49],\n.dialog li[data-v-775e5b49]:hover {\n  color: #fff;\n  background-color: rgba(97,171,241,0.6);\n}\n.canvas[data-v-775e5b49] {\n  display: inline-block;\n  width: 45%;\n  height: 300px;\n  margin: 15px 0;\n}\n#sumNum[data-v-775e5b49] {\n  width: 100%;\n  height: 450px;\n}\n#itemNum[data-v-775e5b49] {\n  width: 100%;\n}\n.empty[data-v-775e5b49] {\n  margin: 30px 0;\n  color: #ddd;\n  text-align: center;\n  font-size: 2rem;\n}\n", ""]);
+	exports.push([module.id, "\n.select-list[data-v-775e5b49] {\n  margin-bottom: 50px;\n}\n.select-list li[data-v-775e5b49] {\n  width: 100%;\n  margin: 5px 0;\n}\n.select-list li label[data-v-775e5b49],\n.select-list li a[data-v-775e5b49],\n.select-list li select[data-v-775e5b49] {\n  display: inline-block;\n}\n.select-list li label[data-v-775e5b49] {\n  padding: 6px 25px;\n  margin-right: 10px;\n  border: 1px solid #ccc;\n  color: #fff;\n  background: #000;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n}\n.select-list li a[data-v-775e5b49] {\n  padding: 6px 15px;\n  border: 1px solid transparent;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n  cursor: pointer;\n}\n.select-list li a.active[data-v-775e5b49],\n.select-list li a[data-v-775e5b49]:hover {\n  color: #44a5f2;\n}\n.select-list li select[data-v-775e5b49] {\n  width: 80px;\n  height: 35px;\n  border: 1px solid transparent;\n  outline: none;\n}\n.dialog-wrapper[data-v-775e5b49] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgba(0,0,0,0.6);\n  z-index: 99;\n}\n.dialog[data-v-775e5b49] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  width: 300px;\n  height: 300px;\n  margin: auto;\n  text-align: center;\n  line-height: 60px;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n  background-color: #fff;\n}\n.dialog li[data-v-775e5b49] {\n  width: 100%;\n  cursor: pointer;\n}\n.dialog li.active[data-v-775e5b49],\n.dialog li[data-v-775e5b49]:hover {\n  color: #fff;\n  background-color: rgba(97,171,241,0.6);\n}\n.canvas[data-v-775e5b49] {\n  display: inline-block;\n  width: 45%;\n  height: 300px;\n  margin: 15px 0;\n}\n#sumNum[data-v-775e5b49] {\n  width: 100%;\n  height: 450px;\n}\n#itemNum[data-v-775e5b49] {\n  width: 100%;\n  height: 280px;\n}\n.empty[data-v-775e5b49] {\n  margin: 30px 0;\n  color: #ddd;\n  text-align: center;\n  font-size: 2rem;\n}\n", ""]);
 
 	// exports
 
@@ -18149,6 +18156,12 @@
 	};
 	var myCharts = {};
 
+	var shapes = {
+	    'teachNum': 'path://M225.958294 3.489165c13.258825 0 26.587434 0 39.846259 0 11.44446 2.233065 22.819136 5.72223 34.333379 6.489846 123.027941 8.164645 235.448821 48.080687 341.170506 110.257598C665.034755 134.123484 673.269184 149.894507 673.1994 177.179774c-0.976966 269.503067-0.558266 539.075917-0.697833 808.578983 0 12.212076-1.535232 24.424152-2.442415 38.241243-45.847622-20.237154-85.90323-40.893008-127.982554-55.896415-149.406024-53.384217-303.417746-58.617964-459.453182-41.032575-64.89846 7.327245-78.924901-6.071146-78.924901-70.341556-0.069783-249.614829-0.069783-499.229658 0-748.844487 0-55.477716 9.071828-68.596974 62.316478-78.924901C118.98051 18.632138 172.64386 11.793376 225.958294 3.489165z M1126.65122 3.489165c13.258825 0 26.587434 0 39.846259 0 50.872019 7.745945 102.092954 13.607742 152.476489 23.586752 69.155241 13.747308 72.993322 19.958021 72.993322 89.671528 0.069783 236.356004 0.069783 472.642224 0 708.998228 0 106.349734-5.861796 108.303666-111.513698 98.254873-185.274635-17.655172-365.734224-0.279133-532.725637 91.695243-6.280496 3.489165-13.817091 4.67548-21.63282 7.187679-1.605016-6.629413-3.279815-10.327927-3.279815-14.026441-0.20935-281.505793-0.558266-562.941802 0.558266-844.447594 0.069783-12.560992 11.23511-30.913998 22.330653-36.706011 57.501431-29.657898 114.653946-62.456045 175.853891-81.995366C987.782472 24.703285 1058.124029 17.027123 1126.65122 3.489165z',
+	    'scientNum': 'path://M666.917873 517.739524c0-5.911956-0.985326-11.57758-1.675054-17.243204L665.242819 317.521289c23.204426-5.123695 40.546163-25.717007 40.546163-50.448689 0-28.623719-23.15516-51.729613-51.680346-51.729613L509.413519 215.342988C503.797161 186.029541 479.262545 163.465576 448.274044 163.465576c-30.939235 0-55.523118 22.563964-61.139476 51.877412L369.842098 215.342988c-28.574453 0-51.729613 23.105894-51.729613 51.729613 0 24.731682 17.440269 45.324994 40.595429 50.448689l0 182.97503c-0.738994 5.616358-1.773587 11.281982-1.773587 17.243204L127.993842 893.148713c0 72.273659 58.528362 130.851287 130.851287 130.851287l506.260476 0c72.273659 0 130.851287-58.577628 130.851287-130.851287L666.917873 517.739524zM350.923839 820.037527c-30.052442 0-54.439259-24.386817-54.439259-54.389993 0-30.052442 24.386817-54.439259 54.439259-54.439259 30.003175 0 54.389993 24.386817 54.389993 54.439259C405.363098 795.65071 380.976281 820.037527 350.923839 820.037527zM507.886264 918.914987c-26.554535 0-48.03464-21.529372-48.03464-48.083907 0-26.505268 21.529372-48.03464 48.03464-48.03464s48.03464 21.529372 48.03464 48.03464C555.920904 897.385615 534.440799 918.914987 507.886264 918.914987zM537.741641 712.3414c-44.290402 0-80.205533-35.915131-80.205533-80.156267s35.915131-80.205533 80.205533-80.205533c44.241135 0 80.156267 35.915131 80.156267 80.205533S582.032042 712.3414 537.741641 712.3414zM596.122204 78.234881c23.795622 0 43.108011 19.312389 43.108011 43.108011S619.917825 164.450902 596.122204 164.450902 553.014193 145.138513 553.014193 121.342892 572.326582 78.234881 596.122204 78.234881zM471.8726 0c20.987443 0 37.984316 16.996873 37.984316 37.984316S492.860043 75.968631 471.8726 75.968631 433.888285 58.971758 433.888285 37.984316 450.885158 0 471.8726 0z',
+	    'salonNum': 'path://M443.479417 72.680323c-243.652276 0-441.168792 162.921603-441.168792 363.895871 0 65.902966 23.000853 125.83187 56.242955 177.585581 21.274536 33.124422 63.044872 106.293885-37.978986 253.043157 65.376986-61.391209 167.093623-106.285698 303.905568-81.003895C651.512451 846.63443 884.649232 650.626267 884.649232 436.576193 884.649232 235.601926 687.131693 72.680323 443.479417 72.680323z'
+	};
+
 	function instance(ids) {
 	    ids.forEach(function (value, i) {
 	        // 创建 echarts 实例    
@@ -18272,11 +18285,12 @@
 	            type: 'liquidFill',
 	            // data: [(value.data / sum).toFixed(2)],
 	            data: [value.data],
-	            center: [i++ * 30 - 10 + '%', '50%'],
+	            center: [i++ * 30 - 10 + '%', '35%'],
 	            radius: '65%',
 	            outline: {
 	                show: false
 	            },
+	            // shape: shapes[value.text],
 	            label: {
 	                normal: {
 	                    formatter: function formatter(param) {
@@ -18319,7 +18333,6 @@
 
 	function init(ids, options) {
 	    instance(ids);
-	    console.log(options);
 
 	    var data = getData(options);
 
@@ -18341,11 +18354,10 @@
 	}
 
 	function refresh(options) {
-	    console.log(myCharts);
 	    if ((0, _common.isEmpty)(myCharts)) {
 	        return;
 	    }
-	    console.log(options);
+
 	    var data = getData(options);
 	    var axis = xAxis(options.type);
 	    var percent = getPercent(data);
@@ -18460,7 +18472,7 @@
 	      attrs: {
 	        "id": item,
 	        "width": "300",
-	        "height": "300"
+	        "height": "250"
 	      }
 	    })
 	  })), _vm._v(" "), _vm._v(" "), _c('div', {
