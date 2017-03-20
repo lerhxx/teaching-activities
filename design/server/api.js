@@ -312,7 +312,6 @@ router.get('/user/count/:id/:tab/:year/:time', (req, res) => {
 	let params = req.params,
 		sTime = new Date(),
 		eTime = new Date();
-
 	if(params.time == 0) {
 		sTime = new Date(`${params.year}-01-01`);
 		eTime = new Date(`${params.year}-12-31`);
@@ -321,7 +320,7 @@ router.get('/user/count/:id/:tab/:year/:time', (req, res) => {
 		eTime = new Date(`${params.year}-07-01`);
 	}else {
 		sTime = new Date(`${params.year}-07-01`);
-		eTime = new Date(`${params.year + 1}-01-01`);
+		eTime = new Date(`${params.year * 1 + 1}-01-01`);
 	}
 
 	if(params.tab === 0) {

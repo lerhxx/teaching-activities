@@ -172,7 +172,7 @@
 
                 this.$store.dispatch('GET_CHARTS_DATA', {id: queryId, tab: this.rangeTab, time: time, year: this.selectYear})
                     .then(res => {
-                    // console.log(refresh)
+                    // console.log(this.selectYear)
                         this.opt = res;
                         this.opt.type = this.timeTab;
                         refresh(this.opt || {});

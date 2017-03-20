@@ -28,7 +28,8 @@ let count = {
         data: [],
         name: 'sumNum',
         text: '统计',
-        color: '#8bc34a'
+        color: '#8bc34a',
+        sum: 0
     }
 };
 let myCharts = {};  
@@ -61,10 +62,6 @@ function getData(opt) {
     //清空数据
     for(let k in count) {
         count[k].data = [];
-    }
-
-    // 重置sum
-    for(let k in count) {
         count[k].sum = 0;
     }
 
@@ -89,6 +86,7 @@ function getData(opt) {
         count[type].data[mon] = count[type].data[mon] ? count[type].data[mon] + 1 : 1;
         count.sumNum.data[mon] = count.sumNum.data[mon] ? count.sumNum.data[mon] + 1 : 1;
         count[type].sum += 1;
+        ++count.sumNum.sum;
     })
     count.sumNum.minCount = Math.min(count.teachNum.sum, count.scientNum.sum, count.salonNum.sum)
     return count;
@@ -176,7 +174,7 @@ function sumOption(data, type, xAxis) {
     }
 }
 // 'itemNum'水球图
-function liquid(opt, sum) {
+function liquid(opt) {
     let series = [],
         i = 1;
     for(let key in opt) {
@@ -186,7 +184,8 @@ function liquid(opt, sum) {
             name: value.name,
             text: value.text,
             type: 'liquidFill',
-            data: [(value.data / sum).toFixed(2)],
+            // data: [(value.data / sum).toFixed(2)],
+            data: [value.data],
             center: [`${i++*30 - 10}%`, '50%'],
             radius: '65%',
             outline: {
@@ -194,7 +193,7 @@ function liquid(opt, sum) {
             },
             label: {
                 normal: {
-                    formatter: param => `${param.seriesName }\n\n${param.value*100}% `,
+                    formatter: param => `${param.seriesName }\n\n${(param.value*100).toFixed(0)}%`,
                     textStyle: {
                         fontSize: 20
                     }
@@ -209,24 +208,19 @@ function liquid(opt, sum) {
 // 获取各项百分比
 function getPercent(data) {
     let percent = {};
-    let sum = 0;
-    let max = 0;
 
     for(let key in data) {
         if(key === 'sumNum') {
-            // max = Math.max.apply(Math, data[key].data);
             continue;
         }
         percent[key] = {
             text: data[key].name,
             name: data[key].text,
-            data: data[key].sum
+            data: (data[key].sum / data.sumNum.sum).toFixed(2)
         }
-        sum += data[key].sum;
-        // console.log(percent[key].data)
     }
 
-    return {sum, max, percent};
+    return percent;
 }
 
 export function init(ids, options) {
@@ -240,12 +234,12 @@ export function init(ids, options) {
     for(let value in myCharts) {
         let option = {};
         // 处理数据
-        let {sum, percent, max} = getPercent(data);
+         let percent = getPercent(data);
 
         if(value === 'sumNum'){
             option = sumOption(data, 'sumNum', axis);
         }else if(value === 'itemNum'){
-            option = liquid(percent, sum)
+            option = liquid(percent)
         }
         myCharts[value].setOption(option);
     }
@@ -258,7 +252,7 @@ export function refresh(options) {
     let data = getData(options);
 
     let axis = xAxis(options.type);
-    let {sum, percent, max} = getPercent(data);
+    let percent = getPercent(data);
 
     for(let key in myCharts) {
         let opt = myCharts[key].getOption();
@@ -270,7 +264,8 @@ export function refresh(options) {
             opt.xAxis[0].data = axis;
         }else {
             opt.series.forEach(value => {
-                value.data = [(percent[value.text].data / sum).toFixed(2)];
+                let fixData = percent[value.text].data;
+                value.data = [fixData];
             })
         }
         myCharts[key].setOption(opt);

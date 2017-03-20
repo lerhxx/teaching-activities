@@ -18060,7 +18060,7 @@
 	                time = this.timeTab;
 
 	            this.$store.dispatch('GET_CHARTS_DATA', { id: queryId, tab: this.rangeTab, time: time, year: this.selectYear }).then(function (res) {
-	                // console.log(refresh)
+	                // console.log(this.selectYear)
 	                _this3.opt = res;
 	                _this3.opt.type = _this3.timeTab;
 	                (0, _setChart.refresh)(_this3.opt || {});
@@ -18105,6 +18105,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 	var count = {
 	    teachNum: {
 	        sum: 0,
@@ -18127,13 +18129,13 @@
 	        text: '学术沙龙',
 	        color: '#8bc34a'
 	    },
-	    sumNum: {
+	    sumNum: _defineProperty({
 	        sum: 0,
 	        data: [],
 	        name: 'sumNum',
 	        text: '统计',
 	        color: '#8bc34a'
-	    }
+	    }, 'sum', 0)
 	};
 	var myCharts = {};
 
@@ -18165,11 +18167,7 @@
 	    //清空数据
 	    for (var k in count) {
 	        count[k].data = [];
-	    }
-
-	    // 重置sum
-	    for (var _k in count) {
-	        count[_k].sum = 0;
+	        count[k].sum = 0;
 	    }
 
 	    opt.forEach(function (value) {
@@ -18192,6 +18190,7 @@
 	        count[type].data[mon] = count[type].data[mon] ? count[type].data[mon] + 1 : 1;
 	        count.sumNum.data[mon] = count.sumNum.data[mon] ? count.sumNum.data[mon] + 1 : 1;
 	        count[type].sum += 1;
+	        ++count.sumNum.sum;
 	    });
 	    count.sumNum.minCount = Math.min(count.teachNum.sum, count.scientNum.sum, count.salonNum.sum);
 	    return count;
@@ -18275,7 +18274,7 @@
 	    };
 	}
 	// 'itemNum'水球图
-	function liquid(opt, sum) {
+	function liquid(opt) {
 	    var series = [],
 	        i = 1;
 	    for (var key in opt) {
@@ -18285,7 +18284,8 @@
 	            name: value.name,
 	            text: value.text,
 	            type: 'liquidFill',
-	            data: [(value.data / sum).toFixed(2)],
+	            // data: [(value.data / sum).toFixed(2)],
+	            data: [value.data],
 	            center: [i++ * 30 - 10 + '%', '50%'],
 	            radius: '65%',
 	            outline: {
@@ -18294,7 +18294,7 @@
 	            label: {
 	                normal: {
 	                    formatter: function formatter(param) {
-	                        return param.seriesName + '\n\n' + param.value * 100 + '% ';
+	                        return param.seriesName + '\n\n' + (param.value * 100).toFixed(0) + '%';
 	                    },
 	                    textStyle: {
 	                        fontSize: 20
@@ -18310,24 +18310,19 @@
 	// 获取各项百分比
 	function getPercent(data) {
 	    var percent = {};
-	    var sum = 0;
-	    var max = 0;
 
 	    for (var key in data) {
 	        if (key === 'sumNum') {
-	            // max = Math.max.apply(Math, data[key].data);
 	            continue;
 	        }
 	        percent[key] = {
 	            text: data[key].name,
 	            name: data[key].text,
-	            data: data[key].sum
+	            data: (data[key].sum / data.sumNum.sum).toFixed(2)
 	        };
-	        sum += data[key].sum;
-	        // console.log(percent[key].data)
 	    }
 
-	    return { sum: sum, max: max, percent: percent };
+	    return percent;
 	}
 
 	function init(ids, options) {
@@ -18341,16 +18336,12 @@
 	    for (var value in myCharts) {
 	        var option = {};
 	        // 处理数据
-
-	        var _getPercent = getPercent(data),
-	            sum = _getPercent.sum,
-	            percent = _getPercent.percent,
-	            max = _getPercent.max;
+	        var percent = getPercent(data);
 
 	        if (value === 'sumNum') {
 	            option = sumOption(data, 'sumNum', axis);
 	        } else if (value === 'itemNum') {
-	            option = liquid(percent, sum);
+	            option = liquid(percent);
 	        }
 	        myCharts[value].setOption(option);
 	    }
@@ -18363,11 +18354,7 @@
 	    var data = getData(options);
 
 	    var axis = xAxis(options.type);
-
-	    var _getPercent2 = getPercent(data),
-	        sum = _getPercent2.sum,
-	        percent = _getPercent2.percent,
-	        max = _getPercent2.max;
+	    var percent = getPercent(data);
 
 	    for (var key in myCharts) {
 	        var opt = myCharts[key].getOption();
@@ -18379,7 +18366,8 @@
 	            opt.xAxis[0].data = axis;
 	        } else {
 	            opt.series.forEach(function (value) {
-	                value.data = [(percent[value.text].data / sum).toFixed(2)];
+	                var fixData = percent[value.text].data;
+	                value.data = [fixData];
 	            });
 	        }
 	        myCharts[key].setOption(opt);
