@@ -216,7 +216,7 @@
 	}
 </script>
 
-<style lang='stylus'>
+<style scoped lang='stylus'>
 	@import '../css/funs';
 	@import '../css/variable';
 	@import '../../dist/css/simditor.css';

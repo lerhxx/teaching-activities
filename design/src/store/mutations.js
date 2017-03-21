@@ -12,7 +12,8 @@ export default {
         state.facultiesList = lists;
     },
     SET_ARTICLES(state, lists) {
-        let now = new Date().getTime();
+        console.log(lists.length)
+        state.noMoreArticle = lists.length === 0;
         state.articles = lists;
     },
     SET_ARTICLE(state, article) {

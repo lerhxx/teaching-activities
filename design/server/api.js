@@ -179,8 +179,11 @@ router.get('/getArticals', (req, res, next) => {
 		let academy = req.query.faculty.charAt(0),
 			faculty = req.query.faculty.charAt(2),
 			type = req.query.type,
-			obj = {};
-		console.log(req.query.faculty)
+			obj = {},
+			query = '',
+			total = 0;
+		const size = req.query.pageSize * 1;
+
 	if(academy == 0) {
 		if(type != 0) {
 			obj.type = type
@@ -197,14 +200,16 @@ router.get('/getArticals', (req, res, next) => {
 		obj.faculty = faCondition;
 	}
 
-	db.Article.find(obj, (err, doc) => {
-		console.log(doc.length)
-		if(err) {
-			res.send({state: 1, msg: '查询失败！'});
-		}else {
-			res.send({state: 0, data: doc});
-		}
-	})
+	db.Article.find(obj)
+		.skip(req.query.page * size)
+		.limit(size)
+		.exec((err, doc) => {
+			if(err) {
+				res.send({state: 1, msg: '查询失败！'});
+			}else {
+				res.send({state: 0, data: {lists: doc, total: db.articleTotal}});
+			}
+		})
 })
 
 router.get('/user/info', (req, res) => {

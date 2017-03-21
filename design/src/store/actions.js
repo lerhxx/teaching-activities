@@ -42,7 +42,7 @@ export default {
       })
   },
   GET_ARTICLES({commit}, obj) {
-    console.log(obj)
+    // console.log(obj)
     return axios.get('/getArticals', {params: obj})
       .then(res => {
         if (res.data.state === 0) {
