@@ -11,10 +11,10 @@ export default {
     SET_FACULTIES(state, lists) {
         state.facultiesList = lists;
     },
-    SET_ARTICLES(state, lists) {
-        console.log(lists.length)
-        state.noMoreArticle = lists.length === 0;
-        state.articles = lists;
+    SET_ARTICLES(state, info) {
+        state.noMoreArticle = info.lists.length === 0;
+        state.articles = info.lists;
+        state.articleTotal = info.total
     },
     SET_ARTICLE(state, article) {
         state.article = article;
