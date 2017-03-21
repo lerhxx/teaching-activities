@@ -2,16 +2,22 @@
 	<div class='index'>
 		<img class='in-cover' :src='img' />
 		<div class='in-search'>
+			<label>学院：</label>
+			<select class='academy' v-model='academy' @change='onSelectAcademy'>
+				<option v-for='academy in academyList' v-bind:value='academy.index'>
+					{{academy.name}}
+				</option>
+			</select>
 			<label>教研室：</label>
 			<select class='faculty' v-model='faculty' @change='onSelect'>
-				<option v-for='faculty in searchLists.faculties' v-bind:value='faculty.index'>
+				<option v-for='faculty in facultiesList' v-bind:value='faculty.index'>
 					{{faculty.type}}
 				</option>
 			</select>
 			<label>类型：</label>
 			<select class='type' v-model='type' @change='onSelect'>
-				<option v-for='type in searchLists.types' v-bind:value='type.index'>
-					{{type.type}}
+				<option v-for='type in typesLists' v-bind:value='type.index'>
+					{{type.name}}
 				</option>
 			</select>
 		</div>
@@ -48,17 +54,20 @@
 		data() {
 			 return {
 			 	img: '/dist/imgs/cover-1.jpg',
-				 faculty: 0,
+				 faculty: '0-0',
 				 type: 0,
-				 time: 0,
+				 academy: 0,
 				 curPage: 1,
 				 now: new Date().getTime()
 		    }
 		},
 		created() {
-			this.$store.dispatch('GET_SEARCH_LISTS')
+			let self = this;
+			this.$store.dispatch('GET_TYPE_LISTS')
 				.catch(err => alert(err));
-			this.onSelect();
+			this.$store.dispatch('GET_ACADEMY_LISTS')
+				.catch(err => alert(err));
+			this.getFacultyies(this.onSelect);
 		},
 		methods: {
 			onChangeTime(item) {
@@ -66,13 +75,29 @@
 				console.log(this.time)
 			},
 			onSelect() {
-				this.$store.dispatch('GET_ARTICLES', {page: this.curPage, faculty: this.faculty, type: this.type, time: this.time});
+				console.log(this.faculty)
+				this.$store.dispatch('GET_ARTICLES', {page: this.curPage, faculty: this.faculty, type: this.type});
+			},
+			onSelectAcademy() {
+				let self = this;
+				this.getFacultyies(() =>{
+					self.faculty = self.facultiesList[0].index;
+					self.onSelect();
+				});
+			},
+			getFacultyies(cb) {
+				let self = this;
+				this.$store.dispatch('GET_FACULTIES', {academy: this.academy})
+					.then(res => {
+						cb && cb();
+					})
+					.catch(err => alert(err));
 			},
 			filterContent(value, len) {
 				return value.length > len ? value.substr(0, len) + '...' : value;
 			}
 		},
-		computed: mapState(['searchLists', 'articles', 'userRank', 'userFaculty']),
+		computed: mapState(['typesLists', 'academyList', 'facultiesList', 'articles', 'userRank', 'userFaculty']),
 		filters: {
             timeFormat(value) {
                 let date = new Date(value);

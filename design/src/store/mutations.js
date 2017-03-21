@@ -2,8 +2,14 @@ export default {
     SET_FOOTER_LINKS(state, links) {
         state.footerLinks = links;
     },
-    SET_SEARCH_LISTS(state, lists) {
-        state.searchLists = lists;
+    SET_TYPE_LISTS(state, lists) {
+        state.typesLists = lists;
+    },
+    SET_ACADEMY_LISTS(state, lists) {
+        state.academyList = lists;
+    },
+    SET_FACULTIES(state, lists) {
+        state.facultiesList = lists;
     },
     SET_ARTICLES(state, lists) {
         let now = new Date().getTime();

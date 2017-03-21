@@ -151,9 +151,10 @@
             },
             initCharts() {
                 let id = this.charts,
-                    queryId = this.rangeTab === 0 ? this.$route.params.id : this.$store.state.userFaculty.index,
+                    queryId = this.rangeTab === 0 ? this.$route.params.id : this.$store.state.userFaculty,
                     time = this.timeTab;
                 let ref = document.getElementById('canvas-wrapper');
+
 
                 if(ref) {
                 this.$store.dispatch('GET_CHARTS_DATA', {id: queryId, tab: this.rangeTab, time: time, year: this.selectYear})
@@ -172,9 +173,8 @@
             },
             refreshCharts() {
                 let id = this.charts,
-                    queryId = this.rangeTab === 0 ? this.$route.params.id : this.$store.state.userFaculty.index,
+                    queryId = this.rangeTab === 0 ? this.$route.params.id : this.$store.state.userFaculty,
                     time = this.timeTab;
-
                 this.$store.dispatch('GET_CHARTS_DATA', {id: queryId, tab: this.rangeTab, time: time, year: this.selectYear})
                     .then(res => {
                          if(!isEmpty(res)) {

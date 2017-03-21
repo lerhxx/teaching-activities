@@ -1,25 +1,13 @@
-{
-   "faculties": [{
-       "type": "全部",
-       "index": 0
-   }, {
-       "type": "信息管理教研室",
-       "index": 1
-   }, {
-       "type": "工业工程教研室",
-       "index": 2
-   }],
-   "types": [{
-       "type": "全部",
-       "index": 0
-   }, {
-       "type": "教学讨论会",
-       "index": 1
-   }, {
-       "type": "科研研讨会",
-       "index": 2
-   }, {
-       "type": "学术沙龙",
-       "index": 3
-   }]
-}
+[{
+    "name": "全部",
+    "index": 0
+}, {
+    "name": "教学讨论会",
+    "index": 1
+}, {
+    "name": "科研研讨会",
+    "index": 2
+}, {
+    "name": "学术沙龙",
+    "index": 3
+}]

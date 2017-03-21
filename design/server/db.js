@@ -4,6 +4,7 @@ const db = mongoose.connection;
 const article = require('../json/article.json');
 const footerLink = require('../json/footer-link.json');
 const search = require('../json/search.json');
+const academy = require('../json/academy.json');
 const user = require('../json/user.json');
 
 mongoose.Promise = Promise;
@@ -12,14 +13,20 @@ mongoose.connect('mongodb://localhost/design');
 
 const selectTypeSchema = new Schema({
 	type: String,
-	index: Number
+	index: String
+})
+
+const AcademySchema = new Schema({
+	name: String,
+	index: Number,
+	staff: [selectTypeSchema]
 })
 
 const UserSchema = new Schema({
 	id: String,
 	pwd: String,
 	rank: Number,
-	faculty: selectTypeSchema,
+	faculty: String,
 	title: String
 })
 
@@ -48,16 +55,16 @@ const footLinkSchema = new Schema({
 
 
 const searchSchema = new Schema({
-	faculties: [selectTypeSchema],
-	types: [selectTypeSchema]
+	name: String,
+	index: Number
 })
 
 const Models = {
 	User: mongoose.model('User', UserSchema),
 	Article: mongoose.model('Article', articleSchema),
-	// List: mongoose.model('List', listSchema),
 	FootLink: mongoose.model('FootLink', footLinkSchema),
 	Search: mongoose.model('Search', searchSchema),
+	Academy: mongoose.model('Academy', AcademySchema),
 	initialized: false
 }
 
@@ -70,7 +77,9 @@ const initialize = () => {
 			//TODO
 			article.articles.map(item => new Models.Article(item).save());
 			// footerLink.map(item => new Models.FootLink(item).save());
-			// new Models.Search(search).save();
+			// search.map(item =>new Models.Search(item).save());
+			// academy.map(item =>new Models.Academy(item).save());
+			// console.log(academy)
 			// user.map(item => new Models.User(item).save());
 			// Models.Article.find(null, (err, doc) => {
 			// 	if(err) {
@@ -80,7 +89,7 @@ const initialize = () => {
 			// })
 		}else {
 			// Models.Article.find(null, (err, doc) => {
-			// 	doc.map(item => item.remove()) 
+			// 	// doc.map(item => item.remove()) 
 			// 	Models.Article.find(null, (err, doc) => {
 			// 		console.log(doc)
 			// 	})

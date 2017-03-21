@@ -2,45 +2,30 @@
     "id": "张三",
 	"pwd": "0",
 	"rank": 0,
-	"faculty": {
-       "type": "信息管理教研室",
-       "index": 1
-   },
+	"faculty": "1-1",
 	"title": "普通教师"
 }, {
     "id": "李四",
 	"pwd": "1",
 	"rank": 1,
-	"faculty": {
-       "type": "工业工程教研室",
-       "index": 2
-   },
+	"faculty": "1-2",
 	"title": "一级教师"
 }, {
     "id": "何军",
 	"pwd": "1",
 	"rank":1,
-	"faculty": {
-       "type": "信息管理教研室",
-       "index": 1
-   },
+	"faculty": "1-1",
 	"title": "教授"
 }, {
     "id": "王五",
 	"pwd": "2",
 	"rank": 2,
-	"faculty": {
-       "type": "工业工程教研室",
-       "index": 2
-   },
+	"faculty": "1-2",
 	"title": "教授"
 }, {
     "id": "王维",
 	"pwd": "2",
-	"rank": 2,
-	"faculty": {
-       "type": "信息管理教研室",
-       "index": 1
-   },
+	"rank": 3,
+	"faculty": "1-1",
 	"title": "教授"
 }]
