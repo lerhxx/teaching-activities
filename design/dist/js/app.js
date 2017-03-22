@@ -14686,7 +14686,6 @@
 				this.$store.dispatch('GET_ARTICLES', { page: page || 1, pageSize: this.pageSize, faculty: this.faculty, type: this.type }).then(function (res) {
 					_this.scroll();
 					_this.totalPage = Math.ceil(_this.articleTotal / _this.pageSize);
-					console.log(_this.totalPage);
 				});
 			},
 			onSelectAcademy: function onSelectAcademy() {
@@ -17978,7 +17977,7 @@
 
 	exports.default = {
 	    data: function data() {
-	        var year = new Date().getFullYear() - 1;
+	        var year = new Date().getFullYear();
 
 	        return {
 	            isPerArt: false,
@@ -18046,7 +18045,7 @@
 	            var _this2 = this;
 
 	            var id = this.charts,
-	                queryId = this.rangeTab === 0 ? this.$route.params.id : this.$store.state.userFaculty,
+	                queryId = this.rangeTab == 0 ? this.$route.params.id : this.$store.state.userFaculty,
 	                time = this.timeTab;
 	            var ref = document.getElementById('canvas-wrapper');
 
@@ -18067,8 +18066,9 @@
 	            var _this3 = this;
 
 	            var id = this.charts,
-	                queryId = this.rangeTab === 0 ? this.$route.params.id : this.$store.state.userFaculty,
+	                queryId = this.rangeTab == 0 ? this.$route.params.id : this.$store.state.userFaculty,
 	                time = this.timeTab;
+
 	            this.$store.dispatch('GET_CHARTS_DATA', { id: queryId, tab: this.rangeTab, time: time, year: this.selectYear }).then(function (res) {
 	                if (!(0, _common.isEmpty)(res)) {
 	                    _this3.empty = false;

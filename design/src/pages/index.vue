@@ -71,7 +71,6 @@
 					.then(res => {
 						this.scroll();
 						this.totalPage = Math.ceil(this.articleTotal / this.pageSize);
-						console.log(this.totalPage)
 					})
 			},
 			onSelectAcademy() {

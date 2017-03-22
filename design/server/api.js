@@ -241,7 +241,7 @@ router.get('/user/info', (req, res) => {
 })
 
 router.get('/user/count/:id/:tab/:year/:time', (req, res) => {
-	// console.log(req.params);
+	console.log(req.params);
 	let params = req.params,
 		sTime = new Date(),
 		eTime = new Date();
@@ -276,8 +276,6 @@ router.get('/user/count/:id/:tab/:year/:time', (req, res) => {
 				}
 		})
 	}
-	// res.send({state: 0, data: {startTime}})
-	// db.User.find((err, doc) => {})
 })
 
 function filter(doc) {
@@ -294,45 +292,6 @@ function filter(doc) {
 	})
 	return result;
 }
-
-// function calc(doc) {
-// 	let count = {
-// 		teachNum: {
-// 			sum: 0
-// 		},
-// 		scientNum: {
-// 			sum: 0
-// 		},
-// 		salonNum: {
-// 			sum: 0
-// 		}
-// 	},
-// 	year = '',
-// 	mon = '',
-// 	type = '';
-// 	doc.forEach(value => {
-// 		let time = new Date(value.startTime);
-// 		year = time.getFullYear();
-// 		mon = time.getMonth() + 1;
-// 		console.log(value.type)
-// 		switch(value.type) {
-// 			case '1': 
-// 				type = 'teachNum';
-// 				break;
-// 			case '2':
-// 				type = 'scientNum';
-// 				break;
-// 			case '3':
-// 				type = 'salonNum';
-// 				break;
-// 		}
-// 		count[type][year] = count[type][year] ? count[type][year] : {};
-// 		count[type][year][mon] = count[type][year][mon] ? count[type][year][mon] + 1 : 1;
-// 		count[type].sum += 1;
-// 	})
-
-// 	return count;
-// }
 
 router.post('/user/addUser', (req, res) => {
 	dbUser.create(req.body, (err, doc) => {
