@@ -202,7 +202,7 @@ router.get('/getArticals', (req, res, next) => {
 
 	if(db.Article.total > 0) {
 		db.Article.find(obj)
-			.skip(req.query.page * size)
+			.skip((req.query.page - 1) * size)
 			.limit(size)
 			.exec((err, doc) => {
 				if(err) {

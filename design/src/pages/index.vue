@@ -37,21 +37,15 @@
 		</div>
 		<!--TODO
 		分页-->
-		<div class='page-wrapper'>
-			<button type='button' @click='prevPage' :disabled='prevDisable'>上一页</button>
-			<button type='button' @click='nextPage' :disabled= 'noMoreArticle'>下一页</button>
-			<input type='text' v-model='skipPage'/>
-			<button type='button' @click='skip'>跳转</button>
-			<transition name='fade'>
-				<div class='tip' v-show='tipShow'>请输入有效页数</div>
-			</transition>
-		</div>
+		<page :totalPage='totalPage' @prevPage='onSelect' @nextPage='onSelect' @skip='onSelect'></page>
 	</div>
 </template>
 
 <script>
 	import {mapState} from 'vuex';
 	import modify from '../components/modify.vue';
+	import page from '../components/page.vue'
+
 	export default {
 		data() {
 			 return {
@@ -59,14 +53,9 @@
 				 faculty: '0-0',
 				 type: 0,
 				 academy: 0,
-				 curPage: 1,
-				 skipPage: 1,
-				 pageTip: false,
 				 now: new Date().getTime(),
-				 tipShow: false,
-				 prevDisable: true,
-				 nextDisable: false,
-				 pageSize: 10
+				 pageSize: 10,
+				 totalPage: 0
 		    }
 		},
 		created() {
@@ -78,15 +67,11 @@
 			this.getFacultyies(this.onSelect);
 		},
 		methods: {
-			onChangeTime(item) {
-				//TODO
-				console.log(this.time)
-			},
-			onSelect() {
-				let self = this;
-				this.$store.dispatch('GET_ARTICLES', {page: this.curPage, pageSize: this.pageSize, faculty: this.faculty, type: this.type})
+			onSelect(page) {
+				this.$store.dispatch('GET_ARTICLES', {page: page || 1, pageSize: this.pageSize, faculty: this.faculty, type: this.type})
 					.then(res => {
-						self.scroll();
+						this.scroll();
+						this.totalPage = Math.ceil(this.articleTotal / this.pageSize);
 					})
 			},
 			onSelectAcademy() {
@@ -107,27 +92,6 @@
 			filterContent(value, len) {
 				return value.length > len ? value.substr(0, len) + '...' : value;
 			},
-			prevPage() {
-				this.curPage = this.curPage === 1 ? this.curPage : --this.curPage;
-				this.skipPage = this.curPage;
-				this.onSelect();
-			},
-			nextPage() {
-				++this.curPage;
-				this.skipPage = this.curPage;
-				this.prevDisable = false;
-				this.onSelect();
-			},
-			skip() {
-				if(/^[0-9]+$/.test(this.skipPage)) {
-					this.curPage = this.skipPage;
-					this.onSelect();
-					this.prevDisable = !(this.curPage > 1);
-					this.tipShow = false;
-				}else {
-					this.tipShow = true;
-				}
-			},
 			scroll() {
 				let body = document.body;
 				let id = '';
@@ -139,7 +103,7 @@
 				}, 10)
 			}
 		},
-		computed: mapState(['typesLists', 'academyList', 'facultiesList', 'noMoreArticle', 'articles', 'userRank', 'userFaculty']),
+		computed: mapState(['typesLists', 'academyList', 'facultiesList', 'articleTotal', 'articles', 'userRank', 'userFaculty']),
 		filters: {
             timeFormat(value) {
                 let date = new Date(value);
@@ -149,7 +113,8 @@
             },
         },
         components: {
-        	modify
+        	modify,
+			page
         }
 	}
 </script>
@@ -231,44 +196,6 @@
 			content: '未举办'
 			color #8bc34a
 			border-radius 6px
-	.page-wrapper
-		relative()
-		margin 30px 0
-		text-align center
-		& > button
-			display inline-block
-			relative()
-			width 80px
-			height 35px
-			margin 0 10px
-			border none
-			outline none
-			color #fff
-			line-height 35px
-			background #000
-			border-radius 6px
-			cursor pointer
-			&[disabled]
-				background #ccc
-		input
-			width 50px
-			height 35px
-			margin 0 10px
-			outline none
-			text-align center
-			font-size 20px
-			box-sizing border-box
-			border-radius 6px
-	.tip
-		absolute(top -150% left 50%)
-		padding 10px
-		color #fff
-		background rgba(0, 0, 0, .6)
-		border-radius 8px
-	.fade-enter
-		opacity: 0
-	.fade-enter-active
-		transition: opacity .5s linear
 	@media screen and (max-width: 768px)
 		.list-wrapper
 			width 90%
