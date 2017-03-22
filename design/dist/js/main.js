@@ -14500,13 +14500,14 @@
 				this.$store.dispatch('GET_ARTICLES', { page: page || 1, pageSize: this.pageSize, faculty: this.faculty, type: this.type }).then(function (res) {
 					_this.scroll();
 					_this.totalPage = Math.ceil(_this.articleTotal / _this.pageSize);
+					console.log(_this.totalPage);
 				});
 			},
 			onSelectAcademy: function onSelectAcademy() {
 				var self = this;
 				this.getFacultyies(function () {
 					self.faculty = self.facultiesList[0].index;
-					self.onSelect();
+					self.filter();
 				});
 			},
 			getFacultyies: function getFacultyies(cb) {
@@ -14517,8 +14518,9 @@
 					return alert(err);
 				});
 			},
-			filterContent: function filterContent(value, len) {
-				return value.length > len ? value.substr(0, len) + '...' : value;
+			filter: function filter() {
+				this.$refs.page.initialPage();
+				this.onSelect(1);
 			},
 			scroll: function scroll() {
 				var body = document.body;
@@ -14543,7 +14545,6 @@
 			page: _page2.default
 		}
 	}; //
-	//
 	//
 	//
 	//
@@ -14750,7 +14751,7 @@
 	          var val = "_value" in o ? o._value : o.value;
 	          return val
 	        })[0]
-	      }, _vm.onSelect]
+	      }, _vm.filter]
 	    }
 	  }, _vm._l((_vm.facultiesList), function(faculty) {
 	    return _c('option', {
@@ -14774,7 +14775,7 @@
 	          var val = "_value" in o ? o._value : o.value;
 	          return val
 	        })[0]
-	      }, _vm.onSelect]
+	      }, _vm.filter]
 	    }
 	  }, _vm._l((_vm.typesLists), function(type) {
 	    return _c('option', {
@@ -14816,6 +14817,7 @@
 	      }
 	    })])
 	  }))]), _vm._v(" "), _vm._v(" "), _c('page', {
+	    ref: "page",
 	    attrs: {
 	      "totalPage": _vm.totalPage
 	    },
@@ -89011,14 +89013,12 @@
 		created: function created() {},
 		methods: {
 			prevPage: function prevPage(cb) {
-				this.curPage = this.curPage === 1 ? this.curPage : --this.curPage;
-				this.skipPage = this.curPage;
+				this.skipPage = this.curPage = this.curPage === 1 ? this.curPage : --this.curPage;
 				this.$emit('prevPage', this.curPage);
 				this.tipShow = false;
 			},
 			nextPage: function nextPage() {
-				this.curPage = this.curPage >= this.totalPage ? this.curPage : ++this.curPage;
-				this.skipPage = this.curPage;
+				this.skipPage = this.curPage = this.curPage >= this.totalPage ? this.curPage : ++this.curPage;
 				this.$emit('nextPage', this.curPage);
 				this.tipShow = false;
 			},
@@ -89042,6 +89042,9 @@
 					}
 					this.tip = this.tipContent[0];
 				}
+			},
+			initialPage: function initialPage() {
+				this.curPage = this.skipPage = 1;
 			}
 		}
 	};

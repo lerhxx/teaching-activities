@@ -85,7 +85,6 @@ const initialize = () => {
 			console.log('Database opens for the first time...')
 			//TODO
 			article.articles.map(item => new Models.Article(item).save());
-			Models.Article.total = article.articles.length;
 			user.map(item => new Models.User(item).save());
 			// footerLink.map(item => new Models.FootLink(item).save());
 			// search.map(item =>new Models.Search(item).save());

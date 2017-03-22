@@ -9,13 +9,13 @@
 				</option>
 			</select>
 			<label>教研室：</label>
-			<select class='faculty' v-model='faculty' @change='onSelect'>
+			<select class='faculty' v-model='faculty' @change='filter'>
 				<option v-for='faculty in facultiesList' v-bind:value='faculty.index'>
 					{{faculty.type}}
 				</option>
 			</select>
 			<label>类型：</label>
-			<select class='type' v-model='type' @change='onSelect'>
+			<select class='type' v-model='type' @change='filter'>
 				<option v-for='type in typesLists' v-bind:value='type.index'>
 					{{type.name}}
 				</option>
@@ -35,9 +35,8 @@
 				</li>
 			</ul>
 		</div>
-		<!--TODO
-		分页-->
-		<page :totalPage='totalPage' @prevPage='onSelect' @nextPage='onSelect' @skip='onSelect'></page>
+		<!--分页器-->
+		<page :totalPage='totalPage' @prevPage='onSelect' @nextPage='onSelect' @skip='onSelect' ref='page'></page>
 	</div>
 </template>
 
@@ -72,13 +71,14 @@
 					.then(res => {
 						this.scroll();
 						this.totalPage = Math.ceil(this.articleTotal / this.pageSize);
+						console.log(this.totalPage)
 					})
 			},
 			onSelectAcademy() {
 				let self = this;
 				this.getFacultyies(() =>{
 					self.faculty = self.facultiesList[0].index;
-					self.onSelect();
+					self.filter();
 				});
 			},
 			getFacultyies(cb) {
@@ -89,8 +89,9 @@
 					})
 					.catch(err => alert(err));
 			},
-			filterContent(value, len) {
-				return value.length > len ? value.substr(0, len) + '...' : value;
+			filter() {
+				this.$refs.page.initialPage();
+				this.onSelect(1);
 			},
 			scroll() {
 				let body = document.body;

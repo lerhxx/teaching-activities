@@ -200,21 +200,35 @@ router.get('/getArticals', (req, res, next) => {
 		obj.faculty = faCondition;
 	}
 
-	if(db.Article.total > 0) {
-		db.Article.find(obj)
-			.skip((req.query.page - 1) * size)
-			.limit(size)
-			.exec((err, doc) => {
-				if(err) {
-					res.send({state: 1, msg: '查询失败！'});
-				}else {
-					res.send({state: 0, data: {lists: doc, total: db.Article.total}});
-				}
-			})
-	}else {
-		res.send({state: 0, data: {lists: [], total: db.Article.total}})
-	}
+	// 查询总量
+	db.Article.count(obj, (err, sum) => {
+		if(err) {
+			res.send({state: 2, msg: '查询失败！'});
+		}else {
+			total = sum;
+			if(total > 0) {
+				// 分页查询
+				pagedQuery(obj, req.query.page, size, total, res);
+			}else {
+				res.send({state: 0, data: {lists: [], total: total}})
+			}
+		}
+	})
+
 })
+
+function pagedQuery(obj, page, size, total, res) {
+	db.Article.find(obj)
+		.skip((page - 1) * size)
+		.limit(size)
+		.exec((err, doc) => {
+			if(err) {
+				res.send({state: 1, msg: '查询失败！'});
+			}else {
+				res.send({state: 0, data: {lists: doc, total: total}});
+			}
+		})
+}
 
 router.get('/user/info', (req, res) => {
 	db.User.find((err, doc) => {
