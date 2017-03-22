@@ -83,6 +83,8 @@
 
     .per
         padding 0 20px
+    .list
+        justify-content flex-start
     .list-item
         width 32.5%
         padding 15px 8px 15px 0

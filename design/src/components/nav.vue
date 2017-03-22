@@ -69,7 +69,7 @@
 				this.$router.push('/');
 				alert('登出成功！');
 			},
-		},
+		}
 	}
 </script>
 

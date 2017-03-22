@@ -11,17 +11,38 @@ export default {
         }
       })
   },
-  GET_SEARCH_LISTS({commit}) {
-    return axios.get('/getSearchLists')
+  GET_TYPE_LISTS({commit}) {
+    return axios.get('/getTypeLists')
       .then(res => {
         if (res.data.state === 0) {
-          commit('SET_SEARCH_LISTS', res.data.data)
+          commit('SET_TYPE_LISTS', res.data.data)
+        }else {
+          return Promise.reject(res.data.msg)
+        }
+      })
+  },
+  GET_ACADEMY_LISTS({commit}) {
+    return axios.get('/getAcademyLists')
+      .then(res => {
+        if (res.data.state === 0) {
+          commit('SET_ACADEMY_LISTS', res.data.data)
+        }else {
+          return Promise.reject(res.data.msg)
+        }
+      })
+  },
+  GET_FACULTIES({commit}, info) {
+    return axios.get(`/getFacultiesLists/${info.academy}`)
+      .then(res => {
+        if(res.data.state === 0) {
+          commit('SET_FACULTIES', res.data.data)
         }else {
           return Promise.reject(res.data.msg)
         }
       })
   },
   GET_ARTICLES({commit}, obj) {
+    // console.log(obj)
     return axios.get('/getArticals', {params: obj})
       .then(res => {
         if (res.data.state === 0) {
@@ -89,7 +110,6 @@ export default {
     return axios.put('/user/edit/${state.userId}', {form: form.form, id: form.id})
       .then(res => {
         if(res.data.state === 0) {
-    console.log(res.data.data);
           return Promise.resolve(res.data.data);
         }else {
           return Promise.reject(res.data.msg);
@@ -116,10 +136,10 @@ export default {
         }
       })
   },
-  INIT_CHART({commit}, info) { 
-    return axios.get(`/user/count/${info.id}`)
-      .then(res => {
+  GET_CHARTS_DATA({commit}, info) {
+    return axios.get(`/user/count/${info.id}/${info.tab}/${info.year}/${info.time}`).then(res => {
         if(res.data.state == 0) {
+      // console.log(res.data.data)
           return Promise.resolve(res.data.data);
         }else {
           return Promise.reject(res.data.msg);
@@ -127,7 +147,6 @@ export default {
       })
   },
   ADD_USER({commit}, form) {
-    console.log(form);
     return axios.post('/user/addUser', form)
       .then(res => {
         if(res.data.state == 0) {

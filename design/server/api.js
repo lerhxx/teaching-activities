@@ -16,12 +16,33 @@ router.get('/getFooterLink', (req, res) => {
 	})
 })
 
-router.get('/getSearchLists', (req, res) => {
+router.get('/getTypeLists', (req, res) => {
 	db.Search.find(null, (err, lists) => {
 		if(err) {
 			res.send({state: 1, msg: '查询失败！'});
 		}else {
-			res.send({state: 0, data: lists[0]});
+			res.send({state: 0, data: lists});
+		}
+	})
+})
+
+router.get('/getAcademyLists', (req, res) => {
+	db.Academy.find(null, (err, lists) => {
+		if(err) {
+			res.send({state: 1, msg: '查询失败！'});
+		}else {
+			res.send({state: 0, data: lists});
+		}
+	})
+})
+
+router.get('/getFacultiesLists/:id', (req, res) => {
+	db.Academy.findOne({index: req.params.id}, (err, doc) => {
+		// console.log(doc)
+		if(err) {
+			res.send({state: 1, msg: '查询失败！'});
+		}else {
+			res.send({state: 0, data: doc.staff});
 		}
 	})
 })
@@ -155,148 +176,46 @@ router.get('/user', (req, res) => {
 	})
 })
 router.get('/getArticals', (req, res, next) => {
-		let faculty = req.query.faculty,
-		type = req.query.type,
-		time = req.query.time;
-	if(time == 0) {
-		if(faculty == 0) {
-			if(type == 0) {
-				next('route');
-			}else {
-				db.Article.find({type: type}, (err, doc) => {
-					if(err) {
-						res.send({state: 1, msg: '查询失败！'});
-					}else {
-						res.send({state: 0, data: doc});
-					}
-				})
+		let academy = req.query.faculty.charAt(0),
+			faculty = req.query.faculty.charAt(2),
+			type = req.query.type,
+			obj = {},
+			query = '',
+			total = 0;
+		const size = req.query.pageSize * 1;
 
-			}
+	if(academy == 0) {
+		if(type != 0) {
+			obj.type = type
 		}else {
-			if(type == 0) {
-				db.Article.find({faculty: faculty}, (err, doc) => {
-					if(err) {
-						res.send({state: 1, msg: '查询失败！'});
-					}else {
-						res.send({state: 0, data: doc});
-					}
-				})
-			}else {
-				db.Article.find({faculty: faculty, type: type}, (err, doc) => {
-					if(err) {
-						res.send({state: 1, msg: '查询失败！'});
-					}else {
-						res.send({state: 0, data: doc});
-					}
-				})
+			obj = null;
+		}
+	}else {
+		let faCondition = faculty == 0 ? new RegExp(`^${academy}-`) : req.query.faculty;
 
-			}
+		if(type != 0) {
+			obj.type = type;
 		}
-	}else {
-		next();
+
+		obj.faculty = faCondition;
 	}
-}, (req, res, next) => {
-	let faculty = req.query.faculty,
-		type = req.query.type,
-		time = req.query.time,
-		now = new Date();
-	if(time == 1) {
-		if(faculty == 0) {
-			if(type == 0) {
-				db.Article.find({endTime: {$gt: now}}, (err, doc) => {
-					if(err) {
-						res.send({state: 1, msg: '查询失败！'});
-					}else {
-						res.send({state: 0, data: doc});
-					}
-				})
-			}else {
-				db.Article.find({type: type, endTime: {$gt: now}}, (err, doc) => {
-					if(err) {
-						res.send({state: 1, msg: '查询失败！'});
-					}else {
-						res.send({state: 0, data: doc});
-					}
-				})
-			}
-		}else {
-			if(type == 0) {
-				db.Article.find({faculty: faculty, endTime: {$gt: now}}, (err, doc) => {
-					if(err) {
-						res.send({state: 1, msg: '查询失败！'});
-					}else {
-						res.send({state: 0, data: doc});
-					}
-				})
-			}else {
-				db.Article.find({faculty: faculty, type: type, endTime: {$gt: now}}, (err, doc) => {
-					if(err) {
-						res.send({state: 1, msg: '查询失败！'});
-					}else {
-						res.send({state: 0, data: doc});
-					}
-				})
-			}
-		}
+
+	if(db.Article.total > 0) {
+		db.Article.find(obj)
+			.skip((req.query.page - 1) * size)
+			.limit(size)
+			.exec((err, doc) => {
+				if(err) {
+					res.send({state: 1, msg: '查询失败！'});
+				}else {
+					res.send({state: 0, data: {lists: doc, total: db.Article.total}});
+				}
+			})
 	}else {
-		next();
-	}
-}, (req, res, next) => {
-	let faculty = req.query.faculty,
-		type = req.query.type,
-		time = req.query.time,
-		now = new Date();
-	if(time == 2) {
-		if(faculty == 0) {
-			if(type == 0) {
-				db.Article.find({endTime: {$lt: now}}, (err, doc) => {
-					if(err) {
-						res.send({state: 1, msg: '查询失败！'});
-					}else {
-						res.send({state: 0, data: doc});
-					}
-				})
-			}else {
-				db.Article.find({type: type, endTime: {$lt: now}}, (err, doc) => {
-					if(err) {
-						res.send({state: 1, msg: '查询失败！'});
-					}else {
-						res.send({state: 0, data: doc});
-					}
-				})
-			}
-		}else {
-			if(type == 0) {
-				db.Article.find({faculty: faculty, endTime: {$lt: now}}, (err, doc) => {
-					if(err) {
-						res.send({state: 1, msg: '查询失败！'});
-					}else {
-						res.send({state: 0, data: doc});
-					}
-				})
-			}else {
-				db.Article.find({faculty: faculty, type: type, endTime: {$lt: now}}, (err, doc) => {
-					if(err) {
-						res.send({state: 1, msg: '查询失败！'});
-					}else {
-						res.send({state: 0, data: doc});
-					}
-				})
-			}
-		}
-	}else {
-		next();
+		res.send({state: 0, data: {lists: [], total: db.Article.total}})
 	}
 })
-router.get('/getArticals', (req, res) => {
-	db.Article.find((err, doc) => {
-		if(err) {
-			res.send({state: 1, msg: '查询失败！'});
-		}else {
-			res.send({state: 0, data: doc});
-		}
-	})
-})
+
 router.get('/user/info', (req, res) => {
 	db.User.find((err, doc) => {
 		if(err) {
@@ -307,22 +226,99 @@ router.get('/user/info', (req, res) => {
 	})
 })
 
-router.get('/user/count/:id', (req, res) => {
-	console.log(req.params.id)
-	db.User.findOne({id: req.params.id}, (err, user) => {
-		if(err) {
-			res.send({state: 1, msg: '查询失败！'})
-		}else {
-			res.send({state: 0, data: {
-				postNum: user.postNum,
-				teachNum: user.teachNum,
-				scientNum: user.scientNum,
-				salonNum: user.salonNum
-			}})
-		}
-	})
+router.get('/user/count/:id/:tab/:year/:time', (req, res) => {
+	// console.log(req.params);
+	let params = req.params,
+		sTime = new Date(),
+		eTime = new Date();
+	if(params.time == 0) {
+		sTime = new Date(`${params.year}-01-01`);
+		eTime = new Date(`${params.year}-12-31`);
+	}else if(params.time == 1) {
+		sTime = new Date(`${params.year}-01-01`);
+		eTime = new Date(`${params.year}-07-01`);
+	}else {
+		sTime = new Date(`${params.year}-07-01`);
+		eTime = new Date(`${params.year * 1 + 1}-01-01`);
+	}
+
+	if(params.tab == 0) {
+		db.Article.find({participator: {$in: [params.id]}, $and: [{startTime: {$gt: sTime}}, {startTime: {$lt: eTime}}]}, (err, doc) => {
+				console.log(doc)
+				if(err) {
+					res.send({state: 1, msg: '查询失败！'})
+				}else {
+					let count = filter(doc);
+					res.send({state: 0, data: count})
+				}
+		})
+	}else if(params.tab == 1) {
+		db.Article.find({faculty: {$in: [params.id]} ,$and: [{startTime: {$gt: sTime}}, {startTime: {$lt: eTime}}]}, (err, doc) => {
+				if(err) {
+					res.send({state: 1, msg: '查询失败！'})
+				}else {
+					let count = filter(doc);
+					res.send({state: 0, data: count})
+				}
+		})
+	}
+	// res.send({state: 0, data: {startTime}})
 	// db.User.find((err, doc) => {})
 })
+
+function filter(doc) {
+	if(doc.length === 0) {
+		return {};
+	}
+	let result = [];
+
+	doc.forEach(value => {
+		let tmp = {};
+		tmp.startTime = value.startTime;
+		tmp.type = value.type;
+		result.push(tmp);
+	})
+	return result;
+}
+
+// function calc(doc) {
+// 	let count = {
+// 		teachNum: {
+// 			sum: 0
+// 		},
+// 		scientNum: {
+// 			sum: 0
+// 		},
+// 		salonNum: {
+// 			sum: 0
+// 		}
+// 	},
+// 	year = '',
+// 	mon = '',
+// 	type = '';
+// 	doc.forEach(value => {
+// 		let time = new Date(value.startTime);
+// 		year = time.getFullYear();
+// 		mon = time.getMonth() + 1;
+// 		console.log(value.type)
+// 		switch(value.type) {
+// 			case '1': 
+// 				type = 'teachNum';
+// 				break;
+// 			case '2':
+// 				type = 'scientNum';
+// 				break;
+// 			case '3':
+// 				type = 'salonNum';
+// 				break;
+// 		}
+// 		count[type][year] = count[type][year] ? count[type][year] : {};
+// 		count[type][year][mon] = count[type][year][mon] ? count[type][year][mon] + 1 : 1;
+// 		count[type].sum += 1;
+// 	})
+
+// 	return count;
+// }
 
 router.post('/user/addUser', (req, res) => {
 	dbUser.create(req.body, (err, doc) => {

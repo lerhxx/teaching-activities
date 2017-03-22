@@ -2,43 +2,28 @@
 	<div class='index'>
 		<img class='in-cover' :src='img' />
 		<div class='in-search'>
+			<label>学院：</label>
+			<select class='academy' v-model='academy' @change='onSelectAcademy'>
+				<option v-for='academy in academyList' v-bind:value='academy.index'>
+					{{academy.name}}
+				</option>
+			</select>
 			<label>教研室：</label>
 			<select class='faculty' v-model='faculty' @change='onSelect'>
-				<option v-for='faculty in searchLists.faculties' v-bind:value='faculty.index'>
+				<option v-for='faculty in facultiesList' v-bind:value='faculty.index'>
 					{{faculty.type}}
 				</option>
 			</select>
 			<label>类型：</label>
 			<select class='type' v-model='type' @change='onSelect'>
-				<option v-for='type in searchLists.types' v-bind:value='type.index'>
-					{{type.type}}
+				<option v-for='type in typesLists' v-bind:value='type.index'>
+					{{type.name}}
 				</option>
 			</select>
-			<!--<label>时效：</label>
-			<select class='time' v-model='time' @change='onSelect'>
-				<option v-for='time in searchLists.timeliness' v-bind:value='time.index'>
-					{{time.type}}
-				</option>
-			</select>-->
 		</div>
-		<!-- <div class='not-hold-wrapper'>=
-			<ul class='list'>
-				<li class='list-item' v-for='item in notHoldArticles'>
-					<h3>
-						<router-link class='text-ellipsis' :to="{name: 'article', params: {id: item._id}}">
-							{{item.title}}
-						</router-link>
-					</h3>
-					<p class='time color-g'>{{item.time | timeFormat}}</p>
-					<p class='abstract' v-html='filterContent(item.content, 51)'></p>
-					<modify :item='item' v-show='userRank == 2 || (userRank == 1 && userFaculty == item.faculty)'></modify>
-				</li>
-			</ul>
-		</div> -->
 		<div class='list-wrapper'>
 			<ul class='list'>
-				<li class='list-item' v-for='item in heldArticles'>
-					<!-- <img class='item-cover' :src='item.url' /> -->
+				<li class='list-item' v-for='item in articles' :class="{'willHeld': new Date(item.endTime).getTime() > now}">
 					<h3>
 						<router-link class='text-ellipsis' :to="{name: 'article', params: {id: item._id}}">
 							{{item.title}}
@@ -46,47 +31,79 @@
 					</h3>
 					<p class='time color-g'>{{item.time | timeFormat}}</p>
 					<p>地点：{{item.address}}</p>
-					<!-- <p class='abstract' v-html='item.content'></p> -->
 					<modify :item='item' v-show='userRank == 2 || (userRank == 1 && userFaculty == item.faculty)'></modify>
 				</li>
 			</ul>
 		</div>
 		<!--TODO
 		分页-->
+		<page :totalPage='totalPage' @prevPage='onSelect' @nextPage='onSelect' @skip='onSelect'></page>
 	</div>
 </template>
 
 <script>
 	import {mapState} from 'vuex';
 	import modify from '../components/modify.vue';
+	import page from '../components/page.vue'
 
 	export default {
 		data() {
 			 return {
 			 	img: '/dist/imgs/cover-1.jpg',
-				 faculty: 0,
+				 faculty: '0-0',
 				 type: 0,
-				 time: 0,
+				 academy: 0,
+				 now: new Date().getTime(),
+				 pageSize: 10,
+				 totalPage: 0
 		    }
 		},
 		created() {
-			this.$store.dispatch('GET_SEARCH_LISTS')
+			let self = this;
+			this.$store.dispatch('GET_TYPE_LISTS')
 				.catch(err => alert(err));
-			this.onSelect();
+			this.$store.dispatch('GET_ACADEMY_LISTS')
+				.catch(err => alert(err));
+			this.getFacultyies(this.onSelect);
 		},
 		methods: {
-			onChangeTime(item) {
-				//TODO
-				console.log(this.time)
+			onSelect(page) {
+				this.$store.dispatch('GET_ARTICLES', {page: page || 1, pageSize: this.pageSize, faculty: this.faculty, type: this.type})
+					.then(res => {
+						this.scroll();
+						this.totalPage = Math.ceil(this.articleTotal / this.pageSize);
+					})
 			},
-			onSelect() {
-				this.$store.dispatch('GET_ARTICLES', {faculty: this.faculty, type: this.type, time: this.time});
+			onSelectAcademy() {
+				let self = this;
+				this.getFacultyies(() =>{
+					self.faculty = self.facultiesList[0].index;
+					self.onSelect();
+				});
+			},
+			getFacultyies(cb) {
+				let self = this;
+				this.$store.dispatch('GET_FACULTIES', {academy: this.academy})
+					.then(res => {
+						cb && cb();
+					})
+					.catch(err => alert(err));
 			},
 			filterContent(value, len) {
 				return value.length > len ? value.substr(0, len) + '...' : value;
+			},
+			scroll() {
+				let body = document.body;
+				let id = '';
+				id = setInterval(() => {
+					if(body.scrollTop <= 280) {
+						clearInterval(id)
+					}
+					body.scrollTop -= 60;
+				}, 10)
 			}
 		},
-		computed: mapState(['searchLists', 'heldArticles', 'notHoldArticles', 'userRank', 'userFaculty']),
+		computed: mapState(['typesLists', 'academyList', 'facultiesList', 'articleTotal', 'articles', 'userRank', 'userFaculty']),
 		filters: {
             timeFormat(value) {
                 let date = new Date(value);
@@ -96,7 +113,8 @@
             },
         },
         components: {
-        	modify
+        	modify,
+			page
         }
 	}
 </script>
@@ -133,9 +151,10 @@
 	.list
 		margin auto
 		.list-item 
-			display block
+			width 100%
 			padding 15px 10px
 			border-bottom 1px solid #ddd
+			box-sizing border-box
 	h3
 		display inline-block
 		max-width 100%
@@ -168,6 +187,15 @@
 		padding-right 25px
 		line-height 1.5em
 		overflow hidden
+	.willHeld
+		relative()
+		&:after
+			absolute(top 50% right 10px)
+			padding 3px 8px
+			border 1px solid #8fe32e
+			content: '未举办'
+			color #8bc34a
+			border-radius 6px
 	@media screen and (max-width: 768px)
 		.list-wrapper
 			width 90%

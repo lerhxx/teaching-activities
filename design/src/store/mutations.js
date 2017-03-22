@@ -2,16 +2,19 @@ export default {
     SET_FOOTER_LINKS(state, links) {
         state.footerLinks = links;
     },
-    SET_SEARCH_LISTS(state, lists) {
-        state.searchLists = lists;
+    SET_TYPE_LISTS(state, lists) {
+        state.typesLists = lists;
     },
-    SET_ARTICLES(state, lists) {
-        let now = new Date().getTime();
-        state.notHoldArticles = [];
-        state.holdArticles = [];
-        lists.forEach(function(value) {
-            new Date(value.endTime).getTime() > now ? state.notHoldArticles.push(value) : state.heldArticles.push(value);
-        })
+    SET_ACADEMY_LISTS(state, lists) {
+        state.academyList = lists;
+    },
+    SET_FACULTIES(state, lists) {
+        state.facultiesList = lists;
+    },
+    SET_ARTICLES(state, info) {
+        state.noMoreArticle = info.lists.length === 0;
+        state.articles = info.lists;
+        state.articleTotal = info.total
     },
     SET_ARTICLE(state, article) {
         state.article = article;
