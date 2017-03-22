@@ -8625,7 +8625,6 @@
 			articles: [],
 			article: {},
 			articleTotal: 0,
-			noMoreArticle: false,
 			selfArticles: [],
 			idEdit: false
 		},
@@ -14777,7 +14776,11 @@
 
 
 	// module
+<<<<<<< HEAD
 	exports.push([module.id, "\n.index[data-v-32d8ffb0] {\n  padding-bottom: 60px;\n}\n.in-cover[data-v-32d8ffb0] {\n  width: 100%;\n  height: 300px;\n}\n.in-search[data-v-32d8ffb0] {\n  padding: 15px 0;\n  text-align: center;\n  border-bottom: 1px solid #bbb;\n}\n.in-search select[data-v-32d8ffb0] {\n  min-width: 80px;\n  height: 21px;\n  margin-right: 50px;\n  outline: none;\n}\n.list-wrapper[data-v-32d8ffb0] {\n  width: 60%;\n  margin: auto;\n}\n.hold-list[data-v-32d8ffb0] {\n  margin: 32px 0 12px;\n}\n.hold-list-item[data-v-32d8ffb0] {\n  margin: 0 10px;\n}\n.hold-list-item a[data-v-32d8ffb0] {\n  display: block;\n  padding: 8px 15px;\n  border: 1px solid #ccc;\n  font-size: 16px;\n}\n.list[data-v-32d8ffb0] {\n  margin: auto;\n}\n.list .list-item[data-v-32d8ffb0] {\n  width: 100%;\n  padding: 15px 10px;\n  border-bottom: 1px solid #ddd;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nh3[data-v-32d8ffb0] {\n  display: inline-block;\n  max-width: 100%;\n  margin-bottom: 10px;\n  font-size: 1.3em;\n}\nh3 a[data-v-32d8ffb0] {\n  display: block;\n  max-width: 100%;\n}\nh3 a[data-v-32d8ffb0]:after {\n  display: block;\n  width: 100%;\n  margin: auto;\n  border-bottom: 1px solid #000;\n  content: '';\n  -webkit-transform: scale3d(0, 1, 1);\n  -moz-transform: scale3d(0, 1, 1);\n  -ms-transform: scale3d(0, 1, 1);\n  -o-transform: scale3d(0, 1, 1);\n  transform: scale3d(0, 1, 1);\n  transition: transform 0.15s ease-in-out;\n}\nh3 a[data-v-32d8ffb0]:hover:after {\n  -webkit-transform: scale3d(1, 1, 1);\n  -moz-transform: scale3d(1, 1, 1);\n  -ms-transform: scale3d(1, 1, 1);\n  -o-transform: scale3d(1, 1, 1);\n  transform: scale3d(1, 1, 1);\n}\n.item-cover[data-v-32d8ffb0] {\n  float: right;\n  width: 120px;\n  height: 80px;\n  margin: 15px;\n  margin-right: 0;\n}\n.time[data-v-32d8ffb0] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.abstract[data-v-32d8ffb0] {\n  height: 3em;\n  padding-right: 25px;\n  line-height: 1.5em;\n  overflow: hidden;\n}\n.willHeld[data-v-32d8ffb0] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.willHeld[data-v-32d8ffb0]:after {\n  position: absolute;\n  top: 50%;\n  right: 10px;\n  ((null)): 0;\n  ((null)): 0;\n  padding: 3px 8px;\n  border: 1px solid #8fe32e;\n  content: '\\672A\\4E3E\\529E';\n  color: #8bc34a;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n}\n.page-wrapper[data-v-32d8ffb0] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin: 30px 0;\n  text-align: center;\n}\n.page-wrapper > button[data-v-32d8ffb0] {\n  display: inline-block;\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 80px;\n  height: 35px;\n  margin: 0 10px;\n  border: none;\n  outline: none;\n  color: #fff;\n  line-height: 35px;\n  background: #000;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n  cursor: pointer;\n}\n.page-wrapper > button[disabled][data-v-32d8ffb0] {\n  background: #ccc;\n}\n.page-wrapper input[data-v-32d8ffb0] {\n  width: 50px;\n  height: 35px;\n  margin: 0 10px;\n  outline: none;\n  text-align: center;\n  font-size: 20px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n}\n.tip[data-v-32d8ffb0] {\n  position: absolute;\n  top: -150%;\n  left: 50%;\n  ((null)): 0;\n  ((null)): 0;\n  padding: 10px;\n  color: #fff;\n  background: rgba(0,0,0,0.6);\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.fade-enter[data-v-32d8ffb0] {\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n}\n.fade-enter-active[data-v-32d8ffb0] {\n  transition: opacity 0.5s linear;\n}\n@media screen and (max-width: 768px) {\n.list-wrapper[data-v-32d8ffb0] {\n    width: 90%;\n}\n}\n", ""]);
+=======
+	exports.push([module.id, "\n.index[data-v-9b46fa2c] {\n  padding-bottom: 60px;\n}\n.in-cover[data-v-9b46fa2c] {\n  width: 100%;\n  height: 300px;\n}\n.in-search[data-v-9b46fa2c] {\n  padding: 15px 0;\n  text-align: center;\n  border-bottom: 1px solid #bbb;\n}\n.in-search select[data-v-9b46fa2c] {\n  min-width: 80px;\n  height: 21px;\n  margin-right: 50px;\n  outline: none;\n}\n.list-wrapper[data-v-9b46fa2c] {\n  width: 60%;\n  margin: auto;\n}\n.hold-list[data-v-9b46fa2c] {\n  margin: 32px 0 12px;\n}\n.hold-list-item[data-v-9b46fa2c] {\n  margin: 0 10px;\n}\n.hold-list-item a[data-v-9b46fa2c] {\n  display: block;\n  padding: 8px 15px;\n  border: 1px solid #ccc;\n  font-size: 16px;\n}\n.list[data-v-9b46fa2c] {\n  margin: auto;\n}\n.list .list-item[data-v-9b46fa2c] {\n  width: 100%;\n  padding: 15px 10px;\n  border-bottom: 1px solid #ddd;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nh3[data-v-9b46fa2c] {\n  display: inline-block;\n  max-width: 100%;\n  margin-bottom: 10px;\n  font-size: 1.3em;\n}\nh3 a[data-v-9b46fa2c] {\n  display: block;\n  max-width: 100%;\n}\nh3 a[data-v-9b46fa2c]:after {\n  display: block;\n  width: 100%;\n  margin: auto;\n  border-bottom: 1px solid #000;\n  content: '';\n  -webkit-transform: scale3d(0, 1, 1);\n  -moz-transform: scale3d(0, 1, 1);\n  -ms-transform: scale3d(0, 1, 1);\n  -o-transform: scale3d(0, 1, 1);\n  transform: scale3d(0, 1, 1);\n  transition: transform 0.15s ease-in-out;\n}\nh3 a[data-v-9b46fa2c]:hover:after {\n  -webkit-transform: scale3d(1, 1, 1);\n  -moz-transform: scale3d(1, 1, 1);\n  -ms-transform: scale3d(1, 1, 1);\n  -o-transform: scale3d(1, 1, 1);\n  transform: scale3d(1, 1, 1);\n}\n.item-cover[data-v-9b46fa2c] {\n  float: right;\n  width: 120px;\n  height: 80px;\n  margin: 15px;\n  margin-right: 0;\n}\n.time[data-v-9b46fa2c] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.abstract[data-v-9b46fa2c] {\n  height: 3em;\n  padding-right: 25px;\n  line-height: 1.5em;\n  overflow: hidden;\n}\n.willHeld[data-v-9b46fa2c] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.willHeld[data-v-9b46fa2c]:after {\n  position: absolute;\n  top: 50%;\n  right: 10px;\n  ((null)): 0;\n  ((null)): 0;\n  padding: 3px 8px;\n  border: 1px solid #8fe32e;\n  content: '\\672A\\4E3E\\529E';\n  color: #8bc34a;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n}\n@media screen and (max-width: 768px) {\n.list-wrapper[data-v-9b46fa2c] {\n    width: 90%;\n}\n}\n", ""]);
+>>>>>>> 3844c6f65b6f786570b297510c04cbfd4825db32
 
 	// exports
 
@@ -14798,59 +14801,11 @@
 
 	var _modify2 = _interopRequireDefault(_modify);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	var _page = __webpack_require__(512);
 
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
+	var _page2 = _interopRequireDefault(_page);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = {
 		data: function data() {
@@ -14859,14 +14814,9 @@
 				faculty: '0-0',
 				type: 0,
 				academy: 0,
-				curPage: 1,
-				skipPage: 1,
-				pageTip: false,
 				now: new Date().getTime(),
-				tipShow: false,
-				prevDisable: true,
-				nextDisable: false,
-				pageSize: 10
+				pageSize: 10,
+				totalPage: 0
 			};
 		},
 		created: function created() {
@@ -14881,21 +14831,19 @@
 		},
 
 		methods: {
-			onChangeTime: function onChangeTime(item) {
-				//TODO
-				console.log(this.time);
-			},
-			onSelect: function onSelect() {
-				var self = this;
-				this.$store.dispatch('GET_ARTICLES', { page: this.curPage, pageSize: this.pageSize, faculty: this.faculty, type: this.type }).then(function (res) {
-					self.scroll();
+			onSelect: function onSelect(page) {
+				var _this = this;
+
+				this.$store.dispatch('GET_ARTICLES', { page: page || 1, pageSize: this.pageSize, faculty: this.faculty, type: this.type }).then(function (res) {
+					_this.scroll();
+					_this.totalPage = Math.ceil(_this.articleTotal / _this.pageSize);
 				});
 			},
 			onSelectAcademy: function onSelectAcademy() {
 				var self = this;
 				this.getFacultyies(function () {
 					self.faculty = self.facultiesList[0].index;
-					self.onSelect();
+					self.filter();
 				});
 			},
 			getFacultyies: function getFacultyies(cb) {
@@ -14906,29 +14854,9 @@
 					return alert(err);
 				});
 			},
-			filterContent: function filterContent(value, len) {
-				return value.length > len ? value.substr(0, len) + '...' : value;
-			},
-			prevPage: function prevPage() {
-				this.curPage = this.curPage === 1 ? this.curPage : --this.curPage;
-				this.skipPage = this.curPage;
-				this.onSelect();
-			},
-			nextPage: function nextPage() {
-				++this.curPage;
-				this.skipPage = this.curPage;
-				this.prevDisable = false;
-				this.onSelect();
-			},
-			skip: function skip() {
-				if (/^[0-9]+$/.test(this.skipPage)) {
-					this.curPage = this.skipPage;
-					this.onSelect();
-					this.prevDisable = !(this.curPage > 1);
-					this.tipShow = false;
-				} else {
-					this.tipShow = true;
-				}
+			filter: function filter() {
+				this.$refs.page.initialPage();
+				this.onSelect(1);
 			},
 			scroll: function scroll() {
 				var body = document.body;
@@ -14941,7 +14869,7 @@
 				}, 10);
 			}
 		},
-		computed: (0, _vuex.mapState)(['typesLists', 'academyList', 'facultiesList', 'noMoreArticle', 'articles', 'userRank', 'userFaculty']),
+		computed: (0, _vuex.mapState)(['typesLists', 'academyList', 'facultiesList', 'articleTotal', 'articles', 'userRank', 'userFaculty']),
 		filters: {
 			timeFormat: function timeFormat(value) {
 				var date = new Date(value);
@@ -14949,9 +14877,51 @@
 			}
 		},
 		components: {
-			modify: _modify2.default
+			modify: _modify2.default,
+			page: _page2.default
 		}
-	};
+	}; //
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 /***/ },
 /* 61 */
@@ -15117,7 +15087,7 @@
 	          var val = "_value" in o ? o._value : o.value;
 	          return val
 	        })[0]
-	      }, _vm.onSelect]
+	      }, _vm.filter]
 	    }
 	  }, _vm._l((_vm.facultiesList), function(faculty) {
 	    return _c('option', {
@@ -15141,7 +15111,7 @@
 	          var val = "_value" in o ? o._value : o.value;
 	          return val
 	        })[0]
-	      }, _vm.onSelect]
+	      }, _vm.filter]
 	    }
 	  }, _vm._l((_vm.typesLists), function(type) {
 	    return _c('option', {
@@ -15181,25 +15151,25 @@
 	      attrs: {
 	        "item": item
 	      }
+<<<<<<< HEAD
 	    })], 1)
 	  }))]), _vm._v(" "), _c('div', {
 	    staticClass: "page-wrapper"
 	  }, [_c('button', {
+=======
+	    })])
+	  }))]), _vm._v(" "), _vm._v(" "), _c('page', {
+	    ref: "page",
+>>>>>>> 3844c6f65b6f786570b297510c04cbfd4825db32
 	    attrs: {
-	      "type": "button",
-	      "disabled": _vm.prevDisable
+	      "totalPage": _vm.totalPage
 	    },
 	    on: {
-	      "click": _vm.prevPage
+	      "prevPage": _vm.onSelect,
+	      "nextPage": _vm.onSelect,
+	      "skip": _vm.onSelect
 	    }
-	  }, [_vm._v("上一页")]), _vm._v(" "), _c('button', {
-	    attrs: {
-	      "type": "button",
-	      "disabled": _vm.noMoreArticle
-	    },
-	    on: {
-	      "click": _vm.nextPage
-	    }
+<<<<<<< HEAD
 	  }, [_vm._v("下一页")]), _vm._v(" "), _c('input', {
 	    directives: [{
 	      name: "model",
@@ -15239,6 +15209,9 @@
 	    }],
 	    staticClass: "tip"
 	  }, [_vm._v("请输入有效页数")])])], 1)])
+=======
+	  })])
+>>>>>>> 3844c6f65b6f786570b297510c04cbfd4825db32
 	},staticRenderFns: []}
 	if (false) {
 	  module.hot.accept()
@@ -15617,8 +15590,13 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
+<<<<<<< HEAD
 			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-4fa3fe24&scoped=true!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./edit.vue", function() {
 				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-4fa3fe24&scoped=true!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./edit.vue");
+=======
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-352e9b22&scoped=true!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./edit.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-352e9b22&scoped=true!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./edit.vue");
+>>>>>>> 3844c6f65b6f786570b297510c04cbfd4825db32
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -15636,7 +15614,11 @@
 	exports.i(__webpack_require__(75), "");
 
 	// module
+<<<<<<< HEAD
 	exports.push([module.id, "\n.form-contain[data-v-4fa3fe24] {\n  min-height: 100vh;\n  padding-top: 95px;\n  padding-bottom: 20px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  text-align: center;\n}\n.edit-form[data-v-4fa3fe24] {\n  display: inline-block;\n  padding: 0;\n  margin: auto;\n  text-align: left;\n}\n.edit-form label[data-v-4fa3fe24] {\n  display: inline-block;\n  width: 90px;\n  text-align: left;\n  vertical-align: top;\n}\n.edit-form .btn-post[data-v-4fa3fe24] {\n  width: 55%;\n}\n.edit-form .btn-edit[data-v-4fa3fe24] {\n  margin-left: 25px;\n}\n.edit-form .simditor[data-v-4fa3fe24] {\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n  overflow-y: auto;\n}\n.edit-form .simditor .simditor-body[data-v-4fa3fe24] {\n  height: 300px;\n  overflow-y: auto;\n}\n.edit-form .group-btn[data-v-4fa3fe24] {\n  text-align: left;\n}\n.group-left input[data-v-4fa3fe24],\n.select[data-v-4fa3fe24],\n.calendar div.input[data-v-4fa3fe24] {\n  width: 90%;\n  height: 36px;\n  padding: 10px 10px;\n  border: none;\n  outline: none;\n  background: #fff;\n  -webkit-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -moz-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -ms-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -o-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  font-size: 14px;\n  -webkit-border-radius: 15px;\n  -moz-border-radius: 15px;\n  border-radius: 15px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.group-left input[data-v-4fa3fe24]::-webkit-input-placeholder,\n.select[data-v-4fa3fe24]::-webkit-input-placeholder,\n.calendar div.input[data-v-4fa3fe24]::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.calendar[data-v-4fa3fe24] {\n  display: inline-block;\n  width: 90%;\n}\n.calendar span.input-clear[data-v-4fa3fe24] {\n  top: 9px;\n  right: 8px;\n}\n.calendar div.input-wrapper[data-v-4fa3fe24],\n.calendar div.input[data-v-4fa3fe24] {\n  width: 100%;\n}\n.select[data-v-4fa3fe24] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  display: inline-block;\n  color: rgba(0,0,0,0.6);\n  text-align: left;\n  cursor: pointer;\n}\n.select .arrow[data-v-4fa3fe24] {\n  position: absolute;\n  top: 15px;\n  right: 8px;\n  ((null)): 0;\n  ((null)): 0;\n  border: 8px solid transparent;\n  border-top-color: rgba(0,0,0,0.6);\n}\n.select span[data-v-4fa3fe24] {\n  display: block;\n}\n.option-box[data-v-4fa3fe24] {\n  position: absolute;\n  top: 36px;\n  left: 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 100%;\n  padding: 8px 0px;\n  padding-right: 6px;\n  -webkit-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -moz-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -ms-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -o-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -webkit-border-radius: 12px;\n  -moz-border-radius: 12px;\n  border-radius: 12px;\n  background: #fff;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  z-index: 2;\n}\n.option[data-v-4fa3fe24] {\n  max-height: 110px;\n  overflow-y: auto;\n}\n.option[data-v-4fa3fe24]::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.option[data-v-4fa3fe24]::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.option p[data-v-4fa3fe24] {\n  padding: 3px 15px;\n  cursor: pointer;\n}\n.option p[data-v-4fa3fe24]:hover {\n  color: #7ab5d8;\n}\n.group-cover[data-v-4fa3fe24] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-cover input[type='file'][data-v-4fa3fe24] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 90%;\n  height: 120px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-cover img[data-v-4fa3fe24] {\n  width: 90%;\n  height: 120px;\n  vertical-align: top;\n}\n.group-content textarea[data-v-4fa3fe24] {\n  width: 100%;\n  height: 100%;\n  padding: 10px;\n  border: none;\n  outline: none;\n  font-size: 14px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  background: transparent;\n  resize: none;\n}\n.group-content textarea[data-v-4fa3fe24]::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.group-content textarea[data-v-4fa3fe24]::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.group-content textarea[data-v-4fa3fe24]::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.group-content .textarea-box[data-v-4fa3fe24] {\n  display: inline-block;\n  width: 95%;\n  height: 445px;\n  padding: 0;\n  text-align: left;\n  vertical-align: top;\n}\n.group-edit[data-v-4fa3fe24] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-edit input[type='file'][data-v-4fa3fe24] {\n  position: absolute;\n  top: 0;\n  left: 25px;\n  ((null)): 0;\n  ((null)): 0;\n  width: 74px;\n  height: 36px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-edit .btn-edit[data-v-4fa3fe24] {\n  display: inline-block;\n  margin: 0;\n}\n.file-list[data-v-4fa3fe24] {\n  display: inline-block;\n  width: 400px;\n  margin: 0 15px 5px;\n  font-size: 20px;\n  line-height: 36px;\n  vertical-align: top;\n}\n.group-left[data-v-4fa3fe24],\n.group-right[data-v-4fa3fe24] {\n  display: inline-block;\n  width: 300px;\n  padding: 0 30px;\n  vertical-align: top;\n  text-align: right;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.group-right[data-v-4fa3fe24] {\n  width: 700px;\n  padding: 0 15px;\n  text-align: left;\n}\n.tip[data-v-4fa3fe24] {\n  display: block;\n  width: 90%;\n  padding: 0 20px;\n  margin: auto;\n  text-align: left;\n  font-size: 12px;\n  color: #f00;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n@media screen and (max-width: 1016px) {\n.group-left[data-v-4fa3fe24] {\n    width: 80%;\n}\n}\n", ""]);
+=======
+	exports.push([module.id, "\n.form-contain[data-v-352e9b22] {\n  min-height: 100vh;\n  padding-top: 95px;\n  padding-bottom: 20px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  text-align: center;\n}\n.edit-form[data-v-352e9b22] {\n  display: inline-block;\n  padding: 0;\n  margin: auto;\n  text-align: left;\n}\n.edit-form label[data-v-352e9b22] {\n  display: inline-block;\n  width: 90px;\n  text-align: left;\n  vertical-align: top;\n}\n.edit-form .btn-post[data-v-352e9b22] {\n  width: 55%;\n}\n.edit-form .btn-edit[data-v-352e9b22] {\n  margin-left: 25px;\n}\n.edit-form .simditor[data-v-352e9b22] {\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n  overflow-y: auto;\n}\n.edit-form .simditor .simditor-body[data-v-352e9b22] {\n  height: 300px;\n  overflow-y: auto;\n}\n.edit-form .group-btn[data-v-352e9b22] {\n  text-align: left;\n}\n.group-left input[data-v-352e9b22],\n.select[data-v-352e9b22],\n.calendar div.input[data-v-352e9b22] {\n  width: 90%;\n  height: 36px;\n  padding: 10px 10px;\n  border: none;\n  outline: none;\n  background: #fff;\n  -webkit-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -moz-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -ms-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -o-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  font-size: 14px;\n  -webkit-border-radius: 15px;\n  -moz-border-radius: 15px;\n  border-radius: 15px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.group-left input[data-v-352e9b22]::-webkit-input-placeholder,\n.select[data-v-352e9b22]::-webkit-input-placeholder,\n.calendar div.input[data-v-352e9b22]::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.calendar[data-v-352e9b22] {\n  display: inline-block;\n  width: 90%;\n}\n.calendar span.input-clear[data-v-352e9b22] {\n  top: 9px;\n  right: 8px;\n}\n.calendar div.input-wrapper[data-v-352e9b22],\n.calendar div.input[data-v-352e9b22] {\n  width: 100%;\n}\n.select[data-v-352e9b22] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  display: inline-block;\n  color: rgba(0,0,0,0.6);\n  text-align: left;\n  cursor: pointer;\n}\n.select .arrow[data-v-352e9b22] {\n  position: absolute;\n  top: 15px;\n  right: 8px;\n  ((null)): 0;\n  ((null)): 0;\n  border: 8px solid transparent;\n  border-top-color: rgba(0,0,0,0.6);\n}\n.select span[data-v-352e9b22] {\n  display: block;\n}\n.option-box[data-v-352e9b22] {\n  position: absolute;\n  top: 36px;\n  left: 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 100%;\n  padding: 8px 0px;\n  padding-right: 6px;\n  -webkit-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -moz-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -ms-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -o-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -webkit-border-radius: 12px;\n  -moz-border-radius: 12px;\n  border-radius: 12px;\n  background: #fff;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  z-index: 2;\n}\n.option[data-v-352e9b22] {\n  max-height: 110px;\n  overflow-y: auto;\n}\n.option[data-v-352e9b22]::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.option[data-v-352e9b22]::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.option p[data-v-352e9b22] {\n  padding: 3px 15px;\n  cursor: pointer;\n}\n.option p[data-v-352e9b22]:hover {\n  color: #7ab5d8;\n}\n.group-cover[data-v-352e9b22] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-cover input[type='file'][data-v-352e9b22] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 90%;\n  height: 120px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-cover img[data-v-352e9b22] {\n  width: 90%;\n  height: 120px;\n  vertical-align: top;\n}\n.group-content textarea[data-v-352e9b22] {\n  width: 100%;\n  height: 100%;\n  padding: 10px;\n  border: none;\n  outline: none;\n  font-size: 14px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  background: transparent;\n  resize: none;\n}\n.group-content textarea[data-v-352e9b22]::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.group-content textarea[data-v-352e9b22]::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.group-content textarea[data-v-352e9b22]::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.group-content .textarea-box[data-v-352e9b22] {\n  display: inline-block;\n  width: 95%;\n  height: 445px;\n  padding: 0;\n  text-align: left;\n  vertical-align: top;\n}\n.group-edit[data-v-352e9b22] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-edit input[type='file'][data-v-352e9b22] {\n  position: absolute;\n  top: 0;\n  left: 25px;\n  ((null)): 0;\n  ((null)): 0;\n  width: 74px;\n  height: 36px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-edit .btn-edit[data-v-352e9b22] {\n  display: inline-block;\n  margin: 0;\n}\n.file-list[data-v-352e9b22] {\n  display: inline-block;\n  width: 400px;\n  margin: 0 15px 5px;\n  font-size: 20px;\n  line-height: 36px;\n  vertical-align: top;\n}\n.group-left[data-v-352e9b22],\n.group-right[data-v-352e9b22] {\n  display: inline-block;\n  width: 300px;\n  padding: 0 30px;\n  vertical-align: top;\n  text-align: right;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.group-right[data-v-352e9b22] {\n  width: 700px;\n  padding: 0 15px;\n  text-align: left;\n}\n.tip[data-v-352e9b22] {\n  display: block;\n  width: 90%;\n  padding: 0 20px;\n  margin: auto;\n  text-align: left;\n  font-size: 12px;\n  color: #f00;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n@media screen and (max-width: 1016px) {\n.group-left[data-v-352e9b22] {\n    width: 80%;\n}\n}\n", ""]);
+>>>>>>> 3844c6f65b6f786570b297510c04cbfd4825db32
 
 	// exports
 
@@ -18277,7 +18259,7 @@
 	            var _this2 = this;
 
 	            var id = this.charts,
-	                queryId = this.rangeTab === 0 ? this.$route.params.id : this.$store.state.userFaculty,
+	                queryId = this.rangeTab == 0 ? this.$route.params.id : this.$store.state.userFaculty,
 	                time = this.timeTab;
 	            var ref = document.getElementById('canvas-wrapper');
 
@@ -18298,8 +18280,9 @@
 	            var _this3 = this;
 
 	            var id = this.charts,
-	                queryId = this.rangeTab === 0 ? this.$route.params.id : this.$store.state.userFaculty,
+	                queryId = this.rangeTab == 0 ? this.$route.params.id : this.$store.state.userFaculty,
 	                time = this.timeTab;
+
 	            this.$store.dispatch('GET_CHARTS_DATA', { id: queryId, tab: this.rangeTab, time: time, year: this.selectYear }).then(function (res) {
 	                if (!(0, _common.isEmpty)(res)) {
 	                    _this3.empty = false;
@@ -89110,5 +89093,250 @@
 	  }
 	}
 
+<<<<<<< HEAD
+=======
+/***/ },
+/* 506 */,
+/* 507 */,
+/* 508 */,
+/* 509 */,
+/* 510 */,
+/* 511 */,
+/* 512 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+	var __vue_styles__ = {}
+
+	/* styles */
+	__webpack_require__(513)
+
+	/* script */
+	__vue_exports__ = __webpack_require__(515)
+
+	/* template */
+	var __vue_template__ = __webpack_require__(516)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.__file = "D:\\code\\teaching-activities\\design\\src\\components\\page.vue"
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+	__vue_options__._scopeId = "data-v-6de15b76"
+
+	/* hot reload */
+	if (false) {(function () {
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  module.hot.accept()
+	  if (!module.hot.data) {
+	    hotAPI.createRecord("data-v-6de15b76", __vue_options__)
+	  } else {
+	    hotAPI.reload("data-v-6de15b76", __vue_options__)
+	  }
+	})()}
+	if (__vue_options__.functional) {console.error("[vue-loader] page.vue: functional components are not supported and should be defined in plain js files using render functions.")}
+
+	module.exports = __vue_exports__
+
+
+/***/ },
+/* 513 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(514);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(38)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-6de15b76&scoped=true!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./page.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-6de15b76&scoped=true!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./page.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 514 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(37)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n.page-wrapper[data-v-6de15b76] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin: 30px 0;\n  text-align: center;\n}\n.page-wrapper > button[data-v-6de15b76] {\n  display: inline-block;\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 80px;\n  height: 35px;\n  margin: 0 10px;\n  border: none;\n  outline: none;\n  color: #fff;\n  line-height: 35px;\n  background: #000;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n  cursor: pointer;\n}\n.page-wrapper > button[disabled][data-v-6de15b76] {\n  background: #ccc;\n}\n.page-wrapper input[data-v-6de15b76] {\n  width: 50px;\n  height: 35px;\n  margin: 0 10px;\n  outline: none;\n  text-align: center;\n  font-size: 20px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n}\n.tip[data-v-6de15b76] {\n  position: absolute;\n  top: -150%;\n  left: 50%;\n  ((null)): 0;\n  ((null)): 0;\n  padding: 10px;\n  color: #fff;\n  background: rgba(0,0,0,0.6);\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.fade-enter[data-v-6de15b76] {\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n}\n.fade-enter-active[data-v-6de15b76] {\n  transition: opacity 0.5s linear;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 515 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
+	exports.default = {
+		data: function data() {
+			return {
+				tipContent: ['请输入有效页数', '已是最后一页，没有更多了哦~', '已是第一页了哦~'],
+				tip: '',
+				tipShow: false,
+				curPage: 1,
+				skipPage: 1
+			};
+		},
+
+		props: {
+			totalPage: {
+				type: Number,
+				default: 0
+			}
+		},
+		created: function created() {},
+		methods: {
+			prevPage: function prevPage(cb) {
+				this.skipPage = this.curPage = this.curPage === 1 ? this.curPage : --this.curPage;
+				this.$emit('prevPage', this.curPage);
+				this.tipShow = false;
+			},
+			nextPage: function nextPage() {
+				this.skipPage = this.curPage = this.curPage >= this.totalPage ? this.curPage : ++this.curPage;
+				this.$emit('nextPage', this.curPage);
+				this.tipShow = false;
+			},
+			skip: function skip() {
+				this.tipShow = true;
+				if (/^[0-9]+$/.test(this.skipPage) && this.skipPage <= this.totalPage && this.skipPage >= 1) {
+					if (this.skipPage == 1 && this.curPage == 1) {
+						this.tip = this.tipContent[2];
+					} else if (this.skipPage == this.totalPage && this.curPage == this.totalPage) {
+						this.tip = this.tipContent[1];
+					} else {
+						this.curPage = this.skipPage;
+						this.$emit('skip', this.curPage);
+						this.tipShow = false;
+					}
+				} else {
+					if (this.skipPage > this.totalPage && this.curPage != this.totalPage) {
+						this.skipPage = this.curPage = this.totalPage;
+						this.$emit('skip', this.curPage);
+						this.tipShow = false;
+					}
+					this.tip = this.tipContent[0];
+				}
+			},
+			initialPage: function initialPage() {
+				this.curPage = this.skipPage = 1;
+			}
+		}
+	};
+
+/***/ },
+/* 516 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _c('div', {
+	    staticClass: "page-wrapper"
+	  }, [_c('button', {
+	    attrs: {
+	      "type": "button",
+	      "disabled": _vm.curPage <= 1
+	    },
+	    on: {
+	      "click": _vm.prevPage
+	    }
+	  }, [_vm._v("上一页")]), _vm._v(" "), _c('button', {
+	    attrs: {
+	      "type": "button",
+	      "disabled": _vm.curPage >= _vm.totalPage
+	    },
+	    on: {
+	      "click": _vm.nextPage
+	    }
+	  }, [_vm._v("下一页")]), _vm._v(" "), _c('input', {
+	    directives: [{
+	      name: "model",
+	      rawName: "v-model",
+	      value: (_vm.skipPage),
+	      expression: "skipPage"
+	    }],
+	    attrs: {
+	      "type": "text"
+	    },
+	    domProps: {
+	      "value": _vm._s(_vm.skipPage)
+	    },
+	    on: {
+	      "input": function($event) {
+	        if ($event.target.composing) { return; }
+	        _vm.skipPage = $event.target.value
+	      }
+	    }
+	  }), _vm._v(" "), _c('button', {
+	    attrs: {
+	      "type": "button"
+	    },
+	    on: {
+	      "click": _vm.skip
+	    }
+	  }, [_vm._v("跳转")]), _vm._v(" "), _c('transition', {
+	    attrs: {
+	      "name": "fade"
+	    }
+	  }, [_c('div', {
+	    directives: [{
+	      name: "show",
+	      rawName: "v-show",
+	      value: (_vm.tipShow),
+	      expression: "tipShow"
+	    }],
+	    staticClass: "tip"
+	  }, [_vm._v(_vm._s(_vm.tip))])])])
+	},staticRenderFns: []}
+	if (false) {
+	  module.hot.accept()
+	  if (module.hot.data) {
+	     require("vue-hot-reload-api").rerender("data-v-6de15b76", module.exports)
+	  }
+	}
+
+>>>>>>> 3844c6f65b6f786570b297510c04cbfd4825db32
 /***/ }
 /******/ ]);

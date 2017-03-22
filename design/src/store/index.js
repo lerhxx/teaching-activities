@@ -19,8 +19,7 @@ const store = new Vuex.Store({
 		facultiesList: [],
 		articles: [],
 		article: {},
-		articleTotal: 0,
-		noMoreArticle: false, 
+		articleTotal: 0, 
 		selfArticles: [],
 		idEdit: false
 	},
