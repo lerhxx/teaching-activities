@@ -85,7 +85,7 @@
 
 	export default {
 		data() {
-            let year = new Date().getFullYear() - 1;
+            let year = new Date().getFullYear();
 
 			return {
 				isPerArt: false,

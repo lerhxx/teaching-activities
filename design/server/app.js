@@ -7,7 +7,7 @@ const path = require('path');
 const resolve = file => path.resolve(__dirname, file);
 const app = module.exports = express();
 
-app.set('port', (process.env.port || 3002));
+app.set('port', (process.env.port || 3000));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));

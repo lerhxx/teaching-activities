@@ -78,18 +78,18 @@ let articalNum = article.articles.length,
 	userNum = user.length;
 
 const initialize = () => {
-	Models.Article.find(null, (err, doc) => {
+	Models.User.find(null, (err, doc) => {
 		if(err) {
 			console.error(err);
 		}else if(!doc.length) {
 			console.log('Database opens for the first time...')
 			//TODO
-			article.articles.map(item => new Models.Article(item).save());
-			Models.Article.total = article.articles.length;
+			// article.articles.map(item => new Models.Article(item).save());
+			// Models.Article.total = article.articles.length;
 			user.map(item => new Models.User(item).save());
 			// footerLink.map(item => new Models.FootLink(item).save());
 			// search.map(item =>new Models.Search(item).save());
-			// academy.map(item =>new Models.Academy(item).save());
+			academy.map(item =>new Models.Academy(item).save());
 			// console.log(academy)
 			// Models.Article.find(null, (err, doc) => {
 			// 	if(err) {
@@ -98,9 +98,9 @@ const initialize = () => {
 			// 	console.log(doc)
 			// })
 		}else {
-			// Models.Article.find(null, (err, doc) => {
+			// Models.User.find(null, (err, doc) => {
 			// 	// doc.map(item => item.remove()) 
-			// 	Models.Article.find(null, (err, doc) => {
+			// 	Models.User.find(null, (err, doc) => {
 			// 		console.log(doc)
 			// 	})
 			// })
