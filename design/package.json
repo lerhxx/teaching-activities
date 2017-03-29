@@ -42,7 +42,7 @@
     "webpack-spritesmith": "^0.3.3"
   },
   "dependencies": {
-    "auto-calendar": "^1.0.20",
+    "auto-calendar": "^1.0.21",
     "to-markdown": "^3.0.3"
   }
 }

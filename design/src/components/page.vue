@@ -35,14 +35,12 @@
 		},
 		methods: {
 			prevPage(cb) {
-				this.curPage = this.curPage === 1 ? this.curPage : --this.curPage;
-				this.skipPage = this.curPage;
+				this.skipPage = this.curPage = this.curPage === 1 ? this.curPage : --this.curPage;
 				this.$emit('prevPage', this.curPage);
 				this.tipShow = false;
 			},
 			nextPage() {
-				this.curPage = this.curPage >= this.totalPage ? this.curPage : ++this.curPage;
-				this.skipPage = this.curPage;
+				this.skipPage = this.curPage = this.curPage >= this.totalPage ? this.curPage : ++this.curPage;
 				this.$emit('nextPage', this.curPage);
 				this.tipShow = false;
 			},
@@ -66,6 +64,9 @@
 					}
 					this.tip = this.tipContent[0];
 				}
+			},
+			initialPage() {
+				this.curPage = this.skipPage = 1;
 			}
 		}
 	}

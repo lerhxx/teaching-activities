@@ -63,7 +63,7 @@ export default {
       })
   },
   SIGNIN({commit}, userInfo) {
-    return axios.put('/signin', userInfo)
+    return axios.post('/signin', userInfo)
       .then(res => {
         if (res.data.state === 0) {
           commit('SET_USER', res.data.data)

@@ -39,6 +39,7 @@ module.exports = {
 		alias: {
 			vue: 'vue/dist/vue.js'
 		}
+<<<<<<< HEAD
 	},
 	plugins:[
 		new SpritesmithPlugin({
@@ -55,4 +56,7 @@ module.exports = {
 			}
 		})
 	]
+=======
+	}
+>>>>>>> dev
 }
