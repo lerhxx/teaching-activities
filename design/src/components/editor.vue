@@ -1,10 +1,46 @@
 <template>
     <div class='edit-wrapper'>
         <div class='tool'>
-            <span type='button' v-for='btn in btns' :data-type='btn' :class='btn' class='toolbtn' @click='editEvent(btn)'></span>
+            <div class='item-wrapper'>
+                <input type='button' data-type='bold' class='toolbtn bold' @click='editEvent'/>
+            </div><div class='item-wrapper'>
+                <input type='button' data-type='italic' class='toolbtn italic' @click='editEvent'/>
+            </div><div class='item-wrapper'>
+                <input type='button' data-type='link' class='toolbtn link' @click='editEvent'/>
+                <div class='inputt-wrapper' v-show='insertURL'>
+                    <input type='text' class='insertURL' placeholder='请输入url' v-model='linkURL'/>
+                    <input type='button' value='确定' class='btn btn-s btn-edit' @click='certianURL'/>
+                </div>
+            </div><div class='item-wrapper'>
+                <input type='button' data-type='unlink' class='toolbtn unlink' @click='editEvent'/>
+            </div><div class='item-wrapper'>
+                <input type='button' data-type='font' class='toolbtn font' @click='editEvent'/>
+            </div><div class='item-wrapper'>
+                <input type='button' data-type='fontSize' class='toolbtn fontSize' @click='editEvent'/>
+            </div><div class='item-wrapper'>
+                <input type='button' data-type='foreColor' class='toolbtn foreColor' @click='editEvent'/>
+            </div><div class='item-wrapper'>
+                <input type='button' data-type='header' class='toolbtn header' @click='editEvent'/>
+            </div><div class='item-wrapper'>
+                <input type='button' data-type='insertImage' class='toolbtn insertImage' @click='editEvent'/>
+            </div><div class='item-wrapper'>
+                <input type='button' data-type='justifyCenter' class='toolbtn justifyCenter' @click='editEvent'/>
+            </div><div class='item-wrapper'>
+                <input type='button' data-type='justifyFull' class='toolbtn justifyFull' @click='editEvent'/>
+            </div><div class='item-wrapper'>
+                <input type='button' data-type='justifyLeft' class='toolbtn justifyLeft' @click='editEvent'/>
+            </div><div class='item-wrapper'>
+                <input type='button' data-type='justifyRight' class='toolbtn justifyRight' @click='editEvent'/>
+            </div><div class='item-wrapper'>
+                <input type='button' data-type='strike' class='toolbtn strike' @click='editEvent'/>
+            </div><div class='item-wrapper'>
+                <input type='button' data-type='underline' class='toolbtn underline' @click='editEvent'/>
+            </div>
         </div>
-        <div class='edit' contenteditable=true @focus='onFocus' @blur='onBlur'>
-            {{content}}
+        <div class='edit-outter'>
+            <div class='edit' id='edit' contenteditable=true @focus='onFocus' @blur='onBlur'>
+            </div>
+            <span v-show='!isFocus && !content' class='placeholder'>{{contentTip}}</span>
         </div>
     </div>
 </template>
@@ -28,101 +64,160 @@
                     'justifyLeft',
                     'justifyRight',
                     'strike',
-                    'underline',
-                    'copy',
-                    'cut',
-                    'paste'
+                    'underline'
                 ],
-                content: '',
+                id: 'edit',
+                insertURL: false,
+                isFocus: false,
+                contents: [],
+                linkURL: '',
                 contentTip: '请编辑。。。'
             }
         },
         created() {
-            this.content = this.contentTip
+            console.log(this.content)
         },
         methods: {
-            editEvent(type) {
-                console.log(type)
-                // document.execCommand('delete', false, null)
+            editEvent(e) {
+                // console.log(type)
+                // document.execCommand('bold', false, undefined)
+                let type = e.target.getAttribute('data-type');
                 switch(type) {
                     case 'bold':
+                        this.exec('bold');
                         break;
                     case 'italic':
-                        break;
-                    case 'h1':
+                        this.exec('italic');
                         break;
                     case 'link':
+                        this.insertURL = !this.insertURL;
                         break;
                     case 'unlink':
+                        this.exec('unlink');
                         break;
-                    case 'fontName':
+                    case 'font':
+                        break;
+                    case 'fontSize':
+                        break;
+                    case 'foreColor':
+                        break;
+                    case 'header':
+                        break;
+                    case 'insertImage':
+                        break;
+                    case 'justifyCenter':
+                        this.exec('justifyCenter');
+                        break;
+                    case 'justifyFull':
+                        this.exec('justifyFull');
+                        break;
+                    case 'justifyLeft':
+                        this.exec('justifyLeft');
+                        break;
+                    case 'justifyRight':
+                        this.exec('justifyRight');
+                        break;
+                    case 'strike':
+                        this.exec('strikeThrough');
+                        break;
+                    case 'underline':
+                        this.exec('underline');
                         break;
                 }
+            },
+            exec(type, arg) {
+                document.execCommand(type, false, arg)
+            },
+            certianURL() {
+                if(this.linkURL) {
+                    this.exec('createLink', this.linkURL)
+                }
+                this.insertURL = !this.insertURL;
             },
             onFocus() {
-                if(this.content === this.contentTip) {
-                    this.content = '';
-                }
+                this.isFocus = true;
             },
             onBlur() {
-                if(!this.content) {
-                    this.content = this.contentTip;
-                }
+                this.contents = document.getElementById(this.id).childNodes;
+                this.isFocus = false;
+                console.log(this.contents)
             }
         }
     }
 </script>
 
 <style scoped lang='stylus'>
+    @import '../css/funs';
+    @import '../css/form';
+    .edit-outter
+        relative()
     .edit
         width 100%
         min-height 300px
         padding 5px 10px
         border 1px solid #c9d8db
         outline none
+    .placeholder
+        absolute(top 3px left 10px)
     .tool
         display inline-block
         margin-bottom 10px
+    .item-wrapper
+        relative()
+        display inline-block
     .toolbtn
         display inline-block
         width 16px
         height 16px
         margin 0 5px
+        border none
+        outline none
         background-color #fff
-    .bold
         background url(../imgs/icons/bold.png) center no-repeat
+        cursor pointer
+    .bold
+        background-image url(../imgs/icons/bold.png)
     .italic
-        background url(../imgs/icons/italic.png) center no-repeat
+        background-image url(../imgs/icons/italic.png)
     .link
-        background url(../imgs/icons/link.png) center no-repeat
+        background-image url(../imgs/icons/link.png)
     .unlink
-        background url(../imgs/icons/unlink.png) center no-repeat
+        background-image url(../imgs/icons/unlink.png)
     .font
-        background url(../imgs/icons/font-fam.png) center no-repeat
+        background-image url(../imgs/icons/font-fam.png)
     .fontSize
-        background url(../imgs/icons/font-size.png) center no-repeat
+        background-image url(../imgs/icons/font-size.png)
     .foreColor
-        background url(../imgs/icons/color.png) center no-repeat
+        background-image url(../imgs/icons/color.png)
     .header
-        background url(../imgs/icons/header.png) center no-repeat
+        background-image url(../imgs/icons/header.png)
     .insertImage
-        background url(../imgs/icons/pic.png) center no-repeat
+        background-image url(../imgs/icons/pic.png)
     .justifyCenter
-        background url(../imgs/icons/ju-center.png) center no-repeat
+        background-image url(../imgs/icons/ju-center.png)
     .justifyFull
-        background url(../imgs/icons/ju-full.png) center no-repeat
+        background-image url(../imgs/icons/ju-full.png)
     .justifyLeft
-        background url(../imgs/icons/ju-left.png) center no-repeat
+        background-image url(../imgs/icons/ju-left.png)
     .justifyRight
-        background url(../imgs/icons/ju-right.png) center no-repeat
+        background-image url(../imgs/icons/ju-right.png)
     .strike
-        background url(../imgs/icons/strike.png) center no-repeat
+        background-image url(../imgs/icons/strike.png)
     .underline
-        background url(../imgs/icons/underline.png) center no-repeat
+        background-image url(../imgs/icons/underline.png)
     .copy
-        background url(../imgs/icons/copy.png) center no-repeat
+        background-image url(../imgs/icons/copy.png)
     .cut
-        background url(../imgs/icons/cut.png) center no-repeat
+        background-image url(../imgs/icons/cut.png)
     .paste
-        background url(../imgs/icons/paste.png) center no-repeat
+        background-image url(../imgs/icons/paste.png)
+    .inputt-wrapper
+        absolute(top 25px)
+        white-space nowrap
+    .insertURL
+        padding 5px 8px
+        border 1px solid #3fc6bb
+        outline none
+        font-size 16px
+        border-radius 4px
 </style>

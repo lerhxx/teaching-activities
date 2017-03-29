@@ -15208,7 +15208,7 @@
 
 
 	// module
-	exports.push([module.id, "\nform[data-v-3c4430ba] {\n  padding: 45px;\n  margin: auto;\n}\nlabel[data-v-3c4430ba] {\n  text-align: right;\n}\n.group-con[data-v-3c4430ba] {\n  margin: 15px 0;\n}\n.group-btn[data-v-3c4430ba] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-3c4430ba] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-3c4430ba] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-certain[data-v-3c4430ba] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-3c4430ba] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-3c4430ba] {\n  background: #2d0a08;\n}\n.must[data-v-3c4430ba] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-3c4430ba] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-3c4430ba] {\n  margin-right: 10px;\n}\n.sign-container[data-v-3c4430ba] {\n  width: 100vw;\n  height: 100vh;\n  padding-top: 45px;\n  overflow: hidden;\n}\n.sign-form[data-v-3c4430ba] {\n  width: 300px;\n  margin-top: 60px;\n  border: 1px solid rgba(161,161,161,0.5);\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n  background: rgba(255,255,255,0.5);\n}\n.sign-form input[type='text'][data-v-3c4430ba],\n.sign-form input[type='password'][data-v-3c4430ba] {\n  width: 95%;\n  padding: 5px;\n  margin: auto;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  font-size: 16px;\n  line-height: 20px;\n  text-align: center;\n  background: #fff;\n}\n.sign-form input[type='text'][data-v-3c4430ba]:focus,\n.sign-form input[type='password'][data-v-3c4430ba]:focus {\n  border-color: rgba(71,182,224,0.5);\n}\ncaption[data-v-3c4430ba] {\n  display: block;\n  margin-top: 10px;\n  margin-bottom: 30px;\n  color: #555;\n  font-size: 20px;\n}\n@media screen and (-webkt-min-device-pixel-ratio: 1.5) {\n.group-conafter[data-v-3c4430ba] {\n    width: 150%;\n    height: 150%;\n    -webkit-transform: scale3d(0.3, 0.3, 0.3);\n    -moz-transform: scale3d(0.3, 0.3, 0.3);\n    -ms-transform: scale3d(0.3, 0.3, 0.3);\n    -o-transform: scale3d(0.3, 0.3, 0.3);\n    transform: scale3d(0.3, 0.3, 0.3);\n}\n}\n", ""]);
+	exports.push([module.id, "\nform[data-v-3c4430ba] {\n  padding: 45px;\n  margin: auto;\n}\nlabel[data-v-3c4430ba] {\n  text-align: right;\n}\n.group-con[data-v-3c4430ba] {\n  margin: 15px 0;\n}\n.group-btn[data-v-3c4430ba] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-3c4430ba] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-3c4430ba] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-s[data-v-3c4430ba] {\n  padding: 5px 10px;\n  font-size: 0.9em;\n}\n.btn-certain[data-v-3c4430ba] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-3c4430ba] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-3c4430ba] {\n  background: #2d0a08;\n}\n.must[data-v-3c4430ba] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-3c4430ba] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-3c4430ba] {\n  margin-right: 10px;\n}\n.sign-container[data-v-3c4430ba] {\n  width: 100vw;\n  height: 100vh;\n  padding-top: 45px;\n  overflow: hidden;\n}\n.sign-form[data-v-3c4430ba] {\n  width: 300px;\n  margin-top: 60px;\n  border: 1px solid rgba(161,161,161,0.5);\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n  background: rgba(255,255,255,0.5);\n}\n.sign-form input[type='text'][data-v-3c4430ba],\n.sign-form input[type='password'][data-v-3c4430ba] {\n  width: 95%;\n  padding: 5px;\n  margin: auto;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  font-size: 16px;\n  line-height: 20px;\n  text-align: center;\n  background: #fff;\n}\n.sign-form input[type='text'][data-v-3c4430ba]:focus,\n.sign-form input[type='password'][data-v-3c4430ba]:focus {\n  border-color: rgba(71,182,224,0.5);\n}\ncaption[data-v-3c4430ba] {\n  display: block;\n  margin-top: 10px;\n  margin-bottom: 30px;\n  color: #555;\n  font-size: 20px;\n}\n@media screen and (-webkt-min-device-pixel-ratio: 1.5) {\n.group-conafter[data-v-3c4430ba] {\n    width: 150%;\n    height: 150%;\n    -webkit-transform: scale3d(0.3, 0.3, 0.3);\n    -moz-transform: scale3d(0.3, 0.3, 0.3);\n    -ms-transform: scale3d(0.3, 0.3, 0.3);\n    -o-transform: scale3d(0.3, 0.3, 0.3);\n    transform: scale3d(0.3, 0.3, 0.3);\n}\n}\n", ""]);
 
 	// exports
 
@@ -15459,7 +15459,7 @@
 	exports.i(__webpack_require__(80), "");
 
 	// module
-	exports.push([module.id, "\nform[data-v-352e9b22] {\n  padding: 45px;\n  margin: auto;\n}\nlabel[data-v-352e9b22] {\n  text-align: right;\n}\n.group-con[data-v-352e9b22] {\n  margin: 15px 0;\n}\n.group-btn[data-v-352e9b22] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-352e9b22] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-352e9b22] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-certain[data-v-352e9b22] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-352e9b22] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-352e9b22] {\n  background: #2d0a08;\n}\n.must[data-v-352e9b22] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-352e9b22] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-352e9b22] {\n  margin-right: 10px;\n}\n.form-contain[data-v-352e9b22] {\n  min-height: 100vh;\n  padding-top: 95px;\n  padding-bottom: 20px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  text-align: center;\n}\n.edit-form[data-v-352e9b22] {\n  display: inline-block;\n  width: 100%;\n  padding: 0;\n  margin: auto;\n  text-align: left;\n}\n.edit-form label[data-v-352e9b22] {\n  display: inline-block;\n  width: 90px;\n  text-align: left;\n  vertical-align: top;\n}\n.edit-form .btn-post[data-v-352e9b22] {\n  width: 55%;\n}\n.edit-form .btn-edit[data-v-352e9b22] {\n  margin-left: 25px;\n}\n.edit-form .simditor[data-v-352e9b22] {\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n  overflow-y: auto;\n}\n.edit-form .simditor .simditor-body[data-v-352e9b22] {\n  height: 300px;\n  overflow-y: auto;\n}\n.edit-form .group-btn[data-v-352e9b22] {\n  text-align: left;\n}\n.edit-form .group-btn input[data-v-352e9b22] {\n  line-height: 14px;\n}\n.edit-form input[data-v-352e9b22],\n.select[data-v-352e9b22],\n.calendar .input-wrapper .input[data-v-352e9b22] {\n  width: 100%;\n  height: 36px;\n  padding: 10px 10px;\n  border: 2px solid #ddd;\n  outline: none;\n  font-size: 14px;\n  -webkit-border-radius: 5px;\n  -moz-border-radius: 5px;\n  border-radius: 5px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.edit-form input[data-v-352e9b22]::-webkit-input-placeholder,\n.select[data-v-352e9b22]::-webkit-input-placeholder,\n.calendar .input-wrapper .input[data-v-352e9b22]::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.calendar[data-v-352e9b22] {\n  display: inline-block;\n  width: 100%;\n}\n.calendar span.input-clear[data-v-352e9b22] {\n  top: 9px;\n  right: 8px;\n}\n.calendar div.input[data-v-352e9b22] {\n  border-width: 2px;\n}\n.select[data-v-352e9b22] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  display: inline-block;\n  color: rgba(0,0,0,0.6);\n  text-align: left;\n  cursor: pointer;\n}\n.select .arrow[data-v-352e9b22] {\n  position: absolute;\n  top: 15px;\n  right: 8px;\n  ((null)): 0;\n  ((null)): 0;\n  border: 8px solid transparent;\n  border-top-color: rgba(0,0,0,0.6);\n}\n.select span[data-v-352e9b22] {\n  display: block;\n}\n.option-box[data-v-352e9b22] {\n  position: absolute;\n  top: 36px;\n  left: 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 100%;\n  padding: 8px 0px;\n  padding-right: 6px;\n  -webkit-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -moz-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -ms-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -o-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -webkit-border-radius: 12px;\n  -moz-border-radius: 12px;\n  border-radius: 12px;\n  background: #fff;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  z-index: 2;\n}\n.option[data-v-352e9b22] {\n  max-height: 110px;\n  overflow-y: auto;\n}\n.option[data-v-352e9b22]::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.option[data-v-352e9b22]::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.option p[data-v-352e9b22] {\n  padding: 3px 15px;\n  cursor: pointer;\n}\n.option p[data-v-352e9b22]:hover {\n  color: #7ab5d8;\n}\n.group-con[data-v-352e9b22] {\n  width: 80%;\n  margin: 10px auto;\n}\n.must[data-v-352e9b22] {\n  float: left;\n  margin-left: -15px;\n  color: #f00;\n}\n.group-cover[data-v-352e9b22] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-cover input[type='file'][data-v-352e9b22] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 100%;\n  height: 120px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-cover img[data-v-352e9b22] {\n  width: 100%;\n  height: 120px;\n  vertical-align: top;\n}\n.group-content textarea[data-v-352e9b22] {\n  width: 100%;\n  height: 100%;\n  padding: 10px;\n  border: none;\n  outline: none;\n  font-size: 14px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  background: transparent;\n  resize: none;\n}\n.group-content textarea[data-v-352e9b22]::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.group-content textarea[data-v-352e9b22]::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.group-content textarea[data-v-352e9b22]::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.group-content .textarea-box[data-v-352e9b22] {\n  display: inline-block;\n  width: 95%;\n  height: 445px;\n  padding: 0;\n  text-align: left;\n  vertical-align: top;\n}\n.group-edit[data-v-352e9b22] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-edit input[type='file'][data-v-352e9b22] {\n  position: absolute;\n  top: 0;\n  left: 25px;\n  ((null)): 0;\n  ((null)): 0;\n  width: 74px;\n  height: 36px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-edit .btn-edit[data-v-352e9b22] {\n  display: inline-block;\n  margin: 0;\n}\n.file-list[data-v-352e9b22] {\n  display: inline-block;\n  width: 400px;\n  margin: 0 15px 5px;\n  font-size: 20px;\n  line-height: 36px;\n  vertical-align: top;\n}\n.group-left[data-v-352e9b22],\n.group-right[data-v-352e9b22] {\n  display: inline-block;\n  width: 300px;\n  padding: 0 30px;\n  vertical-align: top;\n  text-align: right;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.group-right[data-v-352e9b22] {\n  width: 700px;\n  padding: 0 15px;\n  text-align: left;\n}\n.tip[data-v-352e9b22] {\n  display: block;\n  width: 100%;\n  padding: 0 20px;\n  margin: auto;\n  text-align: left;\n  font-size: 12px;\n  color: #f00;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n@media screen and (max-width: 1016px) {\n.group-left[data-v-352e9b22] {\n    width: 80%;\n}\n}\n", ""]);
+	exports.push([module.id, "\nform[data-v-352e9b22] {\n  padding: 45px;\n  margin: auto;\n}\nlabel[data-v-352e9b22] {\n  text-align: right;\n}\n.group-con[data-v-352e9b22] {\n  margin: 15px 0;\n}\n.group-btn[data-v-352e9b22] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-352e9b22] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-352e9b22] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-s[data-v-352e9b22] {\n  padding: 5px 10px;\n  font-size: 0.9em;\n}\n.btn-certain[data-v-352e9b22] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-352e9b22] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-352e9b22] {\n  background: #2d0a08;\n}\n.must[data-v-352e9b22] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-352e9b22] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-352e9b22] {\n  margin-right: 10px;\n}\n.form-contain[data-v-352e9b22] {\n  min-height: 100vh;\n  padding-top: 95px;\n  padding-bottom: 20px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  text-align: center;\n}\n.edit-form[data-v-352e9b22] {\n  display: inline-block;\n  width: 100%;\n  padding: 0;\n  margin: auto;\n  text-align: left;\n}\n.edit-form label[data-v-352e9b22] {\n  display: inline-block;\n  width: 90px;\n  text-align: left;\n  vertical-align: top;\n}\n.edit-form .btn-post[data-v-352e9b22] {\n  width: 55%;\n}\n.edit-form .btn-edit[data-v-352e9b22] {\n  margin-left: 25px;\n}\n.edit-form .simditor[data-v-352e9b22] {\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n  overflow-y: auto;\n}\n.edit-form .simditor .simditor-body[data-v-352e9b22] {\n  height: 300px;\n  overflow-y: auto;\n}\n.edit-form .group-btn[data-v-352e9b22] {\n  text-align: left;\n}\n.edit-form .group-btn input[data-v-352e9b22] {\n  line-height: 14px;\n}\n.edit-form input[data-v-352e9b22],\n.select[data-v-352e9b22],\n.calendar .input-wrapper .input[data-v-352e9b22] {\n  width: 100%;\n  height: 36px;\n  padding: 10px 10px;\n  border: 2px solid #ddd;\n  outline: none;\n  font-size: 14px;\n  -webkit-border-radius: 5px;\n  -moz-border-radius: 5px;\n  border-radius: 5px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.edit-form input[data-v-352e9b22]::-webkit-input-placeholder,\n.select[data-v-352e9b22]::-webkit-input-placeholder,\n.calendar .input-wrapper .input[data-v-352e9b22]::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.calendar[data-v-352e9b22] {\n  display: inline-block;\n  width: 100%;\n}\n.calendar span.input-clear[data-v-352e9b22] {\n  top: 9px;\n  right: 8px;\n}\n.calendar div.input[data-v-352e9b22] {\n  border-width: 2px;\n}\n.select[data-v-352e9b22] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  display: inline-block;\n  color: rgba(0,0,0,0.6);\n  text-align: left;\n  cursor: pointer;\n}\n.select .arrow[data-v-352e9b22] {\n  position: absolute;\n  top: 15px;\n  right: 8px;\n  ((null)): 0;\n  ((null)): 0;\n  border: 8px solid transparent;\n  border-top-color: rgba(0,0,0,0.6);\n}\n.select span[data-v-352e9b22] {\n  display: block;\n}\n.option-box[data-v-352e9b22] {\n  position: absolute;\n  top: 36px;\n  left: 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 100%;\n  padding: 8px 0px;\n  padding-right: 6px;\n  -webkit-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -moz-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -ms-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -o-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -webkit-border-radius: 12px;\n  -moz-border-radius: 12px;\n  border-radius: 12px;\n  background: #fff;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  z-index: 2;\n}\n.option[data-v-352e9b22] {\n  max-height: 110px;\n  overflow-y: auto;\n}\n.option[data-v-352e9b22]::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.option[data-v-352e9b22]::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.option p[data-v-352e9b22] {\n  padding: 3px 15px;\n  cursor: pointer;\n}\n.option p[data-v-352e9b22]:hover {\n  color: #7ab5d8;\n}\n.group-con[data-v-352e9b22] {\n  width: 80%;\n  margin: 10px auto;\n}\n.must[data-v-352e9b22] {\n  float: left;\n  margin-left: -15px;\n  color: #f00;\n}\n.group-cover[data-v-352e9b22] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-cover input[type='file'][data-v-352e9b22] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 100%;\n  height: 120px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-cover img[data-v-352e9b22] {\n  width: 100%;\n  height: 120px;\n  vertical-align: top;\n}\n.group-content textarea[data-v-352e9b22] {\n  width: 100%;\n  height: 100%;\n  padding: 10px;\n  border: none;\n  outline: none;\n  font-size: 14px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  background: transparent;\n  resize: none;\n}\n.group-content textarea[data-v-352e9b22]::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.group-content textarea[data-v-352e9b22]::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.group-content textarea[data-v-352e9b22]::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.group-content .textarea-box[data-v-352e9b22] {\n  display: inline-block;\n  width: 95%;\n  height: 445px;\n  padding: 0;\n  text-align: left;\n  vertical-align: top;\n}\n.group-edit[data-v-352e9b22] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-edit input[type='file'][data-v-352e9b22] {\n  position: absolute;\n  top: 0;\n  left: 25px;\n  ((null)): 0;\n  ((null)): 0;\n  width: 74px;\n  height: 36px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-edit .btn-edit[data-v-352e9b22] {\n  display: inline-block;\n  margin: 0;\n}\n.file-list[data-v-352e9b22] {\n  display: inline-block;\n  width: 400px;\n  margin: 0 15px 5px;\n  font-size: 20px;\n  line-height: 36px;\n  vertical-align: top;\n}\n.group-left[data-v-352e9b22],\n.group-right[data-v-352e9b22] {\n  display: inline-block;\n  width: 300px;\n  padding: 0 30px;\n  vertical-align: top;\n  text-align: right;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.group-right[data-v-352e9b22] {\n  width: 700px;\n  padding: 0 15px;\n  text-align: left;\n}\n.tip[data-v-352e9b22] {\n  display: block;\n  width: 100%;\n  padding: 0 20px;\n  margin: auto;\n  text-align: left;\n  font-size: 12px;\n  color: #f00;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n@media screen and (max-width: 1016px) {\n.group-left[data-v-352e9b22] {\n    width: 80%;\n}\n}\n", ""]);
 
 	// exports
 
@@ -16704,7 +16704,7 @@
 
 
 	// module
-	exports.push([module.id, "\n.edit[data-v-57fbc2a3] {\n  width: 100%;\n  min-height: 300px;\n  padding: 5px 10px;\n  border: 1px solid #c9d8db;\n  outline: none;\n}\n.tool[data-v-57fbc2a3] {\n  display: inline-block;\n  margin-bottom: 10px;\n}\n.toolbtn[data-v-57fbc2a3] {\n  display: inline-block;\n  width: 16px;\n  height: 16px;\n  margin: 0 5px;\n  background-color: #fff;\n}\n.bold[data-v-57fbc2a3] {\n  background: url(" + __webpack_require__(90) + ") center no-repeat;\n}\n.italic[data-v-57fbc2a3] {\n  background: url(" + __webpack_require__(523) + ") center no-repeat;\n}\n.link[data-v-57fbc2a3] {\n  background: url(" + __webpack_require__(524) + ") center no-repeat;\n}\n.unlink[data-v-57fbc2a3] {\n  background: url(" + __webpack_require__(525) + ") center no-repeat;\n}\n.font[data-v-57fbc2a3] {\n  background: url(" + __webpack_require__(530) + ") center no-repeat;\n}\n.fontSize[data-v-57fbc2a3] {\n  background: url(" + __webpack_require__(531) + ") center no-repeat;\n}\n.foreColor[data-v-57fbc2a3] {\n  background: url(" + __webpack_require__(532) + ") center no-repeat;\n}\n.header[data-v-57fbc2a3] {\n  background: url(" + __webpack_require__(538) + ") center no-repeat;\n}\n.insertImage[data-v-57fbc2a3] {\n  background: url(" + __webpack_require__(533) + ") center no-repeat;\n}\n.justifyCenter[data-v-57fbc2a3] {\n  background: url(" + __webpack_require__(534) + ") center no-repeat;\n}\n.justifyFull[data-v-57fbc2a3] {\n  background: url(" + __webpack_require__(535) + ") center no-repeat;\n}\n.justifyLeft[data-v-57fbc2a3] {\n  background: url(" + __webpack_require__(536) + ") center no-repeat;\n}\n.justifyRight[data-v-57fbc2a3] {\n  background: url(" + __webpack_require__(537) + ") center no-repeat;\n}\n.strike[data-v-57fbc2a3] {\n  background: url(" + __webpack_require__(539) + ") center no-repeat;\n}\n.underline[data-v-57fbc2a3] {\n  background: url(" + __webpack_require__(526) + ") center no-repeat;\n}\n.copy[data-v-57fbc2a3] {\n  background: url(" + __webpack_require__(527) + ") center no-repeat;\n}\n.cut[data-v-57fbc2a3] {\n  background: url(" + __webpack_require__(528) + ") center no-repeat;\n}\n.paste[data-v-57fbc2a3] {\n  background: url(" + __webpack_require__(529) + ") center no-repeat;\n}\n", ""]);
+	exports.push([module.id, "\nform[data-v-57fbc2a3] {\n  padding: 45px;\n  margin: auto;\n}\nlabel[data-v-57fbc2a3] {\n  text-align: right;\n}\n.group-con[data-v-57fbc2a3] {\n  margin: 15px 0;\n}\n.group-btn[data-v-57fbc2a3] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-57fbc2a3] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-57fbc2a3] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-s[data-v-57fbc2a3] {\n  padding: 5px 10px;\n  font-size: 0.9em;\n}\n.btn-certain[data-v-57fbc2a3] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-57fbc2a3] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-57fbc2a3] {\n  background: #2d0a08;\n}\n.must[data-v-57fbc2a3] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-57fbc2a3] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-57fbc2a3] {\n  margin-right: 10px;\n}\n.edit-outter[data-v-57fbc2a3] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.edit[data-v-57fbc2a3] {\n  width: 100%;\n  min-height: 300px;\n  padding: 5px 10px;\n  border: 1px solid #c9d8db;\n  outline: none;\n}\n.placeholder[data-v-57fbc2a3] {\n  position: absolute;\n  top: 3px;\n  left: 10px;\n  ((null)): 0;\n  ((null)): 0;\n}\n.tool[data-v-57fbc2a3] {\n  display: inline-block;\n  margin-bottom: 10px;\n}\n.item-wrapper[data-v-57fbc2a3] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  display: inline-block;\n}\n.toolbtn[data-v-57fbc2a3] {\n  display: inline-block;\n  width: 16px;\n  height: 16px;\n  margin: 0 5px;\n  border: none;\n  outline: none;\n  background-color: #fff;\n  background: url(" + __webpack_require__(90) + ") center no-repeat;\n  cursor: pointer;\n}\n.bold[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(90) + ");\n}\n.italic[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(523) + ");\n}\n.link[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(524) + ");\n}\n.unlink[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(525) + ");\n}\n.font[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(530) + ");\n}\n.fontSize[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(531) + ");\n}\n.foreColor[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(532) + ");\n}\n.header[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(538) + ");\n}\n.insertImage[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(533) + ");\n}\n.justifyCenter[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(534) + ");\n}\n.justifyFull[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(535) + ");\n}\n.justifyLeft[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(536) + ");\n}\n.justifyRight[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(537) + ");\n}\n.strike[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(539) + ");\n}\n.underline[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(526) + ");\n}\n.copy[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(527) + ");\n}\n.cut[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(528) + ");\n}\n.paste[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(529) + ");\n}\n.inputt-wrapper[data-v-57fbc2a3] {\n  position: absolute;\n  top: 25px;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  white-space: nowrap;\n}\n.insertURL[data-v-57fbc2a3] {\n  padding: 5px 8px;\n  border: 1px solid #3fc6bb;\n  outline: none;\n  font-size: 16px;\n  -webkit-border-radius: 4px;\n  -moz-border-radius: 4px;\n  border-radius: 4px;\n}\n", ""]);
 
 	// exports
 
@@ -16735,47 +16735,123 @@
 	//
 	//
 	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 	exports.default = {
 	    data: function data() {
 	        return {
-	            btns: ['bold', 'italic', 'link', 'unlink', 'font', 'fontSize', 'foreColor', 'header', 'insertImage', 'justifyCenter', 'justifyFull', 'justifyLeft', 'justifyRight', 'strike', 'underline', 'copy', 'cut', 'paste'],
-	            content: '',
+	            btns: ['bold', 'italic', 'link', 'unlink', 'font', 'fontSize', 'foreColor', 'header', 'insertImage', 'justifyCenter', 'justifyFull', 'justifyLeft', 'justifyRight', 'strike', 'underline'],
+	            id: 'edit',
+	            insertURL: false,
+	            isFocus: false,
+	            contents: [],
+	            linkURL: '',
 	            contentTip: '请编辑。。。'
 	        };
 	    },
 	    created: function created() {
-	        this.content = this.contentTip;
+	        console.log(this.content);
 	    },
 
 	    methods: {
-	        editEvent: function editEvent(type) {
-	            console.log(type);
-	            // document.execCommand('delete', false, null)
+	        editEvent: function editEvent(e) {
+	            // console.log(type)
+	            // document.execCommand('bold', false, undefined)
+	            var type = e.target.getAttribute('data-type');
 	            switch (type) {
 	                case 'bold':
+	                    this.exec('bold');
 	                    break;
 	                case 'italic':
-	                    break;
-	                case 'h1':
+	                    this.exec('italic');
 	                    break;
 	                case 'link':
+	                    this.insertURL = !this.insertURL;
 	                    break;
 	                case 'unlink':
+	                    this.exec('unlink');
 	                    break;
-	                case 'fontName':
+	                case 'font':
+	                    break;
+	                case 'fontSize':
+	                    break;
+	                case 'foreColor':
+	                    break;
+	                case 'header':
+	                    break;
+	                case 'insertImage':
+	                    break;
+	                case 'justifyCenter':
+	                    this.exec('justifyCenter');
+	                    break;
+	                case 'justifyFull':
+	                    this.exec('justifyFull');
+	                    break;
+	                case 'justifyLeft':
+	                    this.exec('justifyLeft');
+	                    break;
+	                case 'justifyRight':
+	                    this.exec('justifyRight');
+	                    break;
+	                case 'strike':
+	                    this.exec('strikeThrough');
+	                    break;
+	                case 'underline':
+	                    this.exec('underline');
 	                    break;
 	            }
+	        },
+	        exec: function exec(type, arg) {
+	            document.execCommand(type, false, arg);
+	        },
+	        certianURL: function certianURL() {
+	            if (this.linkURL) {
+	                this.exec('createLink', this.linkURL);
+	            }
+	            this.insertURL = !this.insertURL;
 	        },
 	        onFocus: function onFocus() {
-	            if (this.content === this.contentTip) {
-	                this.content = '';
-	            }
+	            this.isFocus = true;
 	        },
 	        onBlur: function onBlur() {
-	            if (!this.content) {
-	                this.content = this.contentTip;
-	            }
+	            this.contents = document.getElementById(this.id).childNodes;
+	            this.isFocus = false;
+	            console.log(this.contents);
 	        }
 	    }
 	};
@@ -16789,30 +16865,230 @@
 	    staticClass: "edit-wrapper"
 	  }, [_c('div', {
 	    staticClass: "tool"
-	  }, _vm._l((_vm.btns), function(btn) {
-	    return _c('span', {
-	      staticClass: "toolbtn",
-	      class: btn,
-	      attrs: {
-	        "type": "button",
-	        "data-type": btn
-	      },
-	      on: {
-	        "click": function($event) {
-	          _vm.editEvent(btn)
-	        }
+	  }, [_c('div', {
+	    staticClass: "item-wrapper"
+	  }, [_c('input', {
+	    staticClass: "toolbtn bold",
+	    attrs: {
+	      "type": "button",
+	      "data-type": "bold"
+	    },
+	    on: {
+	      "click": _vm.editEvent
+	    }
+	  })]), _c('div', {
+	    staticClass: "item-wrapper"
+	  }, [_c('input', {
+	    staticClass: "toolbtn italic",
+	    attrs: {
+	      "type": "button",
+	      "data-type": "italic"
+	    },
+	    on: {
+	      "click": _vm.editEvent
+	    }
+	  })]), _c('div', {
+	    staticClass: "item-wrapper"
+	  }, [_c('input', {
+	    staticClass: "toolbtn link",
+	    attrs: {
+	      "type": "button",
+	      "data-type": "link"
+	    },
+	    on: {
+	      "click": _vm.editEvent
+	    }
+	  }), _vm._v(" "), _c('div', {
+	    directives: [{
+	      name: "show",
+	      rawName: "v-show",
+	      value: (_vm.insertURL),
+	      expression: "insertURL"
+	    }],
+	    staticClass: "inputt-wrapper"
+	  }, [_c('input', {
+	    directives: [{
+	      name: "model",
+	      rawName: "v-model",
+	      value: (_vm.linkURL),
+	      expression: "linkURL"
+	    }],
+	    staticClass: "insertURL",
+	    attrs: {
+	      "type": "text",
+	      "placeholder": "请输入url"
+	    },
+	    domProps: {
+	      "value": _vm._s(_vm.linkURL)
+	    },
+	    on: {
+	      "input": function($event) {
+	        if ($event.target.composing) { return; }
+	        _vm.linkURL = $event.target.value
 	      }
-	    })
-	  })), _vm._v(" "), _c('div', {
+	    }
+	  }), _vm._v(" "), _c('input', {
+	    staticClass: "btn btn-s btn-edit",
+	    attrs: {
+	      "type": "button",
+	      "value": "确定"
+	    },
+	    on: {
+	      "click": _vm.certianURL
+	    }
+	  })])]), _c('div', {
+	    staticClass: "item-wrapper"
+	  }, [_c('input', {
+	    staticClass: "toolbtn unlink",
+	    attrs: {
+	      "type": "button",
+	      "data-type": "unlink"
+	    },
+	    on: {
+	      "click": _vm.editEvent
+	    }
+	  })]), _c('div', {
+	    staticClass: "item-wrapper"
+	  }, [_c('input', {
+	    staticClass: "toolbtn font",
+	    attrs: {
+	      "type": "button",
+	      "data-type": "font"
+	    },
+	    on: {
+	      "click": _vm.editEvent
+	    }
+	  })]), _c('div', {
+	    staticClass: "item-wrapper"
+	  }, [_c('input', {
+	    staticClass: "toolbtn fontSize",
+	    attrs: {
+	      "type": "button",
+	      "data-type": "fontSize"
+	    },
+	    on: {
+	      "click": _vm.editEvent
+	    }
+	  })]), _c('div', {
+	    staticClass: "item-wrapper"
+	  }, [_c('input', {
+	    staticClass: "toolbtn foreColor",
+	    attrs: {
+	      "type": "button",
+	      "data-type": "foreColor"
+	    },
+	    on: {
+	      "click": _vm.editEvent
+	    }
+	  })]), _c('div', {
+	    staticClass: "item-wrapper"
+	  }, [_c('input', {
+	    staticClass: "toolbtn header",
+	    attrs: {
+	      "type": "button",
+	      "data-type": "header"
+	    },
+	    on: {
+	      "click": _vm.editEvent
+	    }
+	  })]), _c('div', {
+	    staticClass: "item-wrapper"
+	  }, [_c('input', {
+	    staticClass: "toolbtn insertImage",
+	    attrs: {
+	      "type": "button",
+	      "data-type": "insertImage"
+	    },
+	    on: {
+	      "click": _vm.editEvent
+	    }
+	  })]), _c('div', {
+	    staticClass: "item-wrapper"
+	  }, [_c('input', {
+	    staticClass: "toolbtn justifyCenter",
+	    attrs: {
+	      "type": "button",
+	      "data-type": "justifyCenter"
+	    },
+	    on: {
+	      "click": _vm.editEvent
+	    }
+	  })]), _c('div', {
+	    staticClass: "item-wrapper"
+	  }, [_c('input', {
+	    staticClass: "toolbtn justifyFull",
+	    attrs: {
+	      "type": "button",
+	      "data-type": "justifyFull"
+	    },
+	    on: {
+	      "click": _vm.editEvent
+	    }
+	  })]), _c('div', {
+	    staticClass: "item-wrapper"
+	  }, [_c('input', {
+	    staticClass: "toolbtn justifyLeft",
+	    attrs: {
+	      "type": "button",
+	      "data-type": "justifyLeft"
+	    },
+	    on: {
+	      "click": _vm.editEvent
+	    }
+	  })]), _c('div', {
+	    staticClass: "item-wrapper"
+	  }, [_c('input', {
+	    staticClass: "toolbtn justifyRight",
+	    attrs: {
+	      "type": "button",
+	      "data-type": "justifyRight"
+	    },
+	    on: {
+	      "click": _vm.editEvent
+	    }
+	  })]), _c('div', {
+	    staticClass: "item-wrapper"
+	  }, [_c('input', {
+	    staticClass: "toolbtn strike",
+	    attrs: {
+	      "type": "button",
+	      "data-type": "strike"
+	    },
+	    on: {
+	      "click": _vm.editEvent
+	    }
+	  })]), _c('div', {
+	    staticClass: "item-wrapper"
+	  }, [_c('input', {
+	    staticClass: "toolbtn underline",
+	    attrs: {
+	      "type": "button",
+	      "data-type": "underline"
+	    },
+	    on: {
+	      "click": _vm.editEvent
+	    }
+	  })])]), _vm._v(" "), _c('div', {
+	    staticClass: "edit-outter"
+	  }, [_c('div', {
 	    staticClass: "edit",
 	    attrs: {
+	      "id": "edit",
 	      "contenteditable": "true"
 	    },
 	    on: {
 	      "focus": _vm.onFocus,
 	      "blur": _vm.onBlur
 	    }
-	  }, [_vm._v("\n        " + _vm._s(_vm.content) + "\n    ")])])
+	  }), _vm._v(" "), _c('span', {
+	    directives: [{
+	      name: "show",
+	      rawName: "v-show",
+	      value: (!_vm.isFocus && !_vm.content),
+	      expression: "!isFocus && !content"
+	    }],
+	    staticClass: "placeholder"
+	  }, [_vm._v(_vm._s(_vm.contentTip))])])])
 	},staticRenderFns: []}
 	if (false) {
 	  module.hot.accept()
@@ -17130,7 +17406,7 @@
 
 
 	// module
-	exports.push([module.id, "\nbody[data-v-a62555e4],\nul[data-v-a62555e4],\nli[data-v-a62555e4],\np[data-v-a62555e4],\nh1[data-v-a62555e4],\nh2[data-v-a62555e4],\nh3[data-v-a62555e4],\nhr[data-v-a62555e4] {\n  padding: 0;\n  margin: 0;\n}\nbody[data-v-a62555e4] {\n  height: 100vh;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nul[data-v-a62555e4] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  list-style: none;\n}\na[data-v-a62555e4] {\n  text-decoration: none;\n  color: #000;\n}\n.color-r[data-v-a62555e4] {\n  color: #f00;\n}\n.color-b[data-v-a62555e4] {\n  color: #40bfce;\n}\n.color-g[data-v-a62555e4] {\n  color: #bbb6b6;\n}\n.padding-top[data-v-a62555e4] {\n  padding-top: 45px;\n}\n.text-ellipsis[data-v-a62555e4] {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n#app[data-v-a62555e4] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  overflow: hidden;\n}\n.wrapper[data-v-a62555e4] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  min-height: calc(100vh - 48px);\n  padding-bottom: 48px;\n}\n.time[data-v-a62555e4] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.per-list[data-v-a62555e4] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin-bottom: 10px;\n  text-align: center;\n}\n.per-list[data-v-a62555e4]:before {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 50%;\n  min-width: 150px;\n  height: 0px;\n  margin: auto;\n  border: 1px solid #000;\n  content: '';\n  z-index: -1;\n}\n.per-list-item a[data-v-a62555e4] {\n  display: block;\n  padding: 10px 35px;\n  border: 1px solid #000;\n  background: #fff;\n}\n.per-list-item.active a[data-v-a62555e4] {\n  color: #fff;\n  background: #000;\n}\nform[data-v-a62555e4] {\n  padding: 45px;\n  margin: auto;\n}\nlabel[data-v-a62555e4] {\n  text-align: right;\n}\n.group-con[data-v-a62555e4] {\n  margin: 15px 0;\n}\n.group-btn[data-v-a62555e4] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-a62555e4] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-a62555e4] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-certain[data-v-a62555e4] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-a62555e4] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-a62555e4] {\n  background: #2d0a08;\n}\n.must[data-v-a62555e4] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-a62555e4] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-a62555e4] {\n  margin-right: 10px;\n}\n.article[data-v-a62555e4] {\n  width: 50%;\n  min-width: 500px;\n  margin: auto;\n}\nh1[data-v-a62555e4] {\n  text-align: center;\n  margin: 30px 0 25px;\n}\n.cover[data-v-a62555e4] {\n  width: 100%;\n}\n.content[data-v-a62555e4] {\n  margin-left: 90px;\n}\n", ""]);
+	exports.push([module.id, "\nbody[data-v-a62555e4],\nul[data-v-a62555e4],\nli[data-v-a62555e4],\np[data-v-a62555e4],\nh1[data-v-a62555e4],\nh2[data-v-a62555e4],\nh3[data-v-a62555e4],\nhr[data-v-a62555e4] {\n  padding: 0;\n  margin: 0;\n}\nbody[data-v-a62555e4] {\n  height: 100vh;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nul[data-v-a62555e4] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  list-style: none;\n}\na[data-v-a62555e4] {\n  text-decoration: none;\n  color: #000;\n}\n.color-r[data-v-a62555e4] {\n  color: #f00;\n}\n.color-b[data-v-a62555e4] {\n  color: #40bfce;\n}\n.color-g[data-v-a62555e4] {\n  color: #bbb6b6;\n}\n.padding-top[data-v-a62555e4] {\n  padding-top: 45px;\n}\n.text-ellipsis[data-v-a62555e4] {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n#app[data-v-a62555e4] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  overflow: hidden;\n}\n.wrapper[data-v-a62555e4] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  min-height: calc(100vh - 48px);\n  padding-bottom: 48px;\n}\n.time[data-v-a62555e4] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.per-list[data-v-a62555e4] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin-bottom: 10px;\n  text-align: center;\n}\n.per-list[data-v-a62555e4]:before {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 50%;\n  min-width: 150px;\n  height: 0px;\n  margin: auto;\n  border: 1px solid #000;\n  content: '';\n  z-index: -1;\n}\n.per-list-item a[data-v-a62555e4] {\n  display: block;\n  padding: 10px 35px;\n  border: 1px solid #000;\n  background: #fff;\n}\n.per-list-item.active a[data-v-a62555e4] {\n  color: #fff;\n  background: #000;\n}\nform[data-v-a62555e4] {\n  padding: 45px;\n  margin: auto;\n}\nlabel[data-v-a62555e4] {\n  text-align: right;\n}\n.group-con[data-v-a62555e4] {\n  margin: 15px 0;\n}\n.group-btn[data-v-a62555e4] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-a62555e4] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-a62555e4] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-s[data-v-a62555e4] {\n  padding: 5px 10px;\n  font-size: 0.9em;\n}\n.btn-certain[data-v-a62555e4] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-a62555e4] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-a62555e4] {\n  background: #2d0a08;\n}\n.must[data-v-a62555e4] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-a62555e4] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-a62555e4] {\n  margin-right: 10px;\n}\n.article[data-v-a62555e4] {\n  width: 50%;\n  min-width: 500px;\n  margin: auto;\n}\nh1[data-v-a62555e4] {\n  text-align: center;\n  margin: 30px 0 25px;\n}\n.cover[data-v-a62555e4] {\n  width: 100%;\n}\n.content[data-v-a62555e4] {\n  margin-left: 90px;\n}\n", ""]);
 
 	// exports
 
@@ -17569,7 +17845,7 @@
 
 
 	// module
-	exports.push([module.id, "\nbody[data-v-74615f3a],\nul[data-v-74615f3a],\nli[data-v-74615f3a],\np[data-v-74615f3a],\nh1[data-v-74615f3a],\nh2[data-v-74615f3a],\nh3[data-v-74615f3a],\nhr[data-v-74615f3a] {\n  padding: 0;\n  margin: 0;\n}\nbody[data-v-74615f3a] {\n  height: 100vh;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nul[data-v-74615f3a] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  list-style: none;\n}\na[data-v-74615f3a] {\n  text-decoration: none;\n  color: #000;\n}\n.color-r[data-v-74615f3a] {\n  color: #f00;\n}\n.color-b[data-v-74615f3a] {\n  color: #40bfce;\n}\n.color-g[data-v-74615f3a] {\n  color: #bbb6b6;\n}\n.padding-top[data-v-74615f3a] {\n  padding-top: 45px;\n}\n.text-ellipsis[data-v-74615f3a] {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n#app[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  overflow: hidden;\n}\n.wrapper[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  min-height: calc(100vh - 48px);\n  padding-bottom: 48px;\n}\n.time[data-v-74615f3a] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.per-list[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin-bottom: 10px;\n  text-align: center;\n}\n.per-list[data-v-74615f3a]:before {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 50%;\n  min-width: 150px;\n  height: 0px;\n  margin: auto;\n  border: 1px solid #000;\n  content: '';\n  z-index: -1;\n}\n.per-list-item a[data-v-74615f3a] {\n  display: block;\n  padding: 10px 35px;\n  border: 1px solid #000;\n  background: #fff;\n}\n.per-list-item.active a[data-v-74615f3a] {\n  color: #fff;\n  background: #000;\n}\nform[data-v-74615f3a] {\n  padding: 45px;\n  margin: auto;\n}\nlabel[data-v-74615f3a] {\n  text-align: right;\n}\n.group-con[data-v-74615f3a] {\n  margin: 15px 0;\n}\n.group-btn[data-v-74615f3a] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-74615f3a] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-74615f3a] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-certain[data-v-74615f3a] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-74615f3a] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-74615f3a] {\n  background: #2d0a08;\n}\n.must[data-v-74615f3a] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-74615f3a] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-74615f3a] {\n  margin-right: 10px;\n}\n.user[data-v-74615f3a] {\n  text-align: center;\n}\ntable[data-v-74615f3a] {\n  margin: 30px auto;\n  text-align: center;\n}\ntable td[data-v-74615f3a] {\n  padding: 10px 30px;\n}\n.per-list[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin-top: 20px;\n  margin-bottom: 10px;\n  text-align: center;\n}\n.per-list[data-v-74615f3a]:before {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 50%;\n  height: 0px;\n  margin: auto;\n  border: 1px solid #000;\n  content: '';\n  z-index: -1;\n}\n.per-list-item[data-v-74615f3a] {\n  padding: 10px 35px;\n  border: 1px solid #000;\n  background: #fff;\n  cursor: pointer;\n}\n.per-list-item.active[data-v-74615f3a] {\n  color: #fff;\n  background: #000;\n}\n.add-user[data-v-74615f3a] {\n  display: inline-block;\n  margin: 30px auto;\n  text-align: left;\n}\n.add-user label[data-v-74615f3a] {\n  display: inline-block;\n  width: 100px;\n}\n.add-user input[data-v-74615f3a],\n.add-user select[data-v-74615f3a] {\n  width: 300px;\n}\n", ""]);
+	exports.push([module.id, "\nbody[data-v-74615f3a],\nul[data-v-74615f3a],\nli[data-v-74615f3a],\np[data-v-74615f3a],\nh1[data-v-74615f3a],\nh2[data-v-74615f3a],\nh3[data-v-74615f3a],\nhr[data-v-74615f3a] {\n  padding: 0;\n  margin: 0;\n}\nbody[data-v-74615f3a] {\n  height: 100vh;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nul[data-v-74615f3a] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  list-style: none;\n}\na[data-v-74615f3a] {\n  text-decoration: none;\n  color: #000;\n}\n.color-r[data-v-74615f3a] {\n  color: #f00;\n}\n.color-b[data-v-74615f3a] {\n  color: #40bfce;\n}\n.color-g[data-v-74615f3a] {\n  color: #bbb6b6;\n}\n.padding-top[data-v-74615f3a] {\n  padding-top: 45px;\n}\n.text-ellipsis[data-v-74615f3a] {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n#app[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  overflow: hidden;\n}\n.wrapper[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  min-height: calc(100vh - 48px);\n  padding-bottom: 48px;\n}\n.time[data-v-74615f3a] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.per-list[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin-bottom: 10px;\n  text-align: center;\n}\n.per-list[data-v-74615f3a]:before {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 50%;\n  min-width: 150px;\n  height: 0px;\n  margin: auto;\n  border: 1px solid #000;\n  content: '';\n  z-index: -1;\n}\n.per-list-item a[data-v-74615f3a] {\n  display: block;\n  padding: 10px 35px;\n  border: 1px solid #000;\n  background: #fff;\n}\n.per-list-item.active a[data-v-74615f3a] {\n  color: #fff;\n  background: #000;\n}\nform[data-v-74615f3a] {\n  padding: 45px;\n  margin: auto;\n}\nlabel[data-v-74615f3a] {\n  text-align: right;\n}\n.group-con[data-v-74615f3a] {\n  margin: 15px 0;\n}\n.group-btn[data-v-74615f3a] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-74615f3a] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-74615f3a] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-s[data-v-74615f3a] {\n  padding: 5px 10px;\n  font-size: 0.9em;\n}\n.btn-certain[data-v-74615f3a] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-74615f3a] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-74615f3a] {\n  background: #2d0a08;\n}\n.must[data-v-74615f3a] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-74615f3a] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-74615f3a] {\n  margin-right: 10px;\n}\n.user[data-v-74615f3a] {\n  text-align: center;\n}\ntable[data-v-74615f3a] {\n  margin: 30px auto;\n  text-align: center;\n}\ntable td[data-v-74615f3a] {\n  padding: 10px 30px;\n}\n.per-list[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin-top: 20px;\n  margin-bottom: 10px;\n  text-align: center;\n}\n.per-list[data-v-74615f3a]:before {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 50%;\n  height: 0px;\n  margin: auto;\n  border: 1px solid #000;\n  content: '';\n  z-index: -1;\n}\n.per-list-item[data-v-74615f3a] {\n  padding: 10px 35px;\n  border: 1px solid #000;\n  background: #fff;\n  cursor: pointer;\n}\n.per-list-item.active[data-v-74615f3a] {\n  color: #fff;\n  background: #000;\n}\n.add-user[data-v-74615f3a] {\n  display: inline-block;\n  margin: 30px auto;\n  text-align: left;\n}\n.add-user label[data-v-74615f3a] {\n  display: inline-block;\n  width: 100px;\n}\n.add-user input[data-v-74615f3a],\n.add-user select[data-v-74615f3a] {\n  width: 300px;\n}\n", ""]);
 
 	// exports
 
@@ -17981,7 +18257,7 @@
 
 
 	// module
-	exports.push([module.id, "\nbody[data-v-07022980],\nul[data-v-07022980],\nli[data-v-07022980],\np[data-v-07022980],\nh1[data-v-07022980],\nh2[data-v-07022980],\nh3[data-v-07022980],\nhr[data-v-07022980] {\n  padding: 0;\n  margin: 0;\n}\nbody[data-v-07022980] {\n  height: 100vh;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nul[data-v-07022980] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  list-style: none;\n}\na[data-v-07022980] {\n  text-decoration: none;\n  color: #000;\n}\n.color-r[data-v-07022980] {\n  color: #f00;\n}\n.color-b[data-v-07022980] {\n  color: #40bfce;\n}\n.color-g[data-v-07022980] {\n  color: #bbb6b6;\n}\n.padding-top[data-v-07022980] {\n  padding-top: 45px;\n}\n.text-ellipsis[data-v-07022980] {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n#app[data-v-07022980] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  overflow: hidden;\n}\n.wrapper[data-v-07022980] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  min-height: calc(100vh - 48px);\n  padding-bottom: 48px;\n}\n.time[data-v-07022980] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.per-list[data-v-07022980] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin-bottom: 10px;\n  text-align: center;\n}\n.per-list[data-v-07022980]:before {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 50%;\n  min-width: 150px;\n  height: 0px;\n  margin: auto;\n  border: 1px solid #000;\n  content: '';\n  z-index: -1;\n}\n.per-list-item a[data-v-07022980] {\n  display: block;\n  padding: 10px 35px;\n  border: 1px solid #000;\n  background: #fff;\n}\n.per-list-item.active a[data-v-07022980] {\n  color: #fff;\n  background: #000;\n}\nform[data-v-07022980] {\n  padding: 45px;\n  margin: auto;\n}\nlabel[data-v-07022980] {\n  text-align: right;\n}\n.group-con[data-v-07022980] {\n  margin: 15px 0;\n}\n.group-btn[data-v-07022980] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-07022980] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-07022980] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-certain[data-v-07022980] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-07022980] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-07022980] {\n  background: #2d0a08;\n}\n.must[data-v-07022980] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-07022980] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-07022980] {\n  margin-right: 10px;\n}\n.per[data-v-07022980] {\n  padding: 0 20px;\n}\n.list[data-v-07022980] {\n  justify-content: flex-start;\n}\n.list-item[data-v-07022980] {\n  width: 32.5%;\n  padding: 15px 8px 15px 0;\n  margin: 5px 0;\n  vertical-align: top;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-box-shadow: 2px 0px 0px 0px #ddd;\n  -moz-box-shadow: 2px 0px 0px 0px #ddd;\n  -ms-box-shadow: 2px 0px 0px 0px #ddd;\n  -o-box-shadow: 2px 0px 0px 0px #ddd;\n  box-shadow: 2px 0px 0px 0px #ddd;\n}\n.list-item[data-v-07022980]:nth-child(3n-1) {\n  margin: 5px 1.25%;\n}\n.list-item img[data-v-07022980] {\n  display: block;\n  width: 100%;\n  height: 120px;\n  margin: auto;\n}\nh3[data-v-07022980] {\n  display: inline-block;\n  max-width: 100%;\n  margin-top: 15px;\n  font-size: 20px;\n}\nh3 a[data-v-07022980]:after {\n  display: block;\n  width: 100%;\n  margin: auto;\n  border-bottom: 1px solid #000;\n  content: '';\n  -webkit-transform: scale3d(0, 1, 1);\n  -moz-transform: scale3d(0, 1, 1);\n  -ms-transform: scale3d(0, 1, 1);\n  -o-transform: scale3d(0, 1, 1);\n  transform: scale3d(0, 1, 1);\n  transition: transform 0.15s ease-in-out;\n}\nh3 a[data-v-07022980]:hover:after {\n  -webkit-transform: scale3d(1, 1, 1);\n  -moz-transform: scale3d(1, 1, 1);\n  -ms-transform: scale3d(1, 1, 1);\n  -o-transform: scale3d(1, 1, 1);\n  transform: scale3d(1, 1, 1);\n}\n", ""]);
+	exports.push([module.id, "\nbody[data-v-07022980],\nul[data-v-07022980],\nli[data-v-07022980],\np[data-v-07022980],\nh1[data-v-07022980],\nh2[data-v-07022980],\nh3[data-v-07022980],\nhr[data-v-07022980] {\n  padding: 0;\n  margin: 0;\n}\nbody[data-v-07022980] {\n  height: 100vh;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nul[data-v-07022980] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  list-style: none;\n}\na[data-v-07022980] {\n  text-decoration: none;\n  color: #000;\n}\n.color-r[data-v-07022980] {\n  color: #f00;\n}\n.color-b[data-v-07022980] {\n  color: #40bfce;\n}\n.color-g[data-v-07022980] {\n  color: #bbb6b6;\n}\n.padding-top[data-v-07022980] {\n  padding-top: 45px;\n}\n.text-ellipsis[data-v-07022980] {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n#app[data-v-07022980] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  overflow: hidden;\n}\n.wrapper[data-v-07022980] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  min-height: calc(100vh - 48px);\n  padding-bottom: 48px;\n}\n.time[data-v-07022980] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.per-list[data-v-07022980] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin-bottom: 10px;\n  text-align: center;\n}\n.per-list[data-v-07022980]:before {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 50%;\n  min-width: 150px;\n  height: 0px;\n  margin: auto;\n  border: 1px solid #000;\n  content: '';\n  z-index: -1;\n}\n.per-list-item a[data-v-07022980] {\n  display: block;\n  padding: 10px 35px;\n  border: 1px solid #000;\n  background: #fff;\n}\n.per-list-item.active a[data-v-07022980] {\n  color: #fff;\n  background: #000;\n}\nform[data-v-07022980] {\n  padding: 45px;\n  margin: auto;\n}\nlabel[data-v-07022980] {\n  text-align: right;\n}\n.group-con[data-v-07022980] {\n  margin: 15px 0;\n}\n.group-btn[data-v-07022980] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-07022980] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-07022980] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-s[data-v-07022980] {\n  padding: 5px 10px;\n  font-size: 0.9em;\n}\n.btn-certain[data-v-07022980] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-07022980] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-07022980] {\n  background: #2d0a08;\n}\n.must[data-v-07022980] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-07022980] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-07022980] {\n  margin-right: 10px;\n}\n.per[data-v-07022980] {\n  padding: 0 20px;\n}\n.list[data-v-07022980] {\n  justify-content: flex-start;\n}\n.list-item[data-v-07022980] {\n  width: 32.5%;\n  padding: 15px 8px 15px 0;\n  margin: 5px 0;\n  vertical-align: top;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-box-shadow: 2px 0px 0px 0px #ddd;\n  -moz-box-shadow: 2px 0px 0px 0px #ddd;\n  -ms-box-shadow: 2px 0px 0px 0px #ddd;\n  -o-box-shadow: 2px 0px 0px 0px #ddd;\n  box-shadow: 2px 0px 0px 0px #ddd;\n}\n.list-item[data-v-07022980]:nth-child(3n-1) {\n  margin: 5px 1.25%;\n}\n.list-item img[data-v-07022980] {\n  display: block;\n  width: 100%;\n  height: 120px;\n  margin: auto;\n}\nh3[data-v-07022980] {\n  display: inline-block;\n  max-width: 100%;\n  margin-top: 15px;\n  font-size: 20px;\n}\nh3 a[data-v-07022980]:after {\n  display: block;\n  width: 100%;\n  margin: auto;\n  border-bottom: 1px solid #000;\n  content: '';\n  -webkit-transform: scale3d(0, 1, 1);\n  -moz-transform: scale3d(0, 1, 1);\n  -ms-transform: scale3d(0, 1, 1);\n  -o-transform: scale3d(0, 1, 1);\n  transform: scale3d(0, 1, 1);\n  transition: transform 0.15s ease-in-out;\n}\nh3 a[data-v-07022980]:hover:after {\n  -webkit-transform: scale3d(1, 1, 1);\n  -moz-transform: scale3d(1, 1, 1);\n  -ms-transform: scale3d(1, 1, 1);\n  -o-transform: scale3d(1, 1, 1);\n  transform: scale3d(1, 1, 1);\n}\n", ""]);
 
 	// exports
 
