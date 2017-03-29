@@ -12368,23 +12368,23 @@
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _ = __webpack_require__(65);
+	var _ = __webpack_require__(70);
 
 	var _2 = _interopRequireDefault(_);
 
-	var _signin = __webpack_require__(67);
+	var _signin = __webpack_require__(72);
 
 	var _signin2 = _interopRequireDefault(_signin);
 
-	var _edit = __webpack_require__(72);
+	var _edit = __webpack_require__(77);
 
 	var _edit2 = _interopRequireDefault(_edit);
 
-	var _article = __webpack_require__(83);
+	var _article = __webpack_require__(88);
 
 	var _article2 = _interopRequireDefault(_article);
 
-	var _personal = __webpack_require__(88);
+	var _personal = __webpack_require__(93);
 
 	var _personal2 = _interopRequireDefault(_personal);
 
@@ -14560,7 +14560,7 @@
 	__vue_exports__ = __webpack_require__(60)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(64)
+	var __vue_template__ = __webpack_require__(69)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -14650,7 +14650,7 @@
 
 	var _modify2 = _interopRequireDefault(_modify);
 
-	var _page = __webpack_require__(512);
+	var _page = __webpack_require__(64);
 
 	var _page2 = _interopRequireDefault(_page);
 
@@ -14886,6 +14886,241 @@
 /* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var __vue_exports__, __vue_options__
+	var __vue_styles__ = {}
+
+	/* styles */
+	__webpack_require__(65)
+
+	/* script */
+	__vue_exports__ = __webpack_require__(67)
+
+	/* template */
+	var __vue_template__ = __webpack_require__(68)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.__file = "D:\\code\\teaching-activities\\design\\src\\components\\page.vue"
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+	__vue_options__._scopeId = "data-v-6de15b76"
+
+	/* hot reload */
+	if (false) {(function () {
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  module.hot.accept()
+	  if (!module.hot.data) {
+	    hotAPI.createRecord("data-v-6de15b76", __vue_options__)
+	  } else {
+	    hotAPI.reload("data-v-6de15b76", __vue_options__)
+	  }
+	})()}
+	if (__vue_options__.functional) {console.error("[vue-loader] page.vue: functional components are not supported and should be defined in plain js files using render functions.")}
+
+	module.exports = __vue_exports__
+
+
+/***/ },
+/* 65 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(66);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(38)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-6de15b76&scoped=true!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./page.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-6de15b76&scoped=true!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./page.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 66 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(37)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n.page-wrapper[data-v-6de15b76] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin: 30px 0;\n  text-align: center;\n}\n.page-wrapper > button[data-v-6de15b76] {\n  display: inline-block;\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 80px;\n  height: 35px;\n  margin: 0 10px;\n  border: none;\n  outline: none;\n  color: #fff;\n  line-height: 35px;\n  background: #000;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n  cursor: pointer;\n}\n.page-wrapper > button[disabled][data-v-6de15b76] {\n  background: #ccc;\n}\n.page-wrapper input[data-v-6de15b76] {\n  width: 50px;\n  height: 35px;\n  margin: 0 10px;\n  outline: none;\n  text-align: center;\n  font-size: 20px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n}\n.tip[data-v-6de15b76] {\n  position: absolute;\n  top: -150%;\n  left: 50%;\n  ((null)): 0;\n  ((null)): 0;\n  padding: 10px;\n  color: #fff;\n  background: rgba(0,0,0,0.6);\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.fade-enter[data-v-6de15b76] {\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n}\n.fade-enter-active[data-v-6de15b76] {\n  transition: opacity 0.5s linear;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 67 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
+	exports.default = {
+		data: function data() {
+			return {
+				tipContent: ['请输入有效页数', '已是最后一页，没有更多了哦~', '已是第一页了哦~'],
+				tip: '',
+				tipShow: false,
+				curPage: 1,
+				skipPage: 1
+			};
+		},
+
+		props: {
+			totalPage: {
+				type: Number,
+				default: 0
+			}
+		},
+		created: function created() {},
+		methods: {
+			prevPage: function prevPage(cb) {
+				this.curPage = this.curPage === 1 ? this.curPage : --this.curPage;
+				this.skipPage = this.curPage;
+				this.$emit('prevPage', this.curPage);
+				this.tipShow = false;
+			},
+			nextPage: function nextPage() {
+				this.curPage = this.curPage >= this.totalPage ? this.curPage : ++this.curPage;
+				this.skipPage = this.curPage;
+				this.$emit('nextPage', this.curPage);
+				this.tipShow = false;
+			},
+			skip: function skip() {
+				this.tipShow = true;
+				if (/^[0-9]+$/.test(this.skipPage) && this.skipPage <= this.totalPage && this.skipPage >= 1) {
+					if (this.skipPage == 1 && this.curPage == 1) {
+						this.tip = this.tipContent[2];
+					} else if (this.skipPage == this.totalPage && this.curPage == this.totalPage) {
+						this.tip = this.tipContent[1];
+					} else {
+						this.curPage = this.skipPage;
+						this.$emit('skip', this.curPage);
+						this.tipShow = false;
+					}
+				} else {
+					if (this.skipPage > this.totalPage && this.curPage != this.totalPage) {
+						this.skipPage = this.curPage = this.totalPage;
+						this.$emit('skip', this.curPage);
+						this.tipShow = false;
+					}
+					this.tip = this.tipContent[0];
+				}
+			}
+		}
+	};
+
+/***/ },
+/* 68 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _c('div', {
+	    staticClass: "page-wrapper"
+	  }, [_c('button', {
+	    attrs: {
+	      "type": "button",
+	      "disabled": _vm.curPage <= 1
+	    },
+	    on: {
+	      "click": _vm.prevPage
+	    }
+	  }, [_vm._v("上一页")]), _vm._v(" "), _c('button', {
+	    attrs: {
+	      "type": "button",
+	      "disabled": _vm.curPage >= _vm.totalPage
+	    },
+	    on: {
+	      "click": _vm.nextPage
+	    }
+	  }, [_vm._v("下一页")]), _vm._v(" "), _c('input', {
+	    directives: [{
+	      name: "model",
+	      rawName: "v-model",
+	      value: (_vm.skipPage),
+	      expression: "skipPage"
+	    }],
+	    attrs: {
+	      "type": "text"
+	    },
+	    domProps: {
+	      "value": _vm._s(_vm.skipPage)
+	    },
+	    on: {
+	      "input": function($event) {
+	        if ($event.target.composing) { return; }
+	        _vm.skipPage = $event.target.value
+	      }
+	    }
+	  }), _vm._v(" "), _c('button', {
+	    attrs: {
+	      "type": "button"
+	    },
+	    on: {
+	      "click": _vm.skip
+	    }
+	  }, [_vm._v("跳转")]), _vm._v(" "), _c('transition', {
+	    attrs: {
+	      "name": "fade"
+	    }
+	  }, [_c('div', {
+	    directives: [{
+	      name: "show",
+	      rawName: "v-show",
+	      value: (_vm.tipShow),
+	      expression: "tipShow"
+	    }],
+	    staticClass: "tip"
+	  }, [_vm._v(_vm._s(_vm.tip))])])])
+	},staticRenderFns: []}
+	if (false) {
+	  module.hot.accept()
+	  if (module.hot.data) {
+	     require("vue-hot-reload-api").rerender("data-v-6de15b76", module.exports)
+	  }
+	}
+
+/***/ },
+/* 69 */
+/***/ function(module, exports, __webpack_require__) {
+
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
 	  return _c('div', {
 	    staticClass: "index"
@@ -15020,14 +15255,14 @@
 	}
 
 /***/ },
-/* 65 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = {}
 
 	/* template */
-	var __vue_template__ = __webpack_require__(66)
+	var __vue_template__ = __webpack_require__(71)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -15061,7 +15296,7 @@
 
 
 /***/ },
-/* 66 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
@@ -15075,20 +15310,20 @@
 	}
 
 /***/ },
-/* 67 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = {}
 
 	/* styles */
-	__webpack_require__(68)
+	__webpack_require__(73)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(70)
+	__vue_exports__ = __webpack_require__(75)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(71)
+	var __vue_template__ = __webpack_require__(76)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -15123,13 +15358,13 @@
 
 
 /***/ },
-/* 68 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(69);
+	var content = __webpack_require__(74);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(38)(content, {});
@@ -15149,7 +15384,7 @@
 	}
 
 /***/ },
-/* 69 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(37)();
@@ -15163,7 +15398,7 @@
 
 
 /***/ },
-/* 70 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15234,7 +15469,7 @@
 	};
 
 /***/ },
-/* 71 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
@@ -15326,20 +15561,20 @@
 	}
 
 /***/ },
-/* 72 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = {}
 
 	/* styles */
-	__webpack_require__(73)
+	__webpack_require__(78)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(76)
+	__vue_exports__ = __webpack_require__(81)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(82)
+	var __vue_template__ = __webpack_require__(87)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -15374,13 +15609,13 @@
 
 
 /***/ },
-/* 73 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(74);
+	var content = __webpack_require__(79);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(38)(content, {});
@@ -15400,12 +15635,12 @@
 	}
 
 /***/ },
-/* 74 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(37)();
 	// imports
-	exports.i(__webpack_require__(75), "");
+	exports.i(__webpack_require__(80), "");
 
 	// module
 	exports.push([module.id, "\n.form-contain[data-v-352e9b22] {\n  min-height: 100vh;\n  padding-top: 95px;\n  padding-bottom: 20px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  text-align: center;\n}\n.edit-form[data-v-352e9b22] {\n  display: inline-block;\n  padding: 0;\n  margin: auto;\n  text-align: left;\n}\n.edit-form label[data-v-352e9b22] {\n  display: inline-block;\n  width: 90px;\n  text-align: left;\n  vertical-align: top;\n}\n.edit-form .btn-post[data-v-352e9b22] {\n  width: 55%;\n}\n.edit-form .btn-edit[data-v-352e9b22] {\n  margin-left: 25px;\n}\n.edit-form .simditor[data-v-352e9b22] {\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n  overflow-y: auto;\n}\n.edit-form .simditor .simditor-body[data-v-352e9b22] {\n  height: 300px;\n  overflow-y: auto;\n}\n.edit-form .group-btn[data-v-352e9b22] {\n  text-align: left;\n}\n.group-left input[data-v-352e9b22],\n.select[data-v-352e9b22],\n.calendar div.input[data-v-352e9b22] {\n  width: 90%;\n  height: 36px;\n  padding: 10px 10px;\n  border: none;\n  outline: none;\n  background: #fff;\n  -webkit-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -moz-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -ms-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -o-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  font-size: 14px;\n  -webkit-border-radius: 15px;\n  -moz-border-radius: 15px;\n  border-radius: 15px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.group-left input[data-v-352e9b22]::-webkit-input-placeholder,\n.select[data-v-352e9b22]::-webkit-input-placeholder,\n.calendar div.input[data-v-352e9b22]::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.calendar[data-v-352e9b22] {\n  display: inline-block;\n  width: 90%;\n}\n.calendar span.input-clear[data-v-352e9b22] {\n  top: 9px;\n  right: 8px;\n}\n.calendar div.input-wrapper[data-v-352e9b22],\n.calendar div.input[data-v-352e9b22] {\n  width: 100%;\n}\n.select[data-v-352e9b22] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  display: inline-block;\n  color: rgba(0,0,0,0.6);\n  text-align: left;\n  cursor: pointer;\n}\n.select .arrow[data-v-352e9b22] {\n  position: absolute;\n  top: 15px;\n  right: 8px;\n  ((null)): 0;\n  ((null)): 0;\n  border: 8px solid transparent;\n  border-top-color: rgba(0,0,0,0.6);\n}\n.select span[data-v-352e9b22] {\n  display: block;\n}\n.option-box[data-v-352e9b22] {\n  position: absolute;\n  top: 36px;\n  left: 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 100%;\n  padding: 8px 0px;\n  padding-right: 6px;\n  -webkit-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -moz-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -ms-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -o-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -webkit-border-radius: 12px;\n  -moz-border-radius: 12px;\n  border-radius: 12px;\n  background: #fff;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  z-index: 2;\n}\n.option[data-v-352e9b22] {\n  max-height: 110px;\n  overflow-y: auto;\n}\n.option[data-v-352e9b22]::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.option[data-v-352e9b22]::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.option p[data-v-352e9b22] {\n  padding: 3px 15px;\n  cursor: pointer;\n}\n.option p[data-v-352e9b22]:hover {\n  color: #7ab5d8;\n}\n.group-cover[data-v-352e9b22] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-cover input[type='file'][data-v-352e9b22] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 90%;\n  height: 120px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-cover img[data-v-352e9b22] {\n  width: 90%;\n  height: 120px;\n  vertical-align: top;\n}\n.group-content textarea[data-v-352e9b22] {\n  width: 100%;\n  height: 100%;\n  padding: 10px;\n  border: none;\n  outline: none;\n  font-size: 14px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  background: transparent;\n  resize: none;\n}\n.group-content textarea[data-v-352e9b22]::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.group-content textarea[data-v-352e9b22]::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.group-content textarea[data-v-352e9b22]::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.group-content .textarea-box[data-v-352e9b22] {\n  display: inline-block;\n  width: 95%;\n  height: 445px;\n  padding: 0;\n  text-align: left;\n  vertical-align: top;\n}\n.group-edit[data-v-352e9b22] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-edit input[type='file'][data-v-352e9b22] {\n  position: absolute;\n  top: 0;\n  left: 25px;\n  ((null)): 0;\n  ((null)): 0;\n  width: 74px;\n  height: 36px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-edit .btn-edit[data-v-352e9b22] {\n  display: inline-block;\n  margin: 0;\n}\n.file-list[data-v-352e9b22] {\n  display: inline-block;\n  width: 400px;\n  margin: 0 15px 5px;\n  font-size: 20px;\n  line-height: 36px;\n  vertical-align: top;\n}\n.group-left[data-v-352e9b22],\n.group-right[data-v-352e9b22] {\n  display: inline-block;\n  width: 300px;\n  padding: 0 30px;\n  vertical-align: top;\n  text-align: right;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.group-right[data-v-352e9b22] {\n  width: 700px;\n  padding: 0 15px;\n  text-align: left;\n}\n.tip[data-v-352e9b22] {\n  display: block;\n  width: 90%;\n  padding: 0 20px;\n  margin: auto;\n  text-align: left;\n  font-size: 12px;\n  color: #f00;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n@media screen and (max-width: 1016px) {\n.group-left[data-v-352e9b22] {\n    width: 80%;\n}\n}\n", ""]);
@@ -15414,7 +15649,7 @@
 
 
 /***/ },
-/* 75 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(37)();
@@ -15428,7 +15663,7 @@
 
 
 /***/ },
-/* 76 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15441,7 +15676,7 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _autoCalendar = __webpack_require__(77);
+	var _autoCalendar = __webpack_require__(82);
 
 	var _autoCalendar2 = _interopRequireDefault(_autoCalendar);
 
@@ -15648,20 +15883,20 @@
 	};
 
 /***/ },
-/* 77 */
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = {}
 
 	/* styles */
-	__webpack_require__(78)
+	__webpack_require__(83)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(80)
+	__vue_exports__ = __webpack_require__(85)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(81)
+	var __vue_template__ = __webpack_require__(86)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -15695,13 +15930,13 @@
 
 
 /***/ },
-/* 78 */
+/* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(79);
+	var content = __webpack_require__(84);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(38)(content, {});
@@ -15721,7 +15956,7 @@
 	}
 
 /***/ },
-/* 79 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(37)();
@@ -15729,13 +15964,13 @@
 
 
 	// module
-	exports.push([module.id, "\n.calendar {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n/*.date-icon\n        absolute(top 5px left 5px)\n        width 20px\n        height 20px\n        background url(./imgs/calendar.png)\n        background-size contain*/\n}\n.calendar ul {\n  padding: 0;\n  margin: 0;\n}\n.calendar li {\n  display: inline-block;\n  list-style: none;\n}\n.calendar .input-wrapper {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  display: inline-block;\n}\n.calendar .input {\n  width: 259px;\n  height: 30px;\n  padding: 5px;\n  border: 1px solid #ddd;\n  text-align: left;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.calendar .input-clear {\n  position: absolute;\n  top: 6px;\n  right: 6px;\n  width: 16px;\n  height: 16px;\n}\n.calendar .input-clear:before,\n.calendar .input-clear:after {\n  position: absolute;\n  top: 50%;\n  left: 0;\n  width: 100%;\n  height: 2px;\n  content: '';\n  background: #aaa;\n}\n.calendar .input-clear:before {\n  -webkit-transform: rotate(45deg);\n  -moz-transform: rotate(45deg);\n  -ms-transform: rotate(45deg);\n  -o-transform: rotate(45deg);\n  transform: rotate(45deg);\n}\n.calendar .input-clear:after {\n  -webkit-transform: rotate(-45deg);\n  -moz-transform: rotate(-45deg);\n  -ms-transform: rotate(-45deg);\n  -o-transform: rotate(-45deg);\n  transform: rotate(-45deg);\n}\n.calendar .pannel-wrapper {\n  position: absolute;\n  top: 25px;\n  left: 0;\n  width: 259px;\n  margin-top: 5px;\n  background: #fff;\n  z-index: 9;\n}\n.calendar .pannel-header {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  padding: 3px;\n  margin-bottom: 10px;\n  color: #fff;\n  text-align: center;\n  font-size: 1.5em;\n  background-color: #e57373;\n  -webkit-border-radius: 30px;\n  -moz-border-radius: 30px;\n  border-radius: 30px;\n}\n.calendar .year,\n.calendar .month {\n  display: inline-block;\n  margin: 0 5px;\n  cursor: pointer;\n}\n.calendar .prev,\n.calendar .next {\n  position: absolute;\n  top: 5px;\n  ((null)): 0;\n  cursor: pointer;\n}\n.calendar .prev {\n  left: 10px;\n}\n.calendar .next {\n  right: 10px;\n}\n.calendar .month-wrapper {\n  width: 157.5px;\n  margin: 0 auto;\n}\n.calendar .month-wrapper li {\n  width: 52.5px;\n  padding: 5px 0;\n  text-align: center;\n  cursor: pointer;\n}\n.calendar .date-list li {\n  width: 35px;\n  margin: 1px;\n  text-align: center;\n  font-size: 1em;\n  cursor: default;\n}\n.calendar .week {\n  margin-bottom: 5px;\n}\n.calendar .week li {\n  color: #e57373;\n  font-weight: bold;\n}\n.calendar .date li {\n  height: 35px;\n  color: #000;\n  line-height: 35px;\n  cursor: pointer;\n}\n.calendar .date .notCurMonth,\n.calendar .date .unvalid {\n  color: #aaa;\n}\n.calendar .date .unvalid {\n  cursor: not-allowed;\n}\n.calendar .time {\n  margin: 10px 0 15px;\n  text-align: center;\n}\n.calendar .time input {\n  width: 30px;\n  outline: none;\n  text-align: center;\n}\n.calendar li.selected {\n  color: #fff;\n  background-color: #e57373;\n  -webkit-border-radius: 20px;\n  -moz-border-radius: 20px;\n  border-radius: 20px;\n}\n.calendar .group-btn {\n  margin: 10px 0;\n  text-align: center;\n}\n.calendar .btn {\n  padding: 8px 15px;\n  margin: 0 15px;\n  border: 1px solid #e57373;\n  outline: none;\n  font-size: 16px;\n  background: #fff;\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.calendar .btn-confirm {\n  color: #fff;\n  background: #e57373;\n}\n.calendar .btn-cancle {\n  color: #000;\n  background: #fff;\n}\n.calendar .toggle-enter-active,\n.calendar .toggle-leave-active {\n  transition: opacity 0.5s, translateY 0.5s;\n}\n.calendar .toggle-enter,\n.calendar .toggle-leave-active {\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n}\n", ""]);
+	exports.push([module.id, "\n.calendar {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n}\n.calendar ul {\n  padding: 0;\n  margin: 0;\n}\n.calendar li {\n  display: inline-block;\n  list-style: none;\n}\n.calendar .input-wrapper {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n}\n.calendar .input {\n  width: 259px;\n  height: 30px;\n  padding: 5px;\n  border: 1px solid #ddd;\n  text-align: left;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.calendar .input-clear {\n  position: absolute;\n  top: 6px;\n  right: 6px;\n  width: 16px;\n  height: 16px;\n}\n.calendar .input-clear:before,\n.calendar .input-clear:after {\n  position: absolute;\n  top: 50%;\n  left: 0;\n  width: 100%;\n  height: 2px;\n  content: '';\n  background: #aaa;\n}\n.calendar .input-clear:before {\n  -webkit-transform: rotate(45deg);\n  -moz-transform: rotate(45deg);\n  -ms-transform: rotate(45deg);\n  -o-transform: rotate(45deg);\n  transform: rotate(45deg);\n}\n.calendar .input-clear:after {\n  -webkit-transform: rotate(-45deg);\n  -moz-transform: rotate(-45deg);\n  -ms-transform: rotate(-45deg);\n  -o-transform: rotate(-45deg);\n  transform: rotate(-45deg);\n}\n.calendar .pannel-wrapper {\n  position: absolute;\n  top: 25px;\n  left: 0;\n  width: 259px;\n  margin-top: 5px;\n  background: #fff;\n  z-index: 9;\n}\n.calendar .pannel-header {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  padding: 3px;\n  margin-bottom: 10px;\n  color: #fff;\n  text-align: center;\n  font-size: 1.5em;\n  background-color: #e57373;\n  -webkit-border-radius: 30px;\n  -moz-border-radius: 30px;\n  border-radius: 30px;\n}\n.calendar .year,\n.calendar .month {\n  display: inline-block;\n  margin: 0 5px;\n  cursor: pointer;\n}\n.calendar .prev,\n.calendar .next {\n  position: absolute;\n  top: 5px;\n  ((null)): 0;\n  cursor: pointer;\n}\n.calendar .prev {\n  left: 10px;\n}\n.calendar .next {\n  right: 10px;\n}\n.calendar .month-wrapper {\n  width: 157.5px;\n  margin: 0 auto;\n}\n.calendar .month-wrapper li {\n  width: 52.5px;\n  padding: 5px 0;\n  text-align: center;\n  cursor: pointer;\n}\n.calendar .date-list li {\n  width: 35px;\n  margin: 1px;\n  text-align: center;\n  font-size: 1em;\n  cursor: default;\n}\n.calendar .week {\n  margin-bottom: 5px;\n}\n.calendar .week li {\n  color: #e57373;\n  font-weight: bold;\n}\n.calendar .date li {\n  height: 35px;\n  color: #000;\n  line-height: 35px;\n  cursor: pointer;\n}\n.calendar .date .notCurMonth,\n.calendar .date .unvalid {\n  color: #aaa;\n}\n.calendar .date .unvalid {\n  cursor: not-allowed;\n}\n.calendar .time {\n  margin: 10px 0 15px;\n  text-align: center;\n}\n.calendar .time input {\n  width: 30px;\n  outline: none;\n  text-align: center;\n}\n.calendar li.selected {\n  color: #fff;\n  background-color: #e57373;\n  -webkit-border-radius: 20px;\n  -moz-border-radius: 20px;\n  border-radius: 20px;\n}\n.calendar .group-btn {\n  margin: 10px 0;\n  text-align: center;\n}\n.calendar .btn {\n  padding: 8px 15px;\n  margin: 0 15px;\n  border: 1px solid #e57373;\n  outline: none;\n  font-size: 16px;\n  background: #fff;\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.calendar .btn-confirm {\n  color: #fff;\n  background: #e57373;\n}\n.calendar .btn-cancle {\n  color: #000;\n  background: #fff;\n}\n.calendar .toggle-enter-active,\n.calendar .toggle-leave-active {\n  transition: opacity 0.5s, translateY 0.5s;\n}\n.calendar .toggle-enter,\n.calendar .toggle-leave-active {\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 80 */
+/* 85 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -16248,7 +16483,7 @@
 	};
 
 /***/ },
-/* 81 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
@@ -16540,7 +16775,7 @@
 	}
 
 /***/ },
-/* 82 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
@@ -16791,20 +17026,20 @@
 	}
 
 /***/ },
-/* 83 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = {}
 
 	/* styles */
-	__webpack_require__(84)
+	__webpack_require__(89)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(86)
+	__vue_exports__ = __webpack_require__(91)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(87)
+	var __vue_template__ = __webpack_require__(92)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -16839,13 +17074,13 @@
 
 
 /***/ },
-/* 84 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(85);
+	var content = __webpack_require__(90);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(38)(content, {});
@@ -16865,7 +17100,7 @@
 	}
 
 /***/ },
-/* 85 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(37)();
@@ -16879,7 +17114,7 @@
 
 
 /***/ },
-/* 86 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16978,7 +17213,7 @@
 	//
 
 /***/ },
-/* 87 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
@@ -17039,20 +17274,20 @@
 	}
 
 /***/ },
-/* 88 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = {}
 
 	/* styles */
-	__webpack_require__(89)
+	__webpack_require__(94)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(91)
+	__vue_exports__ = __webpack_require__(96)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(92)
+	var __vue_template__ = __webpack_require__(97)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -17087,13 +17322,13 @@
 
 
 /***/ },
-/* 89 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(90);
+	var content = __webpack_require__(95);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(38)(content, {});
@@ -17113,7 +17348,7 @@
 	}
 
 /***/ },
-/* 90 */
+/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(37)();
@@ -17127,7 +17362,7 @@
 
 
 /***/ },
-/* 91 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17182,7 +17417,7 @@
 	//
 
 /***/ },
-/* 92 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
@@ -17230,11 +17465,6 @@
 	}
 
 /***/ },
-/* 93 */,
-/* 94 */,
-/* 95 */,
-/* 96 */,
-/* 97 */,
 /* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -88467,247 +88697,6 @@
 	  module.hot.accept()
 	  if (module.hot.data) {
 	     require("vue-hot-reload-api").rerender("data-v-775e5b49", module.exports)
-	  }
-	}
-
-/***/ },
-/* 506 */,
-/* 507 */,
-/* 508 */,
-/* 509 */,
-/* 510 */,
-/* 511 */,
-/* 512 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_exports__, __vue_options__
-	var __vue_styles__ = {}
-
-	/* styles */
-	__webpack_require__(513)
-
-	/* script */
-	__vue_exports__ = __webpack_require__(515)
-
-	/* template */
-	var __vue_template__ = __webpack_require__(516)
-	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-	if (
-	  typeof __vue_exports__.default === "object" ||
-	  typeof __vue_exports__.default === "function"
-	) {
-	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-	__vue_options__ = __vue_exports__ = __vue_exports__.default
-	}
-	if (typeof __vue_options__ === "function") {
-	  __vue_options__ = __vue_options__.options
-	}
-	__vue_options__.__file = "D:\\code\\teaching-activities\\design\\src\\components\\page.vue"
-	__vue_options__.render = __vue_template__.render
-	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-6de15b76"
-
-	/* hot reload */
-	if (false) {(function () {
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  module.hot.accept()
-	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-6de15b76", __vue_options__)
-	  } else {
-	    hotAPI.reload("data-v-6de15b76", __vue_options__)
-	  }
-	})()}
-	if (__vue_options__.functional) {console.error("[vue-loader] page.vue: functional components are not supported and should be defined in plain js files using render functions.")}
-
-	module.exports = __vue_exports__
-
-
-/***/ },
-/* 513 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(514);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(38)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-6de15b76&scoped=true!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./page.vue", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-6de15b76&scoped=true!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./page.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 514 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(37)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "\n.page-wrapper[data-v-6de15b76] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin: 30px 0;\n  text-align: center;\n}\n.page-wrapper > button[data-v-6de15b76] {\n  display: inline-block;\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 80px;\n  height: 35px;\n  margin: 0 10px;\n  border: none;\n  outline: none;\n  color: #fff;\n  line-height: 35px;\n  background: #000;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n  cursor: pointer;\n}\n.page-wrapper > button[disabled][data-v-6de15b76] {\n  background: #ccc;\n}\n.page-wrapper input[data-v-6de15b76] {\n  width: 50px;\n  height: 35px;\n  margin: 0 10px;\n  outline: none;\n  text-align: center;\n  font-size: 20px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n}\n.tip[data-v-6de15b76] {\n  position: absolute;\n  top: -150%;\n  left: 50%;\n  ((null)): 0;\n  ((null)): 0;\n  padding: 10px;\n  color: #fff;\n  background: rgba(0,0,0,0.6);\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.fade-enter[data-v-6de15b76] {\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n}\n.fade-enter-active[data-v-6de15b76] {\n  transition: opacity 0.5s linear;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 515 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-
-	exports.default = {
-		data: function data() {
-			return {
-				tipContent: ['请输入有效页数', '已是最后一页，没有更多了哦~', '已是第一页了哦~'],
-				tip: '',
-				tipShow: false,
-				curPage: 1,
-				skipPage: 1
-			};
-		},
-
-		props: {
-			totalPage: {
-				type: Number,
-				default: 0
-			}
-		},
-		created: function created() {},
-		methods: {
-			prevPage: function prevPage(cb) {
-				this.curPage = this.curPage === 1 ? this.curPage : --this.curPage;
-				this.skipPage = this.curPage;
-				this.$emit('prevPage', this.curPage);
-				this.tipShow = false;
-			},
-			nextPage: function nextPage() {
-				this.curPage = this.curPage >= this.totalPage ? this.curPage : ++this.curPage;
-				this.skipPage = this.curPage;
-				this.$emit('nextPage', this.curPage);
-				this.tipShow = false;
-			},
-			skip: function skip() {
-				this.tipShow = true;
-				if (/^[0-9]+$/.test(this.skipPage) && this.skipPage <= this.totalPage && this.skipPage >= 1) {
-					if (this.skipPage == 1 && this.curPage == 1) {
-						this.tip = this.tipContent[2];
-					} else if (this.skipPage == this.totalPage && this.curPage == this.totalPage) {
-						this.tip = this.tipContent[1];
-					} else {
-						this.curPage = this.skipPage;
-						this.$emit('skip', this.curPage);
-						this.tipShow = false;
-					}
-				} else {
-					if (this.skipPage > this.totalPage && this.curPage != this.totalPage) {
-						this.skipPage = this.curPage = this.totalPage;
-						this.$emit('skip', this.curPage);
-						this.tipShow = false;
-					}
-					this.tip = this.tipContent[0];
-				}
-			}
-		}
-	};
-
-/***/ },
-/* 516 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _c('div', {
-	    staticClass: "page-wrapper"
-	  }, [_c('button', {
-	    attrs: {
-	      "type": "button",
-	      "disabled": _vm.curPage <= 1
-	    },
-	    on: {
-	      "click": _vm.prevPage
-	    }
-	  }, [_vm._v("上一页")]), _vm._v(" "), _c('button', {
-	    attrs: {
-	      "type": "button",
-	      "disabled": _vm.curPage >= _vm.totalPage
-	    },
-	    on: {
-	      "click": _vm.nextPage
-	    }
-	  }, [_vm._v("下一页")]), _vm._v(" "), _c('input', {
-	    directives: [{
-	      name: "model",
-	      rawName: "v-model",
-	      value: (_vm.skipPage),
-	      expression: "skipPage"
-	    }],
-	    attrs: {
-	      "type": "text"
-	    },
-	    domProps: {
-	      "value": _vm._s(_vm.skipPage)
-	    },
-	    on: {
-	      "input": function($event) {
-	        if ($event.target.composing) { return; }
-	        _vm.skipPage = $event.target.value
-	      }
-	    }
-	  }), _vm._v(" "), _c('button', {
-	    attrs: {
-	      "type": "button"
-	    },
-	    on: {
-	      "click": _vm.skip
-	    }
-	  }, [_vm._v("跳转")]), _vm._v(" "), _c('transition', {
-	    attrs: {
-	      "name": "fade"
-	    }
-	  }, [_c('div', {
-	    directives: [{
-	      name: "show",
-	      rawName: "v-show",
-	      value: (_vm.tipShow),
-	      expression: "tipShow"
-	    }],
-	    staticClass: "tip"
-	  }, [_vm._v(_vm._s(_vm.tip))])])])
-	},staticRenderFns: []}
-	if (false) {
-	  module.hot.accept()
-	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-6de15b76", module.exports)
 	  }
 	}
 
