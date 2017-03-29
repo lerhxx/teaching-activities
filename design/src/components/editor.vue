@@ -1,7 +1,7 @@
 <template>
     <div class='edit-wrapper'>
         <div class='tool'>
-            <button type='button' v-for='btn in btns' :data-type='btn' @click='editEvent(btn)'>{{btn}}</button>
+            <span type='button' v-for='btn in btns' :data-type='btn' :class='btn' class='toolbtn' @click='editEvent(btn)'></span>
         </div>
         <div class='edit' contenteditable=true @focus='onFocus' @blur='onBlur'>
             {{content}}
@@ -16,19 +16,18 @@
                 btns: [
                     'bold',
                     'italic',
-                    'h1',
                     'link',
                     'unlink',
-                    'fontName',
+                    'font',
                     'fontSize',
                     'foreColor',
-                    'formatBlock',
+                    'header',
                     'insertImage',
                     'justifyCenter',
                     'justifyFull',
                     'justifyLeft',
                     'justifyRight',
-                    'strikeThrough',
+                    'strike',
                     'underline',
                     'copy',
                     'cut',
@@ -84,18 +83,46 @@
     .tool
         display inline-block
         margin-bottom 10px
-        button
-            display inline-block
-            padding 5px 10px
-            color #fff
-            border none
-            outline none
-            border-right 1px solid rgba(0, 0, 0, .3)
-            box-shadow 1px 0 1px rgba(255, 255, 255, .3)
-            background #000
-            background -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.30)), color-stop(0.5, rgba(255,255,255,0.10)), color-stop(0.5, rgba(255,255,255,0.00))), -webkit-gradient(linear, left top, left bottom, from(#5c5c5c), to(#292929))
-            background linear-gradient(rgba(255,255,255,0.30), rgba(255,255,255,0.10) 50%, rgba(255,255,255,0.00) 50%), linear-gradient(#5c5c5c, #292929)
-            //border-radius 5px
-            &:last-child
-                border-right-width 0
+    .toolbtn
+        display inline-block
+        width 16px
+        height 16px
+        margin 0 5px
+        background-color #fff
+    .bold
+        background url(../imgs/icons/bold.png) center no-repeat
+    .italic
+        background url(../imgs/icons/italic.png) center no-repeat
+    .link
+        background url(../imgs/icons/link.png) center no-repeat
+    .unlink
+        background url(../imgs/icons/unlink.png) center no-repeat
+    .font
+        background url(../imgs/icons/font-fam.png) center no-repeat
+    .fontSize
+        background url(../imgs/icons/font-size.png) center no-repeat
+    .foreColor
+        background url(../imgs/icons/color.png) center no-repeat
+    .header
+        background url(../imgs/icons/header.png) center no-repeat
+    .insertImage
+        background url(../imgs/icons/pic.png) center no-repeat
+    .justifyCenter
+        background url(../imgs/icons/ju-center.png) center no-repeat
+    .justifyFull
+        background url(../imgs/icons/ju-full.png) center no-repeat
+    .justifyLeft
+        background url(../imgs/icons/ju-left.png) center no-repeat
+    .justifyRight
+        background url(../imgs/icons/ju-right.png) center no-repeat
+    .strike
+        background url(../imgs/icons/strike.png) center no-repeat
+    .underline
+        background url(../imgs/icons/underline.png) center no-repeat
+    .copy
+        background url(../imgs/icons/copy.png) center no-repeat
+    .cut
+        background url(../imgs/icons/cut.png) center no-repeat
+    .paste
+        background url(../imgs/icons/paste.png) center no-repeat
 </style>

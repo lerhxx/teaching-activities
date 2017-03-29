@@ -67,7 +67,7 @@
 <script>
 	import axios from 'axios';
 	import calendar from 'auto-calendar';
-	import editor from '../components/editor.vue';
+	import editor from '../components/editor';
 	import {mapState} from 'vuex';
 	import {get} from '../assets/cookieUtil';
 
