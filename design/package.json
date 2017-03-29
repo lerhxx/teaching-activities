@@ -41,7 +41,7 @@
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
-    "auto-calendar": "^1.0.20",
+    "auto-calendar": "^1.0.21",
     "to-markdown": "^3.0.3"
   }
 }

@@ -1,7 +1,7 @@
 <template>
 	<div class='form-contain'>
 		<form class='edit-form'>
-			<div class='group-left'>
+			<!--<div class='group-left'>-->
 				<div class='group-con'>
 					<span class='must'>*</span><input type='text' v-model='form.title' placeholder='标题'/>
 				</div>
@@ -9,7 +9,7 @@
 					<input type='text' v-model='form.abs' placeholder='举办目的' />
 				</div>
 				<div class='group-con'>
-					<span class='must'>*</span><calendar type='time' v-on:getValue='getTime' v-on:getEndTime='getEndTime'></calendar>
+					<span class='must'>*</span><calendar type='time' inputwidth='100%' v-on:getValue='getTime' v-on:getEndTime='getEndTime'></calendar>
 					<!--<input type='text' v-model='form.time' placeholder='举办时间' />-->
 				</div>
 				<div class='group-con'>
@@ -38,12 +38,16 @@
 					<input type='text' v-model='party' placeholder='参与者名单' >
 					<span class='tip' v-show='isEdit && $route.params.artId'>参与者请以","分隔</span>
 				</div>
-			</div><div class='group-right'>
-				<div class='group-con group-content'>
+			<!--</div><div class='group-right'>-->
+				<!--<div class='group-con group-content'>
 					<span class='must'>*</span>
 					<div class='textarea-box'>
 						<textarea id='editor' placeholder='请输入举办内容' v-model='form.content'></textarea>
 					</div>
+				</div>-->
+				<div class='group-con group-content'>
+					<span class='must'>*</span>
+					<editor></editor>
 				</div>
 				<div class='group-con group-edit'>
 					<input type='file' multiple @change='onChangeFile'/>
@@ -55,7 +59,7 @@
 				<div class='group-con group-btn'>
 					<input class='btn btn-l btn-edit btn-post' type='button' @click='onPost' value='发布' />
 				</div>
-			</div>
+			<!--</div>-->
 		</form>
 	</div>
 </template>
@@ -63,10 +67,11 @@
 <script>
 	import axios from 'axios';
 	import calendar from 'auto-calendar';
+	import editor from '../components/editor.vue';
 	import {mapState} from 'vuex';
 	import {get} from '../assets/cookieUtil';
 
-	let editor;
+	let simditor;
 	export default {
 		data() {
 			return {
@@ -90,7 +95,8 @@
 			}
 		},
 		components: {
-			calendar
+			calendar,
+			editor
 		},
 		created() {
 			if(this.isEdit && this.$route.params.artId) {
@@ -110,40 +116,40 @@
 		},
 		mounted() {
 			// 富文本编辑器
-			editor = new Simditor({
-				textarea: $('#editor'),
-				toolbar: [
-					'title',
-					'bold',
-					'italic',
-					'underline',
-					'strikethrough',
-					'fontScale',
-					'color',
-					'ol',
-					'ul',
-					'blockquote',
-					'code',
-					'table',
-					'link',
-					'image',
-					'hr',
-					'indent',
-					'outdent',
-					'alignment'
-				],
-				upload: {
-					url: `/user/edit/${this.userId}`,
-					params: null,
-					fileKey: 'fileDataFileName',
-					connectionCount: 3,
-					leaveConfirm: '正在上传文件'
-				},
-				imageButton: [
-					'upload',
-					'external'
-				]
-			})
+			// simditor = new Simditor({
+			// 	textarea: $('#editor'),
+			// 	toolbar: [
+			// 		'title',
+			// 		'bold',
+			// 		'italic',
+			// 		'underline',
+			// 		'strikethrough',
+			// 		'fontScale',
+			// 		'color',
+			// 		'ol',
+			// 		'ul',
+			// 		'blockquote',
+			// 		'code',
+			// 		'table',
+			// 		'link',
+			// 		'image',
+			// 		'hr',
+			// 		'indent',
+			// 		'outdent',
+			// 		'alignment'
+			// 	],
+			// 	upload: {
+			// 		url: `/user/edit/${this.userId}`,
+			// 		params: null,
+			// 		fileKey: 'fileDataFileName',
+			// 		connectionCount: 3,
+			// 		leaveConfirm: '正在上传文件'
+			// 	},
+			// 	imageButton: [
+			// 		'upload',
+			// 		'external'
+			// 	]
+			// })
 			
 		},
 		methods: {
@@ -218,8 +224,10 @@
 
 <style scoped lang='stylus'>
 	@import '../css/funs';
+	@import '../css/form';
 	@import '../css/variable';
 	@import '../../dist/css/simditor.css';
+	
 	.form-contain
 		min-height 100vh
 		padding-top nav-height + 50px
@@ -228,6 +236,7 @@
 		text-align center
 	.edit-form
 		display inline-block
+		width 100%
 		padding 0
 		margin auto
 		//border 1px solid blue
@@ -249,18 +258,20 @@
 				overflow-y auto
 		.group-btn
 			text-align left
-	.group-left input,
+			input
+				line-height 14px
+	.edit-form input,
 	.select,
-	.calendar div.input
+	.calendar .input-wrapper .input
 		width left-form-width
 		height 36px
 		padding 10px 10px
-		border none
+		border 2px solid #ddd
 		outline none
-		background #fff
-		box-shadow inset 1px 1px 5px 2px rgba(0, 0, 0, .5)
+		//background #fff
+		//box-shadow inset 1px 1px 5px 2px rgba(0, 0, 0, .5)
 		font-size 14px
-		border-radius 15px
+		border-radius 5px
 		box-sizing border-box
 		&::-webkit-input-placeholder
 			color rgba(0, 0, 0, .6)
@@ -270,9 +281,8 @@
 		span.input-clear
 			top 9px
 			right 8px
-		div.input-wrapper
 		div.input
-			width 100%
+			border-width 2px
 	.select
 		relative()
 		display inline-block
@@ -310,6 +320,13 @@
 			cursor pointer
 			&:hover
 				color #7ab5d8
+	.group-con
+		width 80%
+		margin 10px auto
+	.must
+		float left
+		margin-left -15px
+		color red
 	.group-cover
 		relative()
 		input[type='file']

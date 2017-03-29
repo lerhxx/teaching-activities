@@ -37,13 +37,5 @@ module.exports = {
 		alias: {
 			vue: 'vue/dist/vue.js'
 		}
-	},
-	devServer: {
-		inline: true,
-		hot: true,
-		'/get': {
-			target: 'localhost:3000',
-			secure: false
-		}
 	}
 }
