@@ -38,7 +38,8 @@
     "vue-style-loader": "^1.0.0",
     "vuex": "^2.1.1",
     "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-server": "^1.16.2",
+    "webpack-spritesmith": "^0.3.3"
   },
   "dependencies": {
     "auto-calendar": "^1.0.21",

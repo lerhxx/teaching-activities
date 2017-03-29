@@ -12202,7 +12202,11 @@
 
 	var _personal2 = _interopRequireDefault(_personal);
 
+<<<<<<< HEAD
 	var _user = __webpack_require__(517);
+=======
+	var _user = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../pages/user.vue\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+>>>>>>> gulp-webpack
 
 	var _user2 = _interopRequireDefault(_user);
 

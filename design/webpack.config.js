@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+var SpritesmithPlugin = require('webpack-spritesmith');
 
 module.exports = {
 	entry: {
@@ -26,7 +27,8 @@ module.exports = {
 		}, {
 			test: /\.(png|jpg|gif|svg)$/,
 			exclude: /node_modules/,
-			loader: 'url?limit=8192'
+			// loader: 'url?limit=8192'
+			loader: 'file'
 		}]
 	},
 	babel: {
@@ -37,5 +39,20 @@ module.exports = {
 		alias: {
 			vue: 'vue/dist/vue.js'
 		}
-	}
+	},
+	plugins:[
+		new SpritesmithPlugin({
+			src: {
+				cwd: path.resolve(__dirname, 'src/imgs/icons'),
+				glob: '*.png'
+			},
+			target: {
+				image: path.resolve(__dirname, 'src/imgs/sprite.png'),
+				css: path.resolve(__dirname, 'src/css/sprite.styl')
+			},
+			apiOptions: {
+				cssImageRef: '~sprite.png'
+			}
+		})
+	]
 }
