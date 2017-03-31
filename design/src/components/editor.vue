@@ -56,7 +56,6 @@
             </div>
             <span v-show='!isFocus && !contents' class='placeholder'>{{contentTip}}</span>
         </div>
-        <a>test</a>
     </div>
 </template>
 
@@ -196,15 +195,17 @@
                     return;
                 }
 
-                let file = e.target.files[0];
-                let reader = new FileReader();
+                let file = e.target.files[0],
+                    reader = new FileReader(),
+                    src = '',
+                    self = this;
 
-                reader.onload = function(e) {
-                    console.log(this.readyState)
-                    console.log(this.result)
+                reader.onload = function() {
+                    src = this.result;
+                    self.exec('insertImage', src || '');
                 }
 
-                reader.readAsDataURL(file)
+                reader.readAsDataURL(file);
             },
             onFocus() {
                 this.isFocus = true;

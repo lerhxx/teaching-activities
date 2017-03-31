@@ -16887,7 +16887,6 @@
 	//
 	//
 	//
-	//
 
 	exports.default = {
 	    data: function data() {
@@ -17009,12 +17008,14 @@
 	                return;
 	            }
 
-	            var file = e.target.files[0];
-	            var reader = new FileReader();
+	            var file = e.target.files[0],
+	                reader = new FileReader(),
+	                src = '',
+	                self = this;
 
-	            reader.onload = function (e) {
-	                console.log(this.readyState);
-	                console.log(this.result);
+	            reader.onload = function () {
+	                src = this.result;
+	                self.exec('insertImage', src || '');
 	            };
 
 	            reader.readAsDataURL(file);
@@ -17272,7 +17273,7 @@
 	      expression: "!isFocus && !contents"
 	    }],
 	    staticClass: "placeholder"
-	  }, [_vm._v(_vm._s(_vm.contentTip))])]), _vm._v(" "), _c('a', [_vm._v("test")])])
+	  }, [_vm._v(_vm._s(_vm.contentTip))])])])
 	},staticRenderFns: []}
 	if (false) {
 	  module.hot.accept()
