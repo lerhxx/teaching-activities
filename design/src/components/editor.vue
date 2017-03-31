@@ -94,10 +94,12 @@
             editEvent(e) {
                 // console.log(type)
                 // document.execCommand('bold', false, undefined)
+                if(!this.isSelection()) {
+                    return;
+                }
                 let type = e.target.getAttribute('data-type');
                 switch(type) {
                     case 'bold':
-                    console.log(this.getSelectionText())
                         this.exec('bold');
                         break;
                     case 'italic':
@@ -108,8 +110,6 @@
                         break;
                     case 'unlink':
                         this.unLink();
-                        break;
-                    case 'header':
                         break;
                     case 'justifyCenter':
                         this.exec('justifyCenter');
@@ -177,6 +177,9 @@
                 this.exec('underline')
             },
             onSelectFontSize(e) {
+                if(!this.isSelection()) {
+                    return;
+                }
                 let size = e.target.value || 1;
                 this.exec('fontSize', size);
             },
@@ -225,10 +228,17 @@
         relative()
     .edit
         width 100%
-        min-height 300px
+        height 500px
         padding 5px 10px
         border 1px solid #c9d8db
         outline none
+        overflow auto
+        &::-webkit-scrollbar
+            width 8px
+            height 8px
+        &::-webkit-scrollbar-thumb
+            border-radius 8px
+            background #2d0a08
         a
             color blue
             text-decoration underline
