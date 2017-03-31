@@ -7,22 +7,36 @@
                 <input type='button' data-type='italic' class='toolbtn italic' @click='editEvent'/>
             </div><div class='item-wrapper'>
                 <input type='button' data-type='link' class='toolbtn link' @click='editEvent'/>
-                <div class='inputt-wrapper' v-show='insertURL'>
+                <!--<div class='inputt-wrapper' v-show='insertURL'>
                     <input type='text' class='insertURL' placeholder='请输入url' v-model='linkURL'/>
                     <input type='button' value='确定' class='btn btn-s btn-edit' @click='certianURL'/>
-                </div>
+                </div>-->
             </div><div class='item-wrapper'>
                 <input type='button' data-type='unlink' class='toolbtn unlink' @click='editEvent'/>
+            </div><div class='item-wrapper item-font-wrapper'>
+                <input type='button' data-type='fontSize' class='toolbtn fontSize'/>
+                <div class='font-wrapper' @click='onSelectFontSize'>
+                    <input type='button' value='1'/>
+                    <input type='button' value='2'/>
+                    <input type='button' value='3'/>
+                    <input type='button' value='4'/>
+                    <input type='button' value='5'/>
+                    <input type='button' value='6'/>
+                    <input type='button' value='7'/>
+                </div>
+            </div><div class='item-wrapper item-font-wrapper'>
+                <input type='button' data-type='header' class='toolbtn header'/>
+                <div class='font-wrapper' @click='onSelectHeader'>
+                    <input type='button' value='h1'/>
+                    <input type='button' value='h2'/>
+                    <input type='button' value='h3'/>
+                    <input type='button' value='h4'/>
+                    <input type='button' value='h5'/>
+                    <input type='button' value='h6'/>
+                </div>
             </div><div class='item-wrapper'>
-                <input type='button' data-type='font' class='toolbtn font' @click='editEvent'/>
-            </div><div class='item-wrapper'>
-                <input type='button' data-type='fontSize' class='toolbtn fontSize' @click='editEvent'/>
-            </div><div class='item-wrapper'>
-                <input type='button' data-type='foreColor' class='toolbtn foreColor' @click='editEvent'/>
-            </div><div class='item-wrapper'>
-                <input type='button' data-type='header' class='toolbtn header' @click='editEvent'/>
-            </div><div class='item-wrapper'>
-                <input type='button' data-type='insertImage' class='toolbtn insertImage' @click='editEvent'/>
+                <span class='toolbtn insertImage'></span>
+                <input type='file' data-type='insertImage' class='toolbtn insertImageInput' @change='onInsertImage'/>
             </div><div class='item-wrapper'>
                 <input type='button' data-type='justifyCenter' class='toolbtn justifyCenter' @click='editEvent'/>
             </div><div class='item-wrapper'>
@@ -38,10 +52,11 @@
             </div>
         </div>
         <div class='edit-outter'>
-            <div class='edit' id='edit' contenteditable=true @focus='onFocus' @blur='onBlur'>
+            <div class='edit' id='edit' contenteditable='plaintext-only' @focus='onFocus' @blur='onBlur'>
             </div>
-            <span v-show='!isFocus && !content' class='placeholder'>{{contentTip}}</span>
+            <span v-show='!isFocus && !contents' class='placeholder'>{{contentTip}}</span>
         </div>
+        <a>test</a>
     </div>
 </template>
 
@@ -49,14 +64,13 @@
     export default {
         data() {
             return {
+                el: '',
                 btns: [
                     'bold',
                     'italic',
                     'link',
                     'unlink',
-                    'font',
                     'fontSize',
-                    'foreColor',
                     'header',
                     'insertImage',
                     'justifyCenter',
@@ -67,15 +81,15 @@
                     'underline'
                 ],
                 id: 'edit',
-                insertURL: false,
                 isFocus: false,
-                contents: [],
+                contents: '',
                 linkURL: '',
-                contentTip: '请编辑。。。'
+                selectText: '',
+                contentTip: '请编辑。。。',
+                inlineEle: ['span', 'i', 'b', 'label', 'small', 'a', 'em', 'font', 'strong', 'sub', 'sup', 'u']
             }
         },
         created() {
-            console.log(this.content)
         },
         methods: {
             editEvent(e) {
@@ -84,26 +98,19 @@
                 let type = e.target.getAttribute('data-type');
                 switch(type) {
                     case 'bold':
+                    console.log(this.getSelectionText())
                         this.exec('bold');
                         break;
                     case 'italic':
                         this.exec('italic');
                         break;
                     case 'link':
-                        this.insertURL = !this.insertURL;
+                        this.link();
                         break;
                     case 'unlink':
-                        this.exec('unlink');
-                        break;
-                    case 'font':
-                        break;
-                    case 'fontSize':
-                        break;
-                    case 'foreColor':
+                        this.unLink();
                         break;
                     case 'header':
-                        break;
-                    case 'insertImage':
                         break;
                     case 'justifyCenter':
                         this.exec('justifyCenter');
@@ -125,22 +132,86 @@
                         break;
                 }
             },
+            getSelectionText() {
+                return document.getSelection().toString();
+
+            },
+            isSelection() {
+                this.selectText = this.getSelectionText();
+                if(this.selectText.length === 0) {
+                    alert('当前没有选中文本！');
+                    return false;
+                }
+                return true;
+            },
             exec(type, arg) {
+                // console.log(type)
                 document.execCommand(type, false, arg)
             },
-            certianURL() {
-                if(this.linkURL) {
-                    this.exec('createLink', this.linkURL)
+            link() {
+                if(!this.isSelection()) {
+                    return;
                 }
-                this.insertURL = !this.insertURL;
+
+                let parent = document.getSelection().focusNode.parentNode;
+                let href = 'http://';
+
+                this.linkURL = prompt('请输入URL', parent.href);
+                if(this.linkURL && this.linkURL !== 'http://' && this.linkURL !== 'https://') {
+                    this.linkURL = /\:\/\//.test(this.linkURL) ? this.linkURL : href + this.linkURL;
+                    if(parent.href) {
+                        parent.href = this.linkURL;
+                    }else {
+                        this.exec('createLink', this.linkURL)
+                        this.exec('foreColor', 'blue')
+                        this.exec('underline')
+                    }
+                }
+            },
+            unLink() {
+                // 获取祖先元素 color 值
+                let ancestor = document.getSelection().focusNode.parentNode.parentNode.parentNode.parentNode,
+                    color = parent.style.color || window.getComputedStyle(ancestor).color;
+
+                this.exec('unlink')
+                this.exec('foreColor', color)
+                this.exec('underline')
+            },
+            onSelectFontSize(e) {
+                let size = e.target.value || 1;
+                this.exec('fontSize', size);
+            },
+            onSelectHeader(e) {
+                let size = e.target.value || 'p';
+                let format = document.queryCommandValue('formatBlock');
+
+                format === size ? this.exec('formatBlock', 'p') : this.exec('formatBlock', size);
+            },
+            onInsertImage(e) {
+                if(!FileReader) {
+                    alert('您的浏览器不支持上传图片，建议使用高版本 Chorme 上传！');
+                    return;
+                }
+                if(!e.target.files[0]) {
+                    return;
+                }
+
+                let file = e.target.files[0];
+                let reader = new FileReader();
+
+                reader.onload = function(e) {
+                    console.log(this.readyState)
+                    console.log(this.result)
+                }
+
+                reader.readAsDataURL(file)
             },
             onFocus() {
                 this.isFocus = true;
             },
             onBlur() {
-                this.contents = document.getElementById(this.id).childNodes;
+                this.contents = document.getElementById(this.id).innerHTML;
                 this.isFocus = false;
-                console.log(this.contents)
             }
         }
     }
@@ -157,6 +228,9 @@
         padding 5px 10px
         border 1px solid #c9d8db
         outline none
+        a
+            color blue
+            text-decoration underline
     .placeholder
         absolute(top 3px left 10px)
     .tool
@@ -165,16 +239,20 @@
     .item-wrapper
         relative()
         display inline-block
+        &:hover
+            background-color #ddd
     .toolbtn
         display inline-block
-        width 16px
-        height 16px
-        margin 0 5px
+        width 40px
+        height 25px
+        padding 0
         border none
         outline none
         background-color #fff
         background url(../imgs/icons/bold.png) center no-repeat
         cursor pointer
+        &:hover
+            background-color #ddd
     .bold
         background-image url(../imgs/icons/bold.png)
     .italic
@@ -193,6 +271,9 @@
         background-image url(../imgs/icons/header.png)
     .insertImage
         background-image url(../imgs/icons/pic.png)
+    .insertImageInput
+        absolute(top 0 left 0)
+        opacity 0
     .justifyCenter
         background-image url(../imgs/icons/ju-center.png)
     .justifyFull
@@ -211,9 +292,27 @@
         background-image url(../imgs/icons/cut.png)
     .paste
         background-image url(../imgs/icons/paste.png)
-    .inputt-wrapper
+    .item-font-wrapper
+        &:hover
+            .font-wrapper
+                visibility visible
+    .font-wrapper
         absolute(top 25px)
-        white-space nowrap
+        border 1px solid #ccc
+        cursor pointer
+        background #fff
+        z-index 9
+        visibility hidden
+        input
+            width 35px
+            height 30px
+            border none
+            outline none
+            background transparent
+            cursor pointer
+            &:hover
+                color #fff
+                background-color #53c3e7
     .insertURL
         padding 5px 8px
         border 1px solid #3fc6bb
