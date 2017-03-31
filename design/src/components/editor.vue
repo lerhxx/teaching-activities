@@ -37,6 +37,14 @@
             </div><div class='item-wrapper'>
                 <span class='toolbtn insertImage'></span>
                 <input type='file' data-type='insertImage' class='toolbtn insertImageInput' @change='onInsertImage'/>
+            </div><div class='item-wrapper item-color-wrapper'>
+                <span data-type='foreColor' class='toolbtn foreColor'></span>
+                <ul class='color-wrapper' @click='onSelectHeader'>
+                    <li class='color-item' v-for='color in colors'>
+                        <span v-bind:style='{backgroundColor: color}'></span>
+                        <input type='button' :value='color' @click='onSelectColor'>
+                    </li>
+                </ul>
             </div><div class='item-wrapper'>
                 <input type='button' data-type='justifyCenter' class='toolbtn justifyCenter' @click='editEvent'/>
             </div><div class='item-wrapper'>
@@ -62,8 +70,16 @@
 <script>
     export default {
         data() {
+            /**
+             * param {Array} btns: toolbar 子项
+             * param {Array} colors: toolbar 颜色选项子项
+             * param {String} id: 编辑器 ID
+             * param {Boolean} isFocus: 编辑器是否获焦
+             * param {String} contents: 编辑器的内容
+             * param {String} linkURL: 链接地址
+             * param {String} contentTip: 编辑器提示语
+            */
             return {
-                el: '',
                 btns: [
                     'bold',
                     'italic',
@@ -79,21 +95,22 @@
                     'strike',
                     'underline'
                 ],
+                colors: [
+                    'black',
+                    'blue',
+                    'red'
+                ],
                 id: 'edit',
                 isFocus: false,
                 contents: '',
                 linkURL: '',
-                selectText: '',
-                contentTip: '请编辑。。。',
-                inlineEle: ['span', 'i', 'b', 'label', 'small', 'a', 'em', 'font', 'strong', 'sub', 'sup', 'u']
+                contentTip: '请编辑。。。'
             }
         },
         created() {
         },
         methods: {
             editEvent(e) {
-                // console.log(type)
-                // document.execCommand('bold', false, undefined)
                 if(!this.isSelection()) {
                     return;
                 }
@@ -136,8 +153,7 @@
 
             },
             isSelection() {
-                this.selectText = this.getSelectionText();
-                if(this.selectText.length === 0) {
+                if(this.getSelectionText().length === 0) {
                     alert('当前没有选中文本！');
                     return false;
                 }
@@ -159,8 +175,10 @@
                 if(this.linkURL && this.linkURL !== 'http://' && this.linkURL !== 'https://') {
                     this.linkURL = /\:\/\//.test(this.linkURL) ? this.linkURL : href + this.linkURL;
                     if(parent.href) {
+                        // 改变链接地址
                         parent.href = this.linkURL;
                     }else {
+                        // 添加链接
                         this.exec('createLink', this.linkURL)
                         this.exec('foreColor', 'blue')
                         this.exec('underline')
@@ -168,7 +186,7 @@
                 }
             },
             unLink() {
-                // 获取祖先元素 color 值
+                // 获取便捷器默认 color 值
                 let ancestor = document.getSelection().focusNode.parentNode.parentNode.parentNode.parentNode,
                     color = parent.style.color || window.getComputedStyle(ancestor).color;
 
@@ -210,12 +228,22 @@
 
                 reader.readAsDataURL(file);
             },
+            onSelectColor(e) {
+                if(!this.isSelection()) {
+                    return;
+                }
+                let color = e.target.value || 'black';
+                this.exec('foreColor', color);
+            },
             onFocus() {
                 this.isFocus = true;
             },
             onBlur() {
                 this.contents = document.getElementById(this.id).innerHTML;
                 this.isFocus = false;
+            },
+            getContent() {
+                return this.contents;
             }
         }
     }
@@ -224,6 +252,8 @@
 <style scoped lang='stylus'>
     @import '../css/funs';
     @import '../css/form';
+
+    toolbar-item-width = 40px
     .edit-outter
         relative()
     .edit
@@ -231,6 +261,7 @@
         height 500px
         padding 5px 10px
         border 1px solid #c9d8db
+        box-sizing border-box
         outline none
         overflow auto
         &::-webkit-scrollbar
@@ -254,7 +285,7 @@
             background-color #ddd
     .toolbtn
         display inline-block
-        width 40px
+        width toolbar-item-width
         height 25px
         padding 0
         border none
@@ -303,19 +334,24 @@
         background-image url(../imgs/icons/cut.png)
     .paste
         background-image url(../imgs/icons/paste.png)
-    .item-font-wrapper
+    .item-font-wrapper,
+    .item-color-wrapper
         &:hover
-            .font-wrapper
+            .font-wrapper,
+            .color-wrapper
                 visibility visible
-    .font-wrapper
+    .font-wrapper,
+    .color-wrapper
         absolute(top 25px)
+        width toolbar-item-width
         border 1px solid #ccc
         cursor pointer
         background #fff
+        box-sizing border-box
         z-index 9
         visibility hidden
         input
-            width 35px
+            width toolbar-item-width
             height 30px
             border none
             outline none
@@ -324,6 +360,20 @@
             &:hover
                 color #fff
                 background-color #53c3e7
+    .color-item
+        relative()
+        width toolbar-item-width
+        input
+            absolute(top 0px left 0)
+            font-size 0
+            &:hover
+                background-color transparent
+        span
+            display block
+            width toolbar-item-width
+            height 30px
+            border-bottom 2px solid #eee
+            box-sizing border-box
     .insertURL
         padding 5px 8px
         border 1px solid #3fc6bb

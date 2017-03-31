@@ -11,7 +11,7 @@
 				<label>发布人:</label>
 				<span>{{article.author}}</span>
 			</div>
-			<img :src='article.url' alt='cover' class='cover'/>
+			<!--<img :src='article.url' alt='cover' class='cover'/>-->
 			<div class='group-con'>
 				<label>举办时间：</label>
 				<span>{{article.startTime}}</span>
@@ -24,10 +24,10 @@
 				<label>举办单位：</label>
 				<span>{{article.unit}}</span>
 			</div>
-			<div class='group-con'>
+			<!--<div class='group-con'>
 				<label>举办目的：</label>
 				<p class='content'>{{article.abs}}</p>
-			</div>
+			</div>-->
 			<div class='group-con'>
 				<label>举办内容：</label>
 				<div class='content' v-html='article.content'></div>

@@ -5,9 +5,9 @@
 				<div class='group-con'>
 					<span class='must'>*</span><input type='text' v-model='form.title' placeholder='标题'/>
 				</div>
-				<div class='group-con'>
+				<!--<div class='group-con'>
 					<input type='text' v-model='form.abs' placeholder='举办目的' />
-				</div>
+				</div>-->
 				<div class='group-con'>
 					<span class='must'>*</span><calendar type='time' inputwidth='100%' v-on:getValue='getTime' v-on:getEndTime='getEndTime'></calendar>
 					<!--<input type='text' v-model='form.time' placeholder='举办时间' />-->
@@ -17,7 +17,7 @@
 				</div>
 				<div class='group-con'>
 					<span class='must'>*</span><div class='select'>
-						<span @click='onToggleOption'>{{form.unit}}</span>
+						<span class='label' @click='onToggleOption'>{{form.unit}}</span>
 						<span class='arrow' @click='onToggleOption'></span>
 						<div class='option-box' v-show='optionShow'>
 							<div class='option'>
@@ -34,9 +34,9 @@
 					<span class='must'>*</span><img :src='form.url'/>
 					<input type='file' @change='onChangeCover'/>
 				</div>-->
-				<div class='group-con'>
+				<div class='group-con' v-show='isEdit && $route.params.artId'>
 					<input type='text' v-model='party' placeholder='参与者名单' >
-					<span class='tip' v-show='isEdit && $route.params.artId'>参与者请以","分隔</span>
+					<span class='tip'>参与者请以","分隔</span>
 				</div>
 			<!--</div><div class='group-right'>-->
 				<!--<div class='group-con group-content'>
@@ -47,7 +47,7 @@
 				</div>-->
 				<div class='group-con group-content'>
 					<span class='must'>*</span>
-					<editor></editor>
+					<editor ref='edit'></editor>
 				</div>
 				<div class='group-con group-edit'>
 					<input type='file' multiple @change='onChangeFile'/>
@@ -78,7 +78,6 @@
 				form: {
 					url: '/dist/imgs/default.png',
 					title: '',
-					abs: '',
 					time: '',
 					address: '',
 					unit: '请选择举办单位',
@@ -194,13 +193,15 @@
 				//TODO
 				//编辑
 				let form = this.form;
-				form.content = editor.sync();
+				// form.content = editor.sync();
+				form.content = this.$refs.edit.getContent();
 				form.author = this.userId;
 				form.time = new Date();
 				form.faculty = this.userFaculty;
 				if(!form.title || !form.time || !form.address || !form.unit || !form.content || !form.url) {
 					return alert('请填写所有必须项！');
 				}
+				// console.log(form.content);
 				if(!this.$route.params.artId) {
 					this.$store.dispatch('POST_ARTICLE', {form: form})
 						.then(data => {
@@ -266,13 +267,12 @@
 		width left-form-width
 		height 36px
 		padding 10px 10px
-		border 2px solid #ddd
+		border 1px solid #ddd
 		outline none
-		//background #fff
-		//box-shadow inset 1px 1px 5px 2px rgba(0, 0, 0, .5)
 		font-size 14px
 		border-radius 5px
 		box-sizing border-box
+		box-shadow 1px 1px 5px rgba(0, 0, 0, .3)
 		&::-webkit-input-placeholder
 			color rgba(0, 0, 0, .6)
 	.calendar
@@ -295,15 +295,15 @@
 			border-top-color rgba(0, 0, 0, .6)
 		span
 			display block
+		.label
+			line-height 14px
 	.option-box
-		absolute(top 36px left 0)
+		absolute(top 33px left -2px)
 		width 100%
 		padding 8px 0px
-		padding-right 6px
-		box-shadow inset 1px 1px 5px 2px rgba(0, 0, 0, .5)
-		border-radius 12px
+		border 1px solid #4ad8e2
+		border-radius 5px
 		background #fff
-		box-sizing border-box
 		z-index 2
 	.option
 		max-height 110px
@@ -319,7 +319,8 @@
 			padding 3px 15px
 			cursor pointer
 			&:hover
-				color #7ab5d8
+				color: #fff
+				background-color #7ab5d8
 	.group-con
 		width 80%
 		margin 10px auto
@@ -400,12 +401,13 @@
 	.tip
 		display block
 		width left-form-width
-		padding 0 20px
 		margin auto
 		text-align left
 		font-size 12px
 		color red
 		box-sizing border-box
+	.edit-wrapper
+		width left-form-width
 	@media screen and (max-width 1016px)
 		.group-left
 			width 80%

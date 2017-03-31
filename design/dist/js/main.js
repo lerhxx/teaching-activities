@@ -15459,7 +15459,7 @@
 	exports.i(__webpack_require__(80), "");
 
 	// module
-	exports.push([module.id, "\nform[data-v-352e9b22] {\n  padding: 45px;\n  margin: auto;\n}\nlabel[data-v-352e9b22] {\n  text-align: right;\n}\n.group-con[data-v-352e9b22] {\n  margin: 15px 0;\n}\n.group-btn[data-v-352e9b22] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-352e9b22] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-352e9b22] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-s[data-v-352e9b22] {\n  padding: 5px 10px;\n  font-size: 0.9em;\n}\n.btn-certain[data-v-352e9b22] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-352e9b22] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-352e9b22] {\n  background: #2d0a08;\n}\n.must[data-v-352e9b22] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-352e9b22] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-352e9b22] {\n  margin-right: 10px;\n}\n.form-contain[data-v-352e9b22] {\n  min-height: 100vh;\n  padding-top: 95px;\n  padding-bottom: 20px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  text-align: center;\n}\n.edit-form[data-v-352e9b22] {\n  display: inline-block;\n  width: 100%;\n  padding: 0;\n  margin: auto;\n  text-align: left;\n}\n.edit-form label[data-v-352e9b22] {\n  display: inline-block;\n  width: 90px;\n  text-align: left;\n  vertical-align: top;\n}\n.edit-form .btn-post[data-v-352e9b22] {\n  width: 55%;\n}\n.edit-form .btn-edit[data-v-352e9b22] {\n  margin-left: 25px;\n}\n.edit-form .simditor[data-v-352e9b22] {\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n  overflow-y: auto;\n}\n.edit-form .simditor .simditor-body[data-v-352e9b22] {\n  height: 300px;\n  overflow-y: auto;\n}\n.edit-form .group-btn[data-v-352e9b22] {\n  text-align: left;\n}\n.edit-form .group-btn input[data-v-352e9b22] {\n  line-height: 14px;\n}\n.edit-form input[data-v-352e9b22],\n.select[data-v-352e9b22],\n.calendar .input-wrapper .input[data-v-352e9b22] {\n  width: 100%;\n  height: 36px;\n  padding: 10px 10px;\n  border: 2px solid #ddd;\n  outline: none;\n  font-size: 14px;\n  -webkit-border-radius: 5px;\n  -moz-border-radius: 5px;\n  border-radius: 5px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.edit-form input[data-v-352e9b22]::-webkit-input-placeholder,\n.select[data-v-352e9b22]::-webkit-input-placeholder,\n.calendar .input-wrapper .input[data-v-352e9b22]::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.calendar[data-v-352e9b22] {\n  display: inline-block;\n  width: 100%;\n}\n.calendar span.input-clear[data-v-352e9b22] {\n  top: 9px;\n  right: 8px;\n}\n.calendar div.input[data-v-352e9b22] {\n  border-width: 2px;\n}\n.select[data-v-352e9b22] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  display: inline-block;\n  color: rgba(0,0,0,0.6);\n  text-align: left;\n  cursor: pointer;\n}\n.select .arrow[data-v-352e9b22] {\n  position: absolute;\n  top: 15px;\n  right: 8px;\n  ((null)): 0;\n  ((null)): 0;\n  border: 8px solid transparent;\n  border-top-color: rgba(0,0,0,0.6);\n}\n.select span[data-v-352e9b22] {\n  display: block;\n}\n.option-box[data-v-352e9b22] {\n  position: absolute;\n  top: 36px;\n  left: 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 100%;\n  padding: 8px 0px;\n  padding-right: 6px;\n  -webkit-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -moz-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -ms-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -o-box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  box-shadow: inset 1px 1px 5px 2px rgba(0,0,0,0.5);\n  -webkit-border-radius: 12px;\n  -moz-border-radius: 12px;\n  border-radius: 12px;\n  background: #fff;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  z-index: 2;\n}\n.option[data-v-352e9b22] {\n  max-height: 110px;\n  overflow-y: auto;\n}\n.option[data-v-352e9b22]::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.option[data-v-352e9b22]::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.option p[data-v-352e9b22] {\n  padding: 3px 15px;\n  cursor: pointer;\n}\n.option p[data-v-352e9b22]:hover {\n  color: #7ab5d8;\n}\n.group-con[data-v-352e9b22] {\n  width: 80%;\n  margin: 10px auto;\n}\n.must[data-v-352e9b22] {\n  float: left;\n  margin-left: -15px;\n  color: #f00;\n}\n.group-cover[data-v-352e9b22] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-cover input[type='file'][data-v-352e9b22] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 100%;\n  height: 120px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-cover img[data-v-352e9b22] {\n  width: 100%;\n  height: 120px;\n  vertical-align: top;\n}\n.group-content textarea[data-v-352e9b22] {\n  width: 100%;\n  height: 100%;\n  padding: 10px;\n  border: none;\n  outline: none;\n  font-size: 14px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  background: transparent;\n  resize: none;\n}\n.group-content textarea[data-v-352e9b22]::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.group-content textarea[data-v-352e9b22]::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.group-content textarea[data-v-352e9b22]::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.group-content .textarea-box[data-v-352e9b22] {\n  display: inline-block;\n  width: 95%;\n  height: 445px;\n  padding: 0;\n  text-align: left;\n  vertical-align: top;\n}\n.group-edit[data-v-352e9b22] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-edit input[type='file'][data-v-352e9b22] {\n  position: absolute;\n  top: 0;\n  left: 25px;\n  ((null)): 0;\n  ((null)): 0;\n  width: 74px;\n  height: 36px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-edit .btn-edit[data-v-352e9b22] {\n  display: inline-block;\n  margin: 0;\n}\n.file-list[data-v-352e9b22] {\n  display: inline-block;\n  width: 400px;\n  margin: 0 15px 5px;\n  font-size: 20px;\n  line-height: 36px;\n  vertical-align: top;\n}\n.group-left[data-v-352e9b22],\n.group-right[data-v-352e9b22] {\n  display: inline-block;\n  width: 300px;\n  padding: 0 30px;\n  vertical-align: top;\n  text-align: right;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.group-right[data-v-352e9b22] {\n  width: 700px;\n  padding: 0 15px;\n  text-align: left;\n}\n.tip[data-v-352e9b22] {\n  display: block;\n  width: 100%;\n  padding: 0 20px;\n  margin: auto;\n  text-align: left;\n  font-size: 12px;\n  color: #f00;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n@media screen and (max-width: 1016px) {\n.group-left[data-v-352e9b22] {\n    width: 80%;\n}\n}\n", ""]);
+	exports.push([module.id, "\nform[data-v-352e9b22] {\n  padding: 45px;\n  margin: auto;\n}\nlabel[data-v-352e9b22] {\n  text-align: right;\n}\n.group-con[data-v-352e9b22] {\n  margin: 15px 0;\n}\n.group-btn[data-v-352e9b22] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-352e9b22] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-352e9b22] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-s[data-v-352e9b22] {\n  padding: 5px 10px;\n  font-size: 0.9em;\n}\n.btn-certain[data-v-352e9b22] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-352e9b22] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-352e9b22] {\n  background: #2d0a08;\n}\n.must[data-v-352e9b22] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-352e9b22] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-352e9b22] {\n  margin-right: 10px;\n}\n.form-contain[data-v-352e9b22] {\n  min-height: 100vh;\n  padding-top: 95px;\n  padding-bottom: 20px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  text-align: center;\n}\n.edit-form[data-v-352e9b22] {\n  display: inline-block;\n  width: 100%;\n  padding: 0;\n  margin: auto;\n  text-align: left;\n}\n.edit-form label[data-v-352e9b22] {\n  display: inline-block;\n  width: 90px;\n  text-align: left;\n  vertical-align: top;\n}\n.edit-form .btn-post[data-v-352e9b22] {\n  width: 55%;\n}\n.edit-form .btn-edit[data-v-352e9b22] {\n  margin-left: 25px;\n}\n.edit-form .simditor[data-v-352e9b22] {\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n  overflow-y: auto;\n}\n.edit-form .simditor .simditor-body[data-v-352e9b22] {\n  height: 300px;\n  overflow-y: auto;\n}\n.edit-form .group-btn[data-v-352e9b22] {\n  text-align: left;\n}\n.edit-form .group-btn input[data-v-352e9b22] {\n  line-height: 14px;\n}\n.edit-form input[data-v-352e9b22],\n.select[data-v-352e9b22],\n.calendar .input-wrapper .input[data-v-352e9b22] {\n  width: 98%;\n  height: 36px;\n  padding: 10px 10px;\n  border: 1px solid #ddd;\n  outline: none;\n  font-size: 14px;\n  -webkit-border-radius: 5px;\n  -moz-border-radius: 5px;\n  border-radius: 5px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.3);\n  -moz-box-shadow: 1px 1px 5px rgba(0,0,0,0.3);\n  -ms-box-shadow: 1px 1px 5px rgba(0,0,0,0.3);\n  -o-box-shadow: 1px 1px 5px rgba(0,0,0,0.3);\n  box-shadow: 1px 1px 5px rgba(0,0,0,0.3);\n}\n.edit-form input[data-v-352e9b22]::-webkit-input-placeholder,\n.select[data-v-352e9b22]::-webkit-input-placeholder,\n.calendar .input-wrapper .input[data-v-352e9b22]::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.calendar[data-v-352e9b22] {\n  display: inline-block;\n  width: 98%;\n}\n.calendar span.input-clear[data-v-352e9b22] {\n  top: 9px;\n  right: 8px;\n}\n.calendar div.input[data-v-352e9b22] {\n  border-width: 2px;\n}\n.select[data-v-352e9b22] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  display: inline-block;\n  color: rgba(0,0,0,0.6);\n  text-align: left;\n  cursor: pointer;\n}\n.select .arrow[data-v-352e9b22] {\n  position: absolute;\n  top: 15px;\n  right: 8px;\n  ((null)): 0;\n  ((null)): 0;\n  border: 8px solid transparent;\n  border-top-color: rgba(0,0,0,0.6);\n}\n.select span[data-v-352e9b22] {\n  display: block;\n}\n.select .label[data-v-352e9b22] {\n  line-height: 14px;\n}\n.option-box[data-v-352e9b22] {\n  position: absolute;\n  top: 33px;\n  left: -2px;\n  ((null)): 0;\n  ((null)): 0;\n  width: 100%;\n  padding: 8px 0px;\n  border: 1px solid #4ad8e2;\n  -webkit-border-radius: 5px;\n  -moz-border-radius: 5px;\n  border-radius: 5px;\n  background: #fff;\n  z-index: 2;\n}\n.option[data-v-352e9b22] {\n  max-height: 110px;\n  overflow-y: auto;\n}\n.option[data-v-352e9b22]::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.option[data-v-352e9b22]::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.option p[data-v-352e9b22] {\n  padding: 3px 15px;\n  cursor: pointer;\n}\n.option p[data-v-352e9b22]:hover {\n  color: #fff;\n  background-color: #7ab5d8;\n}\n.group-con[data-v-352e9b22] {\n  width: 80%;\n  margin: 10px auto;\n}\n.must[data-v-352e9b22] {\n  float: left;\n  margin-left: -15px;\n  color: #f00;\n}\n.group-cover[data-v-352e9b22] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-cover input[type='file'][data-v-352e9b22] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 98%;\n  height: 120px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-cover img[data-v-352e9b22] {\n  width: 98%;\n  height: 120px;\n  vertical-align: top;\n}\n.group-content textarea[data-v-352e9b22] {\n  width: 100%;\n  height: 100%;\n  padding: 10px;\n  border: none;\n  outline: none;\n  font-size: 14px;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  background: transparent;\n  resize: none;\n}\n.group-content textarea[data-v-352e9b22]::-webkit-scrollbar {\n  width: 8px;\n  margin: 10px;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.group-content textarea[data-v-352e9b22]::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #bd1010;\n}\n.group-content textarea[data-v-352e9b22]::-webkit-input-placeholder {\n  color: rgba(0,0,0,0.6);\n}\n.group-content .textarea-box[data-v-352e9b22] {\n  display: inline-block;\n  width: 95%;\n  height: 445px;\n  padding: 0;\n  text-align: left;\n  vertical-align: top;\n}\n.group-edit[data-v-352e9b22] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.group-edit input[type='file'][data-v-352e9b22] {\n  position: absolute;\n  top: 0;\n  left: 25px;\n  ((null)): 0;\n  ((null)): 0;\n  width: 74px;\n  height: 36px;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n  cursor: pointer;\n}\n.group-edit .btn-edit[data-v-352e9b22] {\n  display: inline-block;\n  margin: 0;\n}\n.file-list[data-v-352e9b22] {\n  display: inline-block;\n  width: 400px;\n  margin: 0 15px 5px;\n  font-size: 20px;\n  line-height: 36px;\n  vertical-align: top;\n}\n.group-left[data-v-352e9b22],\n.group-right[data-v-352e9b22] {\n  display: inline-block;\n  width: 300px;\n  padding: 0 30px;\n  vertical-align: top;\n  text-align: right;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.group-right[data-v-352e9b22] {\n  width: 700px;\n  padding: 0 15px;\n  text-align: left;\n}\n.tip[data-v-352e9b22] {\n  display: block;\n  width: 98%;\n  margin: auto;\n  text-align: left;\n  font-size: 12px;\n  color: #f00;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.edit-wrapper[data-v-352e9b22] {\n  width: 98%;\n}\n@media screen and (max-width: 1016px) {\n.group-left[data-v-352e9b22] {\n    width: 80%;\n}\n}\n", ""]);
 
 	// exports
 
@@ -15579,7 +15579,6 @@
 				form: {
 					url: '/dist/imgs/default.png',
 					title: '',
-					abs: '',
 					time: '',
 					address: '',
 					unit: '请选择举办单位',
@@ -15700,13 +15699,15 @@
 				//TODO
 				//编辑
 				var form = this.form;
-				form.content = _editor2.default.sync();
+				// form.content = editor.sync();
+				form.content = this.$refs.edit.getContent();
 				form.author = this.userId;
 				form.time = new Date();
 				form.faculty = this.userFaculty;
 				if (!form.title || !form.time || !form.address || !form.unit || !form.content || !form.url) {
 					return alert('请填写所有必须项！');
 				}
+				// console.log(form.content);
 				if (!this.$route.params.artId) {
 					this.$store.dispatch('POST_ARTICLE', { form: form }).then(function (data) {
 						alert('发布成功');
@@ -16704,7 +16705,7 @@
 
 
 	// module
-	exports.push([module.id, "\nform[data-v-57fbc2a3] {\n  padding: 45px;\n  margin: auto;\n}\nlabel[data-v-57fbc2a3] {\n  text-align: right;\n}\n.group-con[data-v-57fbc2a3] {\n  margin: 15px 0;\n}\n.group-btn[data-v-57fbc2a3] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-57fbc2a3] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-57fbc2a3] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-s[data-v-57fbc2a3] {\n  padding: 5px 10px;\n  font-size: 0.9em;\n}\n.btn-certain[data-v-57fbc2a3] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-57fbc2a3] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-57fbc2a3] {\n  background: #2d0a08;\n}\n.must[data-v-57fbc2a3] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-57fbc2a3] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-57fbc2a3] {\n  margin-right: 10px;\n}\n.edit-outter[data-v-57fbc2a3] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.edit[data-v-57fbc2a3] {\n  width: 100%;\n  height: 500px;\n  padding: 5px 10px;\n  border: 1px solid #c9d8db;\n  outline: none;\n  overflow: auto;\n}\n.edit[data-v-57fbc2a3]::-webkit-scrollbar {\n  width: 8px;\n  height: 8px;\n}\n.edit[data-v-57fbc2a3]::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #2d0a08;\n}\n.edit a[data-v-57fbc2a3] {\n  color: #00f;\n  text-decoration: underline;\n}\n.placeholder[data-v-57fbc2a3] {\n  position: absolute;\n  top: 3px;\n  left: 10px;\n  ((null)): 0;\n  ((null)): 0;\n}\n.tool[data-v-57fbc2a3] {\n  display: inline-block;\n  margin-bottom: 10px;\n}\n.item-wrapper[data-v-57fbc2a3] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  display: inline-block;\n}\n.item-wrapper[data-v-57fbc2a3]:hover {\n  background-color: #ddd;\n}\n.toolbtn[data-v-57fbc2a3] {\n  display: inline-block;\n  width: 40px;\n  height: 25px;\n  padding: 0;\n  border: none;\n  outline: none;\n  background-color: #fff;\n  background: url(" + __webpack_require__(90) + ") center no-repeat;\n  cursor: pointer;\n}\n.toolbtn[data-v-57fbc2a3]:hover {\n  background-color: #ddd;\n}\n.bold[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(90) + ");\n}\n.italic[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(91) + ");\n}\n.link[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(92) + ");\n}\n.unlink[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(93) + ");\n}\n.font[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(94) + ");\n}\n.fontSize[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(95) + ");\n}\n.foreColor[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(96) + ");\n}\n.header[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(97) + ");\n}\n.insertImage[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(98) + ");\n}\n.insertImageInput[data-v-57fbc2a3] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  ((null)): 0;\n  ((null)): 0;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n}\n.justifyCenter[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(99) + ");\n}\n.justifyFull[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(100) + ");\n}\n.justifyLeft[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(101) + ");\n}\n.justifyRight[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(102) + ");\n}\n.strike[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(103) + ");\n}\n.underline[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(104) + ");\n}\n.copy[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(105) + ");\n}\n.cut[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(106) + ");\n}\n.paste[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(107) + ");\n}\n.item-font-wrapper:hover .font-wrapper[data-v-57fbc2a3] {\n  visibility: visible;\n}\n.font-wrapper[data-v-57fbc2a3] {\n  position: absolute;\n  top: 25px;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  border: 1px solid #ccc;\n  cursor: pointer;\n  background: #fff;\n  z-index: 9;\n  visibility: hidden;\n}\n.font-wrapper input[data-v-57fbc2a3] {\n  width: 35px;\n  height: 30px;\n  border: none;\n  outline: none;\n  background: transparent;\n  cursor: pointer;\n}\n.font-wrapper input[data-v-57fbc2a3]:hover {\n  color: #fff;\n  background-color: #53c3e7;\n}\n.insertURL[data-v-57fbc2a3] {\n  padding: 5px 8px;\n  border: 1px solid #3fc6bb;\n  outline: none;\n  font-size: 16px;\n  -webkit-border-radius: 4px;\n  -moz-border-radius: 4px;\n  border-radius: 4px;\n}\n", ""]);
+	exports.push([module.id, "\nform[data-v-57fbc2a3] {\n  padding: 45px;\n  margin: auto;\n}\nlabel[data-v-57fbc2a3] {\n  text-align: right;\n}\n.group-con[data-v-57fbc2a3] {\n  margin: 15px 0;\n}\n.group-btn[data-v-57fbc2a3] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-57fbc2a3] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-57fbc2a3] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-s[data-v-57fbc2a3] {\n  padding: 5px 10px;\n  font-size: 0.9em;\n}\n.btn-certain[data-v-57fbc2a3] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-57fbc2a3] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-57fbc2a3] {\n  background: #2d0a08;\n}\n.must[data-v-57fbc2a3] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-57fbc2a3] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-57fbc2a3] {\n  margin-right: 10px;\n}\n.edit-outter[data-v-57fbc2a3] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.edit[data-v-57fbc2a3] {\n  width: 100%;\n  height: 500px;\n  padding: 5px 10px;\n  border: 1px solid #c9d8db;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  outline: none;\n  overflow: auto;\n}\n.edit[data-v-57fbc2a3]::-webkit-scrollbar {\n  width: 8px;\n  height: 8px;\n}\n.edit[data-v-57fbc2a3]::-webkit-scrollbar-thumb {\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  background: #2d0a08;\n}\n.edit a[data-v-57fbc2a3] {\n  color: #00f;\n  text-decoration: underline;\n}\n.placeholder[data-v-57fbc2a3] {\n  position: absolute;\n  top: 3px;\n  left: 10px;\n  ((null)): 0;\n  ((null)): 0;\n}\n.tool[data-v-57fbc2a3] {\n  display: inline-block;\n  margin-bottom: 10px;\n}\n.item-wrapper[data-v-57fbc2a3] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  display: inline-block;\n}\n.item-wrapper[data-v-57fbc2a3]:hover {\n  background-color: #ddd;\n}\n.toolbtn[data-v-57fbc2a3] {\n  display: inline-block;\n  width: 40px;\n  height: 25px;\n  padding: 0;\n  border: none;\n  outline: none;\n  background-color: #fff;\n  background: url(" + __webpack_require__(90) + ") center no-repeat;\n  cursor: pointer;\n}\n.toolbtn[data-v-57fbc2a3]:hover {\n  background-color: #ddd;\n}\n.bold[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(90) + ");\n}\n.italic[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(91) + ");\n}\n.link[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(92) + ");\n}\n.unlink[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(93) + ");\n}\n.font[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(94) + ");\n}\n.fontSize[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(95) + ");\n}\n.foreColor[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(96) + ");\n}\n.header[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(97) + ");\n}\n.insertImage[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(98) + ");\n}\n.insertImageInput[data-v-57fbc2a3] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  ((null)): 0;\n  ((null)): 0;\n  opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);\n}\n.justifyCenter[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(99) + ");\n}\n.justifyFull[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(100) + ");\n}\n.justifyLeft[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(101) + ");\n}\n.justifyRight[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(102) + ");\n}\n.strike[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(103) + ");\n}\n.underline[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(104) + ");\n}\n.copy[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(105) + ");\n}\n.cut[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(106) + ");\n}\n.paste[data-v-57fbc2a3] {\n  background-image: url(" + __webpack_require__(107) + ");\n}\n.item-font-wrapper:hover .font-wrapper[data-v-57fbc2a3],\n.item-color-wrapper:hover .font-wrapper[data-v-57fbc2a3],\n.item-font-wrapper:hover .color-wrapper[data-v-57fbc2a3],\n.item-color-wrapper:hover .color-wrapper[data-v-57fbc2a3] {\n  visibility: visible;\n}\n.font-wrapper[data-v-57fbc2a3],\n.color-wrapper[data-v-57fbc2a3] {\n  position: absolute;\n  top: 25px;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 40px;\n  border: 1px solid #ccc;\n  cursor: pointer;\n  background: #fff;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  z-index: 9;\n  visibility: hidden;\n}\n.font-wrapper input[data-v-57fbc2a3],\n.color-wrapper input[data-v-57fbc2a3] {\n  width: 40px;\n  height: 30px;\n  border: none;\n  outline: none;\n  background: transparent;\n  cursor: pointer;\n}\n.font-wrapper input[data-v-57fbc2a3]:hover,\n.color-wrapper input[data-v-57fbc2a3]:hover {\n  color: #fff;\n  background-color: #53c3e7;\n}\n.color-item[data-v-57fbc2a3] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  width: 40px;\n}\n.color-item input[data-v-57fbc2a3] {\n  position: absolute;\n  top: 0px;\n  left: 0;\n  ((null)): 0;\n  ((null)): 0;\n  font-size: 0;\n}\n.color-item input[data-v-57fbc2a3]:hover {\n  background-color: transparent;\n}\n.color-item span[data-v-57fbc2a3] {\n  display: block;\n  width: 40px;\n  height: 30px;\n  border-bottom: 2px solid #eee;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.insertURL[data-v-57fbc2a3] {\n  padding: 5px 8px;\n  border: 1px solid #3fc6bb;\n  outline: none;\n  font-size: 16px;\n  -webkit-border-radius: 4px;\n  -moz-border-radius: 4px;\n  border-radius: 4px;\n}\n", ""]);
 
 	// exports
 
@@ -16887,27 +16888,40 @@
 	//
 	//
 	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 	exports.default = {
 	    data: function data() {
+	        /**
+	         * param {Array} btns: toolbar 子项
+	         * param {Array} colors: toolbar 颜色选项子项
+	         * param {String} id: 编辑器 ID
+	         * param {Boolean} isFocus: 编辑器是否获焦
+	         * param {String} contents: 编辑器的内容
+	         * param {String} linkURL: 链接地址
+	         * param {String} contentTip: 编辑器提示语
+	        */
 	        return {
-	            el: '',
 	            btns: ['bold', 'italic', 'link', 'unlink', 'fontSize', 'header', 'insertImage', 'justifyCenter', 'justifyFull', 'justifyLeft', 'justifyRight', 'strike', 'underline'],
+	            colors: ['black', 'blue', 'red'],
 	            id: 'edit',
 	            isFocus: false,
 	            contents: '',
 	            linkURL: '',
-	            selectText: '',
-	            contentTip: '请编辑。。。',
-	            inlineEle: ['span', 'i', 'b', 'label', 'small', 'a', 'em', 'font', 'strong', 'sub', 'sup', 'u']
+	            contentTip: '请编辑。。。'
 	        };
 	    },
 	    created: function created() {},
 
 	    methods: {
 	        editEvent: function editEvent(e) {
-	            // console.log(type)
-	            // document.execCommand('bold', false, undefined)
 	            if (!this.isSelection()) {
 	                return;
 	            }
@@ -16949,8 +16963,7 @@
 	            return document.getSelection().toString();
 	        },
 	        isSelection: function isSelection() {
-	            this.selectText = this.getSelectionText();
-	            if (this.selectText.length === 0) {
+	            if (this.getSelectionText().length === 0) {
 	                alert('当前没有选中文本！');
 	                return false;
 	            }
@@ -16972,8 +16985,10 @@
 	            if (this.linkURL && this.linkURL !== 'http://' && this.linkURL !== 'https://') {
 	                this.linkURL = /\:\/\//.test(this.linkURL) ? this.linkURL : href + this.linkURL;
 	                if (parent.href) {
+	                    // 改变链接地址
 	                    parent.href = this.linkURL;
 	                } else {
+	                    // 添加链接
 	                    this.exec('createLink', this.linkURL);
 	                    this.exec('foreColor', 'blue');
 	                    this.exec('underline');
@@ -16981,7 +16996,7 @@
 	            }
 	        },
 	        unLink: function unLink() {
-	            // 获取祖先元素 color 值
+	            // 获取便捷器默认 color 值
 	            var ancestor = document.getSelection().focusNode.parentNode.parentNode.parentNode.parentNode,
 	                color = parent.style.color || window.getComputedStyle(ancestor).color;
 
@@ -17023,12 +17038,22 @@
 
 	            reader.readAsDataURL(file);
 	        },
+	        onSelectColor: function onSelectColor(e) {
+	            if (!this.isSelection()) {
+	                return;
+	            }
+	            var color = e.target.value || 'black';
+	            this.exec('foreColor', color);
+	        },
 	        onFocus: function onFocus() {
 	            this.isFocus = true;
 	        },
 	        onBlur: function onBlur() {
 	            this.contents = document.getElementById(this.id).innerHTML;
 	            this.isFocus = false;
+	        },
+	        getContent: function getContent() {
+	            return this.contents;
 	        }
 	    }
 	};
@@ -17191,6 +17216,36 @@
 	      "change": _vm.onInsertImage
 	    }
 	  })]), _c('div', {
+	    staticClass: "item-wrapper item-color-wrapper"
+	  }, [_c('span', {
+	    staticClass: "toolbtn foreColor",
+	    attrs: {
+	      "data-type": "foreColor"
+	    }
+	  }), _vm._v(" "), _c('ul', {
+	    staticClass: "color-wrapper",
+	    on: {
+	      "click": _vm.onSelectHeader
+	    }
+	  }, _vm._l((_vm.colors), function(color) {
+	    return _c('li', {
+	      staticClass: "color-item"
+	    }, [_c('span', {
+	      style: ({
+	        backgroundColor: color
+	      })
+	    }), _vm._v(" "), _c('input', {
+	      attrs: {
+	        "type": "button"
+	      },
+	      domProps: {
+	        "value": color
+	      },
+	      on: {
+	        "click": _vm.onSelectColor
+	      }
+	    })])
+	  }))]), _c('div', {
 	    staticClass: "item-wrapper"
 	  }, [_c('input', {
 	    staticClass: "toolbtn justifyCenter",
@@ -17318,29 +17373,7 @@
 	        _vm.form.title = $event.target.value
 	      }
 	    }
-	  })]), _vm._v(" "), _c('div', {
-	    staticClass: "group-con"
-	  }, [_c('input', {
-	    directives: [{
-	      name: "model",
-	      rawName: "v-model",
-	      value: (_vm.form.abs),
-	      expression: "form.abs"
-	    }],
-	    attrs: {
-	      "type": "text",
-	      "placeholder": "举办目的"
-	    },
-	    domProps: {
-	      "value": _vm._s(_vm.form.abs)
-	    },
-	    on: {
-	      "input": function($event) {
-	        if ($event.target.composing) { return; }
-	        _vm.form.abs = $event.target.value
-	      }
-	    }
-	  })]), _vm._v(" "), _c('div', {
+	  })]), _vm._v(" "), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
 	  }, [_c('span', {
 	    staticClass: "must"
@@ -17384,6 +17417,7 @@
 	  }, [_vm._v("*")]), _c('div', {
 	    staticClass: "select"
 	  }, [_c('span', {
+	    staticClass: "label",
 	    on: {
 	      "click": _vm.onToggleOption
 	    }
@@ -17433,6 +17467,12 @@
 	      }
 	    }
 	  })]), _vm._v(" "), _vm._v(" "), _c('div', {
+	    directives: [{
+	      name: "show",
+	      rawName: "v-show",
+	      value: (_vm.isEdit && _vm.$route.params.artId),
+	      expression: "isEdit && $route.params.artId"
+	    }],
 	    staticClass: "group-con"
 	  }, [_c('input', {
 	    directives: [{
@@ -17455,18 +17495,14 @@
 	      }
 	    }
 	  }), _vm._v(" "), _c('span', {
-	    directives: [{
-	      name: "show",
-	      rawName: "v-show",
-	      value: (_vm.isEdit && _vm.$route.params.artId),
-	      expression: "isEdit && $route.params.artId"
-	    }],
 	    staticClass: "tip"
 	  }, [_vm._v("参与者请以\",\"分隔")])]), _vm._v(" "), _vm._v(" "), _vm._v(" "), _c('div', {
 	    staticClass: "group-con group-content"
 	  }, [_c('span', {
 	    staticClass: "must"
-	  }, [_vm._v("*")]), _vm._v(" "), _c('editor')]), _vm._v(" "), _c('div', {
+	  }, [_vm._v("*")]), _vm._v(" "), _c('editor', {
+	    ref: "edit"
+	  })]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con group-edit"
 	  }, [_c('input', {
 	    attrs: {
@@ -17721,23 +17757,13 @@
 	    }
 	  })]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
-	  }, [_c('label', [_vm._v("发布人:")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.article.author))])]), _vm._v(" "), _c('img', {
-	    staticClass: "cover",
-	    attrs: {
-	      "src": _vm.article.url,
-	      "alt": "cover"
-	    }
-	  }), _vm._v(" "), _c('div', {
+	  }, [_c('label', [_vm._v("发布人:")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.article.author))])]), _vm._v(" "), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
 	  }, [_c('label', [_vm._v("举办时间：")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.article.startTime))])]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
 	  }, [_c('label', [_vm._v("举办地点：")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.article.address))])]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
-	  }, [_c('label', [_vm._v("举办单位：")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.article.unit))])]), _vm._v(" "), _c('div', {
-	    staticClass: "group-con"
-	  }, [_c('label', [_vm._v("举办目的：")]), _vm._v(" "), _c('p', {
-	    staticClass: "content"
-	  }, [_vm._v(_vm._s(_vm.article.abs))])]), _vm._v(" "), _c('div', {
+	  }, [_c('label', [_vm._v("举办单位：")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.article.unit))])]), _vm._v(" "), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
 	  }, [_c('label', [_vm._v("举办内容：")]), _vm._v(" "), _c('div', {
 	    staticClass: "content",
