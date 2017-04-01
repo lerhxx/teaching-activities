@@ -66,6 +66,8 @@ const routes = [{
 }, {
 	path: '/manage/user', component: User, name: 'user'
 }, {
+	path: '/notfound', component: NotFound, name: 'notfound'
+}, {
 	path: '*', redirect: '/'
 }];
 

@@ -12289,6 +12289,8 @@
 	}, {
 		path: '/manage/user', component: _user2.default, name: 'user'
 	}, {
+		path: '/notfound', component: _2.default, name: 'notfound'
+	}, {
 		path: '*', redirect: '/'
 	}];
 
@@ -15123,8 +15125,28 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _c('div', [_vm._v("\n\t404\n")])
-	},staticRenderFns: []}
+	  return _vm._m(0)
+	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _c('div', {
+	    staticStyle: {
+	      "margin": "100px"
+	    }
+	  }, [_c('form', {
+	    attrs: {
+	      "method": "post",
+	      "action": "/upload"
+	    }
+	  }, [_c('input', {
+	    attrs: {
+	      "type": "file"
+	    }
+	  }), _vm._v(" "), _c('input', {
+	    attrs: {
+	      "type": "submit",
+	      "value": "提交"
+	    }
+	  })])])
+	}]}
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
@@ -15682,7 +15704,7 @@
 				if (!this.$route.params.artId) {
 					this.$store.dispatch('POST_ARTICLE', { form: form }).then(function (data) {
 						alert('发布成功');
-						_this2.$router.push({ name: 'article', params: { id: data.id } });
+						// this.$router.push({name: 'article', params: {id: data.id}});
 					}).catch(function (err) {
 						return alert(err);
 					});

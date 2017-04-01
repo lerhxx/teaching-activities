@@ -170,7 +170,7 @@
 					this.$store.dispatch('POST_ARTICLE', {form: form})
 						.then(data => {
 							alert('发布成功');
-							this.$router.push({name: 'article', params: {id: data.id}});
+							// this.$router.push({name: 'article', params: {id: data.id}});
 						}).catch(err => alert(err));
 				}else {
 					this.party = this.party.replace(/，/g, ',');

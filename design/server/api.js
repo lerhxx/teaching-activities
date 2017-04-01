@@ -78,12 +78,40 @@ router.post('/user/edit/:id', (req, res) => {
 		}else if(doc) {
 			res.send({state: 1, msg: '标题已存在！'});
 		}else {
+			// let reg = {
+			// 		img: new RegExp('<img', 'gi'),
+			// 		src: new RegExp('src=', 'i'),
+			// 		quote: new RegExp('[\"\']')
+			// 	},
+			// 	preContent = req.body.form.content,
+			// 	r = reg.img.exec(preContent),
+			// 	imgs = [];
+			// while(r) {
+			// 	// console.log(r.index)
+			// 	// console.log(reg[0].lastIndex)
+			// 	let start = r.input.indexOf('src=') + 5;
+			// 	preContet = r.input.slice(start);
+			// 	let end = reg.quote.exec(preContet).index;
+			// 	let img = r.input.slice(start, start + end);
+			// 	// console.log(start);
+			// 	// console.log(end);
+			// 	// console.log(img);
+			// 	preContet = preContet.slice(end + 1);
+			// 	// let url = reg.src.exec(r.input);
+			// 	// console.log(r.input.indexOf('src='))
+			// 	console.log(r.input.length)
+			// 	// console.log(preContet)
+			// 	// preContent = 
+			// 	r = reg.img.exec(preContent);
+			// 	console.log(r)
+			// }
 			db.Article.create(req.body.form, (err, article) => {
 				if(err) {
 					res.send({state: 2, msg: '发布失败，请重试！'});
 				}
 				res.send({state: 0, data: {id: article._id}});
 			})
+			res.send({state: 0})
 		}
 	})
 })
@@ -304,6 +332,11 @@ router.post('/user/addUser', (req, res) => {
 			res.send({state: 0, data: doc})
 		}
 	})
+})
+
+router.post('/upload', (req, res) => {
+	console.log(req.body)
+	res.end()
 })
 
 module.exports = router;
