@@ -29,6 +29,7 @@
         },
         methods: {
             toggleAct(type) {
+            console.log(this.$store.state.selfArticles)
                 switch(type) {
                     case 1:
                         this.isActive = true;

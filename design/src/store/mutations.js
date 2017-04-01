@@ -12,7 +12,6 @@ export default {
         state.facultiesList = lists;
     },
     SET_ARTICLES(state, info) {
-        state.noMoreArticle = info.lists.length === 0;
         state.articles = info.lists;
         state.articleTotal = info.total
     },
@@ -27,8 +26,15 @@ export default {
     SET_SELF_ARTICLES(state, articles) {
         state.selfArticles = articles;
     },
-    UPDATE_SELF_ARTICLES(state) {
-        state.selfArticles.shift();
+    UPDATE_SELF_ARTICLES(state, id) {
+        let len = state.selfArticles.length,
+            i = 0;
+        for(; i < len; ++i) {
+            if(state.selfArticles[i]._id === id){
+                state.selfArticles.splice(i, 1);
+                break;
+            }
+        }
     },
     SET_EDITINT_MODE(state, mode) {
         state.isEdit = mode;

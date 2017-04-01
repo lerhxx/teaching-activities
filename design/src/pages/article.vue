@@ -14,7 +14,7 @@
 			<!--<img :src='article.url' alt='cover' class='cover'/>-->
 			<div class='group-con'>
 				<label>举办时间：</label>
-				<span>{{article.startTime}}</span>
+				<span>{{article.time}}</span>
 			</div>
 			<div class='group-con'>
 				<label>举办地点：</label>
@@ -64,6 +64,8 @@
 		},
 		computed: {
 			article() {
+				console.log(new Date(this.$store.state.article.startTime))
+				console.log(new Date(this.$store.state.article.endTime))
 				return this.$store.state.article
 			},
 			self() {
@@ -94,9 +96,10 @@
 	@import '../css/form';
 
 	.article
-		width 50% 
-		min-width 500px
+		width 80% 
+		min-width 800px
 		margin auto
+		overflow auto
 	h1
 		text-align center
 		margin 30px 0 25px

@@ -122,6 +122,7 @@ router.get('/article/:id', (req, res) => {
 		}
 		// console.log(doc)
 		if(doc) {
+			console.log(doc.startTime)
 			res.send({state: 0, data: doc});
 		}else {
 			res.send({state: 1, msg: '文章不存在！'});

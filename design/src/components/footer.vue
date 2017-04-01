@@ -34,8 +34,8 @@
 		width 100%
 		padding 10px 50px
 		font-size 12px
-		overflow hidden
 		background-color #303048
+		box-sizing border-box
 		.links 
 			li 
 				display inline-block

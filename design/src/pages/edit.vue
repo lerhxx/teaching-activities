@@ -9,7 +9,7 @@
 					<input type='text' v-model='form.abs' placeholder='举办目的' />
 				</div>-->
 				<div class='group-con'>
-					<span class='must'>*</span><calendar type='time' inputwidth='100%' v-on:getValue='getTime' v-on:getEndTime='getEndTime'></calendar>
+					<span class='must'>*</span><calendar type='time' inputwidth='100%' v-on:getStartTime='getStartTime' v-on:getEndTime='getEndTime'></calendar>
 					<!--<input type='text' v-model='form.time' placeholder='举办时间' />-->
 				</div>
 				<div class='group-con'>
@@ -113,44 +113,6 @@
 					})
 			}
 		},
-		mounted() {
-			// 富文本编辑器
-			// simditor = new Simditor({
-			// 	textarea: $('#editor'),
-			// 	toolbar: [
-			// 		'title',
-			// 		'bold',
-			// 		'italic',
-			// 		'underline',
-			// 		'strikethrough',
-			// 		'fontScale',
-			// 		'color',
-			// 		'ol',
-			// 		'ul',
-			// 		'blockquote',
-			// 		'code',
-			// 		'table',
-			// 		'link',
-			// 		'image',
-			// 		'hr',
-			// 		'indent',
-			// 		'outdent',
-			// 		'alignment'
-			// 	],
-			// 	upload: {
-			// 		url: `/user/edit/${this.userId}`,
-			// 		params: null,
-			// 		fileKey: 'fileDataFileName',
-			// 		connectionCount: 3,
-			// 		leaveConfirm: '正在上传文件'
-			// 	},
-			// 	imageButton: [
-			// 		'upload',
-			// 		'external'
-			// 	]
-			// })
-			
-		},
 		methods: {
 			onToggleOption() {
 				this.optionShow = !this.optionShow;
@@ -182,8 +144,9 @@
 			getFile(e) {
 				return e.target.files || e.dataTransfer.files;
 			},
-			getTime(value) {
-				this.form.heldTime = value;
+			getStartTime(value) {
+				console.log(value)
+				this.form.startTime = value;
 			},
 			getEndTime(value) {
 				console.log(value)
@@ -201,7 +164,8 @@
 				if(!form.title || !form.time || !form.address || !form.unit || !form.content || !form.url) {
 					return alert('请填写所有必须项！');
 				}
-				// console.log(form.content);
+				console.log(form)
+				console.log(form.content);
 				if(!this.$route.params.artId) {
 					this.$store.dispatch('POST_ARTICLE', {form: form})
 						.then(data => {

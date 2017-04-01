@@ -19,8 +19,8 @@
             },
             deleteArt(item) {
                 this.$store.dispatch('DELETE_ARTICLE', {id: item._id})
-                    .then(res => alert(res.data.msg))
-                    .catch(err => alert(res.data.msg))
+                    .then(res => alert(res))
+                    .catch(err => alert(err))
             }
         },
     }

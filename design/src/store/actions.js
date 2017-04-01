@@ -120,7 +120,8 @@ export default {
     return axios.delete(`/article/${articleInfo.id}`)
       .then(res => {
         if(res.data.state === 0) {
-          commit('UPDATE_SELF_ARTICLES');
+          commit('UPDATE_SELF_ARTICLES', articleInfo.id);
+          return Promise.resolve(res.data.msg);
         }else {
           return Promise.reject(res.data.msg);
         }
