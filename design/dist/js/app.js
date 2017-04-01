@@ -17156,8 +17156,7 @@
 	            return true;
 	        },
 	        exec: function exec(type, arg) {
-	            // console.log(type)
-	            document.execCommand(type, false, arg);
+	            return document.execCommand(type, false, arg);
 	        },
 	        link: function link() {
 	            if (!this.isSelection()) {
@@ -17168,8 +17167,10 @@
 	            var href = 'http://';
 
 	            this.linkURL = prompt('请输入URL', parent.href);
+
 	            if (this.linkURL && this.linkURL !== 'http://' && this.linkURL !== 'https://') {
 	                this.linkURL = /\:\/\//.test(this.linkURL) ? this.linkURL : href + this.linkURL;
+
 	                if (parent.href) {
 	                    // 改变链接地址
 	                    parent.href = this.linkURL;
@@ -17182,9 +17183,9 @@
 	            }
 	        },
 	        unLink: function unLink() {
-	            // 获取便捷器默认 color 值
-	            var ancestor = document.getSelection().focusNode.parentNode.parentNode.parentNode.parentNode,
-	                color = parent.style.color || window.getComputedStyle(ancestor).color;
+	            // 获取编辑器默认 color 值
+	            var el = document.getElementById(this.id),
+	                color = el.style.color || window.getComputedStyle(el).color;
 
 	            this.exec('unlink');
 	            this.exec('foreColor', color);
