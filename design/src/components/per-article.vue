@@ -41,6 +41,7 @@
                         /<img\b[^>]*>/g,
                         /[^\x00-\xff]/g
                     ];
+                
                 value = value.replace(reg[0], '');
                 let len = value.substr(0, 102).replace(reg[1],"01").length,
                     newValue = value;

@@ -14727,7 +14727,7 @@
 				}, 10);
 			}
 		},
-		computed: (0, _vuex.mapState)(['typesLists', 'academyList', 'facultiesList', 'articleTotal', 'articles', 'userRank', 'userFaculty']),
+		computed: (0, _vuex.mapState)(['typesLists', 'academyList', 'facultiesList', 'articleTotal', 'articles', 'userId', 'userRank', 'userFaculty']),
 		filters: {
 			timeFormat: function timeFormat(value) {
 				var date = new Date(value);
@@ -15239,8 +15239,8 @@
 	      directives: [{
 	        name: "show",
 	        rawName: "v-show",
-	        value: (_vm.userRank == 2 || (_vm.userRank == 1 && _vm.userFaculty == item.faculty)),
-	        expression: "userRank == 2 || (userRank == 1 && userFaculty == item.faculty)"
+	        value: (_vm.userRank == 2 || (_vm.userRank == 1 && _vm.userId == item.author)),
+	        expression: "userRank == 2 || (userRank == 1 && userId == item.author)"
 	      }],
 	      attrs: {
 	        "item": item
@@ -17810,7 +17810,7 @@
 
 
 	// module
-	exports.push([module.id, "\nbody[data-v-a62555e4],\nul[data-v-a62555e4],\nli[data-v-a62555e4],\np[data-v-a62555e4],\nh1[data-v-a62555e4],\nh2[data-v-a62555e4],\nh3[data-v-a62555e4],\nh4[data-v-a62555e4],\nh5[data-v-a62555e4],\nh6[data-v-a62555e4],\nhr[data-v-a62555e4] {\n  padding: 0;\n  margin: 0;\n}\nbody[data-v-a62555e4] {\n  height: 100vh;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nul[data-v-a62555e4] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  list-style: none;\n}\na[data-v-a62555e4] {\n  text-decoration: none;\n  color: #000;\n}\n.color-r[data-v-a62555e4] {\n  color: #f00;\n}\n.color-b[data-v-a62555e4] {\n  color: #40bfce;\n}\n.color-g[data-v-a62555e4] {\n  color: #bbb6b6;\n}\n.padding-top[data-v-a62555e4] {\n  padding-top: 45px;\n}\n.text-ellipsis[data-v-a62555e4] {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n#app[data-v-a62555e4] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.wrapper[data-v-a62555e4] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  min-height: calc(100vh - 48px);\n  padding-bottom: 48px;\n}\n.time[data-v-a62555e4] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.per-list[data-v-a62555e4] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin-bottom: 10px;\n  text-align: center;\n}\n.per-list[data-v-a62555e4]:before {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 50%;\n  min-width: 150px;\n  height: 0px;\n  margin: auto;\n  border: 1px solid #000;\n  content: '';\n  z-index: -1;\n}\n.per-list-item a[data-v-a62555e4] {\n  display: block;\n  padding: 10px 35px;\n  border: 1px solid #000;\n  background: #fff;\n}\n.per-list-item.active a[data-v-a62555e4] {\n  color: #fff;\n  background: #000;\n}\nform[data-v-a62555e4] {\n  padding: 45px;\n  margin: auto;\n}\nlabel[data-v-a62555e4] {\n  text-align: right;\n}\n.group-con[data-v-a62555e4] {\n  margin: 15px 0;\n}\n.group-btn[data-v-a62555e4] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-a62555e4] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-a62555e4] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-s[data-v-a62555e4] {\n  padding: 5px 10px;\n  font-size: 0.9em;\n}\n.btn-certain[data-v-a62555e4] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-a62555e4] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-a62555e4] {\n  background: #2d0a08;\n}\n.must[data-v-a62555e4] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-a62555e4] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-a62555e4] {\n  margin-right: 10px;\n}\n.article[data-v-a62555e4] {\n  width: 80%;\n  min-width: 800px;\n  margin: auto;\n  overflow: auto;\n}\nh1[data-v-a62555e4] {\n  text-align: center;\n  margin: 30px 0 25px;\n}\n.cover[data-v-a62555e4] {\n  width: 100%;\n}\n.content[data-v-a62555e4] {\n  margin-left: 90px;\n}\n", ""]);
+	exports.push([module.id, "\nbody[data-v-a62555e4],\nul[data-v-a62555e4],\nli[data-v-a62555e4],\np[data-v-a62555e4],\nh1[data-v-a62555e4],\nh2[data-v-a62555e4],\nh3[data-v-a62555e4],\nh4[data-v-a62555e4],\nh5[data-v-a62555e4],\nh6[data-v-a62555e4],\nhr[data-v-a62555e4] {\n  padding: 0;\n  margin: 0;\n}\nbody[data-v-a62555e4] {\n  height: 100vh;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nul[data-v-a62555e4] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  list-style: none;\n}\na[data-v-a62555e4] {\n  text-decoration: none;\n  color: #000;\n}\n.color-r[data-v-a62555e4] {\n  color: #f00;\n}\n.color-b[data-v-a62555e4] {\n  color: #40bfce;\n}\n.color-g[data-v-a62555e4] {\n  color: #bbb6b6;\n}\n.padding-top[data-v-a62555e4] {\n  padding-top: 45px;\n}\n.text-ellipsis[data-v-a62555e4] {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n#app[data-v-a62555e4] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.wrapper[data-v-a62555e4] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  min-height: calc(100vh - 48px);\n  padding-bottom: 48px;\n}\n.time[data-v-a62555e4] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.per-list[data-v-a62555e4] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin-bottom: 10px;\n  text-align: center;\n}\n.per-list[data-v-a62555e4]:before {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 50%;\n  min-width: 150px;\n  height: 0px;\n  margin: auto;\n  border: 1px solid #000;\n  content: '';\n  z-index: -1;\n}\n.per-list-item a[data-v-a62555e4] {\n  display: block;\n  padding: 10px 35px;\n  border: 1px solid #000;\n  background: #fff;\n}\n.per-list-item.active a[data-v-a62555e4] {\n  color: #fff;\n  background: #000;\n}\nform[data-v-a62555e4] {\n  padding: 45px;\n  margin: auto;\n}\nlabel[data-v-a62555e4] {\n  text-align: right;\n}\n.group-con[data-v-a62555e4] {\n  margin: 15px 0;\n}\n.group-btn[data-v-a62555e4] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-a62555e4] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-a62555e4] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-s[data-v-a62555e4] {\n  padding: 5px 10px;\n  font-size: 0.9em;\n}\n.btn-certain[data-v-a62555e4] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-a62555e4] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-a62555e4] {\n  background: #2d0a08;\n}\n.must[data-v-a62555e4] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-a62555e4] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-a62555e4] {\n  margin-right: 10px;\n}\n.article[data-v-a62555e4] {\n  width: 80%;\n  min-width: 800px;\n  margin: auto;\n  overflow: auto;\n}\nh1[data-v-a62555e4] {\n  text-align: center;\n  margin: 30px 0 25px;\n}\n.sub-title[data-v-a62555e4] {\n  color: #aaa;\n  text-align: center;\n}\n.modify[data-v-a62555e4] {\n  float: right;\n}\n.cover[data-v-a62555e4] {\n  width: 100%;\n}\n.content[data-v-a62555e4] {\n  margin-left: 90px;\n}\n", ""]);
 
 	// exports
 
@@ -17915,6 +17915,10 @@
 	//
 	//
 	//
+	//
+	//
+	//
+	//
 
 /***/ },
 /* 115 */
@@ -17924,24 +17928,25 @@
 	  return _c('div', {
 	    staticClass: "article padding-top"
 	  }, [(_vm.article.content) ? _c('div', [_c('h1', [_vm._v(_vm._s(_vm.article.title))]), _vm._v(" "), _c('div', {
+	    staticClass: "group-con sub-title"
+	  }, [_c('span', {
+	    staticClass: "time"
+	  }, [_vm._v(_vm._s(_vm._f("timeFormat")(_vm.article.time)))]), _vm._v(" "), _c('label', [_vm._v("发布人:")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.article.author))]), _vm._v(" "), _c('modify', {
 	    directives: [{
 	      name: "show",
 	      rawName: "v-show",
 	      value: (_vm.self),
 	      expression: "self"
 	    }],
-	    staticClass: "group-con"
-	  }, [_c('span', {
-	    staticClass: "time"
-	  }, [_vm._v(_vm._s(_vm._f("timeFormat")(_vm.article.time)))]), _vm._v(" "), _c('modify', {
+	    staticClass: "modify",
 	    attrs: {
 	      "item": _vm.article
 	    }
-	  })]), _vm._v(" "), _c('div', {
+	  })]), _vm._v(" "), _vm._v(" "), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
-	  }, [_c('label', [_vm._v("发布人:")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.article.author))])]), _vm._v(" "), _vm._v(" "), _c('div', {
+	  }, [_c('label', [_vm._v("开始时间：")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm._f("timeFormat")(_vm.article.startTime)))])]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
-	  }, [_c('label', [_vm._v("举办时间：")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.article.time))])]), _vm._v(" "), _c('div', {
+	  }, [_c('label', [_vm._v("结束时间：")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm._f("timeFormat")(_vm.article.endTime)))])]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
 	  }, [_c('label', [_vm._v("举办地点：")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.article.address))])]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
@@ -17955,10 +17960,14 @@
 	  })]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
 	  }, [_c('label', [_vm._v("附加说明：")]), _vm._v(" "), _c('p', {
+	    directives: [{
+	      name: "show",
+	      rawName: "v-show",
+	      value: (_vm.article.explain),
+	      expression: "article.explain"
+	    }],
 	    staticClass: "content"
-	  }, [_vm._v(_vm._s(_vm.article.explain))])]), _vm._v(" "), _c('div', {
-	    staticClass: "group-con"
-	  }, [_c('a', [_vm._v("附件")]), _vm._v("\n\t\t\t" + _vm._s(_vm.article.enclosure) + "\n\t\t")])]) : _vm._e()])
+	  }, [_vm._v(_vm._s(_vm.article.explain))])]), _vm._v(" ")]) : _vm._e()])
 	},staticRenderFns: []}
 	if (false) {
 	  module.hot.accept()
@@ -18699,6 +18708,7 @@
 	    methods: {
 	        filterContent: function filterContent(value) {
 	            var reg = [/<img\b[^>]*>/g, /[^\x00-\xff]/g];
+
 	            value = value.replace(reg[0], '');
 	            var len = value.substr(0, 102).replace(reg[1], "01").length,
 	                newValue = value;

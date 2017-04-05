@@ -31,7 +31,7 @@
 					</h3>
 					<p class='time color-g'>{{item.time | timeFormat}}</p>
 					<p>地点：{{item.address}}</p>
-					<modify :item='item' v-show='userRank == 2 || (userRank == 1 && userFaculty == item.faculty)'></modify>
+					<modify :item='item' v-show='userRank == 2 || (userRank == 1 && userId == item.author)'></modify>
 				</li>
 			</ul>
 		</div>
@@ -103,7 +103,7 @@
 				}, 10)
 			}
 		},
-		computed: mapState(['typesLists', 'academyList', 'facultiesList', 'articleTotal', 'articles', 'userRank', 'userFaculty']),
+		computed: mapState(['typesLists', 'academyList', 'facultiesList', 'articleTotal', 'articles', 'userId', 'userRank', 'userFaculty']),
 		filters: {
             timeFormat(value) {
                 let date = new Date(value);

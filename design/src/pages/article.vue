@@ -3,18 +3,22 @@
 		<div v-if='article.content'>
 			<!--<div class='group-con'>封面</div>-->
 			<h1>{{article.title}}</h1>
-			<div class='group-con' v-show='self'>
+			<div class='group-con sub-title'>
 				<span class='time'>{{article.time | timeFormat}}</span>
-				<modify :item='article'></modify>
-			</div>
-			<div class='group-con'>
 				<label>发布人:</label>
 				<span>{{article.author}}</span>
+				<modify class='modify' :item='article' v-show='self'></modify>
 			</div>
+			<!--<div class='group-con'>
+			</div>-->
 			<!--<img :src='article.url' alt='cover' class='cover'/>-->
 			<div class='group-con'>
-				<label>举办时间：</label>
-				<span>{{article.time}}</span>
+				<label>开始时间：</label>
+				<span>{{article.startTime | timeFormat}}</span>
+			</div>
+			<div class='group-con'>
+				<label>结束时间：</label>
+				<span>{{article.endTime | timeFormat}}</span>
 			</div>
 			<div class='group-con'>
 				<label>举办地点：</label>
@@ -34,12 +38,12 @@
 			</div>
 			<div class='group-con'>
 				<label>附加说明：</label>
-				<p class='content'>{{article.explain}}</p>
+				<p class='content' v-show='article.explain'>{{article.explain}}</p>
 			</div>
-			<div class='group-con'>
+			<!--<div class='group-con'>
 				<a>附件</a>
 				{{article.enclosure}}
-			</div>
+			</div>-->
 		</div>
 	</div>
 </template>
@@ -103,6 +107,11 @@
 	h1
 		text-align center
 		margin 30px 0 25px
+	.sub-title
+		color #aaa
+		text-align center
+	.modify
+		float right
 	.cover
 		width 100%
 	.content
