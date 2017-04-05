@@ -111,7 +111,6 @@ router.post('/user/edit/:id', (req, res) => {
 				}
 				res.send({state: 0, data: {id: article._id}});
 			})
-			res.send({state: 0})
 		}
 	})
 })

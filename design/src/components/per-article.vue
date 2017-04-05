@@ -37,7 +37,12 @@
         },
         methods: {
 			filterContent(value) {
-                let len = value.substr(0, 102).replace(/[^\x00-\xff]/g,"01").length,
+                let reg = [
+                        /<img\b[^>]*>/g,
+                        /[^\x00-\xff]/g
+                    ];
+                value = value.replace(reg[0], '');
+                let len = value.substr(0, 102).replace(reg[1],"01").length,
                     newValue = value;
 				if(len > 102) {
 					let index = 0;

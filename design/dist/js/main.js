@@ -15704,7 +15704,7 @@
 				if (!this.$route.params.artId) {
 					this.$store.dispatch('POST_ARTICLE', { form: form }).then(function (data) {
 						alert('发布成功');
-						// this.$router.push({name: 'article', params: {id: data.id}});
+						_this2.$router.push({ name: 'article', params: { id: data.id } });
 					}).catch(function (err) {
 						return alert(err);
 					});
@@ -18512,7 +18512,9 @@
 
 	    methods: {
 	        filterContent: function filterContent(value) {
-	            var len = value.substr(0, 102).replace(/[^\x00-\xff]/g, "01").length,
+	            var reg = [/<img\b[^>]*>/g, /[^\x00-\xff]/g];
+	            value = value.replace(reg[0], '');
+	            var len = value.substr(0, 102).replace(reg[1], "01").length,
 	                newValue = value;
 	            if (len > 102) {
 	                var index = 0;
