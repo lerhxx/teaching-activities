@@ -63,6 +63,12 @@ const totalSchema = new Schema({
 	userTotal: Number
 })
 
+// const commentSchema = new Schema({
+// 	id: String,
+// 	time: Date,
+// 	commnet: String
+// })
+
 const Models = {
 	User: mongoose.model('User', userSchema),
 	Article: mongoose.model('Article', articleSchema),

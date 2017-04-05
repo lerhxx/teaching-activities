@@ -9,6 +9,7 @@ import Personal from '../pages/personal.vue';
 import User from '../pages/user.vue';
 import PerArticle from '../components/per-article.vue';
 import Count from '../components/count.vue';
+import Comments from '../components/comment.vue';
 import {get} from '../assets/cookieUtil';
 
 const routes = [{
@@ -67,6 +68,8 @@ const routes = [{
 	path: '/manage/user', component: User, name: 'user'
 }, {
 	path: '/notfound', component: NotFound, name: 'notfound'
+}, {
+	path: '/comments', component: Comments, name: 'comment'
 }, {
 	path: '*', redirect: '/'
 }];

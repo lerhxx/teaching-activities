@@ -68,8 +68,6 @@
 		},
 		computed: {
 			article() {
-				console.log(new Date(this.$store.state.article.startTime))
-				console.log(new Date(this.$store.state.article.endTime))
 				return this.$store.state.article
 			},
 			self() {
