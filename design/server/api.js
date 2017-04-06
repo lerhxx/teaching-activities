@@ -52,7 +52,7 @@ router.post('/signin', (req, res) => {
 
 	db.User.findOne({id}, (err, user) => {
 		console.log(user)
-		switch(true) {
+		switch(true) { 
 			case !!err:
 				res.send({state: 1, msg: '查询失败！'});
 				break;
@@ -308,6 +308,14 @@ router.get('/user/count/:id/:tab/:year/:time', (req, res) => {
 	}
 })
 
+ /*
+ * @method filter: 过滤图表数据
+ * @param {Array} doc: Article Entity
+ * @return {Array} [{
+ * 						startTime: String,   活动开始时间
+ * 						type: String    活动信息类型
+ * 					}]
+ */
 function filter(doc) {
 	if(doc.length === 0) {
 		return {};

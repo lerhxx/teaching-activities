@@ -18734,21 +18734,25 @@
 	};
 	var myCharts = {};
 
-	var shapes = {
-	    'teachNum': 'path://M225.958294 3.489165c13.258825 0 26.587434 0 39.846259 0 11.44446 2.233065 22.819136 5.72223 34.333379 6.489846 123.027941 8.164645 235.448821 48.080687 341.170506 110.257598C665.034755 134.123484 673.269184 149.894507 673.1994 177.179774c-0.976966 269.503067-0.558266 539.075917-0.697833 808.578983 0 12.212076-1.535232 24.424152-2.442415 38.241243-45.847622-20.237154-85.90323-40.893008-127.982554-55.896415-149.406024-53.384217-303.417746-58.617964-459.453182-41.032575-64.89846 7.327245-78.924901-6.071146-78.924901-70.341556-0.069783-249.614829-0.069783-499.229658 0-748.844487 0-55.477716 9.071828-68.596974 62.316478-78.924901C118.98051 18.632138 172.64386 11.793376 225.958294 3.489165z M1126.65122 3.489165c13.258825 0 26.587434 0 39.846259 0 50.872019 7.745945 102.092954 13.607742 152.476489 23.586752 69.155241 13.747308 72.993322 19.958021 72.993322 89.671528 0.069783 236.356004 0.069783 472.642224 0 708.998228 0 106.349734-5.861796 108.303666-111.513698 98.254873-185.274635-17.655172-365.734224-0.279133-532.725637 91.695243-6.280496 3.489165-13.817091 4.67548-21.63282 7.187679-1.605016-6.629413-3.279815-10.327927-3.279815-14.026441-0.20935-281.505793-0.558266-562.941802 0.558266-844.447594 0.069783-12.560992 11.23511-30.913998 22.330653-36.706011 57.501431-29.657898 114.653946-62.456045 175.853891-81.995366C987.782472 24.703285 1058.124029 17.027123 1126.65122 3.489165z',
-	    'scientNum': 'path://M666.917873 517.739524c0-5.911956-0.985326-11.57758-1.675054-17.243204L665.242819 317.521289c23.204426-5.123695 40.546163-25.717007 40.546163-50.448689 0-28.623719-23.15516-51.729613-51.680346-51.729613L509.413519 215.342988C503.797161 186.029541 479.262545 163.465576 448.274044 163.465576c-30.939235 0-55.523118 22.563964-61.139476 51.877412L369.842098 215.342988c-28.574453 0-51.729613 23.105894-51.729613 51.729613 0 24.731682 17.440269 45.324994 40.595429 50.448689l0 182.97503c-0.738994 5.616358-1.773587 11.281982-1.773587 17.243204L127.993842 893.148713c0 72.273659 58.528362 130.851287 130.851287 130.851287l506.260476 0c72.273659 0 130.851287-58.577628 130.851287-130.851287L666.917873 517.739524zM350.923839 820.037527c-30.052442 0-54.439259-24.386817-54.439259-54.389993 0-30.052442 24.386817-54.439259 54.439259-54.439259 30.003175 0 54.389993 24.386817 54.389993 54.439259C405.363098 795.65071 380.976281 820.037527 350.923839 820.037527zM507.886264 918.914987c-26.554535 0-48.03464-21.529372-48.03464-48.083907 0-26.505268 21.529372-48.03464 48.03464-48.03464s48.03464 21.529372 48.03464 48.03464C555.920904 897.385615 534.440799 918.914987 507.886264 918.914987zM537.741641 712.3414c-44.290402 0-80.205533-35.915131-80.205533-80.156267s35.915131-80.205533 80.205533-80.205533c44.241135 0 80.156267 35.915131 80.156267 80.205533S582.032042 712.3414 537.741641 712.3414zM596.122204 78.234881c23.795622 0 43.108011 19.312389 43.108011 43.108011S619.917825 164.450902 596.122204 164.450902 553.014193 145.138513 553.014193 121.342892 572.326582 78.234881 596.122204 78.234881zM471.8726 0c20.987443 0 37.984316 16.996873 37.984316 37.984316S492.860043 75.968631 471.8726 75.968631 433.888285 58.971758 433.888285 37.984316 450.885158 0 471.8726 0z',
-	    'salonNum': 'path://M443.479417 72.680323c-243.652276 0-441.168792 162.921603-441.168792 363.895871 0 65.902966 23.000853 125.83187 56.242955 177.585581 21.274536 33.124422 63.044872 106.293885-37.978986 253.043157 65.376986-61.391209 167.093623-106.285698 303.905568-81.003895C651.512451 846.63443 884.649232 650.626267 884.649232 436.576193 884.649232 235.601926 687.131693 72.680323 443.479417 72.680323z'
-	};
-
+	/*
+	 * @method instance: 创建图表
+	 * @param {Array} ids: 需创建的图表 id
+	 * @return {void}
+	 */
 	function instance(ids) {
 	    ids.forEach(function (value, i) {
-	        // 创建 echarts 实例    
+	        // 实例化 echarts     
 	        myCharts[value] = _echarts2.default.init(document.getElementById(value));
 	    });
 	}
 
 	// 横轴
 	var axis = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
+	/*
+	 * @method xAxis: 设置横轴
+	 * @param {Number} range: 横轴范围，1：上半年，2：下半年，其它：全年
+	 * @return {Array}
+	 */
 	function xAxis(range) {
 	    if (range == 1) {
 	        return axis.slice(0, 6);
@@ -18759,8 +18763,16 @@
 	    }
 	}
 
-	// 处理数据
+	/*
+	* @method getData: 处理数据
+	* @param {Object} opt: [{
+	* 						startTime: String,   活动开始时间
+	* 						type: String    活动信息类型
+	* 				   }]
+	* @return {Object} count
+	*/
 	function getData(opt) {
+	    // console.log(opt)
 	    var mon = '',
 	        time = void 0,
 	        type = void 0;
@@ -18797,13 +18809,20 @@
 	    return count;
 	}
 
-	// 'sumNum'图表
+	/*
+	* @method sumOption: 'sumNum' 柱状图
+	* @param {Object} data: count
+	* @param {String} type: 图表类型 'sumNum'
+	* @param {Array} xAxis: 横坐标
+	* @return {Object} 图表配置项
+	*/
 	function sumOption(data, type, xAxis) {
 	    var series = [];
 	    for (var key in data) {
 	        if (key === type) {
 	            continue;
 	        }
+	        // console.log(data)
 	        var value = data[key];
 	        series.push({
 	            name: value.text,
@@ -18826,7 +18845,21 @@
 	            show: true,
 	            feature: {
 	                mark: { show: true },
-	                dataView: { show: true, readOnly: true },
+	                dataView: {
+	                    show: true,
+	                    readOnly: true,
+	                    optionToContent: function optionToContent(opt) {
+	                        var axisData = opt.xAxis[0].data;
+	                        var series = opt.series;
+	                        console.log(opt.series);
+	                        var table = '<table>\n                                        <theader>\n                                            <th>\n                                            </th>\n                                            <th>\n                                                ' + series[0].text + '\n                                            </th>\n                                            <th>\n                                                ' + series[1].text + '\n                                            </th>\n                                            <th>\n                                                ' + series[2].text + '\n                                            </th>\n                                        </theader>\n                                        <tbody>';
+	                        for (var i = 0, len = axisData.length; i < len; ++i) {
+	                            table += '<tr>\n                                        <td>\n                                            ' + axisData[i] + '\n                                        </td>\n                                        <td>\n                                            ' + (series[0].data[i] || 0) + '\n                                        </td>\n                                        <td>\n                                            ' + (series[1].data[i] || 0) + '\n                                        </td>\n                                        <td>\n                                            ' + (series[2].data[i] || 0) + '\n                                        </td>\n                                      </tr>';
+	                        }
+	                        table += '</tbody></table>';
+	                        return table;
+	                    }
+	                },
 	                magicType: { show: true, type: ['line', 'bar'] },
 	                restore: { show: true },
 	                saveAsImage: { show: true }
@@ -18850,7 +18883,20 @@
 	        series: series
 	    };
 	}
-	// 'itemNum'水球图
+
+	/*
+	* @method liquid: 'itemNum' 水球图
+	* @param {Object} opt: [{
+	*                      salonNum: {
+	*                          data: String,
+	*                          name: String,
+	*                          text: String
+	*                      },
+	*                      scientNum: {...},
+	*                      teachNum: {...}
+	*                 }]
+	* @return {Object} 图表配置项
+	*/
 	function liquid(opt) {
 	    var series = [],
 	        i = 1;
@@ -18868,7 +18914,6 @@
 	            outline: {
 	                show: false
 	            },
-	            // shape: shapes[value.text],
 	            label: {
 	                normal: {
 	                    formatter: function formatter(param) {
@@ -18885,7 +18930,12 @@
 	        series: series
 	    };
 	}
-	// 获取各项百分比
+
+	/*
+	* @method getPercent: 获取各项百分比
+	* @param {Object} data: count
+	* @return {Object} 图表配置项
+	*/
 	function getPercent(data) {
 	    var percent = {};
 
@@ -18909,6 +18959,15 @@
 	    return percent;
 	}
 
+	/*
+	* @method init: 初始化
+	* @param {Array} ids: 需要创建的图表id
+	* @param {Array} options: [{
+	* 						startTime: String,   活动开始时间
+	* 						type: String    活动信息类型
+	* 				  }]
+	* @return {void}
+	*/
 	function init(ids, options) {
 	    instance(ids);
 
@@ -18931,7 +18990,16 @@
 	    }
 	}
 
+	/*
+	* @method refresh: 更新图表
+	* @param {Object} options: [{
+	* 						startTime: String,   活动开始时间
+	* 						type: String    活动信息类型
+	* 				   }]
+	* @return {void}
+	*/
 	function refresh(options) {
+	    console.log(options);
 	    if ((0, _common.isEmpty)(myCharts)) {
 	        return;
 	    }
@@ -89229,6 +89297,11 @@
 	    value: true
 	});
 	exports.isEmpty = isEmpty;
+	/*
+	 * @method isEmpty: 创建图表
+	 * @param {Object || Array} obj: 需判断是否为空的对象
+	 * @return {Boolean}
+	 */
 	function isEmpty(obj) {
 	    // 判断数组或对象是否为空
 	    if (!obj) {
@@ -89754,11 +89827,7 @@
 	            rangeTab: 1,
 	            timeTab: 0,
 	            showDialog: false,
-	            charts: ['sumNum',
-	            // 'teachNum',
-	            // 'scientNum',
-	            // 'salonNum'
-	            'itemNum'],
+	            charts: ['sumNum', 'itemNum'],
 	            empty: false
 	        };
 	    },
@@ -89771,6 +89840,7 @@
 	                _this.init();
 	            }
 	        }, 100);
+	        this.rangeTab = this.userRank > 0 ? 1 : 0;
 	    },
 
 	    methods: {
@@ -89814,6 +89884,7 @@
 	            var id = this.charts,
 	                queryId = this.rangeTab == 0 ? this.$route.params.id : this.$store.state.userFaculty,
 	                time = this.timeTab;
+	            console.log(this.rangeTab);
 	            var ref = document.getElementById('canvas-wrapper');
 
 	            if (ref) {
@@ -89908,40 +89979,6 @@
 	//
 	//
 	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
 
 /***/ },
 /* 550 */
@@ -89977,7 +90014,7 @@
 	    on: {
 	      "click": _vm.changeRangeTab
 	    }
-	  }, [_vm._v("\n                    单位\n                ")])])]), _vm._v(" "), _c('li', [_c('div', [_c('label', [_vm._v("时间")]), _vm._v(" "), _vm._v(" "), _c('a', {
+	  }, [_vm._v("\n                    单位\n                ")])])]), _vm._v(" "), _c('li', [_c('div', [_c('label', [_vm._v("时间")]), _vm._v(" "), _c('a', {
 	    on: {
 	      "click": _vm.selectYears
 	    }
@@ -90011,7 +90048,7 @@
 	    on: {
 	      "click": _vm.changeTimeTab
 	    }
-	  }, [_vm._v("\n                    下半年\n                ")])])]), _vm._v(" ")]), _vm._v(" "), _c('div', {
+	  }, [_vm._v("\n                    下半年\n                ")])])])]), _vm._v(" "), _c('div', {
 	    directives: [{
 	      name: "show",
 	      rawName: "v-show",
@@ -90038,7 +90075,7 @@
 	        "height": "250"
 	      }
 	    })
-	  })), _vm._v(" "), _vm._v(" "), _c('div', {
+	  })), _vm._v(" "), _c('div', {
 	    directives: [{
 	      name: "show",
 	      rawName: "v-show",
@@ -90071,10 +90108,13 @@
 
 /***/ },
 /* 551 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = {}
+
+	/* template */
+	var __vue_template__ = __webpack_require__(556)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -90087,6 +90127,21 @@
 	  __vue_options__ = __vue_options__.options
 	}
 	__vue_options__.__file = "D:\\code\\teaching-activities\\design\\src\\components\\form.vue"
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+
+	/* hot reload */
+	if (false) {(function () {
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  module.hot.accept()
+	  if (!module.hot.data) {
+	    hotAPI.createRecord("data-v-9bde4c0c", __vue_options__)
+	  } else {
+	    hotAPI.reload("data-v-9bde4c0c", __vue_options__)
+	  }
+	})()}
 	if (__vue_options__.functional) {console.error("[vue-loader] form.vue: functional components are not supported and should be defined in plain js files using render functions.")}
 
 	module.exports = __vue_exports__
@@ -90233,6 +90288,20 @@
 	  module.hot.accept()
 	  if (module.hot.data) {
 	     require("vue-hot-reload-api").rerender("data-v-371909bb", module.exports)
+	  }
+	}
+
+/***/ },
+/* 556 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _c('div', [_vm._v("\n    hello\n")])
+	},staticRenderFns: []}
+	if (false) {
+	  module.hot.accept()
+	  if (module.hot.data) {
+	     require("vue-hot-reload-api").rerender("data-v-9bde4c0c", module.exports)
 	  }
 	}
 

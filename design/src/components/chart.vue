@@ -15,9 +15,6 @@
             <li>
                 <div>
                     <label>时间</label>
-                    <!--<a :class="{'active': timeTab == 0}">
-                        全部
-                    </a>-->
                     <a @click='selectYears'>
                         {{selectYear}}
                     </a>
@@ -32,23 +29,6 @@
                     </a>
                 </div>
             </li>
-            <!--<li>
-                <div>
-                    <label>类型</label>
-                    <a :class="{'active': typeTab === 0}">
-                        全部
-                    </a>
-                    <a :class="{'active': typeTab === 1}">
-                        教学讨论会
-                    </a>
-                    <a :class="{'active': typeTab === 2}">
-                        科研研讨会
-                    </a>
-                    <a :class="{'active': typeTab === 3}">
-                        学术沙龙
-                    </a>
-                </div>
-            </li>-->
         </ul>
         <div v-show='empty' class='empty'>
             暂无记录
@@ -56,20 +36,6 @@
         <div id='canvas-wrapper' v-show='!empty'>
             <div v-for='item in charts' :id='item' width='300' height='250' class='canvas'></div>
         </div>
-        <!--<div>
-            <div>
-                <label>发表: </label>{{opt.postNum}} 次
-            </div>
-            <div>
-                <label>教学讨论会: </label>{{opt.teachNum && opt.teachNum.sum}} 次
-            </div>
-            <div>
-                <label>科研研讨会: </label>{{opt.scientNum && opt.scientNum.sum}} 次
-            </div>
-            <div>
-                <label>学术沙龙: </label>{{opt.salonNum && opt.salonNum.sum}} 次
-            </div>
-        </div>-->
         <div class='dialog-wrapper' @click='hideDialog' v-show='showDialog'>
             <ul class='dialog'>
                 <li v-for='year in years' :class="{'active': year == selectYear}" @click='changeYear'>{{year}}</li>
@@ -97,9 +63,6 @@
                 showDialog: false,
                 charts: [
                     'sumNum',
-                    // 'teachNum',
-                    // 'scientNum',
-                    // 'salonNum'
                     'itemNum'
                 ],
                 empty: false
@@ -112,7 +75,7 @@
                     this.init();
 				}
 			}, 100);
-            
+            this.rangeTab = this.userRank > 0 ? 1 : 0;
 		},
 		methods: {
             init() {
@@ -153,6 +116,7 @@
                 let id = this.charts,
                     queryId = this.rangeTab == 0 ? this.$route.params.id : this.$store.state.userFaculty,
                     time = this.timeTab;
+                    console.log(this.rangeTab)
                 let ref = document.getElementById('canvas-wrapper');
 
 

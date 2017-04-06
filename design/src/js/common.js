@@ -1,3 +1,8 @@
+/*
+ * @method isEmpty: 创建图表
+ * @param {Object || Array} obj: 需判断是否为空的对象
+ * @return {Boolean}
+ */
 export function isEmpty(obj) {
     // 判断数组或对象是否为空
     if(!obj) {
