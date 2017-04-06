@@ -11,6 +11,7 @@ import PerArticle from '../components/per-article.vue';
 import Statistics from '../pages/statistics.vue';
 import Chart from '../components/chart.vue';
 import Form from '../components/form.vue';
+import Modify from '../components/modifyPwd.vue';
 import Comments from '../components/comment.vue';
 import {get} from '../assets/cookieUtil';
 
@@ -66,9 +67,9 @@ const routes = [{
 		component: PerArticle,
 		name: 'article'
 	}, {
-		path: 'count',
-		component: Chart,
-		name: 'perChart'
+		path: 'modify',
+		component: Modify,
+		name: 'modify'
 	}]
 }, {
 	path: '/manage/user', component: User, name: 'user'

@@ -9,8 +9,8 @@
                     文章
                 </router-link>
             </li><li class='per-list-item' :class="{active: !isActive}" @click='toggleAct(2)'>
-                <router-link to='count'>
-                    统计
+                <router-link to='modify'>
+                    修改密码
                 </router-link>
             </li>
         </ul>

@@ -25,7 +25,7 @@
 				</router-link>
 			</li>
 			<li v-show='user'>
-				<router-link :to="{name: 'perChart', params: {id: userId}}">
+				<router-link :to="{name: 'modify', params: {id: userId}}">
 					个人中心
 				</router-link>
 			</li>

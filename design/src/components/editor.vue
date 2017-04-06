@@ -71,13 +71,13 @@
     export default {
         data() {
             /**
-             * param {Array} btns: toolbar 子项
-             * param {Array} colors: toolbar 颜色选项子项
-             * param {String} id: 编辑器 ID
-             * param {Boolean} isFocus: 编辑器是否获焦
-             * param {String} contents: 编辑器的内容
-             * param {String} linkURL: 链接地址
-             * param {String} contentTip: 编辑器提示语
+             * @param {Array} btns: toolbar 子项
+             * @param {Array} colors: toolbar 颜色选项子项
+             * @param {String} id: 编辑器 ID
+             * @param {Boolean} isFocus: 编辑器是否获焦
+             * @param {String} contents: 编辑器的内容
+             * @param {String} linkURL: 链接地址
+             * @param {String} contentTip: 编辑器提示语
             */
             return {
                 btns: [

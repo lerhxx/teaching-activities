@@ -53,8 +53,17 @@
 		data() {
             let year = new Date().getFullYear();
 
+            /**
+             * @param {Object} opt: 存储服务端返回的图表信息
+             * @param {Date} curYear: 当前年份
+             * @param {Date} selectYear: 已选择年份
+             * @param {Number} rangeTab: 查询类型，0-个人，1-单位
+             * @param {Number} timeTab: 查询时间范围，0-全年，1-上半年，2-下半年
+             * @param {Boolean} showDialog: 是否显示年份选择框
+             * @param {Array} charts: 需创建图表的 id
+             * @param {Boolean} empty: 是否有数据
+            */
 			return {
-				isPerArt: false,
                 opt: {},
                 curYear: year,
                 selectYear: year,
@@ -80,18 +89,6 @@
 		methods: {
             init() {
                 this.initCharts();
-            },
-			toggleArt(type) {
-                switch(type) {
-                    case 1:
-                        this.isPerArt = true;
-                        break;
-                    case 2:
-                        this.isPerArt = false;
-                        break;
-                    default:
-                        this.isPerArt = true;
-                }
             },
             selectYears() {
                 this.showDialog = true;
