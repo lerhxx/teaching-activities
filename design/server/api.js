@@ -346,4 +346,15 @@ router.post('/upload', (req, res) => {
 	res.end()
 })
 
+router.post('/modify', (req, res) => {
+	console.log(req.body)
+	db.User.update({id: req.body.id}, {$set: {pwd: req.body.newPwd}}, (err, doc) => {
+		if(err) {
+			res.send({state: 1, msg: err})
+		}else {
+			res.send({state: 0, msg: '修改成功！'})
+		}
+	})
+})
+
 module.exports = router;

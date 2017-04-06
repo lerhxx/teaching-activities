@@ -156,5 +156,15 @@ export default {
           return Promise.reject(res.data.msg);
         }
       })
+  },
+  MODIFY_PWD({commit}, info) {
+    return axios.post(`/modify`, info)
+      .then(res => {
+        if(res.data.state == 0) {
+          return Promise.resolve(res.data.msg);
+        }else {
+          return Promise.reject(res.data.msg)
+        }
+      })
   }
 }

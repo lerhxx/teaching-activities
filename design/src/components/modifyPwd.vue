@@ -3,14 +3,14 @@
         <form class='modify-form'>
             <div class='group-con '>
                 <label>旧密码：</label>
-                <input type='password' />
+                <input type='password' v-model='oldPwd' />
             </div>
             <div class='group-con '>
                 <label>新密码：</label>
-                <input type='password' />
+                <input type='password' v-model='newPwd' />
             </div>
             <div class='group-con '>
-                <button type='button' class='btn btn-l btn-edit' @click='toggleTips'>修改</button>
+                <button type='button' class='btn btn-l btn-edit' @click='onModify'>修改</button>
             </div>
         </form>
         <transition name='tip' v-on:after-enter='afterEnter'>
@@ -22,21 +22,46 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex';
+
     export default {
         data() {
             return {
                 tips: '修改成功!',
-                showTip: false
+                showTip: false,
+                oldPwd: '',
+                newPwd: ''
             }
         },
         methods: {
-            toggleTips() {
+            toggleTip(text) {
+                this.tips = text;
                 this.showTip = true;
             },
             afterEnter() {
                 this.showTip = false;
+            },
+            onModify() {
+                let self = this;
+                if(!this.oldPwd || !this.newPwd) {
+                    this.toggleTip('请输入新/旧密码');
+                    return;
+                }
+                if(this.oldPwd === this.newPwd) {
+                    this.toggleTip('新旧密码相同！');
+                    return;
+                }
+                this.$store.dispatch('MODIFY_PWD', {id: this.userId, oldPwd: this.oldPwd, newPwd: this.newPwd})
+                            .then(res => {
+                                self.toggleTip(res);
+                            })
+                            .catch(err => {
+                                console.log(self)
+                                self.toggleTip(err);
+                            })
             }
-        }
+        },
+        computed: mapState(['userId'])
     }
 </script>
 

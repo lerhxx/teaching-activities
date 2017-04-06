@@ -11074,6 +11074,17 @@
 	        return Promise.reject(res.data.msg);
 	      }
 	    });
+	  },
+	  MODIFY_PWD: function MODIFY_PWD(_ref17, info) {
+	    var commit = _ref17.commit;
+
+	    return _axios2.default.post('/modify', info).then(function (res) {
+	      if (res.data.state == 0) {
+	        return Promise.resolve(res.data.msg);
+	      } else {
+	        return Promise.reject(res.data.msg);
+	      }
+	    });
 	  }
 	};
 
@@ -90364,7 +90375,49 @@
 	    staticClass: "modify-wrapper"
 	  }, [_c('form', {
 	    staticClass: "modify-form"
-	  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
+	  }, [_c('div', {
+	    staticClass: "group-con "
+	  }, [_c('label', [_vm._v("旧密码：")]), _vm._v(" "), _c('input', {
+	    directives: [{
+	      name: "model",
+	      rawName: "v-model",
+	      value: (_vm.oldPwd),
+	      expression: "oldPwd"
+	    }],
+	    attrs: {
+	      "type": "password"
+	    },
+	    domProps: {
+	      "value": _vm._s(_vm.oldPwd)
+	    },
+	    on: {
+	      "input": function($event) {
+	        if ($event.target.composing) { return; }
+	        _vm.oldPwd = $event.target.value
+	      }
+	    }
+	  })]), _vm._v(" "), _c('div', {
+	    staticClass: "group-con "
+	  }, [_c('label', [_vm._v("新密码：")]), _vm._v(" "), _c('input', {
+	    directives: [{
+	      name: "model",
+	      rawName: "v-model",
+	      value: (_vm.newPwd),
+	      expression: "newPwd"
+	    }],
+	    attrs: {
+	      "type": "password"
+	    },
+	    domProps: {
+	      "value": _vm._s(_vm.newPwd)
+	    },
+	    on: {
+	      "input": function($event) {
+	        if ($event.target.composing) { return; }
+	        _vm.newPwd = $event.target.value
+	      }
+	    }
+	  })]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con "
 	  }, [_c('button', {
 	    staticClass: "btn btn-l btn-edit",
@@ -90372,7 +90425,7 @@
 	      "type": "button"
 	    },
 	    on: {
-	      "click": _vm.toggleTips
+	      "click": _vm.onModify
 	    }
 	  }, [_vm._v("修改")])])]), _vm._v(" "), _c('transition', {
 	    attrs: {
@@ -90390,23 +90443,7 @@
 	    }],
 	    staticClass: "tip"
 	  }, [_vm._v("\n            " + _vm._s(_vm.tips) + "\n        ")])])])
-	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _c('div', {
-	    staticClass: "group-con "
-	  }, [_c('label', [_vm._v("旧密码：")]), _vm._v(" "), _c('input', {
-	    attrs: {
-	      "type": "password"
-	    }
-	  })])
-	},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _c('div', {
-	    staticClass: "group-con "
-	  }, [_c('label', [_vm._v("新密码：")]), _vm._v(" "), _c('input', {
-	    attrs: {
-	      "type": "password"
-	    }
-	  })])
-	}]}
+	},staticRenderFns: []}
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
@@ -90456,54 +90493,76 @@
 
 /***/ },
 /* 561 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
+
+	var _vuex = __webpack_require__(4);
 
 	exports.default = {
 	    data: function data() {
 	        return {
 	            tips: '修改成功!',
-	            showTip: false
+	            showTip: false,
+	            oldPwd: '',
+	            newPwd: ''
 	        };
 	    },
 
 	    methods: {
-	        toggleTips: function toggleTips() {
+	        toggleTip: function toggleTip(text) {
+	            this.tips = text;
 	            this.showTip = true;
 	        },
 	        afterEnter: function afterEnter() {
 	            this.showTip = false;
+	        },
+	        onModify: function onModify() {
+	            var self = this;
+	            if (!this.oldPwd || !this.newPwd) {
+	                this.toggleTip('请输入新/旧密码');
+	                return;
+	            }
+	            if (this.oldPwd === this.newPwd) {
+	                this.toggleTip('新旧密码相同！');
+	                return;
+	            }
+	            this.$store.dispatch('MODIFY_PWD', { id: this.userId, oldPwd: this.oldPwd, newPwd: this.newPwd }).then(function (res) {
+	                self.toggleTip(res);
+	            }).catch(function (err) {
+	                console.log(self);
+	                self.toggleTip(err);
+	            });
 	        }
-	    }
-	};
+	    },
+	    computed: (0, _vuex.mapState)(['userId'])
+	}; //
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 /***/ }
 /******/ ]);
