@@ -10,6 +10,7 @@ const user = require('../json/user.json');
 mongoose.Promise = Promise;
 
 mongoose.connect('mongodb://localhost/design');
+// mongoose.connect('mongodb://D:/mongodb/design');
 
 const selectTypeSchema = new Schema({
 	type: String,

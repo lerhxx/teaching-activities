@@ -8,7 +8,9 @@ import Article from '../pages/article.vue';
 import Personal from '../pages/personal.vue';
 import User from '../pages/user.vue';
 import PerArticle from '../components/per-article.vue';
-import Count from '../components/count.vue';
+import Statistics from '../pages/statistics.vue';
+import Chart from '../components/chart.vue';
+import Form from '../components/form.vue';
 import Comments from '../components/comment.vue';
 import {get} from '../assets/cookieUtil';
 
@@ -45,27 +47,42 @@ const routes = [{
 	}
 }, {
 	path: '/user/edit/:id', component: Edit, name: 'userEdit'
-}, {
-	path: '/pervalidate/:id', name: 'perValidate',
-	redirect: to => {
-		const {hash, params, query} = to;
-		if(params.id) {
-			return '/personal/' + params.id + '/count';
-		}else {
-			return '/signin';
-		}
-	}
-}, {
+}, 
+// {
+// 	path: '/pervalidate/:id', name: 'perValidate',
+// 	redirect: to => {
+// 		const {hash, params, query} = to;
+// 		if(params.id) {
+// 			return '/personal/' + params.id + '/count';
+// 		}else {
+// 			return '/signin';
+// 		}
+// 	}
+// },
+ {
 	path: '/personal/:id', component: Personal, name: 'personal',
 	children: [{
 		path: 'article',
-		component: PerArticle
+		component: PerArticle,
+		name: 'article'
 	}, {
 		path: 'count',
-		component: Count
+		component: Chart,
+		name: 'perChart'
 	}]
 }, {
 	path: '/manage/user', component: User, name: 'user'
+}, {
+	path: '/statistics/:id', component: Statistics, name: 'statistics',
+	children: [{
+		path: 'charts',
+		component: Chart,
+		name: 'chart'
+	}, {
+		path: 'form',
+		component: Form,
+		name: 'form'
+	}]
 }, {
 	path: '/notfound', component: NotFound, name: 'notfound'
 }, {

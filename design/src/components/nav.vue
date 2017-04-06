@@ -24,9 +24,14 @@
 					发布
 				</router-link>
 			</li>
-			<li>
-				<router-link :to="{name: 'perValidate', params: {id: userId}}" v-show='user'>
+			<li v-show='user'>
+				<router-link :to="{name: 'perChart', params: {id: userId}}">
 					个人中心
+				</router-link>
+			</li>
+			<li v-show='user'>
+				<router-link :to="{name: 'chart', params: {id: userId}}">
+					统计
 				</router-link>
 			</li>
 			<li v-show='userRank > 1'>
