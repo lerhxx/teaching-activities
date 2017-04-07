@@ -51,7 +51,7 @@ router.post('/signin', (req, res) => {
 	let {id, pwd} = req.body;
 
 	db.User.findOne({id}, (err, user) => {
-		console.log(user)
+		// console.log(user)
 		switch(true) { 
 			case !!err:
 				res.send({state: 1, msg: '查询失败！'});
@@ -149,7 +149,7 @@ router.get('/article/:id', (req, res) => {
 		}
 		// console.log(doc)
 		if(doc) {
-			console.log(doc.startTime)
+			// console.log(doc.startTime)
 			res.send({state: 0, data: doc});
 		}else {
 			res.send({state: 1, msg: '文章不存在！'});
@@ -271,7 +271,7 @@ router.get('/user/info', (req, res) => {
 })
 
 router.get('/user/count/:id/:tab/:year/:time', (req, res) => {
-	console.log(req.params);
+	// console.log(req.params);
 	let params = req.params,
 		sTime = new Date(),
 		eTime = new Date();
@@ -288,7 +288,7 @@ router.get('/user/count/:id/:tab/:year/:time', (req, res) => {
 
 	if(params.tab == 0) {
 		db.Article.find({participator: {$in: [params.id]}, $and: [{startTime: {$gt: sTime}}, {startTime: {$lt: eTime}}]}, (err, doc) => {
-				console.log(doc)
+				// console.log(doc)
 				if(err) {
 					res.send({state: 1, msg: '查询失败！'})
 				}else {
@@ -342,17 +342,28 @@ router.post('/user/addUser', (req, res) => {
 })
 
 router.post('/upload', (req, res) => {
-	console.log(req.body)
+	// console.log(req.body)
 	res.end()
 })
 
 router.post('/modify', (req, res) => {
-	console.log(req.body)
+	// console.log(req.body)
 	db.User.update({id: req.body.id}, {$set: {pwd: req.body.newPwd}}, (err, doc) => {
 		if(err) {
 			res.send({state: 1, msg: err})
 		}else {
 			res.send({state: 0, msg: '修改成功！'})
+		}
+	})
+})
+
+router.get('/unitText', (req, res) => {
+	db.Academy.find({index: req.query.faculty}, (err, doc) => {
+		console.log(doc)
+		if(err) {
+			res.send({state: 1, msg: err})
+		}else {
+			res.send({state: 0, data: doc[0].staff})
 		}
 	})
 })

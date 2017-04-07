@@ -166,5 +166,15 @@ export default {
           return Promise.reject(res.data.msg)
         }
       })
+  },
+  GET_UNIT_TEXT({commit}, info) {
+    return axios.get('/unitText', {params: info})
+      .then(res => {
+        if(res.data.state == 0) {
+          return Promise.resolve(res.data.data);
+        }else {
+          return Promise.reject(res.data.msg)
+        }
+      })
   }
 }

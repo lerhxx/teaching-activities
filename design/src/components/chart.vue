@@ -7,8 +7,11 @@
                     <a :class="{'active': rangeTab == 0}" @click='changeRangeTab' data-type='0'>
                         个人
                     </a>
-                    <a :class="{'active': rangeTab == 1}" @click='changeRangeTab' data-type='1'>
+                    <a class='select-box' :class="{'active': rangeTab == 1}" @click='changeRangeTab' data-type='1'>
                         单位
+                        <ul class='faculty-lsit'>
+                            <li v-for='item in faculty'>{{item}}</li>
+                        </ul>
                     </a>
                </div>
             </li>
@@ -62,6 +65,7 @@
              * @param {Boolean} showDialog: 是否显示年份选择框
              * @param {Array} charts: 需创建图表的 id
              * @param {Boolean} empty: 是否有数据
+             * @param {Array} faculty: 能够查看的单位
             */
 			return {
                 opt: {},
@@ -74,17 +78,19 @@
                     'sumNum',
                     'itemNum'
                 ],
-                empty: false
+                empty: false,
+                faculty: []
 			}
 		},
 		mounted() {
             let a = setInterval(() => {
 				if(this.$store.state.userId) {
 					clearInterval(a);
+                    this.getUnitText();
                     this.init();
+                    this.rangeTab = this.userRank > 0 ? 1 : 0;
 				}
 			}, 100);
-            this.rangeTab = this.userRank > 0 ? 1 : 0;
 		},
 		methods: {
             init() {
@@ -148,9 +154,34 @@
                             this.empty = true;
                         }
                     })
+            },
+            getUnitText() {
+                let faculty = this.$store.state.userFaculty;
+                // console.log(faculty);
+                this.$store.dispatch('GET_UNIT_TEXT', {faculty: faculty.split('-')[0]})
+                    .then(res => {
+                        if(this.userRank > 1) {
+                            res.forEach((item, index) => {
+                                if(index > 0) {
+                                    this.faculty.push(item.type)
+                                }
+                            })
+                        }else if(this.userRank == 1){
+                            for(let i = 0, len = res.length; i < len; ++i) {
+                                if(res[i].index == faculty) {
+                                    this.faculty.push(res[i].type)
+                                    break;
+                                }
+                            }
+                        }
+                    })
+                    .catch(err => alert(err));
             }
 		},
 		computed: {
+            userFaculty() {
+                return this.$store.state.userFaculty;
+            },
             userRank() {
                 return this.$store.state.userRank;
             },
@@ -199,6 +230,29 @@
                 height 35px
                 border 1px solid transparent
                 outline none
+    .select-box
+        relative()
+        &:hover
+            .faculty-lsit
+                display block
+                li
+                    color #000
+                    &:hover
+                        color #fff
+                        background #44a5f2
+    .faculty-lsit
+        absolute(top 30px)
+        display none
+        width 150px
+        padding 5px 0
+        border 1px solid rgba(0, 0, 0, .3)
+        background #fff
+        border-radius 6px
+        z-index 1
+        li
+            padding 3px 0
+            margin 0
+            text-align center
     .dialog-wrapper
         absolute(left 0 top 0 right 0 bottom 0)
         background-color rgba(0, 0, 0, .6)
