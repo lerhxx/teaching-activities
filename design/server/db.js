@@ -31,6 +31,8 @@ const userSchema = new Schema({
 	title: String
 })
 
+//TODO
+//引用参与者
 const articleSchema = new Schema({
 	url: String,
 	author: String,

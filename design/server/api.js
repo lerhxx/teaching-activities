@@ -157,16 +157,7 @@ router.get('/article/:id', (req, res) => {
 	})
 })
 
-router.delete('/article/:id', (req, res) => {
-	db.Article.remove({_id: req.params.id}, (err, doc) => {
-		if(err) {
-			res.send({state: 1, msg: '操作失败！'})
-		}else {
-			res.send({state: 0, msg: '删除成功！'});
-		}
-	})
-})
-
+//TODO
 router.get('/article/:id/edit', (req, res) => {
 	db.Article.find({_id: req.params.id}, (err, doc) => {
 		if(err) {
@@ -176,6 +167,16 @@ router.get('/article/:id/edit', (req, res) => {
 			res.send({state: 2, msg: '文章不存在！'})
 		}else {
 			res.send({state: 0, data: doc[0]})
+		}
+	})
+})
+
+router.delete('/article/:id', (req, res) => {
+	db.Article.remove({_id: req.params.id}, (err, doc) => {
+		if(err) {
+			res.send({state: 1, msg: '操作失败！'})
+		}else {
+			res.send({state: 0, msg: '删除成功！'});
 		}
 	})
 })
@@ -270,6 +271,8 @@ router.get('/user/info', (req, res) => {
 	})
 })
 
+//TODO
+///count/:id/:tab/:year/:time
 router.get('/user/count/:id/:tab/:year/:time', (req, res) => {
 	// console.log(req.params);
 	let params = req.params,
@@ -346,6 +349,8 @@ router.post('/upload', (req, res) => {
 	res.end()
 })
 
+//TODO
+///user/modify
 router.post('/modify', (req, res) => {
 	// console.log(req.body)
 	db.User.update({id: req.body.id}, {$set: {pwd: req.body.newPwd}}, (err, doc) => {
@@ -357,6 +362,8 @@ router.post('/modify', (req, res) => {
 	})
 })
 
+//TODO
+///count/unitText
 router.get('/unitText', (req, res) => {
 	db.Academy.find({index: req.query.faculty}, (err, doc) => {
 		console.log(doc)
@@ -369,3 +376,5 @@ router.get('/unitText', (req, res) => {
 })
 
 module.exports = router;
+//TODO
+//登出
