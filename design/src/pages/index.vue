@@ -25,7 +25,7 @@
 			<ul class='list'>
 				<li class='list-item' v-for='item in articles' :class="{'willHeld': new Date(item.endTime).getTime() > now}">
 					<h3>
-						<router-link class='text-ellipsis' :to="{name: 'article', params: {id: item._id}}">
+						<router-link class='text-ellipsis' :to="{name: 'article', query: {id: item._id}}">
 							{{item.title}}
 						</router-link>
 					</h3>

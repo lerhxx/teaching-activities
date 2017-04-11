@@ -22,7 +22,7 @@ const routes = [{
 }, {
 	path: '/signin', component: SignIn, name: 'signin'
 },  {
-	path: '/article/:id', component: Article, name: 'article',
+	path: '/article', component: Article, name: 'article',
 }, {
 	path: '/user/modify/:artId', component: Edit, name: 'articleEdit',
 }, {

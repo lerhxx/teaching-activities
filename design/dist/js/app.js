@@ -12561,7 +12561,7 @@
 	}, {
 		path: '/signin', component: _signin2.default, name: 'signin'
 	}, {
-		path: '/article/:id', component: _article2.default, name: 'article'
+		path: '/article', component: _article2.default, name: 'article'
 	}, {
 		path: '/user/modify/:artId', component: _edit2.default, name: 'articleEdit'
 	}, {
@@ -15414,7 +15414,7 @@
 	      attrs: {
 	        "to": {
 	          name: 'article',
-	          params: {
+	          query: {
 	            id: item._id
 	          }
 	        }
@@ -18052,7 +18052,7 @@
 		},
 		created: function created() {
 			var self = this;
-			this.$store.dispatch('GET_ARTICLE', this.$route.params).catch(function (err) {
+			this.$store.dispatch('GET_ARTICLE', this.$route.query).catch(function (err) {
 				alert(err);
 				// console.log(err)
 				self.$router.push({ name: 'index' });

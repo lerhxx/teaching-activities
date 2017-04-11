@@ -58,7 +58,7 @@
 		},
 		created() {
 			let self = this;
-			this.$store.dispatch('GET_ARTICLE', this.$route.params)
+			this.$store.dispatch('GET_ARTICLE', this.$route.query)
 				.catch(err => {
 					alert(err);
 					// console.log(err)
