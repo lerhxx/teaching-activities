@@ -6,6 +6,7 @@ const path = require('path');
 const resolve = file => path.resolve(__dirname, file);
 
 const fn = () => {};
+//获取页脚信息
 router.get('/getFooterLink', (req, res) => {
 	db.FootLink.find(null, (err, links) => {
 		if(err) {
@@ -15,7 +16,7 @@ router.get('/getFooterLink', (req, res) => {
 		}
 	})
 })
-
+// 获取首页文章类型
 router.get('/getTypeLists', (req, res) => {
 	db.Search.find(null, (err, lists) => {
 		if(err) {
@@ -25,7 +26,7 @@ router.get('/getTypeLists', (req, res) => {
 		}
 	})
 })
-
+// 获取首页学院信息
 router.get('/getAcademyLists', (req, res) => {
 	db.Academy.find(null, (err, lists) => {
 		if(err) {
@@ -35,7 +36,7 @@ router.get('/getAcademyLists', (req, res) => {
 		}
 	})
 })
-
+// 获取首页教研室类型
 router.get('/getFacultiesLists/:id', (req, res) => {
 	db.Academy.findOne({index: req.params.id}, (err, doc) => {
 		// console.log(doc)
@@ -46,7 +47,7 @@ router.get('/getFacultiesLists/:id', (req, res) => {
 		}
 	})
 })
-
+// 登录
 router.post('/signin', (req, res) => {
 	let {id, pwd} = req.body;
 
@@ -70,8 +71,11 @@ router.post('/signin', (req, res) => {
 		}
 	})
 })
-
-router.post('/user/edit/:id', (req, res) => {
+// 登出
+router.get('/signout', (req, res) => {
+})
+// 创建文章
+router.post('/edit/create', (req, res) => {
 	db.Article.findOne({title: req.body.form.title, author: req.body.form.author}, (err, doc) => {
 		if(err) {
 			res.send({state: 3, msg: '操作失败'});
@@ -114,8 +118,8 @@ router.post('/user/edit/:id', (req, res) => {
 		}
 	})
 })
-
-router.put('/user/edit/:id', (req, res) => {
+// 修改文章
+router.put('/edit/modify', (req, res) => {
 	let form = req.body.form;
 	db.Article.findByIdAndUpdate(req.body.id, {$set: {
 		url: form.url,
@@ -141,7 +145,30 @@ router.put('/user/edit/:id', (req, res) => {
 		}
 	})
 })
-
+// 获取修改的文章
+router.get('/edit/article/:id', (req, res) => {
+	db.Article.find({_id: req.params.id}, (err, doc) => {
+		if(err) {
+			res.send({state: 1, msg: '查询失败！'})
+		}
+		if(!doc.length) {
+			res.send({state: 2, msg: '文章不存在！'})
+		}else {
+			res.send({state: 0, data: doc[0]})
+		}
+	})
+})
+// 删除文章
+router.delete('/edit/delete/:id', (req, res) => {
+	db.Article.remove({_id: req.params.id}, (err, doc) => {
+		if(err) {
+			res.send({state: 1, msg: '操作失败！'})
+		}else {
+			res.send({state: 0, msg: '删除成功！'});
+		}
+	})
+})
+// 获取文章详情
 router.get('/article/:id', (req, res) => {
 	db.Article.findById({_id: req.params.id}, (err, doc) => {
 		if(err) {
@@ -157,31 +184,8 @@ router.get('/article/:id', (req, res) => {
 	})
 })
 
-//TODO
-router.get('/article/:id/edit', (req, res) => {
-	db.Article.find({_id: req.params.id}, (err, doc) => {
-		if(err) {
-			res.send({state: 1, msg: '查询失败！'})
-		}
-		if(!doc.length) {
-			res.send({state: 2, msg: '文章不存在！'})
-		}else {
-			res.send({state: 0, data: doc[0]})
-		}
-	})
-})
-
-router.delete('/article/:id', (req, res) => {
-	db.Article.remove({_id: req.params.id}, (err, doc) => {
-		if(err) {
-			res.send({state: 1, msg: '操作失败！'})
-		}else {
-			res.send({state: 0, msg: '删除成功！'});
-		}
-	})
-})
-
-router.get('/user/:id/articles', (req, res) => {
+// 获取个人发布文章
+router.get('/articles/user/:id', (req, res) => {
 	db.Article.find({author: req.params.id}, (err, doc) => {
 		if(err) {
 			res.send({state: 2, msg: '查询失败！'})
@@ -193,20 +197,8 @@ router.get('/user/:id/articles', (req, res) => {
 		}
 	})
 })
-
-router.get('/user', (req, res) => {
-	db.User.find({id: req.query.id}, (err, doc) => {
-		if(err) {
-			res.send({state: 1, msg: '操作失败'});
-		}
-		if(!doc.length) {
-			res.send({state: 2, msg: '账号不存在'});
-		}else {
-			res.send({state: 0, data: {id: doc[0].id, rank: doc[0].rank, faculty: doc[0].faculty}});
-		}
-	})
-})
-router.get('/getArticals', (req, res, next) => {
+// 获取所有文章
+router.get('/articles/all', (req, res, next) => {
 		let academy = req.query.faculty.charAt(0),
 			faculty = req.query.faculty.charAt(2),
 			type = req.query.type,
@@ -238,7 +230,6 @@ router.get('/getArticals', (req, res, next) => {
 		}else {
 			total = sum;
 			if(total > 0) {
-				// 分页查询
 				pagedQuery(obj, req.query.page, size, total, res);
 			}else {
 				res.send({state: 0, data: {lists: [], total: total}})
@@ -247,7 +238,7 @@ router.get('/getArticals', (req, res, next) => {
 	})
 
 })
-
+// 分页查询
 function pagedQuery(obj, page, size, total, res) {
 	db.Article.find(obj)
 		.skip((page - 1) * size)
@@ -260,20 +251,8 @@ function pagedQuery(obj, page, size, total, res) {
 			}
 		})
 }
-
-router.get('/user/info', (req, res) => {
-	db.User.find((err, doc) => {
-		if(err) {
-			res.send({state: 1, msg: '查询失败！'});
-		}else {
-			res.send({state: 0, data: doc});
-		}
-	})
-})
-
-//TODO
-///count/:id/:tab/:year/:time
-router.get('/user/count/:id/:tab/:year/:time', (req, res) => {
+// 统计图表
+router.get('/count/:id/:tab/:year/:time', (req, res) => {
 	// console.log(req.params);
 	let params = req.params,
 		sTime = new Date(),
@@ -333,8 +312,31 @@ function filter(doc) {
 	})
 	return result;
 }
-
-router.post('/user/addUser', (req, res) => {
+// 获取当前用户个人信息
+router.get('/userManage/selfInfo', (req, res) => {
+	db.User.find({id: req.query.id}, (err, doc) => {
+		if(err) {
+			res.send({state: 1, msg: '操作失败'});
+		}
+		if(!doc.length) {
+			res.send({state: 2, msg: '账号不存在'});
+		}else {
+			res.send({state: 0, data: {id: doc[0].id, rank: doc[0].rank, faculty: doc[0].faculty}});
+		}
+	})
+})
+// 获取用户信息
+router.get('/userManage/info', (req, res) => {
+	db.User.find((err, doc) => {
+		if(err) {
+			res.send({state: 1, msg: '查询失败！'});
+		}else {
+			res.send({state: 0, data: doc});
+		}
+	})
+})
+// 添加用户
+router.post('/userManage/add', (req, res) => {
 	dbUser.create(req.body, (err, doc) => {
 		if(err) {
 			res.send({state: 1, msg: '操作失败'})
@@ -344,14 +346,13 @@ router.post('/user/addUser', (req, res) => {
 	})
 })
 
-router.post('/upload', (req, res) => {
-	// console.log(req.body)
-	res.end()
-})
+// router.post('/upload', (req, res) => {
+// 	// console.log(req.body)
+// 	res.end()
+// })
 
-//TODO
-///user/modify
-router.post('/modify', (req, res) => {
+// 修改用户
+router.post('/userManage/modify', (req, res) => {
 	// console.log(req.body)
 	db.User.update({id: req.body.id}, {$set: {pwd: req.body.newPwd}}, (err, doc) => {
 		if(err) {
@@ -363,8 +364,20 @@ router.post('/modify', (req, res) => {
 })
 
 //TODO
-///count/unitText
-router.get('/unitText', (req, res) => {
+// 删除用户
+router.remove('/userManage/delete/:id', (req, res) => {
+	// console.log(req.body)
+	db.User.delete({id: req.body.id}, (err, doc) => {
+		if(err) {
+			res.send({state: 1, msg: err})
+		}else {
+			res.send({state: 0, msg: '删除成功！'})
+		}
+	})
+})
+
+// 获取统计单位可选项
+router.get('/count/unitText', (req, res) => {
 	db.Academy.find({index: req.query.faculty}, (err, doc) => {
 		console.log(doc)
 		if(err) {

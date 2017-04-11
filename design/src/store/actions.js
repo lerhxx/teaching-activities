@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 export default {
+  //获取页脚信息
   GET_FOOTER_LINKS({commit}) {
     return axios.get('/getFooterLink')
       .then(res => {
@@ -11,6 +12,7 @@ export default {
         }
       })
   },
+  // 获取首页文章类型
   GET_TYPE_LISTS({commit}) {
     return axios.get('/getTypeLists')
       .then(res => {
@@ -21,6 +23,7 @@ export default {
         }
       })
   },
+  // 获取首页学院信息
   GET_ACADEMY_LISTS({commit}) {
     return axios.get('/getAcademyLists')
       .then(res => {
@@ -31,6 +34,7 @@ export default {
         }
       })
   },
+  // 获取首页教研室类型
   GET_FACULTIES({commit}, info) {
     return axios.get(`/getFacultiesLists/${info.academy}`)
       .then(res => {
@@ -41,27 +45,7 @@ export default {
         }
       })
   },
-  GET_ARTICLES({commit}, obj) {
-    // console.log(obj)
-    return axios.get('/getArticals', {params: obj})
-      .then(res => {
-        if (res.data.state === 0) {
-          commit('SET_ARTICLES', res.data.data)
-        }else {
-          return Promise.reject(res.data.msg)
-        }
-      })
-  },
-  GET_ARTICLE({commit}, params) {
-    return axios.get(`/article/${params.id}`)
-      .then(res => {
-        if (res.data.state === 2 || res.data.state === 1) {
-          return Promise.reject(res.data.msg)
-        }else if (res.data.state === 0) {
-          commit('SET_ARTICLE', res.data.data)
-        }
-      })
-  },
+  // 登录
   SIGNIN({commit}, userInfo) {
     return axios.post('/signin', userInfo)
       .then(res => {
@@ -72,32 +56,21 @@ export default {
         }
       })
   },
-  GET_USER_INFO({commit}, userInfo) {
-    return axios.get('/user', {params: {id: userInfo.id}})
+  // TODO
+  // 登出
+  SIGNIN({commit}, userInfo) {
+    return axios.get('/signout', userInfo)
       .then(res => {
-        if(res.data.state === 0) {
+        if (res.data.state === 0) {
           commit('SET_USER', res.data.data)
-        }
-      })
-  },
-  GET_SELF_ARTICLES({commit}, userInfo) {
-    return axios.get(`/user/${userInfo.id}/articles`)
-      .then(res => {
-        commit('SET_SELF_ARTICLES', res.data.data);
-      })
-  },
-  GET_EDIT_ARTICLE({}, articleInfo) {
-    return axios.get(`/article/${articleInfo.id}/edit`)
-      .then(res => {
-        if(res.data.state === 0) {
-          return Promise.resolve(res.data.data);
         }else {
-          return Promise.reject(res.data.msg);
+          return Promise.reject(res.data.msg)
         }
       })
   },
+    // 创建文章
   POST_ARTICLE({state}, form) {
-    return axios.post(`/user/edit/${state.userId}`, form)
+    return axios.post(`/edit/create`, form)
       .then(res => {
         if(res.data.state === 0) {
           return Promise.resolve(res.data.data);
@@ -106,8 +79,9 @@ export default {
         }
       })
   },
+  // 修改文章
   UPDATE_ARTICLE({commit}, form) {
-    return axios.put('/user/edit/${state.userId}', {form: form.form, id: form.id})
+    return axios.put('/edit/modify', {form: form.form, id: form.id})
       .then(res => {
         if(res.data.state === 0) {
           return Promise.resolve(res.data.data);
@@ -116,8 +90,20 @@ export default {
         }
       })
   },
+  // 获取修改的文章
+  GET_EDIT_ARTICLE({}, articleInfo) {
+    return axios.get(`/edit/article/${articleInfo.id}`)
+      .then(res => {
+        if(res.data.state === 0) {
+          return Promise.resolve(res.data.data);
+        }else {
+          return Promise.reject(res.data.msg);
+        }
+      })
+  },
+  // 删除文章
   DELETE_ARTICLE({commit}, articleInfo) {
-    return axios.delete(`/article/${articleInfo.id}`)
+    return axios.delete(`/edit/delete//article/${articleInfo.id}`)
       .then(res => {
         if(res.data.state === 0) {
           commit('UPDATE_SELF_ARTICLES', articleInfo.id);
@@ -127,18 +113,39 @@ export default {
         }
       })
   },
-  GET_USERS({commit}) {
-    return axios.get('/user/info')
+  // 获取文章详情
+  GET_ARTICLE({commit}, params) {
+    return axios.get(`/article/${params.id}`)
       .then(res => {
-        if(res.data.state === 0) {
-          commit('SET_USERS', res.data.data)
-        }else {
-          return Promise.reject(res.data.msg);
+        if (res.data.state === 2 || res.data.state === 1) {
+          return Promise.reject(res.data.msg)
+        }else if (res.data.state === 0) {
+          commit('SET_ARTICLE', res.data.data)
         }
       })
   },
+  // 获取个人发布文章
+  GET_SELF_ARTICLES({commit}, userInfo) {
+    return axios.get(`/articles/user/${userInfo.id}`)
+      .then(res => {
+        commit('SET_SELF_ARTICLES', res.data.data);
+      })
+  },
+  // 获取所有文章
+  GET_ARTICLES({commit}, obj) {
+    // console.log(obj)
+    return axios.get('/articles/all', {params: obj})
+      .then(res => {
+        if (res.data.state === 0) {
+          commit('SET_ARTICLES', res.data.data)
+        }else {
+          return Promise.reject(res.data.msg)
+        }
+      })
+  },
+  // 统计图表
   GET_CHARTS_DATA({commit}, info) {
-    return axios.get(`/user/count/${info.id}/${info.tab}/${info.year}/${info.time}`).then(res => {
+    return axios.get(`/count/${info.id}/${info.tab}/${info.year}/${info.time}`).then(res => {
         if(res.data.state == 0) {
       // console.log(res.data.data)
           return Promise.resolve(res.data.data);
@@ -147,8 +154,29 @@ export default {
         }
       })
   },
+  // 获取当前用户个人信息
+  GET_USER_INFO({commit}, userInfo) {
+    return axios.get('/userManage/selfInfo', {params: {id: userInfo.id}})
+      .then(res => {
+        if(res.data.state === 0) {
+          commit('SET_USER', res.data.data)
+        }
+      })
+  },
+  // 获取用户信息
+  GET_USERS({commit}) {
+    return axios.get('/userManage/info')
+      .then(res => {
+        if(res.data.state === 0) {
+          commit('SET_USERS', res.data.data)
+        }else {
+          return Promise.reject(res.data.msg);
+        }
+      })
+  },
+  // 添加用户
   ADD_USER({commit}, form) {
-    return axios.post('/user/addUser', form)
+    return axios.post('/userManage/add', form)
       .then(res => {
         if(res.data.state == 0) {
           return Promise.resolve(res.data);
@@ -157,8 +185,9 @@ export default {
         }
       })
   },
+  // 修改用户
   MODIFY_PWD({commit}, info) {
-    return axios.post(`/modify`, info)
+    return axios.post(`/userManage/modify`, info)
       .then(res => {
         if(res.data.state == 0) {
           return Promise.resolve(res.data.msg);
@@ -167,6 +196,19 @@ export default {
         }
       })
   },
+  // TODO
+  // 删除用户
+  DELETE_PWD({commit}, info) {
+    return axios.delete(`/userManage/delete/${info.id}`)
+      .then(res => {
+        if(res.data.state == 0) {
+          return Promise.resolve(res.data.msg);
+        }else {
+          return Promise.reject(res.data.msg)
+        }
+      })
+  },
+  // 获取统计单位可选项
   GET_UNIT_TEXT({commit}, info) {
     return axios.get('/unitText', {params: info})
       .then(res => {

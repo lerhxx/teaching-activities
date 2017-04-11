@@ -1,5 +1,5 @@
 <template>
-    <div class='group-btn'>
+    <div class='group-btn modify-toolbars'>
         <span class='color-b' @click='edit(item)'>编辑</span>
         <span class='color-g' @click='deleteArt(item)'>删除</span>
     </div>
@@ -25,3 +25,9 @@
         },
     }
 </script>
+
+<style scoped lang='stylus'>
+    .modify-toolbars
+        span
+            cursor pointer
+</style>

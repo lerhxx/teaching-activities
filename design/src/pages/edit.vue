@@ -74,9 +74,19 @@
 	let simditor;
 	export default {
 		data() {
+			/**
+             * @param {String} title: 文章标题
+             * @param {Date} time: 发表时间
+             * @param {String} address: 举办地址
+             * @param {String} unit: 举办单位
+			 * @param {String} explain: 附加说明
+             * @param {String} content: 文章内容
+             * @param {String/File} enclosure: 附件
+             * @param {String} faculty: 作者所在教研室
+			 * @param {String} party: 参与者
+            */
 			return {
 				form: {
-					url: '/dist/imgs/default.png',
 					title: '',
 					time: '',
 					address: '',
@@ -98,10 +108,11 @@
 			editor
 		},
 		created() {
+				console.log(this.$route.params.artId)
+				console.log(this.isEdit)
 			if(this.isEdit && this.$route.params.artId) {
 				this.$store.dispatch('GET_EDIT_ARTICLE', {id: this.$route.params.artId})
 					.then(data => {
-						this.form.url = data.url;
 						this.form.title = data.title;
 						this.form.abs = data.abs;
 						this.form.time = data.time;
@@ -109,9 +120,20 @@
 						this.form.unit = data.unit;
 						this.form.explain = data.explain;
 						this.form.enclosure = data.enclosure;
-						editor.setValue(data.content)
+						this.$refs.edit.setContent(data.content)
 					})
 			}
+			// else {
+			// 	this.form.title = '';
+			// 	this.form.abs = '';
+			// 	this.form.time = '';
+			// 	this.form.address = '';
+			// 	this.form.unit = '';
+			// 	this.form.explain = '';
+			// 	this.form.enclosure = '';
+			// 	console.log(this.$refs.edit)
+			// 	this.$refs.edit.setContent('')
+			// }
 		},
 		methods: {
 			onToggleOption() {
@@ -161,11 +183,11 @@
 				form.author = this.userId;
 				form.time = new Date();
 				form.faculty = this.userFaculty;
-				if(!form.title || !form.time || !form.address || !form.unit || !form.content || !form.url) {
+				// console.log(form)
+				// console.log(form.content);
+				if(!form.title || !form.time || !form.address || !form.unit || !form.content) {
 					return alert('请填写所有必须项！');
 				}
-				console.log(form)
-				console.log(form.content);
 				if(!this.$route.params.artId) {
 					this.$store.dispatch('POST_ARTICLE', {form: form})
 						.then(data => {
@@ -173,8 +195,10 @@
 							this.$router.push({name: 'article', params: {id: data.id}});
 						}).catch(err => alert(err));
 				}else {
-					this.party = this.party.replace(/，/g, ',');
-					form.participator = this.party.split(',');
+					if(this.party) {
+						this.party = this.party.replace(/，/g, ',');
+						form.participator = this.party.split(',');
+					}
 					this.$store.dispatch('UPDATE_ARTICLE', {form: form, id: this.$route.params.artId})
 						.then(data => {
 							alert('修改成功');

@@ -107,8 +107,6 @@
                 contentTip: '请编辑。。。'
             }
         },
-        created() {
-        },
         methods: {
             editEvent(e) {
                 if(!this.isSelection()) {
@@ -244,6 +242,10 @@
             },
             getContent() {
                 return this.contents;
+            },
+            setContent(contents) {
+                this.contents = contents;
+                document.getElementById(this.id).innerHTML = contents;
             }
         }
     }

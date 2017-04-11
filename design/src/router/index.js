@@ -24,7 +24,7 @@ const routes = [{
 },  {
 	path: '/article/:id', component: Article, name: 'article',
 }, {
-	path: '/article/:artId/edit', component: Edit, name: 'articleEdit',
+	path: '/user/modify/:artId', component: Edit, name: 'articleEdit',
 }, {
 	path: '/main', name: 'main',
 	redirect: to => {
@@ -41,13 +41,13 @@ const routes = [{
 	redirect: to => {
 		const {hash, params, query} = to;
 		if(params.id) {
-			return '/user/edit/' + params.id;
+			return '/user/edit/';
 		}else {
 			return {name: 'signin'}
 		}
 	}
 }, {
-	path: '/user/edit/:id', component: Edit, name: 'userEdit'
+	path: '/user/edit', component: Edit, name: 'userEdit'
 }, 
 // {
 // 	path: '/pervalidate/:id', name: 'perValidate',
