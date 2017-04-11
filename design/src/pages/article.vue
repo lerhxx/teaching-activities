@@ -71,7 +71,7 @@
 				return this.$store.state.article
 			},
 			self() {
-				return this.article.author === this.$store.state.userId
+				return this.article.author === this.$store.state.userId || (this.$store.state.userRank == 1 && this.article().faculty == this.$store.state.userFaculty) || this.$store.state.userRank > 1;
 			}
 
 		},

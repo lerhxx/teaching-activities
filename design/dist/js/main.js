@@ -10893,19 +10893,15 @@
 	  value: true
 	});
 
-	var _GET_FOOTER_LINKS$GET;
-
 	var _axios = __webpack_require__(5);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 	function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
 
-	exports.default = (_GET_FOOTER_LINKS$GET = {
+	exports.default = {
 	  //获取页脚信息
 	  GET_FOOTER_LINKS: function GET_FOOTER_LINKS(_ref) {
 	    var commit = _ref.commit;
@@ -10969,155 +10965,202 @@
 	        return Promise.reject(res.data.msg);
 	      }
 	    });
+	  },
+
+	  // TODO
+	  // 登出
+	  SIGNOUT: function SIGNOUT(_ref6, userInfo) {
+	    var commit = _ref6.commit;
+
+	    return _axios2.default.get('/signout', userInfo).then(function (res) {
+	      if (res.data.state === 0) {
+	        commit('SET_USER', res.data.data);
+	      } else {
+	        return Promise.reject(res.data.msg);
+	      }
+	    });
+	  },
+
+	  // 创建文章
+	  POST_ARTICLE: function POST_ARTICLE(_ref7, form) {
+	    var state = _ref7.state;
+
+	    return _axios2.default.post('/edit/create', form).then(function (res) {
+	      if (res.data.state === 0) {
+	        return Promise.resolve(res.data.data);
+	      } else {
+	        return Promise.reject(res.data.msg);
+	      }
+	    });
+	  },
+
+	  // 修改文章
+	  UPDATE_ARTICLE: function UPDATE_ARTICLE(_ref8, form) {
+	    var commit = _ref8.commit;
+
+	    return _axios2.default.put('/edit/modify', { form: form.form, id: form.id }).then(function (res) {
+	      if (res.data.state === 0) {
+	        return Promise.resolve(res.data.data);
+	      } else {
+	        return Promise.reject(res.data.msg);
+	      }
+	    });
+	  },
+
+	  // 获取修改的文章
+	  GET_EDIT_ARTICLE: function GET_EDIT_ARTICLE(_ref9, articleInfo) {
+	    _objectDestructuringEmpty(_ref9);
+
+	    return _axios2.default.get('/edit/article/' + articleInfo.id).then(function (res) {
+	      if (res.data.state === 0) {
+	        return Promise.resolve(res.data.data);
+	      } else {
+	        return Promise.reject(res.data.msg);
+	      }
+	    });
+	  },
+
+	  // 删除文章
+	  DELETE_ARTICLE: function DELETE_ARTICLE(_ref10, articleInfo) {
+	    var commit = _ref10.commit;
+
+	    return _axios2.default.delete('/edit/delete//article/' + articleInfo.id).then(function (res) {
+	      if (res.data.state === 0) {
+	        commit('UPDATE_SELF_ARTICLES', articleInfo.id);
+	        return Promise.resolve(res.data.msg);
+	      } else {
+	        return Promise.reject(res.data.msg);
+	      }
+	    });
+	  },
+
+	  // 获取文章详情
+	  GET_ARTICLE: function GET_ARTICLE(_ref11, params) {
+	    var commit = _ref11.commit;
+
+	    return _axios2.default.get('/article/' + params.id).then(function (res) {
+	      if (res.data.state === 2 || res.data.state === 1) {
+	        return Promise.reject(res.data.msg);
+	      } else if (res.data.state === 0) {
+	        commit('SET_ARTICLE', res.data.data);
+	      }
+	    });
+	  },
+
+	  // 获取个人发布文章
+	  GET_SELF_ARTICLES: function GET_SELF_ARTICLES(_ref12, userInfo) {
+	    var commit = _ref12.commit;
+
+	    return _axios2.default.get('/articles/user/' + userInfo.id).then(function (res) {
+	      commit('SET_SELF_ARTICLES', res.data.data);
+	    });
+	  },
+
+	  // 获取所有文章
+	  GET_ARTICLES: function GET_ARTICLES(_ref13, obj) {
+	    var commit = _ref13.commit;
+
+	    // console.log(obj)
+	    return _axios2.default.get('/articles/all', { params: obj }).then(function (res) {
+	      if (res.data.state === 0) {
+	        commit('SET_ARTICLES', res.data.data);
+	      } else {
+	        return Promise.reject(res.data.msg);
+	      }
+	    });
+	  },
+
+	  // 统计图表
+	  GET_CHARTS_DATA: function GET_CHARTS_DATA(_ref14, info) {
+	    var commit = _ref14.commit;
+
+	    return _axios2.default.get('/count/' + info.id + '/' + info.tab + '/' + info.year + '/' + info.time).then(function (res) {
+	      if (res.data.state == 0) {
+	        // console.log(res.data.data)
+	        return Promise.resolve(res.data.data);
+	      } else {
+	        return Promise.reject(res.data.msg);
+	      }
+	    });
+	  },
+
+	  // 获取当前用户个人信息
+	  GET_USER_INFO: function GET_USER_INFO(_ref15, userInfo) {
+	    var commit = _ref15.commit;
+
+	    return _axios2.default.get('/userManage/selfInfo', { params: { id: userInfo.id } }).then(function (res) {
+	      if (res.data.state === 0) {
+	        commit('SET_USER', res.data.data);
+	      }
+	    });
+	  },
+
+	  // 获取用户信息
+	  GET_USERS: function GET_USERS(_ref16) {
+	    var commit = _ref16.commit;
+
+	    return _axios2.default.get('/userManage/info').then(function (res) {
+	      if (res.data.state === 0) {
+	        commit('SET_USERS', res.data.data);
+	      } else {
+	        return Promise.reject(res.data.msg);
+	      }
+	    });
+	  },
+
+	  // 添加用户
+	  ADD_USER: function ADD_USER(_ref17, form) {
+	    var commit = _ref17.commit;
+
+	    return _axios2.default.post('/userManage/add', form).then(function (res) {
+	      if (res.data.state == 0) {
+	        return Promise.resolve(res.data);
+	      } else {
+	        return Promise.reject(res.data.msg);
+	      }
+	    });
+	  },
+
+	  // 修改用户
+	  MODIFY_PWD: function MODIFY_PWD(_ref18, info) {
+	    var commit = _ref18.commit;
+
+	    return _axios2.default.post('/userManage/modify', info).then(function (res) {
+	      if (res.data.state == 0) {
+	        return Promise.resolve(res.data.msg);
+	      } else {
+	        return Promise.reject(res.data.msg);
+	      }
+	    });
+	  },
+
+	  // TODO
+	  // 删除用户
+	  DELETE_PWD: function DELETE_PWD(_ref19, info) {
+	    var commit = _ref19.commit;
+
+	    return _axios2.default.delete('/userManage/delete/' + info.id).then(function (res) {
+	      if (res.data.state == 0) {
+	        return Promise.resolve(res.data.msg);
+	      } else {
+	        return Promise.reject(res.data.msg);
+	      }
+	    });
+	  },
+
+	  // 获取统计单位可选项
+	  GET_UNIT_TEXT: function GET_UNIT_TEXT(_ref20, info) {
+	    var commit = _ref20.commit;
+
+	    return _axios2.default.get('/unitText', { params: info }).then(function (res) {
+	      if (res.data.state == 0) {
+	        return Promise.resolve(res.data.data);
+	      } else {
+	        return Promise.reject(res.data.msg);
+	      }
+	    });
 	  }
-	}, _defineProperty(_GET_FOOTER_LINKS$GET, 'SIGNIN', function SIGNIN(_ref6, userInfo) {
-	  var commit = _ref6.commit;
-
-	  return _axios2.default.get('/signout', userInfo).then(function (res) {
-	    if (res.data.state === 0) {
-	      commit('SET_USER', res.data.data);
-	    } else {
-	      return Promise.reject(res.data.msg);
-	    }
-	  });
-	}), _defineProperty(_GET_FOOTER_LINKS$GET, 'POST_ARTICLE', function POST_ARTICLE(_ref7, form) {
-	  var state = _ref7.state;
-
-	  return _axios2.default.post('/edit/create', form).then(function (res) {
-	    if (res.data.state === 0) {
-	      return Promise.resolve(res.data.data);
-	    } else {
-	      return Promise.reject(res.data.msg);
-	    }
-	  });
-	}), _defineProperty(_GET_FOOTER_LINKS$GET, 'UPDATE_ARTICLE', function UPDATE_ARTICLE(_ref8, form) {
-	  var commit = _ref8.commit;
-
-	  return _axios2.default.put('/edit/modify', { form: form.form, id: form.id }).then(function (res) {
-	    if (res.data.state === 0) {
-	      return Promise.resolve(res.data.data);
-	    } else {
-	      return Promise.reject(res.data.msg);
-	    }
-	  });
-	}), _defineProperty(_GET_FOOTER_LINKS$GET, 'GET_EDIT_ARTICLE', function GET_EDIT_ARTICLE(_ref9, articleInfo) {
-	  _objectDestructuringEmpty(_ref9);
-
-	  return _axios2.default.get('/edit/article/' + articleInfo.id).then(function (res) {
-	    if (res.data.state === 0) {
-	      return Promise.resolve(res.data.data);
-	    } else {
-	      return Promise.reject(res.data.msg);
-	    }
-	  });
-	}), _defineProperty(_GET_FOOTER_LINKS$GET, 'DELETE_ARTICLE', function DELETE_ARTICLE(_ref10, articleInfo) {
-	  var commit = _ref10.commit;
-
-	  return _axios2.default.delete('/edit/delete//article/' + articleInfo.id).then(function (res) {
-	    if (res.data.state === 0) {
-	      commit('UPDATE_SELF_ARTICLES', articleInfo.id);
-	      return Promise.resolve(res.data.msg);
-	    } else {
-	      return Promise.reject(res.data.msg);
-	    }
-	  });
-	}), _defineProperty(_GET_FOOTER_LINKS$GET, 'GET_ARTICLE', function GET_ARTICLE(_ref11, params) {
-	  var commit = _ref11.commit;
-
-	  return _axios2.default.get('/article/' + params.id).then(function (res) {
-	    if (res.data.state === 2 || res.data.state === 1) {
-	      return Promise.reject(res.data.msg);
-	    } else if (res.data.state === 0) {
-	      commit('SET_ARTICLE', res.data.data);
-	    }
-	  });
-	}), _defineProperty(_GET_FOOTER_LINKS$GET, 'GET_SELF_ARTICLES', function GET_SELF_ARTICLES(_ref12, userInfo) {
-	  var commit = _ref12.commit;
-
-	  return _axios2.default.get('/articles/user/' + userInfo.id).then(function (res) {
-	    commit('SET_SELF_ARTICLES', res.data.data);
-	  });
-	}), _defineProperty(_GET_FOOTER_LINKS$GET, 'GET_ARTICLES', function GET_ARTICLES(_ref13, obj) {
-	  var commit = _ref13.commit;
-
-	  // console.log(obj)
-	  return _axios2.default.get('/articles/all', { params: obj }).then(function (res) {
-	    if (res.data.state === 0) {
-	      commit('SET_ARTICLES', res.data.data);
-	    } else {
-	      return Promise.reject(res.data.msg);
-	    }
-	  });
-	}), _defineProperty(_GET_FOOTER_LINKS$GET, 'GET_CHARTS_DATA', function GET_CHARTS_DATA(_ref14, info) {
-	  var commit = _ref14.commit;
-
-	  return _axios2.default.get('/count/' + info.id + '/' + info.tab + '/' + info.year + '/' + info.time).then(function (res) {
-	    if (res.data.state == 0) {
-	      // console.log(res.data.data)
-	      return Promise.resolve(res.data.data);
-	    } else {
-	      return Promise.reject(res.data.msg);
-	    }
-	  });
-	}), _defineProperty(_GET_FOOTER_LINKS$GET, 'GET_USER_INFO', function GET_USER_INFO(_ref15, userInfo) {
-	  var commit = _ref15.commit;
-
-	  return _axios2.default.get('/userManage/selfInfo', { params: { id: userInfo.id } }).then(function (res) {
-	    if (res.data.state === 0) {
-	      commit('SET_USER', res.data.data);
-	    }
-	  });
-	}), _defineProperty(_GET_FOOTER_LINKS$GET, 'GET_USERS', function GET_USERS(_ref16) {
-	  var commit = _ref16.commit;
-
-	  return _axios2.default.get('/userManage/info').then(function (res) {
-	    if (res.data.state === 0) {
-	      commit('SET_USERS', res.data.data);
-	    } else {
-	      return Promise.reject(res.data.msg);
-	    }
-	  });
-	}), _defineProperty(_GET_FOOTER_LINKS$GET, 'ADD_USER', function ADD_USER(_ref17, form) {
-	  var commit = _ref17.commit;
-
-	  return _axios2.default.post('/userManage/add', form).then(function (res) {
-	    if (res.data.state == 0) {
-	      return Promise.resolve(res.data);
-	    } else {
-	      return Promise.reject(res.data.msg);
-	    }
-	  });
-	}), _defineProperty(_GET_FOOTER_LINKS$GET, 'MODIFY_PWD', function MODIFY_PWD(_ref18, info) {
-	  var commit = _ref18.commit;
-
-	  return _axios2.default.post('/userManage/modify', info).then(function (res) {
-	    if (res.data.state == 0) {
-	      return Promise.resolve(res.data.msg);
-	    } else {
-	      return Promise.reject(res.data.msg);
-	    }
-	  });
-	}), _defineProperty(_GET_FOOTER_LINKS$GET, 'DELETE_PWD', function DELETE_PWD(_ref19, info) {
-	  var commit = _ref19.commit;
-
-	  return _axios2.default.delete('/userManage/delete/' + info.id).then(function (res) {
-	    if (res.data.state == 0) {
-	      return Promise.resolve(res.data.msg);
-	    } else {
-	      return Promise.reject(res.data.msg);
-	    }
-	  });
-	}), _defineProperty(_GET_FOOTER_LINKS$GET, 'GET_UNIT_TEXT', function GET_UNIT_TEXT(_ref20, info) {
-	  var commit = _ref20.commit;
-
-	  return _axios2.default.get('/unitText', { params: info }).then(function (res) {
-	    if (res.data.state == 0) {
-	      return Promise.resolve(res.data.data);
-	    } else {
-	      return Promise.reject(res.data.msg);
-	    }
-	  });
-	}), _GET_FOOTER_LINKS$GET);
+	};
 
 /***/ },
 /* 32 */
@@ -17790,7 +17833,7 @@
 				return this.$store.state.article;
 			},
 			self: function self() {
-				return this.article.author === this.$store.state.userId;
+				return this.article.author === this.$store.state.userId || this.$store.state.userRank == 1 && this.article().faculty == this.$store.state.userFaculty || this.$store.state.userRank > 1;
 			}
 		},
 		filters: {

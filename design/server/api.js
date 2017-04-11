@@ -365,9 +365,9 @@ router.post('/userManage/modify', (req, res) => {
 
 //TODO
 // 删除用户
-router.remove('/userManage/delete/:id', (req, res) => {
+router.delete('/userManage/delete/:id', (req, res) => {
 	// console.log(req.body)
-	db.User.delete({id: req.body.id}, (err, doc) => {
+	db.User.remvoe({id: req.body.id}, (err, doc) => {
 		if(err) {
 			res.send({state: 1, msg: err})
 		}else {

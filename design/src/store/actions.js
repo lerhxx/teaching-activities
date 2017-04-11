@@ -58,7 +58,7 @@ export default {
   },
   // TODO
   // 登出
-  SIGNIN({commit}, userInfo) {
+  SIGNOUT({commit}, userInfo) {
     return axios.get('/signout', userInfo)
       .then(res => {
         if (res.data.state === 0) {
