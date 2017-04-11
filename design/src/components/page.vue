@@ -67,6 +67,9 @@
 			},
 			initialPage() {
 				this.curPage = this.skipPage = 1;
+			},
+			getPage() {
+				return this.curPage;
 			}
 		}
 	}

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export default {
-  //获取页脚信息
+  // 获取页脚信息
   GET_FOOTER_LINKS({commit}) {
     return axios.get('/getFooterLink')
       .then(res => {
@@ -68,7 +68,7 @@ export default {
         }
       })
   },
-    // 创建文章
+  // 创建文章
   POST_ARTICLE({state}, form) {
     return axios.post(`/edit/create`, form)
       .then(res => {
@@ -103,10 +103,10 @@ export default {
   },
   // 删除文章
   DELETE_ARTICLE({commit}, articleInfo) {
-    return axios.delete(`/edit/delete//article/${articleInfo.id}`)
+    return axios.delete(`/edit/delete/${articleInfo.id}`)
       .then(res => {
         if(res.data.state === 0) {
-          commit('UPDATE_SELF_ARTICLES', articleInfo.id);
+          // commit('UPDATE_SELF_ARTICLES', articleInfo.id);
           return Promise.resolve(res.data.msg);
         }else {
           return Promise.reject(res.data.msg);
@@ -185,6 +185,7 @@ export default {
         }
       })
   },
+  // TODO
   // 修改用户
   MODIFY_PWD({commit}, info) {
     return axios.post(`/userManage/modify`, info)
@@ -198,7 +199,7 @@ export default {
   },
   // TODO
   // 删除用户
-  DELETE_PWD({commit}, info) {
+  DELETE_USER({commit}, info) {
     return axios.delete(`/userManage/delete/${info.id}`)
       .then(res => {
         if(res.data.state == 0) {

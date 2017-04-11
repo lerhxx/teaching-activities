@@ -7,7 +7,7 @@
 				<span class='time'>{{article.time | timeFormat}}</span>
 				<label>发布人:</label>
 				<span>{{article.author}}</span>
-				<modify class='modify' :item='article' v-show='self'></modify>
+				<modify class='modify' :item='article' :cb='redirection' v-show='self'></modify>
 			</div>
 			<!--<div class='group-con'>
 			</div>-->
@@ -50,7 +50,6 @@
 
 <script>
 	import modify from '../components/modify.vue';
-	// import toMarkDown from 'to-markdown';
 
 	export default {
 		data() {
@@ -73,7 +72,11 @@
 			self() {
 				return this.article.author === this.$store.state.userId || (this.$store.state.userRank == 1 && this.article().faculty == this.$store.state.userFaculty) || this.$store.state.userRank > 1;
 			}
-
+		},
+		methods: {
+			redirection() {
+				this.$router.push({name: 'index'});
+			}
 		},
 		filters: {
 			timeFormat(value) {

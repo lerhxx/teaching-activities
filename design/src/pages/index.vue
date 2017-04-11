@@ -31,7 +31,7 @@
 					</h3>
 					<p class='time color-g'>{{item.time | timeFormat}}</p>
 					<p>地点：{{item.address}}</p>
-					<modify :item='item' v-show='userRank == 2 || (userRank == 1 && userId == item.author)'></modify>
+					<modify :item='item' cb='GET_ARTICLES' :params='params' v-show='userRank == 2 || (userRank == 1 && userId == item.author)'></modify>
 				</li>
 			</ul>
 		</div>
@@ -49,12 +49,15 @@
 		data() {
 			 return {
 			 	img: '/dist/imgs/cover-1.jpg',
-				 faculty: '0-0',
-				 type: 0,
-				 academy: 0,
-				 now: new Date().getTime(),
-				 pageSize: 10,
-				 totalPage: 0
+				params: {
+					faculty: '0-0',
+					type: 0,
+					academy: 0,
+					page: 1
+				},
+				pageSize: 10,
+				now: new Date().getTime(),
+				totalPage: 0
 		    }
 		},
 		created() {
@@ -67,7 +70,8 @@
 		},
 		methods: {
 			onSelect(page) {
-				this.$store.dispatch('GET_ARTICLES', {page: page || 1, pageSize: this.pageSize, faculty: this.faculty, type: this.type})
+				this.params.page = page;
+				this.$store.dispatch('GET_ARTICLES', this.params)
 					.then(res => {
 						this.scroll();
 						this.totalPage = Math.ceil(this.articleTotal / this.pageSize);
@@ -76,13 +80,13 @@
 			onSelectAcademy() {
 				let self = this;
 				this.getFacultyies(() =>{
-					self.faculty = self.facultiesList[0].index;
+					self.params.faculty = self.facultiesList[0].index;
 					self.filter();
 				});
 			},
 			getFacultyies(cb) {
 				let self = this;
-				this.$store.dispatch('GET_FACULTIES', {academy: this.academy})
+				this.$store.dispatch('GET_FACULTIES', {academy: this.params.academy})
 					.then(res => {
 						cb && cb();
 					})

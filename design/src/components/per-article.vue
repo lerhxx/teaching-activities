@@ -10,7 +10,7 @@
                 </router-link>
                 <p class='time color-g'>{{item.time | timeFormat}}</p>
                 <p class='abstract' v-html='filterContent(item.content)'></p>
-                <modify :item='item'></modify>
+                <modify :item='item' cb='GET_SELF_ARTICLES' :params='{id: user}'></modify>
             </li>
         </ul>
     </div>
@@ -23,13 +23,14 @@
     export default {
         data() {
             return {
-                isPerArt: true
+                isPerArt: true,
+                user: ''
             }
         },
         created() {
-            let user = this.userId ? this.userId : get('user');
-            if(user) {
-                this.$store.dispatch('GET_SELF_ARTICLES', {id: user})
+            this.user = this.userId ? this.userId : get('user');
+            if(this.user) {
+                this.$store.dispatch('GET_SELF_ARTICLES', {id: this.user})
                     .catch(err => alert(err));
             }else {
                 this.$router.push({name: 'index'});

@@ -10902,7 +10902,7 @@
 	function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
 
 	exports.default = {
-	  //获取页脚信息
+	  // 获取页脚信息
 	  GET_FOOTER_LINKS: function GET_FOOTER_LINKS(_ref) {
 	    var commit = _ref.commit;
 
@@ -11024,9 +11024,9 @@
 	  DELETE_ARTICLE: function DELETE_ARTICLE(_ref10, articleInfo) {
 	    var commit = _ref10.commit;
 
-	    return _axios2.default.delete('/edit/delete//article/' + articleInfo.id).then(function (res) {
+	    return _axios2.default.delete('/edit/delete/' + articleInfo.id).then(function (res) {
 	      if (res.data.state === 0) {
-	        commit('UPDATE_SELF_ARTICLES', articleInfo.id);
+	        // commit('UPDATE_SELF_ARTICLES', articleInfo.id);
 	        return Promise.resolve(res.data.msg);
 	      } else {
 	        return Promise.reject(res.data.msg);
@@ -11121,6 +11121,7 @@
 	    });
 	  },
 
+	  // TODO
 	  // 修改用户
 	  MODIFY_PWD: function MODIFY_PWD(_ref18, info) {
 	    var commit = _ref18.commit;
@@ -11136,7 +11137,7 @@
 
 	  // TODO
 	  // 删除用户
-	  DELETE_PWD: function DELETE_PWD(_ref19, info) {
+	  DELETE_USER: function DELETE_USER(_ref19, info) {
 	    var commit = _ref19.commit;
 
 	    return _axios2.default.delete('/userManage/delete/' + info.id).then(function (res) {
@@ -11172,33 +11173,50 @@
 	    value: true
 	});
 	exports.default = {
+	    // 设置页脚信息
 	    SET_FOOTER_LINKS: function SET_FOOTER_LINKS(state, links) {
 	        state.footerLinks = links;
 	    },
+
+	    // 设置首页文章类型
 	    SET_TYPE_LISTS: function SET_TYPE_LISTS(state, lists) {
 	        state.typesLists = lists;
 	    },
+
+	    // 设置首页学院信息
 	    SET_ACADEMY_LISTS: function SET_ACADEMY_LISTS(state, lists) {
 	        state.academyList = lists;
 	    },
+
+	    // 设置首页教研室类型
 	    SET_FACULTIES: function SET_FACULTIES(state, lists) {
 	        state.facultiesList = lists;
 	    },
+
+	    // 设置文章详情
+	    SET_ARTICLE: function SET_ARTICLE(state, article) {
+	        state.article = article;
+	    },
+
+	    // 设置个人发布文章
+	    SET_SELF_ARTICLES: function SET_SELF_ARTICLES(state, articles) {
+	        state.selfArticles = articles;
+	    },
+
+	    // 设置所有文章
 	    SET_ARTICLES: function SET_ARTICLES(state, info) {
 	        state.articles = info.lists;
 	        state.articleTotal = info.total;
 	    },
-	    SET_ARTICLE: function SET_ARTICLE(state, article) {
-	        state.article = article;
-	    },
+
+	    // 设置当前用户个人信息
 	    SET_USER: function SET_USER(state, info) {
 	        state.userId = info.id;
 	        state.userRank = info.rank;
 	        state.userFaculty = info.faculty;
 	    },
-	    SET_SELF_ARTICLES: function SET_SELF_ARTICLES(state, articles) {
-	        state.selfArticles = articles;
-	    },
+
+	    // 更新个人发布文章列表
 	    UPDATE_SELF_ARTICLES: function UPDATE_SELF_ARTICLES(state, id) {
 	        var len = state.selfArticles.length,
 	            i = 0;
@@ -11212,6 +11230,8 @@
 	    SET_EDITINT_MODE: function SET_EDITINT_MODE(state, mode) {
 	        state.isEdit = mode;
 	    },
+
+	    // 设置用户信息
 	    SET_USERS: function SET_USERS(state, info) {
 	        state.users = info;
 	        // console.log(info)
@@ -14620,11 +14640,14 @@
 		data: function data() {
 			return {
 				img: '/dist/imgs/cover-1.jpg',
-				faculty: '0-0',
-				type: 0,
-				academy: 0,
-				now: new Date().getTime(),
+				params: {
+					faculty: '0-0',
+					type: 0,
+					academy: 0,
+					page: 1
+				},
 				pageSize: 10,
+				now: new Date().getTime(),
 				totalPage: 0
 			};
 		},
@@ -14643,7 +14666,8 @@
 			onSelect: function onSelect(page) {
 				var _this = this;
 
-				this.$store.dispatch('GET_ARTICLES', { page: page || 1, pageSize: this.pageSize, faculty: this.faculty, type: this.type }).then(function (res) {
+				this.params.page = page;
+				this.$store.dispatch('GET_ARTICLES', this.params).then(function (res) {
 					_this.scroll();
 					_this.totalPage = Math.ceil(_this.articleTotal / _this.pageSize);
 				});
@@ -14651,13 +14675,13 @@
 			onSelectAcademy: function onSelectAcademy() {
 				var self = this;
 				this.getFacultyies(function () {
-					self.faculty = self.facultiesList[0].index;
+					self.params.faculty = self.facultiesList[0].index;
 					self.filter();
 				});
 			},
 			getFacultyies: function getFacultyies(cb) {
 				var self = this;
-				this.$store.dispatch('GET_FACULTIES', { academy: this.academy }).then(function (res) {
+				this.$store.dispatch('GET_FACULTIES', { academy: this.params.academy }).then(function (res) {
 					cb && cb();
 				}).catch(function (err) {
 					return alert(err);
@@ -14798,17 +14822,39 @@
 	//
 
 	exports.default = {
-	    props: ['item'],
+	    props: {
+	        item: {
+	            type: Object
+	        },
+	        cb: {},
+	        params: {
+	            type: Object,
+	            default: function _default() {
+	                return {};
+	            }
+	        }
+	    },
 	    methods: {
 	        edit: function edit(item) {
 	            this.$store.commit('SET_EDITINT_MODE', true);
-	            this.$router.push({ name: 'articleEdit', params: { artId: item._id } });
-	            // this.$store.dispatch('EDIT_ARTICLE', {id: item._id})
-	            //     .catch(err => alert(err));
+	            this.$router.push({ name: 'articleEdit', params: { artId: this.item._id } });
 	        },
 	        deleteArt: function deleteArt(item) {
-	            this.$store.dispatch('DELETE_ARTICLE', { id: item._id }).then(function (res) {
-	                return alert(res);
+	            var _this = this;
+
+	            if (!this.cb) {
+	                alert('请传入“cb”参数！');
+	                return;
+	            }
+	            console.log(this.params);
+	            var self = this;
+	            this.$store.dispatch('DELETE_ARTICLE', { id: this.item._id }).then(function (res) {
+	                alert(res);
+	                if (self.cb instanceof Function) {
+	                    self.cb();
+	                } else {
+	                    _this.$store.dispatch(_this.cb, _this.params);
+	                }
 	            }).catch(function (err) {
 	                return alert(err);
 	            });
@@ -14826,16 +14872,12 @@
 	  }, [_c('span', {
 	    staticClass: "color-b",
 	    on: {
-	      "click": function($event) {
-	        _vm.edit(_vm.item)
-	      }
+	      "click": _vm.edit
 	    }
 	  }, [_vm._v("编辑")]), _vm._v(" "), _c('span', {
 	    staticClass: "color-g",
 	    on: {
-	      "click": function($event) {
-	        _vm.deleteArt(_vm.item)
-	      }
+	      "click": _vm.deleteArt
 	    }
 	  }, [_vm._v("删除")])])
 	},staticRenderFns: []}
@@ -15008,6 +15050,9 @@
 			},
 			initialPage: function initialPage() {
 				this.curPage = this.skipPage = 1;
+			},
+			getPage: function getPage() {
+				return this.curPage;
 			}
 		}
 	};
@@ -15198,7 +15243,9 @@
 	        expression: "userRank == 2 || (userRank == 1 && userId == item.author)"
 	      }],
 	      attrs: {
-	        "item": item
+	        "item": item,
+	        "cb": "GET_ARTICLES",
+	        "params": _vm.params
 	      }
 	    })])
 	  }))]), _vm._v(" "), _vm._v(" "), _c('page', {
@@ -17813,8 +17860,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// import toMarkDown from 'to-markdown';
-
 	exports.default = {
 		data: function data() {
 			return {};
@@ -17834,6 +17879,11 @@
 			},
 			self: function self() {
 				return this.article.author === this.$store.state.userId || this.$store.state.userRank == 1 && this.article().faculty == this.$store.state.userFaculty || this.$store.state.userRank > 1;
+			}
+		},
+		methods: {
+			redirection: function redirection() {
+				this.$router.push({ name: 'index' });
 			}
 		},
 		filters: {
@@ -17920,7 +17970,8 @@
 	    }],
 	    staticClass: "modify",
 	    attrs: {
-	      "item": _vm.article
+	      "item": _vm.article,
+	      "cb": _vm.redirection
 	    }
 	  })]), _vm._v(" "), _vm._v(" "), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
@@ -18671,13 +18722,14 @@
 	exports.default = {
 	    data: function data() {
 	        return {
-	            isPerArt: true
+	            isPerArt: true,
+	            user: ''
 	        };
 	    },
 	    created: function created() {
-	        var user = this.userId ? this.userId : (0, _cookieUtil.get)('user');
-	        if (user) {
-	            this.$store.dispatch('GET_SELF_ARTICLES', { id: user }).catch(function (err) {
+	        this.user = this.userId ? this.userId : (0, _cookieUtil.get)('user');
+	        if (this.user) {
+	            this.$store.dispatch('GET_SELF_ARTICLES', { id: this.user }).catch(function (err) {
 	                return alert(err);
 	            });
 	        } else {
@@ -18780,7 +18832,11 @@
 	      }
 	    }), _vm._v(" "), _c('modify', {
 	      attrs: {
-	        "item": item
+	        "item": item,
+	        "cb": "GET_SELF_ARTICLES",
+	        "params": {
+	          id: _vm.user
+	        }
 	      }
 	    })])
 	  }))])
