@@ -18,18 +18,16 @@
 				</router-link>
 			</li>
 			<li v-show='userRank > 0'>
-				<!--TODO
-				编辑状态点击发布-->
 				<router-link :to="{name: 'edit', params: {id: userId}}">
 					发布
 				</router-link>
 			</li>
-			<li v-show='user'>
+			<li v-show='userId'>
 				<router-link :to="{name: 'modify', params: {id: userId}}">
 					个人中心
 				</router-link>
 			</li>
-			<li v-show='user'>
+			<li v-show='userId'>
 				<router-link :to="{name: 'chart', params: {id: userId}}">
 					统计
 				</router-link>
@@ -52,13 +50,17 @@
 			}
 		},
 		created() {
-			if(get('user') && !this.userId) {
-				this.$store.dispatch('GET_USER_INFO', {id: this.user});
-			}
+			console.log(get('connect.sid'))
+			// if(get('username') && !this.userId) {
+				this.$store.dispatch('GET_USER_INFO', {name: this.username})
+					.then(res => {
+						console.log(this.$store.state.userId)
+					});
+			// }
 		},
 		computed: {
-			user() {
-				return this.userId || get('user');
+			username() {
+				return get('username');
 			},
 			userId() {
 				return this.$store.state.userId;
@@ -69,10 +71,9 @@
 		},
 		methods: {
 			signout() {
-				unset('user', '/', window.location.hostname);
-				this.$store.commit('SET_USER', {id: ''});
-				this.$router.push('/');
-				alert('登出成功！');
+				this.username = '';
+				unset('username', '/', window.location.hostname);
+				this.$store.dispatch('SIGNOUT');
 			},
 		}
 	}

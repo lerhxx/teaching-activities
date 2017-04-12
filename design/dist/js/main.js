@@ -10959,8 +10959,10 @@
 	    var commit = _ref5.commit;
 
 	    return _axios2.default.post('/signin', userInfo).then(function (res) {
+	      console.log(res.data.data);
 	      if (res.data.state === 0) {
 	        commit('SET_USER', res.data.data);
+	        return Promise.resolve(res.data.data);
 	      } else {
 	        return Promise.reject(res.data.msg);
 	      }
@@ -10974,7 +10976,7 @@
 
 	    return _axios2.default.get('/signout', userInfo).then(function (res) {
 	      if (res.data.state === 0) {
-	        commit('SET_USER', res.data.data);
+	        commit('CLEAN_USER');
 	      } else {
 	        return Promise.reject(res.data.msg);
 	      }
@@ -11088,7 +11090,7 @@
 	  GET_USER_INFO: function GET_USER_INFO(_ref15, userInfo) {
 	    var commit = _ref15.commit;
 
-	    return _axios2.default.get('/userManage/selfInfo', { params: { id: userInfo.id } }).then(function (res) {
+	    return _axios2.default.get('/userManage/selfInfo', { params: userInfo }).then(function (res) {
 	      if (res.data.state === 0) {
 	        commit('SET_USER', res.data.data);
 	      }
@@ -11167,7 +11169,7 @@
 /* 32 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -11214,6 +11216,13 @@
 	        state.userId = info.id;
 	        state.userRank = info.rank;
 	        state.userFaculty = info.faculty;
+	    },
+
+	    // 登出，清楚用户信息
+	    CLEAN_USER: function CLEAN_USER(state) {
+	        state.userId = '';
+	        state.userRank = '';
+	        state.userFaculty = '';
 	    },
 
 	    // 更新个人发布文章列表
@@ -11637,14 +11646,19 @@
 			return {};
 		},
 		created: function created() {
-			if ((0, _cookieUtil.get)('user') && !this.userId) {
-				this.$store.dispatch('GET_USER_INFO', { id: this.user });
-			}
+			var _this = this;
+
+			console.log((0, _cookieUtil.get)('connect.sid'));
+			// if(get('username') && !this.userId) {
+			this.$store.dispatch('GET_USER_INFO', { name: this.username }).then(function (res) {
+				console.log(_this.$store.state.userId);
+			});
+			// }
 		},
 
 		computed: {
-			user: function user() {
-				return this.userId || (0, _cookieUtil.get)('user');
+			username: function username() {
+				return (0, _cookieUtil.get)('username');
 			},
 			userId: function userId() {
 				return this.$store.state.userId;
@@ -11655,15 +11669,12 @@
 		},
 		methods: {
 			signout: function signout() {
-				(0, _cookieUtil.unset)('user', '/', window.location.hostname);
-				this.$store.commit('SET_USER', { id: '' });
-				this.$router.push('/');
-				alert('登出成功！');
+				this.username = '';
+				(0, _cookieUtil.unset)('username', '/', window.location.hostname);
+				this.$store.dispatch('SIGNOUT');
 			}
 		}
 	}; //
-	//
-	//
 	//
 	//
 	//
@@ -11798,8 +11809,8 @@
 	    directives: [{
 	      name: "show",
 	      rawName: "v-show",
-	      value: (_vm.user),
-	      expression: "user"
+	      value: (_vm.userId),
+	      expression: "userId"
 	    }]
 	  }, [_c('router-link', {
 	    attrs: {
@@ -11814,8 +11825,8 @@
 	    directives: [{
 	      name: "show",
 	      rawName: "v-show",
-	      value: (_vm.user),
-	      expression: "user"
+	      value: (_vm.userId),
+	      expression: "userId"
 	    }]
 	  }, [_c('router-link', {
 	    attrs: {
@@ -15482,31 +15493,7 @@
 
 	var _vuex = __webpack_require__(4);
 
-	var _cookieUtil = __webpack_require__(40);
-
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
+	// import {set, get} from '../assets/cookieUtil';
 
 	exports.default = {
 		data: function data() {
@@ -15530,16 +15517,40 @@
 				this.$store.dispatch('SIGNIN', {
 					id: this.account,
 					pwd: this.password
-				}).then(function () {
-					var date = new Date(Date.now() + 60000 * 30 * 24);
-					(0, _cookieUtil.set)('user', _this.account, date, '/', window.location.hostname);
+				}).then(function (res) {
+					// let date = new Date(Date.now() + 60000 * 30 * 24);
+					// set('user', this.account, date, '/', window.location.hostname);
+					console.log(res);
 					_this.$router.push({ path: '/' });
 				}).catch(function (msg) {
-					return _this.tip = msg;
+					_this.tip = msg;
+					console.log(msg);
 				});
 			}
 		}
-	};
+	}; //
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 /***/ },
 /* 78 */

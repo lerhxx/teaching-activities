@@ -3,13 +3,22 @@ const session = require('express-session');
 const api = require('./api');
 const bodyParser = require('body-parser');
 const fs = require('fs');
+const mongoose = require('mongoose');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const MongoStore = require('connect-mongo')(session);
 const resolve = file => path.resolve(__dirname, file);
 const app = module.exports = express();
 
+const stroe = 
+
 app.set('port', (process.env.port || 3002));
 app.use(session({
+	stroe: new MongoStore({
+		mongooseConnection: mongoose.connection,
+		ttl: 24 * 60 * 60
+	}),
+	saveUninitialized: false,
 	secret: 'auto',
 	cookie: {
 		maxAge: 24 * 60 * 60 * 1000

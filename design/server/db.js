@@ -135,4 +135,4 @@ db.on('open', () => {
 	initialize();
 })
 
-module.exports = Models;
+module.exports = Models

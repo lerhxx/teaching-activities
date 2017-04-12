@@ -4,6 +4,7 @@ const db = require('./db');
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const session = require('express-session');
 const resolve = file => path.resolve(__dirname, file);
 
 const fn = () => {};
@@ -51,28 +52,44 @@ router.get('/getFacultiesLists/:id', (req, res) => {
 // 登录
 router.post('/signin', (req, res) => {
 	let {id, pwd} = req.body;
-	if(req.session.user) {
-		res.send({state: 0, msg: '已登录'})
-	}else {
-		db.User.findOne({name: id}, (err, user) => {
-			if(!!err) {
-				res.send({state: 1, msg: '查询失败！'});
-			}else if(!user){
-				res.send({state: 2, msg: '账号不存在!'});
-			}
-			let hash = crypto.createHash('sha256');
-			hash.update(pwd);
-			pwd = hash.digest(pwd);
-			if(pwd.toString('hex') === user.pwd) {
-				res.send({state: 0, data: {id: id, rank: user.rank, faculty: user.faculty}});
-			}else {
-				res.send({state: 3, msg: '密码错误!'});
-			}
-		})
-	}
+	console.log(req.session)
+	db.User.findOne({name: id}, (err, user) => {
+		if(!!err) {
+			res.send({state: 1, msg: '查询失败！'});
+		}else if(!user){
+			res.send({state: 2, msg: '账号不存在!'});
+		}
+		let hash = crypto.createHash('sha256');
+		hash.update(pwd);
+		pwd = hash.digest(pwd);
+		if(pwd.toString('hex') === user.pwd) {
+			req.session.save((err) => {
+				if(err) {
+					res.send({state: 4, msg: '登录失败，请重新尝试'})
+				}else {
+					req.session.user = user;
+					res.cookie('username', user.name);
+					res.send({state: 0, data: {id: id, rank: user.rank, faculty: user.faculty}});
+				}
+			})
+		}else {
+			res.send({state: 3, msg: '密码错误!'});
+		}
+	})
 })
 // 登出
 router.get('/signout', (req, res) => {
+	console.log(req.session)
+	req.session.destroy(err => {
+		if(err) {
+			res.send({state: 1, msg: '登出失败，请重新尝试'})
+		}else {
+			// req.session.user = null;
+			console.log(req.session)
+			res.send({state: 0, msg: '登出成功'})
+
+		}
+	})
 })
 // 创建文章
 router.post('/edit/create', (req, res) => {
@@ -314,14 +331,19 @@ function filter(doc) {
 }
 // 获取当前用户个人信息
 router.get('/userManage/selfInfo', (req, res) => {
-	db.User.find({id: req.query.id}, (err, doc) => {
+	// console.log(cookieParser.signedCookies(req.cookies['connect.sid']))
+	// console.log(req.cookies)
+	console.log(req.cookies['connect.sid'])
+	console.log(req.sessionID)
+	console.log(req.session)
+	db.User.find({name: req.query.name}, (err, doc) => {
 		if(err) {
 			res.send({state: 1, msg: '操作失败'});
 		}
 		if(!doc.length) {
 			res.send({state: 2, msg: '账号不存在'});
 		}else {
-			res.send({state: 0, data: {id: doc[0].id, rank: doc[0].rank, faculty: doc[0].faculty}});
+			res.send({state: 0, data: {id: doc[0].name, rank: doc[0].rank, faculty: doc[0].faculty}});
 		}
 	})
 })

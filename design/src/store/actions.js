@@ -49,8 +49,10 @@ export default {
   SIGNIN({commit}, userInfo) {
     return axios.post('/signin', userInfo)
       .then(res => {
+        console.log(res.data.data)
         if (res.data.state === 0) {
           commit('SET_USER', res.data.data)
+          return Promise.resolve(res.data.data);
         }else {
           return Promise.reject(res.data.msg)
         }
@@ -62,7 +64,7 @@ export default {
     return axios.get('/signout', userInfo)
       .then(res => {
         if (res.data.state === 0) {
-          commit('SET_USER', res.data.data)
+          commit('CLEAN_USER')
         }else {
           return Promise.reject(res.data.msg)
         }
@@ -156,7 +158,7 @@ export default {
   },
   // 获取当前用户个人信息
   GET_USER_INFO({commit}, userInfo) {
-    return axios.get('/userManage/selfInfo', {params: {id: userInfo.id}})
+    return axios.get('/userManage/selfInfo', {params: userInfo})
       .then(res => {
         if(res.data.state === 0) {
           commit('SET_USER', res.data.data)

@@ -34,6 +34,12 @@ export default {
         state.userRank = info.rank;
         state.userFaculty = info.faculty;
     },
+    // 登出，清楚用户信息
+    CLEAN_USER(state) {
+        state.userId = '';
+        state.userRank = '';
+        state.userFaculty = '';
+    },
     // 更新个人发布文章列表
     UPDATE_SELF_ARTICLES(state, id) {
         let len = state.selfArticles.length,

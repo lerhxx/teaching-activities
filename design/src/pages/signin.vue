@@ -23,7 +23,7 @@
 
 <script>
 	import {mapState} from 'vuex';
-	import {set, get} from '../assets/cookieUtil';
+	// import {set, get} from '../assets/cookieUtil';
 
 	export default {
 		data() {
@@ -44,11 +44,15 @@
 				this.$store.dispatch('SIGNIN', {
 					id: this.account,
 					pwd: this.password
-				}).then(() => {
-					let date = new Date(Date.now() + 60000 * 30 * 24);
-					set('user', this.account, date, '/', window.location.hostname);
+				}).then((res) => {
+					// let date = new Date(Date.now() + 60000 * 30 * 24);
+					// set('user', this.account, date, '/', window.location.hostname);
+					console.log(res)
 					this.$router.push({path: '/'});
-				}).catch(msg => this.tip = msg);
+				}).catch(msg => {
+					this.tip = msg
+					console.log(msg)
+				});
 			}
 		}
 	}
