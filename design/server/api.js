@@ -3,6 +3,7 @@ const router = express.Router();
 const db = require('./db');
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const resolve = file => path.resolve(__dirname, file);
 
 const fn = () => {};
@@ -50,26 +51,25 @@ router.get('/getFacultiesLists/:id', (req, res) => {
 // 登录
 router.post('/signin', (req, res) => {
 	let {id, pwd} = req.body;
-
-	db.User.findOne({id}, (err, user) => {
-		// console.log(user)
-		switch(true) { 
-			case !!err:
+	if(req.session.user) {
+		res.send({state: 0, msg: '已登录'})
+	}else {
+		db.User.findOne({name: id}, (err, user) => {
+			if(!!err) {
 				res.send({state: 1, msg: '查询失败！'});
-				break;
-			case !user:
+			}else if(!user){
 				res.send({state: 2, msg: '账号不存在!'});
-				break;
-			case user.pwd === pwd:
+			}
+			let hash = crypto.createHash('sha256');
+			hash.update(pwd);
+			pwd = hash.digest(pwd);
+			if(pwd.toString('hex') === user.pwd) {
 				res.send({state: 0, data: {id: id, rank: user.rank, faculty: user.faculty}});
-				break;
-			case user.pwd !== pwd:
+			}else {
 				res.send({state: 3, msg: '密码错误!'});
-				break;
-			default:
-				res.send({state: 4, msg: '未知错误!'});
-		}
-	})
+			}
+		})
+	}
 })
 // 登出
 router.get('/signout', (req, res) => {

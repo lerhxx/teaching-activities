@@ -6,11 +6,12 @@ const footerLink = require('../json/footer-link.json');
 const search = require('../json/search.json');
 const academy = require('../json/academy.json');
 const user = require('../json/user.json');
+const config = require('./config');
+const crypto = require('crypto');
 
 mongoose.Promise = Promise;
 
-mongoose.connect('mongodb://localhost/design');
-// mongoose.connect('mongodb://D:/mongodb/design');
+mongoose.connect(config.db);
 
 const selectTypeSchema = new Schema({
 	type: String,
@@ -24,11 +25,19 @@ const AcademySchema = new Schema({
 })
 
 const userSchema = new Schema({
-	id: String,
+	name: String,
 	pwd: String,
 	rank: Number,
 	faculty: String,
 	title: String
+})
+
+userSchema.pre('save', function(next) {
+	let content = this.pwd;
+	let sha = crypto.createHash('sha256');
+	sha.update(content);
+	this.pwd = sha.digest('hex');
+	next();
 })
 
 //TODO
@@ -93,11 +102,11 @@ const initialize = () => {
 		}else if(!doc.length) {
 			console.log('Database opens for the first time...')
 			//TODO
-			article.articles.map(item => new Models.Article(item).save());
+			// article.articles.map(item => new Models.Article(item).save());
 			user.map(item => new Models.User(item).save());
 			// footerLink.map(item => new Models.FootLink(item).save());
 			// search.map(item =>new Models.Search(item).save());
-			academy.map(item =>new Models.Academy(item).save());
+			// academy.map(item =>new Models.Academy(item).save());
 			// console.log(academy)
 			// Models.Article.find(null, (err, doc) => {
 			// 	if(err) {
@@ -106,12 +115,12 @@ const initialize = () => {
 			// 	console.log(doc)
 			// })
 		}else {
-			// Models.User.find(null, (err, doc) => {
-			// 	// doc.map(item => item.remove()) 
-			// 	Models.User.find(null, (err, doc) => {
-			// 		console.log(doc)
-			// 	})
-			// })
+			Models.User.find(null, (err, doc) => {
+				// doc.map(item => item.remove()) 
+				// Models.User.find(null, (err, doc) => {
+				// 	console.log(doc)
+				// })
+			})
 			Models.initialized = true;
 		}
 	})
