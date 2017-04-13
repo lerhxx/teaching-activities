@@ -11648,12 +11648,11 @@
 		created: function created() {
 			var _this = this;
 
-			console.log((0, _cookieUtil.get)('connect.sid'));
-			// if(get('username') && !this.userId) {
-			this.$store.dispatch('GET_USER_INFO', { name: this.username }).then(function (res) {
-				console.log(_this.$store.state.userId);
-			});
-			// }
+			if ((0, _cookieUtil.get)('username') && !this.userId) {
+				this.$store.dispatch('GET_USER_INFO', { name: this.username }).then(function (res) {
+					console.log(_this.$store.state.userId);
+				});
+			}
 		},
 
 		computed: {
@@ -12418,19 +12417,7 @@
 		}
 	}, {
 		path: '/user/edit', component: _edit2.default, name: 'userEdit'
-	},
-	// {
-	// 	path: '/pervalidate/:id', name: 'perValidate',
-	// 	redirect: to => {
-	// 		const {hash, params, query} = to;
-	// 		if(params.id) {
-	// 			return '/personal/' + params.id + '/count';
-	// 		}else {
-	// 			return '/signin';
-	// 		}
-	// 	}
-	// },
-	{
+	}, {
 		path: '/personal/:id', component: _personal2.default, name: 'personal',
 		children: [{
 			path: 'article',

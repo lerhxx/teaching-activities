@@ -49,17 +49,6 @@ const routes = [{
 }, {
 	path: '/user/edit', component: Edit, name: 'userEdit'
 }, 
-// {
-// 	path: '/pervalidate/:id', name: 'perValidate',
-// 	redirect: to => {
-// 		const {hash, params, query} = to;
-// 		if(params.id) {
-// 			return '/personal/' + params.id + '/count';
-// 		}else {
-// 			return '/signin';
-// 		}
-// 	}
-// },
  {
 	path: '/personal/:id', component: Personal, name: 'personal',
 	children: [{

@@ -50,13 +50,12 @@
 			}
 		},
 		created() {
-			console.log(get('connect.sid'))
-			// if(get('username') && !this.userId) {
+			if(get('username') && !this.userId) {
 				this.$store.dispatch('GET_USER_INFO', {name: this.username})
 					.then(res => {
 						console.log(this.$store.state.userId)
 					});
-			// }
+			}
 		},
 		computed: {
 			username() {

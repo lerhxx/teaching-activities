@@ -75,6 +75,11 @@ const totalSchema = new Schema({
 	userTotal: Number
 })
 
+const sessionSchema = new Schema({
+	sessionId: String,
+	user: Object
+})
+
 // const commentSchema = new Schema({
 // 	id: String,
 // 	time: Date,
@@ -87,6 +92,7 @@ const Models = {
 	FootLink: mongoose.model('FootLink', footLinkSchema),
 	Search: mongoose.model('Search', searchSchema),
 	Academy: mongoose.model('Academy', AcademySchema),
+	Sessions: mongoose.model('Sessions', new Schema({})),
 	initialized: false
 }
 
@@ -96,14 +102,15 @@ let articalNum = article.articles.length,
 	userNum = user.length;
 
 const initialize = () => {
-	Models.User.find(null, (err, doc) => {
+	Models.Sessions.find(null, (err, doc) => {
 		if(err) {
 			console.error(err);
 		}else if(!doc.length) {
 			console.log('Database opens for the first time...')
 			//TODO
 			// article.articles.map(item => new Models.Article(item).save());
-			user.map(item => new Models.User(item).save());
+			// user.map(item => new Models.User(item).save());
+			new Models.Sessions({}).save();
 			// footerLink.map(item => new Models.FootLink(item).save());
 			// search.map(item =>new Models.Search(item).save());
 			// academy.map(item =>new Models.Academy(item).save());
@@ -115,9 +122,9 @@ const initialize = () => {
 			// 	console.log(doc)
 			// })
 		}else {
-			Models.User.find(null, (err, doc) => {
+			Models.Sessions.find(null, (err, doc) => {
 				// doc.map(item => item.remove()) 
-				// Models.User.find(null, (err, doc) => {
+				// Models.Sessions.find(null, (err, doc) => {
 				// 	console.log(doc)
 				// })
 			})
