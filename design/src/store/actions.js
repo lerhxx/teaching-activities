@@ -49,7 +49,6 @@ export default {
   SIGNIN({commit}, userInfo) {
     return axios.post('/signin', userInfo)
       .then(res => {
-        console.log(res.data.data)
         if (res.data.state === 0) {
           commit('SET_USER', res.data.data)
           return Promise.resolve(res.data.data);
@@ -58,7 +57,6 @@ export default {
         }
       })
   },
-  // TODO
   // 登出
   SIGNOUT({commit}, userInfo) {
     return axios.get('/signout', userInfo)

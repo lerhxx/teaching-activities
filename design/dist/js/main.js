@@ -8433,7 +8433,8 @@
 			article: {},
 			articleTotal: 0,
 			selfArticles: [],
-			idEdit: false
+			idEdit: false,
+			academys: []
 		},
 		getters: _getter2.default,
 		mutations: _mutations2.default,
@@ -10959,7 +10960,6 @@
 	    var commit = _ref5.commit;
 
 	    return _axios2.default.post('/signin', userInfo).then(function (res) {
-	      console.log(res.data.data);
 	      if (res.data.state === 0) {
 	        commit('SET_USER', res.data.data);
 	        return Promise.resolve(res.data.data);
@@ -10969,7 +10969,6 @@
 	    });
 	  },
 
-	  // TODO
 	  // 登出
 	  SIGNOUT: function SIGNOUT(_ref6, userInfo) {
 	    var commit = _ref6.commit;
@@ -11653,6 +11652,7 @@
 					console.log(_this.$store.state.userId);
 				});
 			}
+			this.$store.dispatch('GET_ACADEMY_LISTS');
 		},
 
 		computed: {
@@ -15183,13 +15183,13 @@
 	    directives: [{
 	      name: "model",
 	      rawName: "v-model",
-	      value: (_vm.academy),
-	      expression: "academy"
+	      value: (_vm.params.academy),
+	      expression: "params.academy"
 	    }],
 	    staticClass: "academy",
 	    on: {
 	      "change": [function($event) {
-	        _vm.academy = Array.prototype.filter.call($event.target.options, function(o) {
+	        _vm.params.academy = Array.prototype.filter.call($event.target.options, function(o) {
 	          return o.selected
 	        }).map(function(o) {
 	          var val = "_value" in o ? o._value : o.value;
@@ -15207,13 +15207,13 @@
 	    directives: [{
 	      name: "model",
 	      rawName: "v-model",
-	      value: (_vm.faculty),
-	      expression: "faculty"
+	      value: (_vm.params.faculty),
+	      expression: "params.faculty"
 	    }],
 	    staticClass: "faculty",
 	    on: {
 	      "change": [function($event) {
-	        _vm.faculty = Array.prototype.filter.call($event.target.options, function(o) {
+	        _vm.params.faculty = Array.prototype.filter.call($event.target.options, function(o) {
 	          return o.selected
 	        }).map(function(o) {
 	          var val = "_value" in o ? o._value : o.value;
@@ -15231,13 +15231,13 @@
 	    directives: [{
 	      name: "model",
 	      rawName: "v-model",
-	      value: (_vm.type),
-	      expression: "type"
+	      value: (_vm.params.type),
+	      expression: "params.type"
 	    }],
 	    staticClass: "type",
 	    on: {
 	      "change": [function($event) {
-	        _vm.type = Array.prototype.filter.call($event.target.options, function(o) {
+	        _vm.params.type = Array.prototype.filter.call($event.target.options, function(o) {
 	          return o.selected
 	        }).map(function(o) {
 	          var val = "_value" in o ? o._value : o.value;
@@ -18499,7 +18499,7 @@
 	      expression: "!isAdd"
 	    }]
 	  }, [_vm._m(0), _vm._v(" "), _vm._l((_vm.users), function(item) {
-	    return _c('tr', [_c('td', [_vm._v(_vm._s(item.id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.faculty.type))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.title))])])
+	    return _c('tr', [_c('td', [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.faculty.type))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.title))])])
 	  })], true), _vm._v(" "), _c('form', {
 	    directives: [{
 	      name: "show",
