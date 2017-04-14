@@ -42,7 +42,6 @@ router.get('/getAcademyLists', (req, res) => {
 // 获取首页教研室类型
 router.get('/getFacultiesLists/:id', (req, res) => {
 	db.Academy.findOne({index: req.params.id}, (err, doc) => {
-		// console.log(doc)
 		if(err) {
 			res.send({state: 1, msg: '查询失败！'});
 		}else {
@@ -81,13 +80,13 @@ router.post('/signin', (req, res) => {
 })
 // 登出
 router.get('/signout', (req, res) => {
-	console.log(req.session)
+	// console.log(req.session)
 	// req.session.destroy(err => {
 		// if(err) {
 		// 	res.send({state: 1, msg: '登出失败，请重新尝试'})
 		// }else {
 			req.session.user = null;
-			console.log(req.session)
+			// console.log(req.session)
 			res.send({state: 0, msg: '登出成功'})
 
 		// }
@@ -298,6 +297,7 @@ router.get('/count/:id/:tab/:year/:time', (req, res) => {
 		})
 	}else if(params.tab == 1) {
 		db.Article.find({faculty: {$in: [params.id]} ,$and: [{startTime: {$gt: sTime}}, {startTime: {$lt: eTime}}]}, (err, doc) => {
+				console.log(doc.length)
 				if(err) {
 					res.send({state: 1, msg: '查询失败！'})
 				}else {

@@ -330,10 +330,10 @@ export function init(ids, options) {
  * @return {void}
  */
 export function refresh(options) {
-    console.log(options)
     if(isEmpty(myCharts)) {
         return;
     }
+    console.log(myCharts + ' myCharts')
 
     let data = getData(options);
     let axis = xAxis(options.type);

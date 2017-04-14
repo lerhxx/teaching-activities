@@ -15871,15 +15871,15 @@
 					title: '',
 					time: '',
 					address: '',
-					acadamy: '请选择发布学院',
-					unit: '请选择举办单位',
-					type: '请选择发布类型',
 					explain: '',
 					content: '',
 					enclosure: '',
 					faculty: '',
 					party: ''
 				},
+				acadamy: '请选择发布学院',
+				unit: '请选择举办单位',
+				type: '请选择发布类型',
 				acadamyOptionShow: false,
 				unitOptionShow: false,
 				typeOptionShow: false,
@@ -15950,8 +15950,9 @@
 			},
 			onToggleOption: function onToggleOption(str) {
 				var name = str + 'OptionShow';
-				if (this.userRank > 1 && str === 'unit' && !this.unitIptions) {
+				if (this.userRank > 1 && str === 'unit' && !this.acadamyOptions) {
 					alert('请先选择学院');
+					return;
 				}
 				this[name] = !this[name];
 			},
@@ -15968,7 +15969,7 @@
 				}
 			},
 			onChangeAcadamyOption: function onChangeAcadamyOption(e) {
-				this.form.acadamy = e.target.innerHTML;
+				this.acadamy = e.target.innerHTML;
 				var index = e.target.getAttribute('data-index');
 				for (var i = 0, len = this.acadamyOptions.length; i < len; ++i) {
 					if (this.acadamyOptions[i].index == index) {
@@ -15980,11 +15981,11 @@
 				this.acadamyOptionShow = !this.acadamyOptionShow;
 			},
 			onChangeUnitOption: function onChangeUnitOption(e) {
-				this.form.unit = e.target.innerHTML;
+				this.unit = e.target.innerHTML;
 				this.unitOptionShow = !this.unitOptionShow;
 			},
 			onChangeTypeOption: function onChangeTypeOption(e) {
-				this.form.type = e.target.innerHTML;
+				this.type = e.target.innerHTML;
 				this.typeOptionShow = !this.typeOptionShow;
 			},
 			onChangeCover: function onChangeCover(e) {
@@ -16022,10 +16023,15 @@
 				form.content = this.$refs.edit.getContent();
 				form.author = this.userId;
 				form.time = new Date();
-				form.faculty = this.userFaculty;
+				form.faculty = this.userRank > 1 ? this.unit : this.userFaculty;
 				// console.log(form)
-				// console.log(form.content);
-				if (!form.title || !form.time || !form.address || !form.unit || !form.content) {
+				for (var i = 0, len = this.typeOptions.length; i < len; ++i) {
+					if (this.type = this.typeOptions[i].name) {
+						form.type = this.typeOptions[i].index;
+						break;
+					}
+				}
+				if (!form.title || !form.time || !form.address || !form.unit || !form.content || !form.type) {
 					return alert('请填写所有必须项！');
 				}
 				if (!this.$route.params.artId) {
@@ -17736,7 +17742,13 @@
 	        _vm.form.address = $event.target.value
 	      }
 	    }
-	  })]), _vm._v(" "), _vm._v(" "), _c('div', {
+	  })]), _vm._v(" "), _c('div', {
+	    directives: [{
+	      name: "show",
+	      rawName: "v-show",
+	      value: (_vm.userRank > 1),
+	      expression: "userRank > 1"
+	    }],
 	    staticClass: "group-con"
 	  }, [_c('span', {
 	    staticClass: "must"
@@ -17749,7 +17761,7 @@
 	        _vm.onToggleOption("acadamy")
 	      }
 	    }
-	  }, [_vm._v(_vm._s(_vm.form.acadamy))]), _vm._v(" "), _c('span', {
+	  }, [_vm._v(_vm._s(_vm.acadamy))]), _vm._v(" "), _c('span', {
 	    staticClass: "arrow",
 	    on: {
 	      "click": function($event) {
@@ -17776,6 +17788,12 @@
 	      }
 	    }, [_vm._v(_vm._s(item.name))])
 	  }))])])]), _vm._v(" "), _c('div', {
+	    directives: [{
+	      name: "show",
+	      rawName: "v-show",
+	      value: (_vm.userRank > 1),
+	      expression: "userRank > 1"
+	    }],
 	    staticClass: "group-con"
 	  }, [_c('span', {
 	    staticClass: "must"
@@ -17788,7 +17806,7 @@
 	        _vm.onToggleOption("unit")
 	      }
 	    }
-	  }, [_vm._v(_vm._s(_vm.form.unit))]), _vm._v(" "), _c('span', {
+	  }, [_vm._v(_vm._s(_vm.unit))]), _vm._v(" "), _c('span', {
 	    staticClass: "arrow",
 	    on: {
 	      "click": function($event) {
@@ -17827,7 +17845,7 @@
 	        _vm.onToggleOption("type")
 	      }
 	    }
-	  }, [_vm._v(_vm._s(_vm.form.type))]), _vm._v(" "), _c('span', {
+	  }, [_vm._v(_vm._s(_vm.type))]), _vm._v(" "), _c('span', {
 	    staticClass: "arrow",
 	    on: {
 	      "click": function($event) {
@@ -19416,6 +19434,7 @@
 
 	            if (ref) {
 	                this.$store.dispatch('GET_CHARTS_DATA', { id: queryId, tab: this.rangeTab, time: time, year: this.selectYear }).then(function (res) {
+	                    console.log(res[0]);
 	                    if (!(0, _common.isEmpty)(res)) {
 	                        _this2.empty = false;
 	                        _this2.opt = res;
@@ -19431,9 +19450,8 @@
 	            var _this3 = this;
 
 	            var id = this.charts,
-	                queryId = this.rangeTab == 0 ? this.$route.params.id : this.$store.state.userFaculty,
+	                queryId = this.rangeTab == 0 ? this.$route.params.id : this.$store.state.userFaculty.index,
 	                time = this.timeTab;
-
 	            this.$store.dispatch('GET_CHARTS_DATA', { id: queryId, tab: this.rangeTab, time: time, year: this.selectYear }).then(function (res) {
 	                if (!(0, _common.isEmpty)(res)) {
 	                    _this3.empty = false;
@@ -19859,10 +19877,10 @@
 	* @return {void}
 	*/
 	function refresh(options) {
-	    console.log(options);
 	    if ((0, _common.isEmpty)(myCharts)) {
 	        return;
 	    }
+	    console.log(myCharts + ' myCharts');
 
 	    var data = getData(options);
 	    var axis = xAxis(options.type);

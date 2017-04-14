@@ -125,6 +125,7 @@
                 if(ref) {
                 this.$store.dispatch('GET_CHARTS_DATA', {id: queryId, tab: this.rangeTab, time: time, year: this.selectYear})
                     .then(res => {
+                        console.log(res[0])
                         if(!isEmpty(res)) {
                             this.empty = false;
                             this.opt = res;
@@ -139,9 +140,8 @@
             },
             refreshCharts() {
                 let id = this.charts,
-                    queryId = this.rangeTab == 0 ? this.$route.params.id : this.$store.state.userFaculty,
+                    queryId = this.rangeTab == 0 ? this.$route.params.id : this.$store.state.userFaculty.index,
                     time = this.timeTab;
-
                 this.$store.dispatch('GET_CHARTS_DATA', {id: queryId, tab: this.rangeTab, time: time, year: this.selectYear})
                     .then(res => {
                          if(!isEmpty(res)) {
