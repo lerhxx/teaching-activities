@@ -120,7 +120,7 @@
                     .catch(err => alert(err));
             }
         },
-        computed: mapState(['users'])
+        computed: mapState(['users', 'academyList', 'facultiesList'])
 	}
 </script>
 

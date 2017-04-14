@@ -31,6 +31,7 @@ router.get('/getTypeLists', (req, res) => {
 // 获取首页学院信息
 router.get('/getAcademyLists', (req, res) => {
 	db.Academy.find(null, (err, lists) => {
+		// console.log(lists)
 		if(err) {
 			res.send({state: 1, msg: '查询失败！'});
 		}else {
@@ -271,7 +272,7 @@ function pagedQuery(obj, page, size, total, res) {
 }
 // 统计图表
 router.get('/count/:id/:tab/:year/:time', (req, res) => {
-	// console.log(req.params);
+	console.log(req.params);
 	let params = req.params,
 		sTime = new Date(),
 		eTime = new Date();
@@ -285,10 +286,9 @@ router.get('/count/:id/:tab/:year/:time', (req, res) => {
 		sTime = new Date(`${params.year}-07-01`);
 		eTime = new Date(`${params.year * 1 + 1}-01-01`);
 	}
-
 	if(params.tab == 0) {
 		db.Article.find({participator: {$in: [params.id]}, $and: [{startTime: {$gt: sTime}}, {startTime: {$lt: eTime}}]}, (err, doc) => {
-				// console.log(doc)
+				console.log(doc)
 				if(err) {
 					res.send({state: 1, msg: '查询失败！'})
 				}else {
@@ -402,7 +402,6 @@ router.delete('/userManage/delete/:id', (req, res) => {
 // 获取统计单位可选项
 router.get('/count/unitText', (req, res) => {
 	db.Academy.find({index: req.query.faculty}, (err, doc) => {
-		console.log(doc)
 		if(err) {
 			res.send({state: 1, msg: err})
 		}else {

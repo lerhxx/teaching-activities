@@ -21,8 +21,7 @@ const store = new Vuex.Store({
 		article: {},
 		articleTotal: 0, 
 		selfArticles: [],
-		idEdit: false,
-		academys: []
+		idEdit: false
 	},
 	getters,
 	mutations,

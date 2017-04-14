@@ -17,7 +17,8 @@ export default {
     return axios.get('/getTypeLists')
       .then(res => {
         if (res.data.state === 0) {
-          commit('SET_TYPE_LISTS', res.data.data)
+          commit('SET_TYPE_LISTS', res.data.data);
+          return Promise.resolve(res.data.data);
         }else {
           return Promise.reject(res.data.msg)
         }
@@ -28,7 +29,8 @@ export default {
     return axios.get('/getAcademyLists')
       .then(res => {
         if (res.data.state === 0) {
-          commit('SET_ACADEMY_LISTS', res.data.data)
+          commit('SET_ACADEMY_LISTS', res.data.data);
+          return Promise.resolve(res.data.data);
         }else {
           return Promise.reject(res.data.msg)
         }
@@ -40,6 +42,7 @@ export default {
       .then(res => {
         if(res.data.state === 0) {
           commit('SET_FACULTIES', res.data.data)
+          return Promise.resolve(res.data.data);
         }else {
           return Promise.reject(res.data.msg)
         }
@@ -145,9 +148,10 @@ export default {
   },
   // 统计图表
   GET_CHARTS_DATA({commit}, info) {
+    console.log(info)
     return axios.get(`/count/${info.id}/${info.tab}/${info.year}/${info.time}`).then(res => {
         if(res.data.state == 0) {
-      // console.log(res.data.data)
+      console.log(res.data.data)
           return Promise.resolve(res.data.data);
         }else {
           return Promise.reject(res.data.msg);
@@ -211,7 +215,7 @@ export default {
   },
   // 获取统计单位可选项
   GET_UNIT_TEXT({commit}, info) {
-    return axios.get('/unitText', {params: info})
+    return axios.get('/count/unitText', {params: info})
       .then(res => {
         if(res.data.state == 0) {
           return Promise.resolve(res.data.data);
