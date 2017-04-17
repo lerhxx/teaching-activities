@@ -10922,6 +10922,7 @@
 	    return _axios2.default.get('/getTypeLists').then(function (res) {
 	      if (res.data.state === 0) {
 	        commit('SET_TYPE_LISTS', res.data.data);
+	        return Promise.resolve(res.data.data);
 	      } else {
 	        return Promise.reject(res.data.msg);
 	      }
@@ -10935,6 +10936,7 @@
 	    return _axios2.default.get('/getAcademyLists').then(function (res) {
 	      if (res.data.state === 0) {
 	        commit('SET_ACADEMY_LISTS', res.data.data);
+	        return Promise.resolve(res.data.data);
 	      } else {
 	        return Promise.reject(res.data.msg);
 	      }
@@ -10948,6 +10950,7 @@
 	    return _axios2.default.get('/getFacultiesLists/' + info.academy).then(function (res) {
 	      if (res.data.state === 0) {
 	        commit('SET_FACULTIES', res.data.data);
+	        return Promise.resolve(res.data.data);
 	      } else {
 	        return Promise.reject(res.data.msg);
 	      }
@@ -10959,7 +10962,6 @@
 	    var commit = _ref5.commit;
 
 	    return _axios2.default.post('/signin', userInfo).then(function (res) {
-	      console.log(res.data.data);
 	      if (res.data.state === 0) {
 	        commit('SET_USER', res.data.data);
 	        return Promise.resolve(res.data.data);
@@ -10969,7 +10971,6 @@
 	    });
 	  },
 
-	  // TODO
 	  // 登出
 	  SIGNOUT: function SIGNOUT(_ref6, userInfo) {
 	    var commit = _ref6.commit;
@@ -11076,9 +11077,10 @@
 	  GET_CHARTS_DATA: function GET_CHARTS_DATA(_ref14, info) {
 	    var commit = _ref14.commit;
 
+	    console.log(info);
 	    return _axios2.default.get('/count/' + info.id + '/' + info.tab + '/' + info.year + '/' + info.time).then(function (res) {
 	      if (res.data.state == 0) {
-	        // console.log(res.data.data)
+	        console.log(res.data.data);
 	        return Promise.resolve(res.data.data);
 	      } else {
 	        return Promise.reject(res.data.msg);
@@ -11155,7 +11157,7 @@
 	  GET_UNIT_TEXT: function GET_UNIT_TEXT(_ref20, info) {
 	    var commit = _ref20.commit;
 
-	    return _axios2.default.get('/unitText', { params: info }).then(function (res) {
+	    return _axios2.default.get('/count/unitText', { params: info }).then(function (res) {
 	      if (res.data.state == 0) {
 	        return Promise.resolve(res.data.data);
 	      } else {
@@ -11653,6 +11655,7 @@
 					console.log(_this.$store.state.userId);
 				});
 			}
+			this.$store.dispatch('GET_ACADEMY_LISTS');
 		},
 
 		computed: {
@@ -15183,13 +15186,13 @@
 	    directives: [{
 	      name: "model",
 	      rawName: "v-model",
-	      value: (_vm.academy),
-	      expression: "academy"
+	      value: (_vm.params.academy),
+	      expression: "params.academy"
 	    }],
 	    staticClass: "academy",
 	    on: {
 	      "change": [function($event) {
-	        _vm.academy = Array.prototype.filter.call($event.target.options, function(o) {
+	        _vm.params.academy = Array.prototype.filter.call($event.target.options, function(o) {
 	          return o.selected
 	        }).map(function(o) {
 	          var val = "_value" in o ? o._value : o.value;
@@ -15207,13 +15210,13 @@
 	    directives: [{
 	      name: "model",
 	      rawName: "v-model",
-	      value: (_vm.faculty),
-	      expression: "faculty"
+	      value: (_vm.params.faculty),
+	      expression: "params.faculty"
 	    }],
 	    staticClass: "faculty",
 	    on: {
 	      "change": [function($event) {
-	        _vm.faculty = Array.prototype.filter.call($event.target.options, function(o) {
+	        _vm.params.faculty = Array.prototype.filter.call($event.target.options, function(o) {
 	          return o.selected
 	        }).map(function(o) {
 	          var val = "_value" in o ? o._value : o.value;
@@ -15231,13 +15234,13 @@
 	    directives: [{
 	      name: "model",
 	      rawName: "v-model",
-	      value: (_vm.type),
-	      expression: "type"
+	      value: (_vm.params.type),
+	      expression: "params.type"
 	    }],
 	    staticClass: "type",
 	    on: {
 	      "change": [function($event) {
-	        _vm.type = Array.prototype.filter.call($event.target.options, function(o) {
+	        _vm.params.type = Array.prototype.filter.call($event.target.options, function(o) {
 	          return o.selected
 	        }).map(function(o) {
 	          var val = "_value" in o ? o._value : o.value;
@@ -15827,6 +15830,28 @@
 	//
 	//
 	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 	exports.default = {
 		data: function data() {
@@ -15846,17 +15871,24 @@
 					title: '',
 					time: '',
 					address: '',
-					unit: '请选择举办单位',
 					explain: '',
 					content: '',
 					enclosure: '',
 					faculty: '',
 					party: ''
 				},
-				optionShow: false,
+				acadamy: '请选择发布学院',
+				unit: '请选择举办单位',
+				type: '请选择发布类型',
+				acadamyOptionShow: false,
+				unitOptionShow: false,
+				typeOptionShow: false,
 				calendar: {
 					show: false
-				}
+				},
+				acadamyOptions: [],
+				unitOptions: [],
+				typeOptions: []
 			};
 		},
 
@@ -15867,8 +15899,6 @@
 		created: function created() {
 			var _this = this;
 
-			console.log(this.$route.params.artId);
-			console.log(this.isEdit);
 			if (this.isEdit && this.$route.params.artId) {
 				this.$store.dispatch('GET_EDIT_ARTICLE', { id: this.$route.params.artId }).then(function (data) {
 					_this.form.title = data.title;
@@ -15881,22 +15911,56 @@
 					_this.$refs.edit.setContent(data.content);
 				});
 			}
-			// else {
-			// 	this.form.title = '';
-			// 	this.form.abs = '';
-			// 	this.form.time = '';
-			// 	this.form.address = '';
-			// 	this.form.unit = '';
-			// 	this.form.explain = '';
-			// 	this.form.enclosure = '';
-			// 	console.log(this.$refs.edit)
-			// 	this.$refs.edit.setContent('')
-			// }
+			if (this.userRank == 1) {
+				this.getUnitOptions();
+			} else if (this.userRank > 1) {
+				this.getAcadamyOptions();
+			}
+			this.getTypeOptions();
 		},
 
 		methods: {
-			onToggleOption: function onToggleOption() {
-				this.optionShow = !this.optionShow;
+			getAcadamyOptions: function getAcadamyOptions() {
+				var self = this;
+				this.$store.dispatch('GET_ACADEMY_LISTS').then(function (res) {
+					res.shift();
+					self.acadamyOptions = res;
+				}).catch(function (err) {
+					return console.log(err);
+				});
+			},
+			getUnitOptions: function getUnitOptions() {
+				var self = this;
+				var acadamyId = this.userFaculty.index.split('-')[0];
+				this.$store.dispatch('GET_FACULTIES', { academy: acadamyId }).then(function (res) {
+					res.shift();
+					self.unitOptions = res;
+				}).catch(function (err) {
+					return console.log(err);
+				});
+			},
+			getTypeOptions: function getTypeOptions() {
+				var self = this;
+				this.$store.dispatch('GET_TYPE_LISTS').then(function (res) {
+					res.shift();
+					self.typeOptions = res;
+				}).catch(function (err) {
+					return console.log(err);
+				});
+			},
+			onToggleOption: function onToggleOption(str) {
+				var name = str + 'OptionShow';
+				if (this.userRank > 1 && str === 'unit' && !this.acadamyOptions) {
+					alert('请先选择学院');
+					return;
+				}
+				this[name] = !this[name];
+			},
+			onToggleUnitOption: function onToggleUnitOption() {
+				this.unitOptionShow = !this.unitOptionShow;
+			},
+			onToggleTypeOption: function onToggleTypeOption() {
+				this.typeOptionShow = !this.typeOptionShow;
 			},
 			onChangeFile: function onChangeFile(e) {
 				this.form.enclosure = this.getFile(e);
@@ -15904,9 +15968,25 @@
 					return;
 				}
 			},
-			onChangeOption: function onChangeOption(e) {
-				this.form.unit = e.target.innerHTML;
-				this.optionShow = !this.optionShow;
+			onChangeAcadamyOption: function onChangeAcadamyOption(e) {
+				this.acadamy = e.target.innerHTML;
+				var index = e.target.getAttribute('data-index');
+				for (var i = 0, len = this.acadamyOptions.length; i < len; ++i) {
+					if (this.acadamyOptions[i].index == index) {
+						this.unitOptions = this.acadamyOptions[i].staff;
+						this.unitOptions.shift();
+						break;
+					}
+				}
+				this.acadamyOptionShow = !this.acadamyOptionShow;
+			},
+			onChangeUnitOption: function onChangeUnitOption(e) {
+				this.unit = e.target.innerHTML;
+				this.unitOptionShow = !this.unitOptionShow;
+			},
+			onChangeTypeOption: function onChangeTypeOption(e) {
+				this.type = e.target.innerHTML;
+				this.typeOptionShow = !this.typeOptionShow;
 			},
 			onChangeCover: function onChangeCover(e) {
 				var file = this.getFile(e),
@@ -15943,10 +16023,15 @@
 				form.content = this.$refs.edit.getContent();
 				form.author = this.userId;
 				form.time = new Date();
-				form.faculty = this.userFaculty;
+				form.faculty = this.userRank > 1 ? this.unit : this.userFaculty;
 				// console.log(form)
-				// console.log(form.content);
-				if (!form.title || !form.time || !form.address || !form.unit || !form.content) {
+				for (var i = 0, len = this.typeOptions.length; i < len; ++i) {
+					if (this.type = this.typeOptions[i].name) {
+						form.type = this.typeOptions[i].index;
+						break;
+					}
+				}
+				if (!form.title || !form.time || !form.address || !form.unit || !form.content || !form.type) {
 					return alert('请填写所有必须项！');
 				}
 				if (!this.$route.params.artId) {
@@ -15970,7 +16055,7 @@
 				}
 			}
 		},
-		computed: (0, _vuex.mapState)(['userId', 'isEdit', 'userFaculty'])
+		computed: (0, _vuex.mapState)(['userId', 'isEdit', 'userFaculty', 'userRank'])
 	};
 
 /***/ },
@@ -17658,6 +17743,12 @@
 	      }
 	    }
 	  })]), _vm._v(" "), _c('div', {
+	    directives: [{
+	      name: "show",
+	      rawName: "v-show",
+	      value: (_vm.userRank > 1),
+	      expression: "userRank > 1"
+	    }],
 	    staticClass: "group-con"
 	  }, [_c('span', {
 	    staticClass: "must"
@@ -17666,32 +17757,121 @@
 	  }, [_c('span', {
 	    staticClass: "label",
 	    on: {
-	      "click": _vm.onToggleOption
+	      "click": function($event) {
+	        _vm.onToggleOption("acadamy")
+	      }
 	    }
-	  }, [_vm._v(_vm._s(_vm.form.unit))]), _vm._v(" "), _c('span', {
+	  }, [_vm._v(_vm._s(_vm.acadamy))]), _vm._v(" "), _c('span', {
 	    staticClass: "arrow",
 	    on: {
-	      "click": _vm.onToggleOption
+	      "click": function($event) {
+	        _vm.onToggleOption("acadamy")
+	      }
 	    }
 	  }), _vm._v(" "), _c('div', {
 	    directives: [{
 	      name: "show",
 	      rawName: "v-show",
-	      value: (_vm.optionShow),
-	      expression: "optionShow"
+	      value: (_vm.acadamyOptionShow),
+	      expression: "acadamyOptionShow"
 	    }],
 	    staticClass: "option-box"
 	  }, [_c('div', {
 	    staticClass: "option"
-	  }, [_c('p', {
+	  }, _vm._l((_vm.acadamyOptions), function(item) {
+	    return _c('p', {
+	      attrs: {
+	        "data-index": item.index
+	      },
+	      on: {
+	        "click": _vm.onChangeAcadamyOption
+	      }
+	    }, [_vm._v(_vm._s(item.name))])
+	  }))])])]), _vm._v(" "), _c('div', {
+	    directives: [{
+	      name: "show",
+	      rawName: "v-show",
+	      value: (_vm.userRank > 1),
+	      expression: "userRank > 1"
+	    }],
+	    staticClass: "group-con"
+	  }, [_c('span', {
+	    staticClass: "must"
+	  }, [_vm._v("*")]), _c('div', {
+	    staticClass: "select"
+	  }, [_c('span', {
+	    staticClass: "label",
 	    on: {
-	      "click": _vm.onChangeOption
+	      "click": function($event) {
+	        _vm.onToggleOption("unit")
+	      }
 	    }
-	  }, [_vm._v("信息管理教研室")]), _vm._v(" "), _c('p', {
+	  }, [_vm._v(_vm._s(_vm.unit))]), _vm._v(" "), _c('span', {
+	    staticClass: "arrow",
 	    on: {
-	      "click": _vm.onChangeOption
+	      "click": function($event) {
+	        _vm.onToggleOption("unit")
+	      }
 	    }
-	  }, [_vm._v("工业工程教研室")])])])])]), _vm._v(" "), _c('div', {
+	  }), _vm._v(" "), _c('div', {
+	    directives: [{
+	      name: "show",
+	      rawName: "v-show",
+	      value: (_vm.unitOptionShow),
+	      expression: "unitOptionShow"
+	    }],
+	    staticClass: "option-box"
+	  }, [_c('div', {
+	    staticClass: "option"
+	  }, _vm._l((_vm.unitOptions), function(item) {
+	    return _c('p', {
+	      attrs: {
+	        "data-index": item.index
+	      },
+	      on: {
+	        "click": _vm.onChangeUnitOption
+	      }
+	    }, [_vm._v(_vm._s(item.type))])
+	  }))])])]), _vm._v(" "), _c('div', {
+	    staticClass: "group-con"
+	  }, [_c('span', {
+	    staticClass: "must"
+	  }, [_vm._v("*")]), _c('div', {
+	    staticClass: "select"
+	  }, [_c('span', {
+	    staticClass: "label",
+	    on: {
+	      "click": function($event) {
+	        _vm.onToggleOption("type")
+	      }
+	    }
+	  }, [_vm._v(_vm._s(_vm.type))]), _vm._v(" "), _c('span', {
+	    staticClass: "arrow",
+	    on: {
+	      "click": function($event) {
+	        _vm.onToggleOption("type")
+	      }
+	    }
+	  }), _vm._v(" "), _c('div', {
+	    directives: [{
+	      name: "show",
+	      rawName: "v-show",
+	      value: (_vm.typeOptionShow),
+	      expression: "typeOptionShow"
+	    }],
+	    staticClass: "option-box"
+	  }, [_c('div', {
+	    staticClass: "option"
+	  }, _vm._l((_vm.typeOptions), function(item) {
+	    return _c('p', {
+	      attrs: {
+	        "data-index": item.index
+	      },
+	      on: {
+	        "click": _vm.onChangeTypeOption
+	      }
+	    }, [_vm._v(_vm._s(item.name))])
+	  }))])])]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
 	  }, [_c('input', {
 	    directives: [{
@@ -18407,7 +18587,7 @@
 	            });
 	        }
 	    },
-	    computed: (0, _vuex.mapState)(['users'])
+	    computed: (0, _vuex.mapState)(['users', 'academyList', 'facultiesList'])
 	}; //
 	//
 	//
@@ -18499,7 +18679,7 @@
 	      expression: "!isAdd"
 	    }]
 	  }, [_vm._m(0), _vm._v(" "), _vm._l((_vm.users), function(item) {
-	    return _c('tr', [_c('td', [_vm._v(_vm._s(item.id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.faculty.type))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.title))])])
+	    return _c('tr', [_c('td', [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.faculty.type))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.title))])])
 	  })], true), _vm._v(" "), _c('form', {
 	    directives: [{
 	      name: "show",
@@ -19248,13 +19428,13 @@
 	            var _this2 = this;
 
 	            var id = this.charts,
-	                queryId = this.rangeTab == 0 ? this.$route.params.id : this.$store.state.userFaculty,
+	                queryId = this.rangeTab == 0 ? this.$route.params.id : this.$store.state.userFaculty.index,
 	                time = this.timeTab;
-	            console.log(this.rangeTab);
 	            var ref = document.getElementById('canvas-wrapper');
 
 	            if (ref) {
 	                this.$store.dispatch('GET_CHARTS_DATA', { id: queryId, tab: this.rangeTab, time: time, year: this.selectYear }).then(function (res) {
+	                    console.log(res[0]);
 	                    if (!(0, _common.isEmpty)(res)) {
 	                        _this2.empty = false;
 	                        _this2.opt = res;
@@ -19270,9 +19450,8 @@
 	            var _this3 = this;
 
 	            var id = this.charts,
-	                queryId = this.rangeTab == 0 ? this.$route.params.id : this.$store.state.userFaculty,
+	                queryId = this.rangeTab == 0 ? this.$route.params.id : this.$store.state.userFaculty.index,
 	                time = this.timeTab;
-
 	            this.$store.dispatch('GET_CHARTS_DATA', { id: queryId, tab: this.rangeTab, time: time, year: this.selectYear }).then(function (res) {
 	                if (!(0, _common.isEmpty)(res)) {
 	                    _this3.empty = false;
@@ -19288,8 +19467,7 @@
 	            var _this4 = this;
 
 	            var faculty = this.$store.state.userFaculty;
-	            // console.log(faculty);
-	            this.$store.dispatch('GET_UNIT_TEXT', { faculty: faculty.split('-')[0] }).then(function (res) {
+	            this.$store.dispatch('GET_UNIT_TEXT', { faculty: faculty.index.split('-')[0] }).then(function (res) {
 	                if (_this4.userRank > 1) {
 	                    res.forEach(function (item, index) {
 	                        if (index > 0) {
@@ -19298,7 +19476,7 @@
 	                    });
 	                } else if (_this4.userRank == 1) {
 	                    for (var i = 0, len = res.length; i < len; ++i) {
-	                        if (res[i].index == faculty) {
+	                        if (res[i].index == faculty.index) {
 	                            _this4.faculty.push(res[i].type);
 	                            break;
 	                        }
@@ -19699,10 +19877,10 @@
 	* @return {void}
 	*/
 	function refresh(options) {
-	    console.log(options);
 	    if ((0, _common.isEmpty)(myCharts)) {
 	        return;
 	    }
+	    console.log(myCharts + ' myCharts');
 
 	    var data = getData(options);
 	    var axis = xAxis(options.type);

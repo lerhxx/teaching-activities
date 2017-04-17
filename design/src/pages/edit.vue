@@ -15,14 +15,36 @@
 				<div class='group-con'>
 					<span class='must'>*</span><input type='text' v-model='form.address' placeholder='举办地点' />
 				</div>
+				<div class='group-con' v-show='userRank > 1'>
+				<!--<div class='group-con'>-->
+					<span class='must'>*</span><div class='select'>
+						<span class='label' @click='onToggleOption("acadamy")'>{{acadamy}}</span>
+						<span class='arrow' @click='onToggleOption("acadamy")'></span>
+						<div class='option-box' v-show='acadamyOptionShow'>
+							<div class='option'>
+								<p @click='onChangeAcadamyOption' v-for='item in acadamyOptions' :data-index='item.index'>{{item.name}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class='group-con' v-show='userRank > 1'>
+					<span class='must'>*</span><div class='select'>
+						<span class='label' @click='onToggleOption("unit")'>{{unit}}</span>
+						<span class='arrow' @click='onToggleOption("unit")'></span>
+						<div class='option-box' v-show='unitOptionShow'>
+							<div class='option'>
+								<p @click='onChangeUnitOption' v-for='item in unitOptions' :data-index='item.index'>{{item.type}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class='group-con'>
 					<span class='must'>*</span><div class='select'>
-						<span class='label' @click='onToggleOption'>{{form.unit}}</span>
-						<span class='arrow' @click='onToggleOption'></span>
-						<div class='option-box' v-show='optionShow'>
+						<span class='label' @click='onToggleOption("type")'>{{type}}</span>
+						<span class='arrow' @click='onToggleOption("type")'></span>
+						<div class='option-box' v-show='typeOptionShow'>
 							<div class='option'>
-								<p @click='onChangeOption'>信息管理教研室</p>
-								<p @click='onChangeOption'>工业工程教研室</p>
+								<p @click='onChangeTypeOption' v-for='item in typeOptions' :data-index='item.index'>{{item.name}}</p>
 							</div>
 						</div>
 					</div>
@@ -90,17 +112,24 @@
 					title: '',
 					time: '',
 					address: '',
-					unit: '请选择举办单位',
 					explain: '',
 					content: '',
 					enclosure: '',
 					faculty: '' ,
 					party: '',    
 				},
-				optionShow: false,
+				acadamy: '请选择发布学院',
+				unit: '请选择举办单位',
+				type: '请选择发布类型',
+				acadamyOptionShow: false,
+				unitOptionShow: false,
+				typeOptionShow: false,
 				calendar: {
 					show: false,
-				}
+				},
+				acadamyOptions: [],
+				unitOptions: [],
+				typeOptions: []
 			}
 		},
 		components: {
@@ -108,8 +137,6 @@
 			editor
 		},
 		created() {
-				console.log(this.$route.params.artId)
-				console.log(this.isEdit)
 			if(this.isEdit && this.$route.params.artId) {
 				this.$store.dispatch('GET_EDIT_ARTICLE', {id: this.$route.params.artId})
 					.then(data => {
@@ -123,21 +150,55 @@
 						this.$refs.edit.setContent(data.content)
 					})
 			}
-			// else {
-			// 	this.form.title = '';
-			// 	this.form.abs = '';
-			// 	this.form.time = '';
-			// 	this.form.address = '';
-			// 	this.form.unit = '';
-			// 	this.form.explain = '';
-			// 	this.form.enclosure = '';
-			// 	console.log(this.$refs.edit)
-			// 	this.$refs.edit.setContent('')
-			// }
+			if(this.userRank == 1) {
+				this.getUnitOptions();
+			}else if(this.userRank > 1) {
+				this.getAcadamyOptions();
+			}
+			this.getTypeOptions();
 		},
 		methods: {
-			onToggleOption() {
-				this.optionShow = !this.optionShow;
+			getAcadamyOptions() {
+				let self = this;
+				this.$store.dispatch('GET_ACADEMY_LISTS')
+					.then(res => {
+						res.shift();
+						self.acadamyOptions = res;
+					})
+					.catch(err => console.log(err))
+			},
+			getUnitOptions() {
+				let self = this;
+				let acadamyId = this.userFaculty.index.split('-')[0];
+				this.$store.dispatch('GET_FACULTIES', {academy: acadamyId})
+					.then(res => {
+						res.shift();
+						self.unitOptions = res;
+					})
+					.catch(err => console.log(err))
+			},
+			getTypeOptions() {
+				let self = this;
+				this.$store.dispatch('GET_TYPE_LISTS')
+					.then(res => {
+						res.shift();
+						self.typeOptions = res;
+					})
+					.catch(err => console.log(err))
+			},
+			onToggleOption(str) {
+				let name = str + 'OptionShow';
+				if(this.userRank > 1 && str === 'unit' && !this.acadamyOptions) {
+					alert('请先选择学院');
+					return;
+				}
+				this[name] = !this[name];
+			},
+			onToggleUnitOption() {
+				this.unitOptionShow = !this.unitOptionShow;
+			},
+			onToggleTypeOption() {
+				this.typeOptionShow = !this.typeOptionShow;
 			},
 			onChangeFile(e) {
 				this.form.enclosure = this.getFile(e);
@@ -145,9 +206,25 @@
 					return;
 				}
 			},
-			onChangeOption(e) {
-				this.form.unit = e.target.innerHTML;
-				this.optionShow = !this.optionShow;
+			onChangeAcadamyOption(e) {
+				this.acadamy = e.target.innerHTML;
+				let index = e.target.getAttribute('data-index');
+				for(let i = 0, len = this.acadamyOptions.length; i < len; ++i) {
+					if(this.acadamyOptions[i].index == index) {
+						this.unitOptions = this.acadamyOptions[i].staff;
+						this.unitOptions.shift();
+						break;
+					}
+				}
+				this.acadamyOptionShow = !this.acadamyOptionShow;
+			},
+			onChangeUnitOption(e) {
+				this.unit = e.target.innerHTML;
+				this.unitOptionShow = !this.unitOptionShow;
+			},
+			onChangeTypeOption(e) {
+				this.type = e.target.innerHTML;
+				this.typeOptionShow = !this.typeOptionShow;
 			},
 			onChangeCover(e) {
 				let file = this.getFile(e),
@@ -182,10 +259,15 @@
 				form.content = this.$refs.edit.getContent();
 				form.author = this.userId;
 				form.time = new Date();
-				form.faculty = this.userFaculty;
+				form.faculty = this.userRank >1 ? this.unit : this.userFaculty;
 				// console.log(form)
-				// console.log(form.content);
-				if(!form.title || !form.time || !form.address || !form.unit || !form.content) {
+				for(let i = 0, len = this.typeOptions.length; i < len; ++i) {
+					if(this.type = this.typeOptions[i].name) {
+						form.type = this.typeOptions[i].index;
+						break;
+					}
+				}
+				if(!form.title || !form.time || !form.address || !form.unit || !form.content || !form.type) {
 					return alert('请填写所有必须项！');
 				}
 				if(!this.$route.params.artId) {
@@ -207,7 +289,7 @@
 				}
 			}
 		},
-		computed: mapState(['userId', 'isEdit', 'userFaculty'])
+		computed: mapState(['userId', 'isEdit', 'userFaculty', 'userRank'])
 	}
 </script>
 

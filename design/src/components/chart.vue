@@ -117,15 +117,15 @@
             },
             initCharts() {
                 let id = this.charts,
-                    queryId = this.rangeTab == 0 ? this.$route.params.id : this.$store.state.userFaculty,
+                    queryId = this.rangeTab == 0 ? this.$route.params.id : this.$store.state.userFaculty.index,
                     time = this.timeTab;
-                    console.log(this.rangeTab)
                 let ref = document.getElementById('canvas-wrapper');
 
 
                 if(ref) {
                 this.$store.dispatch('GET_CHARTS_DATA', {id: queryId, tab: this.rangeTab, time: time, year: this.selectYear})
                     .then(res => {
+                        console.log(res[0])
                         if(!isEmpty(res)) {
                             this.empty = false;
                             this.opt = res;
@@ -140,9 +140,8 @@
             },
             refreshCharts() {
                 let id = this.charts,
-                    queryId = this.rangeTab == 0 ? this.$route.params.id : this.$store.state.userFaculty,
+                    queryId = this.rangeTab == 0 ? this.$route.params.id : this.$store.state.userFaculty.index,
                     time = this.timeTab;
-
                 this.$store.dispatch('GET_CHARTS_DATA', {id: queryId, tab: this.rangeTab, time: time, year: this.selectYear})
                     .then(res => {
                          if(!isEmpty(res)) {
@@ -157,8 +156,7 @@
             },
             getUnitText() {
                 let faculty = this.$store.state.userFaculty;
-                // console.log(faculty);
-                this.$store.dispatch('GET_UNIT_TEXT', {faculty: faculty.split('-')[0]})
+                this.$store.dispatch('GET_UNIT_TEXT', {faculty: faculty.index.split('-')[0]})
                     .then(res => {
                         if(this.userRank > 1) {
                             res.forEach((item, index) => {
@@ -168,7 +166,7 @@
                             })
                         }else if(this.userRank == 1){
                             for(let i = 0, len = res.length; i < len; ++i) {
-                                if(res[i].index == faculty) {
+                                if(res[i].index == faculty.index) {
                                     this.faculty.push(res[i].type)
                                     break;
                                 }

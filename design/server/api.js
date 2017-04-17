@@ -31,6 +31,7 @@ router.get('/getTypeLists', (req, res) => {
 // 获取首页学院信息
 router.get('/getAcademyLists', (req, res) => {
 	db.Academy.find(null, (err, lists) => {
+		// console.log(lists)
 		if(err) {
 			res.send({state: 1, msg: '查询失败！'});
 		}else {
@@ -41,7 +42,6 @@ router.get('/getAcademyLists', (req, res) => {
 // 获取首页教研室类型
 router.get('/getFacultiesLists/:id', (req, res) => {
 	db.Academy.findOne({index: req.params.id}, (err, doc) => {
-		// console.log(doc)
 		if(err) {
 			res.send({state: 1, msg: '查询失败！'});
 		}else {
@@ -80,13 +80,13 @@ router.post('/signin', (req, res) => {
 })
 // 登出
 router.get('/signout', (req, res) => {
-	console.log(req.session)
+	// console.log(req.session)
 	// req.session.destroy(err => {
 		// if(err) {
 		// 	res.send({state: 1, msg: '登出失败，请重新尝试'})
 		// }else {
 			req.session.user = null;
-			console.log(req.session)
+			// console.log(req.session)
 			res.send({state: 0, msg: '登出成功'})
 
 		// }
@@ -271,7 +271,7 @@ function pagedQuery(obj, page, size, total, res) {
 }
 // 统计图表
 router.get('/count/:id/:tab/:year/:time', (req, res) => {
-	// console.log(req.params);
+	console.log(req.params);
 	let params = req.params,
 		sTime = new Date(),
 		eTime = new Date();
@@ -285,10 +285,9 @@ router.get('/count/:id/:tab/:year/:time', (req, res) => {
 		sTime = new Date(`${params.year}-07-01`);
 		eTime = new Date(`${params.year * 1 + 1}-01-01`);
 	}
-
 	if(params.tab == 0) {
 		db.Article.find({participator: {$in: [params.id]}, $and: [{startTime: {$gt: sTime}}, {startTime: {$lt: eTime}}]}, (err, doc) => {
-				// console.log(doc)
+				console.log(doc)
 				if(err) {
 					res.send({state: 1, msg: '查询失败！'})
 				}else {
@@ -298,6 +297,7 @@ router.get('/count/:id/:tab/:year/:time', (req, res) => {
 		})
 	}else if(params.tab == 1) {
 		db.Article.find({faculty: {$in: [params.id]} ,$and: [{startTime: {$gt: sTime}}, {startTime: {$lt: eTime}}]}, (err, doc) => {
+				console.log(doc.length)
 				if(err) {
 					res.send({state: 1, msg: '查询失败！'})
 				}else {
@@ -402,7 +402,6 @@ router.delete('/userManage/delete/:id', (req, res) => {
 // 获取统计单位可选项
 router.get('/count/unitText', (req, res) => {
 	db.Academy.find({index: req.query.faculty}, (err, doc) => {
-		console.log(doc)
 		if(err) {
 			res.send({state: 1, msg: err})
 		}else {

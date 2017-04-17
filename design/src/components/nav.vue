@@ -56,6 +56,7 @@
 						console.log(this.$store.state.userId)
 					});
 			}
+			this.$store.dispatch('GET_ACADEMY_LISTS')
 		},
 		computed: {
 			username() {

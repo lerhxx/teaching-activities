@@ -14,7 +14,7 @@
                 <th>职称</th>
         	</tr>
         	<tr v-for='item in users'>
-        		<td>{{item.id}}</td>
+        		<td>{{item.name}}</td>
         		<td>{{item.faculty.type}}</td>
                 <td>{{item.title}}</td>
         	</tr>
@@ -120,7 +120,7 @@
                     .catch(err => alert(err));
             }
         },
-        computed: mapState(['users'])
+        computed: mapState(['users', 'academyList', 'facultiesList'])
 	}
 </script>
 

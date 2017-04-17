@@ -3,19 +3,19 @@
 		<img class='in-cover' :src='img' />
 		<div class='in-search'>
 			<label>学院：</label>
-			<select class='academy' v-model='academy' @change='onSelectAcademy'>
+			<select class='academy' v-model='params.academy' @change='onSelectAcademy'>
 				<option v-for='academy in academyList' v-bind:value='academy.index'>
 					{{academy.name}}
 				</option>
 			</select>
 			<label>教研室：</label>
-			<select class='faculty' v-model='faculty' @change='filter'>
+			<select class='faculty' v-model='params.faculty' @change='filter'>
 				<option v-for='faculty in facultiesList' v-bind:value='faculty.index'>
 					{{faculty.type}}
 				</option>
 			</select>
 			<label>类型：</label>
-			<select class='type' v-model='type' @change='filter'>
+			<select class='type' v-model='params.type' @change='filter'>
 				<option v-for='type in typesLists' v-bind:value='type.index'>
 					{{type.name}}
 				</option>
