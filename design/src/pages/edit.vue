@@ -49,9 +49,9 @@
 						</div>
 					</div>
 				</div>
-				<div class='group-con'>
+				<!--<div class='group-con'>
 					<input type='text' v-model='form.explain' placeholder='附加说明' />
-				</div>
+				</div>-->
 				<!--<div class='group-con group-cover'>
 					<span class='must'>*</span><img :src='form.url'/>
 					<input type='file' @change='onChangeCover'/>
@@ -112,7 +112,7 @@
 					title: '',
 					time: '',
 					address: '',
-					explain: '',
+					unit: '',
 					content: '',
 					enclosure: '',
 					faculty: '' ,
@@ -145,15 +145,20 @@
 						this.form.time = data.time;
 						this.form.address = data.address;
 						this.form.unit = data.unit;
-						this.form.explain = data.explain;
+						this.form.faculty = data.faculty;
 						this.form.enclosure = data.enclosure;
-						this.$refs.edit.setContent(data.content)
+						this.$refs.edit.setContent(data.content);
+						let acadamyId = this.form.faculty.split('-')[0];
+						this.unit = data.unit;
+						this.form.type = data.type;
+						this.getEditAcadamyOptions(acadamyId);
 					})
-			}
-			if(this.userRank == 1) {
-				this.getUnitOptions();
-			}else if(this.userRank > 1) {
-				this.getAcadamyOptions();
+			}else {
+				if(this.userRank == 1) {
+					this.getUnitOptions();
+				}else if(this.userRank > 1) {
+					this.getAcadamyOptions();
+				}
 			}
 			this.getTypeOptions();
 		},
@@ -183,6 +188,19 @@
 					.then(res => {
 						res.shift();
 						self.typeOptions = res;
+						if(self.isEdit) {
+							console.log(self.form.type - 1)
+							self.type = res[self.form.type - 1].name;
+						}
+					})
+					.catch(err => console.log(err))
+			},
+			getEditAcadamyOptions(id=null) {
+				let self = this;
+				this.$store.dispatch('GET_ACADEMY_LISTS', {id: id})
+					.then(res => {
+						self.acadamyOptions = res;
+						self.acadamy = res[0].name;
 					})
 					.catch(err => console.log(err))
 			},
@@ -220,6 +238,7 @@
 			},
 			onChangeUnitOption(e) {
 				this.unit = e.target.innerHTML;
+				this.form.faculty = e.target.getAttribute('data-index');
 				this.unitOptionShow = !this.unitOptionShow;
 			},
 			onChangeTypeOption(e) {
@@ -244,11 +263,9 @@
 				return e.target.files || e.dataTransfer.files;
 			},
 			getStartTime(value) {
-				console.log(value)
 				this.form.startTime = value;
 			},
 			getEndTime(value) {
-				console.log(value)
 				this.form.endTime = value;
 			},
 			onPost() {
@@ -259,7 +276,9 @@
 				form.content = this.$refs.edit.getContent();
 				form.author = this.userId;
 				form.time = new Date();
-				form.faculty = this.userRank >1 ? this.unit : this.userFaculty;
+				form.faculty = this.userRank >1 ? this.form.faculty : this.userFaculty;
+				form.unit = this.unit;
+				console.log(this.user)
 				// console.log(form)
 				for(let i = 0, len = this.typeOptions.length; i < len; ++i) {
 					if(this.type = this.typeOptions[i].name) {
@@ -267,14 +286,14 @@
 						break;
 					}
 				}
-				if(!form.title || !form.time || !form.address || !form.unit || !form.content || !form.type) {
+				if(!form.title || !form.time || !form.address || !form.faculty || !form.content || !form.type) {
 					return alert('请填写所有必须项！');
 				}
 				if(!this.$route.params.artId) {
 					this.$store.dispatch('POST_ARTICLE', {form: form})
 						.then(data => {
 							alert('发布成功');
-							this.$router.push({name: 'article', params: {id: data.id}});
+							this.$router.push({name: 'article', query: {id: data.id}});
 						}).catch(err => alert(err));
 				}else {
 					if(this.party) {

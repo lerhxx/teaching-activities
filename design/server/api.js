@@ -30,14 +30,23 @@ router.get('/getTypeLists', (req, res) => {
 })
 // 获取首页学院信息
 router.get('/getAcademyLists', (req, res) => {
-	db.Academy.find(null, (err, lists) => {
-		// console.log(lists)
-		if(err) {
-			res.send({state: 1, msg: '查询失败！'});
-		}else {
-			res.send({state: 0, data: lists});
-		}
-	})
+	if(req.query.id) {
+		db.Academy.find({index: req.query.id}, (err, lists) => {
+			if(err) {
+				res.send({state: 1, msg: '查询失败！'});
+			}else {
+				res.send({state: 0, data: lists});
+			}
+		})
+	}else {
+		db.Academy.find(null, (err, lists) => {
+			if(err) {
+				res.send({state: 1, msg: '查询失败！'});
+			}else {
+				res.send({state: 0, data: lists});
+			}
+		})
+	}
 })
 // 获取首页教研室类型
 router.get('/getFacultiesLists/:id', (req, res) => {
@@ -217,13 +226,14 @@ router.get('/articles/user/:id', (req, res) => {
 })
 // 获取所有文章
 router.get('/articles/all', (req, res, next) => {
-		let academy = req.query.faculty.charAt(0),
-			faculty = req.query.faculty.charAt(2),
-			type = req.query.type,
-			obj = {},
-			query = '',
-			total = 0;
-		const size = req.query.pageSize * 1;
+	console.log(req.query)
+	let academy = req.query.faculty.charAt(0),
+		faculty = req.query.faculty.charAt(2),
+		type = req.query.type,
+		obj = {},
+		query = '',
+		total = 0;
+	const size = req.query.pageSize * 1;
 
 	if(academy == 0) {
 		if(type != 0) {
@@ -285,6 +295,9 @@ router.get('/count/:id/:tab/:year/:time', (req, res) => {
 		sTime = new Date(`${params.year}-07-01`);
 		eTime = new Date(`${params.year * 1 + 1}-01-01`);
 	}
+	db.Article.find({title: '阿尔法'}, (err, doc) => {
+				console.log(doc[0])
+		})
 	if(params.tab == 0) {
 		db.Article.find({participator: {$in: [params.id]}, $and: [{startTime: {$gt: sTime}}, {startTime: {$lt: eTime}}]}, (err, doc) => {
 				console.log(doc)
@@ -301,6 +314,7 @@ router.get('/count/:id/:tab/:year/:time', (req, res) => {
 				if(err) {
 					res.send({state: 1, msg: '查询失败！'})
 				}else {
+					console.log(doc[0])
 					let count = filter(doc);
 					res.send({state: 0, data: count})
 				}

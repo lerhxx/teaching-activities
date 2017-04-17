@@ -153,7 +153,6 @@ function sumOption(data, type, xAxis) {
                     optionToContent: (opt) => {
                         let axisData = opt.xAxis[0].data;
                         let series = opt.series;
-                        console.log(opt.series)
                         let table = `<table>
                                         <theader>
                                             <th>

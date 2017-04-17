@@ -10932,8 +10932,9 @@
 	  // 获取首页学院信息
 	  GET_ACADEMY_LISTS: function GET_ACADEMY_LISTS(_ref3) {
 	    var commit = _ref3.commit;
+	    var info = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : { id: null };
 
-	    return _axios2.default.get('/getAcademyLists').then(function (res) {
+	    return _axios2.default.get('/getAcademyLists', { params: { id: info.id } }).then(function (res) {
 	      if (res.data.state === 0) {
 	        commit('SET_ACADEMY_LISTS', res.data.data);
 	        return Promise.resolve(res.data.data);
@@ -14668,6 +14669,7 @@
 				var _this = this;
 
 				this.params.page = page;
+				this.params.pageSize = this.pageSize;
 				this.$store.dispatch('GET_ARTICLES', this.params).then(function (res) {
 					_this.scroll();
 					_this.totalPage = Math.ceil(_this.articleTotal / _this.pageSize);
@@ -15871,7 +15873,7 @@
 					title: '',
 					time: '',
 					address: '',
-					explain: '',
+					unit: '',
 					content: '',
 					enclosure: '',
 					faculty: '',
@@ -15906,15 +15908,20 @@
 					_this.form.time = data.time;
 					_this.form.address = data.address;
 					_this.form.unit = data.unit;
-					_this.form.explain = data.explain;
+					_this.form.faculty = data.faculty;
 					_this.form.enclosure = data.enclosure;
 					_this.$refs.edit.setContent(data.content);
+					var acadamyId = _this.form.faculty.split('-')[0];
+					_this.unit = data.unit;
+					_this.form.type = data.type;
+					_this.getEditAcadamyOptions(acadamyId);
 				});
-			}
-			if (this.userRank == 1) {
-				this.getUnitOptions();
-			} else if (this.userRank > 1) {
-				this.getAcadamyOptions();
+			} else {
+				if (this.userRank == 1) {
+					this.getUnitOptions();
+				} else if (this.userRank > 1) {
+					this.getAcadamyOptions();
+				}
 			}
 			this.getTypeOptions();
 		},
@@ -15944,6 +15951,21 @@
 				this.$store.dispatch('GET_TYPE_LISTS').then(function (res) {
 					res.shift();
 					self.typeOptions = res;
+					if (self.isEdit) {
+						console.log(self.form.type - 1);
+						self.type = res[self.form.type - 1].name;
+					}
+				}).catch(function (err) {
+					return console.log(err);
+				});
+			},
+			getEditAcadamyOptions: function getEditAcadamyOptions() {
+				var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+				var self = this;
+				this.$store.dispatch('GET_ACADEMY_LISTS', { id: id }).then(function (res) {
+					self.acadamyOptions = res;
+					self.acadamy = res[0].name;
 				}).catch(function (err) {
 					return console.log(err);
 				});
@@ -15982,6 +16004,7 @@
 			},
 			onChangeUnitOption: function onChangeUnitOption(e) {
 				this.unit = e.target.innerHTML;
+				this.form.faculty = e.target.getAttribute('data-index');
 				this.unitOptionShow = !this.unitOptionShow;
 			},
 			onChangeTypeOption: function onChangeTypeOption(e) {
@@ -16006,11 +16029,9 @@
 				return e.target.files || e.dataTransfer.files;
 			},
 			getStartTime: function getStartTime(value) {
-				console.log(value);
 				this.form.startTime = value;
 			},
 			getEndTime: function getEndTime(value) {
-				console.log(value);
 				this.form.endTime = value;
 			},
 			onPost: function onPost() {
@@ -16023,7 +16044,9 @@
 				form.content = this.$refs.edit.getContent();
 				form.author = this.userId;
 				form.time = new Date();
-				form.faculty = this.userRank > 1 ? this.unit : this.userFaculty;
+				form.faculty = this.userRank > 1 ? this.form.faculty : this.userFaculty;
+				form.unit = this.unit;
+				console.log(this.user);
 				// console.log(form)
 				for (var i = 0, len = this.typeOptions.length; i < len; ++i) {
 					if (this.type = this.typeOptions[i].name) {
@@ -16031,13 +16054,13 @@
 						break;
 					}
 				}
-				if (!form.title || !form.time || !form.address || !form.unit || !form.content || !form.type) {
+				if (!form.title || !form.time || !form.address || !form.faculty || !form.content || !form.type) {
 					return alert('请填写所有必须项！');
 				}
 				if (!this.$route.params.artId) {
 					this.$store.dispatch('POST_ARTICLE', { form: form }).then(function (data) {
 						alert('发布成功');
-						_this2.$router.push({ name: 'article', params: { id: data.id } });
+						_this2.$router.push({ name: 'article', query: { id: data.id } });
 					}).catch(function (err) {
 						return alert(err);
 					});
@@ -17871,29 +17894,7 @@
 	        "click": _vm.onChangeTypeOption
 	      }
 	    }, [_vm._v(_vm._s(item.name))])
-	  }))])])]), _vm._v(" "), _c('div', {
-	    staticClass: "group-con"
-	  }, [_c('input', {
-	    directives: [{
-	      name: "model",
-	      rawName: "v-model",
-	      value: (_vm.form.explain),
-	      expression: "form.explain"
-	    }],
-	    attrs: {
-	      "type": "text",
-	      "placeholder": "附加说明"
-	    },
-	    domProps: {
-	      "value": _vm._s(_vm.form.explain)
-	    },
-	    on: {
-	      "input": function($event) {
-	        if ($event.target.composing) { return; }
-	        _vm.form.explain = $event.target.value
-	      }
-	    }
-	  })]), _vm._v(" "), _vm._v(" "), _c('div', {
+	  }))])])]), _vm._v(" "), _vm._v(" "), _vm._v(" "), _c('div', {
 	    directives: [{
 	      name: "show",
 	      rawName: "v-show",
@@ -19729,7 +19730,6 @@
 	                    optionToContent: function optionToContent(opt) {
 	                        var axisData = opt.xAxis[0].data;
 	                        var series = opt.series;
-	                        console.log(opt.series);
 	                        var table = '<table>\n                                        <theader>\n                                            <th>\n                                            </th>\n                                            <th>\n                                                ' + series[0].text + '\n                                            </th>\n                                            <th>\n                                                ' + series[1].text + '\n                                            </th>\n                                            <th>\n                                                ' + series[2].text + '\n                                            </th>\n                                        </theader>\n                                        <tbody>';
 	                        for (var i = 0, len = axisData.length; i < len; ++i) {
 	                            table += '<tr>\n                                        <td>\n                                            ' + axisData[i] + '\n                                        </td>\n                                        <td>\n                                            ' + (series[0].data[i] || 0) + '\n                                        </td>\n                                        <td>\n                                            ' + (series[1].data[i] || 0) + '\n                                        </td>\n                                        <td>\n                                            ' + (series[2].data[i] || 0) + '\n                                        </td>\n                                      </tr>';

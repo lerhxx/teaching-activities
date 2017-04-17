@@ -25,8 +25,8 @@ export default {
       })
   },
   // 获取首页学院信息
-  GET_ACADEMY_LISTS({commit}) {
-    return axios.get('/getAcademyLists')
+  GET_ACADEMY_LISTS({commit}, info={id:null}) {
+    return axios.get('/getAcademyLists', {params: {id: info.id}})
       .then(res => {
         if (res.data.state === 0) {
           commit('SET_ACADEMY_LISTS', res.data.data);

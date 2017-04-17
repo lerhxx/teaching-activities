@@ -71,6 +71,7 @@
 		methods: {
 			onSelect(page) {
 				this.params.page = page;
+				this.params.pageSize = this.pageSize;
 				this.$store.dispatch('GET_ARTICLES', this.params)
 					.then(res => {
 						this.scroll();
