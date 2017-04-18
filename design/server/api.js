@@ -62,7 +62,7 @@ router.get('/getFacultiesLists/:id', (req, res) => {
 router.post('/signin', (req, res) => {
 	let {id, pwd} = req.body;
 	// console.log(pwd)
-	db.User.findOne({name: id}, (err, user) => {
+	db.User.findOne({account: id}, (err, user) => {
 		if(err) {
 			res.send({state: 1, msg: '查询失败！'});
 		}else if(!user){

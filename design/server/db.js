@@ -26,6 +26,7 @@ const AcademySchema = new Schema({
 
 const userSchema = new Schema({
 	name: String,
+	account: Number,
 	pwd: String,
 	rank: Number,
 	faculty: selectTypeSchema,
@@ -123,9 +124,9 @@ const initialize = () => {
 		}else {
 			Models.User.find(null, (err, doc) => {
 				// doc.map(item => item.remove()) 
-				// Models.User.find(null, (err, doc) => {
-				// 	console.log(doc)
-				// })
+				Models.User.find(null, (err, doc) => {
+					console.log(doc)
+				})
 			})
 			Models.initialized = true;
 		}
