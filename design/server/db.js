@@ -124,9 +124,9 @@ const initialize = () => {
 		}else {
 			Models.User.find(null, (err, doc) => {
 				// doc.map(item => item.remove()) 
-				Models.User.find(null, (err, doc) => {
-					console.log(doc)
-				})
+				// Models.User.find(null, (err, doc) => {
+				// 	console.log(doc)
+				// })
 			})
 			Models.initialized = true;
 		}

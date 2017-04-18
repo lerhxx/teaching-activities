@@ -18501,7 +18501,7 @@
 
 
 	// module
-	exports.push([module.id, "\nbody[data-v-74615f3a],\nul[data-v-74615f3a],\nli[data-v-74615f3a],\np[data-v-74615f3a],\nh1[data-v-74615f3a],\nh2[data-v-74615f3a],\nh3[data-v-74615f3a],\nh4[data-v-74615f3a],\nh5[data-v-74615f3a],\nh6[data-v-74615f3a],\nhr[data-v-74615f3a] {\n  padding: 0;\n  margin: 0;\n}\nbody[data-v-74615f3a] {\n  height: 100vh;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nul[data-v-74615f3a] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  list-style: none;\n}\na[data-v-74615f3a] {\n  text-decoration: none;\n  color: #000;\n}\n.color-r[data-v-74615f3a] {\n  color: #f00;\n}\n.color-b[data-v-74615f3a] {\n  color: #40bfce;\n}\n.color-g[data-v-74615f3a] {\n  color: #bbb6b6;\n}\n.padding-top[data-v-74615f3a] {\n  padding-top: 45px;\n}\n.text-ellipsis[data-v-74615f3a] {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n#app[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.wrapper[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  min-height: calc(100vh - 48px);\n  padding-bottom: 48px;\n}\n.time[data-v-74615f3a] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.per-list[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin-bottom: 10px;\n  text-align: center;\n}\n.per-list[data-v-74615f3a]:before {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 50%;\n  min-width: 150px;\n  height: 0px;\n  margin: auto;\n  border: 1px solid #000;\n  content: '';\n  z-index: -1;\n}\n.per-list-item a[data-v-74615f3a] {\n  display: block;\n  padding: 10px 35px;\n  border: 1px solid #000;\n  background: #fff;\n}\n.per-list-item.active a[data-v-74615f3a] {\n  color: #fff;\n  background: #000;\n}\nform[data-v-74615f3a] {\n  padding: 45px;\n  margin: auto;\n}\nform input[data-v-74615f3a] {\n  outline: none;\n}\nlabel[data-v-74615f3a] {\n  text-align: right;\n}\n.group-con[data-v-74615f3a] {\n  margin: 15px 0;\n}\n.group-btn[data-v-74615f3a] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-74615f3a] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-74615f3a] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-s[data-v-74615f3a] {\n  padding: 5px 10px;\n  font-size: 0.9em;\n}\n.btn-certain[data-v-74615f3a] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-74615f3a] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-74615f3a] {\n  background: #2d0a08;\n}\n.must[data-v-74615f3a] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-74615f3a] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-74615f3a] {\n  margin-right: 10px;\n}\n.user[data-v-74615f3a] {\n  text-align: center;\n}\ntable[data-v-74615f3a] {\n  margin: 30px auto;\n  text-align: center;\n}\ntable td[data-v-74615f3a] {\n  padding: 10px 30px;\n}\n.per-list[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin-top: 20px;\n  margin-bottom: 10px;\n  text-align: center;\n}\n.per-list[data-v-74615f3a]:before {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 50%;\n  height: 0px;\n  margin: auto;\n  border: 1px solid #000;\n  content: '';\n  z-index: -1;\n}\n.per-list-item[data-v-74615f3a] {\n  padding: 10px 35px;\n  border: 1px solid #000;\n  background: #fff;\n  cursor: pointer;\n}\n.per-list-item.active[data-v-74615f3a] {\n  color: #fff;\n  background: #000;\n}\n.add-user[data-v-74615f3a] {\n  display: inline-block;\n  margin: 30px auto;\n  text-align: left;\n}\n.add-user label[data-v-74615f3a] {\n  display: inline-block;\n  width: 100px;\n}\n.add-user input[data-v-74615f3a],\n.add-user select[data-v-74615f3a] {\n  width: 300px;\n}\n", ""]);
+	exports.push([module.id, "\nbody[data-v-74615f3a],\nul[data-v-74615f3a],\nli[data-v-74615f3a],\np[data-v-74615f3a],\nh1[data-v-74615f3a],\nh2[data-v-74615f3a],\nh3[data-v-74615f3a],\nh4[data-v-74615f3a],\nh5[data-v-74615f3a],\nh6[data-v-74615f3a],\nhr[data-v-74615f3a] {\n  padding: 0;\n  margin: 0;\n}\nbody[data-v-74615f3a] {\n  height: 100vh;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nul[data-v-74615f3a] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  list-style: none;\n}\na[data-v-74615f3a] {\n  text-decoration: none;\n  color: #000;\n}\n.color-r[data-v-74615f3a] {\n  color: #f00;\n}\n.color-b[data-v-74615f3a] {\n  color: #40bfce;\n}\n.color-g[data-v-74615f3a] {\n  color: #bbb6b6;\n}\n.padding-top[data-v-74615f3a] {\n  padding-top: 45px;\n}\n.text-ellipsis[data-v-74615f3a] {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n#app[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.wrapper[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  min-height: calc(100vh - 48px);\n  padding-bottom: 48px;\n}\n.time[data-v-74615f3a] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.per-list[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin-bottom: 10px;\n  text-align: center;\n}\n.per-list[data-v-74615f3a]:before {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 50%;\n  min-width: 150px;\n  height: 0px;\n  margin: auto;\n  border: 1px solid #000;\n  content: '';\n  z-index: -1;\n}\n.per-list-item a[data-v-74615f3a] {\n  display: block;\n  padding: 10px 35px;\n  border: 1px solid #000;\n  background: #fff;\n}\n.per-list-item.active a[data-v-74615f3a] {\n  color: #fff;\n  background: #000;\n}\nform[data-v-74615f3a] {\n  padding: 45px;\n  margin: auto;\n}\nform input[data-v-74615f3a] {\n  outline: none;\n}\nlabel[data-v-74615f3a] {\n  text-align: right;\n}\n.group-con[data-v-74615f3a] {\n  margin: 15px 0;\n}\n.group-btn[data-v-74615f3a] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-74615f3a] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-74615f3a] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-s[data-v-74615f3a] {\n  padding: 5px 10px;\n  font-size: 0.9em;\n}\n.btn-certain[data-v-74615f3a] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-74615f3a] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-74615f3a] {\n  background: #2d0a08;\n}\n.must[data-v-74615f3a] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-74615f3a] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-74615f3a] {\n  margin-right: 10px;\n}\n.user[data-v-74615f3a] {\n  text-align: center;\n}\n.info-list[data-v-74615f3a] {\n  width: 80%;\n  margin: 30px auto;\n  border-spacing: 0;\n}\n.thead[data-v-74615f3a] {\n  width: 100%;\n  padding: 8px 0;\n  color: #fff;\n  background: #000;\n}\n.thead span[data-v-74615f3a],\n.tbody span[data-v-74615f3a] {\n  display: inline-block;\n  padding: 5px 0;\n}\n.thead span[data-v-74615f3a]:nth-child(1),\n.tbody span[data-v-74615f3a]:nth-child(1) {\n  width: 10%;\n}\n.thead span[data-v-74615f3a]:nth-child(2),\n.tbody span[data-v-74615f3a]:nth-child(2) {\n  width: 15%;\n}\n.thead span[data-v-74615f3a]:nth-child(3),\n.tbody span[data-v-74615f3a]:nth-child(3) {\n  width: 15%;\n}\n.thead span[data-v-74615f3a]:nth-child(4),\n.tbody span[data-v-74615f3a]:nth-child(4) {\n  width: 23%;\n}\n.thead span[data-v-74615f3a]:nth-child(5),\n.tbody span[data-v-74615f3a]:nth-child(5) {\n  width: 20%;\n}\n.thead span[data-v-74615f3a]:nth-child(6),\n.tbody span[data-v-74615f3a]:nth-child(6) {\n  width: 6%;\n}\n.thead span[data-v-74615f3a]:nth-child(7),\n.tbody span[data-v-74615f3a]:nth-child(7) {\n  width: 6%;\n}\n.tbody[data-v-74615f3a] {\n  display: block;\n  width: 100%;\n  padding: 5px 0px;\n}\n.tbody[data-v-74615f3a]:hover {\n  background: #ddd;\n}\n.tbody span[data-v-74615f3a]:nth-child(6),\n.tbody span[data-v-74615f3a]:nth-child(7) {\n  margin: 0 5px;\n  color: #fff;\n  font-size: 12px;\n  background: #00bcd4;\n  cursor: pointer;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n}\n.per-list[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin-top: 20px;\n  margin-bottom: 10px;\n  text-align: center;\n}\n.per-list[data-v-74615f3a]:before {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 50%;\n  height: 0px;\n  margin: auto;\n  border: 1px solid #000;\n  content: '';\n  z-index: -1;\n}\n.per-list-item[data-v-74615f3a] {\n  padding: 10px 35px;\n  border: 1px solid #000;\n  background: #fff;\n  cursor: pointer;\n}\n.per-list-item.active[data-v-74615f3a] {\n  color: #fff;\n  background: #000;\n}\n.add-user[data-v-74615f3a] {\n  display: inline-block;\n  margin: 30px auto;\n  text-align: left;\n}\n.add-user label[data-v-74615f3a] {\n  display: inline-block;\n  width: 100px;\n}\n.add-user input[data-v-74615f3a],\n.add-user select[data-v-74615f3a] {\n  width: 300px;\n}\n", ""]);
 
 	// exports
 
@@ -18583,17 +18583,53 @@
 	            });
 	        },
 	        getUser: function getUser() {
+	            // if(this.userRank < 1) {
+	            //     this.$router.push('index');
+	            // }
+	            var range = null;
+	            if (this.userRank == 1) {
+	                range = this.userFaculty;
+	            }
 	            this.$store.dispatch('GET_USERS').catch(function (err) {
+	                return alert(err);
+	            });
+	        },
+	        onModify: function onModify() {
+	            console.log('modyify');
+	        },
+	        onDelete: function onDelete(account) {
+	            var _this2 = this;
+
+	            console.log(account);
+	            this.$store.dispatch('DELETE_USER', { id: account }).then(function (res) {
+	                alert(res);
+	                for (var i = 0, len = _this2.users.length; i < len; ++i) {
+	                    if (_this2.users[i].account == account) {
+	                        _this2.users.splice(i, 1);
+	                        break;
+	                    }
+	                }
+	            }).catch(function (err) {
 	                return alert(err);
 	            });
 	        }
 	    },
-	    computed: (0, _vuex.mapState)(['users', 'academyList', 'facultiesList'])
+	    filters: {
+	        filterRank: function filterRank(item) {
+	            switch (item) {
+	                case 0:
+	                    return '普通用户';
+	                case 1:
+	                    return '普通管理员';
+	                case 2:
+	                    return '系统管理员';
+	                case 3:
+	                    return '系统管理员';
+	            }
+	        }
+	    },
+	    computed: (0, _vuex.mapState)(['users', 'academyList', 'facultiesList', 'userRank', 'userFaculty'])
 	}; //
-	//
-	//
-	//
-	//
 	//
 	//
 	//
@@ -18672,15 +18708,30 @@
 	        _vm.toggleAdd(2)
 	      }
 	    }
-	  }, [_vm._v("\n                    添加用户\n            ")])]), _vm._v(" "), _c('table', {
+	  }, [_vm._v("\n                    添加用户\n            ")])]), _vm._v(" "), _c('ul', {
 	    directives: [{
 	      name: "show",
 	      rawName: "v-show",
 	      value: (!_vm.isAdd),
 	      expression: "!isAdd"
-	    }]
+	    }],
+	    staticClass: "info-list"
 	  }, [_vm._m(0), _vm._v(" "), _vm._l((_vm.users), function(item) {
-	    return _c('tr', [_c('td', [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.faculty.type))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.title))])])
+	    return _c('li', {
+	      staticClass: "tbody"
+	    }, [_c('span', [_vm._v(_vm._s(item.name))]), _c('span', [_vm._v(_vm._s(item.account))]), _c('span', [_vm._v(_vm._s(item.title))]), _c('span', [_vm._v(_vm._s(item.faculty.type))]), _c('span', [_vm._v(_vm._s(_vm._f("filterRank")(item.rank)))]), _c('span', {
+	      staticClass: "btn-mod",
+	      on: {
+	        "click": _vm.onModify
+	      }
+	    }, [_vm._v("修改")]), _c('span', {
+	      staticClass: "btn-del",
+	      on: {
+	        "click": function($event) {
+	          _vm.onDelete(item.account)
+	        }
+	      }
+	    }, [_vm._v("删除")])])
 	  })], true), _vm._v(" "), _c('form', {
 	    directives: [{
 	      name: "show",
@@ -18821,7 +18872,9 @@
 	    }
 	  })])])])
 	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _c('tr', [_c('th', [_vm._v("用户名")]), _vm._v(" "), _c('th', [_vm._v("所属系")]), _vm._v(" "), _c('th', [_vm._v("职称")])])
+	  return _c('li', {
+	    staticClass: "thead"
+	  }, [_c('span', [_vm._v("用户名")]), _c('span', [_vm._v("账号")]), _c('span', [_vm._v("职称")]), _c('span', [_vm._v("所属系")]), _c('span', [_vm._v("等级")]), _c('span'), _c('span')])
 	}]}
 	if (false) {
 	  module.hot.accept()

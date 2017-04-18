@@ -403,12 +403,18 @@ router.post('/userManage/modify', (req, res) => {
 //TODO
 // 删除用户
 router.delete('/userManage/delete/:id', (req, res) => {
-	// console.log(req.body)
-	db.User.remvoe({id: req.body.id}, (err, doc) => {
+	console.log(req.session.user)
+	db.User.remove({account: req.params.id}, (err, doc) => {
 		if(err) {
 			res.send({state: 1, msg: err})
 		}else {
-			res.send({state: 0, msg: '删除成功！'})
+			db.User.find(null, (err, users)=> {
+				if(err) {
+					res.send({state: 1, msg: err})
+				}else {
+					res.send({state: 0, msg: '删除成功！'})
+				}
+			})
 		}
 	})
 })

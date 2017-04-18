@@ -7,18 +7,14 @@
                     添加用户
             </li>
         </ul>
-        <table v-show='!isAdd'>
-        	<tr>
-        		<th>用户名</th>
-        		<th>所属系</th>
-                <th>职称</th>
-        	</tr>
-        	<tr v-for='item in users'>
-        		<td>{{item.name}}</td>
-        		<td>{{item.faculty.type}}</td>
-                <td>{{item.title}}</td>
-        	</tr>
-        </table>
+        <ul class='info-list' v-show='!isAdd'>
+            <li class='thead'>
+                <span>用户名</span><span>账号</span><span>职称</span><span>所属系</span><span>等级</span><span></span><span></span>
+            </li>
+        	<li class='tbody' v-for='item in users'>
+        		<span>{{item.name}}</span><span>{{item.account}}</span><span>{{item.title}}</span><span>{{item.faculty.type}}</span><span>{{item.rank|filterRank}}</span><span class='btn-mod' @click='onModify'>修改</span><span class='btn-del' @click='onDelete(item.account)'>删除</span>
+        	</li>
+        </ul>
         <form v-show='isAdd' class='add-user'>
         	<div class='group-con'>
         		<label>用户名：</label>
@@ -116,26 +112,104 @@
                     })
             },
             getUser() {
+                // if(this.userRank < 1) {
+                //     this.$router.push('index');
+                // }
+                let range = null;
+                if(this.userRank == 1) {
+                    range = this.userFaculty;
+                }
                 this.$store.dispatch('GET_USERS')
                     .catch(err => alert(err));
+            },
+            onModify() {
+                console.log('modyify')
+            },
+            onDelete(account) {
+                console.log(account);
+                this.$store.dispatch('DELETE_USER', {id: account})
+                    .then(res => {
+                        alert(res);
+                        for(let i = 0, len = this.users.length; i < len; ++i) {
+                            if(this.users[i].account == account) {
+                                this.users.splice(i,1);
+                                break;
+                            }
+                        }
+                    })
+                    .catch(err => alert(err))
             }
         },
-        computed: mapState(['users', 'academyList', 'facultiesList'])
+        filters: {
+            filterRank(item) {
+                switch(item) {
+                    case 0:
+                        return '普通用户';
+                    case 1:
+                        return '普通管理员';
+                    case 2:
+                        return '系统管理员';
+                    case 3:
+                        return '系统管理员';
+                }
+            }
+        },
+        computed: mapState(['users', 'academyList', 'facultiesList', 'userRank', 'userFaculty'])
 	}
 </script>
 
 <style scoped lang='stylus'>
     @import '../css/common';
     @import '../css/funs';
-     @import '../css/form';
-   .user
-   	text-align center
-   table
-   		margin 30px auto
-   		text-align center
-   		td
-   			padding 10px 30px
-   .per-list
+    @import '../css/form';
+    
+    .user
+   	    text-align center
+    .info-list
+        width 80%
+        margin 30px auto
+        border-spacing 0
+    .thead
+        width 100%
+        padding 8px 0
+        color #fff
+        background #000
+    .thead,
+    .tbody
+        span
+            display inline-block
+            padding 5px 0
+            &:nth-child(1)
+                width 10%
+            &:nth-child(2)
+                width 15%
+            &:nth-child(3)
+                width 15%
+            &:nth-child(4)
+                width 23%
+            &:nth-child(5)
+                width 20%
+            &:nth-child(6)
+                width 6%
+            &:nth-child(7)
+                width 6%
+    .tbody
+        display block
+        width 100%
+        padding 5px 0px
+        &:hover
+            background #ddd
+        span
+            &:nth-child(6),
+            &:nth-child(7)
+                margin 0 5px
+                color #fff
+                font-size 12px
+                background #00bcd4
+                cursor pointer
+                box-sizing border-box
+                border-radius 6px
+    .per-list
         relative()
         margin-top 20px
         margin-bottom 10px
