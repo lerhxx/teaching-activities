@@ -89,17 +89,9 @@ router.post('/signin', (req, res) => {
 })
 // 登出
 router.get('/signout', (req, res) => {
-	// console.log(req.session)
-	// req.session.destroy(err => {
-		// if(err) {
-		// 	res.send({state: 1, msg: '登出失败，请重新尝试'})
-		// }else {
 			req.session.user = null;
-			// console.log(req.session)
 			res.send({state: 0, msg: '登出成功'})
 
-		// }
-	// })
 })
 // 创建文章
 router.post('/edit/create', (req, res) => {
@@ -109,33 +101,6 @@ router.post('/edit/create', (req, res) => {
 		}else if(doc) {
 			res.send({state: 1, msg: '标题已存在！'});
 		}else {
-			// let reg = {
-			// 		img: new RegExp('<img', 'gi'),
-			// 		src: new RegExp('src=', 'i'),
-			// 		quote: new RegExp('[\"\']')
-			// 	},
-			// 	preContent = req.body.form.content,
-			// 	r = reg.img.exec(preContent),
-			// 	imgs = [];
-			// while(r) {
-			// 	// console.log(r.index)
-			// 	// console.log(reg[0].lastIndex)
-			// 	let start = r.input.indexOf('src=') + 5;
-			// 	preContet = r.input.slice(start);
-			// 	let end = reg.quote.exec(preContet).index;
-			// 	let img = r.input.slice(start, start + end);
-			// 	// console.log(start);
-			// 	// console.log(end);
-			// 	// console.log(img);
-			// 	preContet = preContet.slice(end + 1);
-			// 	// let url = reg.src.exec(r.input);
-			// 	// console.log(r.input.indexOf('src='))
-			// 	console.log(r.input.length)
-			// 	// console.log(preContet)
-			// 	// preContent = 
-			// 	r = reg.img.exec(preContent);
-			// 	console.log(r)
-			// }
 			db.Article.create(req.body.form, (err, article) => {
 				if(err) {
 					res.send({state: 2, msg: '发布失败，请重试！'});
@@ -201,9 +166,7 @@ router.get('/article/:id', (req, res) => {
 		if(err) {
 			res.send({state: 2, msg: '查询失败！'})
 		}
-		// console.log(doc)
 		if(doc) {
-			// console.log(doc.startTime)
 			res.send({state: 0, data: doc});
 		}else {
 			res.send({state: 1, msg: '文章不存在！'});
@@ -271,6 +234,7 @@ function pagedQuery(obj, page, size, total, res) {
 	db.Article.find(obj)
 		.skip((page - 1) * size)
 		.limit(size)
+		.sort({startTime: -1})
 		.exec((err, doc) => {
 			if(err) {
 				res.send({state: 1, msg: '查询失败！'});
@@ -346,8 +310,6 @@ function filter(doc) {
 }
 // 获取当前用户个人信息
 router.get('/userManage/selfInfo', (req, res) => {
-	// console.log(cookieParser.signedCookies(req.cookies['connect.sid']))
-	// console.log(req.cookies)
 	console.log(req.session)
 	if(req.session.user) {
 		db.User.find({name: req.query.name}, (err, doc) => {
@@ -387,10 +349,6 @@ router.post('/userManage/add', (req, res) => {
 	})
 })
 
-// router.post('/upload', (req, res) => {
-// 	// console.log(req.body)
-// 	res.end()
-// })
 
 // 修改用户信息
 router.post('/userManage/modify', (req, res) => {
@@ -441,5 +399,3 @@ router.get('/count/unitText', (req, res) => {
 })
 
 module.exports = router;
-//TODO
-//登出

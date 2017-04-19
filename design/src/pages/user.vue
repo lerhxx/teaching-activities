@@ -7,6 +7,7 @@
                     添加用户
             </li>
         </ul>
+        <!--用户信息-->
         <ul class='info-list' v-show='!isAdd'>
             <li class='thead'>
                 <span>名称</span><span>账号</span><span>职称</span><span>所属系</span><span>等级</span><span></span><span></span>
@@ -15,6 +16,7 @@
         		<span>{{item.name}}</span><span>{{item.account}}</span><span>{{item.title}}</span><span>{{item.faculty.type}}</span><span>{{rankToText(item.rank)}}</span><span class='btn-mod' @click='onModify(item, index)'>修改</span><span class='btn-del' @click='onDelete(item.account, index)'>删除</span>
         	</li>
         </ul>
+        <!--添加用户-->
         <form v-show='isAdd' class='add-user'>
         	<div class='group-con'>
         		<label>用户名：</label>
@@ -44,6 +46,7 @@
         		<input class='btn btn-edit' type="button" name="add" @click='addUser' value='添加'>
         	</div>
         </form>
+        <!--修改模态框-->
         <div class='modal' v-show='showDialog'>
             <form class='modal-form'>
                 <h2>修改{{modifyUser.name}}信息</h2>

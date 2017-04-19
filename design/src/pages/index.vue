@@ -80,6 +80,7 @@
 			},
 			onSelectAcademy() {
 				let self = this;
+				console.log(this.academyList)
 				this.getFacultyies(() =>{
 					self.params.faculty = self.facultiesList[0].index;
 					self.filter();

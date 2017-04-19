@@ -14681,6 +14681,7 @@
 			},
 			onSelectAcademy: function onSelectAcademy() {
 				var self = this;
+				console.log(this.academyList);
 				this.getFacultyies(function () {
 					self.params.faculty = self.facultiesList[0].index;
 					self.filter();
@@ -18608,6 +18609,9 @@
 	//
 	//
 	//
+	//
+	//
+	//
 
 	exports.default = {
 	    data: function data() {
@@ -18869,7 +18873,7 @@
 	        _vm.toggleAdd(2)
 	      }
 	    }
-	  }, [_vm._v("\n                    添加用户\n            ")])]), _vm._v(" "), _c('ul', {
+	  }, [_vm._v("\n                    添加用户\n            ")])]), _vm._v(" "), _vm._v(" "), _c('ul', {
 	    directives: [{
 	      name: "show",
 	      rawName: "v-show",
@@ -18895,7 +18899,7 @@
 	        }
 	      }
 	    }, [_vm._v("删除")])])
-	  })], true), _vm._v(" "), _c('form', {
+	  })], true), _vm._v(" "), _vm._v(" "), _c('form', {
 	    directives: [{
 	      name: "show",
 	      rawName: "v-show",
@@ -19033,7 +19037,7 @@
 	    on: {
 	      "click": _vm.addUser
 	    }
-	  })])]), _vm._v(" "), _c('div', {
+	  })])]), _vm._v(" "), _vm._v(" "), _c('div', {
 	    directives: [{
 	      name: "show",
 	      rawName: "v-show",
