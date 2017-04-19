@@ -138,7 +138,7 @@
 		},
 		created() {
             if(this.userRank < 1) {
-                this.$router.push('index');
+                this.$router.push({name: 'index'});
             }
 			if(this.isEdit && this.$route.params.artId) {
 				this.$store.dispatch('GET_EDIT_ARTICLE', {id: this.$route.params.artId})
@@ -272,8 +272,6 @@
 				this.form.endTime = value;
 			},
 			onPost() {
-				//TODO
-				//编辑
 				let form = this.form;
 				// form.content = editor.sync();
 				form.content = this.$refs.edit.getContent();

@@ -29,7 +29,7 @@
         },
         created() {
             if(this.userRank < 1) {
-                this.$router.push('index');
+                this.$router.push({name: 'index'});
             }
         },
         methods: {

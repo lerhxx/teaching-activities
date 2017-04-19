@@ -42,16 +42,15 @@
 				}
 
 				this.$store.dispatch('SIGNIN', {
-					id: this.account,
+					account: this.account,
 					pwd: this.password
 				}).then((res) => {
 					// let date = new Date(Date.now() + 60000 * 30 * 24);
 					// set('user', this.account, date, '/', window.location.hostname);
-					console.log(res)
-					this.$router.push({path: '/'});
+					// console.log(res)
+					this.$router.push({name: 'index'});
 				}).catch(msg => {
 					this.tip = msg
-					console.log(msg)
 				});
 			}
 		}

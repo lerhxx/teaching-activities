@@ -60,9 +60,10 @@ router.get('/getFacultiesLists/:id', (req, res) => {
 })
 // 登录
 router.post('/signin', (req, res) => {
-	let {id, pwd} = req.body;
+	let {account, pwd} = req.body;
 	// console.log(pwd)
-	db.User.findOne({account: id}, (err, user) => {
+	console.log(pwd)
+	db.User.findOne({account: account}, (err, user) => {
 		if(err) {
 			res.send({state: 1, msg: '查询失败！'});
 		}else if(!user){
@@ -71,14 +72,17 @@ router.post('/signin', (req, res) => {
 			let hash = crypto.createHash('sha256');
 			hash.update(pwd);
 			pwd = hash.digest(pwd);
+			console.log(pwd)
+			console.log(user.pwd)
 			if(pwd.toString('hex') === user.pwd) {
 				req.session.regenerate((err) => {
+				console.log(user)
 					if(err) {
 						res.send({state: 4, msg: '登录失败，请重新尝试'})
 					}else {
 						req.session.user = user;
-						res.cookie('username', user.name);
-						res.send({state: 0, data: {id: id, rank: user.rank, faculty: user.faculty}});
+						res.cookie('useraccount', user.account);
+						res.send({state: 0, data: {account: account, name: user.name, rank: user.rank, faculty: user.faculty}});
 					}
 				})
 			}else {
@@ -91,7 +95,6 @@ router.post('/signin', (req, res) => {
 router.get('/signout', (req, res) => {
 			req.session.user = null;
 			res.send({state: 0, msg: '登出成功'})
-
 })
 // 创建文章
 router.post('/edit/create', (req, res) => {
@@ -311,17 +314,48 @@ function filter(doc) {
 // 获取当前用户个人信息
 router.get('/userManage/selfInfo', (req, res) => {
 	console.log(req.session)
+	let account = parseInt(req.query.account)
 	if(req.session.user) {
-		db.User.find({name: req.query.name}, (err, doc) => {
+		db.User.findOne({account: account}, (err, user) => {
 			if(err) {
 				res.send({state: 1, msg: '操作失败'});
 			}
-			if(!doc.length) {
+			if(!user) {
 				res.send({state: 2, msg: '账号不存在'});
 			}else {
-				res.send({state: 0, data: {id: doc[0].name, rank: doc[0].rank, faculty: doc[0].faculty}});
+				res.send({state: 0, data: {account: user.account,name: user.name, rank: user.rank, faculty: user.faculty}});
 			}
 		})
+	}else {
+		res.send({state: 3, msg: '未登录'})
+	}
+})
+// 修改密码
+router.post('/userManage/modifyPwd', (req, res) => {
+	console.log()
+	if(req.session.user) {
+		if(req.session.user.account != req.body.account) {
+			res.send({state:1, msg: '账号异常，请重新登录'})
+		}else {
+			let hash = crypto.createHash('sha256');
+			hash.update(req.body.oldPwd);
+			let pwd = hash.digest(req.body.oldPwd);
+
+			if(pwd.toString('hex') != req.session.user.pwd) {
+				res.send({state:1, msg: '密码错误，修改失败'})
+			}else {
+				hash = crypto.createHash('sha256');
+				hash.update(req.body.newPwd);
+				let newPwd = hash.digest(req.body.newPwd);
+				db.User.update({account: req.session.user.account}, {$set: {pwd: newPwd.toString('hex')}}, (err, user) => {
+					req.session.user = null;
+					res.send({state:0, msg:'修改成功'})
+				})
+			}
+		}
+
+	}else {
+		res.send({state:1, msg: '未登录'})
 	}
 })
 // 获取用户信息
@@ -348,8 +382,6 @@ router.post('/userManage/add', (req, res) => {
 		}
 	})
 })
-
-
 // 修改用户信息
 router.post('/userManage/modify', (req, res) => {
 	console.log(req.body)
@@ -367,8 +399,6 @@ router.post('/userManage/modify', (req, res) => {
 		}
 	})
 })
-
-//TODO
 // 删除用户
 router.delete('/userManage/delete/:id', (req, res) => {
 	console.log(req.session.user)

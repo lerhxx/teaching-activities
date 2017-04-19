@@ -30,9 +30,11 @@ export default {
     },
     // 设置当前用户个人信息
     SET_USER(state, info) {
-        state.userId = info.id;
+        state.userAccount = info.account;
+        state.userId = info.name;
         state.userRank = info.rank;
         state.userFaculty = info.faculty;
+        console.log(state.userAccount)
     },
     // 登出，清楚用户信息
     CLEAN_USER(state) {

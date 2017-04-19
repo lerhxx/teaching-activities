@@ -8421,6 +8421,7 @@
 
 	var store = new _vuex2.default.Store({
 		state: {
+			userAccount: '',
 			userId: '',
 			userRank: 0,
 			userFaculty: '',
@@ -11095,14 +11096,27 @@
 
 	    return _axios2.default.get('/userManage/selfInfo', { params: userInfo }).then(function (res) {
 	      if (res.data.state === 0) {
+	        console.log(res.data.data);
 	        commit('SET_USER', res.data.data);
+	      }
+	    });
+	  },
+	  MODIFY_PWD: function MODIFY_PWD(_ref16, info) {
+	    var commit = _ref16.commit;
+
+	    console.log(info);
+	    return _axios2.default.post('/userManage/modifyPwd', info).then(function (res) {
+	      if (res.data.state === 0) {
+	        return Promise.resolve(res.data.msg);
+	      } else {
+	        return Promise.reject(res.data.msg);
 	      }
 	    });
 	  },
 
 	  // 获取用户信息
-	  GET_USERS: function GET_USERS(_ref16) {
-	    var commit = _ref16.commit;
+	  GET_USERS: function GET_USERS(_ref17) {
+	    var commit = _ref17.commit;
 
 	    return _axios2.default.get('/userManage/info').then(function (res) {
 	      if (res.data.state === 0) {
@@ -11118,8 +11132,8 @@
 	  },
 
 	  // 添加用户
-	  ADD_USER: function ADD_USER(_ref17, form) {
-	    var commit = _ref17.commit;
+	  ADD_USER: function ADD_USER(_ref18, form) {
+	    var commit = _ref18.commit;
 
 	    return _axios2.default.post('/userManage/add', form).then(function (res) {
 	      if (res.data.state == 0) {
@@ -11130,10 +11144,9 @@
 	    });
 	  },
 
-	  // TODO
 	  // 修改用户
-	  MODIFY_USER: function MODIFY_USER(_ref18, info) {
-	    var commit = _ref18.commit;
+	  MODIFY_USER: function MODIFY_USER(_ref19, info) {
+	    var commit = _ref19.commit;
 
 	    return _axios2.default.post('/userManage/modify', info).then(function (res) {
 	      if (res.data.state == 0) {
@@ -11144,10 +11157,9 @@
 	    });
 	  },
 
-	  // TODO
 	  // 删除用户
-	  DELETE_USER: function DELETE_USER(_ref19, info) {
-	    var commit = _ref19.commit;
+	  DELETE_USER: function DELETE_USER(_ref20, info) {
+	    var commit = _ref20.commit;
 
 	    return _axios2.default.delete('/userManage/delete/' + info.id).then(function (res) {
 	      if (res.data.state == 0) {
@@ -11159,8 +11171,8 @@
 	  },
 
 	  // 获取统计单位可选项
-	  GET_UNIT_TEXT: function GET_UNIT_TEXT(_ref20, info) {
-	    var commit = _ref20.commit;
+	  GET_UNIT_TEXT: function GET_UNIT_TEXT(_ref21, info) {
+	    var commit = _ref21.commit;
 
 	    return _axios2.default.get('/count/unitText', { params: info }).then(function (res) {
 	      if (res.data.state == 0) {
@@ -11220,9 +11232,11 @@
 
 	    // 设置当前用户个人信息
 	    SET_USER: function SET_USER(state, info) {
-	        state.userId = info.id;
+	        state.userAccount = info.account;
+	        state.userId = info.name;
 	        state.userRank = info.rank;
 	        state.userFaculty = info.faculty;
+	        console.log(state.userAccount);
 	    },
 
 	    // 登出，清楚用户信息
@@ -11655,8 +11669,9 @@
 		created: function created() {
 			var _this = this;
 
-			if ((0, _cookieUtil.get)('username') && !this.userId) {
-				this.$store.dispatch('GET_USER_INFO', { name: this.username }).then(function (res) {
+			console.log((0, _cookieUtil.get)('useraccount'));
+			if ((0, _cookieUtil.get)('useraccount') && !this.userAccount) {
+				this.$store.dispatch('GET_USER_INFO', { account: this.useraccount }).then(function (res) {
 					console.log(_this.$store.state.userId);
 				});
 			}
@@ -11664,8 +11679,8 @@
 		},
 
 		computed: {
-			username: function username() {
-				return (0, _cookieUtil.get)('username');
+			useraccount: function useraccount() {
+				return (0, _cookieUtil.get)('useraccount');
 			},
 			userId: function userId() {
 				return this.$store.state.userId;
@@ -11679,7 +11694,7 @@
 				var _this2 = this;
 
 				this.username = '';
-				(0, _cookieUtil.unset)('username', '/', window.location.hostname);
+				(0, _cookieUtil.unset)('useraccount', '/', window.location.hostname);
 				this.$store.dispatch('SIGNOUT').then(function () {
 					_this2.$router.push('index');
 				});
@@ -15516,16 +15531,15 @@
 				}
 
 				this.$store.dispatch('SIGNIN', {
-					id: this.account,
+					account: this.account,
 					pwd: this.password
 				}).then(function (res) {
 					// let date = new Date(Date.now() + 60000 * 30 * 24);
 					// set('user', this.account, date, '/', window.location.hostname);
-					console.log(res);
-					_this.$router.push({ path: '/' });
+					// console.log(res)
+					_this.$router.push({ name: 'index' });
 				}).catch(function (msg) {
 					_this.tip = msg;
-					console.log(msg);
 				});
 			}
 		}
@@ -15911,7 +15925,7 @@
 			var _this = this;
 
 			if (this.userRank < 1) {
-				this.$router.push('index');
+				this.$router.push({ name: 'index' });
 			}
 			if (this.isEdit && this.$route.params.artId) {
 				this.$store.dispatch('GET_EDIT_ARTICLE', { id: this.$route.params.artId }).then(function (data) {
@@ -16049,8 +16063,6 @@
 			onPost: function onPost() {
 				var _this2 = this;
 
-				//TODO
-				//编辑
 				var form = this.form;
 				// form.content = editor.sync();
 				form.content = this.$refs.edit.getContent();
@@ -18651,7 +18663,7 @@
 	    },
 	    created: function created() {
 	        // if(this.userRank < 1) {
-	        //     this.$router.push('index');
+	        //     this.$router.push({name: 'index'});
 	        // }
 	        this.getUser();
 	    },
@@ -18732,7 +18744,6 @@
 	            }).catch(function (err) {
 	                return alert(err);
 	            });
-	            // console.log(newInfo)
 	        },
 	        cancleModify: function cancleModify() {
 	            this.showDialog = false;
@@ -19545,7 +19556,7 @@
 	    },
 	    created: function created() {
 	        if (this.userRank < 1) {
-	            this.$router.push('index');
+	            this.$router.push({ name: 'index' });
 	        }
 	    },
 
@@ -90828,6 +90839,32 @@
 
 	var _vuex = __webpack_require__(4);
 
+	var _cookieUtil = __webpack_require__(40);
+
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
 	exports.default = {
 	    data: function data() {
 	        return {
@@ -90837,6 +90874,7 @@
 	            newPwd: ''
 	        };
 	    },
+	    created: function created() {},
 
 	    methods: {
 	        toggleTip: function toggleTip(text) {
@@ -90847,47 +90885,31 @@
 	            this.showTip = false;
 	        },
 	        onModify: function onModify() {
+	            var _this = this;
+
 	            var self = this;
 	            if (!this.oldPwd || !this.newPwd) {
 	                this.toggleTip('请输入新/旧密码');
 	                return;
 	            }
 	            if (this.oldPwd === this.newPwd) {
-	                this.toggleTip('新旧密码相同！');
+	                this.toggleTip('新旧密码不能相同！');
 	                return;
 	            }
-	            this.$store.dispatch('MODIFY_PWD', { id: this.userId, oldPwd: this.oldPwd, newPwd: this.newPwd }).then(function (res) {
-	                self.toggleTip(res);
+	            console.log((0, _cookieUtil.get)('useraccount'));
+	            this.$store.dispatch('MODIFY_PWD', { account: this.userAccount, oldPwd: this.oldPwd, newPwd: this.newPwd }).then(function (res) {
+	                console.log(_this.userAccount);
+	                (0, _cookieUtil.unset)('useraccount');
+	                _this.userAccount = '';
+	                alert(res);
+	                self.$router.push({ name: 'signin' });
 	            }).catch(function (err) {
-	                console.log(self);
 	                self.toggleTip(err);
 	            });
 	        }
 	    },
-	    computed: (0, _vuex.mapState)(['userId'])
-	}; //
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
+	    computed: (0, _vuex.mapState)(['userAccount'])
+	};
 
 /***/ },
 /* 547 */

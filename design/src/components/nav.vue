@@ -50,8 +50,9 @@
 			}
 		},
 		created() {
-			if(get('username') && !this.userId) {
-				this.$store.dispatch('GET_USER_INFO', {name: this.username})
+			console.log(get('useraccount'))
+			if(get('useraccount') && !this.userAccount) {
+				this.$store.dispatch('GET_USER_INFO', {account: this.useraccount})
 					.then(res => {
 						console.log(this.$store.state.userId)
 					});
@@ -59,8 +60,8 @@
 			this.$store.dispatch('GET_ACADEMY_LISTS')
 		},
 		computed: {
-			username() {
-				return get('username');
+			useraccount() {
+				return get('useraccount');
 			},
 			userId() {
 				return this.$store.state.userId;
@@ -72,7 +73,7 @@
 		methods: {
 			signout() {
 				this.username = '';
-				unset('username', '/', window.location.hostname);
+				unset('useraccount', '/', window.location.hostname);
 				this.$store.dispatch('SIGNOUT')
 					.then(() => {
 						this.$router.push('index')

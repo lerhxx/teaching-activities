@@ -163,7 +163,19 @@ export default {
     return axios.get('/userManage/selfInfo', {params: userInfo})
       .then(res => {
         if(res.data.state === 0) {
+          console.log(res.data.data)
           commit('SET_USER', res.data.data)
+        }
+      })
+  },
+  MODIFY_PWD({commit}, info) {
+    console.log(info)
+    return axios.post('/userManage/modifyPwd', info)
+      .then(res => {
+        if(res.data.state === 0) {
+          return Promise.resolve(res.data.msg);
+        }else {
+          return Promise.reject(res.data.msg);
         }
       })
   },
@@ -193,7 +205,6 @@ export default {
         }
       })
   },
-  // TODO
   // 修改用户
   MODIFY_USER({commit}, info) {
     return axios.post(`/userManage/modify`, info)
@@ -205,7 +216,6 @@ export default {
         }
       })
   },
-  // TODO
   // 删除用户
   DELETE_USER({commit}, info) {
     return axios.delete(`/userManage/delete/${info.id}`)

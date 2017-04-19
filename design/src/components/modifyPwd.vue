@@ -23,6 +23,7 @@
 
 <script>
     import {mapState} from 'vuex';
+    import {unset, get} from '../assets/cookieUtil';
 
     export default {
         data() {
@@ -32,6 +33,8 @@
                 oldPwd: '',
                 newPwd: ''
             }
+        },
+        created() {
         },
         methods: {
             toggleTip(text) {
@@ -48,20 +51,24 @@
                     return;
                 }
                 if(this.oldPwd === this.newPwd) {
-                    this.toggleTip('新旧密码相同！');
+                    this.toggleTip('新旧密码不能相同！');
                     return;
                 }
-                this.$store.dispatch('MODIFY_PWD', {id: this.userId, oldPwd: this.oldPwd, newPwd: this.newPwd})
+                console.log(get('useraccount'))
+                this.$store.dispatch('MODIFY_PWD', {account: this.userAccount, oldPwd: this.oldPwd, newPwd: this.newPwd})
                             .then(res => {
-                                self.toggleTip(res);
+                                console.log(this.userAccount)
+                                unset('useraccount')
+                                this.userAccount = '';
+                                alert(res);
+                                self.$router.push({name: 'signin'})
                             })
                             .catch(err => {
-                                console.log(self)
                                 self.toggleTip(err);
                             })
             }
         },
-        computed: mapState(['userId'])
+        computed: mapState(['userAccount'])
     }
 </script>
 

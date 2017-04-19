@@ -119,7 +119,7 @@
         },
         created() {
             // if(this.userRank < 1) {
-            //     this.$router.push('index');
+            //     this.$router.push({name: 'index'});
             // }
         	this.getUser();
         },
@@ -193,7 +193,6 @@
                         this.showDialog = false;
                     })
                     .catch(err => alert(err));
-                // console.log(newInfo)
             },
             cancleModify() {
                 this.showDialog = false;
