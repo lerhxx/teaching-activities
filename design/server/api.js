@@ -368,6 +368,10 @@ router.get('/userManage/info', (req, res) => {
 		if(err) {
 			res.send({state: 1, msg: '查询失败！'});
 		}else {
+			doc.forEach(value => {
+				//清空pwd，不传递真实pwd
+				value.pwd = '';
+			})
 			res.send({state: 0, data: doc});
 		}
 	})
@@ -388,10 +392,16 @@ router.post('/userManage/add', (req, res) => {
 // 	res.end()
 // })
 
-// 修改用户
+// 修改用户信息
 router.post('/userManage/modify', (req, res) => {
-	// console.log(req.body)
-	db.User.update({id: req.body.id}, {$set: {pwd: req.body.newPwd}}, (err, doc) => {
+	console.log(req.body)
+	db.User.update({_id: req.body._id}, {$set: {
+		name: req.body.name,
+		account: req.body.account,
+		rank: req.body.rank,
+		faculty: req.body.faculty,
+		title: req.body.title
+	}}, (err, doc) => {
 		if(err) {
 			res.send({state: 1, msg: err})
 		}else {

@@ -172,6 +172,10 @@ export default {
     return axios.get('/userManage/info')
       .then(res => {
         if(res.data.state === 0) {
+          //删除pwd
+          res.data.data.forEach(value => {
+            delete value.pwd
+          })
           commit('SET_USERS', res.data.data)
         }else {
           return Promise.reject(res.data.msg);
@@ -191,7 +195,7 @@ export default {
   },
   // TODO
   // 修改用户
-  MODIFY_PWD({commit}, info) {
+  MODIFY_USER({commit}, info) {
     return axios.post(`/userManage/modify`, info)
       .then(res => {
         if(res.data.state == 0) {
