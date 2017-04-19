@@ -118,6 +118,9 @@
             }
         },
         created() {
+            // if(this.userRank < 1) {
+            //     this.$router.push('index');
+            // }
         	this.getUser();
         },
         methods: {
@@ -152,9 +155,6 @@
                     })
             },
             getUser() {
-                // if(this.userRank < 1) {
-                //     this.$router.push('index');
-                // }
                 let range = null;
                 if(this.userRank == 1) {
                     range = this.userFaculty;

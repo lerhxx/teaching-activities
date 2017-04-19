@@ -27,6 +27,11 @@
                 isActive: true
             }
         },
+        // created() {
+        //     if(this.userRank < 1) {
+        //         this.$router.push('index');
+        //     }
+        // },
         methods: {
             toggleAct(type) {
                 switch(type) {
@@ -41,7 +46,7 @@
                 }
             }
         },
-        computed: mapState(['userId'])
+        computed: mapState(['userId', 'userRank'])
     }
 </script>
 

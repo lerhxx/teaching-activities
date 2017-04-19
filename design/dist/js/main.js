@@ -11676,9 +11676,13 @@
 		},
 		methods: {
 			signout: function signout() {
+				var _this2 = this;
+
 				this.username = '';
 				(0, _cookieUtil.unset)('username', '/', window.location.hostname);
-				this.$store.dispatch('SIGNOUT');
+				this.$store.dispatch('SIGNOUT').then(function () {
+					_this2.$router.push('index');
+				});
 			}
 		}
 	}; //
@@ -18643,6 +18647,9 @@
 	        };
 	    },
 	    created: function created() {
+	        // if(this.userRank < 1) {
+	        //     this.$router.push('index');
+	        // }
 	        this.getUser();
 	    },
 
@@ -18679,9 +18686,6 @@
 	            });
 	        },
 	        getUser: function getUser() {
-	            // if(this.userRank < 1) {
-	            //     this.$router.push('index');
-	            // }
 	            var range = null;
 	            if (this.userRank == 1) {
 	                range = this.userFaculty;
@@ -19537,6 +19541,11 @@
 	        };
 	    },
 
+	    // created() {
+	    //     if(this.userRank < 1) {
+	    //         this.$router.push('index');
+	    //     }
+	    // },
 	    methods: {
 	        toggleAct: function toggleAct(type) {
 	            switch (type) {
@@ -19551,7 +19560,7 @@
 	            }
 	        }
 	    },
-	    computed: (0, _vuex.mapState)(['userId'])
+	    computed: (0, _vuex.mapState)(['userId', 'userRank'])
 	}; //
 	//
 	//

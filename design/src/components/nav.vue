@@ -73,7 +73,10 @@
 			signout() {
 				this.username = '';
 				unset('username', '/', window.location.hostname);
-				this.$store.dispatch('SIGNOUT');
+				this.$store.dispatch('SIGNOUT')
+					.then(() => {
+						this.$router.push('index')
+					})
 			},
 		}
 	}
