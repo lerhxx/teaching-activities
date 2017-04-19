@@ -137,6 +137,9 @@
 			editor
 		},
 		created() {
+            if(this.userRank < 1) {
+                this.$router.push('index');
+            }
 			if(this.isEdit && this.$route.params.artId) {
 				this.$store.dispatch('GET_EDIT_ARTICLE', {id: this.$route.params.artId})
 					.then(data => {

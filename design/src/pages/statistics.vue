@@ -27,11 +27,11 @@
                 isActive: true
             }
         },
-        // created() {
-        //     if(this.userRank < 1) {
-        //         this.$router.push('index');
-        //     }
-        // },
+        created() {
+            if(this.userRank < 1) {
+                this.$router.push('index');
+            }
+        },
         methods: {
             toggleAct(type) {
                 switch(type) {

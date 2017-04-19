@@ -16096,6 +16096,9 @@
 		created: function created() {
 			var _this = this;
 
+			if (this.userRank < 1) {
+				this.$router.push('index');
+			}
 			if (this.isEdit && this.$route.params.artId) {
 				this.$store.dispatch('GET_EDIT_ARTICLE', { id: this.$route.params.artId }).then(function (data) {
 					_this.form.title = data.title;
@@ -19726,12 +19729,12 @@
 	            isActive: true
 	        };
 	    },
+	    created: function created() {
+	        if (this.userRank < 1) {
+	            this.$router.push('index');
+	        }
+	    },
 
-	    // created() {
-	    //     if(this.userRank < 1) {
-	    //         this.$router.push('index');
-	    //     }
-	    // },
 	    methods: {
 	        toggleAct: function toggleAct(type) {
 	            switch (type) {
