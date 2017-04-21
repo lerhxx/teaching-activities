@@ -29,7 +29,7 @@
         	<div class='group-con'>
         		<label>权限：</label>
         		<select v-model='rank'>
-        			<option v-for='item in rankOption' v-bind:value='item.index'>{{item.type}}</option>
+        			<option v-for='item in rankOption' v-bind:value='item'>{{rankToText(item)}}</option>
         		</select>
         	</div>
         	<div class='group-con'>
@@ -65,7 +65,7 @@
                     </select>
                 </div>
                 <div class='group-con'>
-                    <label>所属系：</label>
+                    <label>所属教研室：</label>
                     <select v-model='modifyUser.faculty'>
                         <option v-for='faculty in facultyOption' v-bind:value='faculty.index'>{{faculty.type}}</option>
                     </select>
@@ -137,6 +137,14 @@
                 }
             },
             addUser() {
+                console.log(this.name)
+                console.log(this.pwd)
+                console.log(this.title)
+                console.log(this.faculty)
+                if(!this.name || !this.pwd || !this.title || !this.faculty) {
+                    alert('请填写完整')
+                    return;
+                }
                 let form = {};
                 form.id = this.name;
                 form.pwd = this.pwd;
@@ -148,11 +156,12 @@
                         break;
                     }
                 }
-                this.$store.dispatch('ADD_USER', form)
-                    .then(res => {
-                        this.getUser();
-                        this.isAdd = false;
-                    })
+                console.log(form)
+                // this.$store.dispatch('ADD_USER', form)
+                //     .then(res => {
+                //         this.getUser();
+                //         this.isAdd = false;
+                //     })
             },
             getUser() {
                 let range = null;
@@ -315,9 +324,9 @@
         background rgba(0, 0, 0, .5)
     .modal-form
         width 500px
-        margin-top 50%
+        height 300px
+        margin-top 150px
         background #fff
-        transform translateY(-50%)
         border-radius 8px
         h2
             margin-top -15px

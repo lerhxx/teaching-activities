@@ -374,7 +374,7 @@ router.get('/userManage/info', (req, res) => {
 })
 // 添加用户
 router.post('/userManage/add', (req, res) => {
-	dbUser.create(req.body, (err, doc) => {
+	db.User.create(req.body, (err, doc) => {
 		if(err) {
 			res.send({state: 1, msg: '操作失败'})
 		}else {

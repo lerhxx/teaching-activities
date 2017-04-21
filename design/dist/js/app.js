@@ -16088,7 +16088,7 @@
 					faculty: '',
 					party: ''
 				},
-				acadamy: '请选择发布学院',
+				acadamy: '请选择举办学院',
 				unit: '请选择举办单位',
 				type: '请选择发布类型',
 				acadamyOptionShow: false,
@@ -18711,7 +18711,7 @@
 
 
 	// module
-	exports.push([module.id, "\nbody[data-v-74615f3a],\nul[data-v-74615f3a],\nli[data-v-74615f3a],\np[data-v-74615f3a],\nh1[data-v-74615f3a],\nh2[data-v-74615f3a],\nh3[data-v-74615f3a],\nh4[data-v-74615f3a],\nh5[data-v-74615f3a],\nh6[data-v-74615f3a],\nhr[data-v-74615f3a] {\n  padding: 0;\n  margin: 0;\n}\nbody[data-v-74615f3a] {\n  height: 100vh;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nul[data-v-74615f3a] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  list-style: none;\n}\na[data-v-74615f3a] {\n  text-decoration: none;\n  color: #000;\n}\n.color-r[data-v-74615f3a] {\n  color: #f00;\n}\n.color-b[data-v-74615f3a] {\n  color: #40bfce;\n}\n.color-g[data-v-74615f3a] {\n  color: #bbb6b6;\n}\n.padding-top[data-v-74615f3a] {\n  padding-top: 45px;\n}\n.text-ellipsis[data-v-74615f3a] {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n#app[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.wrapper[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  min-height: calc(100vh - 48px);\n  padding-bottom: 48px;\n}\n.time[data-v-74615f3a] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.per-list[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin-bottom: 10px;\n  text-align: center;\n}\n.per-list[data-v-74615f3a]:before {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 50%;\n  min-width: 150px;\n  height: 0px;\n  margin: auto;\n  border: 1px solid #000;\n  content: '';\n  z-index: -1;\n}\n.per-list-item a[data-v-74615f3a] {\n  display: block;\n  padding: 10px 35px;\n  border: 1px solid #000;\n  background: #fff;\n}\n.per-list-item.active a[data-v-74615f3a] {\n  color: #fff;\n  background: #000;\n}\nform[data-v-74615f3a] {\n  padding: 45px;\n  margin: auto;\n}\nform input[data-v-74615f3a] {\n  outline: none;\n}\nlabel[data-v-74615f3a] {\n  text-align: right;\n}\n.group-con[data-v-74615f3a] {\n  margin: 15px 0;\n}\n.group-btn[data-v-74615f3a] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-74615f3a] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-74615f3a] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-s[data-v-74615f3a] {\n  padding: 5px 10px;\n  font-size: 0.9em;\n}\n.btn-certain[data-v-74615f3a] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-74615f3a] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-74615f3a] {\n  background: #2d0a08;\n}\n.must[data-v-74615f3a] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-74615f3a] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-74615f3a] {\n  margin-right: 10px;\n}\n.user[data-v-74615f3a] {\n  text-align: center;\n}\n.info-list[data-v-74615f3a] {\n  width: 80%;\n  margin: 30px auto;\n  border-spacing: 0;\n}\n.thead[data-v-74615f3a] {\n  width: 100%;\n  padding: 8px 0;\n  color: #fff;\n  background: #000;\n}\n.thead span[data-v-74615f3a],\n.tbody span[data-v-74615f3a] {\n  display: inline-block;\n  padding: 5px 0;\n}\n.thead span[data-v-74615f3a]:nth-child(1),\n.tbody span[data-v-74615f3a]:nth-child(1) {\n  width: 10%;\n}\n.thead span[data-v-74615f3a]:nth-child(2),\n.tbody span[data-v-74615f3a]:nth-child(2) {\n  width: 15%;\n}\n.thead span[data-v-74615f3a]:nth-child(3),\n.tbody span[data-v-74615f3a]:nth-child(3) {\n  width: 15%;\n}\n.thead span[data-v-74615f3a]:nth-child(4),\n.tbody span[data-v-74615f3a]:nth-child(4) {\n  width: 23%;\n}\n.thead span[data-v-74615f3a]:nth-child(5),\n.tbody span[data-v-74615f3a]:nth-child(5) {\n  width: 20%;\n}\n.thead span[data-v-74615f3a]:nth-child(6),\n.tbody span[data-v-74615f3a]:nth-child(6) {\n  width: 6%;\n}\n.thead span[data-v-74615f3a]:nth-child(7),\n.tbody span[data-v-74615f3a]:nth-child(7) {\n  width: 6%;\n}\n.tbody[data-v-74615f3a] {\n  display: block;\n  width: 100%;\n  padding: 5px 0px;\n}\n.tbody[data-v-74615f3a]:hover {\n  background: #ddd;\n}\n.tbody span[data-v-74615f3a]:nth-child(6),\n.tbody span[data-v-74615f3a]:nth-child(7) {\n  margin: 0 5px;\n  color: #fff;\n  font-size: 12px;\n  background: #00bcd4;\n  cursor: pointer;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n}\n.per-list[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin-top: 20px;\n  margin-bottom: 10px;\n  text-align: center;\n}\n.per-list[data-v-74615f3a]:before {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 50%;\n  height: 0px;\n  margin: auto;\n  border: 1px solid #000;\n  content: '';\n  z-index: -1;\n}\n.per-list-item[data-v-74615f3a] {\n  padding: 10px 35px;\n  border: 1px solid #000;\n  background: #fff;\n  cursor: pointer;\n}\n.per-list-item.active[data-v-74615f3a] {\n  color: #fff;\n  background: #000;\n}\n.add-user[data-v-74615f3a] {\n  display: inline-block;\n  margin: 30px auto;\n  text-align: left;\n}\n.add-user label[data-v-74615f3a] {\n  display: inline-block;\n  width: 100px;\n}\n.add-user input[data-v-74615f3a],\n.add-user select[data-v-74615f3a] {\n  width: 300px;\n}\n.modal[data-v-74615f3a] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background: rgba(0,0,0,0.5);\n}\n.modal-form[data-v-74615f3a] {\n  width: 500px;\n  margin-top: 50%;\n  background: #fff;\n  -webkit-transform: translateY(-50%);\n  -moz-transform: translateY(-50%);\n  -ms-transform: translateY(-50%);\n  -o-transform: translateY(-50%);\n  transform: translateY(-50%);\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.modal-form h2[data-v-74615f3a] {\n  margin-top: -15px;\n  margin-bottom: 30px;\n}\n.modal-form select[data-v-74615f3a] {\n  outline: none;\n}\n.modal-form label[data-v-74615f3a] {\n  display: inline-block;\n  width: 70px;\n  text-align: right;\n}\n.modal-form input[data-v-74615f3a],\n.modal-form select[data-v-74615f3a] {\n  width: 250px;\n  height: 25px;\n  font-size: 20px;\n  line-height: 25px;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n}\n.modal-form select[data-v-74615f3a] {\n  height: 30px;\n}\n.modal-form .btn[data-v-74615f3a] {\n  width: 100px;\n  height: 45px;\n  margin-bottom: -10px;\n}\n", ""]);
+	exports.push([module.id, "\nbody[data-v-74615f3a],\nul[data-v-74615f3a],\nli[data-v-74615f3a],\np[data-v-74615f3a],\nh1[data-v-74615f3a],\nh2[data-v-74615f3a],\nh3[data-v-74615f3a],\nh4[data-v-74615f3a],\nh5[data-v-74615f3a],\nh6[data-v-74615f3a],\nhr[data-v-74615f3a] {\n  padding: 0;\n  margin: 0;\n}\nbody[data-v-74615f3a] {\n  height: 100vh;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n}\nul[data-v-74615f3a] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  list-style: none;\n}\na[data-v-74615f3a] {\n  text-decoration: none;\n  color: #000;\n}\n.color-r[data-v-74615f3a] {\n  color: #f00;\n}\n.color-b[data-v-74615f3a] {\n  color: #40bfce;\n}\n.color-g[data-v-74615f3a] {\n  color: #bbb6b6;\n}\n.padding-top[data-v-74615f3a] {\n  padding-top: 45px;\n}\n.text-ellipsis[data-v-74615f3a] {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n#app[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n}\n.wrapper[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  min-height: calc(100vh - 48px);\n  padding-bottom: 48px;\n}\n.time[data-v-74615f3a] {\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n.per-list[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin-bottom: 10px;\n  text-align: center;\n}\n.per-list[data-v-74615f3a]:before {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 50%;\n  min-width: 150px;\n  height: 0px;\n  margin: auto;\n  border: 1px solid #000;\n  content: '';\n  z-index: -1;\n}\n.per-list-item a[data-v-74615f3a] {\n  display: block;\n  padding: 10px 35px;\n  border: 1px solid #000;\n  background: #fff;\n}\n.per-list-item.active a[data-v-74615f3a] {\n  color: #fff;\n  background: #000;\n}\nform[data-v-74615f3a] {\n  padding: 45px;\n  margin: auto;\n}\nform input[data-v-74615f3a] {\n  outline: none;\n}\nlabel[data-v-74615f3a] {\n  text-align: right;\n}\n.group-con[data-v-74615f3a] {\n  margin: 15px 0;\n}\n.group-btn[data-v-74615f3a] {\n  margin: 0;\n  text-align: center;\n}\n.btn[data-v-74615f3a] {\n  padding: 8px 20px;\n  margin: 0 15px;\n  border: 1px solid rgba(51,51,51,0.5);\n  outline: none;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn-l[data-v-74615f3a] {\n  padding: 8px 50px;\n  font-size: 1.3em;\n}\n.btn-s[data-v-74615f3a] {\n  padding: 5px 10px;\n  font-size: 0.9em;\n}\n.btn-certain[data-v-74615f3a] {\n  background: #ed5e0f;\n}\n.btn-cancle[data-v-74615f3a] {\n  background: #4e4e4e;\n}\n.btn-edit[data-v-74615f3a] {\n  background: #2d0a08;\n}\n.must[data-v-74615f3a] {\n  margin-right: 0.5em;\n  color: #f00;\n}\n.group-btn[data-v-74615f3a] {\n  margin-top: 10px;\n  text-align: left;\n  font-size: 12px;\n  cursor: pointer;\n}\n.group-btn span[data-v-74615f3a] {\n  margin-right: 10px;\n}\n.user[data-v-74615f3a] {\n  text-align: center;\n}\n.info-list[data-v-74615f3a] {\n  width: 80%;\n  margin: 30px auto;\n  border-spacing: 0;\n}\n.thead[data-v-74615f3a] {\n  width: 100%;\n  padding: 8px 0;\n  color: #fff;\n  background: #000;\n}\n.thead span[data-v-74615f3a],\n.tbody span[data-v-74615f3a] {\n  display: inline-block;\n  padding: 5px 0;\n}\n.thead span[data-v-74615f3a]:nth-child(1),\n.tbody span[data-v-74615f3a]:nth-child(1) {\n  width: 10%;\n}\n.thead span[data-v-74615f3a]:nth-child(2),\n.tbody span[data-v-74615f3a]:nth-child(2) {\n  width: 15%;\n}\n.thead span[data-v-74615f3a]:nth-child(3),\n.tbody span[data-v-74615f3a]:nth-child(3) {\n  width: 15%;\n}\n.thead span[data-v-74615f3a]:nth-child(4),\n.tbody span[data-v-74615f3a]:nth-child(4) {\n  width: 23%;\n}\n.thead span[data-v-74615f3a]:nth-child(5),\n.tbody span[data-v-74615f3a]:nth-child(5) {\n  width: 20%;\n}\n.thead span[data-v-74615f3a]:nth-child(6),\n.tbody span[data-v-74615f3a]:nth-child(6) {\n  width: 6%;\n}\n.thead span[data-v-74615f3a]:nth-child(7),\n.tbody span[data-v-74615f3a]:nth-child(7) {\n  width: 6%;\n}\n.tbody[data-v-74615f3a] {\n  display: block;\n  width: 100%;\n  padding: 5px 0px;\n}\n.tbody[data-v-74615f3a]:hover {\n  background: #ddd;\n}\n.tbody span[data-v-74615f3a]:nth-child(6),\n.tbody span[data-v-74615f3a]:nth-child(7) {\n  margin: 0 5px;\n  color: #fff;\n  font-size: 12px;\n  background: #00bcd4;\n  cursor: pointer;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -ms-box-sizing: border-box;\n  -o-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n}\n.per-list[data-v-74615f3a] {\n  position: relative;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  ((null)): 0;\n  margin-top: 20px;\n  margin-bottom: 10px;\n  text-align: center;\n}\n.per-list[data-v-74615f3a]:before {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 50%;\n  height: 0px;\n  margin: auto;\n  border: 1px solid #000;\n  content: '';\n  z-index: -1;\n}\n.per-list-item[data-v-74615f3a] {\n  padding: 10px 35px;\n  border: 1px solid #000;\n  background: #fff;\n  cursor: pointer;\n}\n.per-list-item.active[data-v-74615f3a] {\n  color: #fff;\n  background: #000;\n}\n.add-user[data-v-74615f3a] {\n  display: inline-block;\n  margin: 30px auto;\n  text-align: left;\n}\n.add-user label[data-v-74615f3a] {\n  display: inline-block;\n  width: 100px;\n}\n.add-user input[data-v-74615f3a],\n.add-user select[data-v-74615f3a] {\n  width: 300px;\n}\n.modal[data-v-74615f3a] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background: rgba(0,0,0,0.5);\n}\n.modal-form[data-v-74615f3a] {\n  width: 500px;\n  height: 300px;\n  margin-top: 150px;\n  background: #fff;\n  -webkit-border-radius: 8px;\n  -moz-border-radius: 8px;\n  border-radius: 8px;\n}\n.modal-form h2[data-v-74615f3a] {\n  margin-top: -15px;\n  margin-bottom: 30px;\n}\n.modal-form select[data-v-74615f3a] {\n  outline: none;\n}\n.modal-form label[data-v-74615f3a] {\n  display: inline-block;\n  width: 70px;\n  text-align: right;\n}\n.modal-form input[data-v-74615f3a],\n.modal-form select[data-v-74615f3a] {\n  width: 250px;\n  height: 25px;\n  font-size: 20px;\n  line-height: 25px;\n  -webkit-border-radius: 6px;\n  -moz-border-radius: 6px;\n  border-radius: 6px;\n}\n.modal-form select[data-v-74615f3a] {\n  height: 30px;\n}\n.modal-form .btn[data-v-74615f3a] {\n  width: 100px;\n  height: 45px;\n  margin-bottom: -10px;\n}\n", ""]);
 
 	// exports
 
@@ -18868,8 +18868,14 @@
 	            }
 	        },
 	        addUser: function addUser() {
-	            var _this = this;
-
+	            console.log(this.name);
+	            console.log(this.pwd);
+	            console.log(this.title);
+	            console.log(this.faculty);
+	            if (!this.name || !this.pwd || !this.title || !this.faculty) {
+	                alert('请填写完整');
+	                return;
+	            }
 	            var form = {};
 	            form.id = this.name;
 	            form.pwd = this.pwd;
@@ -18881,10 +18887,12 @@
 	                    break;
 	                }
 	            }
-	            this.$store.dispatch('ADD_USER', form).then(function (res) {
-	                _this.getUser();
-	                _this.isAdd = false;
-	            });
+	            console.log(form);
+	            // this.$store.dispatch('ADD_USER', form)
+	            //     .then(res => {
+	            //         this.getUser();
+	            //         this.isAdd = false;
+	            //     })
 	        },
 	        getUser: function getUser() {
 	            var range = null;
@@ -18902,11 +18910,11 @@
 	            this.modifyIndex = index;
 	        },
 	        onDelete: function onDelete(account, index) {
-	            var _this2 = this;
+	            var _this = this;
 
 	            this.$store.dispatch('DELETE_USER', { id: account }).then(function (res) {
 	                alert(res);
-	                _this2.users.splice(index, 1);
+	                _this.users.splice(index, 1);
 	            }).catch(function (err) {
 	                return alert(err);
 	            });
@@ -18915,18 +18923,18 @@
 	            console.log(e.target);
 	        },
 	        certenModify: function certenModify() {
-	            var _this3 = this;
+	            var _this2 = this;
 
 	            var newInfo = (0, _common.deepCopy)(this.modifyUser);
 	            newInfo.faculty = this.textToFaculty(newInfo.faculty);
 	            this.$store.dispatch('MODIFY_USER', newInfo).then(function (res) {
 	                alert(res);
-	                _this3.users[_this3.modifyIndex].name = newInfo.name;
-	                _this3.users[_this3.modifyIndex].account = newInfo.account;
-	                _this3.users[_this3.modifyIndex].rank = newInfo.rank;
-	                _this3.users[_this3.modifyIndex].faculty = newInfo.faculty;
-	                _this3.users[_this3.modifyIndex].title = newInfo.title;
-	                _this3.showDialog = false;
+	                _this2.users[_this2.modifyIndex].name = newInfo.name;
+	                _this2.users[_this2.modifyIndex].account = newInfo.account;
+	                _this2.users[_this2.modifyIndex].rank = newInfo.rank;
+	                _this2.users[_this2.modifyIndex].faculty = newInfo.faculty;
+	                _this2.users[_this2.modifyIndex].title = newInfo.title;
+	                _this2.showDialog = false;
 	            }).catch(function (err) {
 	                return alert(err);
 	            });
@@ -19177,9 +19185,9 @@
 	  }, _vm._l((_vm.rankOption), function(item) {
 	    return _c('option', {
 	      domProps: {
-	        "value": item.index
+	        "value": item
 	      }
-	    }, [_vm._v(_vm._s(item.type))])
+	    }, [_vm._v(_vm._s(_vm.rankToText(item)))])
 	  }))]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
 	  }, [_c('label', [_vm._v("所属教研室：")]), _vm._v(" "), _c('select', {
@@ -19316,7 +19324,7 @@
 	    return _c('option', [_vm._v(_vm._s(title))])
 	  }))]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
-	  }, [_c('label', [_vm._v("所属系：")]), _vm._v(" "), _c('select', {
+	  }, [_c('label', [_vm._v("所属教研室：")]), _vm._v(" "), _c('select', {
 	    directives: [{
 	      name: "model",
 	      rawName: "v-model",

@@ -118,7 +118,7 @@
 					faculty: '' ,
 					party: '',    
 				},
-				acadamy: '请选择发布学院',
+				acadamy: '请选择举办学院',
 				unit: '请选择举办单位',
 				type: '请选择发布类型',
 				acadamyOptionShow: false,
