@@ -401,11 +401,12 @@ router.post('/userManage/modify', (req, res) => {
 })
 // 删除用户
 router.delete('/userManage/delete/:id', (req, res) => {
-	console.log(req.session.user)
+	console.log(req.params.id)
 	db.User.remove({account: req.params.id}, (err, doc) => {
 		if(err) {
 			res.send({state: 1, msg: err})
 		}else {
+	console.log(doc)
 			db.User.find(null, (err, users)=> {
 				if(err) {
 					res.send({state: 1, msg: err})

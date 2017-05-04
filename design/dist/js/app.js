@@ -18817,6 +18817,10 @@
 	//
 	//
 	//
+	//
+	//
+	//
+	//
 
 	exports.default = {
 	    data: function data() {
@@ -18824,6 +18828,7 @@
 	            isAdd: true,
 	            name: '',
 	            pwd: '',
+	            account: '',
 	            rank: 0,
 	            faculty: 0,
 	            title: '',
@@ -18868,7 +18873,10 @@
 	            }
 	        },
 	        addUser: function addUser() {
+	            var _this = this;
+
 	            console.log(this.name);
+	            console.log(this.account);
 	            console.log(this.pwd);
 	            console.log(this.title);
 	            console.log(this.faculty);
@@ -18877,22 +18885,22 @@
 	                return;
 	            }
 	            var form = {};
-	            form.id = this.name;
+	            form.name = this.name;
+	            form.account = this.account;
 	            form.pwd = this.pwd;
 	            form.title = this.title;
 	            form.rank = this.rank;
-	            for (var i = 1, len = this.facultyOption.length; i < len; ++i) {
-	                if (i === this.faculty) {
+	            for (var i = 0, len = this.facultyOption.length; i < len; ++i) {
+	                if (this.facultyOption[i].index === this.faculty) {
 	                    form.faculty = this.facultyOption[i];
 	                    break;
 	                }
 	            }
-	            console.log(form);
-	            // this.$store.dispatch('ADD_USER', form)
-	            //     .then(res => {
-	            //         this.getUser();
-	            //         this.isAdd = false;
-	            //     })
+	            this.$store.dispatch('ADD_USER', form).then(function (res) {
+	                console.log(res);
+	                _this.getUser();
+	                _this.isAdd = false;
+	            });
 	        },
 	        getUser: function getUser() {
 	            var range = null;
@@ -18910,11 +18918,11 @@
 	            this.modifyIndex = index;
 	        },
 	        onDelete: function onDelete(account, index) {
-	            var _this = this;
+	            var _this2 = this;
 
 	            this.$store.dispatch('DELETE_USER', { id: account }).then(function (res) {
 	                alert(res);
-	                _this.users.splice(index, 1);
+	                _this2.users.splice(index, 1);
 	            }).catch(function (err) {
 	                return alert(err);
 	            });
@@ -18923,18 +18931,18 @@
 	            console.log(e.target);
 	        },
 	        certenModify: function certenModify() {
-	            var _this2 = this;
+	            var _this3 = this;
 
 	            var newInfo = (0, _common.deepCopy)(this.modifyUser);
 	            newInfo.faculty = this.textToFaculty(newInfo.faculty);
 	            this.$store.dispatch('MODIFY_USER', newInfo).then(function (res) {
 	                alert(res);
-	                _this2.users[_this2.modifyIndex].name = newInfo.name;
-	                _this2.users[_this2.modifyIndex].account = newInfo.account;
-	                _this2.users[_this2.modifyIndex].rank = newInfo.rank;
-	                _this2.users[_this2.modifyIndex].faculty = newInfo.faculty;
-	                _this2.users[_this2.modifyIndex].title = newInfo.title;
-	                _this2.showDialog = false;
+	                _this3.users[_this3.modifyIndex].name = newInfo.name;
+	                _this3.users[_this3.modifyIndex].account = newInfo.account;
+	                _this3.users[_this3.modifyIndex].rank = newInfo.rank;
+	                _this3.users[_this3.modifyIndex].faculty = newInfo.faculty;
+	                _this3.users[_this3.modifyIndex].title = newInfo.title;
+	                _this3.showDialog = false;
 	            }).catch(function (err) {
 	                return alert(err);
 	            });
@@ -19096,7 +19104,7 @@
 	  }, [_vm._m(0), _vm._v(" "), _vm._l((_vm.users), function(item, index) {
 	    return _c('li', {
 	      staticClass: "tbody"
-	    }, [_c('span', [_vm._v(_vm._s(item.name))]), _c('span', [_vm._v(_vm._s(item.account))]), _c('span', [_vm._v(_vm._s(item.title))]), _c('span', [_vm._v(_vm._s(item.faculty.type))]), _c('span', [_vm._v(_vm._s(_vm.rankToText(item.rank)))]), _c('span', {
+	    }, [_c('span', [_vm._v(_vm._s(item.name))]), _c('span', [_vm._v(_vm._s(item.account))]), _c('span', [_vm._v(_vm._s(item.title))]), _c('span', [_vm._v(_vm._s(item.faculty && item.faculty.type))]), _c('span', [_vm._v(_vm._s(_vm.rankToText(item.rank)))]), _c('span', {
 	      staticClass: "btn-mod",
 	      on: {
 	        "click": function($event) {
@@ -19189,6 +19197,28 @@
 	      }
 	    }, [_vm._v(_vm._s(_vm.rankToText(item)))])
 	  }))]), _vm._v(" "), _c('div', {
+	    staticClass: "group-con"
+	  }, [_c('label', [_vm._v("账号：")]), _vm._v(" "), _c('input', {
+	    directives: [{
+	      name: "model",
+	      rawName: "v-model",
+	      value: (_vm.account),
+	      expression: "account"
+	    }],
+	    attrs: {
+	      "type": "text",
+	      "name": "account"
+	    },
+	    domProps: {
+	      "value": _vm._s(_vm.account)
+	    },
+	    on: {
+	      "input": function($event) {
+	        if ($event.target.composing) { return; }
+	        _vm.account = $event.target.value
+	      }
+	    }
+	  })]), _vm._v(" "), _c('div', {
 	    staticClass: "group-con"
 	  }, [_c('label', [_vm._v("所属教研室：")]), _vm._v(" "), _c('select', {
 	    directives: [{

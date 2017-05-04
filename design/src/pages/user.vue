@@ -13,7 +13,7 @@
                 <span>名称</span><span>账号</span><span>职称</span><span>所属系</span><span>等级</span><span></span><span></span>
             </li>
         	<li class='tbody' v-for='(item, index) in users'>
-        		<span>{{item.name}}</span><span>{{item.account}}</span><span>{{item.title}}</span><span>{{item.faculty.type}}</span><span>{{rankToText(item.rank)}}</span><span class='btn-mod' @click='onModify(item, index)'>修改</span><span class='btn-del' @click='onDelete(item.account, index)'>删除</span>
+        		<span>{{item.name}}</span><span>{{item.account}}</span><span>{{item.title}}</span><span>{{item.faculty && item.faculty.type}}</span><span>{{rankToText(item.rank)}}</span><span class='btn-mod' @click='onModify(item, index)'>修改</span><span class='btn-del' @click='onDelete(item.account, index)'>删除</span>
         	</li>
         </ul>
         <!--添加用户-->
@@ -31,6 +31,10 @@
         		<select v-model='rank'>
         			<option v-for='item in rankOption' v-bind:value='item'>{{rankToText(item)}}</option>
         		</select>
+        	</div>
+            <div class='group-con'>
+        		<label>账号：</label>
+        		<input type="text" name="account" v-model='account'>
         	</div>
         	<div class='group-con'>
         		<label>所属教研室：</label>
@@ -94,6 +98,7 @@
                 isAdd: true,
                 name: '',
                 pwd: '',
+                account: '',
                 rank: 0,
                 faculty: 0,
                 title: '',
@@ -138,6 +143,7 @@
             },
             addUser() {
                 console.log(this.name)
+                 console.log(this.account)
                 console.log(this.pwd)
                 console.log(this.title)
                 console.log(this.faculty)
@@ -146,22 +152,23 @@
                     return;
                 }
                 let form = {};
-                form.id = this.name;
+                form.name = this.name;
+                form.account = this.account;
                 form.pwd = this.pwd;
                 form.title = this.title;
                 form.rank = this.rank;
-                for(let i = 1, len = this.facultyOption.length; i < len; ++i) {
-                    if(i === this.faculty) {
+                for(let i = 0, len = this.facultyOption.length; i < len; ++i) {
+                    if(this.facultyOption[i].index === this.faculty) {
                         form.faculty = this.facultyOption[i];
                         break;
                     }
                 }
-                console.log(form)
-                // this.$store.dispatch('ADD_USER', form)
-                //     .then(res => {
-                //         this.getUser();
-                //         this.isAdd = false;
-                //     })
+                this.$store.dispatch('ADD_USER', form)
+                    .then(res => {
+                        console.log(res)
+                        this.getUser();
+                        this.isAdd = false;
+                    })
             },
             getUser() {
                 let range = null;
